@@ -12,7 +12,7 @@
 
 readonly PACKAGE_NAME=regal
 export NACL_GLIBC=1
-export NACL_PACKAGES_BITSIZE=32
+export NACL_PACKAGES_BITSIZE=64
 
 source ../../build_tools/common.sh
 
