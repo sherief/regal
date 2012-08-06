@@ -275,7 +275,7 @@ inline size_t unsigned_length(const unsigned long val) { return unsigned_length(
 #endif
 
 #if defined(__native_client__) && (defined(__i386) || defined(__x86_64))
-inline size_t unsigned_length(const unsigned val) { return unsigned_length(static_cast<boost::uint32_t>(val)); }
+//inline size_t unsigned_length(const unsigned val) { return unsigned_length(static_cast<boost::uint32_t>(val)); }
 #endif
 
 #if defined(__ANDROID__) && defined(__i386__)
