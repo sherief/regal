@@ -4,9 +4,11 @@ SHELL = /bin/sh
 ifeq ($(NACL_PACKAGES_BITSIZE), 32)
 SYSTEM = nacl-32
 BIN_EXTENSION = .x86.nexe
+CFLAGS.EXTRA = -m32
 else
 SYSTEM = nacl-64
 BIN_EXTENSION = .x64.nexe
+CFLAGS.EXTRA = -m64
 endif
 REGAL_NACL = 1
 SYSTEM.SUPPORTED = $(shell test -f config/Makefile.$(SYSTEM) && echo 1)
@@ -34,7 +36,7 @@ STRIP   ?= strip
 RM      ?= rm -f
 LN      ?= ln -sf
 
-CFLAGS.EXTRA = -fno-exceptions -fno-rtti
+CFLAGS.EXTRA += -fno-exceptions -fno-rtti
 ifeq ($(MAKECMDGOALS), debug)
 OPT = -g
 STRIP :=
@@ -51,7 +53,7 @@ all debug: regal.lib regal.bin
 export:
 	scripts/Export.py --api gl 4.2 --api wgl 4.0 --api glx 4.0 --api cgl 1.4 --api egl 1.0 --outdir src/regal
 
-LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
+LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm -lppapi_gles2
 LIB.LIBS           := 
 
 LIB.SRCS           :=
@@ -108,7 +110,7 @@ ifneq ($(STRIP),)
 endif
 
 lib/$(LIB.SHARED): $(LIB.SOBJS)
-	$(LD) $(LDFLAGS.SO) -o $@ $^ $(LIB.LDFLAGS) $(LIB.LIBS)
+	$(CC) $(LDFLAGS.SO) -o $@ $^ $(LIB.LDFLAGS) $(LIB.LIBS)
 ifneq ($(LN),)
 	$(LN) $(LIB.SHARED) lib/$(LIB.SONAME)
 	$(LN) $(LIB.SHARED) lib/$(LIB.DEVLNK)
@@ -337,15 +339,15 @@ NACLHELLOWORLD.SRCS.NAMES := $(notdir $(NACLHELLOWORLD.SRCS))
 NACLHELLOWORLD.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACLHELLOWORLD.SRCS.NAMES))
 NACLHELLOWORLD.OBJS       := $(NACLHELLOWORLD.OBJS:.cpp=.o)
 NACLHELLOWORLD.CFLAGS     := -Iinclude
-NACLHELLOWORLD.LIBS       += -Llib -lRegal -lgcc_s
-NACLHELLOWORLD.LIBS       += -lm -lpthread
+NACLHELLOWORLD.LIBS       += -L./lib -lRegal
+NACLHELLOWORLD.LIBS       += -lm -lpthread -lppapi -lppapi_gles2
 
 tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(NACLHELLOWORLD.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/nacl$(BIN_EXTENSION): $(NACLHELLOWORLD.OBJS) lib/$(LIB.SHARED)
-	$(LD) -o $@ $^ $(NACLHELLOWORLD.LIBS)
+bin/nacl$(BIN_EXTENSION): $(NACLHELLOWORLD.OBJS)
+	$(CC) -o $@ $^ $(NACLHELLOWORLD.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -362,7 +364,7 @@ endif
 clean:
 	$(RM) -r tmp/
 	$(RM) -r lib/
-	$(RM) -r bin/
+	$(RM) -f bin/nacl$(BIN_EXTENSION)
 	$(RM) glew.pc glewmx.pc
 
 
