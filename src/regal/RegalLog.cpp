@@ -66,6 +66,10 @@ extern "C"
 
 REGAL_GLOBAL_END
 
+#if REGAL_SYS_NACL
+extern void _naclPrintf(const char* str, ...);
+#endif
+
 REGAL_NAMESPACE_BEGIN
 
 namespace Logging {
@@ -236,6 +240,15 @@ namespace Logging {
     }
   }
 
+#elif REGAL_SYS_NACL
+
+
+  void Output(const char* prefix, const char* delim, const string& str) {
+    if (str.length()) {
+      string m = message(prefix, delim, str);
+      _naclPrintf("Regal: %s", m.c_str());
+    }
+  }
 #else
 
   void Output(const char *prefix, const char *delim, const string &str)
