@@ -65,6 +65,10 @@
 # define REGAL_CALL
 #endif
 
+#ifndef GLAPIENTRY
+#define GLAPIENTRY REGAL_CALL
+#endif
+
 #ifdef _WIN32
 #  if REGAL_DECL_EXPORT
 #    define REGAL_DECL
