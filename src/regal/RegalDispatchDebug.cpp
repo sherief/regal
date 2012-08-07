@@ -5034,6 +5034,36 @@ static GLsync REGAL_CALL debug_glCreateSyncFromCLeventARB(cl_context context, cl
   return ret;
 }
 
+// GL_ARB_clear_buffer_object
+
+static void REGAL_CALL debug_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearBufferData(target, internalformat, format, type, data);
+}
+
+static void REGAL_CALL debug_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+}
+
+static void REGAL_CALL debug_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
+}
+
+static void REGAL_CALL debug_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
+}
+
 // GL_ARB_color_buffer_float
 
 static void REGAL_CALL debug_glClampColorARB(GLenum target, GLenum clamp)
@@ -5043,6 +5073,22 @@ static void REGAL_CALL debug_glClampColorARB(GLenum target, GLenum clamp)
   rCtx->dsp->curr->glClampColorARB(target, clamp);
 }
 
+// GL_ARB_compute_shader
+
+static void REGAL_CALL debug_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+}
+
+static void REGAL_CALL debug_glDispatchComputeIndirect(GLintptr indirect)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDispatchComputeIndirect(indirect);
+}
+
 // GL_ARB_copy_buffer
 
 static void REGAL_CALL debug_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
@@ -5050,6 +5096,15 @@ static void REGAL_CALL debug_glCopyBufferSubData(GLenum readtarget, GLenum write
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
+}
+
+// GL_ARB_copy_image
+
+static void REGAL_CALL debug_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
 
 // GL_ARB_debug_output
@@ -5182,6 +5237,36 @@ static void REGAL_CALL debug_glDrawElementsInstancedARB(GLenum mode, GLsizei cou
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+}
+
+// GL_ARB_framebuffer_no_attachments
+
+static void REGAL_CALL debug_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFramebufferParameteri(target, pname, param);
+}
+
+static void REGAL_CALL debug_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetFramebufferParameteriv(target, pname, params);
+}
+
+static void REGAL_CALL debug_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetNamedFramebufferParameterivEXT(framebuffer, pname, params);
+}
+
+static void REGAL_CALL debug_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glNamedFramebufferParameteriEXT(framebuffer, pname, param);
 }
 
 // GL_ARB_framebuffer_object
@@ -5754,6 +5839,59 @@ static void REGAL_CALL debug_glGetInternalformativ(GLenum target, GLenum interna
   rCtx->dsp->curr->glGetInternalformativ(target, internalformat, pname, bufSize, params);
 }
 
+// GL_ARB_internalformat_query2
+
+static void REGAL_CALL debug_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetInternalformati64v(target, internalformat, pname, bufSize, params);
+}
+
+// GL_ARB_invalidate_subdata
+
+static void REGAL_CALL debug_glInvalidateBufferData(GLuint buffer)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateBufferData(buffer);
+}
+
+static void REGAL_CALL debug_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateBufferSubData(buffer, offset, length);
+}
+
+static void REGAL_CALL debug_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateFramebuffer(target, numAttachments, attachments);
+}
+
+static void REGAL_CALL debug_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+}
+
+static void REGAL_CALL debug_glInvalidateTexImage(GLuint texture, GLint level)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateTexImage(texture, level);
+}
+
+static void REGAL_CALL debug_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+}
+
 // GL_ARB_map_buffer_range
 
 static void REGAL_CALL debug_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
@@ -5806,6 +5944,22 @@ static void REGAL_CALL debug_glMatrixIndexusvARB(GLint size, GLushort *indices)
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glMatrixIndexusvARB(size, indices);
+}
+
+// GL_ARB_multi_draw_indirect
+
+static void REGAL_CALL debug_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+}
+
+static void REGAL_CALL debug_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 }
 
 // GL_ARB_multisample
@@ -6130,6 +6284,53 @@ static void REGAL_CALL debug_glPointParameterfvARB(GLenum pname, const GLfloat *
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glPointParameterfvARB(pname, params);
+}
+
+// GL_ARB_program_interface_query
+
+static void REGAL_CALL debug_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetProgramInterfaceiv(program, programInterface, pname, params);
+}
+
+static GLuint REGAL_CALL debug_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  GLuint  ret = rCtx->dsp->curr->glGetProgramResourceIndex(program, programInterface, name);
+  return ret;
+}
+
+static GLint REGAL_CALL debug_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  GLint  ret = rCtx->dsp->curr->glGetProgramResourceLocation(program, programInterface, name);
+  return ret;
+}
+
+static GLint REGAL_CALL debug_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  GLint  ret = rCtx->dsp->curr->glGetProgramResourceLocationIndex(program, programInterface, name);
+  return ret;
+}
+
+static void REGAL_CALL debug_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+}
+
+static void REGAL_CALL debug_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
 }
 
 // GL_ARB_provoking_vertex
@@ -6825,6 +7026,31 @@ static void REGAL_CALL debug_glValidateProgramPipeline(GLuint pipeline)
   rCtx->dsp->curr->glValidateProgramPipeline(pipeline);
 }
 
+// GL_ARB_shader_atomic_counters
+
+static void REGAL_CALL debug_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
+}
+
+// GL_ARB_shader_image_load_store
+
+static void REGAL_CALL debug_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glBindImageTexture(unit, texture, level, layered, layer, access, format);
+}
+
+static void REGAL_CALL debug_glMemoryBarrier(GLbitfield barriers)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMemoryBarrier(barriers);
+}
+
 // GL_ARB_shader_objects
 
 static void REGAL_CALL debug_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
@@ -7104,6 +7330,15 @@ static void REGAL_CALL debug_glValidateProgramARB(GLhandleARB programObj)
   rCtx->dsp->curr->glValidateProgramARB(programObj);
 }
 
+// GL_ARB_shader_storage_buffer_object
+
+static void REGAL_CALL debug_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+}
+
 // GL_ARB_shader_subroutine
 
 static void REGAL_CALL debug_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
@@ -7288,6 +7523,22 @@ static void REGAL_CALL debug_glTexBufferARB(GLenum target, GLenum internalformat
   rCtx->dsp->curr->glTexBufferARB(target, internalformat, buffer);
 }
 
+// GL_ARB_texture_buffer_range
+
+static void REGAL_CALL debug_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexBufferRange(target, internalformat, buffer, offset, size);
+}
+
+static void REGAL_CALL debug_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size);
+}
+
 // GL_ARB_texture_compression
 
 static void REGAL_CALL debug_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -7411,6 +7662,45 @@ static void REGAL_CALL debug_glTextureStorage3DEXT(GLuint texture, GLenum target
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
+}
+
+// GL_ARB_texture_storage_multisample
+
+static void REGAL_CALL debug_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL debug_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+static void REGAL_CALL debug_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL debug_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+// GL_ARB_texture_view
+
+static void REGAL_CALL debug_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
 
 // GL_ARB_timer_query
@@ -7738,6 +8028,50 @@ static void REGAL_CALL debug_glVertexAttribLPointer(GLuint index, GLint size, GL
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glVertexAttribLPointer(index, size, type, stride, pointer);
+}
+
+// GL_ARB_vertex_attrib_binding
+
+static void REGAL_CALL debug_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glBindVertexBuffer(bindingindex, buffer, offset, stride);
+}
+
+static void REGAL_CALL debug_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribBinding(attribindex, bindingindex);
+}
+
+static void REGAL_CALL debug_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+}
+
+static void REGAL_CALL debug_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL debug_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL debug_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexBindingDivisor(bindingindex, divisor);
 }
 
 // GL_ARB_vertex_blend
@@ -10061,11 +10395,53 @@ static void REGAL_CALL debug_glDisableClientStateIndexedEXT(GLenum array, GLuint
   rCtx->dsp->curr->glDisableClientStateIndexedEXT(array, index);
 }
 
+static void REGAL_CALL debug_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDisableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL debug_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDisableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL debug_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDisableVertexArrayEXT(vaobj, array);
+}
+
 static void REGAL_CALL debug_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glEnableClientStateIndexedEXT(array, index);
+}
+
+static void REGAL_CALL debug_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glEnableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL debug_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glEnableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL debug_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glEnableVertexArrayEXT(vaobj, array);
 }
 
 static void REGAL_CALL debug_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
@@ -10131,11 +10507,25 @@ static void REGAL_CALL debug_glGetDoubleIndexedvEXT(GLenum target, GLuint index,
   rCtx->dsp->curr->glGetDoubleIndexedvEXT(target, index, data);
 }
 
+static void REGAL_CALL debug_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetDoublei_vEXT(target, index, data);
+}
+
 static void REGAL_CALL debug_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glGetFloatIndexedvEXT(target, index, data);
+}
+
+static void REGAL_CALL debug_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetFloati_vEXT(target, index, data);
 }
 
 static void REGAL_CALL debug_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
@@ -10360,6 +10750,34 @@ static void REGAL_CALL debug_glGetTextureParameterivEXT(GLuint texture, GLenum t
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glGetTextureParameterivEXT(texture, target, pname, params);
+}
+
+static void REGAL_CALL debug_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL debug_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexArrayIntegervEXT(vaobj, pname, param);
+}
+
+static void REGAL_CALL debug_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL debug_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexArrayPointervEXT(vaobj, pname, param);
 }
 
 static GLvoid *REGAL_CALL debug_glMapNamedBufferEXT(GLuint buffer, GLenum access)
@@ -11324,6 +11742,83 @@ static GLboolean REGAL_CALL debug_glUnmapNamedBufferEXT(GLuint buffer)
   return ret;
 }
 
+static void REGAL_CALL debug_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
+}
+
+static void REGAL_CALL debug_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
 // GL_EXT_draw_buffers2
 
 static void REGAL_CALL debug_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -11703,6 +12198,20 @@ static void REGAL_CALL debug_glRenderbufferStorageEXT(GLenum target, GLenum inte
 
 // GL_EXT_geometry_shader4
 
+static void REGAL_CALL debug_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
+}
+
+static void REGAL_CALL debug_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
+}
+
 static void REGAL_CALL debug_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
@@ -11748,6 +12257,20 @@ static void REGAL_CALL debug_glGetUniformuivEXT(GLuint program, GLint location, 
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glGetUniformuivEXT(program, location, params);
+}
+
+static void REGAL_CALL debug_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexAttribIivEXT(index, pname, params);
+}
+
+static void REGAL_CALL debug_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetVertexAttribIuivEXT(index, pname, params);
 }
 
 static void REGAL_CALL debug_glUniform1uiEXT(GLint location, GLuint v0)
@@ -11804,6 +12327,153 @@ static void REGAL_CALL debug_glUniform4uivEXT(GLint location, GLsizei count, con
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glUniform4uivEXT(location, count, value);
+}
+
+static void REGAL_CALL debug_glVertexAttribI1iEXT(GLuint index, GLint x)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI1iEXT(index, x);
+}
+
+static void REGAL_CALL debug_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI1ivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI1uiEXT(GLuint index, GLuint x)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI1uiEXT(index, x);
+}
+
+static void REGAL_CALL debug_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI1uivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI2iEXT(index, x, y);
+}
+
+static void REGAL_CALL debug_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI2ivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI2uiEXT(index, x, y);
+}
+
+static void REGAL_CALL debug_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI2uivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI3iEXT(index, x, y, z);
+}
+
+static void REGAL_CALL debug_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI3ivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI3uiEXT(index, x, y, z);
+}
+
+static void REGAL_CALL debug_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI3uivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4bvEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4iEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4ivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4svEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4ubvEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4uiEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4uivEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribI4usvEXT(index, v);
+}
+
+static void REGAL_CALL debug_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glVertexAttribIPointerEXT(index, size, type, stride, pointer);
 }
 
 // GL_EXT_histogram
@@ -11983,6 +12653,20 @@ static void REGAL_CALL debug_glGetColorTableParameterivEXT(GLenum target, GLenum
 
 // GL_EXT_pixel_transform
 
+static void REGAL_CALL debug_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetPixelTransformParameterfvEXT(target, pname, params);
+}
+
+static void REGAL_CALL debug_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetPixelTransformParameterivEXT(target, pname, params);
+}
+
 static void REGAL_CALL debug_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
@@ -11990,25 +12674,11 @@ static void REGAL_CALL debug_glPixelTransformParameterfEXT(GLenum target, GLenum
   rCtx->dsp->curr->glPixelTransformParameterfEXT(target, pname, param);
 }
 
-static void REGAL_CALL debug_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glPixelTransformParameterfvEXT(target, pname, params);
-}
-
 static void REGAL_CALL debug_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
   rCtx->dsp->curr->glPixelTransformParameteriEXT(target, pname, param);
-}
-
-static void REGAL_CALL debug_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glPixelTransformParameterivEXT(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -13128,6 +13798,72 @@ static void REGAL_CALL debug_glTexScissorINTEL(GLenum target, GLclampf tlow, GLc
   rCtx->dsp->curr->glTexScissorINTEL(target, tlow, thigh);
 }
 
+// GL_KHR_debug
+
+static void REGAL_CALL debug_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDebugMessageCallback(callback, userParam);
+}
+
+static void REGAL_CALL debug_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDebugMessageControl(source, type, severity, count, ids, enabled);
+}
+
+static void REGAL_CALL debug_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDebugMessageInsert(source, type, id, severity, length, buf);
+}
+
+static GLuint REGAL_CALL debug_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  GLuint  ret = rCtx->dsp->curr->glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
+  return ret;
+}
+
+static void REGAL_CALL debug_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetObjectLabel(identifier, name, bufSize, length, label);
+}
+
+static void REGAL_CALL debug_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetObjectPtrLabel(ptr, bufSize, length, label);
+}
+
+static void REGAL_CALL debug_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glObjectLabel(identifier, name, length, label);
+}
+
+static void REGAL_CALL debug_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glObjectPtrLabel(ptr, length, label);
+}
+
+static void REGAL_CALL debug_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPushDebugGroup(source, id, length, message);
+}
+
 // GL_KTX_buffer_region
 
 static GLuint REGAL_CALL debug_glBufferRegionEnabledEXT(void)
@@ -13687,20 +14423,6 @@ static void REGAL_CALL debug_glRenderbufferStorageMultisampleCoverageNV(GLenum t
 }
 
 // GL_NV_geometry_program4
-
-static void REGAL_CALL debug_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
-}
-
-static void REGAL_CALL debug_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
-}
 
 static void REGAL_CALL debug_glProgramVertexLimitNV(GLenum target, GLint limit)
 {
@@ -16058,169 +16780,6 @@ static void REGAL_CALL debug_glVertexAttribs4ubvNV(GLuint index, GLsizei n, cons
   rCtx->dsp->curr->glVertexAttribs4ubvNV(index, n, v);
 }
 
-// GL_NV_vertex_program4
-
-static void REGAL_CALL debug_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glGetVertexAttribIivEXT(index, pname, params);
-}
-
-static void REGAL_CALL debug_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glGetVertexAttribIuivEXT(index, pname, params);
-}
-
-static void REGAL_CALL debug_glVertexAttribI1iEXT(GLuint index, GLint x)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI1iEXT(index, x);
-}
-
-static void REGAL_CALL debug_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI1ivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI1uiEXT(GLuint index, GLuint x)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI1uiEXT(index, x);
-}
-
-static void REGAL_CALL debug_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI1uivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI2iEXT(index, x, y);
-}
-
-static void REGAL_CALL debug_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI2ivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI2uiEXT(index, x, y);
-}
-
-static void REGAL_CALL debug_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI2uivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI3iEXT(index, x, y, z);
-}
-
-static void REGAL_CALL debug_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI3ivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI3uiEXT(index, x, y, z);
-}
-
-static void REGAL_CALL debug_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI3uivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4bvEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4iEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4ivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4svEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4ubvEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4uiEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4uivEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribI4usvEXT(index, v);
-}
-
-static void REGAL_CALL debug_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
-{
-  RegalContext * rCtx = GET_REGAL_CONTEXT();
-  DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glVertexAttribIPointerEXT(index, size, type, stride, pointer);
-}
-
 // GL_NV_video_capture
 
 static void REGAL_CALL debug_glBeginVideoCaptureNV(GLuint video_capture_slot)
@@ -18181,13 +18740,29 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glCreateSyncFromCLeventARB = debug_glCreateSyncFromCLeventARB;
 
+  // GL_ARB_clear_buffer_object
+
+  tbl.glClearBufferData = debug_glClearBufferData;
+  tbl.glClearBufferSubData = debug_glClearBufferSubData;
+  tbl.glClearNamedBufferDataEXT = debug_glClearNamedBufferDataEXT;
+  tbl.glClearNamedBufferSubDataEXT = debug_glClearNamedBufferSubDataEXT;
+
   // GL_ARB_color_buffer_float
 
   tbl.glClampColorARB = debug_glClampColorARB;
 
+  // GL_ARB_compute_shader
+
+  tbl.glDispatchCompute = debug_glDispatchCompute;
+  tbl.glDispatchComputeIndirect = debug_glDispatchComputeIndirect;
+
   // GL_ARB_copy_buffer
 
   tbl.glCopyBufferSubData = debug_glCopyBufferSubData;
+
+  // GL_ARB_copy_image
+
+  tbl.glCopyImageSubData = debug_glCopyImageSubData;
 
   // GL_ARB_debug_output
 
@@ -18223,6 +18798,13 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glDrawArraysInstancedARB = debug_glDrawArraysInstancedARB;
   tbl.glDrawElementsInstancedARB = debug_glDrawElementsInstancedARB;
+
+  // GL_ARB_framebuffer_no_attachments
+
+  tbl.glFramebufferParameteri = debug_glFramebufferParameteri;
+  tbl.glGetFramebufferParameteriv = debug_glGetFramebufferParameteriv;
+  tbl.glGetNamedFramebufferParameterivEXT = debug_glGetNamedFramebufferParameterivEXT;
+  tbl.glNamedFramebufferParameteriEXT = debug_glNamedFramebufferParameteriEXT;
 
   // GL_ARB_framebuffer_object
 
@@ -18324,6 +18906,19 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glGetInternalformativ = debug_glGetInternalformativ;
 
+  // GL_ARB_internalformat_query2
+
+  tbl.glGetInternalformati64v = debug_glGetInternalformati64v;
+
+  // GL_ARB_invalidate_subdata
+
+  tbl.glInvalidateBufferData = debug_glInvalidateBufferData;
+  tbl.glInvalidateBufferSubData = debug_glInvalidateBufferSubData;
+  tbl.glInvalidateFramebuffer = debug_glInvalidateFramebuffer;
+  tbl.glInvalidateSubFramebuffer = debug_glInvalidateSubFramebuffer;
+  tbl.glInvalidateTexImage = debug_glInvalidateTexImage;
+  tbl.glInvalidateTexSubImage = debug_glInvalidateTexSubImage;
+
   // GL_ARB_map_buffer_range
 
   tbl.glFlushMappedBufferRange = debug_glFlushMappedBufferRange;
@@ -18336,6 +18931,11 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glMatrixIndexubvARB = debug_glMatrixIndexubvARB;
   tbl.glMatrixIndexuivARB = debug_glMatrixIndexuivARB;
   tbl.glMatrixIndexusvARB = debug_glMatrixIndexusvARB;
+
+  // GL_ARB_multi_draw_indirect
+
+  tbl.glMultiDrawArraysIndirect = debug_glMultiDrawArraysIndirect;
+  tbl.glMultiDrawElementsIndirect = debug_glMultiDrawElementsIndirect;
 
   // GL_ARB_multisample
 
@@ -18393,6 +18993,15 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glPointParameterfARB = debug_glPointParameterfARB;
   tbl.glPointParameterfvARB = debug_glPointParameterfvARB;
+
+  // GL_ARB_program_interface_query
+
+  tbl.glGetProgramInterfaceiv = debug_glGetProgramInterfaceiv;
+  tbl.glGetProgramResourceIndex = debug_glGetProgramResourceIndex;
+  tbl.glGetProgramResourceLocation = debug_glGetProgramResourceLocation;
+  tbl.glGetProgramResourceLocationIndex = debug_glGetProgramResourceLocationIndex;
+  tbl.glGetProgramResourceName = debug_glGetProgramResourceName;
+  tbl.glGetProgramResourceiv = debug_glGetProgramResourceiv;
 
   // GL_ARB_provoking_vertex
 
@@ -18506,6 +19115,15 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glUseProgramStages = debug_glUseProgramStages;
   tbl.glValidateProgramPipeline = debug_glValidateProgramPipeline;
 
+  // GL_ARB_shader_atomic_counters
+
+  tbl.glGetActiveAtomicCounterBufferiv = debug_glGetActiveAtomicCounterBufferiv;
+
+  // GL_ARB_shader_image_load_store
+
+  tbl.glBindImageTexture = debug_glBindImageTexture;
+  tbl.glMemoryBarrier = debug_glMemoryBarrier;
+
   // GL_ARB_shader_objects
 
   tbl.glAttachObjectARB = debug_glAttachObjectARB;
@@ -18548,6 +19166,10 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glUseProgramObjectARB = debug_glUseProgramObjectARB;
   tbl.glValidateProgramARB = debug_glValidateProgramARB;
 
+  // GL_ARB_shader_storage_buffer_object
+
+  tbl.glShaderStorageBlockBinding = debug_glShaderStorageBlockBinding;
+
   // GL_ARB_shader_subroutine
 
   tbl.glGetActiveSubroutineName = debug_glGetActiveSubroutineName;
@@ -18587,6 +19209,11 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glTexBufferARB = debug_glTexBufferARB;
 
+  // GL_ARB_texture_buffer_range
+
+  tbl.glTexBufferRange = debug_glTexBufferRange;
+  tbl.glTextureBufferRangeEXT = debug_glTextureBufferRangeEXT;
+
   // GL_ARB_texture_compression
 
   tbl.glCompressedTexImage1DARB = debug_glCompressedTexImage1DARB;
@@ -18612,6 +19239,17 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glTextureStorage1DEXT = debug_glTextureStorage1DEXT;
   tbl.glTextureStorage2DEXT = debug_glTextureStorage2DEXT;
   tbl.glTextureStorage3DEXT = debug_glTextureStorage3DEXT;
+
+  // GL_ARB_texture_storage_multisample
+
+  tbl.glTexStorage2DMultisample = debug_glTexStorage2DMultisample;
+  tbl.glTexStorage3DMultisample = debug_glTexStorage3DMultisample;
+  tbl.glTextureStorage2DMultisampleEXT = debug_glTextureStorage2DMultisampleEXT;
+  tbl.glTextureStorage3DMultisampleEXT = debug_glTextureStorage3DMultisampleEXT;
+
+  // GL_ARB_texture_view
+
+  tbl.glTextureView = debug_glTextureView;
 
   // GL_ARB_timer_query
 
@@ -18680,6 +19318,15 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glVertexAttribL4d = debug_glVertexAttribL4d;
   tbl.glVertexAttribL4dv = debug_glVertexAttribL4dv;
   tbl.glVertexAttribLPointer = debug_glVertexAttribLPointer;
+
+  // GL_ARB_vertex_attrib_binding
+
+  tbl.glBindVertexBuffer = debug_glBindVertexBuffer;
+  tbl.glVertexAttribBinding = debug_glVertexAttribBinding;
+  tbl.glVertexAttribFormat = debug_glVertexAttribFormat;
+  tbl.glVertexAttribIFormat = debug_glVertexAttribIFormat;
+  tbl.glVertexAttribLFormat = debug_glVertexAttribLFormat;
+  tbl.glVertexBindingDivisor = debug_glVertexBindingDivisor;
 
   // GL_ARB_vertex_blend
 
@@ -19094,7 +19741,13 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glCopyTextureSubImage2DEXT = debug_glCopyTextureSubImage2DEXT;
   tbl.glCopyTextureSubImage3DEXT = debug_glCopyTextureSubImage3DEXT;
   tbl.glDisableClientStateIndexedEXT = debug_glDisableClientStateIndexedEXT;
+  tbl.glDisableClientStateiEXT = debug_glDisableClientStateiEXT;
+  tbl.glDisableVertexArrayAttribEXT = debug_glDisableVertexArrayAttribEXT;
+  tbl.glDisableVertexArrayEXT = debug_glDisableVertexArrayEXT;
   tbl.glEnableClientStateIndexedEXT = debug_glEnableClientStateIndexedEXT;
+  tbl.glEnableClientStateiEXT = debug_glEnableClientStateiEXT;
+  tbl.glEnableVertexArrayAttribEXT = debug_glEnableVertexArrayAttribEXT;
+  tbl.glEnableVertexArrayEXT = debug_glEnableVertexArrayEXT;
   tbl.glFlushMappedNamedBufferRangeEXT = debug_glFlushMappedNamedBufferRangeEXT;
   tbl.glFramebufferDrawBufferEXT = debug_glFramebufferDrawBufferEXT;
   tbl.glFramebufferDrawBuffersEXT = debug_glFramebufferDrawBuffersEXT;
@@ -19104,7 +19757,9 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glGetCompressedMultiTexImageEXT = debug_glGetCompressedMultiTexImageEXT;
   tbl.glGetCompressedTextureImageEXT = debug_glGetCompressedTextureImageEXT;
   tbl.glGetDoubleIndexedvEXT = debug_glGetDoubleIndexedvEXT;
+  tbl.glGetDoublei_vEXT = debug_glGetDoublei_vEXT;
   tbl.glGetFloatIndexedvEXT = debug_glGetFloatIndexedvEXT;
+  tbl.glGetFloati_vEXT = debug_glGetFloati_vEXT;
   tbl.glGetFramebufferParameterivEXT = debug_glGetFramebufferParameterivEXT;
   tbl.glGetMultiTexEnvfvEXT = debug_glGetMultiTexEnvfvEXT;
   tbl.glGetMultiTexEnvivEXT = debug_glGetMultiTexEnvivEXT;
@@ -19137,6 +19792,10 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glGetTextureParameterIuivEXT = debug_glGetTextureParameterIuivEXT;
   tbl.glGetTextureParameterfvEXT = debug_glGetTextureParameterfvEXT;
   tbl.glGetTextureParameterivEXT = debug_glGetTextureParameterivEXT;
+  tbl.glGetVertexArrayIntegeri_vEXT = debug_glGetVertexArrayIntegeri_vEXT;
+  tbl.glGetVertexArrayIntegervEXT = debug_glGetVertexArrayIntegervEXT;
+  tbl.glGetVertexArrayPointeri_vEXT = debug_glGetVertexArrayPointeri_vEXT;
+  tbl.glGetVertexArrayPointervEXT = debug_glGetVertexArrayPointervEXT;
   tbl.glMapNamedBufferEXT = debug_glMapNamedBufferEXT;
   tbl.glMapNamedBufferRangeEXT = debug_glMapNamedBufferRangeEXT;
   tbl.glMatrixFrustumEXT = debug_glMatrixFrustumEXT;
@@ -19274,6 +19933,17 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glTextureSubImage2DEXT = debug_glTextureSubImage2DEXT;
   tbl.glTextureSubImage3DEXT = debug_glTextureSubImage3DEXT;
   tbl.glUnmapNamedBufferEXT = debug_glUnmapNamedBufferEXT;
+  tbl.glVertexArrayColorOffsetEXT = debug_glVertexArrayColorOffsetEXT;
+  tbl.glVertexArrayEdgeFlagOffsetEXT = debug_glVertexArrayEdgeFlagOffsetEXT;
+  tbl.glVertexArrayFogCoordOffsetEXT = debug_glVertexArrayFogCoordOffsetEXT;
+  tbl.glVertexArrayIndexOffsetEXT = debug_glVertexArrayIndexOffsetEXT;
+  tbl.glVertexArrayMultiTexCoordOffsetEXT = debug_glVertexArrayMultiTexCoordOffsetEXT;
+  tbl.glVertexArrayNormalOffsetEXT = debug_glVertexArrayNormalOffsetEXT;
+  tbl.glVertexArraySecondaryColorOffsetEXT = debug_glVertexArraySecondaryColorOffsetEXT;
+  tbl.glVertexArrayTexCoordOffsetEXT = debug_glVertexArrayTexCoordOffsetEXT;
+  tbl.glVertexArrayVertexAttribIOffsetEXT = debug_glVertexArrayVertexAttribIOffsetEXT;
+  tbl.glVertexArrayVertexAttribOffsetEXT = debug_glVertexArrayVertexAttribOffsetEXT;
+  tbl.glVertexArrayVertexOffsetEXT = debug_glVertexArrayVertexOffsetEXT;
 
   // GL_EXT_draw_buffers2
 
@@ -19352,6 +20022,8 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   // GL_EXT_geometry_shader4
 
+  tbl.glFramebufferTextureEXT = debug_glFramebufferTextureEXT;
+  tbl.glFramebufferTextureFaceEXT = debug_glFramebufferTextureFaceEXT;
   tbl.glProgramParameteriEXT = debug_glProgramParameteriEXT;
 
   // GL_EXT_gpu_program_parameters
@@ -19364,6 +20036,8 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glBindFragDataLocationEXT = debug_glBindFragDataLocationEXT;
   tbl.glGetFragDataLocationEXT = debug_glGetFragDataLocationEXT;
   tbl.glGetUniformuivEXT = debug_glGetUniformuivEXT;
+  tbl.glGetVertexAttribIivEXT = debug_glGetVertexAttribIivEXT;
+  tbl.glGetVertexAttribIuivEXT = debug_glGetVertexAttribIuivEXT;
   tbl.glUniform1uiEXT = debug_glUniform1uiEXT;
   tbl.glUniform1uivEXT = debug_glUniform1uivEXT;
   tbl.glUniform2uiEXT = debug_glUniform2uiEXT;
@@ -19372,6 +20046,27 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glUniform3uivEXT = debug_glUniform3uivEXT;
   tbl.glUniform4uiEXT = debug_glUniform4uiEXT;
   tbl.glUniform4uivEXT = debug_glUniform4uivEXT;
+  tbl.glVertexAttribI1iEXT = debug_glVertexAttribI1iEXT;
+  tbl.glVertexAttribI1ivEXT = debug_glVertexAttribI1ivEXT;
+  tbl.glVertexAttribI1uiEXT = debug_glVertexAttribI1uiEXT;
+  tbl.glVertexAttribI1uivEXT = debug_glVertexAttribI1uivEXT;
+  tbl.glVertexAttribI2iEXT = debug_glVertexAttribI2iEXT;
+  tbl.glVertexAttribI2ivEXT = debug_glVertexAttribI2ivEXT;
+  tbl.glVertexAttribI2uiEXT = debug_glVertexAttribI2uiEXT;
+  tbl.glVertexAttribI2uivEXT = debug_glVertexAttribI2uivEXT;
+  tbl.glVertexAttribI3iEXT = debug_glVertexAttribI3iEXT;
+  tbl.glVertexAttribI3ivEXT = debug_glVertexAttribI3ivEXT;
+  tbl.glVertexAttribI3uiEXT = debug_glVertexAttribI3uiEXT;
+  tbl.glVertexAttribI3uivEXT = debug_glVertexAttribI3uivEXT;
+  tbl.glVertexAttribI4bvEXT = debug_glVertexAttribI4bvEXT;
+  tbl.glVertexAttribI4iEXT = debug_glVertexAttribI4iEXT;
+  tbl.glVertexAttribI4ivEXT = debug_glVertexAttribI4ivEXT;
+  tbl.glVertexAttribI4svEXT = debug_glVertexAttribI4svEXT;
+  tbl.glVertexAttribI4ubvEXT = debug_glVertexAttribI4ubvEXT;
+  tbl.glVertexAttribI4uiEXT = debug_glVertexAttribI4uiEXT;
+  tbl.glVertexAttribI4uivEXT = debug_glVertexAttribI4uivEXT;
+  tbl.glVertexAttribI4usvEXT = debug_glVertexAttribI4usvEXT;
+  tbl.glVertexAttribIPointerEXT = debug_glVertexAttribIPointerEXT;
 
   // GL_EXT_histogram
 
@@ -19419,10 +20114,10 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   // GL_EXT_pixel_transform
 
+  tbl.glGetPixelTransformParameterfvEXT = debug_glGetPixelTransformParameterfvEXT;
+  tbl.glGetPixelTransformParameterivEXT = debug_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = debug_glPixelTransformParameterfEXT;
-  tbl.glPixelTransformParameterfvEXT = debug_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = debug_glPixelTransformParameteriEXT;
-  tbl.glPixelTransformParameterivEXT = debug_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -19666,6 +20361,18 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glTexScissorFuncINTEL = debug_glTexScissorFuncINTEL;
   tbl.glTexScissorINTEL = debug_glTexScissorINTEL;
 
+  // GL_KHR_debug
+
+  tbl.glDebugMessageCallback = debug_glDebugMessageCallback;
+  tbl.glDebugMessageControl = debug_glDebugMessageControl;
+  tbl.glDebugMessageInsert = debug_glDebugMessageInsert;
+  tbl.glGetDebugMessageLog = debug_glGetDebugMessageLog;
+  tbl.glGetObjectLabel = debug_glGetObjectLabel;
+  tbl.glGetObjectPtrLabel = debug_glGetObjectPtrLabel;
+  tbl.glObjectLabel = debug_glObjectLabel;
+  tbl.glObjectPtrLabel = debug_glObjectPtrLabel;
+  tbl.glPushDebugGroup = debug_glPushDebugGroup;
+
   // GL_KTX_buffer_region
 
   tbl.glBufferRegionEnabledEXT = debug_glBufferRegionEnabledEXT;
@@ -19779,8 +20486,6 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   // GL_NV_geometry_program4
 
-  tbl.glFramebufferTextureEXT = debug_glFramebufferTextureEXT;
-  tbl.glFramebufferTextureFaceEXT = debug_glFramebufferTextureFaceEXT;
   tbl.glProgramVertexLimitNV = debug_glProgramVertexLimitNV;
 
   // GL_NV_gpu_program4
@@ -20175,32 +20880,6 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glVertexAttribs4fvNV = debug_glVertexAttribs4fvNV;
   tbl.glVertexAttribs4svNV = debug_glVertexAttribs4svNV;
   tbl.glVertexAttribs4ubvNV = debug_glVertexAttribs4ubvNV;
-
-  // GL_NV_vertex_program4
-
-  tbl.glGetVertexAttribIivEXT = debug_glGetVertexAttribIivEXT;
-  tbl.glGetVertexAttribIuivEXT = debug_glGetVertexAttribIuivEXT;
-  tbl.glVertexAttribI1iEXT = debug_glVertexAttribI1iEXT;
-  tbl.glVertexAttribI1ivEXT = debug_glVertexAttribI1ivEXT;
-  tbl.glVertexAttribI1uiEXT = debug_glVertexAttribI1uiEXT;
-  tbl.glVertexAttribI1uivEXT = debug_glVertexAttribI1uivEXT;
-  tbl.glVertexAttribI2iEXT = debug_glVertexAttribI2iEXT;
-  tbl.glVertexAttribI2ivEXT = debug_glVertexAttribI2ivEXT;
-  tbl.glVertexAttribI2uiEXT = debug_glVertexAttribI2uiEXT;
-  tbl.glVertexAttribI2uivEXT = debug_glVertexAttribI2uivEXT;
-  tbl.glVertexAttribI3iEXT = debug_glVertexAttribI3iEXT;
-  tbl.glVertexAttribI3ivEXT = debug_glVertexAttribI3ivEXT;
-  tbl.glVertexAttribI3uiEXT = debug_glVertexAttribI3uiEXT;
-  tbl.glVertexAttribI3uivEXT = debug_glVertexAttribI3uivEXT;
-  tbl.glVertexAttribI4bvEXT = debug_glVertexAttribI4bvEXT;
-  tbl.glVertexAttribI4iEXT = debug_glVertexAttribI4iEXT;
-  tbl.glVertexAttribI4ivEXT = debug_glVertexAttribI4ivEXT;
-  tbl.glVertexAttribI4svEXT = debug_glVertexAttribI4svEXT;
-  tbl.glVertexAttribI4ubvEXT = debug_glVertexAttribI4ubvEXT;
-  tbl.glVertexAttribI4uiEXT = debug_glVertexAttribI4uiEXT;
-  tbl.glVertexAttribI4uivEXT = debug_glVertexAttribI4uivEXT;
-  tbl.glVertexAttribI4usvEXT = debug_glVertexAttribI4usvEXT;
-  tbl.glVertexAttribIPointerEXT = debug_glVertexAttribIPointerEXT;
 
   // GL_NV_video_capture
 

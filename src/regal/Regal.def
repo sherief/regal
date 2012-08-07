@@ -54,6 +54,7 @@ EXPORTS
   glBindFragmentShaderATI
   glBindFramebuffer
   glBindFramebufferEXT
+  glBindImageTexture
   glBindImageTextureEXT
   glBindLightParameterEXT
   glBindMaterialParameterEXT
@@ -73,6 +74,7 @@ EXPORTS
   glBindTransformFeedbackNV
   glBindVertexArray
   glBindVertexArrayAPPLE
+  glBindVertexBuffer
   glBindVertexShaderEXT
   glBindVideoCaptureStreamBufferNV
   glBindVideoCaptureStreamTextureNV
@@ -128,6 +130,8 @@ EXPORTS
   glClampColorARB
   glClear
   glClearAccum
+  glClearBufferData
+  glClearBufferSubData
   glClearBufferfi
   glClearBufferfv
   glClearBufferiv
@@ -139,6 +143,8 @@ EXPORTS
   glClearDepthdNV
   glClearDepthf
   glClearIndex
+  glClearNamedBufferDataEXT
+  glClearNamedBufferSubDataEXT
   glClearStencil
   glClientActiveTexture
   glClientActiveTextureARB
@@ -270,6 +276,7 @@ EXPORTS
   glCopyConvolutionFilter1DEXT
   glCopyConvolutionFilter2D
   glCopyConvolutionFilter2DEXT
+  glCopyImageSubData
   glCopyImageSubDataNV
   glCopyMultiTexImage1DEXT
   glCopyMultiTexImage2DEXT
@@ -308,10 +315,13 @@ EXPORTS
   glCullParameterdvEXT
   glCullParameterfvEXT
   glCurrentPaletteMatrixARB
+  glDebugMessageCallback
   glDebugMessageCallbackAMD
   glDebugMessageCallbackARB
+  glDebugMessageControl
   glDebugMessageControlARB
   glDebugMessageEnableAMD
+  glDebugMessageInsert
   glDebugMessageInsertAMD
   glDebugMessageInsertARB
   glDeformSGIX
@@ -366,12 +376,17 @@ EXPORTS
   glDisable
   glDisableClientState
   glDisableClientStateIndexedEXT
+  glDisableClientStateiEXT
   glDisableIndexedEXT
   glDisableVariantClientStateEXT
+  glDisableVertexArrayAttribEXT
+  glDisableVertexArrayEXT
   glDisableVertexAttribAPPLE
   glDisableVertexAttribArray
   glDisableVertexAttribArrayARB
   glDisablei
+  glDispatchCompute
+  glDispatchComputeIndirect
   glDrawArrays
   glDrawArraysEXT
   glDrawArraysIndirect
@@ -418,8 +433,11 @@ EXPORTS
   glEnable
   glEnableClientState
   glEnableClientStateIndexedEXT
+  glEnableClientStateiEXT
   glEnableIndexedEXT
   glEnableVariantClientStateEXT
+  glEnableVertexArrayAttribEXT
+  glEnableVertexArrayEXT
   glEnableVertexAttribAPPLE
   glEnableVertexAttribArray
   glEnableVertexAttribArrayARB
@@ -524,6 +542,7 @@ EXPORTS
   glFrameZoomSGIX
   glFramebufferDrawBufferEXT
   glFramebufferDrawBuffersEXT
+  glFramebufferParameteri
   glFramebufferReadBufferEXT
   glFramebufferRenderbuffer
   glFramebufferRenderbufferEXT
@@ -578,6 +597,7 @@ EXPORTS
   glGenerateMipmapEXT
   glGenerateMultiTexMipmapEXT
   glGenerateTextureMipmapEXT
+  glGetActiveAtomicCounterBufferiv
   glGetActiveAttrib
   glGetActiveAttribARB
   glGetActiveSubroutineName
@@ -632,11 +652,13 @@ EXPORTS
   glGetConvolutionParameterfvEXT
   glGetConvolutionParameteriv
   glGetConvolutionParameterivEXT
+  glGetDebugMessageLog
   glGetDebugMessageLogAMD
   glGetDebugMessageLogARB
   glGetDetailTexFuncSGIS
   glGetDoubleIndexedvEXT
   glGetDoublei_v
+  glGetDoublei_vEXT
   glGetDoublev
   glGetError
   glGetExtensionREGAL
@@ -645,6 +667,7 @@ EXPORTS
   glGetFinalCombinerInputParameterivNV
   glGetFloatIndexedvEXT
   glGetFloati_v
+  glGetFloati_vEXT
   glGetFloatv
   glGetFogFuncSGIS
   glGetFragDataIndex
@@ -660,6 +683,7 @@ EXPORTS
   glGetFragmentMaterialivSGIX
   glGetFramebufferAttachmentParameteriv
   glGetFramebufferAttachmentParameterivEXT
+  glGetFramebufferParameteriv
   glGetFramebufferParameterivEXT
   glGetGraphicsResetStatusARB
   glGetHandleARB
@@ -681,6 +705,7 @@ EXPORTS
   glGetIntegerui64i_vNV
   glGetIntegerui64vNV
   glGetIntegerv
+  glGetInternalformati64v
   glGetInternalformativ
   glGetInvariantBooleanvEXT
   glGetInvariantFloatvEXT
@@ -727,6 +752,7 @@ EXPORTS
   glGetNamedBufferPointervEXT
   glGetNamedBufferSubDataEXT
   glGetNamedFramebufferAttachmentParameterivEXT
+  glGetNamedFramebufferParameterivEXT
   glGetNamedProgramLocalParameterIivEXT
   glGetNamedProgramLocalParameterIuivEXT
   glGetNamedProgramLocalParameterdvEXT
@@ -738,9 +764,11 @@ EXPORTS
   glGetNamedStringivARB
   glGetObjectBufferfvATI
   glGetObjectBufferivATI
+  glGetObjectLabel
   glGetObjectParameterfvARB
   glGetObjectParameterivAPPLE
   glGetObjectParameterivARB
+  glGetObjectPtrLabel
   glGetOcclusionQueryivNV
   glGetOcclusionQueryuivNV
   glGetPathColorGenfvNV
@@ -767,6 +795,8 @@ EXPORTS
   glGetPixelMapusv
   glGetPixelTexGenParameterfvSGIS
   glGetPixelTexGenParameterivSGIS
+  glGetPixelTransformParameterfvEXT
+  glGetPixelTransformParameterivEXT
   glGetPointerIndexedvEXT
   glGetPointerv
   glGetPointervEXT
@@ -777,6 +807,7 @@ EXPORTS
   glGetProgramEnvParameterdvARB
   glGetProgramEnvParameterfvARB
   glGetProgramInfoLog
+  glGetProgramInterfaceiv
   glGetProgramLocalParameterIivNV
   glGetProgramLocalParameterIuivNV
   glGetProgramLocalParameterdvARB
@@ -787,6 +818,11 @@ EXPORTS
   glGetProgramParameterfvNV
   glGetProgramPipelineInfoLog
   glGetProgramPipelineiv
+  glGetProgramResourceIndex
+  glGetProgramResourceLocation
+  glGetProgramResourceLocationIndex
+  glGetProgramResourceName
+  glGetProgramResourceiv
   glGetProgramStageiv
   glGetProgramStringARB
   glGetProgramStringNV
@@ -877,6 +913,10 @@ EXPORTS
   glGetVariantIntegervEXT
   glGetVariantPointervEXT
   glGetVaryingLocationNV
+  glGetVertexArrayIntegeri_vEXT
+  glGetVertexArrayIntegervEXT
+  glGetVertexArrayPointeri_vEXT
+  glGetVertexArrayPointervEXT
   glGetVertexAttribArrayObjectfvATI
   glGetVertexAttribArrayObjectivATI
   glGetVertexAttribIiv
@@ -966,6 +1006,12 @@ EXPORTS
   glInstrumentsBufferSGIX
   glInterleavedArrays
   glInterpolatePathsNV
+  glInvalidateBufferData
+  glInvalidateBufferSubData
+  glInvalidateFramebuffer
+  glInvalidateSubFramebuffer
+  glInvalidateTexImage
+  glInvalidateTexSubImage
   glIsAsyncMarkerSGIX
   glIsBuffer
   glIsBufferARB
@@ -1096,6 +1142,7 @@ EXPORTS
   glMatrixScalefEXT
   glMatrixTranslatedEXT
   glMatrixTranslatefEXT
+  glMemoryBarrier
   glMemoryBarrierEXT
   glMinSampleShading
   glMinSampleShadingARB
@@ -1109,11 +1156,13 @@ EXPORTS
   glMultTransposeMatrixfARB
   glMultiDrawArrays
   glMultiDrawArraysEXT
+  glMultiDrawArraysIndirect
   glMultiDrawArraysIndirectAMD
   glMultiDrawElementArrayAPPLE
   glMultiDrawElements
   glMultiDrawElementsBaseVertex
   glMultiDrawElementsEXT
+  glMultiDrawElementsIndirect
   glMultiDrawElementsIndirectAMD
   glMultiDrawRangeElementArrayAPPLE
   glMultiModeDrawArraysIBM
@@ -1226,6 +1275,7 @@ EXPORTS
   glNamedBufferDataEXT
   glNamedBufferSubDataEXT
   glNamedCopyBufferSubDataEXT
+  glNamedFramebufferParameteriEXT
   glNamedFramebufferRenderbufferEXT
   glNamedFramebufferTexture1DEXT
   glNamedFramebufferTexture2DEXT
@@ -1283,6 +1333,8 @@ EXPORTS
   glNormalStream3ivATI
   glNormalStream3sATI
   glNormalStream3svATI
+  glObjectLabel
+  glObjectPtrLabel
   glObjectPurgeableAPPLE
   glObjectUnpurgeableAPPLE
   glOrtho
@@ -1326,9 +1378,7 @@ EXPORTS
   glPixelTransferf
   glPixelTransferi
   glPixelTransformParameterfEXT
-  glPixelTransformParameterfvEXT
   glPixelTransformParameteriEXT
-  glPixelTransformParameterivEXT
   glPixelZoom
   glPointAlongPathNV
   glPointParameterf
@@ -1528,6 +1578,7 @@ EXPORTS
   glPushAttrib
   glPushClientAttrib
   glPushClientAttribDefaultEXT
+  glPushDebugGroup
   glPushGroupMarkerEXT
   glPushMatrix
   glPushName
@@ -1689,6 +1740,7 @@ EXPORTS
   glShaderOp3EXT
   glShaderSource
   glShaderSourceARB
+  glShaderStorageBlockBinding
   glSharpenTexFuncSGIS
   glSpriteParameterfSGIX
   glSpriteParameterfvSGIX
@@ -1734,6 +1786,7 @@ EXPORTS
   glTexBuffer
   glTexBufferARB
   glTexBufferEXT
+  glTexBufferRange
   glTexBumpParameterfvATI
   glTexBumpParameterivATI
   glTexCoord1d
@@ -1836,7 +1889,9 @@ EXPORTS
   glTexScissorINTEL
   glTexStorage1D
   glTexStorage2D
+  glTexStorage2DMultisample
   glTexStorage3D
+  glTexStorage3DMultisample
   glTexSubImage1D
   glTexSubImage1DEXT
   glTexSubImage2D
@@ -1846,6 +1901,7 @@ EXPORTS
   glTexSubImage4DSGIS
   glTextureBarrierNV
   glTextureBufferEXT
+  glTextureBufferRangeEXT
   glTextureColorMaskSGIS
   glTextureFogSGIX
   glTextureImage1DEXT
@@ -1868,10 +1924,13 @@ EXPORTS
   glTextureRenderbufferEXT
   glTextureStorage1DEXT
   glTextureStorage2DEXT
+  glTextureStorage2DMultisampleEXT
   glTextureStorage3DEXT
+  glTextureStorage3DMultisampleEXT
   glTextureSubImage1DEXT
   glTextureSubImage2DEXT
   glTextureSubImage3DEXT
+  glTextureView
   glTrackMatrixNV
   glTransformFeedbackAttribsNV
   glTransformFeedbackVaryings
@@ -2043,10 +2102,21 @@ EXPORTS
   glVertex4iv
   glVertex4s
   glVertex4sv
+  glVertexArrayColorOffsetEXT
+  glVertexArrayEdgeFlagOffsetEXT
+  glVertexArrayFogCoordOffsetEXT
+  glVertexArrayIndexOffsetEXT
+  glVertexArrayMultiTexCoordOffsetEXT
+  glVertexArrayNormalOffsetEXT
   glVertexArrayParameteriAPPLE
   glVertexArrayRangeAPPLE
   glVertexArrayRangeNV
+  glVertexArraySecondaryColorOffsetEXT
+  glVertexArrayTexCoordOffsetEXT
+  glVertexArrayVertexAttribIOffsetEXT
   glVertexArrayVertexAttribLOffsetEXT
+  glVertexArrayVertexAttribOffsetEXT
+  glVertexArrayVertexOffsetEXT
   glVertexAttrib1d
   glVertexAttrib1dARB
   glVertexAttrib1dNV
@@ -2154,8 +2224,10 @@ EXPORTS
   glVertexAttrib4usv
   glVertexAttrib4usvARB
   glVertexAttribArrayObjectATI
+  glVertexAttribBinding
   glVertexAttribDivisor
   glVertexAttribDivisorARB
+  glVertexAttribFormat
   glVertexAttribFormatNV
   glVertexAttribI1i
   glVertexAttribI1iEXT
@@ -2197,6 +2269,7 @@ EXPORTS
   glVertexAttribI4uivEXT
   glVertexAttribI4usv
   glVertexAttribI4usvEXT
+  glVertexAttribIFormat
   glVertexAttribIFormatNV
   glVertexAttribIPointer
   glVertexAttribIPointerEXT
@@ -2232,6 +2305,7 @@ EXPORTS
   glVertexAttribL4i64vNV
   glVertexAttribL4ui64NV
   glVertexAttribL4ui64vNV
+  glVertexAttribLFormat
   glVertexAttribLFormatNV
   glVertexAttribLPointer
   glVertexAttribLPointerEXT
@@ -2263,6 +2337,7 @@ EXPORTS
   glVertexAttribs4hvNV
   glVertexAttribs4svNV
   glVertexAttribs4ubvNV
+  glVertexBindingDivisor
   glVertexBlendARB
   glVertexBlendEnvfATI
   glVertexBlendEnviATI
@@ -2416,6 +2491,14 @@ EXPORTS
   wglCreateLayerContext
   wglCreatePbufferARB
   wglCreatePbufferEXT
+  wglDXCloseDeviceNV
+  wglDXLockObjectsNV
+  wglDXObjectAccessNV
+  wglDXOpenDeviceNV
+  wglDXRegisterObjectNV
+  wglDXSetResourceShareHandleNV
+  wglDXUnlockObjectsNV
+  wglDXUnregisterObjectNV
   wglDeleteAssociatedContextAMD
   wglDeleteBufferRegionARB
   wglDeleteContext

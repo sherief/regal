@@ -17333,6 +17333,120 @@ static GLsync REGAL_CALL loader_glCreateSyncFromCLeventARB(cl_context context, c
    return driverTbl.glCreateSyncFromCLeventARB(context, event, flags);
 }
 
+// GL_ARB_clear_buffer_object
+
+static void REGAL_CALL missing_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(format);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(data);
+   Warning( "glClearBufferData not available." );
+}
+
+static void REGAL_CALL loader_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glClearBufferData, "glClearBufferData");
+   if ( !driverTbl.glClearBufferData ) {
+      driverTbl.glClearBufferData = missing_glClearBufferData;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glClearBufferData == loader_glClearBufferData) {
+      rCtx->dsp->emuTbl.glClearBufferData = driverTbl.glClearBufferData;
+   }
+   driverTbl.glClearBufferData(target, internalformat, format, type, data);
+}
+
+static void REGAL_CALL missing_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(format);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(data);
+   Warning( "glClearBufferSubData not available." );
+}
+
+static void REGAL_CALL loader_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glClearBufferSubData, "glClearBufferSubData");
+   if ( !driverTbl.glClearBufferSubData ) {
+      driverTbl.glClearBufferSubData = missing_glClearBufferSubData;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glClearBufferSubData == loader_glClearBufferSubData) {
+      rCtx->dsp->emuTbl.glClearBufferSubData = driverTbl.glClearBufferSubData;
+   }
+   driverTbl.glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+}
+
+static void REGAL_CALL missing_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(format);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(data);
+   Warning( "glClearNamedBufferDataEXT not available." );
+}
+
+static void REGAL_CALL loader_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glClearNamedBufferDataEXT, "glClearNamedBufferDataEXT");
+   if ( !driverTbl.glClearNamedBufferDataEXT ) {
+      driverTbl.glClearNamedBufferDataEXT = missing_glClearNamedBufferDataEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glClearNamedBufferDataEXT == loader_glClearNamedBufferDataEXT) {
+      rCtx->dsp->emuTbl.glClearNamedBufferDataEXT = driverTbl.glClearNamedBufferDataEXT;
+   }
+   driverTbl.glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
+}
+
+static void REGAL_CALL missing_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(format);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(data);
+   Warning( "glClearNamedBufferSubDataEXT not available." );
+}
+
+static void REGAL_CALL loader_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glClearNamedBufferSubDataEXT, "glClearNamedBufferSubDataEXT");
+   if ( !driverTbl.glClearNamedBufferSubDataEXT ) {
+      driverTbl.glClearNamedBufferSubDataEXT = missing_glClearNamedBufferSubDataEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glClearNamedBufferSubDataEXT == loader_glClearNamedBufferSubDataEXT) {
+      rCtx->dsp->emuTbl.glClearNamedBufferSubDataEXT = driverTbl.glClearNamedBufferSubDataEXT;
+   }
+   driverTbl.glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
+}
+
 // GL_ARB_color_buffer_float
 
 static void REGAL_CALL missing_glClampColorARB(GLenum target, GLenum clamp)
@@ -17357,6 +17471,56 @@ static void REGAL_CALL loader_glClampColorARB(GLenum target, GLenum clamp)
       rCtx->dsp->emuTbl.glClampColorARB = driverTbl.glClampColorARB;
    }
    driverTbl.glClampColorARB(target, clamp);
+}
+
+// GL_ARB_compute_shader
+
+static void REGAL_CALL missing_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+   UNUSED_PARAMETER(num_groups_x);
+   UNUSED_PARAMETER(num_groups_y);
+   UNUSED_PARAMETER(num_groups_z);
+   Warning( "glDispatchCompute not available." );
+}
+
+static void REGAL_CALL loader_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDispatchCompute, "glDispatchCompute");
+   if ( !driverTbl.glDispatchCompute ) {
+      driverTbl.glDispatchCompute = missing_glDispatchCompute;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDispatchCompute == loader_glDispatchCompute) {
+      rCtx->dsp->emuTbl.glDispatchCompute = driverTbl.glDispatchCompute;
+   }
+   driverTbl.glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+}
+
+static void REGAL_CALL missing_glDispatchComputeIndirect(GLintptr indirect)
+{
+   UNUSED_PARAMETER(indirect);
+   Warning( "glDispatchComputeIndirect not available." );
+}
+
+static void REGAL_CALL loader_glDispatchComputeIndirect(GLintptr indirect)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDispatchComputeIndirect, "glDispatchComputeIndirect");
+   if ( !driverTbl.glDispatchComputeIndirect ) {
+      driverTbl.glDispatchComputeIndirect = missing_glDispatchComputeIndirect;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDispatchComputeIndirect == loader_glDispatchComputeIndirect) {
+      rCtx->dsp->emuTbl.glDispatchComputeIndirect = driverTbl.glDispatchComputeIndirect;
+   }
+   driverTbl.glDispatchComputeIndirect(indirect);
 }
 
 // GL_ARB_copy_buffer
@@ -17386,6 +17550,45 @@ static void REGAL_CALL loader_glCopyBufferSubData(GLenum readtarget, GLenum writ
       rCtx->dsp->emuTbl.glCopyBufferSubData = driverTbl.glCopyBufferSubData;
    }
    driverTbl.glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
+}
+
+// GL_ARB_copy_image
+
+static void REGAL_CALL missing_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+   UNUSED_PARAMETER(srcName);
+   UNUSED_PARAMETER(srcTarget);
+   UNUSED_PARAMETER(srcLevel);
+   UNUSED_PARAMETER(srcX);
+   UNUSED_PARAMETER(srcY);
+   UNUSED_PARAMETER(srcZ);
+   UNUSED_PARAMETER(dstName);
+   UNUSED_PARAMETER(dstTarget);
+   UNUSED_PARAMETER(dstLevel);
+   UNUSED_PARAMETER(dstX);
+   UNUSED_PARAMETER(dstY);
+   UNUSED_PARAMETER(dstZ);
+   UNUSED_PARAMETER(srcWidth);
+   UNUSED_PARAMETER(srcHeight);
+   UNUSED_PARAMETER(srcDepth);
+   Warning( "glCopyImageSubData not available." );
+}
+
+static void REGAL_CALL loader_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glCopyImageSubData, "glCopyImageSubData");
+   if ( !driverTbl.glCopyImageSubData ) {
+      driverTbl.glCopyImageSubData = missing_glCopyImageSubData;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glCopyImageSubData == loader_glCopyImageSubData) {
+      rCtx->dsp->emuTbl.glCopyImageSubData = driverTbl.glCopyImageSubData;
+   }
+   driverTbl.glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
 
 // GL_ARB_debug_output
@@ -17849,6 +18052,108 @@ static void REGAL_CALL loader_glDrawElementsInstancedARB(GLenum mode, GLsizei co
       rCtx->dsp->emuTbl.glDrawElementsInstancedARB = driverTbl.glDrawElementsInstancedARB;
    }
    driverTbl.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+}
+
+// GL_ARB_framebuffer_no_attachments
+
+static void REGAL_CALL missing_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glFramebufferParameteri not available." );
+}
+
+static void REGAL_CALL loader_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glFramebufferParameteri, "glFramebufferParameteri");
+   if ( !driverTbl.glFramebufferParameteri ) {
+      driverTbl.glFramebufferParameteri = missing_glFramebufferParameteri;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glFramebufferParameteri == loader_glFramebufferParameteri) {
+      rCtx->dsp->emuTbl.glFramebufferParameteri = driverTbl.glFramebufferParameteri;
+   }
+   driverTbl.glFramebufferParameteri(target, pname, param);
+}
+
+static void REGAL_CALL missing_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetFramebufferParameteriv not available." );
+}
+
+static void REGAL_CALL loader_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetFramebufferParameteriv, "glGetFramebufferParameteriv");
+   if ( !driverTbl.glGetFramebufferParameteriv ) {
+      driverTbl.glGetFramebufferParameteriv = missing_glGetFramebufferParameteriv;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetFramebufferParameteriv == loader_glGetFramebufferParameteriv) {
+      rCtx->dsp->emuTbl.glGetFramebufferParameteriv = driverTbl.glGetFramebufferParameteriv;
+   }
+   driverTbl.glGetFramebufferParameteriv(target, pname, params);
+}
+
+static void REGAL_CALL missing_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+   UNUSED_PARAMETER(framebuffer);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetNamedFramebufferParameterivEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetNamedFramebufferParameterivEXT, "glGetNamedFramebufferParameterivEXT");
+   if ( !driverTbl.glGetNamedFramebufferParameterivEXT ) {
+      driverTbl.glGetNamedFramebufferParameterivEXT = missing_glGetNamedFramebufferParameterivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetNamedFramebufferParameterivEXT == loader_glGetNamedFramebufferParameterivEXT) {
+      rCtx->dsp->emuTbl.glGetNamedFramebufferParameterivEXT = driverTbl.glGetNamedFramebufferParameterivEXT;
+   }
+   driverTbl.glGetNamedFramebufferParameterivEXT(framebuffer, pname, params);
+}
+
+static void REGAL_CALL missing_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+   UNUSED_PARAMETER(framebuffer);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glNamedFramebufferParameteriEXT not available." );
+}
+
+static void REGAL_CALL loader_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glNamedFramebufferParameteriEXT, "glNamedFramebufferParameteriEXT");
+   if ( !driverTbl.glNamedFramebufferParameteriEXT ) {
+      driverTbl.glNamedFramebufferParameteriEXT = missing_glNamedFramebufferParameteriEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glNamedFramebufferParameteriEXT == loader_glNamedFramebufferParameteriEXT) {
+      rCtx->dsp->emuTbl.glNamedFramebufferParameteriEXT = driverTbl.glNamedFramebufferParameteriEXT;
+   }
+   driverTbl.glNamedFramebufferParameteriEXT(framebuffer, pname, param);
 }
 
 // GL_ARB_framebuffer_object
@@ -19906,6 +20211,193 @@ static void REGAL_CALL loader_glGetInternalformativ(GLenum target, GLenum intern
    driverTbl.glGetInternalformativ(target, internalformat, pname, bufSize, params);
 }
 
+// GL_ARB_internalformat_query2
+
+static void REGAL_CALL missing_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(bufSize);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetInternalformati64v not available." );
+}
+
+static void REGAL_CALL loader_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetInternalformati64v, "glGetInternalformati64v");
+   if ( !driverTbl.glGetInternalformati64v ) {
+      driverTbl.glGetInternalformati64v = missing_glGetInternalformati64v;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetInternalformati64v == loader_glGetInternalformati64v) {
+      rCtx->dsp->emuTbl.glGetInternalformati64v = driverTbl.glGetInternalformati64v;
+   }
+   driverTbl.glGetInternalformati64v(target, internalformat, pname, bufSize, params);
+}
+
+// GL_ARB_invalidate_subdata
+
+static void REGAL_CALL missing_glInvalidateBufferData(GLuint buffer)
+{
+   UNUSED_PARAMETER(buffer);
+   Warning( "glInvalidateBufferData not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateBufferData(GLuint buffer)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateBufferData, "glInvalidateBufferData");
+   if ( !driverTbl.glInvalidateBufferData ) {
+      driverTbl.glInvalidateBufferData = missing_glInvalidateBufferData;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateBufferData == loader_glInvalidateBufferData) {
+      rCtx->dsp->emuTbl.glInvalidateBufferData = driverTbl.glInvalidateBufferData;
+   }
+   driverTbl.glInvalidateBufferData(buffer);
+}
+
+static void REGAL_CALL missing_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(length);
+   Warning( "glInvalidateBufferSubData not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateBufferSubData, "glInvalidateBufferSubData");
+   if ( !driverTbl.glInvalidateBufferSubData ) {
+      driverTbl.glInvalidateBufferSubData = missing_glInvalidateBufferSubData;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateBufferSubData == loader_glInvalidateBufferSubData) {
+      rCtx->dsp->emuTbl.glInvalidateBufferSubData = driverTbl.glInvalidateBufferSubData;
+   }
+   driverTbl.glInvalidateBufferSubData(buffer, offset, length);
+}
+
+static void REGAL_CALL missing_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(numAttachments);
+   UNUSED_PARAMETER(attachments);
+   Warning( "glInvalidateFramebuffer not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateFramebuffer, "glInvalidateFramebuffer");
+   if ( !driverTbl.glInvalidateFramebuffer ) {
+      driverTbl.glInvalidateFramebuffer = missing_glInvalidateFramebuffer;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateFramebuffer == loader_glInvalidateFramebuffer) {
+      rCtx->dsp->emuTbl.glInvalidateFramebuffer = driverTbl.glInvalidateFramebuffer;
+   }
+   driverTbl.glInvalidateFramebuffer(target, numAttachments, attachments);
+}
+
+static void REGAL_CALL missing_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(numAttachments);
+   UNUSED_PARAMETER(attachments);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   Warning( "glInvalidateSubFramebuffer not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateSubFramebuffer, "glInvalidateSubFramebuffer");
+   if ( !driverTbl.glInvalidateSubFramebuffer ) {
+      driverTbl.glInvalidateSubFramebuffer = missing_glInvalidateSubFramebuffer;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateSubFramebuffer == loader_glInvalidateSubFramebuffer) {
+      rCtx->dsp->emuTbl.glInvalidateSubFramebuffer = driverTbl.glInvalidateSubFramebuffer;
+   }
+   driverTbl.glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+}
+
+static void REGAL_CALL missing_glInvalidateTexImage(GLuint texture, GLint level)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(level);
+   Warning( "glInvalidateTexImage not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateTexImage(GLuint texture, GLint level)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateTexImage, "glInvalidateTexImage");
+   if ( !driverTbl.glInvalidateTexImage ) {
+      driverTbl.glInvalidateTexImage = missing_glInvalidateTexImage;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateTexImage == loader_glInvalidateTexImage) {
+      rCtx->dsp->emuTbl.glInvalidateTexImage = driverTbl.glInvalidateTexImage;
+   }
+   driverTbl.glInvalidateTexImage(texture, level);
+}
+
+static void REGAL_CALL missing_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(level);
+   UNUSED_PARAMETER(xoffset);
+   UNUSED_PARAMETER(yoffset);
+   UNUSED_PARAMETER(zoffset);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   UNUSED_PARAMETER(depth);
+   Warning( "glInvalidateTexSubImage not available." );
+}
+
+static void REGAL_CALL loader_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glInvalidateTexSubImage, "glInvalidateTexSubImage");
+   if ( !driverTbl.glInvalidateTexSubImage ) {
+      driverTbl.glInvalidateTexSubImage = missing_glInvalidateTexSubImage;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glInvalidateTexSubImage == loader_glInvalidateTexSubImage) {
+      rCtx->dsp->emuTbl.glInvalidateTexSubImage = driverTbl.glInvalidateTexSubImage;
+   }
+   driverTbl.glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+}
+
 // GL_ARB_map_buffer_range
 
 static void REGAL_CALL missing_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
@@ -20082,6 +20574,61 @@ static void REGAL_CALL loader_glMatrixIndexusvARB(GLint size, GLushort *indices)
       rCtx->dsp->emuTbl.glMatrixIndexusvARB = driverTbl.glMatrixIndexusvARB;
    }
    driverTbl.glMatrixIndexusvARB(size, indices);
+}
+
+// GL_ARB_multi_draw_indirect
+
+static void REGAL_CALL missing_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   UNUSED_PARAMETER(mode);
+   UNUSED_PARAMETER(indirect);
+   UNUSED_PARAMETER(primcount);
+   UNUSED_PARAMETER(stride);
+   Warning( "glMultiDrawArraysIndirect not available." );
+}
+
+static void REGAL_CALL loader_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glMultiDrawArraysIndirect, "glMultiDrawArraysIndirect");
+   if ( !driverTbl.glMultiDrawArraysIndirect ) {
+      driverTbl.glMultiDrawArraysIndirect = missing_glMultiDrawArraysIndirect;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glMultiDrawArraysIndirect == loader_glMultiDrawArraysIndirect) {
+      rCtx->dsp->emuTbl.glMultiDrawArraysIndirect = driverTbl.glMultiDrawArraysIndirect;
+   }
+   driverTbl.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+}
+
+static void REGAL_CALL missing_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   UNUSED_PARAMETER(mode);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(indirect);
+   UNUSED_PARAMETER(primcount);
+   UNUSED_PARAMETER(stride);
+   Warning( "glMultiDrawElementsIndirect not available." );
+}
+
+static void REGAL_CALL loader_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glMultiDrawElementsIndirect, "glMultiDrawElementsIndirect");
+   if ( !driverTbl.glMultiDrawElementsIndirect ) {
+      driverTbl.glMultiDrawElementsIndirect = missing_glMultiDrawElementsIndirect;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glMultiDrawElementsIndirect == loader_glMultiDrawElementsIndirect) {
+      rCtx->dsp->emuTbl.glMultiDrawElementsIndirect = driverTbl.glMultiDrawElementsIndirect;
+   }
+   driverTbl.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 }
 
 // GL_ARB_multisample
@@ -21195,6 +21742,173 @@ static void REGAL_CALL loader_glPointParameterfvARB(GLenum pname, const GLfloat 
       rCtx->dsp->emuTbl.glPointParameterfvARB = driverTbl.glPointParameterfvARB;
    }
    driverTbl.glPointParameterfvARB(pname, params);
+}
+
+// GL_ARB_program_interface_query
+
+static void REGAL_CALL missing_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetProgramInterfaceiv not available." );
+}
+
+static void REGAL_CALL loader_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramInterfaceiv, "glGetProgramInterfaceiv");
+   if ( !driverTbl.glGetProgramInterfaceiv ) {
+      driverTbl.glGetProgramInterfaceiv = missing_glGetProgramInterfaceiv;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramInterfaceiv == loader_glGetProgramInterfaceiv) {
+      rCtx->dsp->emuTbl.glGetProgramInterfaceiv = driverTbl.glGetProgramInterfaceiv;
+   }
+   driverTbl.glGetProgramInterfaceiv(program, programInterface, pname, params);
+}
+
+static GLuint REGAL_CALL missing_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(name);
+   Warning( "glGetProgramResourceIndex not available." );
+  GLuint  ret = (GLuint )0;
+  return ret;
+}
+
+static GLuint REGAL_CALL loader_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramResourceIndex, "glGetProgramResourceIndex");
+   if ( !driverTbl.glGetProgramResourceIndex ) {
+      driverTbl.glGetProgramResourceIndex = missing_glGetProgramResourceIndex;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramResourceIndex == loader_glGetProgramResourceIndex) {
+      rCtx->dsp->emuTbl.glGetProgramResourceIndex = driverTbl.glGetProgramResourceIndex;
+   }
+   return driverTbl.glGetProgramResourceIndex(program, programInterface, name);
+}
+
+static GLint REGAL_CALL missing_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(name);
+   Warning( "glGetProgramResourceLocation not available." );
+  GLint  ret = (GLint )0;
+  return ret;
+}
+
+static GLint REGAL_CALL loader_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramResourceLocation, "glGetProgramResourceLocation");
+   if ( !driverTbl.glGetProgramResourceLocation ) {
+      driverTbl.glGetProgramResourceLocation = missing_glGetProgramResourceLocation;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramResourceLocation == loader_glGetProgramResourceLocation) {
+      rCtx->dsp->emuTbl.glGetProgramResourceLocation = driverTbl.glGetProgramResourceLocation;
+   }
+   return driverTbl.glGetProgramResourceLocation(program, programInterface, name);
+}
+
+static GLint REGAL_CALL missing_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(name);
+   Warning( "glGetProgramResourceLocationIndex not available." );
+  GLint  ret = (GLint )0;
+  return ret;
+}
+
+static GLint REGAL_CALL loader_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramResourceLocationIndex, "glGetProgramResourceLocationIndex");
+   if ( !driverTbl.glGetProgramResourceLocationIndex ) {
+      driverTbl.glGetProgramResourceLocationIndex = missing_glGetProgramResourceLocationIndex;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramResourceLocationIndex == loader_glGetProgramResourceLocationIndex) {
+      rCtx->dsp->emuTbl.glGetProgramResourceLocationIndex = driverTbl.glGetProgramResourceLocationIndex;
+   }
+   return driverTbl.glGetProgramResourceLocationIndex(program, programInterface, name);
+}
+
+static void REGAL_CALL missing_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(bufSize);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(name);
+   Warning( "glGetProgramResourceName not available." );
+}
+
+static void REGAL_CALL loader_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramResourceName, "glGetProgramResourceName");
+   if ( !driverTbl.glGetProgramResourceName ) {
+      driverTbl.glGetProgramResourceName = missing_glGetProgramResourceName;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramResourceName == loader_glGetProgramResourceName) {
+      rCtx->dsp->emuTbl.glGetProgramResourceName = driverTbl.glGetProgramResourceName;
+   }
+   driverTbl.glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+}
+
+static void REGAL_CALL missing_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(programInterface);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(propCount);
+   UNUSED_PARAMETER(props);
+   UNUSED_PARAMETER(bufSize);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetProgramResourceiv not available." );
+}
+
+static void REGAL_CALL loader_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetProgramResourceiv, "glGetProgramResourceiv");
+   if ( !driverTbl.glGetProgramResourceiv ) {
+      driverTbl.glGetProgramResourceiv = missing_glGetProgramResourceiv;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetProgramResourceiv == loader_glGetProgramResourceiv) {
+      rCtx->dsp->emuTbl.glGetProgramResourceiv = driverTbl.glGetProgramResourceiv;
+   }
+   driverTbl.glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
 }
 
 // GL_ARB_provoking_vertex
@@ -23724,6 +24438,88 @@ static void REGAL_CALL loader_glValidateProgramPipeline(GLuint pipeline)
    driverTbl.glValidateProgramPipeline(pipeline);
 }
 
+// GL_ARB_shader_atomic_counters
+
+static void REGAL_CALL missing_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(bufferIndex);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetActiveAtomicCounterBufferiv not available." );
+}
+
+static void REGAL_CALL loader_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetActiveAtomicCounterBufferiv, "glGetActiveAtomicCounterBufferiv");
+   if ( !driverTbl.glGetActiveAtomicCounterBufferiv ) {
+      driverTbl.glGetActiveAtomicCounterBufferiv = missing_glGetActiveAtomicCounterBufferiv;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetActiveAtomicCounterBufferiv == loader_glGetActiveAtomicCounterBufferiv) {
+      rCtx->dsp->emuTbl.glGetActiveAtomicCounterBufferiv = driverTbl.glGetActiveAtomicCounterBufferiv;
+   }
+   driverTbl.glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
+}
+
+// GL_ARB_shader_image_load_store
+
+static void REGAL_CALL missing_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
+{
+   UNUSED_PARAMETER(unit);
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(level);
+   UNUSED_PARAMETER(layered);
+   UNUSED_PARAMETER(layer);
+   UNUSED_PARAMETER(access);
+   UNUSED_PARAMETER(format);
+   Warning( "glBindImageTexture not available." );
+}
+
+static void REGAL_CALL loader_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glBindImageTexture, "glBindImageTexture");
+   if ( !driverTbl.glBindImageTexture ) {
+      driverTbl.glBindImageTexture = missing_glBindImageTexture;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glBindImageTexture == loader_glBindImageTexture) {
+      rCtx->dsp->emuTbl.glBindImageTexture = driverTbl.glBindImageTexture;
+   }
+   driverTbl.glBindImageTexture(unit, texture, level, layered, layer, access, format);
+}
+
+static void REGAL_CALL missing_glMemoryBarrier(GLbitfield barriers)
+{
+   UNUSED_PARAMETER(barriers);
+   Warning( "glMemoryBarrier not available." );
+}
+
+static void REGAL_CALL loader_glMemoryBarrier(GLbitfield barriers)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glMemoryBarrier, "glMemoryBarrier");
+   if ( !driverTbl.glMemoryBarrier ) {
+      driverTbl.glMemoryBarrier = missing_glMemoryBarrier;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glMemoryBarrier == loader_glMemoryBarrier) {
+      rCtx->dsp->emuTbl.glMemoryBarrier = driverTbl.glMemoryBarrier;
+   }
+   driverTbl.glMemoryBarrier(barriers);
+}
+
 // GL_ARB_shader_objects
 
 static void REGAL_CALL missing_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
@@ -24704,6 +25500,33 @@ static void REGAL_CALL loader_glValidateProgramARB(GLhandleARB programObj)
    driverTbl.glValidateProgramARB(programObj);
 }
 
+// GL_ARB_shader_storage_buffer_object
+
+static void REGAL_CALL missing_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+   UNUSED_PARAMETER(program);
+   UNUSED_PARAMETER(storageBlockIndex);
+   UNUSED_PARAMETER(storageBlockBinding);
+   Warning( "glShaderStorageBlockBinding not available." );
+}
+
+static void REGAL_CALL loader_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glShaderStorageBlockBinding, "glShaderStorageBlockBinding");
+   if ( !driverTbl.glShaderStorageBlockBinding ) {
+      driverTbl.glShaderStorageBlockBinding = missing_glShaderStorageBlockBinding;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glShaderStorageBlockBinding == loader_glShaderStorageBlockBinding) {
+      rCtx->dsp->emuTbl.glShaderStorageBlockBinding = driverTbl.glShaderStorageBlockBinding;
+   }
+   driverTbl.glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+}
+
 // GL_ARB_shader_subroutine
 
 static void REGAL_CALL missing_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
@@ -25333,6 +26156,63 @@ static void REGAL_CALL loader_glTexBufferARB(GLenum target, GLenum internalforma
    driverTbl.glTexBufferARB(target, internalformat, buffer);
 }
 
+// GL_ARB_texture_buffer_range
+
+static void REGAL_CALL missing_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(size);
+   Warning( "glTexBufferRange not available." );
+}
+
+static void REGAL_CALL loader_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTexBufferRange, "glTexBufferRange");
+   if ( !driverTbl.glTexBufferRange ) {
+      driverTbl.glTexBufferRange = missing_glTexBufferRange;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTexBufferRange == loader_glTexBufferRange) {
+      rCtx->dsp->emuTbl.glTexBufferRange = driverTbl.glTexBufferRange;
+   }
+   driverTbl.glTexBufferRange(target, internalformat, buffer, offset, size);
+}
+
+static void REGAL_CALL missing_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(size);
+   Warning( "glTextureBufferRangeEXT not available." );
+}
+
+static void REGAL_CALL loader_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTextureBufferRangeEXT, "glTextureBufferRangeEXT");
+   if ( !driverTbl.glTextureBufferRangeEXT ) {
+      driverTbl.glTextureBufferRangeEXT = missing_glTextureBufferRangeEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTextureBufferRangeEXT == loader_glTextureBufferRangeEXT) {
+      rCtx->dsp->emuTbl.glTextureBufferRangeEXT = driverTbl.glTextureBufferRangeEXT;
+   }
+   driverTbl.glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size);
+}
+
 // GL_ARB_texture_compression
 
 static void REGAL_CALL missing_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -25816,6 +26696,156 @@ static void REGAL_CALL loader_glTextureStorage3DEXT(GLuint texture, GLenum targe
       rCtx->dsp->emuTbl.glTextureStorage3DEXT = driverTbl.glTextureStorage3DEXT;
    }
    driverTbl.glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
+}
+
+// GL_ARB_texture_storage_multisample
+
+static void REGAL_CALL missing_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(samples);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   UNUSED_PARAMETER(fixedsamplelocations);
+   Warning( "glTexStorage2DMultisample not available." );
+}
+
+static void REGAL_CALL loader_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTexStorage2DMultisample, "glTexStorage2DMultisample");
+   if ( !driverTbl.glTexStorage2DMultisample ) {
+      driverTbl.glTexStorage2DMultisample = missing_glTexStorage2DMultisample;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTexStorage2DMultisample == loader_glTexStorage2DMultisample) {
+      rCtx->dsp->emuTbl.glTexStorage2DMultisample = driverTbl.glTexStorage2DMultisample;
+   }
+   driverTbl.glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL missing_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(samples);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   UNUSED_PARAMETER(depth);
+   UNUSED_PARAMETER(fixedsamplelocations);
+   Warning( "glTexStorage3DMultisample not available." );
+}
+
+static void REGAL_CALL loader_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTexStorage3DMultisample, "glTexStorage3DMultisample");
+   if ( !driverTbl.glTexStorage3DMultisample ) {
+      driverTbl.glTexStorage3DMultisample = missing_glTexStorage3DMultisample;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTexStorage3DMultisample == loader_glTexStorage3DMultisample) {
+      rCtx->dsp->emuTbl.glTexStorage3DMultisample = driverTbl.glTexStorage3DMultisample;
+   }
+   driverTbl.glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+static void REGAL_CALL missing_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(samples);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   UNUSED_PARAMETER(fixedsamplelocations);
+   Warning( "glTextureStorage2DMultisampleEXT not available." );
+}
+
+static void REGAL_CALL loader_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTextureStorage2DMultisampleEXT, "glTextureStorage2DMultisampleEXT");
+   if ( !driverTbl.glTextureStorage2DMultisampleEXT ) {
+      driverTbl.glTextureStorage2DMultisampleEXT = missing_glTextureStorage2DMultisampleEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTextureStorage2DMultisampleEXT == loader_glTextureStorage2DMultisampleEXT) {
+      rCtx->dsp->emuTbl.glTextureStorage2DMultisampleEXT = driverTbl.glTextureStorage2DMultisampleEXT;
+   }
+   driverTbl.glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL missing_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(samples);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(width);
+   UNUSED_PARAMETER(height);
+   UNUSED_PARAMETER(depth);
+   UNUSED_PARAMETER(fixedsamplelocations);
+   Warning( "glTextureStorage3DMultisampleEXT not available." );
+}
+
+static void REGAL_CALL loader_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTextureStorage3DMultisampleEXT, "glTextureStorage3DMultisampleEXT");
+   if ( !driverTbl.glTextureStorage3DMultisampleEXT ) {
+      driverTbl.glTextureStorage3DMultisampleEXT = missing_glTextureStorage3DMultisampleEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTextureStorage3DMultisampleEXT == loader_glTextureStorage3DMultisampleEXT) {
+      rCtx->dsp->emuTbl.glTextureStorage3DMultisampleEXT = driverTbl.glTextureStorage3DMultisampleEXT;
+   }
+   driverTbl.glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+// GL_ARB_texture_view
+
+static void REGAL_CALL missing_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(origtexture);
+   UNUSED_PARAMETER(internalformat);
+   UNUSED_PARAMETER(minlevel);
+   UNUSED_PARAMETER(numlevels);
+   UNUSED_PARAMETER(minlayer);
+   UNUSED_PARAMETER(numlayers);
+   Warning( "glTextureView not available." );
+}
+
+static void REGAL_CALL loader_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glTextureView, "glTextureView");
+   if ( !driverTbl.glTextureView ) {
+      driverTbl.glTextureView = missing_glTextureView;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glTextureView == loader_glTextureView) {
+      rCtx->dsp->emuTbl.glTextureView = driverTbl.glTextureView;
+   }
+   driverTbl.glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
 
 // GL_ARB_timer_query
@@ -26921,6 +27951,161 @@ static void REGAL_CALL loader_glVertexAttribLPointer(GLuint index, GLint size, G
       rCtx->dsp->emuTbl.glVertexAttribLPointer = driverTbl.glVertexAttribLPointer;
    }
    driverTbl.glVertexAttribLPointer(index, size, type, stride, pointer);
+}
+
+// GL_ARB_vertex_attrib_binding
+
+static void REGAL_CALL missing_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+   UNUSED_PARAMETER(bindingindex);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(offset);
+   UNUSED_PARAMETER(stride);
+   Warning( "glBindVertexBuffer not available." );
+}
+
+static void REGAL_CALL loader_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glBindVertexBuffer, "glBindVertexBuffer");
+   if ( !driverTbl.glBindVertexBuffer ) {
+      driverTbl.glBindVertexBuffer = missing_glBindVertexBuffer;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glBindVertexBuffer == loader_glBindVertexBuffer) {
+      rCtx->dsp->emuTbl.glBindVertexBuffer = driverTbl.glBindVertexBuffer;
+   }
+   driverTbl.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+}
+
+static void REGAL_CALL missing_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+   UNUSED_PARAMETER(attribindex);
+   UNUSED_PARAMETER(bindingindex);
+   Warning( "glVertexAttribBinding not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribBinding, "glVertexAttribBinding");
+   if ( !driverTbl.glVertexAttribBinding ) {
+      driverTbl.glVertexAttribBinding = missing_glVertexAttribBinding;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribBinding == loader_glVertexAttribBinding) {
+      rCtx->dsp->emuTbl.glVertexAttribBinding = driverTbl.glVertexAttribBinding;
+   }
+   driverTbl.glVertexAttribBinding(attribindex, bindingindex);
+}
+
+static void REGAL_CALL missing_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+   UNUSED_PARAMETER(attribindex);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(normalized);
+   UNUSED_PARAMETER(relativeoffset);
+   Warning( "glVertexAttribFormat not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribFormat, "glVertexAttribFormat");
+   if ( !driverTbl.glVertexAttribFormat ) {
+      driverTbl.glVertexAttribFormat = missing_glVertexAttribFormat;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribFormat == loader_glVertexAttribFormat) {
+      rCtx->dsp->emuTbl.glVertexAttribFormat = driverTbl.glVertexAttribFormat;
+   }
+   driverTbl.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+}
+
+static void REGAL_CALL missing_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+   UNUSED_PARAMETER(attribindex);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(relativeoffset);
+   Warning( "glVertexAttribIFormat not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribIFormat, "glVertexAttribIFormat");
+   if ( !driverTbl.glVertexAttribIFormat ) {
+      driverTbl.glVertexAttribIFormat = missing_glVertexAttribIFormat;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribIFormat == loader_glVertexAttribIFormat) {
+      rCtx->dsp->emuTbl.glVertexAttribIFormat = driverTbl.glVertexAttribIFormat;
+   }
+   driverTbl.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL missing_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+   UNUSED_PARAMETER(attribindex);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(relativeoffset);
+   Warning( "glVertexAttribLFormat not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribLFormat, "glVertexAttribLFormat");
+   if ( !driverTbl.glVertexAttribLFormat ) {
+      driverTbl.glVertexAttribLFormat = missing_glVertexAttribLFormat;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribLFormat == loader_glVertexAttribLFormat) {
+      rCtx->dsp->emuTbl.glVertexAttribLFormat = driverTbl.glVertexAttribLFormat;
+   }
+   driverTbl.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL missing_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+   UNUSED_PARAMETER(bindingindex);
+   UNUSED_PARAMETER(divisor);
+   Warning( "glVertexBindingDivisor not available." );
+}
+
+static void REGAL_CALL loader_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexBindingDivisor, "glVertexBindingDivisor");
+   if ( !driverTbl.glVertexBindingDivisor ) {
+      driverTbl.glVertexBindingDivisor = missing_glVertexBindingDivisor;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexBindingDivisor == loader_glVertexBindingDivisor) {
+      rCtx->dsp->emuTbl.glVertexBindingDivisor = driverTbl.glVertexBindingDivisor;
+   }
+   driverTbl.glVertexBindingDivisor(bindingindex, divisor);
 }
 
 // GL_ARB_vertex_blend
@@ -35138,6 +36323,78 @@ static void REGAL_CALL loader_glDisableClientStateIndexedEXT(GLenum array, GLuin
    driverTbl.glDisableClientStateIndexedEXT(array, index);
 }
 
+static void REGAL_CALL missing_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+   UNUSED_PARAMETER(array);
+   UNUSED_PARAMETER(index);
+   Warning( "glDisableClientStateiEXT not available." );
+}
+
+static void REGAL_CALL loader_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDisableClientStateiEXT, "glDisableClientStateiEXT");
+   if ( !driverTbl.glDisableClientStateiEXT ) {
+      driverTbl.glDisableClientStateiEXT = missing_glDisableClientStateiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDisableClientStateiEXT == loader_glDisableClientStateiEXT) {
+      rCtx->dsp->emuTbl.glDisableClientStateiEXT = driverTbl.glDisableClientStateiEXT;
+   }
+   driverTbl.glDisableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL missing_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(array);
+   Warning( "glDisableVertexArrayAttribEXT not available." );
+}
+
+static void REGAL_CALL loader_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDisableVertexArrayAttribEXT, "glDisableVertexArrayAttribEXT");
+   if ( !driverTbl.glDisableVertexArrayAttribEXT ) {
+      driverTbl.glDisableVertexArrayAttribEXT = missing_glDisableVertexArrayAttribEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDisableVertexArrayAttribEXT == loader_glDisableVertexArrayAttribEXT) {
+      rCtx->dsp->emuTbl.glDisableVertexArrayAttribEXT = driverTbl.glDisableVertexArrayAttribEXT;
+   }
+   driverTbl.glDisableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL missing_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(array);
+   Warning( "glDisableVertexArrayEXT not available." );
+}
+
+static void REGAL_CALL loader_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDisableVertexArrayEXT, "glDisableVertexArrayEXT");
+   if ( !driverTbl.glDisableVertexArrayEXT ) {
+      driverTbl.glDisableVertexArrayEXT = missing_glDisableVertexArrayEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDisableVertexArrayEXT == loader_glDisableVertexArrayEXT) {
+      rCtx->dsp->emuTbl.glDisableVertexArrayEXT = driverTbl.glDisableVertexArrayEXT;
+   }
+   driverTbl.glDisableVertexArrayEXT(vaobj, array);
+}
+
 static void REGAL_CALL missing_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
    UNUSED_PARAMETER(array);
@@ -35160,6 +36417,78 @@ static void REGAL_CALL loader_glEnableClientStateIndexedEXT(GLenum array, GLuint
       rCtx->dsp->emuTbl.glEnableClientStateIndexedEXT = driverTbl.glEnableClientStateIndexedEXT;
    }
    driverTbl.glEnableClientStateIndexedEXT(array, index);
+}
+
+static void REGAL_CALL missing_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+   UNUSED_PARAMETER(array);
+   UNUSED_PARAMETER(index);
+   Warning( "glEnableClientStateiEXT not available." );
+}
+
+static void REGAL_CALL loader_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glEnableClientStateiEXT, "glEnableClientStateiEXT");
+   if ( !driverTbl.glEnableClientStateiEXT ) {
+      driverTbl.glEnableClientStateiEXT = missing_glEnableClientStateiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glEnableClientStateiEXT == loader_glEnableClientStateiEXT) {
+      rCtx->dsp->emuTbl.glEnableClientStateiEXT = driverTbl.glEnableClientStateiEXT;
+   }
+   driverTbl.glEnableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL missing_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(array);
+   Warning( "glEnableVertexArrayAttribEXT not available." );
+}
+
+static void REGAL_CALL loader_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glEnableVertexArrayAttribEXT, "glEnableVertexArrayAttribEXT");
+   if ( !driverTbl.glEnableVertexArrayAttribEXT ) {
+      driverTbl.glEnableVertexArrayAttribEXT = missing_glEnableVertexArrayAttribEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glEnableVertexArrayAttribEXT == loader_glEnableVertexArrayAttribEXT) {
+      rCtx->dsp->emuTbl.glEnableVertexArrayAttribEXT = driverTbl.glEnableVertexArrayAttribEXT;
+   }
+   driverTbl.glEnableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL missing_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(array);
+   Warning( "glEnableVertexArrayEXT not available." );
+}
+
+static void REGAL_CALL loader_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glEnableVertexArrayEXT, "glEnableVertexArrayEXT");
+   if ( !driverTbl.glEnableVertexArrayEXT ) {
+      driverTbl.glEnableVertexArrayEXT = missing_glEnableVertexArrayEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glEnableVertexArrayEXT == loader_glEnableVertexArrayEXT) {
+      rCtx->dsp->emuTbl.glEnableVertexArrayEXT = driverTbl.glEnableVertexArrayEXT;
+   }
+   driverTbl.glEnableVertexArrayEXT(vaobj, array);
 }
 
 static void REGAL_CALL missing_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
@@ -35385,6 +36714,31 @@ static void REGAL_CALL loader_glGetDoubleIndexedvEXT(GLenum target, GLuint index
    driverTbl.glGetDoubleIndexedvEXT(target, index, data);
 }
 
+static void REGAL_CALL missing_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(data);
+   Warning( "glGetDoublei_vEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetDoublei_vEXT, "glGetDoublei_vEXT");
+   if ( !driverTbl.glGetDoublei_vEXT ) {
+      driverTbl.glGetDoublei_vEXT = missing_glGetDoublei_vEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetDoublei_vEXT == loader_glGetDoublei_vEXT) {
+      rCtx->dsp->emuTbl.glGetDoublei_vEXT = driverTbl.glGetDoublei_vEXT;
+   }
+   driverTbl.glGetDoublei_vEXT(target, index, data);
+}
+
 static void REGAL_CALL missing_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
    UNUSED_PARAMETER(target);
@@ -35408,6 +36762,31 @@ static void REGAL_CALL loader_glGetFloatIndexedvEXT(GLenum target, GLuint index,
       rCtx->dsp->emuTbl.glGetFloatIndexedvEXT = driverTbl.glGetFloatIndexedvEXT;
    }
    driverTbl.glGetFloatIndexedvEXT(target, index, data);
+}
+
+static void REGAL_CALL missing_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(data);
+   Warning( "glGetFloati_vEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetFloati_vEXT, "glGetFloati_vEXT");
+   if ( !driverTbl.glGetFloati_vEXT ) {
+      driverTbl.glGetFloati_vEXT = missing_glGetFloati_vEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetFloati_vEXT == loader_glGetFloati_vEXT) {
+      rCtx->dsp->emuTbl.glGetFloati_vEXT = driverTbl.glGetFloati_vEXT;
+   }
+   driverTbl.glGetFloati_vEXT(target, index, data);
 }
 
 static void REGAL_CALL missing_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
@@ -36243,6 +37622,108 @@ static void REGAL_CALL loader_glGetTextureParameterivEXT(GLuint texture, GLenum 
       rCtx->dsp->emuTbl.glGetTextureParameterivEXT = driverTbl.glGetTextureParameterivEXT;
    }
    driverTbl.glGetTextureParameterivEXT(texture, target, pname, params);
+}
+
+static void REGAL_CALL missing_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glGetVertexArrayIntegeri_vEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexArrayIntegeri_vEXT, "glGetVertexArrayIntegeri_vEXT");
+   if ( !driverTbl.glGetVertexArrayIntegeri_vEXT ) {
+      driverTbl.glGetVertexArrayIntegeri_vEXT = missing_glGetVertexArrayIntegeri_vEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexArrayIntegeri_vEXT == loader_glGetVertexArrayIntegeri_vEXT) {
+      rCtx->dsp->emuTbl.glGetVertexArrayIntegeri_vEXT = driverTbl.glGetVertexArrayIntegeri_vEXT;
+   }
+   driverTbl.glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL missing_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glGetVertexArrayIntegervEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexArrayIntegervEXT, "glGetVertexArrayIntegervEXT");
+   if ( !driverTbl.glGetVertexArrayIntegervEXT ) {
+      driverTbl.glGetVertexArrayIntegervEXT = missing_glGetVertexArrayIntegervEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexArrayIntegervEXT == loader_glGetVertexArrayIntegervEXT) {
+      rCtx->dsp->emuTbl.glGetVertexArrayIntegervEXT = driverTbl.glGetVertexArrayIntegervEXT;
+   }
+   driverTbl.glGetVertexArrayIntegervEXT(vaobj, pname, param);
+}
+
+static void REGAL_CALL missing_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glGetVertexArrayPointeri_vEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexArrayPointeri_vEXT, "glGetVertexArrayPointeri_vEXT");
+   if ( !driverTbl.glGetVertexArrayPointeri_vEXT ) {
+      driverTbl.glGetVertexArrayPointeri_vEXT = missing_glGetVertexArrayPointeri_vEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexArrayPointeri_vEXT == loader_glGetVertexArrayPointeri_vEXT) {
+      rCtx->dsp->emuTbl.glGetVertexArrayPointeri_vEXT = driverTbl.glGetVertexArrayPointeri_vEXT;
+   }
+   driverTbl.glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL missing_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(param);
+   Warning( "glGetVertexArrayPointervEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexArrayPointervEXT, "glGetVertexArrayPointervEXT");
+   if ( !driverTbl.glGetVertexArrayPointervEXT ) {
+      driverTbl.glGetVertexArrayPointervEXT = missing_glGetVertexArrayPointervEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexArrayPointervEXT == loader_glGetVertexArrayPointervEXT) {
+      rCtx->dsp->emuTbl.glGetVertexArrayPointervEXT = driverTbl.glGetVertexArrayPointervEXT;
+   }
+   driverTbl.glGetVertexArrayPointervEXT(vaobj, pname, param);
 }
 
 static GLvoid *REGAL_CALL missing_glMapNamedBufferEXT(GLuint buffer, GLenum access)
@@ -39911,6 +41392,313 @@ static GLboolean REGAL_CALL loader_glUnmapNamedBufferEXT(GLuint buffer)
    return driverTbl.glUnmapNamedBufferEXT(buffer);
 }
 
+static void REGAL_CALL missing_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayColorOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayColorOffsetEXT, "glVertexArrayColorOffsetEXT");
+   if ( !driverTbl.glVertexArrayColorOffsetEXT ) {
+      driverTbl.glVertexArrayColorOffsetEXT = missing_glVertexArrayColorOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayColorOffsetEXT == loader_glVertexArrayColorOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayColorOffsetEXT = driverTbl.glVertexArrayColorOffsetEXT;
+   }
+   driverTbl.glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayEdgeFlagOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayEdgeFlagOffsetEXT, "glVertexArrayEdgeFlagOffsetEXT");
+   if ( !driverTbl.glVertexArrayEdgeFlagOffsetEXT ) {
+      driverTbl.glVertexArrayEdgeFlagOffsetEXT = missing_glVertexArrayEdgeFlagOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayEdgeFlagOffsetEXT == loader_glVertexArrayEdgeFlagOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayEdgeFlagOffsetEXT = driverTbl.glVertexArrayEdgeFlagOffsetEXT;
+   }
+   driverTbl.glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayFogCoordOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayFogCoordOffsetEXT, "glVertexArrayFogCoordOffsetEXT");
+   if ( !driverTbl.glVertexArrayFogCoordOffsetEXT ) {
+      driverTbl.glVertexArrayFogCoordOffsetEXT = missing_glVertexArrayFogCoordOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayFogCoordOffsetEXT == loader_glVertexArrayFogCoordOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayFogCoordOffsetEXT = driverTbl.glVertexArrayFogCoordOffsetEXT;
+   }
+   driverTbl.glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayIndexOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayIndexOffsetEXT, "glVertexArrayIndexOffsetEXT");
+   if ( !driverTbl.glVertexArrayIndexOffsetEXT ) {
+      driverTbl.glVertexArrayIndexOffsetEXT = missing_glVertexArrayIndexOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayIndexOffsetEXT == loader_glVertexArrayIndexOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayIndexOffsetEXT = driverTbl.glVertexArrayIndexOffsetEXT;
+   }
+   driverTbl.glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(texunit);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayMultiTexCoordOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayMultiTexCoordOffsetEXT, "glVertexArrayMultiTexCoordOffsetEXT");
+   if ( !driverTbl.glVertexArrayMultiTexCoordOffsetEXT ) {
+      driverTbl.glVertexArrayMultiTexCoordOffsetEXT = missing_glVertexArrayMultiTexCoordOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayMultiTexCoordOffsetEXT == loader_glVertexArrayMultiTexCoordOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayMultiTexCoordOffsetEXT = driverTbl.glVertexArrayMultiTexCoordOffsetEXT;
+   }
+   driverTbl.glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayNormalOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayNormalOffsetEXT, "glVertexArrayNormalOffsetEXT");
+   if ( !driverTbl.glVertexArrayNormalOffsetEXT ) {
+      driverTbl.glVertexArrayNormalOffsetEXT = missing_glVertexArrayNormalOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayNormalOffsetEXT == loader_glVertexArrayNormalOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayNormalOffsetEXT = driverTbl.glVertexArrayNormalOffsetEXT;
+   }
+   driverTbl.glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArraySecondaryColorOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArraySecondaryColorOffsetEXT, "glVertexArraySecondaryColorOffsetEXT");
+   if ( !driverTbl.glVertexArraySecondaryColorOffsetEXT ) {
+      driverTbl.glVertexArraySecondaryColorOffsetEXT = missing_glVertexArraySecondaryColorOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArraySecondaryColorOffsetEXT == loader_glVertexArraySecondaryColorOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArraySecondaryColorOffsetEXT = driverTbl.glVertexArraySecondaryColorOffsetEXT;
+   }
+   driverTbl.glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayTexCoordOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayTexCoordOffsetEXT, "glVertexArrayTexCoordOffsetEXT");
+   if ( !driverTbl.glVertexArrayTexCoordOffsetEXT ) {
+      driverTbl.glVertexArrayTexCoordOffsetEXT = missing_glVertexArrayTexCoordOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayTexCoordOffsetEXT == loader_glVertexArrayTexCoordOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayTexCoordOffsetEXT = driverTbl.glVertexArrayTexCoordOffsetEXT;
+   }
+   driverTbl.glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayVertexAttribIOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayVertexAttribIOffsetEXT, "glVertexArrayVertexAttribIOffsetEXT");
+   if ( !driverTbl.glVertexArrayVertexAttribIOffsetEXT ) {
+      driverTbl.glVertexArrayVertexAttribIOffsetEXT = missing_glVertexArrayVertexAttribIOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayVertexAttribIOffsetEXT == loader_glVertexArrayVertexAttribIOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayVertexAttribIOffsetEXT = driverTbl.glVertexArrayVertexAttribIOffsetEXT;
+   }
+   driverTbl.glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(normalized);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayVertexAttribOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayVertexAttribOffsetEXT, "glVertexArrayVertexAttribOffsetEXT");
+   if ( !driverTbl.glVertexArrayVertexAttribOffsetEXT ) {
+      driverTbl.glVertexArrayVertexAttribOffsetEXT = missing_glVertexArrayVertexAttribOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayVertexAttribOffsetEXT == loader_glVertexArrayVertexAttribOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayVertexAttribOffsetEXT = driverTbl.glVertexArrayVertexAttribOffsetEXT;
+   }
+   driverTbl.glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
+}
+
+static void REGAL_CALL missing_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   UNUSED_PARAMETER(vaobj);
+   UNUSED_PARAMETER(buffer);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(offset);
+   Warning( "glVertexArrayVertexOffsetEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexArrayVertexOffsetEXT, "glVertexArrayVertexOffsetEXT");
+   if ( !driverTbl.glVertexArrayVertexOffsetEXT ) {
+      driverTbl.glVertexArrayVertexOffsetEXT = missing_glVertexArrayVertexOffsetEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexArrayVertexOffsetEXT == loader_glVertexArrayVertexOffsetEXT) {
+      rCtx->dsp->emuTbl.glVertexArrayVertexOffsetEXT = driverTbl.glVertexArrayVertexOffsetEXT;
+   }
+   driverTbl.glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
 // GL_EXT_draw_buffers2
 
 static void REGAL_CALL missing_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -41208,6 +42996,59 @@ static void REGAL_CALL loader_glRenderbufferStorageEXT(GLenum target, GLenum int
 
 // GL_EXT_geometry_shader4
 
+static void REGAL_CALL missing_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(attachment);
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(level);
+   Warning( "glFramebufferTextureEXT not available." );
+}
+
+static void REGAL_CALL loader_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glFramebufferTextureEXT, "glFramebufferTextureEXT");
+   if ( !driverTbl.glFramebufferTextureEXT ) {
+      driverTbl.glFramebufferTextureEXT = missing_glFramebufferTextureEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glFramebufferTextureEXT == loader_glFramebufferTextureEXT) {
+      rCtx->dsp->emuTbl.glFramebufferTextureEXT = driverTbl.glFramebufferTextureEXT;
+   }
+   driverTbl.glFramebufferTextureEXT(target, attachment, texture, level);
+}
+
+static void REGAL_CALL missing_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(attachment);
+   UNUSED_PARAMETER(texture);
+   UNUSED_PARAMETER(level);
+   UNUSED_PARAMETER(face);
+   Warning( "glFramebufferTextureFaceEXT not available." );
+}
+
+static void REGAL_CALL loader_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glFramebufferTextureFaceEXT, "glFramebufferTextureFaceEXT");
+   if ( !driverTbl.glFramebufferTextureFaceEXT ) {
+      driverTbl.glFramebufferTextureFaceEXT = missing_glFramebufferTextureFaceEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glFramebufferTextureFaceEXT == loader_glFramebufferTextureFaceEXT) {
+      rCtx->dsp->emuTbl.glFramebufferTextureFaceEXT = driverTbl.glFramebufferTextureFaceEXT;
+   }
+   driverTbl.glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
+}
+
 static void REGAL_CALL missing_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value)
 {
    UNUSED_PARAMETER(program);
@@ -41363,6 +43204,56 @@ static void REGAL_CALL loader_glGetUniformuivEXT(GLuint program, GLint location,
       rCtx->dsp->emuTbl.glGetUniformuivEXT = driverTbl.glGetUniformuivEXT;
    }
    driverTbl.glGetUniformuivEXT(program, location, params);
+}
+
+static void REGAL_CALL missing_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetVertexAttribIivEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexAttribIivEXT, "glGetVertexAttribIivEXT");
+   if ( !driverTbl.glGetVertexAttribIivEXT ) {
+      driverTbl.glGetVertexAttribIivEXT = missing_glGetVertexAttribIivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexAttribIivEXT == loader_glGetVertexAttribIivEXT) {
+      rCtx->dsp->emuTbl.glGetVertexAttribIivEXT = driverTbl.glGetVertexAttribIivEXT;
+   }
+   driverTbl.glGetVertexAttribIivEXT(index, pname, params);
+}
+
+static void REGAL_CALL missing_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetVertexAttribIuivEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetVertexAttribIuivEXT, "glGetVertexAttribIuivEXT");
+   if ( !driverTbl.glGetVertexAttribIuivEXT ) {
+      driverTbl.glGetVertexAttribIuivEXT = missing_glGetVertexAttribIuivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetVertexAttribIuivEXT == loader_glGetVertexAttribIuivEXT) {
+      rCtx->dsp->emuTbl.glGetVertexAttribIuivEXT = driverTbl.glGetVertexAttribIuivEXT;
+   }
+   driverTbl.glGetVertexAttribIuivEXT(index, pname, params);
 }
 
 static void REGAL_CALL missing_glUniform1uiEXT(GLint location, GLuint v0)
@@ -41565,6 +43456,525 @@ static void REGAL_CALL loader_glUniform4uivEXT(GLint location, GLsizei count, co
       rCtx->dsp->emuTbl.glUniform4uivEXT = driverTbl.glUniform4uivEXT;
    }
    driverTbl.glUniform4uivEXT(location, count, value);
+}
+
+static void REGAL_CALL missing_glVertexAttribI1iEXT(GLuint index, GLint x)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   Warning( "glVertexAttribI1iEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI1iEXT(GLuint index, GLint x)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI1iEXT, "glVertexAttribI1iEXT");
+   if ( !driverTbl.glVertexAttribI1iEXT ) {
+      driverTbl.glVertexAttribI1iEXT = missing_glVertexAttribI1iEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI1iEXT == loader_glVertexAttribI1iEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI1iEXT = driverTbl.glVertexAttribI1iEXT;
+   }
+   driverTbl.glVertexAttribI1iEXT(index, x);
+}
+
+static void REGAL_CALL missing_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI1ivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI1ivEXT, "glVertexAttribI1ivEXT");
+   if ( !driverTbl.glVertexAttribI1ivEXT ) {
+      driverTbl.glVertexAttribI1ivEXT = missing_glVertexAttribI1ivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI1ivEXT == loader_glVertexAttribI1ivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI1ivEXT = driverTbl.glVertexAttribI1ivEXT;
+   }
+   driverTbl.glVertexAttribI1ivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI1uiEXT(GLuint index, GLuint x)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   Warning( "glVertexAttribI1uiEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI1uiEXT(GLuint index, GLuint x)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI1uiEXT, "glVertexAttribI1uiEXT");
+   if ( !driverTbl.glVertexAttribI1uiEXT ) {
+      driverTbl.glVertexAttribI1uiEXT = missing_glVertexAttribI1uiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI1uiEXT == loader_glVertexAttribI1uiEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI1uiEXT = driverTbl.glVertexAttribI1uiEXT;
+   }
+   driverTbl.glVertexAttribI1uiEXT(index, x);
+}
+
+static void REGAL_CALL missing_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI1uivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI1uivEXT, "glVertexAttribI1uivEXT");
+   if ( !driverTbl.glVertexAttribI1uivEXT ) {
+      driverTbl.glVertexAttribI1uivEXT = missing_glVertexAttribI1uivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI1uivEXT == loader_glVertexAttribI1uivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI1uivEXT = driverTbl.glVertexAttribI1uivEXT;
+   }
+   driverTbl.glVertexAttribI1uivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   Warning( "glVertexAttribI2iEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI2iEXT, "glVertexAttribI2iEXT");
+   if ( !driverTbl.glVertexAttribI2iEXT ) {
+      driverTbl.glVertexAttribI2iEXT = missing_glVertexAttribI2iEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI2iEXT == loader_glVertexAttribI2iEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI2iEXT = driverTbl.glVertexAttribI2iEXT;
+   }
+   driverTbl.glVertexAttribI2iEXT(index, x, y);
+}
+
+static void REGAL_CALL missing_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI2ivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI2ivEXT, "glVertexAttribI2ivEXT");
+   if ( !driverTbl.glVertexAttribI2ivEXT ) {
+      driverTbl.glVertexAttribI2ivEXT = missing_glVertexAttribI2ivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI2ivEXT == loader_glVertexAttribI2ivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI2ivEXT = driverTbl.glVertexAttribI2ivEXT;
+   }
+   driverTbl.glVertexAttribI2ivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   Warning( "glVertexAttribI2uiEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI2uiEXT, "glVertexAttribI2uiEXT");
+   if ( !driverTbl.glVertexAttribI2uiEXT ) {
+      driverTbl.glVertexAttribI2uiEXT = missing_glVertexAttribI2uiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI2uiEXT == loader_glVertexAttribI2uiEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI2uiEXT = driverTbl.glVertexAttribI2uiEXT;
+   }
+   driverTbl.glVertexAttribI2uiEXT(index, x, y);
+}
+
+static void REGAL_CALL missing_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI2uivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI2uivEXT, "glVertexAttribI2uivEXT");
+   if ( !driverTbl.glVertexAttribI2uivEXT ) {
+      driverTbl.glVertexAttribI2uivEXT = missing_glVertexAttribI2uivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI2uivEXT == loader_glVertexAttribI2uivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI2uivEXT = driverTbl.glVertexAttribI2uivEXT;
+   }
+   driverTbl.glVertexAttribI2uivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   UNUSED_PARAMETER(z);
+   Warning( "glVertexAttribI3iEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI3iEXT, "glVertexAttribI3iEXT");
+   if ( !driverTbl.glVertexAttribI3iEXT ) {
+      driverTbl.glVertexAttribI3iEXT = missing_glVertexAttribI3iEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI3iEXT == loader_glVertexAttribI3iEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI3iEXT = driverTbl.glVertexAttribI3iEXT;
+   }
+   driverTbl.glVertexAttribI3iEXT(index, x, y, z);
+}
+
+static void REGAL_CALL missing_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI3ivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI3ivEXT, "glVertexAttribI3ivEXT");
+   if ( !driverTbl.glVertexAttribI3ivEXT ) {
+      driverTbl.glVertexAttribI3ivEXT = missing_glVertexAttribI3ivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI3ivEXT == loader_glVertexAttribI3ivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI3ivEXT = driverTbl.glVertexAttribI3ivEXT;
+   }
+   driverTbl.glVertexAttribI3ivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   UNUSED_PARAMETER(z);
+   Warning( "glVertexAttribI3uiEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI3uiEXT, "glVertexAttribI3uiEXT");
+   if ( !driverTbl.glVertexAttribI3uiEXT ) {
+      driverTbl.glVertexAttribI3uiEXT = missing_glVertexAttribI3uiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI3uiEXT == loader_glVertexAttribI3uiEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI3uiEXT = driverTbl.glVertexAttribI3uiEXT;
+   }
+   driverTbl.glVertexAttribI3uiEXT(index, x, y, z);
+}
+
+static void REGAL_CALL missing_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI3uivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI3uivEXT, "glVertexAttribI3uivEXT");
+   if ( !driverTbl.glVertexAttribI3uivEXT ) {
+      driverTbl.glVertexAttribI3uivEXT = missing_glVertexAttribI3uivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI3uivEXT == loader_glVertexAttribI3uivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI3uivEXT = driverTbl.glVertexAttribI3uivEXT;
+   }
+   driverTbl.glVertexAttribI3uivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4bvEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4bvEXT, "glVertexAttribI4bvEXT");
+   if ( !driverTbl.glVertexAttribI4bvEXT ) {
+      driverTbl.glVertexAttribI4bvEXT = missing_glVertexAttribI4bvEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4bvEXT == loader_glVertexAttribI4bvEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4bvEXT = driverTbl.glVertexAttribI4bvEXT;
+   }
+   driverTbl.glVertexAttribI4bvEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   UNUSED_PARAMETER(z);
+   UNUSED_PARAMETER(w);
+   Warning( "glVertexAttribI4iEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4iEXT, "glVertexAttribI4iEXT");
+   if ( !driverTbl.glVertexAttribI4iEXT ) {
+      driverTbl.glVertexAttribI4iEXT = missing_glVertexAttribI4iEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4iEXT == loader_glVertexAttribI4iEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4iEXT = driverTbl.glVertexAttribI4iEXT;
+   }
+   driverTbl.glVertexAttribI4iEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4ivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4ivEXT, "glVertexAttribI4ivEXT");
+   if ( !driverTbl.glVertexAttribI4ivEXT ) {
+      driverTbl.glVertexAttribI4ivEXT = missing_glVertexAttribI4ivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4ivEXT == loader_glVertexAttribI4ivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4ivEXT = driverTbl.glVertexAttribI4ivEXT;
+   }
+   driverTbl.glVertexAttribI4ivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4svEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4svEXT, "glVertexAttribI4svEXT");
+   if ( !driverTbl.glVertexAttribI4svEXT ) {
+      driverTbl.glVertexAttribI4svEXT = missing_glVertexAttribI4svEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4svEXT == loader_glVertexAttribI4svEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4svEXT = driverTbl.glVertexAttribI4svEXT;
+   }
+   driverTbl.glVertexAttribI4svEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4ubvEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4ubvEXT, "glVertexAttribI4ubvEXT");
+   if ( !driverTbl.glVertexAttribI4ubvEXT ) {
+      driverTbl.glVertexAttribI4ubvEXT = missing_glVertexAttribI4ubvEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4ubvEXT == loader_glVertexAttribI4ubvEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4ubvEXT = driverTbl.glVertexAttribI4ubvEXT;
+   }
+   driverTbl.glVertexAttribI4ubvEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(x);
+   UNUSED_PARAMETER(y);
+   UNUSED_PARAMETER(z);
+   UNUSED_PARAMETER(w);
+   Warning( "glVertexAttribI4uiEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4uiEXT, "glVertexAttribI4uiEXT");
+   if ( !driverTbl.glVertexAttribI4uiEXT ) {
+      driverTbl.glVertexAttribI4uiEXT = missing_glVertexAttribI4uiEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4uiEXT == loader_glVertexAttribI4uiEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4uiEXT = driverTbl.glVertexAttribI4uiEXT;
+   }
+   driverTbl.glVertexAttribI4uiEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4uivEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4uivEXT, "glVertexAttribI4uivEXT");
+   if ( !driverTbl.glVertexAttribI4uivEXT ) {
+      driverTbl.glVertexAttribI4uivEXT = missing_glVertexAttribI4uivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4uivEXT == loader_glVertexAttribI4uivEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4uivEXT = driverTbl.glVertexAttribI4uivEXT;
+   }
+   driverTbl.glVertexAttribI4uivEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(v);
+   Warning( "glVertexAttribI4usvEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribI4usvEXT, "glVertexAttribI4usvEXT");
+   if ( !driverTbl.glVertexAttribI4usvEXT ) {
+      driverTbl.glVertexAttribI4usvEXT = missing_glVertexAttribI4usvEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribI4usvEXT == loader_glVertexAttribI4usvEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribI4usvEXT = driverTbl.glVertexAttribI4usvEXT;
+   }
+   driverTbl.glVertexAttribI4usvEXT(index, v);
+}
+
+static void REGAL_CALL missing_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+   UNUSED_PARAMETER(index);
+   UNUSED_PARAMETER(size);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(stride);
+   UNUSED_PARAMETER(pointer);
+   Warning( "glVertexAttribIPointerEXT not available." );
+}
+
+static void REGAL_CALL loader_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glVertexAttribIPointerEXT, "glVertexAttribIPointerEXT");
+   if ( !driverTbl.glVertexAttribIPointerEXT ) {
+      driverTbl.glVertexAttribIPointerEXT = missing_glVertexAttribIPointerEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glVertexAttribIPointerEXT == loader_glVertexAttribIPointerEXT) {
+      rCtx->dsp->emuTbl.glVertexAttribIPointerEXT = driverTbl.glVertexAttribIPointerEXT;
+   }
+   driverTbl.glVertexAttribIPointerEXT(index, size, type, stride, pointer);
 }
 
 // GL_EXT_histogram
@@ -42156,6 +44566,56 @@ static void REGAL_CALL loader_glGetColorTableParameterivEXT(GLenum target, GLenu
 
 // GL_EXT_pixel_transform
 
+static void REGAL_CALL missing_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetPixelTransformParameterfvEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetPixelTransformParameterfvEXT, "glGetPixelTransformParameterfvEXT");
+   if ( !driverTbl.glGetPixelTransformParameterfvEXT ) {
+      driverTbl.glGetPixelTransformParameterfvEXT = missing_glGetPixelTransformParameterfvEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetPixelTransformParameterfvEXT == loader_glGetPixelTransformParameterfvEXT) {
+      rCtx->dsp->emuTbl.glGetPixelTransformParameterfvEXT = driverTbl.glGetPixelTransformParameterfvEXT;
+   }
+   driverTbl.glGetPixelTransformParameterfvEXT(target, pname, params);
+}
+
+static void REGAL_CALL missing_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+   UNUSED_PARAMETER(target);
+   UNUSED_PARAMETER(pname);
+   UNUSED_PARAMETER(params);
+   Warning( "glGetPixelTransformParameterivEXT not available." );
+}
+
+static void REGAL_CALL loader_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetPixelTransformParameterivEXT, "glGetPixelTransformParameterivEXT");
+   if ( !driverTbl.glGetPixelTransformParameterivEXT ) {
+      driverTbl.glGetPixelTransformParameterivEXT = missing_glGetPixelTransformParameterivEXT;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetPixelTransformParameterivEXT == loader_glGetPixelTransformParameterivEXT) {
+      rCtx->dsp->emuTbl.glGetPixelTransformParameterivEXT = driverTbl.glGetPixelTransformParameterivEXT;
+   }
+   driverTbl.glGetPixelTransformParameterivEXT(target, pname, params);
+}
+
 static void REGAL_CALL missing_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param)
 {
    UNUSED_PARAMETER(target);
@@ -42181,31 +44641,6 @@ static void REGAL_CALL loader_glPixelTransformParameterfEXT(GLenum target, GLenu
    driverTbl.glPixelTransformParameterfEXT(target, pname, param);
 }
 
-static void REGAL_CALL missing_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
-{
-   UNUSED_PARAMETER(target);
-   UNUSED_PARAMETER(pname);
-   UNUSED_PARAMETER(params);
-   Warning( "glPixelTransformParameterfvEXT not available." );
-}
-
-static void REGAL_CALL loader_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glPixelTransformParameterfvEXT, "glPixelTransformParameterfvEXT");
-   if ( !driverTbl.glPixelTransformParameterfvEXT ) {
-      driverTbl.glPixelTransformParameterfvEXT = missing_glPixelTransformParameterfvEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glPixelTransformParameterfvEXT == loader_glPixelTransformParameterfvEXT) {
-      rCtx->dsp->emuTbl.glPixelTransformParameterfvEXT = driverTbl.glPixelTransformParameterfvEXT;
-   }
-   driverTbl.glPixelTransformParameterfvEXT(target, pname, params);
-}
-
 static void REGAL_CALL missing_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
    UNUSED_PARAMETER(target);
@@ -42229,31 +44664,6 @@ static void REGAL_CALL loader_glPixelTransformParameteriEXT(GLenum target, GLenu
       rCtx->dsp->emuTbl.glPixelTransformParameteriEXT = driverTbl.glPixelTransformParameteriEXT;
    }
    driverTbl.glPixelTransformParameteriEXT(target, pname, param);
-}
-
-static void REGAL_CALL missing_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
-{
-   UNUSED_PARAMETER(target);
-   UNUSED_PARAMETER(pname);
-   UNUSED_PARAMETER(params);
-   Warning( "glPixelTransformParameterivEXT not available." );
-}
-
-static void REGAL_CALL loader_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glPixelTransformParameterivEXT, "glPixelTransformParameterivEXT");
-   if ( !driverTbl.glPixelTransformParameterivEXT ) {
-      driverTbl.glPixelTransformParameterivEXT = missing_glPixelTransformParameterivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glPixelTransformParameterivEXT == loader_glPixelTransformParameterivEXT) {
-      rCtx->dsp->emuTbl.glPixelTransformParameterivEXT = driverTbl.glPixelTransformParameterivEXT;
-   }
-   driverTbl.glPixelTransformParameterivEXT(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -46060,6 +48470,250 @@ static void REGAL_CALL loader_glTexScissorINTEL(GLenum target, GLclampf tlow, GL
    driverTbl.glTexScissorINTEL(target, tlow, thigh);
 }
 
+// GL_KHR_debug
+
+static void REGAL_CALL missing_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
+{
+   UNUSED_PARAMETER(callback);
+   UNUSED_PARAMETER(userParam);
+   Warning( "glDebugMessageCallback not available." );
+}
+
+static void REGAL_CALL loader_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDebugMessageCallback, "glDebugMessageCallback");
+   if ( !driverTbl.glDebugMessageCallback ) {
+      driverTbl.glDebugMessageCallback = missing_glDebugMessageCallback;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDebugMessageCallback == loader_glDebugMessageCallback) {
+      rCtx->dsp->emuTbl.glDebugMessageCallback = driverTbl.glDebugMessageCallback;
+   }
+   driverTbl.glDebugMessageCallback(callback, userParam);
+}
+
+static void REGAL_CALL missing_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+   UNUSED_PARAMETER(source);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(severity);
+   UNUSED_PARAMETER(count);
+   UNUSED_PARAMETER(ids);
+   UNUSED_PARAMETER(enabled);
+   Warning( "glDebugMessageControl not available." );
+}
+
+static void REGAL_CALL loader_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDebugMessageControl, "glDebugMessageControl");
+   if ( !driverTbl.glDebugMessageControl ) {
+      driverTbl.glDebugMessageControl = missing_glDebugMessageControl;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDebugMessageControl == loader_glDebugMessageControl) {
+      rCtx->dsp->emuTbl.glDebugMessageControl = driverTbl.glDebugMessageControl;
+   }
+   driverTbl.glDebugMessageControl(source, type, severity, count, ids, enabled);
+}
+
+static void REGAL_CALL missing_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+   UNUSED_PARAMETER(source);
+   UNUSED_PARAMETER(type);
+   UNUSED_PARAMETER(id);
+   UNUSED_PARAMETER(severity);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(buf);
+   Warning( "glDebugMessageInsert not available." );
+}
+
+static void REGAL_CALL loader_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glDebugMessageInsert, "glDebugMessageInsert");
+   if ( !driverTbl.glDebugMessageInsert ) {
+      driverTbl.glDebugMessageInsert = missing_glDebugMessageInsert;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glDebugMessageInsert == loader_glDebugMessageInsert) {
+      rCtx->dsp->emuTbl.glDebugMessageInsert = driverTbl.glDebugMessageInsert;
+   }
+   driverTbl.glDebugMessageInsert(source, type, id, severity, length, buf);
+}
+
+static GLuint REGAL_CALL missing_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+   UNUSED_PARAMETER(count);
+   UNUSED_PARAMETER(bufsize);
+   UNUSED_PARAMETER(sources);
+   UNUSED_PARAMETER(types);
+   UNUSED_PARAMETER(ids);
+   UNUSED_PARAMETER(severities);
+   UNUSED_PARAMETER(lengths);
+   UNUSED_PARAMETER(messageLog);
+   Warning( "glGetDebugMessageLog not available." );
+  GLuint  ret = (GLuint )0;
+  return ret;
+}
+
+static GLuint REGAL_CALL loader_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetDebugMessageLog, "glGetDebugMessageLog");
+   if ( !driverTbl.glGetDebugMessageLog ) {
+      driverTbl.glGetDebugMessageLog = missing_glGetDebugMessageLog;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetDebugMessageLog == loader_glGetDebugMessageLog) {
+      rCtx->dsp->emuTbl.glGetDebugMessageLog = driverTbl.glGetDebugMessageLog;
+   }
+   return driverTbl.glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
+}
+
+static void REGAL_CALL missing_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+   UNUSED_PARAMETER(identifier);
+   UNUSED_PARAMETER(name);
+   UNUSED_PARAMETER(bufSize);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(label);
+   Warning( "glGetObjectLabel not available." );
+}
+
+static void REGAL_CALL loader_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetObjectLabel, "glGetObjectLabel");
+   if ( !driverTbl.glGetObjectLabel ) {
+      driverTbl.glGetObjectLabel = missing_glGetObjectLabel;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetObjectLabel == loader_glGetObjectLabel) {
+      rCtx->dsp->emuTbl.glGetObjectLabel = driverTbl.glGetObjectLabel;
+   }
+   driverTbl.glGetObjectLabel(identifier, name, bufSize, length, label);
+}
+
+static void REGAL_CALL missing_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+   UNUSED_PARAMETER(ptr);
+   UNUSED_PARAMETER(bufSize);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(label);
+   Warning( "glGetObjectPtrLabel not available." );
+}
+
+static void REGAL_CALL loader_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glGetObjectPtrLabel, "glGetObjectPtrLabel");
+   if ( !driverTbl.glGetObjectPtrLabel ) {
+      driverTbl.glGetObjectPtrLabel = missing_glGetObjectPtrLabel;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glGetObjectPtrLabel == loader_glGetObjectPtrLabel) {
+      rCtx->dsp->emuTbl.glGetObjectPtrLabel = driverTbl.glGetObjectPtrLabel;
+   }
+   driverTbl.glGetObjectPtrLabel(ptr, bufSize, length, label);
+}
+
+static void REGAL_CALL missing_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+   UNUSED_PARAMETER(identifier);
+   UNUSED_PARAMETER(name);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(label);
+   Warning( "glObjectLabel not available." );
+}
+
+static void REGAL_CALL loader_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glObjectLabel, "glObjectLabel");
+   if ( !driverTbl.glObjectLabel ) {
+      driverTbl.glObjectLabel = missing_glObjectLabel;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glObjectLabel == loader_glObjectLabel) {
+      rCtx->dsp->emuTbl.glObjectLabel = driverTbl.glObjectLabel;
+   }
+   driverTbl.glObjectLabel(identifier, name, length, label);
+}
+
+static void REGAL_CALL missing_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
+{
+   UNUSED_PARAMETER(ptr);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(label);
+   Warning( "glObjectPtrLabel not available." );
+}
+
+static void REGAL_CALL loader_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glObjectPtrLabel, "glObjectPtrLabel");
+   if ( !driverTbl.glObjectPtrLabel ) {
+      driverTbl.glObjectPtrLabel = missing_glObjectPtrLabel;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glObjectPtrLabel == loader_glObjectPtrLabel) {
+      rCtx->dsp->emuTbl.glObjectPtrLabel = driverTbl.glObjectPtrLabel;
+   }
+   driverTbl.glObjectPtrLabel(ptr, length, label);
+}
+
+static void REGAL_CALL missing_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+   UNUSED_PARAMETER(source);
+   UNUSED_PARAMETER(id);
+   UNUSED_PARAMETER(length);
+   UNUSED_PARAMETER(message);
+   Warning( "glPushDebugGroup not available." );
+}
+
+static void REGAL_CALL loader_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glPushDebugGroup, "glPushDebugGroup");
+   if ( !driverTbl.glPushDebugGroup ) {
+      driverTbl.glPushDebugGroup = missing_glPushDebugGroup;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glPushDebugGroup == loader_glPushDebugGroup) {
+      rCtx->dsp->emuTbl.glPushDebugGroup = driverTbl.glPushDebugGroup;
+   }
+   driverTbl.glPushDebugGroup(source, id, length, message);
+}
+
 // GL_KTX_buffer_region
 
 static GLuint REGAL_CALL missing_glBufferRegionEnabledEXT(void)
@@ -47957,59 +50611,6 @@ static void REGAL_CALL loader_glRenderbufferStorageMultisampleCoverageNV(GLenum 
 }
 
 // GL_NV_geometry_program4
-
-static void REGAL_CALL missing_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-   UNUSED_PARAMETER(target);
-   UNUSED_PARAMETER(attachment);
-   UNUSED_PARAMETER(texture);
-   UNUSED_PARAMETER(level);
-   Warning( "glFramebufferTextureEXT not available." );
-}
-
-static void REGAL_CALL loader_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glFramebufferTextureEXT, "glFramebufferTextureEXT");
-   if ( !driverTbl.glFramebufferTextureEXT ) {
-      driverTbl.glFramebufferTextureEXT = missing_glFramebufferTextureEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glFramebufferTextureEXT == loader_glFramebufferTextureEXT) {
-      rCtx->dsp->emuTbl.glFramebufferTextureEXT = driverTbl.glFramebufferTextureEXT;
-   }
-   driverTbl.glFramebufferTextureEXT(target, attachment, texture, level);
-}
-
-static void REGAL_CALL missing_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-   UNUSED_PARAMETER(target);
-   UNUSED_PARAMETER(attachment);
-   UNUSED_PARAMETER(texture);
-   UNUSED_PARAMETER(level);
-   UNUSED_PARAMETER(face);
-   Warning( "glFramebufferTextureFaceEXT not available." );
-}
-
-static void REGAL_CALL loader_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glFramebufferTextureFaceEXT, "glFramebufferTextureFaceEXT");
-   if ( !driverTbl.glFramebufferTextureFaceEXT ) {
-      driverTbl.glFramebufferTextureFaceEXT = missing_glFramebufferTextureFaceEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glFramebufferTextureFaceEXT == loader_glFramebufferTextureFaceEXT) {
-      rCtx->dsp->emuTbl.glFramebufferTextureFaceEXT = driverTbl.glFramebufferTextureFaceEXT;
-   }
-   driverTbl.glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
-}
 
 static void REGAL_CALL missing_glProgramVertexLimitNV(GLenum target, GLint limit)
 {
@@ -56353,577 +58954,6 @@ static void REGAL_CALL loader_glVertexAttribs4ubvNV(GLuint index, GLsizei n, con
    driverTbl.glVertexAttribs4ubvNV(index, n, v);
 }
 
-// GL_NV_vertex_program4
-
-static void REGAL_CALL missing_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(pname);
-   UNUSED_PARAMETER(params);
-   Warning( "glGetVertexAttribIivEXT not available." );
-}
-
-static void REGAL_CALL loader_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glGetVertexAttribIivEXT, "glGetVertexAttribIivEXT");
-   if ( !driverTbl.glGetVertexAttribIivEXT ) {
-      driverTbl.glGetVertexAttribIivEXT = missing_glGetVertexAttribIivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glGetVertexAttribIivEXT == loader_glGetVertexAttribIivEXT) {
-      rCtx->dsp->emuTbl.glGetVertexAttribIivEXT = driverTbl.glGetVertexAttribIivEXT;
-   }
-   driverTbl.glGetVertexAttribIivEXT(index, pname, params);
-}
-
-static void REGAL_CALL missing_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(pname);
-   UNUSED_PARAMETER(params);
-   Warning( "glGetVertexAttribIuivEXT not available." );
-}
-
-static void REGAL_CALL loader_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glGetVertexAttribIuivEXT, "glGetVertexAttribIuivEXT");
-   if ( !driverTbl.glGetVertexAttribIuivEXT ) {
-      driverTbl.glGetVertexAttribIuivEXT = missing_glGetVertexAttribIuivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glGetVertexAttribIuivEXT == loader_glGetVertexAttribIuivEXT) {
-      rCtx->dsp->emuTbl.glGetVertexAttribIuivEXT = driverTbl.glGetVertexAttribIuivEXT;
-   }
-   driverTbl.glGetVertexAttribIuivEXT(index, pname, params);
-}
-
-static void REGAL_CALL missing_glVertexAttribI1iEXT(GLuint index, GLint x)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   Warning( "glVertexAttribI1iEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI1iEXT(GLuint index, GLint x)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI1iEXT, "glVertexAttribI1iEXT");
-   if ( !driverTbl.glVertexAttribI1iEXT ) {
-      driverTbl.glVertexAttribI1iEXT = missing_glVertexAttribI1iEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI1iEXT == loader_glVertexAttribI1iEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI1iEXT = driverTbl.glVertexAttribI1iEXT;
-   }
-   driverTbl.glVertexAttribI1iEXT(index, x);
-}
-
-static void REGAL_CALL missing_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI1ivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI1ivEXT, "glVertexAttribI1ivEXT");
-   if ( !driverTbl.glVertexAttribI1ivEXT ) {
-      driverTbl.glVertexAttribI1ivEXT = missing_glVertexAttribI1ivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI1ivEXT == loader_glVertexAttribI1ivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI1ivEXT = driverTbl.glVertexAttribI1ivEXT;
-   }
-   driverTbl.glVertexAttribI1ivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI1uiEXT(GLuint index, GLuint x)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   Warning( "glVertexAttribI1uiEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI1uiEXT(GLuint index, GLuint x)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI1uiEXT, "glVertexAttribI1uiEXT");
-   if ( !driverTbl.glVertexAttribI1uiEXT ) {
-      driverTbl.glVertexAttribI1uiEXT = missing_glVertexAttribI1uiEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI1uiEXT == loader_glVertexAttribI1uiEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI1uiEXT = driverTbl.glVertexAttribI1uiEXT;
-   }
-   driverTbl.glVertexAttribI1uiEXT(index, x);
-}
-
-static void REGAL_CALL missing_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI1uivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI1uivEXT, "glVertexAttribI1uivEXT");
-   if ( !driverTbl.glVertexAttribI1uivEXT ) {
-      driverTbl.glVertexAttribI1uivEXT = missing_glVertexAttribI1uivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI1uivEXT == loader_glVertexAttribI1uivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI1uivEXT = driverTbl.glVertexAttribI1uivEXT;
-   }
-   driverTbl.glVertexAttribI1uivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   Warning( "glVertexAttribI2iEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI2iEXT, "glVertexAttribI2iEXT");
-   if ( !driverTbl.glVertexAttribI2iEXT ) {
-      driverTbl.glVertexAttribI2iEXT = missing_glVertexAttribI2iEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI2iEXT == loader_glVertexAttribI2iEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI2iEXT = driverTbl.glVertexAttribI2iEXT;
-   }
-   driverTbl.glVertexAttribI2iEXT(index, x, y);
-}
-
-static void REGAL_CALL missing_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI2ivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI2ivEXT, "glVertexAttribI2ivEXT");
-   if ( !driverTbl.glVertexAttribI2ivEXT ) {
-      driverTbl.glVertexAttribI2ivEXT = missing_glVertexAttribI2ivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI2ivEXT == loader_glVertexAttribI2ivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI2ivEXT = driverTbl.glVertexAttribI2ivEXT;
-   }
-   driverTbl.glVertexAttribI2ivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   Warning( "glVertexAttribI2uiEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI2uiEXT, "glVertexAttribI2uiEXT");
-   if ( !driverTbl.glVertexAttribI2uiEXT ) {
-      driverTbl.glVertexAttribI2uiEXT = missing_glVertexAttribI2uiEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI2uiEXT == loader_glVertexAttribI2uiEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI2uiEXT = driverTbl.glVertexAttribI2uiEXT;
-   }
-   driverTbl.glVertexAttribI2uiEXT(index, x, y);
-}
-
-static void REGAL_CALL missing_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI2uivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI2uivEXT, "glVertexAttribI2uivEXT");
-   if ( !driverTbl.glVertexAttribI2uivEXT ) {
-      driverTbl.glVertexAttribI2uivEXT = missing_glVertexAttribI2uivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI2uivEXT == loader_glVertexAttribI2uivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI2uivEXT = driverTbl.glVertexAttribI2uivEXT;
-   }
-   driverTbl.glVertexAttribI2uivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   UNUSED_PARAMETER(z);
-   Warning( "glVertexAttribI3iEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI3iEXT, "glVertexAttribI3iEXT");
-   if ( !driverTbl.glVertexAttribI3iEXT ) {
-      driverTbl.glVertexAttribI3iEXT = missing_glVertexAttribI3iEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI3iEXT == loader_glVertexAttribI3iEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI3iEXT = driverTbl.glVertexAttribI3iEXT;
-   }
-   driverTbl.glVertexAttribI3iEXT(index, x, y, z);
-}
-
-static void REGAL_CALL missing_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI3ivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI3ivEXT, "glVertexAttribI3ivEXT");
-   if ( !driverTbl.glVertexAttribI3ivEXT ) {
-      driverTbl.glVertexAttribI3ivEXT = missing_glVertexAttribI3ivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI3ivEXT == loader_glVertexAttribI3ivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI3ivEXT = driverTbl.glVertexAttribI3ivEXT;
-   }
-   driverTbl.glVertexAttribI3ivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   UNUSED_PARAMETER(z);
-   Warning( "glVertexAttribI3uiEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI3uiEXT, "glVertexAttribI3uiEXT");
-   if ( !driverTbl.glVertexAttribI3uiEXT ) {
-      driverTbl.glVertexAttribI3uiEXT = missing_glVertexAttribI3uiEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI3uiEXT == loader_glVertexAttribI3uiEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI3uiEXT = driverTbl.glVertexAttribI3uiEXT;
-   }
-   driverTbl.glVertexAttribI3uiEXT(index, x, y, z);
-}
-
-static void REGAL_CALL missing_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI3uivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI3uivEXT, "glVertexAttribI3uivEXT");
-   if ( !driverTbl.glVertexAttribI3uivEXT ) {
-      driverTbl.glVertexAttribI3uivEXT = missing_glVertexAttribI3uivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI3uivEXT == loader_glVertexAttribI3uivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI3uivEXT = driverTbl.glVertexAttribI3uivEXT;
-   }
-   driverTbl.glVertexAttribI3uivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4bvEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4bvEXT, "glVertexAttribI4bvEXT");
-   if ( !driverTbl.glVertexAttribI4bvEXT ) {
-      driverTbl.glVertexAttribI4bvEXT = missing_glVertexAttribI4bvEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4bvEXT == loader_glVertexAttribI4bvEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4bvEXT = driverTbl.glVertexAttribI4bvEXT;
-   }
-   driverTbl.glVertexAttribI4bvEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   UNUSED_PARAMETER(z);
-   UNUSED_PARAMETER(w);
-   Warning( "glVertexAttribI4iEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4iEXT, "glVertexAttribI4iEXT");
-   if ( !driverTbl.glVertexAttribI4iEXT ) {
-      driverTbl.glVertexAttribI4iEXT = missing_glVertexAttribI4iEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4iEXT == loader_glVertexAttribI4iEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4iEXT = driverTbl.glVertexAttribI4iEXT;
-   }
-   driverTbl.glVertexAttribI4iEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4ivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4ivEXT, "glVertexAttribI4ivEXT");
-   if ( !driverTbl.glVertexAttribI4ivEXT ) {
-      driverTbl.glVertexAttribI4ivEXT = missing_glVertexAttribI4ivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4ivEXT == loader_glVertexAttribI4ivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4ivEXT = driverTbl.glVertexAttribI4ivEXT;
-   }
-   driverTbl.glVertexAttribI4ivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4svEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4svEXT, "glVertexAttribI4svEXT");
-   if ( !driverTbl.glVertexAttribI4svEXT ) {
-      driverTbl.glVertexAttribI4svEXT = missing_glVertexAttribI4svEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4svEXT == loader_glVertexAttribI4svEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4svEXT = driverTbl.glVertexAttribI4svEXT;
-   }
-   driverTbl.glVertexAttribI4svEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4ubvEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4ubvEXT, "glVertexAttribI4ubvEXT");
-   if ( !driverTbl.glVertexAttribI4ubvEXT ) {
-      driverTbl.glVertexAttribI4ubvEXT = missing_glVertexAttribI4ubvEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4ubvEXT == loader_glVertexAttribI4ubvEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4ubvEXT = driverTbl.glVertexAttribI4ubvEXT;
-   }
-   driverTbl.glVertexAttribI4ubvEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(x);
-   UNUSED_PARAMETER(y);
-   UNUSED_PARAMETER(z);
-   UNUSED_PARAMETER(w);
-   Warning( "glVertexAttribI4uiEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4uiEXT, "glVertexAttribI4uiEXT");
-   if ( !driverTbl.glVertexAttribI4uiEXT ) {
-      driverTbl.glVertexAttribI4uiEXT = missing_glVertexAttribI4uiEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4uiEXT == loader_glVertexAttribI4uiEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4uiEXT = driverTbl.glVertexAttribI4uiEXT;
-   }
-   driverTbl.glVertexAttribI4uiEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4uivEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4uivEXT, "glVertexAttribI4uivEXT");
-   if ( !driverTbl.glVertexAttribI4uivEXT ) {
-      driverTbl.glVertexAttribI4uivEXT = missing_glVertexAttribI4uivEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4uivEXT == loader_glVertexAttribI4uivEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4uivEXT = driverTbl.glVertexAttribI4uivEXT;
-   }
-   driverTbl.glVertexAttribI4uivEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(v);
-   Warning( "glVertexAttribI4usvEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribI4usvEXT, "glVertexAttribI4usvEXT");
-   if ( !driverTbl.glVertexAttribI4usvEXT ) {
-      driverTbl.glVertexAttribI4usvEXT = missing_glVertexAttribI4usvEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribI4usvEXT == loader_glVertexAttribI4usvEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribI4usvEXT = driverTbl.glVertexAttribI4usvEXT;
-   }
-   driverTbl.glVertexAttribI4usvEXT(index, v);
-}
-
-static void REGAL_CALL missing_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
-{
-   UNUSED_PARAMETER(index);
-   UNUSED_PARAMETER(size);
-   UNUSED_PARAMETER(type);
-   UNUSED_PARAMETER(stride);
-   UNUSED_PARAMETER(pointer);
-   Warning( "glVertexAttribIPointerEXT not available." );
-}
-
-static void REGAL_CALL loader_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-   RegalAssert(rCtx);
-   RegalAssert(rCtx->dsp);
-   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glVertexAttribIPointerEXT, "glVertexAttribIPointerEXT");
-   if ( !driverTbl.glVertexAttribIPointerEXT ) {
-      driverTbl.glVertexAttribIPointerEXT = missing_glVertexAttribIPointerEXT;
-   }
-   // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glVertexAttribIPointerEXT == loader_glVertexAttribIPointerEXT) {
-      rCtx->dsp->emuTbl.glVertexAttribIPointerEXT = driverTbl.glVertexAttribIPointerEXT;
-   }
-   driverTbl.glVertexAttribIPointerEXT(index, size, type, stride, pointer);
-}
-
 // GL_NV_video_capture
 
 static void REGAL_CALL missing_glBeginVideoCaptureNV(GLuint video_capture_slot)
@@ -61722,13 +63752,29 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glCreateSyncFromCLeventARB = loader_glCreateSyncFromCLeventARB;
 
+  // GL_ARB_clear_buffer_object
+
+  tbl.glClearBufferData = loader_glClearBufferData;
+  tbl.glClearBufferSubData = loader_glClearBufferSubData;
+  tbl.glClearNamedBufferDataEXT = loader_glClearNamedBufferDataEXT;
+  tbl.glClearNamedBufferSubDataEXT = loader_glClearNamedBufferSubDataEXT;
+
   // GL_ARB_color_buffer_float
 
   tbl.glClampColorARB = loader_glClampColorARB;
 
+  // GL_ARB_compute_shader
+
+  tbl.glDispatchCompute = loader_glDispatchCompute;
+  tbl.glDispatchComputeIndirect = loader_glDispatchComputeIndirect;
+
   // GL_ARB_copy_buffer
 
   tbl.glCopyBufferSubData = loader_glCopyBufferSubData;
+
+  // GL_ARB_copy_image
+
+  tbl.glCopyImageSubData = loader_glCopyImageSubData;
 
   // GL_ARB_debug_output
 
@@ -61764,6 +63810,13 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glDrawArraysInstancedARB = loader_glDrawArraysInstancedARB;
   tbl.glDrawElementsInstancedARB = loader_glDrawElementsInstancedARB;
+
+  // GL_ARB_framebuffer_no_attachments
+
+  tbl.glFramebufferParameteri = loader_glFramebufferParameteri;
+  tbl.glGetFramebufferParameteriv = loader_glGetFramebufferParameteriv;
+  tbl.glGetNamedFramebufferParameterivEXT = loader_glGetNamedFramebufferParameterivEXT;
+  tbl.glNamedFramebufferParameteriEXT = loader_glNamedFramebufferParameteriEXT;
 
   // GL_ARB_framebuffer_object
 
@@ -61865,6 +63918,19 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glGetInternalformativ = loader_glGetInternalformativ;
 
+  // GL_ARB_internalformat_query2
+
+  tbl.glGetInternalformati64v = loader_glGetInternalformati64v;
+
+  // GL_ARB_invalidate_subdata
+
+  tbl.glInvalidateBufferData = loader_glInvalidateBufferData;
+  tbl.glInvalidateBufferSubData = loader_glInvalidateBufferSubData;
+  tbl.glInvalidateFramebuffer = loader_glInvalidateFramebuffer;
+  tbl.glInvalidateSubFramebuffer = loader_glInvalidateSubFramebuffer;
+  tbl.glInvalidateTexImage = loader_glInvalidateTexImage;
+  tbl.glInvalidateTexSubImage = loader_glInvalidateTexSubImage;
+
   // GL_ARB_map_buffer_range
 
   tbl.glFlushMappedBufferRange = loader_glFlushMappedBufferRange;
@@ -61877,6 +63943,11 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glMatrixIndexubvARB = loader_glMatrixIndexubvARB;
   tbl.glMatrixIndexuivARB = loader_glMatrixIndexuivARB;
   tbl.glMatrixIndexusvARB = loader_glMatrixIndexusvARB;
+
+  // GL_ARB_multi_draw_indirect
+
+  tbl.glMultiDrawArraysIndirect = loader_glMultiDrawArraysIndirect;
+  tbl.glMultiDrawElementsIndirect = loader_glMultiDrawElementsIndirect;
 
   // GL_ARB_multisample
 
@@ -61934,6 +64005,15 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glPointParameterfARB = loader_glPointParameterfARB;
   tbl.glPointParameterfvARB = loader_glPointParameterfvARB;
+
+  // GL_ARB_program_interface_query
+
+  tbl.glGetProgramInterfaceiv = loader_glGetProgramInterfaceiv;
+  tbl.glGetProgramResourceIndex = loader_glGetProgramResourceIndex;
+  tbl.glGetProgramResourceLocation = loader_glGetProgramResourceLocation;
+  tbl.glGetProgramResourceLocationIndex = loader_glGetProgramResourceLocationIndex;
+  tbl.glGetProgramResourceName = loader_glGetProgramResourceName;
+  tbl.glGetProgramResourceiv = loader_glGetProgramResourceiv;
 
   // GL_ARB_provoking_vertex
 
@@ -62047,6 +64127,15 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glUseProgramStages = loader_glUseProgramStages;
   tbl.glValidateProgramPipeline = loader_glValidateProgramPipeline;
 
+  // GL_ARB_shader_atomic_counters
+
+  tbl.glGetActiveAtomicCounterBufferiv = loader_glGetActiveAtomicCounterBufferiv;
+
+  // GL_ARB_shader_image_load_store
+
+  tbl.glBindImageTexture = loader_glBindImageTexture;
+  tbl.glMemoryBarrier = loader_glMemoryBarrier;
+
   // GL_ARB_shader_objects
 
   tbl.glAttachObjectARB = loader_glAttachObjectARB;
@@ -62089,6 +64178,10 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glUseProgramObjectARB = loader_glUseProgramObjectARB;
   tbl.glValidateProgramARB = loader_glValidateProgramARB;
 
+  // GL_ARB_shader_storage_buffer_object
+
+  tbl.glShaderStorageBlockBinding = loader_glShaderStorageBlockBinding;
+
   // GL_ARB_shader_subroutine
 
   tbl.glGetActiveSubroutineName = loader_glGetActiveSubroutineName;
@@ -62128,6 +64221,11 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glTexBufferARB = loader_glTexBufferARB;
 
+  // GL_ARB_texture_buffer_range
+
+  tbl.glTexBufferRange = loader_glTexBufferRange;
+  tbl.glTextureBufferRangeEXT = loader_glTextureBufferRangeEXT;
+
   // GL_ARB_texture_compression
 
   tbl.glCompressedTexImage1DARB = loader_glCompressedTexImage1DARB;
@@ -62153,6 +64251,17 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glTextureStorage1DEXT = loader_glTextureStorage1DEXT;
   tbl.glTextureStorage2DEXT = loader_glTextureStorage2DEXT;
   tbl.glTextureStorage3DEXT = loader_glTextureStorage3DEXT;
+
+  // GL_ARB_texture_storage_multisample
+
+  tbl.glTexStorage2DMultisample = loader_glTexStorage2DMultisample;
+  tbl.glTexStorage3DMultisample = loader_glTexStorage3DMultisample;
+  tbl.glTextureStorage2DMultisampleEXT = loader_glTextureStorage2DMultisampleEXT;
+  tbl.glTextureStorage3DMultisampleEXT = loader_glTextureStorage3DMultisampleEXT;
+
+  // GL_ARB_texture_view
+
+  tbl.glTextureView = loader_glTextureView;
 
   // GL_ARB_timer_query
 
@@ -62221,6 +64330,15 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glVertexAttribL4d = loader_glVertexAttribL4d;
   tbl.glVertexAttribL4dv = loader_glVertexAttribL4dv;
   tbl.glVertexAttribLPointer = loader_glVertexAttribLPointer;
+
+  // GL_ARB_vertex_attrib_binding
+
+  tbl.glBindVertexBuffer = loader_glBindVertexBuffer;
+  tbl.glVertexAttribBinding = loader_glVertexAttribBinding;
+  tbl.glVertexAttribFormat = loader_glVertexAttribFormat;
+  tbl.glVertexAttribIFormat = loader_glVertexAttribIFormat;
+  tbl.glVertexAttribLFormat = loader_glVertexAttribLFormat;
+  tbl.glVertexBindingDivisor = loader_glVertexBindingDivisor;
 
   // GL_ARB_vertex_blend
 
@@ -62635,7 +64753,13 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glCopyTextureSubImage2DEXT = loader_glCopyTextureSubImage2DEXT;
   tbl.glCopyTextureSubImage3DEXT = loader_glCopyTextureSubImage3DEXT;
   tbl.glDisableClientStateIndexedEXT = loader_glDisableClientStateIndexedEXT;
+  tbl.glDisableClientStateiEXT = loader_glDisableClientStateiEXT;
+  tbl.glDisableVertexArrayAttribEXT = loader_glDisableVertexArrayAttribEXT;
+  tbl.glDisableVertexArrayEXT = loader_glDisableVertexArrayEXT;
   tbl.glEnableClientStateIndexedEXT = loader_glEnableClientStateIndexedEXT;
+  tbl.glEnableClientStateiEXT = loader_glEnableClientStateiEXT;
+  tbl.glEnableVertexArrayAttribEXT = loader_glEnableVertexArrayAttribEXT;
+  tbl.glEnableVertexArrayEXT = loader_glEnableVertexArrayEXT;
   tbl.glFlushMappedNamedBufferRangeEXT = loader_glFlushMappedNamedBufferRangeEXT;
   tbl.glFramebufferDrawBufferEXT = loader_glFramebufferDrawBufferEXT;
   tbl.glFramebufferDrawBuffersEXT = loader_glFramebufferDrawBuffersEXT;
@@ -62645,7 +64769,9 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glGetCompressedMultiTexImageEXT = loader_glGetCompressedMultiTexImageEXT;
   tbl.glGetCompressedTextureImageEXT = loader_glGetCompressedTextureImageEXT;
   tbl.glGetDoubleIndexedvEXT = loader_glGetDoubleIndexedvEXT;
+  tbl.glGetDoublei_vEXT = loader_glGetDoublei_vEXT;
   tbl.glGetFloatIndexedvEXT = loader_glGetFloatIndexedvEXT;
+  tbl.glGetFloati_vEXT = loader_glGetFloati_vEXT;
   tbl.glGetFramebufferParameterivEXT = loader_glGetFramebufferParameterivEXT;
   tbl.glGetMultiTexEnvfvEXT = loader_glGetMultiTexEnvfvEXT;
   tbl.glGetMultiTexEnvivEXT = loader_glGetMultiTexEnvivEXT;
@@ -62678,6 +64804,10 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glGetTextureParameterIuivEXT = loader_glGetTextureParameterIuivEXT;
   tbl.glGetTextureParameterfvEXT = loader_glGetTextureParameterfvEXT;
   tbl.glGetTextureParameterivEXT = loader_glGetTextureParameterivEXT;
+  tbl.glGetVertexArrayIntegeri_vEXT = loader_glGetVertexArrayIntegeri_vEXT;
+  tbl.glGetVertexArrayIntegervEXT = loader_glGetVertexArrayIntegervEXT;
+  tbl.glGetVertexArrayPointeri_vEXT = loader_glGetVertexArrayPointeri_vEXT;
+  tbl.glGetVertexArrayPointervEXT = loader_glGetVertexArrayPointervEXT;
   tbl.glMapNamedBufferEXT = loader_glMapNamedBufferEXT;
   tbl.glMapNamedBufferRangeEXT = loader_glMapNamedBufferRangeEXT;
   tbl.glMatrixFrustumEXT = loader_glMatrixFrustumEXT;
@@ -62815,6 +64945,17 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glTextureSubImage2DEXT = loader_glTextureSubImage2DEXT;
   tbl.glTextureSubImage3DEXT = loader_glTextureSubImage3DEXT;
   tbl.glUnmapNamedBufferEXT = loader_glUnmapNamedBufferEXT;
+  tbl.glVertexArrayColorOffsetEXT = loader_glVertexArrayColorOffsetEXT;
+  tbl.glVertexArrayEdgeFlagOffsetEXT = loader_glVertexArrayEdgeFlagOffsetEXT;
+  tbl.glVertexArrayFogCoordOffsetEXT = loader_glVertexArrayFogCoordOffsetEXT;
+  tbl.glVertexArrayIndexOffsetEXT = loader_glVertexArrayIndexOffsetEXT;
+  tbl.glVertexArrayMultiTexCoordOffsetEXT = loader_glVertexArrayMultiTexCoordOffsetEXT;
+  tbl.glVertexArrayNormalOffsetEXT = loader_glVertexArrayNormalOffsetEXT;
+  tbl.glVertexArraySecondaryColorOffsetEXT = loader_glVertexArraySecondaryColorOffsetEXT;
+  tbl.glVertexArrayTexCoordOffsetEXT = loader_glVertexArrayTexCoordOffsetEXT;
+  tbl.glVertexArrayVertexAttribIOffsetEXT = loader_glVertexArrayVertexAttribIOffsetEXT;
+  tbl.glVertexArrayVertexAttribOffsetEXT = loader_glVertexArrayVertexAttribOffsetEXT;
+  tbl.glVertexArrayVertexOffsetEXT = loader_glVertexArrayVertexOffsetEXT;
 
   // GL_EXT_draw_buffers2
 
@@ -62893,6 +65034,8 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   // GL_EXT_geometry_shader4
 
+  tbl.glFramebufferTextureEXT = loader_glFramebufferTextureEXT;
+  tbl.glFramebufferTextureFaceEXT = loader_glFramebufferTextureFaceEXT;
   tbl.glProgramParameteriEXT = loader_glProgramParameteriEXT;
 
   // GL_EXT_gpu_program_parameters
@@ -62905,6 +65048,8 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glBindFragDataLocationEXT = loader_glBindFragDataLocationEXT;
   tbl.glGetFragDataLocationEXT = loader_glGetFragDataLocationEXT;
   tbl.glGetUniformuivEXT = loader_glGetUniformuivEXT;
+  tbl.glGetVertexAttribIivEXT = loader_glGetVertexAttribIivEXT;
+  tbl.glGetVertexAttribIuivEXT = loader_glGetVertexAttribIuivEXT;
   tbl.glUniform1uiEXT = loader_glUniform1uiEXT;
   tbl.glUniform1uivEXT = loader_glUniform1uivEXT;
   tbl.glUniform2uiEXT = loader_glUniform2uiEXT;
@@ -62913,6 +65058,27 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glUniform3uivEXT = loader_glUniform3uivEXT;
   tbl.glUniform4uiEXT = loader_glUniform4uiEXT;
   tbl.glUniform4uivEXT = loader_glUniform4uivEXT;
+  tbl.glVertexAttribI1iEXT = loader_glVertexAttribI1iEXT;
+  tbl.glVertexAttribI1ivEXT = loader_glVertexAttribI1ivEXT;
+  tbl.glVertexAttribI1uiEXT = loader_glVertexAttribI1uiEXT;
+  tbl.glVertexAttribI1uivEXT = loader_glVertexAttribI1uivEXT;
+  tbl.glVertexAttribI2iEXT = loader_glVertexAttribI2iEXT;
+  tbl.glVertexAttribI2ivEXT = loader_glVertexAttribI2ivEXT;
+  tbl.glVertexAttribI2uiEXT = loader_glVertexAttribI2uiEXT;
+  tbl.glVertexAttribI2uivEXT = loader_glVertexAttribI2uivEXT;
+  tbl.glVertexAttribI3iEXT = loader_glVertexAttribI3iEXT;
+  tbl.glVertexAttribI3ivEXT = loader_glVertexAttribI3ivEXT;
+  tbl.glVertexAttribI3uiEXT = loader_glVertexAttribI3uiEXT;
+  tbl.glVertexAttribI3uivEXT = loader_glVertexAttribI3uivEXT;
+  tbl.glVertexAttribI4bvEXT = loader_glVertexAttribI4bvEXT;
+  tbl.glVertexAttribI4iEXT = loader_glVertexAttribI4iEXT;
+  tbl.glVertexAttribI4ivEXT = loader_glVertexAttribI4ivEXT;
+  tbl.glVertexAttribI4svEXT = loader_glVertexAttribI4svEXT;
+  tbl.glVertexAttribI4ubvEXT = loader_glVertexAttribI4ubvEXT;
+  tbl.glVertexAttribI4uiEXT = loader_glVertexAttribI4uiEXT;
+  tbl.glVertexAttribI4uivEXT = loader_glVertexAttribI4uivEXT;
+  tbl.glVertexAttribI4usvEXT = loader_glVertexAttribI4usvEXT;
+  tbl.glVertexAttribIPointerEXT = loader_glVertexAttribIPointerEXT;
 
   // GL_EXT_histogram
 
@@ -62960,10 +65126,10 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   // GL_EXT_pixel_transform
 
+  tbl.glGetPixelTransformParameterfvEXT = loader_glGetPixelTransformParameterfvEXT;
+  tbl.glGetPixelTransformParameterivEXT = loader_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = loader_glPixelTransformParameterfEXT;
-  tbl.glPixelTransformParameterfvEXT = loader_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = loader_glPixelTransformParameteriEXT;
-  tbl.glPixelTransformParameterivEXT = loader_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -63207,6 +65373,18 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glTexScissorFuncINTEL = loader_glTexScissorFuncINTEL;
   tbl.glTexScissorINTEL = loader_glTexScissorINTEL;
 
+  // GL_KHR_debug
+
+  tbl.glDebugMessageCallback = loader_glDebugMessageCallback;
+  tbl.glDebugMessageControl = loader_glDebugMessageControl;
+  tbl.glDebugMessageInsert = loader_glDebugMessageInsert;
+  tbl.glGetDebugMessageLog = loader_glGetDebugMessageLog;
+  tbl.glGetObjectLabel = loader_glGetObjectLabel;
+  tbl.glGetObjectPtrLabel = loader_glGetObjectPtrLabel;
+  tbl.glObjectLabel = loader_glObjectLabel;
+  tbl.glObjectPtrLabel = loader_glObjectPtrLabel;
+  tbl.glPushDebugGroup = loader_glPushDebugGroup;
+
   // GL_KTX_buffer_region
 
   tbl.glBufferRegionEnabledEXT = loader_glBufferRegionEnabledEXT;
@@ -63320,8 +65498,6 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   // GL_NV_geometry_program4
 
-  tbl.glFramebufferTextureEXT = loader_glFramebufferTextureEXT;
-  tbl.glFramebufferTextureFaceEXT = loader_glFramebufferTextureFaceEXT;
   tbl.glProgramVertexLimitNV = loader_glProgramVertexLimitNV;
 
   // GL_NV_gpu_program4
@@ -63716,32 +65892,6 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glVertexAttribs4fvNV = loader_glVertexAttribs4fvNV;
   tbl.glVertexAttribs4svNV = loader_glVertexAttribs4svNV;
   tbl.glVertexAttribs4ubvNV = loader_glVertexAttribs4ubvNV;
-
-  // GL_NV_vertex_program4
-
-  tbl.glGetVertexAttribIivEXT = loader_glGetVertexAttribIivEXT;
-  tbl.glGetVertexAttribIuivEXT = loader_glGetVertexAttribIuivEXT;
-  tbl.glVertexAttribI1iEXT = loader_glVertexAttribI1iEXT;
-  tbl.glVertexAttribI1ivEXT = loader_glVertexAttribI1ivEXT;
-  tbl.glVertexAttribI1uiEXT = loader_glVertexAttribI1uiEXT;
-  tbl.glVertexAttribI1uivEXT = loader_glVertexAttribI1uivEXT;
-  tbl.glVertexAttribI2iEXT = loader_glVertexAttribI2iEXT;
-  tbl.glVertexAttribI2ivEXT = loader_glVertexAttribI2ivEXT;
-  tbl.glVertexAttribI2uiEXT = loader_glVertexAttribI2uiEXT;
-  tbl.glVertexAttribI2uivEXT = loader_glVertexAttribI2uivEXT;
-  tbl.glVertexAttribI3iEXT = loader_glVertexAttribI3iEXT;
-  tbl.glVertexAttribI3ivEXT = loader_glVertexAttribI3ivEXT;
-  tbl.glVertexAttribI3uiEXT = loader_glVertexAttribI3uiEXT;
-  tbl.glVertexAttribI3uivEXT = loader_glVertexAttribI3uivEXT;
-  tbl.glVertexAttribI4bvEXT = loader_glVertexAttribI4bvEXT;
-  tbl.glVertexAttribI4iEXT = loader_glVertexAttribI4iEXT;
-  tbl.glVertexAttribI4ivEXT = loader_glVertexAttribI4ivEXT;
-  tbl.glVertexAttribI4svEXT = loader_glVertexAttribI4svEXT;
-  tbl.glVertexAttribI4ubvEXT = loader_glVertexAttribI4ubvEXT;
-  tbl.glVertexAttribI4uiEXT = loader_glVertexAttribI4uiEXT;
-  tbl.glVertexAttribI4uivEXT = loader_glVertexAttribI4uivEXT;
-  tbl.glVertexAttribI4usvEXT = loader_glVertexAttribI4usvEXT;
-  tbl.glVertexAttribIPointerEXT = loader_glVertexAttribIPointerEXT;
 
   // GL_NV_video_capture
 
