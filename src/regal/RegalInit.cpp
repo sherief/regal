@@ -101,11 +101,11 @@ DispatchTableGlobal dispatchTableGlobal;
     struct RegalPrivateTlsInit {
         RegalPrivateTlsInit()
         {
-	    regalCurrentContextTLSIDX = TlsAlloc();
+            regalCurrentContextTLSIDX = TlsAlloc();
         }
         ~RegalPrivateTlsInit()
         {
-	    TlsFree( regalCurrentContextTLSIDX );
+            TlsFree( regalCurrentContextTLSIDX );
         }
     };
     RegalPrivateTlsInit regalPrivateTlsInit;
@@ -159,9 +159,9 @@ void RegalPrivateMakeCurrent(RegalSystemContext sysCtx)
             ctx = new RegalContext();
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
-            if (regalCurrentContextTLSIDX == ~0) 
-  	        regalCurrentContextTLSIDX = TlsAlloc();
-	    TlsSetValue( regalCurrentContextTLSIDX, ctx );
+            if (regalCurrentContextTLSIDX == ~0)
+                regalCurrentContextTLSIDX = TlsAlloc();
+            TlsSetValue( regalCurrentContextTLSIDX, ctx );
 #else
             regalCurrentContext = ctx;
 #endif
@@ -190,14 +190,14 @@ void RegalPrivateMakeCurrent(RegalSystemContext sysCtx)
     ctx->thread = thread;
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
-       if (regalCurrentContextTLSIDX == ~0) 
-           regalCurrentContextTLSIDX = TlsAlloc();
-	TlsSetValue( regalCurrentContextTLSIDX, ctx );
+    if (regalCurrentContextTLSIDX == ~0)
+        regalCurrentContextTLSIDX = TlsAlloc();
+    TlsSetValue( regalCurrentContextTLSIDX, ctx );
 #else
-        regalCurrentContext = ctx;
+    regalCurrentContext = ctx;
 #endif
 #else
-        pthread_setspecific( regalPrivateCurrentContextKey, ctx );
+    pthread_setspecific( regalPrivateCurrentContextKey, ctx );
 #endif
   } else {
     if( th2rc.count( thread ) ) {

@@ -1485,12 +1485,12 @@ void RFF::InitFixedFunction( RegalContext * ctx ) {
     fmtmap[ GL_RGBA12 ] = GL_RGBA;
     fmtmap[ GL_RGBA16 ] = GL_RGBA;
 
-	fmtmap[ GL_RGBA16F ] = GL_RGBA16F;
-	fmtmap[ GL_SRGB8_ALPHA8 ] = GL_SRGB8_ALPHA8;
-
-  fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
-  fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
-  fmtmap[ GL_INTENSITY16F_ARB ] = GL_INTENSITY;
+    fmtmap[ GL_RGBA16F ] = GL_RGBA16F;
+    fmtmap[ GL_SRGB8_ALPHA8 ] = GL_SRGB8_ALPHA8;
+  
+    fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
+    fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
+    fmtmap[ GL_INTENSITY16F_ARB ] = GL_INTENSITY;
 }
 
 void RFF::ShadowMultiTexBinding( GLenum texunit, GLenum target, GLuint obj ) {
@@ -1953,11 +1953,13 @@ void RFF::UseShaderProgram( RegalContext * ctx ) {
     UpdateUniforms( ctx );
 }
 
-void RFF::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar **string, const GLint *length) {
-	if( string[0][0] == '#' && string[0][1] == 'v' ) {
-		ctx->dsp->emuTbl.glShaderSource( shader, count, string, length );
-		return;
-	}
+void RFF::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
+{
+    if( string[0][0] == '#' && string[0][1] == 'v' ) {
+      ctx->dsp->emuTbl.glShaderSource( shader, count, string, length );
+      return;
+    }
+
     std::vector< const GLchar * > s;
     s.resize( count + 1 );
     std::vector< GLint > l;

@@ -223,7 +223,7 @@ void *GetProcAddress( const char * entry )
     if (lib_OpenGLES == NULL) {
         lib_OpenGLES = dlopen( "/System/Library/Frameworks/OpenGLES.framework/OpenGLES", RTLD_LAZY );
     }
-    
+
     if (!entry)
         return NULL;
 

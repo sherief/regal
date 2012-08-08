@@ -197,9 +197,9 @@ namespace Logging {
       buffer->push_back(string());
       buffer->back().swap(str);
       bufferSize++;
-  
+
       // Prune the buffer list, as necessary
-  
+
       while (bufferSize>bufferLimit)
       {
         buffer->pop_front();
