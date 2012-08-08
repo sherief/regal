@@ -13866,41 +13866,41 @@ static void REGAL_CALL debug_glPushDebugGroup(GLenum source, GLuint id, GLsizei 
 
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL debug_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL debug_glBufferRegionEnabled(void)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabledEXT();
+  GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabled();
   return ret;
 }
 
-static void REGAL_CALL debug_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL debug_glDeleteBufferRegion(GLenum region)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glDeleteBufferRegionEXT(region);
+  rCtx->dsp->curr->glDeleteBufferRegion(region);
 }
 
-static void REGAL_CALL debug_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL debug_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+  rCtx->dsp->curr->glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
 
-static GLuint REGAL_CALL debug_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL debug_glNewBufferRegion(GLenum region)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  GLuint  ret = rCtx->dsp->curr->glNewBufferRegionEXT(region);
+  GLuint  ret = rCtx->dsp->curr->glNewBufferRegion(region);
   return ret;
 }
 
-static void REGAL_CALL debug_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL debug_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-  rCtx->dsp->curr->glReadBufferRegionEXT(region, x, y, width, height);
+  rCtx->dsp->curr->glReadBufferRegion(region, x, y, width, height);
 }
 
 // GL_MESA_resize_buffers
@@ -20375,11 +20375,11 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = debug_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = debug_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = debug_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = debug_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = debug_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = debug_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = debug_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = debug_glDrawBufferRegion;
+  tbl.glNewBufferRegion = debug_glNewBufferRegion;
+  tbl.glReadBufferRegion = debug_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 

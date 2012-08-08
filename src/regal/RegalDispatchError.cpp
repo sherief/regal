@@ -44402,9 +44402,9 @@ static void REGAL_CALL error_glPushDebugGroup(GLenum source, GLuint id, GLsizei 
 
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL error_glBufferRegionEnabled(void)
 {
-    ITrace("error_glBufferRegionEnabledEXT");
+    ITrace("error_glBufferRegionEnabled");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -44414,11 +44414,11 @@ static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabledEXT();
+    GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabled();
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glBufferRegionEnabledEXT : ",Token::GLerrorToString(_error));
+        Error("glBufferRegionEnabled : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -44426,9 +44426,9 @@ static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
 return ret;
 }
 
-static void REGAL_CALL error_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL error_glDeleteBufferRegion(GLenum region)
 {
-    ITrace("error_glDeleteBufferRegionEXT");
+    ITrace("error_glDeleteBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -44438,20 +44438,20 @@ static void REGAL_CALL error_glDeleteBufferRegionEXT(GLenum region)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glDeleteBufferRegionEXT(region);
+    rCtx->dsp->curr->glDeleteBufferRegion(region);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glDeleteBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glDeleteBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
     }
 }
 
-static void REGAL_CALL error_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL error_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
-    ITrace("error_glDrawBufferRegionEXT");
+    ITrace("error_glDrawBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -44461,20 +44461,20 @@ static void REGAL_CALL error_glDrawBufferRegionEXT(GLuint region, GLint x, GLint
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+    rCtx->dsp->curr->glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glDrawBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glDrawBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
     }
 }
 
-static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL error_glNewBufferRegion(GLenum region)
 {
-    ITrace("error_glNewBufferRegionEXT");
+    ITrace("error_glNewBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -44484,11 +44484,11 @@ static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    GLuint  ret = rCtx->dsp->curr->glNewBufferRegionEXT(region);
+    GLuint  ret = rCtx->dsp->curr->glNewBufferRegion(region);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glNewBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glNewBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -44496,9 +44496,9 @@ static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
 return ret;
 }
 
-static void REGAL_CALL error_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL error_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    ITrace("error_glReadBufferRegionEXT");
+    ITrace("error_glReadBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -44508,11 +44508,11 @@ static void REGAL_CALL error_glReadBufferRegionEXT(GLuint region, GLint x, GLint
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glReadBufferRegionEXT(region, x, y, width, height);
+    rCtx->dsp->curr->glReadBufferRegion(region, x, y, width, height);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glReadBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glReadBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -59823,11 +59823,11 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = error_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = error_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = error_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = error_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = error_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = error_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = error_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = error_glDrawBufferRegion;
+  tbl.glNewBufferRegion = error_glNewBufferRegion;
+  tbl.glReadBufferRegion = error_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 

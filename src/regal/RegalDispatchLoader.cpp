@@ -48716,54 +48716,54 @@ static void REGAL_CALL loader_glPushDebugGroup(GLenum source, GLuint id, GLsizei
 
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL missing_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL missing_glBufferRegionEnabled(void)
 {
-   Warning( "glBufferRegionEnabledEXT not available." );
+   Warning( "glBufferRegionEnabled not available." );
   GLuint  ret = (GLuint )0;
   return ret;
 }
 
-static GLuint REGAL_CALL loader_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL loader_glBufferRegionEnabled(void)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
    RegalAssert(rCtx);
    RegalAssert(rCtx->dsp);
    DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glBufferRegionEnabledEXT, "glBufferRegionEnabledEXT");
-   if ( !driverTbl.glBufferRegionEnabledEXT ) {
-      driverTbl.glBufferRegionEnabledEXT = missing_glBufferRegionEnabledEXT;
+   GetProcAddress( driverTbl.glBufferRegionEnabled, "glBufferRegionEnabled");
+   if ( !driverTbl.glBufferRegionEnabled ) {
+      driverTbl.glBufferRegionEnabled = missing_glBufferRegionEnabled;
    }
    // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glBufferRegionEnabledEXT == loader_glBufferRegionEnabledEXT) {
-      rCtx->dsp->emuTbl.glBufferRegionEnabledEXT = driverTbl.glBufferRegionEnabledEXT;
+   if (rCtx->dsp->emuTbl.glBufferRegionEnabled == loader_glBufferRegionEnabled) {
+      rCtx->dsp->emuTbl.glBufferRegionEnabled = driverTbl.glBufferRegionEnabled;
    }
-   return driverTbl.glBufferRegionEnabledEXT();
+   return driverTbl.glBufferRegionEnabled();
 }
 
-static void REGAL_CALL missing_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL missing_glDeleteBufferRegion(GLenum region)
 {
    UNUSED_PARAMETER(region);
-   Warning( "glDeleteBufferRegionEXT not available." );
+   Warning( "glDeleteBufferRegion not available." );
 }
 
-static void REGAL_CALL loader_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL loader_glDeleteBufferRegion(GLenum region)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
    RegalAssert(rCtx);
    RegalAssert(rCtx->dsp);
    DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glDeleteBufferRegionEXT, "glDeleteBufferRegionEXT");
-   if ( !driverTbl.glDeleteBufferRegionEXT ) {
-      driverTbl.glDeleteBufferRegionEXT = missing_glDeleteBufferRegionEXT;
+   GetProcAddress( driverTbl.glDeleteBufferRegion, "glDeleteBufferRegion");
+   if ( !driverTbl.glDeleteBufferRegion ) {
+      driverTbl.glDeleteBufferRegion = missing_glDeleteBufferRegion;
    }
    // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glDeleteBufferRegionEXT == loader_glDeleteBufferRegionEXT) {
-      rCtx->dsp->emuTbl.glDeleteBufferRegionEXT = driverTbl.glDeleteBufferRegionEXT;
+   if (rCtx->dsp->emuTbl.glDeleteBufferRegion == loader_glDeleteBufferRegion) {
+      rCtx->dsp->emuTbl.glDeleteBufferRegion = driverTbl.glDeleteBufferRegion;
    }
-   driverTbl.glDeleteBufferRegionEXT(region);
+   driverTbl.glDeleteBufferRegion(region);
 }
 
-static void REGAL_CALL missing_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL missing_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
    UNUSED_PARAMETER(region);
    UNUSED_PARAMETER(x);
@@ -48772,76 +48772,76 @@ static void REGAL_CALL missing_glDrawBufferRegionEXT(GLuint region, GLint x, GLi
    UNUSED_PARAMETER(height);
    UNUSED_PARAMETER(xDest);
    UNUSED_PARAMETER(yDest);
-   Warning( "glDrawBufferRegionEXT not available." );
+   Warning( "glDrawBufferRegion not available." );
 }
 
-static void REGAL_CALL loader_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL loader_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
    RegalAssert(rCtx);
    RegalAssert(rCtx->dsp);
    DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glDrawBufferRegionEXT, "glDrawBufferRegionEXT");
-   if ( !driverTbl.glDrawBufferRegionEXT ) {
-      driverTbl.glDrawBufferRegionEXT = missing_glDrawBufferRegionEXT;
+   GetProcAddress( driverTbl.glDrawBufferRegion, "glDrawBufferRegion");
+   if ( !driverTbl.glDrawBufferRegion ) {
+      driverTbl.glDrawBufferRegion = missing_glDrawBufferRegion;
    }
    // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glDrawBufferRegionEXT == loader_glDrawBufferRegionEXT) {
-      rCtx->dsp->emuTbl.glDrawBufferRegionEXT = driverTbl.glDrawBufferRegionEXT;
+   if (rCtx->dsp->emuTbl.glDrawBufferRegion == loader_glDrawBufferRegion) {
+      rCtx->dsp->emuTbl.glDrawBufferRegion = driverTbl.glDrawBufferRegion;
    }
-   driverTbl.glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+   driverTbl.glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
 
-static GLuint REGAL_CALL missing_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL missing_glNewBufferRegion(GLenum region)
 {
    UNUSED_PARAMETER(region);
-   Warning( "glNewBufferRegionEXT not available." );
+   Warning( "glNewBufferRegion not available." );
   GLuint  ret = (GLuint )0;
   return ret;
 }
 
-static GLuint REGAL_CALL loader_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL loader_glNewBufferRegion(GLenum region)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
    RegalAssert(rCtx);
    RegalAssert(rCtx->dsp);
    DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glNewBufferRegionEXT, "glNewBufferRegionEXT");
-   if ( !driverTbl.glNewBufferRegionEXT ) {
-      driverTbl.glNewBufferRegionEXT = missing_glNewBufferRegionEXT;
+   GetProcAddress( driverTbl.glNewBufferRegion, "glNewBufferRegion");
+   if ( !driverTbl.glNewBufferRegion ) {
+      driverTbl.glNewBufferRegion = missing_glNewBufferRegion;
    }
    // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glNewBufferRegionEXT == loader_glNewBufferRegionEXT) {
-      rCtx->dsp->emuTbl.glNewBufferRegionEXT = driverTbl.glNewBufferRegionEXT;
+   if (rCtx->dsp->emuTbl.glNewBufferRegion == loader_glNewBufferRegion) {
+      rCtx->dsp->emuTbl.glNewBufferRegion = driverTbl.glNewBufferRegion;
    }
-   return driverTbl.glNewBufferRegionEXT(region);
+   return driverTbl.glNewBufferRegion(region);
 }
 
-static void REGAL_CALL missing_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL missing_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
    UNUSED_PARAMETER(region);
    UNUSED_PARAMETER(x);
    UNUSED_PARAMETER(y);
    UNUSED_PARAMETER(width);
    UNUSED_PARAMETER(height);
-   Warning( "glReadBufferRegionEXT not available." );
+   Warning( "glReadBufferRegion not available." );
 }
 
-static void REGAL_CALL loader_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL loader_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
    RegalAssert(rCtx);
    RegalAssert(rCtx->dsp);
    DispatchTable & driverTbl = rCtx->dsp->driverTbl;
-   GetProcAddress( driverTbl.glReadBufferRegionEXT, "glReadBufferRegionEXT");
-   if ( !driverTbl.glReadBufferRegionEXT ) {
-      driverTbl.glReadBufferRegionEXT = missing_glReadBufferRegionEXT;
+   GetProcAddress( driverTbl.glReadBufferRegion, "glReadBufferRegion");
+   if ( !driverTbl.glReadBufferRegion ) {
+      driverTbl.glReadBufferRegion = missing_glReadBufferRegion;
    }
    // If emu table is using the loader, update its entry too.
-   if (rCtx->dsp->emuTbl.glReadBufferRegionEXT == loader_glReadBufferRegionEXT) {
-      rCtx->dsp->emuTbl.glReadBufferRegionEXT = driverTbl.glReadBufferRegionEXT;
+   if (rCtx->dsp->emuTbl.glReadBufferRegion == loader_glReadBufferRegion) {
+      rCtx->dsp->emuTbl.glReadBufferRegion = driverTbl.glReadBufferRegion;
    }
-   driverTbl.glReadBufferRegionEXT(region, x, y, width, height);
+   driverTbl.glReadBufferRegion(region, x, y, width, height);
 }
 
 // GL_MESA_resize_buffers
@@ -65387,11 +65387,11 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = loader_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = loader_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = loader_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = loader_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = loader_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = loader_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = loader_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = loader_glDrawBufferRegion;
+  tbl.glNewBufferRegion = loader_glNewBufferRegion;
+  tbl.glReadBufferRegion = loader_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 

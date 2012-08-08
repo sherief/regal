@@ -51,6 +51,8 @@
 # else
 #  define REGAL_SYS_OSX 1
 # endif
+#elif defined(__native_client__)
+#  define REGAL_SYS_NACL 1
 #elif defined(__ANDROID__)
 #  define REGAL_SYS_ANDROID 1
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
@@ -15033,27 +15035,27 @@ REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei le
 #endif
 
 #ifndef REGAL_NO_TYPEDEF_GL_KTX_BUFFER_REGION
-typedef GLuint (REGAL_CALL *PFNGLBUFFERREGIONENABLEDEXTPROC)(void);
-typedef GLuint (REGAL_CALL *PFNGLNEWBUFFERREGIONEXTPROC)(GLenum region);
-typedef void (REGAL_CALL *PFNGLDELETEBUFFERREGIONEXTPROC)(GLenum region);
-typedef void (REGAL_CALL *PFNGLDRAWBUFFERREGIONEXTPROC)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
-typedef void (REGAL_CALL *PFNGLREADBUFFERREGIONEXTPROC)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef GLuint (REGAL_CALL *PFNGLBUFFERREGIONENABLEDPROC)(void);
+typedef GLuint (REGAL_CALL *PFNGLNEWBUFFERREGIONPROC)(GLenum region);
+typedef void (REGAL_CALL *PFNGLDELETEBUFFERREGIONPROC)(GLenum region);
+typedef void (REGAL_CALL *PFNGLDRAWBUFFERREGIONPROC)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+typedef void (REGAL_CALL *PFNGLREADBUFFERREGIONPROC)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 #ifndef REGAL_NO_NAMESPACE_GL_KTX_BUFFER_REGION
-#define glBufferRegionEnabledEXT            rglBufferRegionEnabledEXT
-#define glDeleteBufferRegionEXT             rglDeleteBufferRegionEXT
-#define glDrawBufferRegionEXT               rglDrawBufferRegionEXT
-#define glNewBufferRegionEXT                rglNewBufferRegionEXT
-#define glReadBufferRegionEXT               rglReadBufferRegionEXT
+#define glBufferRegionEnabled               rglBufferRegionEnabled
+#define glDeleteBufferRegion                rglDeleteBufferRegion
+#define glDrawBufferRegion                  rglDrawBufferRegion
+#define glNewBufferRegion                   rglNewBufferRegion
+#define glReadBufferRegion                  rglReadBufferRegion
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_KTX_BUFFER_REGION
-REGAL_DECL GLuint REGAL_CALL glBufferRegionEnabledEXT(void);
-REGAL_DECL GLuint REGAL_CALL glNewBufferRegionEXT(GLenum region);
-REGAL_DECL void REGAL_CALL glDeleteBufferRegionEXT(GLenum region);
-REGAL_DECL void REGAL_CALL glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
-REGAL_DECL void REGAL_CALL glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL GLuint REGAL_CALL glBufferRegionEnabled(void);
+REGAL_DECL GLuint REGAL_CALL glNewBufferRegion(GLenum region);
+REGAL_DECL void REGAL_CALL glDeleteBufferRegion(GLenum region);
+REGAL_DECL void REGAL_CALL glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+REGAL_DECL void REGAL_CALL glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 /**

@@ -3064,11 +3064,11 @@ struct DispatchTable {
 
     // GL_KTX_buffer_region
 
-    GLuint (REGAL_CALL *glBufferRegionEnabledEXT)(void);
-    void (REGAL_CALL *glDeleteBufferRegionEXT)(GLenum region);
-    void (REGAL_CALL *glDrawBufferRegionEXT)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
-    GLuint (REGAL_CALL *glNewBufferRegionEXT)(GLenum region);
-    void (REGAL_CALL *glReadBufferRegionEXT)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+    GLuint (REGAL_CALL *glBufferRegionEnabled)(void);
+    void (REGAL_CALL *glDeleteBufferRegion)(GLenum region);
+    void (REGAL_CALL *glDrawBufferRegion)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+    GLuint (REGAL_CALL *glNewBufferRegion)(GLenum region);
+    void (REGAL_CALL *glReadBufferRegion)(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
 
     // GL_MESA_resize_buffers
 

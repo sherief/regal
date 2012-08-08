@@ -21494,61 +21494,61 @@ static void REGAL_CALL log_glPushDebugGroup(GLenum source, GLuint id, GLsizei le
 
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL log_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL log_glBufferRegionEnabled(void)
 {
-    GTrace("glBufferRegionEnabledEXT()");
+    GTrace("glBufferRegionEnabled()");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    GLuint  ret = rCtx->dsp->driverTbl.glBufferRegionEnabledEXT();
+    GLuint  ret = rCtx->dsp->driverTbl.glBufferRegionEnabled();
     return ret;
 }
 
-static void REGAL_CALL log_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL log_glDeleteBufferRegion(GLenum region)
 {
-    GTrace("glDeleteBufferRegionEXT(", toString(region), ")");
+    GTrace("glDeleteBufferRegion(", toString(region), ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glDeleteBufferRegionEXT(region);
+    rCtx->dsp->driverTbl.glDeleteBufferRegion(region);
 }
 
-static void REGAL_CALL log_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL log_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
-    GTrace("glDrawBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
+    GTrace("glDrawBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+    rCtx->dsp->driverTbl.glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
 
-static GLuint REGAL_CALL log_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL log_glNewBufferRegion(GLenum region)
 {
-    GTrace("glNewBufferRegionEXT(", toString(region), ")");
+    GTrace("glNewBufferRegion(", toString(region), ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    GLuint  ret = rCtx->dsp->driverTbl.glNewBufferRegionEXT(region);
+    GLuint  ret = rCtx->dsp->driverTbl.glNewBufferRegion(region);
     return ret;
 }
 
-static void REGAL_CALL log_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL log_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    GTrace("glReadBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+    GTrace("glReadBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glReadBufferRegionEXT(region, x, y, width, height);
+    rCtx->dsp->driverTbl.glReadBufferRegion(region, x, y, width, height);
 }
 
 // GL_MESA_resize_buffers
@@ -30239,11 +30239,11 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = log_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = log_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = log_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = log_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = log_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = log_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = log_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = log_glDrawBufferRegion;
+  tbl.glNewBufferRegion = log_glNewBufferRegion;
+  tbl.glReadBufferRegion = log_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 

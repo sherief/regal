@@ -129,17 +129,13 @@ inline size_t length(unsigned char      val) { return unsigned_length(val); }
 inline size_t length(unsigned short     val) { return unsigned_length(val); }
 inline size_t length(unsigned int       val) { return unsigned_length(val); }
 inline size_t length(unsigned long      val) { return unsigned_length(val); }
-#if !defined(__native_client__)
 inline size_t length(unsigned long long val) { return unsigned_length(val); }
-#endif
 
 inline size_t length(signed char      val) { return signed_length<unsigned char     >(val); }
 inline size_t length(signed short     val) { return signed_length<unsigned short    >(val); }
 inline size_t length(signed int       val) { return signed_length<unsigned int      >(val); }
 inline size_t length(signed long      val) { return signed_length<unsigned long     >(val); }
-#if !defined(__native_client__)
 inline size_t length(signed long long val) { return signed_length<unsigned long long>(val); }
-#endif
 
 inline size_t length(char             )  { return 1;            }
 inline size_t length(const char   *val)  { return strlen(val);  }
