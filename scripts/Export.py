@@ -213,6 +213,8 @@ ${LICENSE}
 # else
 #  define REGAL_SYS_OSX 1
 # endif
+#elif defined(__native_client__)
+#  define REGAL_SYS_NACL 1
 #elif defined(__ANDROID__)
 #  define REGAL_SYS_ANDROID 1
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
@@ -861,7 +863,7 @@ ${EXT_INIT}
       maxVertexAttribs = REGAL_MAX_VERTEX_ATTRIBS;
 
   // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs
-  if (vendor == "Qualcomm")
+  if (vendor == "Qualcomm" || vendor == "Chromium")
     maxVertexAttribs = 8;
 }
 
@@ -1664,6 +1666,9 @@ def generateDefFile(apis, args, additional_exports):
   code1.sort()
   code2.sort()
   code3.sort()
+
+  code1.insert( 0, '  SetPixelFormat' )
+  code2.insert( 0, '  SetPixelFormat' )
 
   # RegalMakeCurrent, RegalSetErrorCallback
   code1 += ['  %s' % export for export in additional_exports]

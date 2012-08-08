@@ -31898,59 +31898,59 @@ gl.add(glPushDebugGroup)
 
 # GL_KTX_buffer_region
 
-glBufferRegionEnabledEXT = Function('glBufferRegionEnabledEXT')
-glBufferRegionEnabledEXT.ret = Return('GLuint')
-glBufferRegionEnabledEXT.version = ''
-glBufferRegionEnabledEXT.category = 'GL_KTX_buffer_region'
-glBufferRegionEnabledEXT.trace = True
-glBufferRegionEnabledEXT.play = True
-gl.add(glBufferRegionEnabledEXT)
+glBufferRegionEnabled = Function('glBufferRegionEnabled')
+glBufferRegionEnabled.ret = Return('GLuint')
+glBufferRegionEnabled.version = ''
+glBufferRegionEnabled.category = 'GL_KTX_buffer_region'
+glBufferRegionEnabled.trace = True
+glBufferRegionEnabled.play = True
+gl.add(glBufferRegionEnabled)
 
-glDeleteBufferRegionEXT = Function('glDeleteBufferRegionEXT')
-glDeleteBufferRegionEXT.ret = Return('void')
-glDeleteBufferRegionEXT.add( Input( 'region','GLenum' ))
-glDeleteBufferRegionEXT.version = ''
-glDeleteBufferRegionEXT.category = 'GL_KTX_buffer_region'
-glDeleteBufferRegionEXT.trace = True
-glDeleteBufferRegionEXT.play = True
-gl.add(glDeleteBufferRegionEXT)
+glDeleteBufferRegion = Function('glDeleteBufferRegion')
+glDeleteBufferRegion.ret = Return('void')
+glDeleteBufferRegion.add( Input( 'region','GLenum' ))
+glDeleteBufferRegion.version = ''
+glDeleteBufferRegion.category = 'GL_KTX_buffer_region'
+glDeleteBufferRegion.trace = True
+glDeleteBufferRegion.play = True
+gl.add(glDeleteBufferRegion)
 
-glDrawBufferRegionEXT = Function('glDrawBufferRegionEXT')
-glDrawBufferRegionEXT.ret = Return('void')
-glDrawBufferRegionEXT.add( Input( 'region','GLuint' ))
-glDrawBufferRegionEXT.add( Input( 'x','GLint' ))
-glDrawBufferRegionEXT.add( Input( 'y','GLint' ))
-glDrawBufferRegionEXT.add( Input( 'width','GLsizei' ))
-glDrawBufferRegionEXT.add( Input( 'height','GLsizei' ))
-glDrawBufferRegionEXT.add( Input( 'xDest','GLint' ))
-glDrawBufferRegionEXT.add( Input( 'yDest','GLint' ))
-glDrawBufferRegionEXT.version = ''
-glDrawBufferRegionEXT.category = 'GL_KTX_buffer_region'
-glDrawBufferRegionEXT.trace = True
-glDrawBufferRegionEXT.play = True
-gl.add(glDrawBufferRegionEXT)
+glDrawBufferRegion = Function('glDrawBufferRegion')
+glDrawBufferRegion.ret = Return('void')
+glDrawBufferRegion.add( Input( 'region','GLuint' ))
+glDrawBufferRegion.add( Input( 'x','GLint' ))
+glDrawBufferRegion.add( Input( 'y','GLint' ))
+glDrawBufferRegion.add( Input( 'width','GLsizei' ))
+glDrawBufferRegion.add( Input( 'height','GLsizei' ))
+glDrawBufferRegion.add( Input( 'xDest','GLint' ))
+glDrawBufferRegion.add( Input( 'yDest','GLint' ))
+glDrawBufferRegion.version = ''
+glDrawBufferRegion.category = 'GL_KTX_buffer_region'
+glDrawBufferRegion.trace = True
+glDrawBufferRegion.play = True
+gl.add(glDrawBufferRegion)
 
-glNewBufferRegionEXT = Function('glNewBufferRegionEXT')
-glNewBufferRegionEXT.ret = Return('GLuint')
-glNewBufferRegionEXT.add( Input( 'region','GLenum' ))
-glNewBufferRegionEXT.version = ''
-glNewBufferRegionEXT.category = 'GL_KTX_buffer_region'
-glNewBufferRegionEXT.trace = True
-glNewBufferRegionEXT.play = True
-gl.add(glNewBufferRegionEXT)
+glNewBufferRegion = Function('glNewBufferRegion')
+glNewBufferRegion.ret = Return('GLuint')
+glNewBufferRegion.add( Input( 'region','GLenum' ))
+glNewBufferRegion.version = ''
+glNewBufferRegion.category = 'GL_KTX_buffer_region'
+glNewBufferRegion.trace = True
+glNewBufferRegion.play = True
+gl.add(glNewBufferRegion)
 
-glReadBufferRegionEXT = Function('glReadBufferRegionEXT')
-glReadBufferRegionEXT.ret = Return('void')
-glReadBufferRegionEXT.add( Input( 'region','GLuint' ))
-glReadBufferRegionEXT.add( Input( 'x','GLint' ))
-glReadBufferRegionEXT.add( Input( 'y','GLint' ))
-glReadBufferRegionEXT.add( Input( 'width','GLsizei' ))
-glReadBufferRegionEXT.add( Input( 'height','GLsizei' ))
-glReadBufferRegionEXT.version = ''
-glReadBufferRegionEXT.category = 'GL_KTX_buffer_region'
-glReadBufferRegionEXT.trace = True
-glReadBufferRegionEXT.play = True
-gl.add(glReadBufferRegionEXT)
+glReadBufferRegion = Function('glReadBufferRegion')
+glReadBufferRegion.ret = Return('void')
+glReadBufferRegion.add( Input( 'region','GLuint' ))
+glReadBufferRegion.add( Input( 'x','GLint' ))
+glReadBufferRegion.add( Input( 'y','GLint' ))
+glReadBufferRegion.add( Input( 'width','GLsizei' ))
+glReadBufferRegion.add( Input( 'height','GLsizei' ))
+glReadBufferRegion.version = ''
+glReadBufferRegion.category = 'GL_KTX_buffer_region'
+glReadBufferRegion.trace = True
+glReadBufferRegion.play = True
+gl.add(glReadBufferRegion)
 
 # GL_MESA_resize_buffers
 

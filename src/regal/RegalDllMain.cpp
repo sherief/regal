@@ -23,6 +23,26 @@ REGAL_NAMESPACE_BEGIN
 
 REGAL_NAMESPACE_END
 
+#undef WINGDIAPI
+#define WINGDIAPI __declspec(dllexport)
+
+#pragma warning( disable: 4273 )
+
+// We have to hijack SetPixelFormat to make sure LoadLibrary("OpenGL32.dll") is called first...
+typedef WINGDIAPI BOOL  (WINAPI *SetPixelFormatPROC)(__in HDC hdc, __in int format, __in CONST PIXELFORMATDESCRIPTOR * ppfd);
+WINGDIAPI BOOL  WINAPI SetPixelFormat(__in HDC hdc, __in int iPixelFormat, __in CONST PIXELFORMATDESCRIPTOR * ppfd)
+{
+	static SetPixelFormatPROC spf = NULL;
+	static bool initialized = false;
+	if( initialized == false ) {
+		Regal::GetProcAddress( "dummy_function_to_force_opengl32.dll_to_load" );
+		HMODULE lib_GDI = LoadLibraryA( "gdi32.dll" );
+		spf = (SetPixelFormatPROC) ::GetProcAddress( lib_GDI, "SetPixelFormat" );
+		initialized = true;
+	}
+	return spf != NULL ? spf( hdc, iPixelFormat, ppfd ) : 0;
+}
+
 BOOL APIENTRY
 DllMain
 (

@@ -25286,69 +25286,69 @@ REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei le
 
 /* GL_KTX_buffer_region */
 
-REGAL_DECL GLuint REGAL_CALL glBufferRegionEnabledEXT(void)
+REGAL_DECL GLuint REGAL_CALL glBufferRegionEnabled(void)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
-  RTrace("glBufferRegionEnabledEXT()");
+  RTrace("glBufferRegionEnabled()");
   if (!rCtx) return (GLuint )0;
   RegalAssert(rCtx);
   RegalAssert(rCtx->dsp);
   RegalAssert(rCtx->dsp->curr);
-  RegalAssert(rCtx->dsp->curr->glBufferRegionEnabledEXT);
-  RegalAssert(rCtx->dsp->curr->glBufferRegionEnabledEXT != glBufferRegionEnabledEXT);
-  return rCtx->dsp->curr->glBufferRegionEnabledEXT();
+  RegalAssert(rCtx->dsp->curr->glBufferRegionEnabled);
+  RegalAssert(rCtx->dsp->curr->glBufferRegionEnabled != glBufferRegionEnabled);
+  return rCtx->dsp->curr->glBufferRegionEnabled();
 }
 
-REGAL_DECL void REGAL_CALL glDeleteBufferRegionEXT(GLenum region)
+REGAL_DECL void REGAL_CALL glDeleteBufferRegion(GLenum region)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
-  RTrace("glDeleteBufferRegionEXT(", toString(region), ")");
+  RTrace("glDeleteBufferRegion(", toString(region), ")");
   if (!rCtx) return;
   RegalAssert(rCtx);
   RegalAssert(rCtx->dsp);
   RegalAssert(rCtx->dsp->curr);
-  RegalAssert(rCtx->dsp->curr->glDeleteBufferRegionEXT);
-  RegalAssert(rCtx->dsp->curr->glDeleteBufferRegionEXT != glDeleteBufferRegionEXT);
-  rCtx->dsp->curr->glDeleteBufferRegionEXT(region);
+  RegalAssert(rCtx->dsp->curr->glDeleteBufferRegion);
+  RegalAssert(rCtx->dsp->curr->glDeleteBufferRegion != glDeleteBufferRegion);
+  rCtx->dsp->curr->glDeleteBufferRegion(region);
 }
 
-REGAL_DECL void REGAL_CALL glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+REGAL_DECL void REGAL_CALL glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
-  RTrace("glDrawBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
+  RTrace("glDrawBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
   if (!rCtx) return;
   RegalAssert(rCtx);
   RegalAssert(rCtx->dsp);
   RegalAssert(rCtx->dsp->curr);
-  RegalAssert(rCtx->dsp->curr->glDrawBufferRegionEXT);
-  RegalAssert(rCtx->dsp->curr->glDrawBufferRegionEXT != glDrawBufferRegionEXT);
-  rCtx->dsp->curr->glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+  RegalAssert(rCtx->dsp->curr->glDrawBufferRegion);
+  RegalAssert(rCtx->dsp->curr->glDrawBufferRegion != glDrawBufferRegion);
+  rCtx->dsp->curr->glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
 
-REGAL_DECL GLuint REGAL_CALL glNewBufferRegionEXT(GLenum region)
+REGAL_DECL GLuint REGAL_CALL glNewBufferRegion(GLenum region)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
-  RTrace("glNewBufferRegionEXT(", toString(region), ")");
+  RTrace("glNewBufferRegion(", toString(region), ")");
   if (!rCtx) return (GLuint )0;
   RegalAssert(rCtx);
   RegalAssert(rCtx->dsp);
   RegalAssert(rCtx->dsp->curr);
-  RegalAssert(rCtx->dsp->curr->glNewBufferRegionEXT);
-  RegalAssert(rCtx->dsp->curr->glNewBufferRegionEXT != glNewBufferRegionEXT);
-  return rCtx->dsp->curr->glNewBufferRegionEXT(region);
+  RegalAssert(rCtx->dsp->curr->glNewBufferRegion);
+  RegalAssert(rCtx->dsp->curr->glNewBufferRegion != glNewBufferRegion);
+  return rCtx->dsp->curr->glNewBufferRegion(region);
 }
 
-REGAL_DECL void REGAL_CALL glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+REGAL_DECL void REGAL_CALL glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   RegalContext * rCtx = GET_REGAL_CONTEXT();
-  RTrace("glReadBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+  RTrace("glReadBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
   if (!rCtx) return;
   RegalAssert(rCtx);
   RegalAssert(rCtx->dsp);
   RegalAssert(rCtx->dsp->curr);
-  RegalAssert(rCtx->dsp->curr->glReadBufferRegionEXT);
-  RegalAssert(rCtx->dsp->curr->glReadBufferRegionEXT != glReadBufferRegionEXT);
-  rCtx->dsp->curr->glReadBufferRegionEXT(region, x, y, width, height);
+  RegalAssert(rCtx->dsp->curr->glReadBufferRegion);
+  RegalAssert(rCtx->dsp->curr->glReadBufferRegion != glReadBufferRegion);
+  rCtx->dsp->curr->glReadBufferRegion(region, x, y, width, height);
 }
 
 /* GL_MESA_resize_buffers */

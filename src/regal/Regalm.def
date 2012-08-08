@@ -1,4 +1,5 @@
 EXPORTS
+  SetPixelFormat
   rglAccum
   rglActiveProgramEXT
   rglActiveShaderProgram
@@ -118,7 +119,7 @@ EXPORTS
   rglBufferData
   rglBufferDataARB
   rglBufferParameteriAPPLE
-  rglBufferRegionEnabledEXT
+  rglBufferRegionEnabled
   rglBufferSubData
   rglBufferSubDataARB
   rglCallList
@@ -328,7 +329,7 @@ EXPORTS
   rglDeformationMap3dSGIX
   rglDeformationMap3fSGIX
   rglDeleteAsyncMarkersSGIX
-  rglDeleteBufferRegionEXT
+  rglDeleteBufferRegion
   rglDeleteBuffers
   rglDeleteBuffersARB
   rglDeleteFencesAPPLE
@@ -395,7 +396,7 @@ EXPORTS
   rglDrawArraysInstancedBaseInstance
   rglDrawArraysInstancedEXT
   rglDrawBuffer
-  rglDrawBufferRegionEXT
+  rglDrawBufferRegion
   rglDrawBuffers
   rglDrawBuffersARB
   rglDrawBuffersATI
@@ -1299,7 +1300,7 @@ EXPORTS
   rglNamedRenderbufferStorageMultisampleCoverageEXT
   rglNamedRenderbufferStorageMultisampleEXT
   rglNamedStringARB
-  rglNewBufferRegionEXT
+  rglNewBufferRegion
   rglNewList
   rglNewObjectBufferATI
   rglNormal3b
@@ -1608,7 +1609,7 @@ EXPORTS
   rglRasterPos4s
   rglRasterPos4sv
   rglReadBuffer
-  rglReadBufferRegionEXT
+  rglReadBufferRegion
   rglReadInstrumentsSGIX
   rglReadPixels
   rglReadVideoPixelsSUN

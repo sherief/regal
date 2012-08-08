@@ -1,4 +1,5 @@
 EXPORTS
+  SetPixelFormat
   glAccum
   glActiveProgramEXT
   glActiveShaderProgram
@@ -118,7 +119,7 @@ EXPORTS
   glBufferData
   glBufferDataARB
   glBufferParameteriAPPLE
-  glBufferRegionEnabledEXT
+  glBufferRegionEnabled
   glBufferSubData
   glBufferSubDataARB
   glCallList
@@ -328,7 +329,7 @@ EXPORTS
   glDeformationMap3dSGIX
   glDeformationMap3fSGIX
   glDeleteAsyncMarkersSGIX
-  glDeleteBufferRegionEXT
+  glDeleteBufferRegion
   glDeleteBuffers
   glDeleteBuffersARB
   glDeleteFencesAPPLE
@@ -395,7 +396,7 @@ EXPORTS
   glDrawArraysInstancedBaseInstance
   glDrawArraysInstancedEXT
   glDrawBuffer
-  glDrawBufferRegionEXT
+  glDrawBufferRegion
   glDrawBuffers
   glDrawBuffersARB
   glDrawBuffersATI
@@ -1299,7 +1300,7 @@ EXPORTS
   glNamedRenderbufferStorageMultisampleCoverageEXT
   glNamedRenderbufferStorageMultisampleEXT
   glNamedStringARB
-  glNewBufferRegionEXT
+  glNewBufferRegion
   glNewList
   glNewObjectBufferATI
   glNormal3b
@@ -1608,7 +1609,7 @@ EXPORTS
   glRasterPos4s
   glRasterPos4sv
   glReadBuffer
-  glReadBufferRegionEXT
+  glReadBufferRegion
   glReadInstrumentsSGIX
   glReadPixels
   glReadVideoPixelsSUN
