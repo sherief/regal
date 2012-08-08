@@ -35,6 +35,13 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
+#if REGAL_SYS_NACL
+
+extern void _naclPrintf(const char* str, ...);
+extern void* _naclGetProcAddress(const char* name);
+
+#endif
+
 #include <string>
 using namespace std;
 
@@ -60,7 +67,7 @@ void
 AssertFunction(const char *file, const size_t line, const char *expr)
 {
   string message = print_string(file, " ", line, ": ", expr);
-
+  _naclPrintf("assert fail: %s\n", message.c_str());
 #ifdef REGAL_ASSERT_FUNCTION
   REGAL_ASSERT_FUNCTION(message);
 #else
@@ -195,6 +202,12 @@ void *GetProcAddress( const char * entry )
         return sym;
     }
     return NULL;
+}
+
+#elif REGAL_SYS_NACL
+
+void* GetProcAddress(const char* lookupName) {
+  return _naclGetProcAddress(lookupName);
 }
 
 #elif REGAL_SYS_IOS

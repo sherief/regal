@@ -863,7 +863,7 @@ ContextInfo::init(const RegalContext &context)
       maxVertexAttribs = REGAL_MAX_VERTEX_ATTRIBS;
 
   // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs
-  if (vendor == "Qualcomm")
+  if (vendor == "Qualcomm" || vendor == "Chromium")
     maxVertexAttribs = 8;
 }
 

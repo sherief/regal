@@ -51,6 +51,8 @@
 # else
 #  define REGAL_SYS_OSX 1
 # endif
+#elif defined(__native_client__)
+#define REGAL_SYS_NACL 1
 #elif defined(__ANDROID__)
 #  define REGAL_SYS_ANDROID 1
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
@@ -135,8 +137,10 @@ typedef float GLclampf;
 typedef double GLdouble;
 typedef double GLclampd;
 typedef void GLvoid;
+#ifndef REGAL_NACL_HACK
 typedef ptrdiff_t GLintptr;
 typedef ptrdiff_t GLsizeiptr;
+#endif
 typedef char GLchar;
 typedef signed long long GLint64;
 typedef unsigned long long GLuint64;
