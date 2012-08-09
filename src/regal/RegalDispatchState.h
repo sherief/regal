@@ -47,6 +47,7 @@ void InitDispatchTableError (DispatchTable &tbl);
 void InitDispatchTableEmu   (DispatchTable &tbl);
 void InitDispatchTableLoader(DispatchTable &tbl);
 void InitDispatchTableLog   (DispatchTable &tbl);
+void InitDispatchTableNacl  (DispatchTable &tbl);
 
 enum RegalDispatchTableEnum {
    RDT_Debug  = 5,
@@ -70,7 +71,11 @@ struct DispatchState {
       InitDispatchTableLog( emuTbl );
       InitDispatchTableEmu( emuTbl );        // overrides emulated functions only
       InitDispatchTableLog( logTbl );
+#if defined(__native_client__)
+      InitDispatchTableNacl( driverTbl );
+#else
       InitDispatchTableLoader( driverTbl );
+#endif
       if (Config::enableDebug)
         Insert(0, RDT_Debug);
       if (Config::enableError)

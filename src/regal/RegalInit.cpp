@@ -97,8 +97,9 @@ DispatchTableGlobal dispatchTableGlobal;
 
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
-    DWORD regalCurrentContextTLSIDX = ~0;
-    struct RegalPrivateTlsInit {
+    DWORD regalCurrentContextTLSIDX = DWORD(~0);
+    struct RegalPrivateTlsInit
+    {
         RegalPrivateTlsInit()
         {
             regalCurrentContextTLSIDX = TlsAlloc();

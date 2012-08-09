@@ -68,8 +68,13 @@ RegalContext::RegalContext()
   dsa(NULL),
   iff(NULL),
   vao(NULL),
-  sysCtx(0),
-  thread(0)
+
+#if defined(__native_client__)
+  naclES2(NULL),
+  naclResource(NULL),
+#endif
+  sysCtx(NULL),
+  thread(NULL)
 {
   ITrace("RegalContext::RegalContext");
   dsp->Init();

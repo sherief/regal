@@ -42,6 +42,12 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalDispatchError.h"
 
+#if defined(__native_client__)
+#define __gl2_h_  // HACK - revisit
+#include <ppapi/c/pp_resource.h>
+#include <ppapi/c/ppb_opengles2.h>
+#endif
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -78,6 +84,11 @@ struct RegalContext
   RegalDsa           *dsa;
   RegalIff           *iff;
   RegalVao           *vao;
+
+  #if defined(__native_client__)
+  PPB_OpenGLES2      *naclES2;
+  PP_Resource         naclResource;
+  #endif
 
   RegalSystemContext  sysCtx;
   Thread              thread;
