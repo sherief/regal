@@ -12,14 +12,17 @@
 #include "ppapi/c/ppp.h"
 #include "ppapi/c/ppp_instance.h"
 #include "ppapi/c/ppp_messaging.h"
+#include "ppapi/c/ppp_input_event.h"
 #include "ppapi/c/ppb_graphics_3d.h"
 #include "ppapi/c/ppb_instance.h"
 #include "ppapi/c/ppb_opengles2.h"
+#include "ppapi/c/ppb_input_event.h"
 //#include "ppapi/gles2/gl2ext_ppapi.h"
 //#include "GLES2/gl2.h"
 
 #define REGAL_NACL_HACK 1
 #include <GL/Regal.h>
+#include <GL/RegalGLU.h>
 #undef REGAL_NAL_HACK
 
 
@@ -30,6 +33,8 @@ static PPB_View* ppb_view_interface = NULL;
 static PPB_Graphics3D* ppb_graphics3d_interface = NULL;
 static PPB_Instance* ppb_instance_interface = NULL;
 static PPB_OpenGLES2* ppb_opengl_interface = NULL;
+static PPB_KeyboardInputEvent* ppb_keyboard_interface = NULL;
+static PPB_InputEvent* ppb_input_interface = NULL;
 static PP_Resource opengl_context = 0;
 
 struct ViewPort {
@@ -41,6 +46,7 @@ PP_Instance printfInstance = 0;
 
 static ViewPort vp = {512, 512};
 static float clearColor = 0.1;
+static int demoMode = 0;
 
 /**
  * Creates new string PP_Var from C string. The resulting object will be a
@@ -84,9 +90,9 @@ static void naclGlGenBuffers(GLsizei n, GLuint* buffers) {
 
 static void naclGlBindBuffer(GLenum target, GLuint buffer) {
   if (target == GL_ELEMENT_ARRAY_BUFFER) {
-    _naclPrintf("Binding ELEMENTS to %x\n", buffer);
+    //_naclPrintf("Binding ELEMENTS to %x\n", buffer);
   } else {
-    _naclPrintf("Binding VERTEX to %x\n", buffer);
+    //_naclPrintf("Binding VERTEX to %x\n", buffer);
   }
   
   ppb_opengl_interface->BindBuffer(opengl_context, target, buffer);
@@ -97,15 +103,6 @@ Drawing (4) 0...3
 Uploading 768 bytes to 34962
 */
 static void naclGlBufferData(GLenum target, GLsizeiptr size, const void* data, GLenum usage) {
-  if (target == GL_ARRAY_BUFFER) {
-    float* fp = (float*)data;
-    int count = size/(sizeof(float));
-    //_naclPrintf("Dumping vertex data:\n");
-    for (int i = 0; i < count; i++) {
-      //_naclPrintf("%d - %f\n", i, fp[i]);
-    }
-  }
-  //_naclPrintf("Uploading %d bytes to %d\n", size, target);
   ppb_opengl_interface->BufferData(opengl_context, target, size, data, usage);
 }
 
@@ -131,17 +128,17 @@ static void naclGlClearColor(float r, float g, float b, float a) {
 
 static const GLubyte* naclGlGetString(GLenum name) {
   const GLubyte* r = ppb_opengl_interface->GetString(opengl_context, name);
-  _naclPrintf("%d -> %s\n", name, r);
+  //_naclPrintf("%d -> %s\n", name, r);
   return r;
 }
 
 static void naclGlEnableVertexAttribArray(GLuint index) {
-  _naclPrintf("Enabling array %d\n", index);
+  //_naclPrintf("Enabling array %d\n", index);
   ppb_opengl_interface->EnableVertexAttribArray(opengl_context, index);
 }
 
 static void naclGlDisableVertexAttribArray(GLuint index) {
-  _naclPrintf("Disabling array %d\n", index);
+  //_naclPrintf("Disabling array %d\n", index);
   ppb_opengl_interface->DisableVertexAttribArray(opengl_context, index);
 }
 
@@ -150,7 +147,7 @@ static void naclGlVertexAttribPointer(GLuint indx, GLint size, GLenum type, GLbo
   if (type == GL_FLOAT) {
     typeString = "FLOAT";
   }
-  _naclPrintf("VP: %d SIZE: %d x %s STRIDE: %d (offset: %p)", indx, size, typeString, stride, ptr);
+  //_naclPrintf("VP: %d SIZE: %d x %s STRIDE: %d (offset: %p)", indx, size, typeString, stride, ptr);
   ppb_opengl_interface->VertexAttribPointer(opengl_context, indx, size, type, normalized, stride, ptr);
 }
 
@@ -179,9 +176,9 @@ static void naclGlDeleteShader(GLuint shader) {
 }
 
 static void naclGlShaderSource(GLuint shader, GLsizei count, const char** str, const GLint* length) {
-  _naclPrintf("Shader source:\n");
+  //_naclPrintf("Shader source:\n");
   for (int i = 0; i < count; i++) {
-    _naclPrintf("[%d] - %s\n", i, str[i]);
+    //_naclPrintf("[%d] - %s\n", i, str[i]);
   }
   ppb_opengl_interface->ShaderSource(opengl_context, shader, count, str, length);
 }
@@ -235,6 +232,22 @@ static void naclGlUniformMatrix4fv(GLint location, GLsizei count, GLboolean tran
 }
 
 
+static void naclGlUniform4fv(GLint location, GLsizei count, const GLfloat* v) {
+  ppb_opengl_interface->Uniform4fv(opengl_context, location, count, v);
+}
+
+static void naclGlDepthFunc(GLenum func) {
+  ppb_opengl_interface->DepthFunc(opengl_context, func);
+}
+
+static void naclGlEnable(GLenum cap) {
+  ppb_opengl_interface->Enable(opengl_context, cap);
+}
+
+static void naclGlDisable(GLenum cap) {
+  ppb_opengl_interface->Disable(opengl_context, cap);
+}
+
 naclProcEntry _nacl_lookup[] = {
   { "glFinish", (void*)naclGlFinish },
   { "glFlush", (void*)naclGlFlush },
@@ -267,7 +280,11 @@ naclProcEntry _nacl_lookup[] = {
   { "glDrawElements", (void*)naclGlDrawElements},
   { "glViewport", (void*)naclGlViewport},
   { "glUniformMatrix4fv", (void*)naclGlUniformMatrix4fv },
-  { NULL, NULL }
+  { "glUniform4fv", (void*)naclGlUniform4fv},
+  { "glDepthFunc", (void*)naclGlDepthFunc},
+  { "glEnable", (void*)naclGlEnable},
+  { "glDisable", (void*)naclGlDisable},
+  { NULL, NULL }  
 };
 
 void* _naclGetProcAddress(const char* lookupName) {
@@ -282,15 +299,41 @@ void* _naclGetProcAddress(const char* lookupName) {
   return NULL;
 }
 
+static void myReshape(int w, int h)
+{
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    if (w <= (h * 2))
+  glOrtho (-6.0, 6.0, -3.0*((GLfloat)h*2)/(GLfloat)w,
+      3.0*((GLfloat)h*2)/(GLfloat)w, -10.0, 10.0);
+    else
+  glOrtho (-6.0*(GLfloat)w/((GLfloat)h*2),
+      6.0*(GLfloat)w/((GLfloat)h*2), -3.0, 3.0, -10.0, 10.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+void opengl3Test() {
+
+}
+
+void opengl1mix3() {
+  // direct state access
+  glMatrixLoadIdentityEXT(GL_PROJECTION);
+  glMatrixLoadIdentityEXT(GL_MODELVIEW);
+  // immediat emode
+  glBegin(GL_TRIANGLES);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex3f(0, 0, 0);
+        glColor3f(0.0, 1.0, 0.0);
+        glVertex3f(1, 0, 0);
+        glColor3f(0.0, 0.0, 1.0);
+        glVertex3f(0, 1, 0);
+  glEnd();  
+}
+
 void staticTriangle() {
-  clearColor += 0.01;
-  if (clearColor > 1.0) {
-    clearColor = 0.0;
-  }
-  glClearColor(clearColor, clearColor, clearColor, 1.0);
-  glClearDepthf(0.0);
-  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-  glViewport(0, 0, 512, 512);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glMatrixMode(GL_MODELVIEW);
@@ -307,16 +350,9 @@ void staticTriangle() {
 
 void rotatingTriangle() {
   static float rtri = 0.0;
-  clearColor += 0.01;
-  if (clearColor > 1.0) {
-    clearColor = 0.0;
-  }
-  glClearColor(clearColor, clearColor, clearColor, 1.0);
-  glClearDepthf(0.0);
-  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-  glViewport(0, 0, 512, 512);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
+
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glRotatef(rtri,0.0f,1.0f,0.0f);  
@@ -331,10 +367,269 @@ void rotatingTriangle() {
   rtri += 0.2f;
 }
 
-static void frameCallback(void* user_data, int32_t result) {
-  
+void openglES1Tutorial() {
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
 
-  rotatingTriangle();
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  GLfloat vertices[] = {1,0,0, 0,1,0, -1,0,0};
+  GLfloat colors[] = { 0.25, 0.25, 0.25, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_COLOR_ARRAY);
+  glVertexPointer(3, GL_FLOAT, 0, vertices);
+  glColorPointer(3, GL_FLOAT, 0, colors);
+  glDrawArrays(GL_TRIANGLES, 0, 3);
+  glDisableClientState(GL_COLOR_ARRAY);
+  glDisableClientState(GL_VERTEX_ARRAY);
+
+}
+
+static void glutSolidSphere(float radius, int slices, int stacks) {
+  static GLUquadricObj *quadObj = NULL;
+  if (quadObj == NULL) {
+    quadObj = gluNewQuadric();
+  }
+  gluQuadricDrawStyle(quadObj, GLU_FILL);
+  gluQuadricNormals(quadObj, GLU_SMOOTH);
+  /* If we ever changed/used the texture or orientation state
+     of quadObj, we'd need to change it to the defaults here
+     with gluQuadricTexture and/or gluQuadricOrientation. */
+  gluSphere(quadObj, radius, slices, stacks);
+  //gluCylinder(quadObj, radius, radius, radius*2, slices, stacks);
+  //REGALGLU_DECL void REGALGLU_CALL gluCylinder (GLUquadric* quad, GLdouble base, GLdouble top, GLdouble height, GLint slices, GLint stacks);
+}
+
+static void materialDemo() {
+  myReshape(512, 512);
+  {
+    static float rtri = 0.0;
+    GLfloat ambient[] = { 0.1, 0.0, 0.0, 1.0 };
+    GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat position[] = { 0.0, 3.0, 2.0, 0.0 };
+    GLfloat lmodel_ambient[] = { 0.4, 0.4, 0.4, 1.0 };
+    GLfloat local_view[] = { 0.0 };
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+
+    float sphereRadius = 5.0;
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+    glLightfv(GL_LIGHT0, GL_POSITION, position);
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
+    glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+
+    glClearColor(0.0, 0.1, 0.1, 0.0);
+
+    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };
+    GLfloat mat_ambient_color[] = { 0.8, 0.8, 0.2, 1.0 };
+    GLfloat mat_diffuse[] = { 0.1, 0.5, 0.8, 1.0 };
+    GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat no_shininess[] = { 0.0 };
+    GLfloat low_shininess[] = { 5.0 };
+    GLfloat high_shininess[] = { 100.0 };
+    GLfloat mat_emission[] = {0.3, 0.2, 0.2, 0.0};
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+/*  draw sphere in first row, first column
+ *  diffuse reflection only; no ambient or specular
+ */
+    glPushMatrix();
+    glTranslatef (-3.75, 3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, no_mat);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in first row, second column
+ *  diffuse and specular reflection; low shininess; no ambient
+ */
+    glPushMatrix();
+    glTranslatef (-1.25, 3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, no_mat);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in first row, third column
+ *  diffuse and specular reflection; high shininess; no ambient
+ */
+    glPushMatrix();
+    glTranslatef (1.25, 3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, no_mat);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in first row, fourth column
+ *  diffuse reflection; emission; no ambient or specular reflection
+ */
+    glPushMatrix();
+    glTranslatef (3.75, 3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, no_mat);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in second row, first column
+ *  ambient and diffuse reflection; no specular
+ */
+    glPushMatrix();
+    glTranslatef (-3.75, 0.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in second row, second column
+ *  ambient, diffuse and specular reflection; low shininess
+ */
+    glPushMatrix();
+    glTranslatef (-1.25, 0.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in second row, third column
+ *  ambient, diffuse and specular reflection; high shininess
+ */
+    glPushMatrix();
+    glTranslatef (1.25, 0.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in second row, fourth column
+ *  ambient and diffuse reflection; emission; no specular
+ */
+    glPushMatrix();
+    glTranslatef (3.75, 0.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in third row, first column
+ *  colored ambient and diffuse reflection; no specular
+ */
+    glPushMatrix();
+    glTranslatef (-3.75, -3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in third row, second column
+ *  colored ambient, diffuse and specular reflection; low shininess
+ */
+    glPushMatrix();
+    glTranslatef (-1.25, -3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in third row, third column
+ *  colored ambient, diffuse and specular reflection; high shininess
+ */
+    glPushMatrix();
+    glTranslatef (1.25, -3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+/*  draw sphere in third row, fourth column
+ *  colored ambient and diffuse reflection; emission; no specular
+ */
+    glPushMatrix();
+    glTranslatef (3.75, -3.0, 0.0);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+    glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+    glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+    glutSolidSphere(sphereRadius, 16, 16);
+    glPopMatrix();
+
+    glDisable(GL_LIGHTING);
+    glDisable(GL_LIGHT0);
+    glFlush();
+  }
+}
+
+static void frameCallback(void* user_data, int32_t result) {
+    clearColor += 0.01;
+  if (clearColor > 1.0) {
+    clearColor = 0.0;
+  }
+  glClearColor(clearColor, clearColor, clearColor, 1.0);
+  glClearDepthf(0.0);
+  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+  glViewport(0, 0, 512, 512);
+
+  switch (demoMode) {
+    case 0:
+      openglES1Tutorial();
+    break;
+    case 1:
+      rotatingTriangle();
+    break;
+    case 2:
+      staticTriangle();
+    break;
+    case 3:
+      materialDemo();
+    break;
+    case 4:
+      opengl1mix3();
+    break;
+    default:
+    break;
+  }
+  
+  //rotatingTriangle();
   PP_CompletionCallback ccb;
   ccb.func = frameCallback;
   ccb.user_data = NULL;
@@ -378,6 +673,15 @@ static PP_Bool Instance_DidCreate(PP_Instance instance,
   opengl_context = ppb_graphics3d_interface->Create(instance, opengl_context, attribs);
   ppb_instance_interface->BindGraphics(instance, opengl_context);
   RegalMakeCurrent(reinterpret_cast<void*>(opengl_context));
+  int32_t r = 0;
+  r = ppb_input_interface->RequestInputEvents(instance, PP_INPUTEVENT_CLASS_MOUSE);
+  if (r != PP_OK) {
+    _naclPrintf("Mouse request = %x\n", r);
+  }
+  r = ppb_input_interface->RequestFilteringInputEvents(instance, PP_INPUTEVENT_CLASS_KEYBOARD);
+  if (r != PP_OK) {
+    _naclPrintf("Keyboard request = %x\n", r);  
+  }
   frameCallback(NULL, 0);
   return PP_TRUE;
 }
@@ -436,6 +740,11 @@ static void Instance_DidChangeView(PP_Instance instance,
  */
 static void Instance_DidChangeFocus(PP_Instance instance,
                                     PP_Bool has_focus) {
+  if (has_focus) {
+    _naclPrintf("Gained focus");
+  } else {
+    _naclPrintf("Lost focus");
+  }
 }
 
 /**
@@ -454,6 +763,17 @@ static PP_Bool Instance_HandleDocumentLoad(PP_Instance instance,
   return PP_FALSE;
 }
 
+PP_Bool Instance_HandleInput(PP_Instance instance, PP_Resource event) {
+  if (ppb_keyboard_interface->IsKeyboardInputEvent(event)) {
+    uint32_t code = ppb_keyboard_interface->GetKeyCode(event);
+    if (code >= '1' && code <= '9') {
+      demoMode = code - '1';
+      _naclPrintf("Demo %d\n", demoMode);
+      return PP_TRUE;
+    }
+  }
+  return PP_FALSE;
+}
 
 
 /**
@@ -471,6 +791,8 @@ PP_EXPORT int32_t PPP_InitializeModule(PP_Module a_module_id,
   ppb_graphics3d_interface = (PPB_Graphics3D*)(get_browser(PPB_GRAPHICS_3D_INTERFACE));
   ppb_instance_interface = (PPB_Instance*)(get_browser(PPB_INSTANCE_INTERFACE));
   ppb_opengl_interface = (PPB_OpenGLES2*)(get_browser(PPB_OPENGLES2_INTERFACE));
+  ppb_keyboard_interface = (PPB_KeyboardInputEvent*)(get_browser(PPB_KEYBOARD_INPUT_EVENT_INTERFACE));
+  ppb_input_interface = (PPB_InputEvent*)(get_browser(PPB_INPUT_EVENT_INTERFACE));
   return PP_OK;
 }
 
@@ -492,6 +814,13 @@ PP_EXPORT const void* PPP_GetInterface(const char* interface_name) {
     };
     return &instance_interface;
   }
+  if (strcmp(interface_name, PPP_INPUT_EVENT_INTERFACE) == 0) {
+    static PPP_InputEvent input_interface = {
+      &Instance_HandleInput,
+    };
+    return &input_interface;
+  }
+  _naclPrintf("can't find interface: %s\n", interface_name);
   return NULL;
 }
 
@@ -501,14 +830,3 @@ PP_EXPORT const void* PPP_GetInterface(const char* interface_name) {
  */
 PP_EXPORT void PPP_ShutdownModule() {
 }
-
-/*
-int main(int argc, char** argv) {
-	printf("Hello World\n");
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(0.0f, 0.0f, 1.0f);
-	glEnd();
-}
-*/
