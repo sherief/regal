@@ -64,11 +64,11 @@ extern "C"
 #include <android/log.h>
 #endif
 
-REGAL_GLOBAL_END
-
 #if REGAL_SYS_NACL
 extern void _naclPrintf(const char* str, ...);
 #endif
+
+REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
@@ -197,9 +197,9 @@ namespace Logging {
       buffer->push_back(string());
       buffer->back().swap(str);
       bufferSize++;
-  
+
       // Prune the buffer list, as necessary
-  
+
       while (bufferSize>bufferLimit)
       {
         buffer->pop_front();
@@ -242,11 +242,13 @@ namespace Logging {
 
 #elif REGAL_SYS_NACL
 
-
-  void Output(const char* prefix, const char* delim, const string& str) {
-    if (str.length()) {
+  void Output(const char *prefix, const char *delim, const string &str)
+  {
+    if (str.length())
+    {
       string m = message(prefix, delim, str);
       _naclPrintf("Regal: %s", m.c_str());
+      append(m);
     }
   }
 #else

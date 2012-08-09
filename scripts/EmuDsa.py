@@ -384,7 +384,8 @@ dsaFormulae = {
         ],
     },
     'DsaBufferPointerCommands' : {
-        'entries' : [ 'glVertexArray(Vertex|Color|EdgeFlag|Index|Normal|TexCoord|MultiTexCoord|FogCoord|SecondaryColor|VertexAttrib|VertexAttribI)OffsetEXT' ],
+        'entries' : [ ],
+#       'entries' : [ 'glVertexArray(Vertex|Color|EdgeFlag|Index|Normal|TexCoord|MultiTexCoord|FogCoord|SecondaryColor|VertexAttrib|VertexAttribI)OffsetEXT' ],
         'impl' : [
             'rCtx->dsa->DsaVao( rCtx, ${arg0} );'
             'rCtx->dsa->DsaBuffer( rCtx, ${arg1} );',

@@ -23,6 +23,35 @@ REGAL_NAMESPACE_BEGIN
 
 REGAL_NAMESPACE_END
 
+#pragma warning( disable: 4273 )
+
+//
+// We have to hijack SetPixelFormat to make sure
+// LoadLibrary("OpenGL32.dll") happens first...
+//
+
+typedef BOOL (WINAPI *SetPixelFormatPROC)(__in HDC hdc, __in int format, __in CONST PIXELFORMATDESCRIPTOR * ppfd);
+
+BOOL WINAPI SetPixelFormat(__in HDC hdc, __in int iPixelFormat, __in CONST PIXELFORMATDESCRIPTOR * ppfd)
+{
+  static SetPixelFormatPROC spf = NULL;
+  static bool initialized = false;
+
+  if (!initialized)
+  {
+    initialized = true;
+
+    // Force LoadLibrary of opengl32.dll
+    Regal::GetProcAddress( NULL );
+
+    // Pass call through to gdi32.dll
+
+    HMODULE lib_GDI = LoadLibraryA( "gdi32.dll" );
+    spf = (SetPixelFormatPROC) ::GetProcAddress( lib_GDI, "SetPixelFormat" );
+  }
+  return spf ? spf( hdc, iPixelFormat, ppfd ) : 0;
+}
+
 BOOL APIENTRY
 DllMain
 (

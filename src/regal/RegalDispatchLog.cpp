@@ -7810,6 +7810,52 @@ static GLsync REGAL_CALL log_glCreateSyncFromCLeventARB(cl_context context, cl_e
     return ret;
 }
 
+// GL_ARB_clear_buffer_object
+
+static void REGAL_CALL log_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+    GTrace("glClearBufferData(", toString(target), ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearBufferData(target, internalformat, format, type, data);
+}
+
+static void REGAL_CALL log_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+    GTrace("glClearBufferSubData(", toString(target), ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+}
+
+static void REGAL_CALL log_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+    GTrace("glClearNamedBufferDataEXT(", buffer, ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
+}
+
+static void REGAL_CALL log_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+    GTrace("glClearNamedBufferSubDataEXT(", buffer, ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
+}
+
 // GL_ARB_color_buffer_float
 
 static void REGAL_CALL log_glClampColorARB(GLenum target, GLenum clamp)
@@ -7823,6 +7869,30 @@ static void REGAL_CALL log_glClampColorARB(GLenum target, GLenum clamp)
     rCtx->dsp->driverTbl.glClampColorARB(target, clamp);
 }
 
+// GL_ARB_compute_shader
+
+static void REGAL_CALL log_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+    GTrace("glDispatchCompute(", num_groups_x, ", ", num_groups_y, ", ", num_groups_z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+}
+
+static void REGAL_CALL log_glDispatchComputeIndirect(GLintptr indirect)
+{
+    GTrace("glDispatchComputeIndirect(", indirect, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDispatchComputeIndirect(indirect);
+}
+
 // GL_ARB_copy_buffer
 
 static void REGAL_CALL log_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
@@ -7834,6 +7904,19 @@ static void REGAL_CALL log_glCopyBufferSubData(GLenum readtarget, GLenum writeta
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
+}
+
+// GL_ARB_copy_image
+
+static void REGAL_CALL log_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+    GTrace("glCopyImageSubData(", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", dstName, ", ", toString(dstTarget), ", ", dstLevel, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
 
 // GL_ARB_debug_output
@@ -8034,6 +8117,52 @@ static void REGAL_CALL log_glDrawElementsInstancedARB(GLenum mode, GLsizei count
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+}
+
+// GL_ARB_framebuffer_no_attachments
+
+static void REGAL_CALL log_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+    GTrace("glFramebufferParameteri(", toString(target), ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFramebufferParameteri(target, pname, param);
+}
+
+static void REGAL_CALL log_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+    GTrace("glGetFramebufferParameteriv(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetFramebufferParameteriv(target, pname, params);
+}
+
+static void REGAL_CALL log_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+    GTrace("glGetNamedFramebufferParameterivEXT(", framebuffer, ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetNamedFramebufferParameterivEXT(framebuffer, pname, params);
+}
+
+static void REGAL_CALL log_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+    GTrace("glNamedFramebufferParameteriEXT(", framebuffer, ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glNamedFramebufferParameteriEXT(framebuffer, pname, param);
 }
 
 // GL_ARB_framebuffer_object
@@ -8922,6 +9051,87 @@ static void REGAL_CALL log_glGetInternalformativ(GLenum target, GLenum internalf
     rCtx->dsp->driverTbl.glGetInternalformativ(target, internalformat, pname, bufSize, params);
 }
 
+// GL_ARB_internalformat_query2
+
+static void REGAL_CALL log_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+    GTrace("glGetInternalformati64v(", toString(target), ", ", toString(internalformat), ", ", toString(pname), ", ", bufSize, ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetInternalformati64v(target, internalformat, pname, bufSize, params);
+}
+
+// GL_ARB_invalidate_subdata
+
+static void REGAL_CALL log_glInvalidateBufferData(GLuint buffer)
+{
+    GTrace("glInvalidateBufferData(", buffer, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateBufferData(buffer);
+}
+
+static void REGAL_CALL log_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+    GTrace("glInvalidateBufferSubData(", buffer, ", ", offset, ", ", length, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateBufferSubData(buffer, offset, length);
+}
+
+static void REGAL_CALL log_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+    GTrace("glInvalidateFramebuffer(", toString(target), ", ", numAttachments, ", ", attachments, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateFramebuffer(target, numAttachments, attachments);
+}
+
+static void REGAL_CALL log_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+    GTrace("glInvalidateSubFramebuffer(", toString(target), ", ", numAttachments, ", ", attachments, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+}
+
+static void REGAL_CALL log_glInvalidateTexImage(GLuint texture, GLint level)
+{
+    GTrace("glInvalidateTexImage(", texture, ", ", level, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateTexImage(texture, level);
+}
+
+static void REGAL_CALL log_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+    GTrace("glInvalidateTexSubImage(", texture, ", ", level, ", ", xoffset, ", ", yoffset, ", ", zoffset, ", ", width, ", ", height, ", ", depth, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+}
+
 // GL_ARB_map_buffer_range
 
 static void REGAL_CALL log_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
@@ -9002,6 +9212,30 @@ static void REGAL_CALL log_glMatrixIndexusvARB(GLint size, GLushort *indices)
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glMatrixIndexusvARB(size, indices);
+}
+
+// GL_ARB_multi_draw_indirect
+
+static void REGAL_CALL log_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+    GTrace("glMultiDrawArraysIndirect(", toString(mode), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+}
+
+static void REGAL_CALL log_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+    GTrace("glMultiDrawElementsIndirect(", toString(mode), ", ", toString(type), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 }
 
 // GL_ARB_multisample
@@ -9506,6 +9740,77 @@ static void REGAL_CALL log_glPointParameterfvARB(GLenum pname, const GLfloat *pa
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glPointParameterfvARB(pname, params);
+}
+
+// GL_ARB_program_interface_query
+
+static void REGAL_CALL log_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+    GTrace("glGetProgramInterfaceiv(", program, ", ", toString(programInterface), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetProgramInterfaceiv(program, programInterface, pname, params);
+}
+
+static GLuint REGAL_CALL log_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    GTrace("glGetProgramResourceIndex(", program, ", ", toString(programInterface), ", ", boost::print::quote(name,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    GLuint  ret = rCtx->dsp->driverTbl.glGetProgramResourceIndex(program, programInterface, name);
+    return ret;
+}
+
+static GLint REGAL_CALL log_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    GTrace("glGetProgramResourceLocation(", program, ", ", toString(programInterface), ", ", boost::print::quote(name,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    GLint  ret = rCtx->dsp->driverTbl.glGetProgramResourceLocation(program, programInterface, name);
+    return ret;
+}
+
+static GLint REGAL_CALL log_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    GTrace("glGetProgramResourceLocationIndex(", program, ", ", toString(programInterface), ", ", boost::print::quote(name,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    GLint  ret = rCtx->dsp->driverTbl.glGetProgramResourceLocationIndex(program, programInterface, name);
+    return ret;
+}
+
+static void REGAL_CALL log_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+    GTrace("glGetProgramResourceName(", program, ", ", toString(programInterface), ", ", index, ", ", bufSize, ", ", length, ", ", boost::print::quote(name,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+}
+
+static void REGAL_CALL log_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+    GTrace("glGetProgramResourceiv(", program, ", ", toString(programInterface), ", ", index, ", ", propCount, ", ", props, ", ", bufSize, ", ", length, ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
 }
 
 // GL_ARB_provoking_vertex
@@ -10589,6 +10894,43 @@ static void REGAL_CALL log_glValidateProgramPipeline(GLuint pipeline)
     rCtx->dsp->driverTbl.glValidateProgramPipeline(pipeline);
 }
 
+// GL_ARB_shader_atomic_counters
+
+static void REGAL_CALL log_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
+{
+    GTrace("glGetActiveAtomicCounterBufferiv(", program, ", ", bufferIndex, ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
+}
+
+// GL_ARB_shader_image_load_store
+
+static void REGAL_CALL log_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
+{
+    GTrace("glBindImageTexture(", unit, ", ", texture, ", ", level, ", ", toString(layered), ", ", layer, ", ", toString(access), ", ", toString(format), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glBindImageTexture(unit, texture, level, layered, layer, access, format);
+}
+
+static void REGAL_CALL log_glMemoryBarrier(GLbitfield barriers)
+{
+    GTrace("glMemoryBarrier(", barriers, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMemoryBarrier(barriers);
+}
+
 // GL_ARB_shader_objects
 
 static void REGAL_CALL log_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
@@ -11024,6 +11366,19 @@ static void REGAL_CALL log_glValidateProgramARB(GLhandleARB programObj)
     rCtx->dsp->driverTbl.glValidateProgramARB(programObj);
 }
 
+// GL_ARB_shader_storage_buffer_object
+
+static void REGAL_CALL log_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+    GTrace("glShaderStorageBlockBinding(", program, ", ", storageBlockIndex, ", ", storageBlockBinding, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+}
+
 // GL_ARB_shader_subroutine
 
 static void REGAL_CALL log_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
@@ -11304,6 +11659,30 @@ static void REGAL_CALL log_glTexBufferARB(GLenum target, GLenum internalformat, 
     rCtx->dsp->driverTbl.glTexBufferARB(target, internalformat, buffer);
 }
 
+// GL_ARB_texture_buffer_range
+
+static void REGAL_CALL log_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+    GTrace("glTexBufferRange(", toString(target), ", ", toString(internalformat), ", ", buffer, ", ", offset, ", ", size, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexBufferRange(target, internalformat, buffer, offset, size);
+}
+
+static void REGAL_CALL log_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+    GTrace("glTextureBufferRangeEXT(", texture, ", ", toString(target), ", ", toString(internalformat), ", ", buffer, ", ", offset, ", ", size, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size);
+}
+
 // GL_ARB_texture_compression
 
 static void REGAL_CALL log_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -11495,6 +11874,65 @@ static void REGAL_CALL log_glTextureStorage3DEXT(GLuint texture, GLenum target, 
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
+}
+
+// GL_ARB_texture_storage_multisample
+
+static void REGAL_CALL log_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+    GTrace("glTexStorage2DMultisample(", toString(target), ", ", samples, ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(fixedsamplelocations), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL log_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+    GTrace("glTexStorage3DMultisample(", toString(target), ", ", samples, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", toString(fixedsamplelocations), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+static void REGAL_CALL log_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+    GTrace("glTextureStorage2DMultisampleEXT(", texture, ", ", toString(target), ", ", samples, ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(fixedsamplelocations), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
+}
+
+static void REGAL_CALL log_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+    GTrace("glTextureStorage3DMultisampleEXT(", texture, ", ", toString(target), ", ", samples, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", toString(fixedsamplelocations), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+// GL_ARB_texture_view
+
+static void REGAL_CALL log_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+    GTrace("glTextureView(", texture, ", ", toString(target), ", ", origtexture, ", ", toString(internalformat), ", ", minlevel, ", ", numlevels, ", ", minlayer, ", ", numlayers, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
 
 // GL_ARB_timer_query
@@ -11998,6 +12436,74 @@ static void REGAL_CALL log_glVertexAttribLPointer(GLuint index, GLint size, GLen
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glVertexAttribLPointer(index, size, type, stride, pointer);
+}
+
+// GL_ARB_vertex_attrib_binding
+
+static void REGAL_CALL log_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+    GTrace("glBindVertexBuffer(", bindingindex, ", ", buffer, ", ", offset, ", ", stride, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+}
+
+static void REGAL_CALL log_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+    GTrace("glVertexAttribBinding(", attribindex, ", ", bindingindex, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribBinding(attribindex, bindingindex);
+}
+
+static void REGAL_CALL log_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+    GTrace("glVertexAttribFormat(", attribindex, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", relativeoffset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+}
+
+static void REGAL_CALL log_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+    GTrace("glVertexAttribIFormat(", attribindex, ", ", size, ", ", toString(type), ", ", relativeoffset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL log_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+    GTrace("glVertexAttribLFormat(", attribindex, ", ", size, ", ", toString(type), ", ", relativeoffset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL log_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+    GTrace("glVertexBindingDivisor(", bindingindex, ", ", divisor, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexBindingDivisor(bindingindex, divisor);
 }
 
 // GL_ARB_vertex_blend
@@ -15605,6 +16111,39 @@ static void REGAL_CALL log_glDisableClientStateIndexedEXT(GLenum array, GLuint i
     rCtx->dsp->driverTbl.glDisableClientStateIndexedEXT(array, index);
 }
 
+static void REGAL_CALL log_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+    GTrace("glDisableClientStateiEXT(", toString(array), ", ", index, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDisableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL log_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+    GTrace("glDisableVertexArrayAttribEXT(", vaobj, ", ", toString(array), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDisableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL log_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+    GTrace("glDisableVertexArrayEXT(", vaobj, ", ", toString(array), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDisableVertexArrayEXT(vaobj, array);
+}
+
 static void REGAL_CALL log_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
     GTrace("glEnableClientStateIndexedEXT(", toString(array), ", ", index, ")");
@@ -15614,6 +16153,39 @@ static void REGAL_CALL log_glEnableClientStateIndexedEXT(GLenum array, GLuint in
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glEnableClientStateIndexedEXT(array, index);
+}
+
+static void REGAL_CALL log_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+    GTrace("glEnableClientStateiEXT(", toString(array), ", ", index, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glEnableClientStateiEXT(array, index);
+}
+
+static void REGAL_CALL log_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+    GTrace("glEnableVertexArrayAttribEXT(", vaobj, ", ", toString(array), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glEnableVertexArrayAttribEXT(vaobj, array);
+}
+
+static void REGAL_CALL log_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+    GTrace("glEnableVertexArrayEXT(", vaobj, ", ", toString(array), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glEnableVertexArrayEXT(vaobj, array);
 }
 
 static void REGAL_CALL log_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
@@ -15715,6 +16287,17 @@ static void REGAL_CALL log_glGetDoubleIndexedvEXT(GLenum target, GLuint index, G
     rCtx->dsp->driverTbl.glGetDoubleIndexedvEXT(target, index, data);
 }
 
+static void REGAL_CALL log_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+    GTrace("glGetDoublei_vEXT(", toString(target), ", ", index, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetDoublei_vEXT(target, index, data);
+}
+
 static void REGAL_CALL log_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
     GTrace("glGetFloatIndexedvEXT(", toString(target), ", ", index, ")");
@@ -15724,6 +16307,17 @@ static void REGAL_CALL log_glGetFloatIndexedvEXT(GLenum target, GLuint index, GL
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glGetFloatIndexedvEXT(target, index, data);
+}
+
+static void REGAL_CALL log_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+    GTrace("glGetFloati_vEXT(", toString(target), ", ", index, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetFloati_vEXT(target, index, data);
 }
 
 static void REGAL_CALL log_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
@@ -16076,6 +16670,50 @@ static void REGAL_CALL log_glGetTextureParameterivEXT(GLuint texture, GLenum tar
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glGetTextureParameterivEXT(texture, target, pname, params);
+}
+
+static void REGAL_CALL log_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
+{
+    GTrace("glGetVertexArrayIntegeri_vEXT(", vaobj, ", ", index, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL log_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
+{
+    GTrace("glGetVertexArrayIntegervEXT(", vaobj, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexArrayIntegervEXT(vaobj, pname, param);
+}
+
+static void REGAL_CALL log_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
+{
+    GTrace("glGetVertexArrayPointeri_vEXT(", vaobj, ", ", index, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param);
+}
+
+static void REGAL_CALL log_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
+{
+    GTrace("glGetVertexArrayPointervEXT(", vaobj, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexArrayPointervEXT(vaobj, pname, param);
 }
 
 static GLvoid *REGAL_CALL log_glMapNamedBufferEXT(GLuint buffer, GLenum access)
@@ -17588,6 +18226,127 @@ static GLboolean REGAL_CALL log_glUnmapNamedBufferEXT(GLuint buffer)
     return ret;
 }
 
+static void REGAL_CALL log_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayColorOffsetEXT(", vaobj, ", ", buffer, ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayEdgeFlagOffsetEXT(", vaobj, ", ", buffer, ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayFogCoordOffsetEXT(", vaobj, ", ", buffer, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayIndexOffsetEXT(", vaobj, ", ", buffer, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayMultiTexCoordOffsetEXT(", vaobj, ", ", buffer, ", ", toString(texunit), ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayNormalOffsetEXT(", vaobj, ", ", buffer, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArraySecondaryColorOffsetEXT(", vaobj, ", ", buffer, ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayTexCoordOffsetEXT(", vaobj, ", ", buffer, ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayVertexAttribIOffsetEXT(", vaobj, ", ", buffer, ", ", index, ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayVertexAttribOffsetEXT(", vaobj, ", ", buffer, ", ", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
+}
+
+static void REGAL_CALL log_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    GTrace("glVertexArrayVertexOffsetEXT(", vaobj, ", ", buffer, ", ", size, ", ", toString(type), ", ", stride, ", ", offset, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+}
+
 // GL_EXT_draw_buffers2
 
 static void REGAL_CALL log_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -18171,6 +18930,28 @@ static void REGAL_CALL log_glRenderbufferStorageEXT(GLenum target, GLenum intern
 
 // GL_EXT_geometry_shader4
 
+static void REGAL_CALL log_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+    GTrace("glFramebufferTextureEXT(", toString(target), ", ", toString(attachment), ", ", texture, ", ", level, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFramebufferTextureEXT(target, attachment, texture, level);
+}
+
+static void REGAL_CALL log_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+    GTrace("glFramebufferTextureFaceEXT(", toString(target), ", ", toString(attachment), ", ", texture, ", ", level, ", ", toString(face), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
+}
+
 static void REGAL_CALL log_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value)
 {
     GTrace("glProgramParameteriEXT(", program, ", ", toString(pname), ", ", value, ")");
@@ -18240,6 +19021,28 @@ static void REGAL_CALL log_glGetUniformuivEXT(GLuint program, GLint location, GL
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glGetUniformuivEXT(program, location, params);
+}
+
+static void REGAL_CALL log_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
+{
+    GTrace("glGetVertexAttribIivEXT(", index, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexAttribIivEXT(index, pname, params);
+}
+
+static void REGAL_CALL log_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
+{
+    GTrace("glGetVertexAttribIuivEXT(", index, ", ", toString(pname), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetVertexAttribIuivEXT(index, pname, params);
 }
 
 static void REGAL_CALL log_glUniform1uiEXT(GLint location, GLuint v0)
@@ -18328,6 +19131,237 @@ static void REGAL_CALL log_glUniform4uivEXT(GLint location, GLsizei count, const
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glUniform4uivEXT(location, count, value);
+}
+
+static void REGAL_CALL log_glVertexAttribI1iEXT(GLuint index, GLint x)
+{
+    GTrace("glVertexAttribI1iEXT(", index, ", ", x, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI1iEXT(index, x);
+}
+
+static void REGAL_CALL log_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
+{
+    GTrace("glVertexAttribI1ivEXT(", index, ", ", boost::print::array(v,1), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI1ivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI1uiEXT(GLuint index, GLuint x)
+{
+    GTrace("glVertexAttribI1uiEXT(", index, ", ", x, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI1uiEXT(index, x);
+}
+
+static void REGAL_CALL log_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
+{
+    GTrace("glVertexAttribI1uivEXT(", index, ", ", boost::print::array(v,1), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI1uivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
+{
+    GTrace("glVertexAttribI2iEXT(", index, ", ", x, ", ", y, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI2iEXT(index, x, y);
+}
+
+static void REGAL_CALL log_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
+{
+    GTrace("glVertexAttribI2ivEXT(", index, ", ", boost::print::array(v,2), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI2ivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
+{
+    GTrace("glVertexAttribI2uiEXT(", index, ", ", x, ", ", y, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI2uiEXT(index, x, y);
+}
+
+static void REGAL_CALL log_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
+{
+    GTrace("glVertexAttribI2uivEXT(", index, ", ", boost::print::array(v,2), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI2uivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
+{
+    GTrace("glVertexAttribI3iEXT(", index, ", ", x, ", ", y, ", ", z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI3iEXT(index, x, y, z);
+}
+
+static void REGAL_CALL log_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
+{
+    GTrace("glVertexAttribI3ivEXT(", index, ", ", boost::print::array(v,3), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI3ivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
+{
+    GTrace("glVertexAttribI3uiEXT(", index, ", ", x, ", ", y, ", ", z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI3uiEXT(index, x, y, z);
+}
+
+static void REGAL_CALL log_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
+{
+    GTrace("glVertexAttribI3uivEXT(", index, ", ", boost::print::array(v,3), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI3uivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
+{
+    GTrace("glVertexAttribI4bvEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4bvEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
+{
+    GTrace("glVertexAttribI4iEXT(", index, ", ", x, ", ", y, ", ", z, ", ", w, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4iEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL log_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
+{
+    GTrace("glVertexAttribI4ivEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4ivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
+{
+    GTrace("glVertexAttribI4svEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4svEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
+{
+    GTrace("glVertexAttribI4ubvEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4ubvEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+{
+    GTrace("glVertexAttribI4uiEXT(", index, ", ", x, ", ", y, ", ", z, ", ", w, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4uiEXT(index, x, y, z, w);
+}
+
+static void REGAL_CALL log_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
+{
+    GTrace("glVertexAttribI4uivEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4uivEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
+{
+    GTrace("glVertexAttribI4usvEXT(", index, ", ", boost::print::array(v,4), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribI4usvEXT(index, v);
+}
+
+static void REGAL_CALL log_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+    GTrace("glVertexAttribIPointerEXT(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glVertexAttribIPointerEXT(index, size, type, stride, pointer);
 }
 
 // GL_EXT_histogram
@@ -18599,6 +19633,28 @@ static void REGAL_CALL log_glGetColorTableParameterivEXT(GLenum target, GLenum p
 
 // GL_EXT_pixel_transform
 
+static void REGAL_CALL log_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+    GTrace("glGetPixelTransformParameterfvEXT(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetPixelTransformParameterfvEXT(target, pname, params);
+}
+
+static void REGAL_CALL log_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+    GTrace("glGetPixelTransformParameterivEXT(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetPixelTransformParameterivEXT(target, pname, params);
+}
+
 static void REGAL_CALL log_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param)
 {
     GTrace("glPixelTransformParameterfEXT(", toString(target), ", ", toString(pname), ", ", param, ")");
@@ -18610,17 +19666,6 @@ static void REGAL_CALL log_glPixelTransformParameterfEXT(GLenum target, GLenum p
     rCtx->dsp->driverTbl.glPixelTransformParameterfEXT(target, pname, param);
 }
 
-static void REGAL_CALL log_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
-{
-    GTrace("glPixelTransformParameterfvEXT(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glPixelTransformParameterfvEXT(target, pname, params);
-}
-
 static void REGAL_CALL log_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
     GTrace("glPixelTransformParameteriEXT(", toString(target), ", ", toString(pname), ", ", param, ")");
@@ -18630,17 +19675,6 @@ static void REGAL_CALL log_glPixelTransformParameteriEXT(GLenum target, GLenum p
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
     rCtx->dsp->driverTbl.glPixelTransformParameteriEXT(target, pname, param);
-}
-
-static void REGAL_CALL log_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
-{
-    GTrace("glPixelTransformParameterivEXT(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glPixelTransformParameterivEXT(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -20356,63 +21390,165 @@ static void REGAL_CALL log_glTexScissorINTEL(GLenum target, GLclampf tlow, GLcla
     rCtx->dsp->driverTbl.glTexScissorINTEL(target, tlow, thigh);
 }
 
+// GL_KHR_debug
+
+static void REGAL_CALL log_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
+{
+    GTrace("glDebugMessageCallback(", userParam, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDebugMessageCallback(callback, userParam);
+}
+
+static void REGAL_CALL log_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+    GTrace("glDebugMessageControl(", toString(source), ", ", toString(type), ", ", toString(severity), ", ", count, ", ", ids, ", ", toString(enabled), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDebugMessageControl(source, type, severity, count, ids, enabled);
+}
+
+static void REGAL_CALL log_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+    GTrace("glDebugMessageInsert(", toString(source), ", ", toString(type), ", ", id, ", ", toString(severity), ", ", length, ", ", boost::print::quote(buf,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDebugMessageInsert(source, type, id, severity, length, buf);
+}
+
+static GLuint REGAL_CALL log_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+    GTrace("glGetDebugMessageLog(", count, ", ", bufsize, ", ", sources, ", ", types, ", ", ids, ", ", severities, ", ", lengths, ", ", boost::print::quote(messageLog,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    GLuint  ret = rCtx->dsp->driverTbl.glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
+    return ret;
+}
+
+static void REGAL_CALL log_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+    GTrace("glGetObjectLabel(", toString(identifier), ", ", name, ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetObjectLabel(identifier, name, bufSize, length, label);
+}
+
+static void REGAL_CALL log_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+    GTrace("glGetObjectPtrLabel(", ptr, ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetObjectPtrLabel(ptr, bufSize, length, label);
+}
+
+static void REGAL_CALL log_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+    GTrace("glObjectLabel(", toString(identifier), ", ", name, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glObjectLabel(identifier, name, length, label);
+}
+
+static void REGAL_CALL log_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
+{
+    GTrace("glObjectPtrLabel(", ptr, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glObjectPtrLabel(ptr, length, label);
+}
+
+static void REGAL_CALL log_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+    GTrace("glPushDebugGroup(", toString(source), ", ", id, ", ", length, ", ", boost::print::quote(message,'"'), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPushDebugGroup(source, id, length, message);
+}
+
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL log_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL log_glBufferRegionEnabled(void)
 {
-    GTrace("glBufferRegionEnabledEXT()");
+    GTrace("glBufferRegionEnabled()");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    GLuint  ret = rCtx->dsp->driverTbl.glBufferRegionEnabledEXT();
+    GLuint  ret = rCtx->dsp->driverTbl.glBufferRegionEnabled();
     return ret;
 }
 
-static void REGAL_CALL log_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL log_glDeleteBufferRegion(GLenum region)
 {
-    GTrace("glDeleteBufferRegionEXT(", toString(region), ")");
+    GTrace("glDeleteBufferRegion(", toString(region), ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glDeleteBufferRegionEXT(region);
+    rCtx->dsp->driverTbl.glDeleteBufferRegion(region);
 }
 
-static void REGAL_CALL log_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL log_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
-    GTrace("glDrawBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
+    GTrace("glDrawBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xDest, ", ", yDest, ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+    rCtx->dsp->driverTbl.glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
 
-static GLuint REGAL_CALL log_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL log_glNewBufferRegion(GLenum region)
 {
-    GTrace("glNewBufferRegionEXT(", toString(region), ")");
+    GTrace("glNewBufferRegion(", toString(region), ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    GLuint  ret = rCtx->dsp->driverTbl.glNewBufferRegionEXT(region);
+    GLuint  ret = rCtx->dsp->driverTbl.glNewBufferRegion(region);
     return ret;
 }
 
-static void REGAL_CALL log_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL log_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    GTrace("glReadBufferRegionEXT(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+    GTrace("glReadBufferRegion(", region, ", ", x, ", ", y, ", ", width, ", ", height, ")");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx);
     RegalAssert(rCtx->dsp);
     DispatchStateScopedStepDown stepDown(rCtx->dsp);
     RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glReadBufferRegionEXT(region, x, y, width, height);
+    rCtx->dsp->driverTbl.glReadBufferRegion(region, x, y, width, height);
 }
 
 // GL_MESA_resize_buffers
@@ -21215,28 +22351,6 @@ static void REGAL_CALL log_glRenderbufferStorageMultisampleCoverageNV(GLenum tar
 }
 
 // GL_NV_geometry_program4
-
-static void REGAL_CALL log_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-    GTrace("glFramebufferTextureEXT(", toString(target), ", ", toString(attachment), ", ", texture, ", ", level, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glFramebufferTextureEXT(target, attachment, texture, level);
-}
-
-static void REGAL_CALL log_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-    GTrace("glFramebufferTextureFaceEXT(", toString(target), ", ", toString(attachment), ", ", texture, ", ", level, ", ", toString(face), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
-}
 
 static void REGAL_CALL log_glProgramVertexLimitNV(GLenum target, GLint limit)
 {
@@ -24906,261 +26020,6 @@ static void REGAL_CALL log_glVertexAttribs4ubvNV(GLuint index, GLsizei n, const 
     rCtx->dsp->driverTbl.glVertexAttribs4ubvNV(index, n, v);
 }
 
-// GL_NV_vertex_program4
-
-static void REGAL_CALL log_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
-{
-    GTrace("glGetVertexAttribIivEXT(", index, ", ", toString(pname), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glGetVertexAttribIivEXT(index, pname, params);
-}
-
-static void REGAL_CALL log_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
-{
-    GTrace("glGetVertexAttribIuivEXT(", index, ", ", toString(pname), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glGetVertexAttribIuivEXT(index, pname, params);
-}
-
-static void REGAL_CALL log_glVertexAttribI1iEXT(GLuint index, GLint x)
-{
-    GTrace("glVertexAttribI1iEXT(", index, ", ", x, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI1iEXT(index, x);
-}
-
-static void REGAL_CALL log_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
-{
-    GTrace("glVertexAttribI1ivEXT(", index, ", ", boost::print::array(v,1), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI1ivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI1uiEXT(GLuint index, GLuint x)
-{
-    GTrace("glVertexAttribI1uiEXT(", index, ", ", x, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI1uiEXT(index, x);
-}
-
-static void REGAL_CALL log_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
-{
-    GTrace("glVertexAttribI1uivEXT(", index, ", ", boost::print::array(v,1), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI1uivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
-{
-    GTrace("glVertexAttribI2iEXT(", index, ", ", x, ", ", y, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI2iEXT(index, x, y);
-}
-
-static void REGAL_CALL log_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
-{
-    GTrace("glVertexAttribI2ivEXT(", index, ", ", boost::print::array(v,2), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI2ivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
-{
-    GTrace("glVertexAttribI2uiEXT(", index, ", ", x, ", ", y, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI2uiEXT(index, x, y);
-}
-
-static void REGAL_CALL log_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
-{
-    GTrace("glVertexAttribI2uivEXT(", index, ", ", boost::print::array(v,2), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI2uivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
-{
-    GTrace("glVertexAttribI3iEXT(", index, ", ", x, ", ", y, ", ", z, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI3iEXT(index, x, y, z);
-}
-
-static void REGAL_CALL log_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
-{
-    GTrace("glVertexAttribI3ivEXT(", index, ", ", boost::print::array(v,3), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI3ivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
-{
-    GTrace("glVertexAttribI3uiEXT(", index, ", ", x, ", ", y, ", ", z, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI3uiEXT(index, x, y, z);
-}
-
-static void REGAL_CALL log_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
-{
-    GTrace("glVertexAttribI3uivEXT(", index, ", ", boost::print::array(v,3), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI3uivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
-{
-    GTrace("glVertexAttribI4bvEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4bvEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
-{
-    GTrace("glVertexAttribI4iEXT(", index, ", ", x, ", ", y, ", ", z, ", ", w, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4iEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL log_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
-{
-    GTrace("glVertexAttribI4ivEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4ivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
-{
-    GTrace("glVertexAttribI4svEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4svEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
-{
-    GTrace("glVertexAttribI4ubvEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4ubvEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
-{
-    GTrace("glVertexAttribI4uiEXT(", index, ", ", x, ", ", y, ", ", z, ", ", w, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4uiEXT(index, x, y, z, w);
-}
-
-static void REGAL_CALL log_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
-{
-    GTrace("glVertexAttribI4uivEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4uivEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
-{
-    GTrace("glVertexAttribI4usvEXT(", index, ", ", boost::print::array(v,4), ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribI4usvEXT(index, v);
-}
-
-static void REGAL_CALL log_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
-{
-    GTrace("glVertexAttribIPointerEXT(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx);
-    RegalAssert(rCtx->dsp);
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    RegalAssert(rCtx->dsp->curr);
-    rCtx->dsp->driverTbl.glVertexAttribIPointerEXT(index, size, type, stride, pointer);
-}
-
 // GL_NV_video_capture
 
 static void REGAL_CALL log_glBeginVideoCaptureNV(GLuint video_capture_slot)
@@ -27745,13 +28604,29 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   tbl.glCreateSyncFromCLeventARB = log_glCreateSyncFromCLeventARB;
 
+  // GL_ARB_clear_buffer_object
+
+  tbl.glClearBufferData = log_glClearBufferData;
+  tbl.glClearBufferSubData = log_glClearBufferSubData;
+  tbl.glClearNamedBufferDataEXT = log_glClearNamedBufferDataEXT;
+  tbl.glClearNamedBufferSubDataEXT = log_glClearNamedBufferSubDataEXT;
+
   // GL_ARB_color_buffer_float
 
   tbl.glClampColorARB = log_glClampColorARB;
 
+  // GL_ARB_compute_shader
+
+  tbl.glDispatchCompute = log_glDispatchCompute;
+  tbl.glDispatchComputeIndirect = log_glDispatchComputeIndirect;
+
   // GL_ARB_copy_buffer
 
   tbl.glCopyBufferSubData = log_glCopyBufferSubData;
+
+  // GL_ARB_copy_image
+
+  tbl.glCopyImageSubData = log_glCopyImageSubData;
 
   // GL_ARB_debug_output
 
@@ -27787,6 +28662,13 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   tbl.glDrawArraysInstancedARB = log_glDrawArraysInstancedARB;
   tbl.glDrawElementsInstancedARB = log_glDrawElementsInstancedARB;
+
+  // GL_ARB_framebuffer_no_attachments
+
+  tbl.glFramebufferParameteri = log_glFramebufferParameteri;
+  tbl.glGetFramebufferParameteriv = log_glGetFramebufferParameteriv;
+  tbl.glGetNamedFramebufferParameterivEXT = log_glGetNamedFramebufferParameterivEXT;
+  tbl.glNamedFramebufferParameteriEXT = log_glNamedFramebufferParameteriEXT;
 
   // GL_ARB_framebuffer_object
 
@@ -27888,6 +28770,19 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   tbl.glGetInternalformativ = log_glGetInternalformativ;
 
+  // GL_ARB_internalformat_query2
+
+  tbl.glGetInternalformati64v = log_glGetInternalformati64v;
+
+  // GL_ARB_invalidate_subdata
+
+  tbl.glInvalidateBufferData = log_glInvalidateBufferData;
+  tbl.glInvalidateBufferSubData = log_glInvalidateBufferSubData;
+  tbl.glInvalidateFramebuffer = log_glInvalidateFramebuffer;
+  tbl.glInvalidateSubFramebuffer = log_glInvalidateSubFramebuffer;
+  tbl.glInvalidateTexImage = log_glInvalidateTexImage;
+  tbl.glInvalidateTexSubImage = log_glInvalidateTexSubImage;
+
   // GL_ARB_map_buffer_range
 
   tbl.glFlushMappedBufferRange = log_glFlushMappedBufferRange;
@@ -27900,6 +28795,11 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glMatrixIndexubvARB = log_glMatrixIndexubvARB;
   tbl.glMatrixIndexuivARB = log_glMatrixIndexuivARB;
   tbl.glMatrixIndexusvARB = log_glMatrixIndexusvARB;
+
+  // GL_ARB_multi_draw_indirect
+
+  tbl.glMultiDrawArraysIndirect = log_glMultiDrawArraysIndirect;
+  tbl.glMultiDrawElementsIndirect = log_glMultiDrawElementsIndirect;
 
   // GL_ARB_multisample
 
@@ -27957,6 +28857,15 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   tbl.glPointParameterfARB = log_glPointParameterfARB;
   tbl.glPointParameterfvARB = log_glPointParameterfvARB;
+
+  // GL_ARB_program_interface_query
+
+  tbl.glGetProgramInterfaceiv = log_glGetProgramInterfaceiv;
+  tbl.glGetProgramResourceIndex = log_glGetProgramResourceIndex;
+  tbl.glGetProgramResourceLocation = log_glGetProgramResourceLocation;
+  tbl.glGetProgramResourceLocationIndex = log_glGetProgramResourceLocationIndex;
+  tbl.glGetProgramResourceName = log_glGetProgramResourceName;
+  tbl.glGetProgramResourceiv = log_glGetProgramResourceiv;
 
   // GL_ARB_provoking_vertex
 
@@ -28070,6 +28979,15 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glUseProgramStages = log_glUseProgramStages;
   tbl.glValidateProgramPipeline = log_glValidateProgramPipeline;
 
+  // GL_ARB_shader_atomic_counters
+
+  tbl.glGetActiveAtomicCounterBufferiv = log_glGetActiveAtomicCounterBufferiv;
+
+  // GL_ARB_shader_image_load_store
+
+  tbl.glBindImageTexture = log_glBindImageTexture;
+  tbl.glMemoryBarrier = log_glMemoryBarrier;
+
   // GL_ARB_shader_objects
 
   tbl.glAttachObjectARB = log_glAttachObjectARB;
@@ -28112,6 +29030,10 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glUseProgramObjectARB = log_glUseProgramObjectARB;
   tbl.glValidateProgramARB = log_glValidateProgramARB;
 
+  // GL_ARB_shader_storage_buffer_object
+
+  tbl.glShaderStorageBlockBinding = log_glShaderStorageBlockBinding;
+
   // GL_ARB_shader_subroutine
 
   tbl.glGetActiveSubroutineName = log_glGetActiveSubroutineName;
@@ -28151,6 +29073,11 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   tbl.glTexBufferARB = log_glTexBufferARB;
 
+  // GL_ARB_texture_buffer_range
+
+  tbl.glTexBufferRange = log_glTexBufferRange;
+  tbl.glTextureBufferRangeEXT = log_glTextureBufferRangeEXT;
+
   // GL_ARB_texture_compression
 
   tbl.glCompressedTexImage1DARB = log_glCompressedTexImage1DARB;
@@ -28176,6 +29103,17 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glTextureStorage1DEXT = log_glTextureStorage1DEXT;
   tbl.glTextureStorage2DEXT = log_glTextureStorage2DEXT;
   tbl.glTextureStorage3DEXT = log_glTextureStorage3DEXT;
+
+  // GL_ARB_texture_storage_multisample
+
+  tbl.glTexStorage2DMultisample = log_glTexStorage2DMultisample;
+  tbl.glTexStorage3DMultisample = log_glTexStorage3DMultisample;
+  tbl.glTextureStorage2DMultisampleEXT = log_glTextureStorage2DMultisampleEXT;
+  tbl.glTextureStorage3DMultisampleEXT = log_glTextureStorage3DMultisampleEXT;
+
+  // GL_ARB_texture_view
+
+  tbl.glTextureView = log_glTextureView;
 
   // GL_ARB_timer_query
 
@@ -28244,6 +29182,15 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glVertexAttribL4d = log_glVertexAttribL4d;
   tbl.glVertexAttribL4dv = log_glVertexAttribL4dv;
   tbl.glVertexAttribLPointer = log_glVertexAttribLPointer;
+
+  // GL_ARB_vertex_attrib_binding
+
+  tbl.glBindVertexBuffer = log_glBindVertexBuffer;
+  tbl.glVertexAttribBinding = log_glVertexAttribBinding;
+  tbl.glVertexAttribFormat = log_glVertexAttribFormat;
+  tbl.glVertexAttribIFormat = log_glVertexAttribIFormat;
+  tbl.glVertexAttribLFormat = log_glVertexAttribLFormat;
+  tbl.glVertexBindingDivisor = log_glVertexBindingDivisor;
 
   // GL_ARB_vertex_blend
 
@@ -28658,7 +29605,13 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glCopyTextureSubImage2DEXT = log_glCopyTextureSubImage2DEXT;
   tbl.glCopyTextureSubImage3DEXT = log_glCopyTextureSubImage3DEXT;
   tbl.glDisableClientStateIndexedEXT = log_glDisableClientStateIndexedEXT;
+  tbl.glDisableClientStateiEXT = log_glDisableClientStateiEXT;
+  tbl.glDisableVertexArrayAttribEXT = log_glDisableVertexArrayAttribEXT;
+  tbl.glDisableVertexArrayEXT = log_glDisableVertexArrayEXT;
   tbl.glEnableClientStateIndexedEXT = log_glEnableClientStateIndexedEXT;
+  tbl.glEnableClientStateiEXT = log_glEnableClientStateiEXT;
+  tbl.glEnableVertexArrayAttribEXT = log_glEnableVertexArrayAttribEXT;
+  tbl.glEnableVertexArrayEXT = log_glEnableVertexArrayEXT;
   tbl.glFlushMappedNamedBufferRangeEXT = log_glFlushMappedNamedBufferRangeEXT;
   tbl.glFramebufferDrawBufferEXT = log_glFramebufferDrawBufferEXT;
   tbl.glFramebufferDrawBuffersEXT = log_glFramebufferDrawBuffersEXT;
@@ -28668,7 +29621,9 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetCompressedMultiTexImageEXT = log_glGetCompressedMultiTexImageEXT;
   tbl.glGetCompressedTextureImageEXT = log_glGetCompressedTextureImageEXT;
   tbl.glGetDoubleIndexedvEXT = log_glGetDoubleIndexedvEXT;
+  tbl.glGetDoublei_vEXT = log_glGetDoublei_vEXT;
   tbl.glGetFloatIndexedvEXT = log_glGetFloatIndexedvEXT;
+  tbl.glGetFloati_vEXT = log_glGetFloati_vEXT;
   tbl.glGetFramebufferParameterivEXT = log_glGetFramebufferParameterivEXT;
   tbl.glGetMultiTexEnvfvEXT = log_glGetMultiTexEnvfvEXT;
   tbl.glGetMultiTexEnvivEXT = log_glGetMultiTexEnvivEXT;
@@ -28701,6 +29656,10 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetTextureParameterIuivEXT = log_glGetTextureParameterIuivEXT;
   tbl.glGetTextureParameterfvEXT = log_glGetTextureParameterfvEXT;
   tbl.glGetTextureParameterivEXT = log_glGetTextureParameterivEXT;
+  tbl.glGetVertexArrayIntegeri_vEXT = log_glGetVertexArrayIntegeri_vEXT;
+  tbl.glGetVertexArrayIntegervEXT = log_glGetVertexArrayIntegervEXT;
+  tbl.glGetVertexArrayPointeri_vEXT = log_glGetVertexArrayPointeri_vEXT;
+  tbl.glGetVertexArrayPointervEXT = log_glGetVertexArrayPointervEXT;
   tbl.glMapNamedBufferEXT = log_glMapNamedBufferEXT;
   tbl.glMapNamedBufferRangeEXT = log_glMapNamedBufferRangeEXT;
   tbl.glMatrixFrustumEXT = log_glMatrixFrustumEXT;
@@ -28838,6 +29797,17 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glTextureSubImage2DEXT = log_glTextureSubImage2DEXT;
   tbl.glTextureSubImage3DEXT = log_glTextureSubImage3DEXT;
   tbl.glUnmapNamedBufferEXT = log_glUnmapNamedBufferEXT;
+  tbl.glVertexArrayColorOffsetEXT = log_glVertexArrayColorOffsetEXT;
+  tbl.glVertexArrayEdgeFlagOffsetEXT = log_glVertexArrayEdgeFlagOffsetEXT;
+  tbl.glVertexArrayFogCoordOffsetEXT = log_glVertexArrayFogCoordOffsetEXT;
+  tbl.glVertexArrayIndexOffsetEXT = log_glVertexArrayIndexOffsetEXT;
+  tbl.glVertexArrayMultiTexCoordOffsetEXT = log_glVertexArrayMultiTexCoordOffsetEXT;
+  tbl.glVertexArrayNormalOffsetEXT = log_glVertexArrayNormalOffsetEXT;
+  tbl.glVertexArraySecondaryColorOffsetEXT = log_glVertexArraySecondaryColorOffsetEXT;
+  tbl.glVertexArrayTexCoordOffsetEXT = log_glVertexArrayTexCoordOffsetEXT;
+  tbl.glVertexArrayVertexAttribIOffsetEXT = log_glVertexArrayVertexAttribIOffsetEXT;
+  tbl.glVertexArrayVertexAttribOffsetEXT = log_glVertexArrayVertexAttribOffsetEXT;
+  tbl.glVertexArrayVertexOffsetEXT = log_glVertexArrayVertexOffsetEXT;
 
   // GL_EXT_draw_buffers2
 
@@ -28916,6 +29886,8 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   // GL_EXT_geometry_shader4
 
+  tbl.glFramebufferTextureEXT = log_glFramebufferTextureEXT;
+  tbl.glFramebufferTextureFaceEXT = log_glFramebufferTextureFaceEXT;
   tbl.glProgramParameteriEXT = log_glProgramParameteriEXT;
 
   // GL_EXT_gpu_program_parameters
@@ -28928,6 +29900,8 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glBindFragDataLocationEXT = log_glBindFragDataLocationEXT;
   tbl.glGetFragDataLocationEXT = log_glGetFragDataLocationEXT;
   tbl.glGetUniformuivEXT = log_glGetUniformuivEXT;
+  tbl.glGetVertexAttribIivEXT = log_glGetVertexAttribIivEXT;
+  tbl.glGetVertexAttribIuivEXT = log_glGetVertexAttribIuivEXT;
   tbl.glUniform1uiEXT = log_glUniform1uiEXT;
   tbl.glUniform1uivEXT = log_glUniform1uivEXT;
   tbl.glUniform2uiEXT = log_glUniform2uiEXT;
@@ -28936,6 +29910,27 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glUniform3uivEXT = log_glUniform3uivEXT;
   tbl.glUniform4uiEXT = log_glUniform4uiEXT;
   tbl.glUniform4uivEXT = log_glUniform4uivEXT;
+  tbl.glVertexAttribI1iEXT = log_glVertexAttribI1iEXT;
+  tbl.glVertexAttribI1ivEXT = log_glVertexAttribI1ivEXT;
+  tbl.glVertexAttribI1uiEXT = log_glVertexAttribI1uiEXT;
+  tbl.glVertexAttribI1uivEXT = log_glVertexAttribI1uivEXT;
+  tbl.glVertexAttribI2iEXT = log_glVertexAttribI2iEXT;
+  tbl.glVertexAttribI2ivEXT = log_glVertexAttribI2ivEXT;
+  tbl.glVertexAttribI2uiEXT = log_glVertexAttribI2uiEXT;
+  tbl.glVertexAttribI2uivEXT = log_glVertexAttribI2uivEXT;
+  tbl.glVertexAttribI3iEXT = log_glVertexAttribI3iEXT;
+  tbl.glVertexAttribI3ivEXT = log_glVertexAttribI3ivEXT;
+  tbl.glVertexAttribI3uiEXT = log_glVertexAttribI3uiEXT;
+  tbl.glVertexAttribI3uivEXT = log_glVertexAttribI3uivEXT;
+  tbl.glVertexAttribI4bvEXT = log_glVertexAttribI4bvEXT;
+  tbl.glVertexAttribI4iEXT = log_glVertexAttribI4iEXT;
+  tbl.glVertexAttribI4ivEXT = log_glVertexAttribI4ivEXT;
+  tbl.glVertexAttribI4svEXT = log_glVertexAttribI4svEXT;
+  tbl.glVertexAttribI4ubvEXT = log_glVertexAttribI4ubvEXT;
+  tbl.glVertexAttribI4uiEXT = log_glVertexAttribI4uiEXT;
+  tbl.glVertexAttribI4uivEXT = log_glVertexAttribI4uivEXT;
+  tbl.glVertexAttribI4usvEXT = log_glVertexAttribI4usvEXT;
+  tbl.glVertexAttribIPointerEXT = log_glVertexAttribIPointerEXT;
 
   // GL_EXT_histogram
 
@@ -28983,10 +29978,10 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   // GL_EXT_pixel_transform
 
+  tbl.glGetPixelTransformParameterfvEXT = log_glGetPixelTransformParameterfvEXT;
+  tbl.glGetPixelTransformParameterivEXT = log_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = log_glPixelTransformParameterfEXT;
-  tbl.glPixelTransformParameterfvEXT = log_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = log_glPixelTransformParameteriEXT;
-  tbl.glPixelTransformParameterivEXT = log_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -29230,13 +30225,25 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glTexScissorFuncINTEL = log_glTexScissorFuncINTEL;
   tbl.glTexScissorINTEL = log_glTexScissorINTEL;
 
+  // GL_KHR_debug
+
+  tbl.glDebugMessageCallback = log_glDebugMessageCallback;
+  tbl.glDebugMessageControl = log_glDebugMessageControl;
+  tbl.glDebugMessageInsert = log_glDebugMessageInsert;
+  tbl.glGetDebugMessageLog = log_glGetDebugMessageLog;
+  tbl.glGetObjectLabel = log_glGetObjectLabel;
+  tbl.glGetObjectPtrLabel = log_glGetObjectPtrLabel;
+  tbl.glObjectLabel = log_glObjectLabel;
+  tbl.glObjectPtrLabel = log_glObjectPtrLabel;
+  tbl.glPushDebugGroup = log_glPushDebugGroup;
+
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = log_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = log_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = log_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = log_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = log_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = log_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = log_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = log_glDrawBufferRegion;
+  tbl.glNewBufferRegion = log_glNewBufferRegion;
+  tbl.glReadBufferRegion = log_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 
@@ -29343,8 +30350,6 @@ void InitDispatchTableLog(DispatchTable &tbl)
 
   // GL_NV_geometry_program4
 
-  tbl.glFramebufferTextureEXT = log_glFramebufferTextureEXT;
-  tbl.glFramebufferTextureFaceEXT = log_glFramebufferTextureFaceEXT;
   tbl.glProgramVertexLimitNV = log_glProgramVertexLimitNV;
 
   // GL_NV_gpu_program4
@@ -29739,32 +30744,6 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glVertexAttribs4fvNV = log_glVertexAttribs4fvNV;
   tbl.glVertexAttribs4svNV = log_glVertexAttribs4svNV;
   tbl.glVertexAttribs4ubvNV = log_glVertexAttribs4ubvNV;
-
-  // GL_NV_vertex_program4
-
-  tbl.glGetVertexAttribIivEXT = log_glGetVertexAttribIivEXT;
-  tbl.glGetVertexAttribIuivEXT = log_glGetVertexAttribIuivEXT;
-  tbl.glVertexAttribI1iEXT = log_glVertexAttribI1iEXT;
-  tbl.glVertexAttribI1ivEXT = log_glVertexAttribI1ivEXT;
-  tbl.glVertexAttribI1uiEXT = log_glVertexAttribI1uiEXT;
-  tbl.glVertexAttribI1uivEXT = log_glVertexAttribI1uivEXT;
-  tbl.glVertexAttribI2iEXT = log_glVertexAttribI2iEXT;
-  tbl.glVertexAttribI2ivEXT = log_glVertexAttribI2ivEXT;
-  tbl.glVertexAttribI2uiEXT = log_glVertexAttribI2uiEXT;
-  tbl.glVertexAttribI2uivEXT = log_glVertexAttribI2uivEXT;
-  tbl.glVertexAttribI3iEXT = log_glVertexAttribI3iEXT;
-  tbl.glVertexAttribI3ivEXT = log_glVertexAttribI3ivEXT;
-  tbl.glVertexAttribI3uiEXT = log_glVertexAttribI3uiEXT;
-  tbl.glVertexAttribI3uivEXT = log_glVertexAttribI3uivEXT;
-  tbl.glVertexAttribI4bvEXT = log_glVertexAttribI4bvEXT;
-  tbl.glVertexAttribI4iEXT = log_glVertexAttribI4iEXT;
-  tbl.glVertexAttribI4ivEXT = log_glVertexAttribI4ivEXT;
-  tbl.glVertexAttribI4svEXT = log_glVertexAttribI4svEXT;
-  tbl.glVertexAttribI4ubvEXT = log_glVertexAttribI4ubvEXT;
-  tbl.glVertexAttribI4uiEXT = log_glVertexAttribI4uiEXT;
-  tbl.glVertexAttribI4uivEXT = log_glVertexAttribI4uivEXT;
-  tbl.glVertexAttribI4usvEXT = log_glVertexAttribI4usvEXT;
-  tbl.glVertexAttribIPointerEXT = log_glVertexAttribIPointerEXT;
 
   // GL_NV_video_capture
 

@@ -53,41 +53,41 @@ inline int NameCmp(const void *a, const void *b)
   return std::strcmp(*(const char **) a, *(const char **) b);
 }
 
-extern const char * const gl_Name[2392];
-extern const void *gl_Value[2392];
-extern const size_t gl_Offset[2392];
+extern const char * const gl_Name[2467];
+extern const void *gl_Value[2467];
+extern const size_t gl_Offset[2467];
 
 template<typename T>
 T
 gl_Lookup(const char *name, T def = NULL)
 {
-  const char **res = (const char **) std::bsearch(&name, gl_Name, 2391, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, gl_Name, 2466, sizeof(const char *), NameCmp);
   return res ? reinterpret_cast<T>(const_cast<void *>(gl_Value[(size_t) (res - gl_Name)])) : def;
 }
 
 inline size_t gl_LookupOffset(const char *name)
 {
-  const char **res = (const char **) std::bsearch(&name, gl_Name, 2391, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, gl_Name, 2466, sizeof(const char *), NameCmp);
   return res ? gl_Offset[(size_t) (res - gl_Name)] : 0;
 }
 
 #ifdef REGAL_SYS_WGL
 
-extern const char * const wgl_Name[136];
-extern const void *wgl_Value[136];
-extern const size_t wgl_Offset[136];
+extern const char * const wgl_Name[144];
+extern const void *wgl_Value[144];
+extern const size_t wgl_Offset[144];
 
 template<typename T>
 T
 wgl_Lookup(const char *name, T def = NULL)
 {
-  const char **res = (const char **) std::bsearch(&name, wgl_Name, 135, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, wgl_Name, 143, sizeof(const char *), NameCmp);
   return res ? reinterpret_cast<T>(const_cast<void *>(wgl_Value[(size_t) (res - wgl_Name)])) : def;
 }
 
 inline size_t wgl_LookupOffset(const char *name)
 {
-  const char **res = (const char **) std::bsearch(&name, wgl_Name, 135, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, wgl_Name, 143, sizeof(const char *), NameCmp);
   return res ? wgl_Offset[(size_t) (res - wgl_Name)] : 0;
 }
 
@@ -95,21 +95,21 @@ inline size_t wgl_LookupOffset(const char *name)
 
 #ifdef REGAL_SYS_GLX
 
-extern const char * const glx_Name[107];
-extern const void *glx_Value[107];
-extern const size_t glx_Offset[107];
+extern const char * const glx_Name[114];
+extern const void *glx_Value[114];
+extern const size_t glx_Offset[114];
 
 template<typename T>
 T
 glx_Lookup(const char *name, T def = NULL)
 {
-  const char **res = (const char **) std::bsearch(&name, glx_Name, 106, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, glx_Name, 113, sizeof(const char *), NameCmp);
   return res ? reinterpret_cast<T>(const_cast<void *>(glx_Value[(size_t) (res - glx_Name)])) : def;
 }
 
 inline size_t glx_LookupOffset(const char *name)
 {
-  const char **res = (const char **) std::bsearch(&name, glx_Name, 106, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, glx_Name, 113, sizeof(const char *), NameCmp);
   return res ? glx_Offset[(size_t) (res - glx_Name)] : 0;
 }
 

@@ -16162,6 +16162,100 @@ static GLsync REGAL_CALL error_glCreateSyncFromCLeventARB(cl_context context, cl
 return ret;
 }
 
+// GL_ARB_clear_buffer_object
+
+static void REGAL_CALL error_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+    ITrace("error_glClearBufferData");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearBufferData(target, internalformat, format, type, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearBufferData : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+    ITrace("error_glClearBufferSubData");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearBufferSubData(target, internalformat, offset, size, format, type, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearBufferSubData : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
+{
+    ITrace("error_glClearNamedBufferDataEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearNamedBufferDataEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
+{
+    ITrace("error_glClearNamedBufferSubDataEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearNamedBufferSubDataEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_color_buffer_float
 
 static void REGAL_CALL error_glClampColorARB(GLenum target, GLenum clamp)
@@ -16187,6 +16281,54 @@ static void REGAL_CALL error_glClampColorARB(GLenum target, GLenum clamp)
     }
 }
 
+// GL_ARB_compute_shader
+
+static void REGAL_CALL error_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+    ITrace("error_glDispatchCompute");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDispatchCompute : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDispatchComputeIndirect(GLintptr indirect)
+{
+    ITrace("error_glDispatchComputeIndirect");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDispatchComputeIndirect(indirect);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDispatchComputeIndirect : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_copy_buffer
 
 static void REGAL_CALL error_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
@@ -16206,6 +16348,31 @@ static void REGAL_CALL error_glCopyBufferSubData(GLenum readtarget, GLenum write
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glCopyBufferSubData : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_copy_image
+
+static void REGAL_CALL error_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+    ITrace("error_glCopyImageSubData");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glCopyImageSubData : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -16610,6 +16777,100 @@ static void REGAL_CALL error_glDrawElementsInstancedARB(GLenum mode, GLsizei cou
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glDrawElementsInstancedARB : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_framebuffer_no_attachments
+
+static void REGAL_CALL error_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
+{
+    ITrace("error_glFramebufferParameteri");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFramebufferParameteri(target, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFramebufferParameteri : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+    ITrace("error_glGetFramebufferParameteriv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetFramebufferParameteriv(target, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetFramebufferParameteriv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
+{
+    ITrace("error_glGetNamedFramebufferParameterivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetNamedFramebufferParameterivEXT(framebuffer, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetNamedFramebufferParameterivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
+{
+    ITrace("error_glNamedFramebufferParameteriEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glNamedFramebufferParameteriEXT(framebuffer, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glNamedFramebufferParameteriEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -18450,6 +18711,171 @@ static void REGAL_CALL error_glGetInternalformativ(GLenum target, GLenum interna
     }
 }
 
+// GL_ARB_internalformat_query2
+
+static void REGAL_CALL error_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
+{
+    ITrace("error_glGetInternalformati64v");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetInternalformati64v(target, internalformat, pname, bufSize, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetInternalformati64v : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_invalidate_subdata
+
+static void REGAL_CALL error_glInvalidateBufferData(GLuint buffer)
+{
+    ITrace("error_glInvalidateBufferData");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateBufferData(buffer);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateBufferData : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
+{
+    ITrace("error_glInvalidateBufferSubData");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateBufferSubData(buffer, offset, length);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateBufferSubData : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
+{
+    ITrace("error_glInvalidateFramebuffer");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateFramebuffer(target, numAttachments, attachments);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateFramebuffer : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
+{
+    ITrace("error_glInvalidateSubFramebuffer");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateSubFramebuffer : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glInvalidateTexImage(GLuint texture, GLint level)
+{
+    ITrace("error_glInvalidateTexImage");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateTexImage(texture, level);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateTexImage : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
+{
+    ITrace("error_glInvalidateTexSubImage");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glInvalidateTexSubImage : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_map_buffer_range
 
 static void REGAL_CALL error_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
@@ -18610,6 +19036,54 @@ static void REGAL_CALL error_glMatrixIndexusvARB(GLint size, GLushort *indices)
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glMatrixIndexusvARB : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_multi_draw_indirect
+
+static void REGAL_CALL error_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+    ITrace("error_glMultiDrawArraysIndirect");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMultiDrawArraysIndirect : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+    ITrace("error_glMultiDrawElementsIndirect");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMultiDrawElementsIndirect : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -19654,6 +20128,149 @@ static void REGAL_CALL error_glPointParameterfvARB(GLenum pname, const GLfloat *
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glPointParameterfvARB : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_program_interface_query
+
+static void REGAL_CALL error_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
+{
+    ITrace("error_glGetProgramInterfaceiv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetProgramInterfaceiv(program, programInterface, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramInterfaceiv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static GLuint REGAL_CALL error_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    ITrace("error_glGetProgramResourceIndex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    GLuint  ret = rCtx->dsp->curr->glGetProgramResourceIndex(program, programInterface, name);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramResourceIndex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+return ret;
+}
+
+static GLint REGAL_CALL error_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    ITrace("error_glGetProgramResourceLocation");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    GLint  ret = rCtx->dsp->curr->glGetProgramResourceLocation(program, programInterface, name);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramResourceLocation : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+return ret;
+}
+
+static GLint REGAL_CALL error_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
+{
+    ITrace("error_glGetProgramResourceLocationIndex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    GLint  ret = rCtx->dsp->curr->glGetProgramResourceLocationIndex(program, programInterface, name);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramResourceLocationIndex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+return ret;
+}
+
+static void REGAL_CALL error_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
+{
+    ITrace("error_glGetProgramResourceName");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramResourceName : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
+{
+    ITrace("error_glGetProgramResourceiv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetProgramResourceiv : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -21905,6 +22522,79 @@ static void REGAL_CALL error_glValidateProgramPipeline(GLuint pipeline)
     }
 }
 
+// GL_ARB_shader_atomic_counters
+
+static void REGAL_CALL error_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
+{
+    ITrace("error_glGetActiveAtomicCounterBufferiv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetActiveAtomicCounterBufferiv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_shader_image_load_store
+
+static void REGAL_CALL error_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
+{
+    ITrace("error_glBindImageTexture");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glBindImageTexture(unit, texture, level, layered, layer, access, format);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glBindImageTexture : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMemoryBarrier(GLbitfield barriers)
+{
+    ITrace("error_glMemoryBarrier");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMemoryBarrier(barriers);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMemoryBarrier : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_shader_objects
 
 static void REGAL_CALL error_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
@@ -22808,6 +23498,31 @@ static void REGAL_CALL error_glValidateProgramARB(GLhandleARB programObj)
     }
 }
 
+// GL_ARB_shader_storage_buffer_object
+
+static void REGAL_CALL error_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
+{
+    ITrace("error_glShaderStorageBlockBinding");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glShaderStorageBlockBinding : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_shader_subroutine
 
 static void REGAL_CALL error_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
@@ -23376,6 +24091,54 @@ static void REGAL_CALL error_glTexBufferARB(GLenum target, GLenum internalformat
     }
 }
 
+// GL_ARB_texture_buffer_range
+
+static void REGAL_CALL error_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+    ITrace("error_glTexBufferRange");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexBufferRange(target, internalformat, buffer, offset, size);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexBufferRange : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+    ITrace("error_glTextureBufferRangeEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTextureBufferRangeEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_ARB_texture_compression
 
 static void REGAL_CALL error_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -23767,6 +24530,125 @@ static void REGAL_CALL error_glTextureStorage3DEXT(GLuint texture, GLenum target
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glTextureStorage3DEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_texture_storage_multisample
+
+static void REGAL_CALL error_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+    ITrace("error_glTexStorage2DMultisample");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexStorage2DMultisample : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+    ITrace("error_glTexStorage3DMultisample");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexStorage3DMultisample : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+{
+    ITrace("error_glTextureStorage2DMultisampleEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTextureStorage2DMultisampleEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+    ITrace("error_glTextureStorage3DMultisampleEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTextureStorage3DMultisampleEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_texture_view
+
+static void REGAL_CALL error_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+    ITrace("error_glTextureView");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTextureView : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -24798,6 +25680,146 @@ static void REGAL_CALL error_glVertexAttribLPointer(GLuint index, GLint size, GL
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glVertexAttribLPointer : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_ARB_vertex_attrib_binding
+
+static void REGAL_CALL error_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+    ITrace("error_glBindVertexBuffer");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glBindVertexBuffer(bindingindex, buffer, offset, stride);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glBindVertexBuffer : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
+{
+    ITrace("error_glVertexAttribBinding");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribBinding(attribindex, bindingindex);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribBinding : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+    ITrace("error_glVertexAttribFormat");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribFormat : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+    ITrace("error_glVertexAttribIFormat");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribIFormat : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+    ITrace("error_glVertexAttribLFormat");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribLFormat : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
+{
+    ITrace("error_glVertexBindingDivisor");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexBindingDivisor(bindingindex, divisor);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexBindingDivisor : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -32261,6 +33283,75 @@ static void REGAL_CALL error_glDisableClientStateIndexedEXT(GLenum array, GLuint
     }
 }
 
+static void REGAL_CALL error_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+    ITrace("error_glDisableClientStateiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDisableClientStateiEXT(array, index);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDisableClientStateiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+    ITrace("error_glDisableVertexArrayAttribEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDisableVertexArrayAttribEXT(vaobj, array);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDisableVertexArrayAttribEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+    ITrace("error_glDisableVertexArrayEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDisableVertexArrayEXT(vaobj, array);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDisableVertexArrayEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 static void REGAL_CALL error_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
     ITrace("error_glEnableClientStateIndexedEXT");
@@ -32278,6 +33369,75 @@ static void REGAL_CALL error_glEnableClientStateIndexedEXT(GLenum array, GLuint 
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glEnableClientStateIndexedEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+    ITrace("error_glEnableClientStateiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glEnableClientStateiEXT(array, index);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glEnableClientStateiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
+{
+    ITrace("error_glEnableVertexArrayAttribEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glEnableVertexArrayAttribEXT(vaobj, array);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glEnableVertexArrayAttribEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+{
+    ITrace("error_glEnableVertexArrayEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glEnableVertexArrayEXT(vaobj, array);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glEnableVertexArrayEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -32491,6 +33651,29 @@ static void REGAL_CALL error_glGetDoubleIndexedvEXT(GLenum target, GLuint index,
     }
 }
 
+static void REGAL_CALL error_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+    ITrace("error_glGetDoublei_vEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetDoublei_vEXT(target, index, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetDoublei_vEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 static void REGAL_CALL error_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
     ITrace("error_glGetFloatIndexedvEXT");
@@ -32508,6 +33691,29 @@ static void REGAL_CALL error_glGetFloatIndexedvEXT(GLenum target, GLuint index, 
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glGetFloatIndexedvEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+    ITrace("error_glGetFloati_vEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetFloati_vEXT(target, index, data);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetFloati_vEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -33244,6 +34450,98 @@ static void REGAL_CALL error_glGetTextureParameterivEXT(GLuint texture, GLenum t
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glGetTextureParameterivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
+{
+    ITrace("error_glGetVertexArrayIntegeri_vEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexArrayIntegeri_vEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
+{
+    ITrace("error_glGetVertexArrayIntegervEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexArrayIntegervEXT(vaobj, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexArrayIntegervEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
+{
+    ITrace("error_glGetVertexArrayPointeri_vEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexArrayPointeri_vEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
+{
+    ITrace("error_glGetVertexArrayPointervEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexArrayPointervEXT(vaobj, pname, param);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexArrayPointervEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -36404,6 +37702,259 @@ static GLboolean REGAL_CALL error_glUnmapNamedBufferEXT(GLuint buffer)
 return ret;
 }
 
+static void REGAL_CALL error_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayColorOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayColorOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayEdgeFlagOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayEdgeFlagOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayFogCoordOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayFogCoordOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayIndexOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayIndexOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayMultiTexCoordOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayMultiTexCoordOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayNormalOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayNormalOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArraySecondaryColorOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArraySecondaryColorOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayTexCoordOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayTexCoordOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayVertexAttribIOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayVertexAttribIOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayVertexAttribOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayVertexAttribOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+{
+    ITrace("error_glVertexArrayVertexOffsetEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexArrayVertexOffsetEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_EXT_draw_buffers2
 
 static void REGAL_CALL error_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -37599,6 +39150,52 @@ static void REGAL_CALL error_glRenderbufferStorageEXT(GLenum target, GLenum inte
 
 // GL_EXT_geometry_shader4
 
+static void REGAL_CALL error_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+    ITrace("error_glFramebufferTextureEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFramebufferTextureEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+    ITrace("error_glFramebufferTextureFaceEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFramebufferTextureFaceEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 static void REGAL_CALL error_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value)
 {
     ITrace("error_glProgramParameteriEXT");
@@ -37736,6 +39333,52 @@ static void REGAL_CALL error_glGetUniformuivEXT(GLuint program, GLint location, 
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glGetUniformuivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
+{
+    ITrace("error_glGetVertexAttribIivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexAttribIivEXT(index, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexAttribIivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
+{
+    ITrace("error_glGetVertexAttribIuivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetVertexAttribIuivEXT(index, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetVertexAttribIuivEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -37920,6 +39563,489 @@ static void REGAL_CALL error_glUniform4uivEXT(GLint location, GLsizei count, con
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glUniform4uivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI1iEXT(GLuint index, GLint x)
+{
+    ITrace("error_glVertexAttribI1iEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI1iEXT(index, x);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI1iEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
+{
+    ITrace("error_glVertexAttribI1ivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI1ivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI1ivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI1uiEXT(GLuint index, GLuint x)
+{
+    ITrace("error_glVertexAttribI1uiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI1uiEXT(index, x);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI1uiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
+{
+    ITrace("error_glVertexAttribI1uivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI1uivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI1uivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
+{
+    ITrace("error_glVertexAttribI2iEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI2iEXT(index, x, y);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI2iEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
+{
+    ITrace("error_glVertexAttribI2ivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI2ivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI2ivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
+{
+    ITrace("error_glVertexAttribI2uiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI2uiEXT(index, x, y);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI2uiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
+{
+    ITrace("error_glVertexAttribI2uivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI2uivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI2uivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
+{
+    ITrace("error_glVertexAttribI3iEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI3iEXT(index, x, y, z);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI3iEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
+{
+    ITrace("error_glVertexAttribI3ivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI3ivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI3ivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
+{
+    ITrace("error_glVertexAttribI3uiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI3uiEXT(index, x, y, z);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI3uiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
+{
+    ITrace("error_glVertexAttribI3uivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI3uivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI3uivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
+{
+    ITrace("error_glVertexAttribI4bvEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4bvEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4bvEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
+{
+    ITrace("error_glVertexAttribI4iEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4iEXT(index, x, y, z, w);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4iEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
+{
+    ITrace("error_glVertexAttribI4ivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4ivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4ivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
+{
+    ITrace("error_glVertexAttribI4svEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4svEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4svEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
+{
+    ITrace("error_glVertexAttribI4ubvEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4ubvEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4ubvEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+{
+    ITrace("error_glVertexAttribI4uiEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4uiEXT(index, x, y, z, w);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4uiEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
+{
+    ITrace("error_glVertexAttribI4uivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4uivEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4uivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
+{
+    ITrace("error_glVertexAttribI4usvEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribI4usvEXT(index, v);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribI4usvEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+    ITrace("error_glVertexAttribIPointerEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glVertexAttribIPointerEXT(index, size, type, stride, pointer);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glVertexAttribIPointerEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -38471,6 +40597,52 @@ static void REGAL_CALL error_glGetColorTableParameterivEXT(GLenum target, GLenum
 
 // GL_EXT_pixel_transform
 
+static void REGAL_CALL error_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+    ITrace("error_glGetPixelTransformParameterfvEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetPixelTransformParameterfvEXT(target, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetPixelTransformParameterfvEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+    ITrace("error_glGetPixelTransformParameterivEXT");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetPixelTransformParameterivEXT(target, pname, params);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetPixelTransformParameterivEXT : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 static void REGAL_CALL error_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param)
 {
     ITrace("error_glPixelTransformParameterfEXT");
@@ -38494,29 +40666,6 @@ static void REGAL_CALL error_glPixelTransformParameterfEXT(GLenum target, GLenum
     }
 }
 
-static void REGAL_CALL error_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
-{
-    ITrace("error_glPixelTransformParameterfvEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glPixelTransformParameterfvEXT(target, pname, params);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glPixelTransformParameterfvEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
 static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
     ITrace("error_glPixelTransformParameteriEXT");
@@ -38534,29 +40683,6 @@ static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
         Error("glPixelTransformParameteriEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
-{
-    ITrace("error_glPixelTransformParameterivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glPixelTransformParameterivEXT(target, pname, params);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glPixelTransformParameterivEXT : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -42064,11 +44190,221 @@ static void REGAL_CALL error_glTexScissorINTEL(GLenum target, GLclampf tlow, GLc
     }
 }
 
+// GL_KHR_debug
+
+static void REGAL_CALL error_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
+{
+    ITrace("error_glDebugMessageCallback");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDebugMessageCallback(callback, userParam);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDebugMessageCallback : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
+{
+    ITrace("error_glDebugMessageControl");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDebugMessageControl(source, type, severity, count, ids, enabled);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDebugMessageControl : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
+{
+    ITrace("error_glDebugMessageInsert");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDebugMessageInsert(source, type, id, severity, length, buf);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDebugMessageInsert : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static GLuint REGAL_CALL error_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
+{
+    ITrace("error_glGetDebugMessageLog");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    GLuint  ret = rCtx->dsp->curr->glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetDebugMessageLog : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+return ret;
+}
+
+static void REGAL_CALL error_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+    ITrace("error_glGetObjectLabel");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetObjectLabel(identifier, name, bufSize, length, label);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetObjectLabel : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
+{
+    ITrace("error_glGetObjectPtrLabel");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetObjectPtrLabel(ptr, bufSize, length, label);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetObjectPtrLabel : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
+{
+    ITrace("error_glObjectLabel");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glObjectLabel(identifier, name, length, label);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glObjectLabel : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
+{
+    ITrace("error_glObjectPtrLabel");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glObjectPtrLabel(ptr, length, label);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glObjectPtrLabel : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
+{
+    ITrace("error_glPushDebugGroup");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->err.inBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPushDebugGroup(source, id, length, message);
+    if (!rCtx->err.inBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPushDebugGroup : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_KTX_buffer_region
 
-static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
+static GLuint REGAL_CALL error_glBufferRegionEnabled(void)
 {
-    ITrace("error_glBufferRegionEnabledEXT");
+    ITrace("error_glBufferRegionEnabled");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -42078,11 +44414,11 @@ static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabledEXT();
+    GLuint  ret = rCtx->dsp->curr->glBufferRegionEnabled();
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glBufferRegionEnabledEXT : ",Token::GLerrorToString(_error));
+        Error("glBufferRegionEnabled : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -42090,9 +44426,9 @@ static GLuint REGAL_CALL error_glBufferRegionEnabledEXT(void)
 return ret;
 }
 
-static void REGAL_CALL error_glDeleteBufferRegionEXT(GLenum region)
+static void REGAL_CALL error_glDeleteBufferRegion(GLenum region)
 {
-    ITrace("error_glDeleteBufferRegionEXT");
+    ITrace("error_glDeleteBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -42102,20 +44438,20 @@ static void REGAL_CALL error_glDeleteBufferRegionEXT(GLenum region)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glDeleteBufferRegionEXT(region);
+    rCtx->dsp->curr->glDeleteBufferRegion(region);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glDeleteBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glDeleteBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
     }
 }
 
-static void REGAL_CALL error_glDrawBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
+static void REGAL_CALL error_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
-    ITrace("error_glDrawBufferRegionEXT");
+    ITrace("error_glDrawBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -42125,20 +44461,20 @@ static void REGAL_CALL error_glDrawBufferRegionEXT(GLuint region, GLint x, GLint
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glDrawBufferRegionEXT(region, x, y, width, height, xDest, yDest);
+    rCtx->dsp->curr->glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glDrawBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glDrawBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
     }
 }
 
-static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
+static GLuint REGAL_CALL error_glNewBufferRegion(GLenum region)
 {
-    ITrace("error_glNewBufferRegionEXT");
+    ITrace("error_glNewBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -42148,11 +44484,11 @@ static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    GLuint  ret = rCtx->dsp->curr->glNewBufferRegionEXT(region);
+    GLuint  ret = rCtx->dsp->curr->glNewBufferRegion(region);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glNewBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glNewBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -42160,9 +44496,9 @@ static GLuint REGAL_CALL error_glNewBufferRegionEXT(GLenum region)
 return ret;
 }
 
-static void REGAL_CALL error_glReadBufferRegionEXT(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL error_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    ITrace("error_glReadBufferRegionEXT");
+    ITrace("error_glReadBufferRegion");
     RegalContext * rCtx = GET_REGAL_CONTEXT();
     RegalAssert(rCtx)
     RegalAssert(rCtx->dsp)
@@ -42172,11 +44508,11 @@ static void REGAL_CALL error_glReadBufferRegionEXT(GLuint region, GLint x, GLint
     if (!rCtx->err.inBeginEnd)
       _error = rCtx->dsp->curr->glGetError();
     RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glReadBufferRegionEXT(region, x, y, width, height);
+    rCtx->dsp->curr->glReadBufferRegion(region, x, y, width, height);
     if (!rCtx->err.inBeginEnd) {
       _error = rCtx->dsp->curr->glGetError();
       if (_error!=GL_NO_ERROR) {
-        Error("glReadBufferRegionEXT : ",Token::GLerrorToString(_error));
+        Error("glReadBufferRegion : ",Token::GLerrorToString(_error));
         if (rCtx->err.callback)
           rCtx->err.callback( _error );
       }
@@ -43823,52 +46159,6 @@ static void REGAL_CALL error_glRenderbufferStorageMultisampleCoverageNV(GLenum t
 }
 
 // GL_NV_geometry_program4
-
-static void REGAL_CALL error_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-    ITrace("error_glFramebufferTextureEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glFramebufferTextureEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-    ITrace("error_glFramebufferTextureFaceEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glFramebufferTextureFaceEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
 
 static void REGAL_CALL error_glProgramVertexLimitNV(GLenum target, GLint limit)
 {
@@ -51474,537 +53764,6 @@ static void REGAL_CALL error_glVertexAttribs4ubvNV(GLuint index, GLsizei n, cons
     }
 }
 
-// GL_NV_vertex_program4
-
-static void REGAL_CALL error_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
-{
-    ITrace("error_glGetVertexAttribIivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glGetVertexAttribIivEXT(index, pname, params);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glGetVertexAttribIivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
-{
-    ITrace("error_glGetVertexAttribIuivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glGetVertexAttribIuivEXT(index, pname, params);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glGetVertexAttribIuivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI1iEXT(GLuint index, GLint x)
-{
-    ITrace("error_glVertexAttribI1iEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI1iEXT(index, x);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI1iEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
-{
-    ITrace("error_glVertexAttribI1ivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI1ivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI1ivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI1uiEXT(GLuint index, GLuint x)
-{
-    ITrace("error_glVertexAttribI1uiEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI1uiEXT(index, x);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI1uiEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
-{
-    ITrace("error_glVertexAttribI1uivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI1uivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI1uivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
-{
-    ITrace("error_glVertexAttribI2iEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI2iEXT(index, x, y);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI2iEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
-{
-    ITrace("error_glVertexAttribI2ivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI2ivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI2ivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
-{
-    ITrace("error_glVertexAttribI2uiEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI2uiEXT(index, x, y);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI2uiEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
-{
-    ITrace("error_glVertexAttribI2uivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI2uivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI2uivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
-{
-    ITrace("error_glVertexAttribI3iEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI3iEXT(index, x, y, z);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI3iEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
-{
-    ITrace("error_glVertexAttribI3ivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI3ivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI3ivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
-{
-    ITrace("error_glVertexAttribI3uiEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI3uiEXT(index, x, y, z);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI3uiEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
-{
-    ITrace("error_glVertexAttribI3uivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI3uivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI3uivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
-{
-    ITrace("error_glVertexAttribI4bvEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4bvEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4bvEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
-{
-    ITrace("error_glVertexAttribI4iEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4iEXT(index, x, y, z, w);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4iEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
-{
-    ITrace("error_glVertexAttribI4ivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4ivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4ivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
-{
-    ITrace("error_glVertexAttribI4svEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4svEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4svEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
-{
-    ITrace("error_glVertexAttribI4ubvEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4ubvEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4ubvEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
-{
-    ITrace("error_glVertexAttribI4uiEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4uiEXT(index, x, y, z, w);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4uiEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
-{
-    ITrace("error_glVertexAttribI4uivEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4uivEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4uivEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
-{
-    ITrace("error_glVertexAttribI4usvEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribI4usvEXT(index, v);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribI4usvEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
-static void REGAL_CALL error_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
-{
-    ITrace("error_glVertexAttribIPointerEXT");
-    RegalContext * rCtx = GET_REGAL_CONTEXT();
-    RegalAssert(rCtx)
-    RegalAssert(rCtx->dsp)
-    RegalAssert(rCtx->dsp->curr)
-    GLenum _error = GL_NO_ERROR;
-    DispatchStateScopedStepDown stepDown(rCtx->dsp);
-    if (!rCtx->err.inBeginEnd)
-      _error = rCtx->dsp->curr->glGetError();
-    RegalAssert(_error==GL_NO_ERROR);
-    rCtx->dsp->curr->glVertexAttribIPointerEXT(index, size, type, stride, pointer);
-    if (!rCtx->err.inBeginEnd) {
-      _error = rCtx->dsp->curr->glGetError();
-      if (_error!=GL_NO_ERROR) {
-        Error("glVertexAttribIPointerEXT : ",Token::GLerrorToString(_error));
-        if (rCtx->err.callback)
-          rCtx->err.callback( _error );
-      }
-    }
-}
-
 // GL_NV_video_capture
 
 static void REGAL_CALL error_glBeginVideoCaptureNV(GLuint video_capture_slot)
@@ -56429,13 +58188,29 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   tbl.glCreateSyncFromCLeventARB = error_glCreateSyncFromCLeventARB;
 
+  // GL_ARB_clear_buffer_object
+
+  tbl.glClearBufferData = error_glClearBufferData;
+  tbl.glClearBufferSubData = error_glClearBufferSubData;
+  tbl.glClearNamedBufferDataEXT = error_glClearNamedBufferDataEXT;
+  tbl.glClearNamedBufferSubDataEXT = error_glClearNamedBufferSubDataEXT;
+
   // GL_ARB_color_buffer_float
 
   tbl.glClampColorARB = error_glClampColorARB;
 
+  // GL_ARB_compute_shader
+
+  tbl.glDispatchCompute = error_glDispatchCompute;
+  tbl.glDispatchComputeIndirect = error_glDispatchComputeIndirect;
+
   // GL_ARB_copy_buffer
 
   tbl.glCopyBufferSubData = error_glCopyBufferSubData;
+
+  // GL_ARB_copy_image
+
+  tbl.glCopyImageSubData = error_glCopyImageSubData;
 
   // GL_ARB_debug_output
 
@@ -56471,6 +58246,13 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   tbl.glDrawArraysInstancedARB = error_glDrawArraysInstancedARB;
   tbl.glDrawElementsInstancedARB = error_glDrawElementsInstancedARB;
+
+  // GL_ARB_framebuffer_no_attachments
+
+  tbl.glFramebufferParameteri = error_glFramebufferParameteri;
+  tbl.glGetFramebufferParameteriv = error_glGetFramebufferParameteriv;
+  tbl.glGetNamedFramebufferParameterivEXT = error_glGetNamedFramebufferParameterivEXT;
+  tbl.glNamedFramebufferParameteriEXT = error_glNamedFramebufferParameteriEXT;
 
   // GL_ARB_framebuffer_object
 
@@ -56572,6 +58354,19 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   tbl.glGetInternalformativ = error_glGetInternalformativ;
 
+  // GL_ARB_internalformat_query2
+
+  tbl.glGetInternalformati64v = error_glGetInternalformati64v;
+
+  // GL_ARB_invalidate_subdata
+
+  tbl.glInvalidateBufferData = error_glInvalidateBufferData;
+  tbl.glInvalidateBufferSubData = error_glInvalidateBufferSubData;
+  tbl.glInvalidateFramebuffer = error_glInvalidateFramebuffer;
+  tbl.glInvalidateSubFramebuffer = error_glInvalidateSubFramebuffer;
+  tbl.glInvalidateTexImage = error_glInvalidateTexImage;
+  tbl.glInvalidateTexSubImage = error_glInvalidateTexSubImage;
+
   // GL_ARB_map_buffer_range
 
   tbl.glFlushMappedBufferRange = error_glFlushMappedBufferRange;
@@ -56584,6 +58379,11 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glMatrixIndexubvARB = error_glMatrixIndexubvARB;
   tbl.glMatrixIndexuivARB = error_glMatrixIndexuivARB;
   tbl.glMatrixIndexusvARB = error_glMatrixIndexusvARB;
+
+  // GL_ARB_multi_draw_indirect
+
+  tbl.glMultiDrawArraysIndirect = error_glMultiDrawArraysIndirect;
+  tbl.glMultiDrawElementsIndirect = error_glMultiDrawElementsIndirect;
 
   // GL_ARB_multisample
 
@@ -56641,6 +58441,15 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   tbl.glPointParameterfARB = error_glPointParameterfARB;
   tbl.glPointParameterfvARB = error_glPointParameterfvARB;
+
+  // GL_ARB_program_interface_query
+
+  tbl.glGetProgramInterfaceiv = error_glGetProgramInterfaceiv;
+  tbl.glGetProgramResourceIndex = error_glGetProgramResourceIndex;
+  tbl.glGetProgramResourceLocation = error_glGetProgramResourceLocation;
+  tbl.glGetProgramResourceLocationIndex = error_glGetProgramResourceLocationIndex;
+  tbl.glGetProgramResourceName = error_glGetProgramResourceName;
+  tbl.glGetProgramResourceiv = error_glGetProgramResourceiv;
 
   // GL_ARB_provoking_vertex
 
@@ -56754,6 +58563,15 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glUseProgramStages = error_glUseProgramStages;
   tbl.glValidateProgramPipeline = error_glValidateProgramPipeline;
 
+  // GL_ARB_shader_atomic_counters
+
+  tbl.glGetActiveAtomicCounterBufferiv = error_glGetActiveAtomicCounterBufferiv;
+
+  // GL_ARB_shader_image_load_store
+
+  tbl.glBindImageTexture = error_glBindImageTexture;
+  tbl.glMemoryBarrier = error_glMemoryBarrier;
+
   // GL_ARB_shader_objects
 
   tbl.glAttachObjectARB = error_glAttachObjectARB;
@@ -56796,6 +58614,10 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glUseProgramObjectARB = error_glUseProgramObjectARB;
   tbl.glValidateProgramARB = error_glValidateProgramARB;
 
+  // GL_ARB_shader_storage_buffer_object
+
+  tbl.glShaderStorageBlockBinding = error_glShaderStorageBlockBinding;
+
   // GL_ARB_shader_subroutine
 
   tbl.glGetActiveSubroutineName = error_glGetActiveSubroutineName;
@@ -56835,6 +58657,11 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   tbl.glTexBufferARB = error_glTexBufferARB;
 
+  // GL_ARB_texture_buffer_range
+
+  tbl.glTexBufferRange = error_glTexBufferRange;
+  tbl.glTextureBufferRangeEXT = error_glTextureBufferRangeEXT;
+
   // GL_ARB_texture_compression
 
   tbl.glCompressedTexImage1DARB = error_glCompressedTexImage1DARB;
@@ -56860,6 +58687,17 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glTextureStorage1DEXT = error_glTextureStorage1DEXT;
   tbl.glTextureStorage2DEXT = error_glTextureStorage2DEXT;
   tbl.glTextureStorage3DEXT = error_glTextureStorage3DEXT;
+
+  // GL_ARB_texture_storage_multisample
+
+  tbl.glTexStorage2DMultisample = error_glTexStorage2DMultisample;
+  tbl.glTexStorage3DMultisample = error_glTexStorage3DMultisample;
+  tbl.glTextureStorage2DMultisampleEXT = error_glTextureStorage2DMultisampleEXT;
+  tbl.glTextureStorage3DMultisampleEXT = error_glTextureStorage3DMultisampleEXT;
+
+  // GL_ARB_texture_view
+
+  tbl.glTextureView = error_glTextureView;
 
   // GL_ARB_timer_query
 
@@ -56928,6 +58766,15 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glVertexAttribL4d = error_glVertexAttribL4d;
   tbl.glVertexAttribL4dv = error_glVertexAttribL4dv;
   tbl.glVertexAttribLPointer = error_glVertexAttribLPointer;
+
+  // GL_ARB_vertex_attrib_binding
+
+  tbl.glBindVertexBuffer = error_glBindVertexBuffer;
+  tbl.glVertexAttribBinding = error_glVertexAttribBinding;
+  tbl.glVertexAttribFormat = error_glVertexAttribFormat;
+  tbl.glVertexAttribIFormat = error_glVertexAttribIFormat;
+  tbl.glVertexAttribLFormat = error_glVertexAttribLFormat;
+  tbl.glVertexBindingDivisor = error_glVertexBindingDivisor;
 
   // GL_ARB_vertex_blend
 
@@ -57342,7 +59189,13 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glCopyTextureSubImage2DEXT = error_glCopyTextureSubImage2DEXT;
   tbl.glCopyTextureSubImage3DEXT = error_glCopyTextureSubImage3DEXT;
   tbl.glDisableClientStateIndexedEXT = error_glDisableClientStateIndexedEXT;
+  tbl.glDisableClientStateiEXT = error_glDisableClientStateiEXT;
+  tbl.glDisableVertexArrayAttribEXT = error_glDisableVertexArrayAttribEXT;
+  tbl.glDisableVertexArrayEXT = error_glDisableVertexArrayEXT;
   tbl.glEnableClientStateIndexedEXT = error_glEnableClientStateIndexedEXT;
+  tbl.glEnableClientStateiEXT = error_glEnableClientStateiEXT;
+  tbl.glEnableVertexArrayAttribEXT = error_glEnableVertexArrayAttribEXT;
+  tbl.glEnableVertexArrayEXT = error_glEnableVertexArrayEXT;
   tbl.glFlushMappedNamedBufferRangeEXT = error_glFlushMappedNamedBufferRangeEXT;
   tbl.glFramebufferDrawBufferEXT = error_glFramebufferDrawBufferEXT;
   tbl.glFramebufferDrawBuffersEXT = error_glFramebufferDrawBuffersEXT;
@@ -57352,7 +59205,9 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glGetCompressedMultiTexImageEXT = error_glGetCompressedMultiTexImageEXT;
   tbl.glGetCompressedTextureImageEXT = error_glGetCompressedTextureImageEXT;
   tbl.glGetDoubleIndexedvEXT = error_glGetDoubleIndexedvEXT;
+  tbl.glGetDoublei_vEXT = error_glGetDoublei_vEXT;
   tbl.glGetFloatIndexedvEXT = error_glGetFloatIndexedvEXT;
+  tbl.glGetFloati_vEXT = error_glGetFloati_vEXT;
   tbl.glGetFramebufferParameterivEXT = error_glGetFramebufferParameterivEXT;
   tbl.glGetMultiTexEnvfvEXT = error_glGetMultiTexEnvfvEXT;
   tbl.glGetMultiTexEnvivEXT = error_glGetMultiTexEnvivEXT;
@@ -57385,6 +59240,10 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glGetTextureParameterIuivEXT = error_glGetTextureParameterIuivEXT;
   tbl.glGetTextureParameterfvEXT = error_glGetTextureParameterfvEXT;
   tbl.glGetTextureParameterivEXT = error_glGetTextureParameterivEXT;
+  tbl.glGetVertexArrayIntegeri_vEXT = error_glGetVertexArrayIntegeri_vEXT;
+  tbl.glGetVertexArrayIntegervEXT = error_glGetVertexArrayIntegervEXT;
+  tbl.glGetVertexArrayPointeri_vEXT = error_glGetVertexArrayPointeri_vEXT;
+  tbl.glGetVertexArrayPointervEXT = error_glGetVertexArrayPointervEXT;
   tbl.glMapNamedBufferEXT = error_glMapNamedBufferEXT;
   tbl.glMapNamedBufferRangeEXT = error_glMapNamedBufferRangeEXT;
   tbl.glMatrixFrustumEXT = error_glMatrixFrustumEXT;
@@ -57522,6 +59381,17 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glTextureSubImage2DEXT = error_glTextureSubImage2DEXT;
   tbl.glTextureSubImage3DEXT = error_glTextureSubImage3DEXT;
   tbl.glUnmapNamedBufferEXT = error_glUnmapNamedBufferEXT;
+  tbl.glVertexArrayColorOffsetEXT = error_glVertexArrayColorOffsetEXT;
+  tbl.glVertexArrayEdgeFlagOffsetEXT = error_glVertexArrayEdgeFlagOffsetEXT;
+  tbl.glVertexArrayFogCoordOffsetEXT = error_glVertexArrayFogCoordOffsetEXT;
+  tbl.glVertexArrayIndexOffsetEXT = error_glVertexArrayIndexOffsetEXT;
+  tbl.glVertexArrayMultiTexCoordOffsetEXT = error_glVertexArrayMultiTexCoordOffsetEXT;
+  tbl.glVertexArrayNormalOffsetEXT = error_glVertexArrayNormalOffsetEXT;
+  tbl.glVertexArraySecondaryColorOffsetEXT = error_glVertexArraySecondaryColorOffsetEXT;
+  tbl.glVertexArrayTexCoordOffsetEXT = error_glVertexArrayTexCoordOffsetEXT;
+  tbl.glVertexArrayVertexAttribIOffsetEXT = error_glVertexArrayVertexAttribIOffsetEXT;
+  tbl.glVertexArrayVertexAttribOffsetEXT = error_glVertexArrayVertexAttribOffsetEXT;
+  tbl.glVertexArrayVertexOffsetEXT = error_glVertexArrayVertexOffsetEXT;
 
   // GL_EXT_draw_buffers2
 
@@ -57600,6 +59470,8 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   // GL_EXT_geometry_shader4
 
+  tbl.glFramebufferTextureEXT = error_glFramebufferTextureEXT;
+  tbl.glFramebufferTextureFaceEXT = error_glFramebufferTextureFaceEXT;
   tbl.glProgramParameteriEXT = error_glProgramParameteriEXT;
 
   // GL_EXT_gpu_program_parameters
@@ -57612,6 +59484,8 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glBindFragDataLocationEXT = error_glBindFragDataLocationEXT;
   tbl.glGetFragDataLocationEXT = error_glGetFragDataLocationEXT;
   tbl.glGetUniformuivEXT = error_glGetUniformuivEXT;
+  tbl.glGetVertexAttribIivEXT = error_glGetVertexAttribIivEXT;
+  tbl.glGetVertexAttribIuivEXT = error_glGetVertexAttribIuivEXT;
   tbl.glUniform1uiEXT = error_glUniform1uiEXT;
   tbl.glUniform1uivEXT = error_glUniform1uivEXT;
   tbl.glUniform2uiEXT = error_glUniform2uiEXT;
@@ -57620,6 +59494,27 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glUniform3uivEXT = error_glUniform3uivEXT;
   tbl.glUniform4uiEXT = error_glUniform4uiEXT;
   tbl.glUniform4uivEXT = error_glUniform4uivEXT;
+  tbl.glVertexAttribI1iEXT = error_glVertexAttribI1iEXT;
+  tbl.glVertexAttribI1ivEXT = error_glVertexAttribI1ivEXT;
+  tbl.glVertexAttribI1uiEXT = error_glVertexAttribI1uiEXT;
+  tbl.glVertexAttribI1uivEXT = error_glVertexAttribI1uivEXT;
+  tbl.glVertexAttribI2iEXT = error_glVertexAttribI2iEXT;
+  tbl.glVertexAttribI2ivEXT = error_glVertexAttribI2ivEXT;
+  tbl.glVertexAttribI2uiEXT = error_glVertexAttribI2uiEXT;
+  tbl.glVertexAttribI2uivEXT = error_glVertexAttribI2uivEXT;
+  tbl.glVertexAttribI3iEXT = error_glVertexAttribI3iEXT;
+  tbl.glVertexAttribI3ivEXT = error_glVertexAttribI3ivEXT;
+  tbl.glVertexAttribI3uiEXT = error_glVertexAttribI3uiEXT;
+  tbl.glVertexAttribI3uivEXT = error_glVertexAttribI3uivEXT;
+  tbl.glVertexAttribI4bvEXT = error_glVertexAttribI4bvEXT;
+  tbl.glVertexAttribI4iEXT = error_glVertexAttribI4iEXT;
+  tbl.glVertexAttribI4ivEXT = error_glVertexAttribI4ivEXT;
+  tbl.glVertexAttribI4svEXT = error_glVertexAttribI4svEXT;
+  tbl.glVertexAttribI4ubvEXT = error_glVertexAttribI4ubvEXT;
+  tbl.glVertexAttribI4uiEXT = error_glVertexAttribI4uiEXT;
+  tbl.glVertexAttribI4uivEXT = error_glVertexAttribI4uivEXT;
+  tbl.glVertexAttribI4usvEXT = error_glVertexAttribI4usvEXT;
+  tbl.glVertexAttribIPointerEXT = error_glVertexAttribIPointerEXT;
 
   // GL_EXT_histogram
 
@@ -57667,10 +59562,10 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   // GL_EXT_pixel_transform
 
+  tbl.glGetPixelTransformParameterfvEXT = error_glGetPixelTransformParameterfvEXT;
+  tbl.glGetPixelTransformParameterivEXT = error_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = error_glPixelTransformParameterfEXT;
-  tbl.glPixelTransformParameterfvEXT = error_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = error_glPixelTransformParameteriEXT;
-  tbl.glPixelTransformParameterivEXT = error_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -57914,13 +59809,25 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glTexScissorFuncINTEL = error_glTexScissorFuncINTEL;
   tbl.glTexScissorINTEL = error_glTexScissorINTEL;
 
+  // GL_KHR_debug
+
+  tbl.glDebugMessageCallback = error_glDebugMessageCallback;
+  tbl.glDebugMessageControl = error_glDebugMessageControl;
+  tbl.glDebugMessageInsert = error_glDebugMessageInsert;
+  tbl.glGetDebugMessageLog = error_glGetDebugMessageLog;
+  tbl.glGetObjectLabel = error_glGetObjectLabel;
+  tbl.glGetObjectPtrLabel = error_glGetObjectPtrLabel;
+  tbl.glObjectLabel = error_glObjectLabel;
+  tbl.glObjectPtrLabel = error_glObjectPtrLabel;
+  tbl.glPushDebugGroup = error_glPushDebugGroup;
+
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabledEXT = error_glBufferRegionEnabledEXT;
-  tbl.glDeleteBufferRegionEXT = error_glDeleteBufferRegionEXT;
-  tbl.glDrawBufferRegionEXT = error_glDrawBufferRegionEXT;
-  tbl.glNewBufferRegionEXT = error_glNewBufferRegionEXT;
-  tbl.glReadBufferRegionEXT = error_glReadBufferRegionEXT;
+  tbl.glBufferRegionEnabled = error_glBufferRegionEnabled;
+  tbl.glDeleteBufferRegion = error_glDeleteBufferRegion;
+  tbl.glDrawBufferRegion = error_glDrawBufferRegion;
+  tbl.glNewBufferRegion = error_glNewBufferRegion;
+  tbl.glReadBufferRegion = error_glReadBufferRegion;
 
   // GL_MESA_resize_buffers
 
@@ -58027,8 +59934,6 @@ void InitDispatchTableError(DispatchTable &tbl)
 
   // GL_NV_geometry_program4
 
-  tbl.glFramebufferTextureEXT = error_glFramebufferTextureEXT;
-  tbl.glFramebufferTextureFaceEXT = error_glFramebufferTextureFaceEXT;
   tbl.glProgramVertexLimitNV = error_glProgramVertexLimitNV;
 
   // GL_NV_gpu_program4
@@ -58423,32 +60328,6 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glVertexAttribs4fvNV = error_glVertexAttribs4fvNV;
   tbl.glVertexAttribs4svNV = error_glVertexAttribs4svNV;
   tbl.glVertexAttribs4ubvNV = error_glVertexAttribs4ubvNV;
-
-  // GL_NV_vertex_program4
-
-  tbl.glGetVertexAttribIivEXT = error_glGetVertexAttribIivEXT;
-  tbl.glGetVertexAttribIuivEXT = error_glGetVertexAttribIuivEXT;
-  tbl.glVertexAttribI1iEXT = error_glVertexAttribI1iEXT;
-  tbl.glVertexAttribI1ivEXT = error_glVertexAttribI1ivEXT;
-  tbl.glVertexAttribI1uiEXT = error_glVertexAttribI1uiEXT;
-  tbl.glVertexAttribI1uivEXT = error_glVertexAttribI1uivEXT;
-  tbl.glVertexAttribI2iEXT = error_glVertexAttribI2iEXT;
-  tbl.glVertexAttribI2ivEXT = error_glVertexAttribI2ivEXT;
-  tbl.glVertexAttribI2uiEXT = error_glVertexAttribI2uiEXT;
-  tbl.glVertexAttribI2uivEXT = error_glVertexAttribI2uivEXT;
-  tbl.glVertexAttribI3iEXT = error_glVertexAttribI3iEXT;
-  tbl.glVertexAttribI3ivEXT = error_glVertexAttribI3ivEXT;
-  tbl.glVertexAttribI3uiEXT = error_glVertexAttribI3uiEXT;
-  tbl.glVertexAttribI3uivEXT = error_glVertexAttribI3uivEXT;
-  tbl.glVertexAttribI4bvEXT = error_glVertexAttribI4bvEXT;
-  tbl.glVertexAttribI4iEXT = error_glVertexAttribI4iEXT;
-  tbl.glVertexAttribI4ivEXT = error_glVertexAttribI4ivEXT;
-  tbl.glVertexAttribI4svEXT = error_glVertexAttribI4svEXT;
-  tbl.glVertexAttribI4ubvEXT = error_glVertexAttribI4ubvEXT;
-  tbl.glVertexAttribI4uiEXT = error_glVertexAttribI4uiEXT;
-  tbl.glVertexAttribI4uivEXT = error_glVertexAttribI4uivEXT;
-  tbl.glVertexAttribI4usvEXT = error_glVertexAttribI4usvEXT;
-  tbl.glVertexAttribIPointerEXT = error_glVertexAttribIPointerEXT;
 
   // GL_NV_video_capture
 

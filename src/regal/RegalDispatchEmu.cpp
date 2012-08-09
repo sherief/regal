@@ -14360,7 +14360,11 @@ static void REGAL_CALL emu_glShaderBinary(GLsizei count, const GLuint *shaders, 
 
 // GL_ARB_cl_event
 
+// GL_ARB_clear_buffer_object
+
 // GL_ARB_color_buffer_float
+
+// GL_ARB_compute_shader
 
 // GL_ARB_copy_buffer
 
@@ -14387,6 +14391,8 @@ static void REGAL_CALL emu_glCopyBufferSubData(GLenum readtarget, GLenum writeta
    DispatchStateScopedStepDown stepDown(rCtx->dsp);
    rCtx->dsp->curr->glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
 }
+
+// GL_ARB_copy_image
 
 // GL_ARB_debug_output
 
@@ -14665,6 +14671,8 @@ static void REGAL_CALL emu_glDrawElementsInstancedARB(GLenum mode, GLsizei count
    DispatchStateScopedStepDown stepDown(rCtx->dsp);
    rCtx->dsp->curr->glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 }
+
+// GL_ARB_framebuffer_no_attachments
 
 // GL_ARB_framebuffer_object
 
@@ -15395,6 +15403,10 @@ static void REGAL_CALL emu_glUniformMatrix4x3dv(GLint location, GLsizei count, G
 
 // GL_ARB_internalformat_query
 
+// GL_ARB_internalformat_query2
+
+// GL_ARB_invalidate_subdata
+
 // GL_ARB_map_buffer_range
 
 static void REGAL_CALL emu_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
@@ -15446,6 +15458,84 @@ static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, G
 }
 
 // GL_ARB_matrix_palette
+
+// GL_ARB_multi_draw_indirect
+
+static void REGAL_CALL emu_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->Restore( rCtx );
+         }
+         #endif
+       case 2 :
+         #if REGAL_EMU_IFF
+         if (rCtx->iff) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->iff );
+             rCtx->iff->PreDraw( rCtx );
+         }
+         #endif
+       case 1 :
+         #if REGAL_EMU_VAO
+         if (rCtx->vao) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->vao );
+             // rCtx->vao->Validate( rCtx );
+         }
+         #endif
+       default:
+           break;
+   }
+
+   DispatchStateScopedStepDown stepDown(rCtx->dsp);
+   rCtx->dsp->curr->glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+}
+
+static void REGAL_CALL emu_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->Restore( rCtx );
+         }
+         #endif
+       case 2 :
+         #if REGAL_EMU_IFF
+         if (rCtx->iff) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->iff );
+             rCtx->iff->PreDraw( rCtx );
+         }
+         #endif
+       case 1 :
+         #if REGAL_EMU_VAO
+         if (rCtx->vao) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->vao );
+             // rCtx->vao->Validate( rCtx );
+         }
+         #endif
+       default:
+           break;
+   }
+
+   DispatchStateScopedStepDown stepDown(rCtx->dsp);
+   rCtx->dsp->curr->glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+}
 
 // GL_ARB_multisample
 
@@ -15524,6 +15614,8 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
 
 // GL_ARB_point_parameters
 
+// GL_ARB_program_interface_query
+
 // GL_ARB_provoking_vertex
 
 // GL_ARB_robustness
@@ -15534,7 +15626,13 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
 
 // GL_ARB_separate_shader_objects
 
+// GL_ARB_shader_atomic_counters
+
+// GL_ARB_shader_image_load_store
+
 // GL_ARB_shader_objects
+
+// GL_ARB_shader_storage_buffer_object
 
 // GL_ARB_shader_subroutine
 
@@ -15592,6 +15690,8 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
 
 // GL_ARB_texture_buffer_object
 
+// GL_ARB_texture_buffer_range
+
 // GL_ARB_texture_compression
 
 // GL_ARB_texture_multisample
@@ -15647,6 +15747,10 @@ static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei sample
 }
 
 // GL_ARB_texture_storage
+
+// GL_ARB_texture_storage_multisample
+
+// GL_ARB_texture_view
 
 // GL_ARB_timer_query
 
@@ -15913,6 +16017,8 @@ static GLboolean REGAL_CALL emu_glIsVertexArray(GLuint array)
 }
 
 // GL_ARB_vertex_attrib_64bit
+
+// GL_ARB_vertex_attrib_binding
 
 // GL_ARB_vertex_blend
 
@@ -18041,6 +18147,47 @@ static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint i
 
 }
 
+static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) break;
+         #endif
+       default:
+           break;
+   }
+
+   // impl
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->DsaClientActiveTexture( rCtx, index + GL_TEXTURE0 );
+             rCtx->dsp->emuTbl.glDisableClientState( array );
+             return;
+         }
+         #endif
+       default: {
+         DispatchStateScopedStepDown stepDown(rCtx->dsp);
+         rCtx->dsp->curr->glDisableClientStateiEXT(array, index);
+         break;
+       }
+
+   }
+
+}
+
 static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
@@ -18075,6 +18222,47 @@ static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint in
        default: {
          DispatchStateScopedStepDown stepDown(rCtx->dsp);
          rCtx->dsp->curr->glEnableClientStateIndexedEXT(array, index);
+         break;
+       }
+
+   }
+
+}
+
+static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) break;
+         #endif
+       default:
+           break;
+   }
+
+   // impl
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->DsaClientActiveTexture( rCtx, index + GL_TEXTURE0 );
+             rCtx->dsp->emuTbl.glEnableClientState( array );
+             return;
+         }
+         #endif
+       default: {
+         DispatchStateScopedStepDown stepDown(rCtx->dsp);
+         rCtx->dsp->curr->glEnableClientStateiEXT(array, index);
          break;
        }
 
@@ -18452,6 +18640,48 @@ static void REGAL_CALL emu_glGetDoubleIndexedvEXT(GLenum target, GLuint index, G
 
 }
 
+static void REGAL_CALL emu_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) break;
+         #endif
+       default:
+           break;
+   }
+
+   // impl
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             if ( ! rCtx->dsa->GetIndexedv( rCtx, target, index, data ) ) {
+                 rCtx->dsp->emuTbl.glGetDoublei_vEXT( target, index, data );
+             }
+             return;
+         }
+         #endif
+       default: {
+         DispatchStateScopedStepDown stepDown(rCtx->dsp);
+         rCtx->dsp->curr->glGetDoublei_vEXT(target, index, data);
+         break;
+       }
+
+   }
+
+}
+
 static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
    RegalContext * rCtx = GET_REGAL_CONTEXT();
@@ -18487,6 +18717,48 @@ static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GL
        default: {
          DispatchStateScopedStepDown stepDown(rCtx->dsp);
          rCtx->dsp->curr->glGetFloatIndexedvEXT(target, index, data);
+         break;
+       }
+
+   }
+
+}
+
+static void REGAL_CALL emu_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) break;
+         #endif
+       default:
+           break;
+   }
+
+   // impl
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             if ( ! rCtx->dsa->GetIndexedv( rCtx, target, index, data ) ) {
+                 rCtx->dsp->emuTbl.glGetFloati_vEXT( target, index, data );
+             }
+             return;
+         }
+         #endif
+       default: {
+         DispatchStateScopedStepDown stepDown(rCtx->dsp);
+         rCtx->dsp->curr->glGetFloati_vEXT(target, index, data);
          break;
        }
 
@@ -26190,6 +26462,54 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
 
 // GL_EXT_geometry_shader4
 
+static void REGAL_CALL emu_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->RestoreFramebuffer( rCtx );
+         }
+         #endif
+       default:
+           break;
+   }
+
+   DispatchStateScopedStepDown stepDown(rCtx->dsp);
+   rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
+}
+
+static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+
+   // prefix
+   switch( rCtx->emuLevel ) {
+       case 6 :
+       case 5 :
+       case 4 :
+       case 3 :
+         #if REGAL_EMU_DSA
+         if (rCtx->dsa) {
+             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
+             rCtx->dsa->RestoreFramebuffer( rCtx );
+         }
+         #endif
+       default:
+           break;
+   }
+
+   DispatchStateScopedStepDown stepDown(rCtx->dsp);
+   rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
+}
+
 // GL_EXT_gpu_program_parameters
 
 // GL_EXT_gpu_shader4
@@ -27132,6 +27452,8 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
 
 // GL_INTEL_texture_scissor
 
+// GL_KHR_debug
+
 // GL_KTX_buffer_region
 
 // GL_MESA_resize_buffers
@@ -27206,54 +27528,6 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleCoverageNV(GLenum tar
 }
 
 // GL_NV_geometry_program4
-
-static void REGAL_CALL emu_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-
-   // prefix
-   switch( rCtx->emuLevel ) {
-       case 6 :
-       case 5 :
-       case 4 :
-       case 3 :
-         #if REGAL_EMU_DSA
-         if (rCtx->dsa) {
-             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
-             rCtx->dsa->RestoreFramebuffer( rCtx );
-         }
-         #endif
-       default:
-           break;
-   }
-
-   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-   rCtx->dsp->curr->glFramebufferTextureEXT(target, attachment, texture, level);
-}
-
-static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
-{
-   RegalContext * rCtx = GET_REGAL_CONTEXT();
-
-   // prefix
-   switch( rCtx->emuLevel ) {
-       case 6 :
-       case 5 :
-       case 4 :
-       case 3 :
-         #if REGAL_EMU_DSA
-         if (rCtx->dsa) {
-             RegalEmuScopedActivate activate( rCtx, rCtx->dsa );
-             rCtx->dsa->RestoreFramebuffer( rCtx );
-         }
-         #endif
-       default:
-           break;
-   }
-
-   DispatchStateScopedStepDown stepDown(rCtx->dsp);
-   rCtx->dsp->curr->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
-}
 
 // GL_NV_gpu_program4
 
@@ -27732,8 +28006,6 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 // GL_NV_vertex_buffer_unified_memory
 
 // GL_NV_vertex_program
-
-// GL_NV_vertex_program4
 
 // GL_NV_video_capture
 
@@ -28295,6 +28567,11 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glFlushMappedBufferRange = emu_glFlushMappedBufferRange;
    tbl.glMapBufferRange = emu_glMapBufferRange;
 
+// GL_ARB_multi_draw_indirect
+
+   tbl.glMultiDrawArraysIndirect = emu_glMultiDrawArraysIndirect;
+   tbl.glMultiDrawElementsIndirect = emu_glMultiDrawElementsIndirect;
+
 // GL_ARB_multitexture
 
    tbl.glActiveTextureARB = emu_glActiveTextureARB;
@@ -28385,7 +28662,9 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glCopyTextureSubImage2DEXT = emu_glCopyTextureSubImage2DEXT;
    tbl.glCopyTextureSubImage3DEXT = emu_glCopyTextureSubImage3DEXT;
    tbl.glDisableClientStateIndexedEXT = emu_glDisableClientStateIndexedEXT;
+   tbl.glDisableClientStateiEXT = emu_glDisableClientStateiEXT;
    tbl.glEnableClientStateIndexedEXT = emu_glEnableClientStateIndexedEXT;
+   tbl.glEnableClientStateiEXT = emu_glEnableClientStateiEXT;
    tbl.glFlushMappedNamedBufferRangeEXT = emu_glFlushMappedNamedBufferRangeEXT;
    tbl.glFramebufferDrawBufferEXT = emu_glFramebufferDrawBufferEXT;
    tbl.glFramebufferDrawBuffersEXT = emu_glFramebufferDrawBuffersEXT;
@@ -28395,7 +28674,9 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glGetCompressedMultiTexImageEXT = emu_glGetCompressedMultiTexImageEXT;
    tbl.glGetCompressedTextureImageEXT = emu_glGetCompressedTextureImageEXT;
    tbl.glGetDoubleIndexedvEXT = emu_glGetDoubleIndexedvEXT;
+   tbl.glGetDoublei_vEXT = emu_glGetDoublei_vEXT;
    tbl.glGetFloatIndexedvEXT = emu_glGetFloatIndexedvEXT;
+   tbl.glGetFloati_vEXT = emu_glGetFloati_vEXT;
    tbl.glGetFramebufferParameterivEXT = emu_glGetFramebufferParameterivEXT;
    tbl.glGetMultiTexEnvfvEXT = emu_glGetMultiTexEnvfvEXT;
    tbl.glGetMultiTexEnvivEXT = emu_glGetMultiTexEnvivEXT;
@@ -28590,6 +28871,11 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glGenerateMipmapEXT = emu_glGenerateMipmapEXT;
    tbl.glRenderbufferStorageEXT = emu_glRenderbufferStorageEXT;
 
+// GL_EXT_geometry_shader4
+
+   tbl.glFramebufferTextureEXT = emu_glFramebufferTextureEXT;
+   tbl.glFramebufferTextureFaceEXT = emu_glFramebufferTextureFaceEXT;
+
 // GL_EXT_multi_draw_arrays
 
    tbl.glMultiDrawArraysEXT = emu_glMultiDrawArraysEXT;
@@ -28637,11 +28923,6 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_NV_framebuffer_multisample_coverage
 
    tbl.glRenderbufferStorageMultisampleCoverageNV = emu_glRenderbufferStorageMultisampleCoverageNV;
-
-// GL_NV_geometry_program4
-
-   tbl.glFramebufferTextureEXT = emu_glFramebufferTextureEXT;
-   tbl.glFramebufferTextureFaceEXT = emu_glFramebufferTextureFaceEXT;
 
 // GL_NV_gpu_program4
 

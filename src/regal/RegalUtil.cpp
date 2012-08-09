@@ -35,13 +35,6 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
-#if REGAL_SYS_NACL
-
-extern void _naclPrintf(const char* str, ...);
-extern void* _naclGetProcAddress(const char* name);
-
-#endif
-
 #include <string>
 using namespace std;
 
@@ -58,6 +51,11 @@ extern "C" {
 }
 #endif
 
+#if REGAL_SYS_NACL
+extern void _naclPrintf(const char* str, ...);
+extern void* _naclGetProcAddress(const char* name);
+#endif
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -67,7 +65,7 @@ void
 AssertFunction(const char *file, const size_t line, const char *expr)
 {
   string message = print_string(file, " ", line, ": ", expr);
-  _naclPrintf("assert fail: %s\n", message.c_str());
+
 #ifdef REGAL_ASSERT_FUNCTION
   REGAL_ASSERT_FUNCTION(message);
 #else
@@ -190,6 +188,10 @@ void *GetProcAddress( const char * entry )
         }
         chdir( old_cwd );
     }
+
+    if (!entry)
+        return NULL;
+
     if (lib_OpenGL && lib_GL) {
         void * sym;
         sym = dlsym( lib_OpenGL, entry );
@@ -206,7 +208,8 @@ void *GetProcAddress( const char * entry )
 
 #elif REGAL_SYS_NACL
 
-void* GetProcAddress(const char* lookupName) {
+void *GetProcAddress(const char *lookupName)
+{
   return _naclGetProcAddress(lookupName);
 }
 
@@ -220,6 +223,10 @@ void *GetProcAddress( const char * entry )
     if (lib_OpenGLES == NULL) {
         lib_OpenGLES = dlopen( "/System/Library/Frameworks/OpenGLES.framework/OpenGLES", RTLD_LAZY );
     }
+
+    if (!entry)
+        return NULL;
+
     if (lib_OpenGLES) {
         void * sym;
         sym = dlsym( lib_OpenGLES, entry );
@@ -243,6 +250,10 @@ void *GetProcAddress( const char * entry )
         Info("Loading OpenGL from ",lib_GL_filename);
         lib_GL = dlopen( lib_GL_filename.c_str(), RTLD_LAZY );
     }
+
+    if (!entry)
+        return NULL;
+
     if (lib_GL) {
         void * sym;
         sym = dlsym( lib_GL, entry );
@@ -275,6 +286,9 @@ void *GetProcAddress(const char *entry)
     Info("Loading EGL from ",lib_EGL_filename,lib_EGL ? " succeeded." : " failed.");
   }
 
+  if (!entry)
+      return NULL;
+
   if (lib_GLESv2 && lib_EGL)
   {
       void *sym = dlsym( lib_GLESv2, entry );
@@ -303,6 +317,10 @@ void *GetProcAddress( const char * entry )
         Info("Loading OpenGL from ",lib_GL_filename);
         lib_GL = LoadLibraryA(lib_GL_filename.c_str());
     }
+
+    if (!entry)
+        return NULL;
+
     if (lib_GL) {
         void * sym;
         sym = ::GetProcAddress( lib_GL, entry );
@@ -319,3 +337,5 @@ void *GetProcAddress( const char * entry )
 #endif
 
 REGAL_NAMESPACE_END
+
+
