@@ -99,7 +99,7 @@ LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
 
 CFLAGS += -DREGAL_NO_HTTP
 
-regal.lib: lib lib/$(LIB.SHARED) lib/$(LIB.STATIC) glu.lib
+regal.lib: lib lib/$(LIB.SHARED) glu.lib
 
 lib:
 	mkdir lib
