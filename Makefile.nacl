@@ -4,11 +4,11 @@ SHELL = /bin/sh
 ifeq ($(NACL_PACKAGES_BITSIZE), 32)
 SYSTEM = nacl-32
 BIN_EXTENSION = .x86.nexe
-CFLAGS.EXTRA = -m32 -DNDEBUG
+CFLAGS.EXTRA = -m32
 else
 SYSTEM = nacl-64
 BIN_EXTENSION = .x64.nexe
-CFLAGS.EXTRA = -m64 -DNDEBUG
+CFLAGS.EXTRA = -m64
 endif
 REGAL_NACL = 1
 SYSTEM.SUPPORTED = $(shell test -f config/Makefile.$(SYSTEM) && echo 1)
@@ -75,6 +75,7 @@ LIB.SRCS           += src/regal/RegalDispatchError.cpp
 LIB.SRCS           += src/regal/RegalDispatchLoader.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
+LIB.SRCS 		   += src/regal/RegalNaCL.cpp
 
 ifneq ($(REGAL_NACL), 1)
 LIB.SRCS           += src/mongoose/mongoose.c
