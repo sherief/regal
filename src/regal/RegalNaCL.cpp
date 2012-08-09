@@ -406,7 +406,7 @@ void _naclPrintf(const char* str, ...) {
 }
 
 void* _naclGetProcAddress(const char* lookupName) {
-  _naclPrintf("Looking for %s\n", lookupName);
+  //_naclPrintf("Looking for %s\n", lookupName);
   for (int i = 0; _nacl_lookup[i].name != NULL; i++) {
     const naclProcEntry* entry = &_nacl_lookup[i];
     if (!strcmp(entry->name, lookupName)) {
