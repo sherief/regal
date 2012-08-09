@@ -187,6 +187,7 @@ def generate(apis, args):
   generateDebugSource( apis, args )
   generateEmuSource( apis, args )
   generateDispatchLog( apis, args )
+  generateNaclSource( apis, args )
   generateSource(apis, args)
 
 ##############################################################################################
@@ -409,6 +410,12 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalDispatchError.h"
 
+#if defined(__native_client__)
+#define __gl2_h_  // HACK - revisit
+#include <ppapi/c/pp_resource.h>
+#include <ppapi/c/ppb_opengles2.h>
+#endif
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -431,6 +438,12 @@ struct RegalContext
   DebugInfo          *dbg;
   ContextInfo        *info;
 ${EMU_MEMBER_DECLARE}
+
+  #if defined(__native_client__)
+  PPB_OpenGLES2      *naclES2;
+  PP_Resource         naclResource;
+  #endif
+
   RegalSystemContext  sysCtx;
   Thread              thread;
 };
@@ -466,8 +479,13 @@ RegalContext::RegalContext()
 : dsp(new DispatchState()),
   dbg(NULL),
   info(NULL),
-${EMU_MEMBER_CONSTRUCT}  sysCtx(0),
-  thread(0)
+${EMU_MEMBER_CONSTRUCT}  
+#if defined(__native_client__)
+  naclES2(NULL),
+  naclResource(NULL),
+#endif
+  sysCtx(NULL),
+  thread(NULL)
 {
   ITrace("RegalContext::RegalContext");
   dsp->Init();
@@ -1751,7 +1769,7 @@ ${LICENSE}
 
 #include "RegalUtil.h"
 
-REGAL_GLOBAL_BEGIN
+${IFDEF}REGAL_GLOBAL_BEGIN
 
 #include <string>
 using namespace std;
@@ -1782,7 +1800,7 @@ void InitDispatchTable${DISPATCH_NAME}(DispatchTable &tbl)
 
 REGAL_NAMESPACE_END
 
-''')
+${ENDIF}''')
 
 ##############################################################################################
 
@@ -1806,6 +1824,8 @@ def generateLoaderSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = ''
+  substitute['ENDIF'] = ''
 
   outputCode( '%s/RegalDispatchLoader.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
@@ -1848,12 +1868,13 @@ def generateEmuSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = ''
+  substitute['ENDIF'] = ''
 
   outputCode( '%s/RegalDispatchEmu.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
 
 ##############################################################################################
-
 
 errorGlobalCode = '''
 RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback )
@@ -1881,8 +1902,103 @@ def generateErrorSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = ''
+  substitute['ENDIF'] = ''
 
   outputCode( '%s/RegalDispatchError.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
+
+##############################################################################################
+
+# CodeGen for API error checking function definition.
+
+def apiNaclFuncDefineCode(apis, args):
+
+  code = ''
+
+  for api in apis:
+
+		if api.name=='gl':
+
+			for function in api.functions:
+				if not function.needsContext:
+					continue
+				if getattr(function,'gles',None)!='2.0':
+					continue
+
+				name   = function.name
+				params = paramsDefaultCode(function.parameters, True)
+				callParams = paramsNameCode(function.parameters)
+				rType  = typeCode(function.ret.type)
+				naclName = name
+				if naclName.startswith('gl'):
+					naclName = naclName[2:]
+
+				code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'nacl_', name, params)
+				code += '  ITrace("nacl_%s");\n' % name
+				code += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
+				code += '  RegalAssert(rCtx)\n'
+				code += '  RegalAssert(rCtx->naclES2)\n'
+				code += '  RegalAssert(rCtx->naclES2->%s)\n'%(naclName)
+				code += '  RegalAssert(rCtx->naclResource)\n'
+				if not typeIsVoid(rType):
+					code += '  %s ret = ' % rType
+				else:
+				  code += '  '
+				if len(callParams):
+					callParams = 'rCtx->naclResource, %s'%callParams
+				else:
+					callParams = 'rCtx->naclResource'
+				code += 'rCtx->naclES2->%s(%s);\n' % ( naclName, callParams )
+				if not typeIsVoid(rType):
+					code += '  return ret;\n'
+				code += '}\n\n'
+	
+  return code
+
+def apiNaclFuncInitCode(apis, args):
+
+  code = '// OpenGL ES 2.0 only\n'
+
+  for api in apis:
+
+		if api.name=='gl':
+
+			for function in api.functions:
+				if not function.needsContext:
+					continue
+				if getattr(function,'gles',None)!='2.0':
+					continue
+
+				name   = function.name
+				params = paramsDefaultCode(function.parameters, True)
+				callParams = paramsNameCode(function.parameters)
+				rType  = typeCode(function.ret.type)
+
+				code += '  tbl.%s = %s_%s;\n' % ( name, 'nacl', name )
+	
+  return code
+
+def generateNaclSource(apis, args):
+
+  funcDefine = apiNaclFuncDefineCode( apis, args )
+  funcInit   = apiNaclFuncInitCode  ( apis, args )
+
+  # Output
+
+  substitute = {}
+
+  substitute['LICENSE'] = regalLicense
+  substitute['DISPATCH_NAME'] = 'Nacl'
+  substitute['LOCAL_INCLUDE'] = '#include <ppapi/c/ppb_opengles2.h>'
+  substitute['LOCAL_CODE']    = ''
+  substitute['AUTOGENERATED'] = autoGeneratedMessage
+  substitute['COPYRIGHT']     = args.copyright
+  substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
+  substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = '#if defined(__native_client__)\n'
+  substitute['ENDIF'] = '#endif\n'
+
+  outputCode( '%s/RegalDispatchNacl.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
 
 ##############################################################################################
@@ -1911,6 +2027,8 @@ def generateDebugSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = ''
+  substitute['ENDIF'] = ''
 
   outputCode( '%s/RegalDispatchDebug.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 

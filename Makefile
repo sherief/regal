@@ -465,12 +465,14 @@ ifneq ($(STRIP),)
 endif
 
 #
-# GLUT dependency for non-Mac builds
+# GLUT dependency for non-Mac, non-Nacl builds
 #
 
 ifeq ($(filter darwin%,$(SYSTEM)),)
+ifeq ($(filter nacl%,$(SYSTEM)),)
 bin/tiger:      lib/$(GLUT.SHARED) lib/$(GLU.SHARED)
 bin/dreamtorus: lib/$(GLUT.SHARED) lib/$(GLU.SHARED)
+endif
 endif
 
 clean:

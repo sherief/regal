@@ -208,6 +208,10 @@ namespace Logging {
     }
   }
 
+#ifndef LOG_TAG
+#define LOG_TAG "Regal"
+#endif
+
 #if defined(REGAL_SYS_WGL)
 
   void Output(const char *prefix, const char *delim, const string &str)
@@ -223,8 +227,6 @@ namespace Logging {
   }
 
 #elif defined(REGAL_SYS_ANDROID)
-
-#define  LOG_TAG    "Regal"
 
   // ANDROID_LOG_INFO
   // ANDROID_LOG_WARN
@@ -247,7 +249,7 @@ namespace Logging {
     if (str.length())
     {
       string m = message(prefix, delim, str);
-      _naclPrintf("Regal: %s", m.c_str());
+      _naclPrintf("%s %s", LOG_TAG, m.c_str());
       append(m);
     }
   }
@@ -258,7 +260,7 @@ namespace Logging {
     if (str.length())
     {
       string m = message(prefix,delim,str);
-      fprintf(stdout, "%s", m.c_str());
+      fprintf(stdout, "%s %s",LOG_TAG, m.c_str());
       fflush(stdout);
       append(m);
     }
