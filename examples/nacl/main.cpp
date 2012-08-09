@@ -17,15 +17,13 @@
 #include "ppapi/c/ppb_instance.h"
 #include "ppapi/c/ppb_opengles2.h"
 #include "ppapi/c/ppb_input_event.h"
-//#include "ppapi/gles2/gl2ext_ppapi.h"
-//#include "GLES2/gl2.h"
 
-#define REGAL_NACL_HACK 1
 #include <GL/Regal.h>
 #include <GL/RegalGLU.h>
-#undef REGAL_NAL_HACK
-
-
+typedef void (*RegalNaCLPrintfCallback)(const char* str);
+void RegalNaCLRegisterPrintfCallback(RegalNaCLPrintfCallback callback);
+void RegalNaCLRegisterInterface(PPB_OpenGLES2* interface);
+void RegalNaCLRegisterContext(int32_t context);
 
 static PPB_Messaging* ppb_messaging_interface = NULL;
 static PPB_Var* ppb_var_interface = NULL;
@@ -62,241 +60,21 @@ static struct PP_Var CStrToVar(const char* str) {
   return PP_MakeUndefined();
 }
 
-void _naclPrintf(const char* str, ...) {
-  char buff[512];
+static void messagePrint(const char* str) {
+  if (ppb_messaging_interface != NULL && printfInstance != 0) {
+    ppb_messaging_interface->PostMessage(printfInstance, ::CStrToVar(str));  
+  }
+}
+
+static void messagePrintf(const char* str, ...) {
+   const int bufferSize = 1024;
+  char buff[bufferSize];
   buff[0] = '\0';
   va_list vl;
   va_start(vl, str);
-  vsnprintf(&buff[0], 511, str, vl);
+  vsnprintf(&buff[0], bufferSize, str, vl);
   va_end(vl);
-  if (ppb_messaging_interface != NULL && printfInstance != 0) {
-    ppb_messaging_interface->PostMessage(printfInstance, ::CStrToVar(buff));  
-  }
-  
-}
-
-struct naclProcEntry {
-  const char* name;
-  void* address;
-};
-
-static void naclGlGetIntegerv(GLenum pname, GLint* params) {
-  ppb_opengl_interface->GetIntegerv(opengl_context, pname, params);
-}
-
-static void naclGlGenBuffers(GLsizei n, GLuint* buffers) {
-  ppb_opengl_interface->GenBuffers(opengl_context, n, buffers);
-}
-
-static void naclGlBindBuffer(GLenum target, GLuint buffer) {
-  if (target == GL_ELEMENT_ARRAY_BUFFER) {
-    //_naclPrintf("Binding ELEMENTS to %x\n", buffer);
-  } else {
-    //_naclPrintf("Binding VERTEX to %x\n", buffer);
-  }
-  
-  ppb_opengl_interface->BindBuffer(opengl_context, target, buffer);
-}
-
-/*
-Drawing (4) 0...3
-Uploading 768 bytes to 34962
-*/
-static void naclGlBufferData(GLenum target, GLsizeiptr size, const void* data, GLenum usage) {
-  ppb_opengl_interface->BufferData(opengl_context, target, size, data, usage);
-}
-
-static void naclGlClearDepthf(GLclampf depth) {
-  ppb_opengl_interface->ClearDepthf(opengl_context, depth);
-}
-
-static void naclGlFlush() {
-  ppb_opengl_interface->Flush(opengl_context);
-}
-
-static void naclGlFinish() {
-  ppb_opengl_interface->Finish(opengl_context);
-}
-
-static void naclGlClear(GLbitfield mask) {
-  ppb_opengl_interface->Clear(opengl_context, mask);
-}
-
-static void naclGlClearColor(float r, float g, float b, float a) {
-  ppb_opengl_interface->ClearColor(opengl_context, r, g, b, a);
-}
-
-static const GLubyte* naclGlGetString(GLenum name) {
-  const GLubyte* r = ppb_opengl_interface->GetString(opengl_context, name);
-  //_naclPrintf("%d -> %s\n", name, r);
-  return r;
-}
-
-static void naclGlEnableVertexAttribArray(GLuint index) {
-  //_naclPrintf("Enabling array %d\n", index);
-  ppb_opengl_interface->EnableVertexAttribArray(opengl_context, index);
-}
-
-static void naclGlDisableVertexAttribArray(GLuint index) {
-  //_naclPrintf("Disabling array %d\n", index);
-  ppb_opengl_interface->DisableVertexAttribArray(opengl_context, index);
-}
-
-static void naclGlVertexAttribPointer(GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* ptr) {
-  const char* typeString = "Unknown";
-  if (type == GL_FLOAT) {
-    typeString = "FLOAT";
-  }
-  //_naclPrintf("VP: %d SIZE: %d x %s STRIDE: %d (offset: %p)", indx, size, typeString, stride, ptr);
-  ppb_opengl_interface->VertexAttribPointer(opengl_context, indx, size, type, normalized, stride, ptr);
-}
-
-static GLuint naclGlCreateProgram() {
-  return ppb_opengl_interface->CreateProgram(opengl_context);
-}
-
-static void naclGlDeleteProgram(GLuint program) {
-  ppb_opengl_interface->DeleteProgram(opengl_context, program);
-}
-
-static void naclGlLinkProgram(GLuint program) {
-  ppb_opengl_interface->LinkProgram(opengl_context, program);
-}
-
-static void naclGlUseProgram(GLuint program) {
-  ppb_opengl_interface->UseProgram(opengl_context, program);
-}
-
-static GLuint naclGlCreateShader(GLenum type) {
-  return ppb_opengl_interface->CreateShader(opengl_context, type);
-}
-
-static void naclGlDeleteShader(GLuint shader) {
-  ppb_opengl_interface->DeleteShader(opengl_context, shader);
-}
-
-static void naclGlShaderSource(GLuint shader, GLsizei count, const char** str, const GLint* length) {
-  //_naclPrintf("Shader source:\n");
-  for (int i = 0; i < count; i++) {
-    //_naclPrintf("[%d] - %s\n", i, str[i]);
-  }
-  ppb_opengl_interface->ShaderSource(opengl_context, shader, count, str, length);
-}
-
-static void naclGlCompileShader(GLuint shader) {
-  ppb_opengl_interface->CompileShader(opengl_context, shader);
-}
-
-static void naclGlGetShaderInfoLog(GLuint shader, GLsizei bufsize, GLsizei* length, char* infolog) {
-  ppb_opengl_interface->GetShaderInfoLog(opengl_context, shader, bufsize, length, infolog);
-  //_naclPrintf("ShaderInfoLog - %s\n", infolog);
-}
-
-static void naclGlGetProgramInfoLog( GLuint program, GLsizei bufsize, GLsizei* length, char* infolog) {
-  ppb_opengl_interface->GetProgramInfoLog(opengl_context, program, bufsize, length, infolog);
-  //_naclPrintf("ProgramInfoLog - %s\n", infolog);
-}
-
-static void naclGlAttachShader(GLuint program, GLuint shader) {
-  ppb_opengl_interface->AttachShader(opengl_context, program, shader);
-}
-
-static void naclGlDetachShader(GLuint program, GLuint shader) {
-  ppb_opengl_interface->DetachShader(opengl_context, program, shader);
-}
-
-static void naclGlBindAttribLocation(GLuint program, GLuint index, const char* name) {
-  _naclPrintf("Binding %s to %d\n", name, index);
-  ppb_opengl_interface->BindAttribLocation(opengl_context, program, index, name);
-}
-
-static GLint naclGlGetUniformLocation(GLuint program, const char* name) {
-  return ppb_opengl_interface->GetUniformLocation(opengl_context, program, name);
-}
-
-static void naclGlDrawArrays(GLenum mode, GLint first, GLsizei count) {
-  //_naclPrintf("Drawing (%d) %d...%d", mode, first, first+count);
-  ppb_opengl_interface->DrawArrays(opengl_context, mode, first, count);
-}
-
-static void naclGlDrawElements(GLenum mode, GLsizei count, GLenum type, const void* indices) {
-  ppb_opengl_interface->DrawElements(opengl_context, mode, count, type, indices);
-}
-
-static void naclGlViewport(GLint x, GLint y, GLsizei width, GLsizei height) {
-  ppb_opengl_interface->Viewport(opengl_context, x, y, width, height);
-}
-
-static void naclGlUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value) {
-  ppb_opengl_interface->UniformMatrix4fv(opengl_context, location, count, transpose, value);
-}
-
-
-static void naclGlUniform4fv(GLint location, GLsizei count, const GLfloat* v) {
-  ppb_opengl_interface->Uniform4fv(opengl_context, location, count, v);
-}
-
-static void naclGlDepthFunc(GLenum func) {
-  ppb_opengl_interface->DepthFunc(opengl_context, func);
-}
-
-static void naclGlEnable(GLenum cap) {
-  ppb_opengl_interface->Enable(opengl_context, cap);
-}
-
-static void naclGlDisable(GLenum cap) {
-  ppb_opengl_interface->Disable(opengl_context, cap);
-}
-
-naclProcEntry _nacl_lookup[] = {
-  { "glFinish", (void*)naclGlFinish },
-  { "glFlush", (void*)naclGlFlush },
-  { "glGetString", (void*)naclGlGetString },
-  { "glClear", (void*)naclGlClear },
-  { "glClearColor", (void*)naclGlClearColor },
-  { "glGetIntegerv", (void*)naclGlGetIntegerv },
-  { "glBindBuffer", (void*)naclGlBindBuffer },
-  { "glBufferData", (void*)naclGlBufferData },
-  { "glClearDepthf", (void*)naclGlClearDepthf },
-  { "glGenBuffers", (void*)naclGlGenBuffers },
-  { "glDisableVertexAttribArray", (void*)naclGlDisableVertexAttribArray },
-  { "glEnableVertexAttribArray", (void*)naclGlEnableVertexAttribArray },
-  { "glVertexAttribPointer", (void*)naclGlVertexAttribPointer },
-  { "glCreateProgram", (void*)naclGlCreateProgram },
-  { "glDeleteProgram", (void*)naclGlDeleteProgram },
-  { "glCreateShader", (void*)naclGlCreateShader },
-  { "glDeleteShader", (void*)naclGlDeleteShader },
-  { "glShaderSource", (void*)naclGlShaderSource },
-  { "glCompileShader", (void*)naclGlCompileShader },
-  { "glGetShaderInfoLog", (void*)naclGlGetShaderInfoLog},
-  { "glGetProgramInfoLog", (void*)naclGlGetProgramInfoLog },
-  { "glAttachShader", (void*)naclGlAttachShader},
-  { "glDetachShader", (void*)naclGlDetachShader},
-  { "glUseProgram", (void*)naclGlUseProgram},
-  { "glLinkProgram", (void*)naclGlLinkProgram },
-  { "glBindAttribLocation", (void*)naclGlBindAttribLocation},
-  { "glGetUniformLocation", (void*)naclGlGetUniformLocation },
-  { "glDrawArrays", (void*)naclGlDrawArrays},
-  { "glDrawElements", (void*)naclGlDrawElements},
-  { "glViewport", (void*)naclGlViewport},
-  { "glUniformMatrix4fv", (void*)naclGlUniformMatrix4fv },
-  { "glUniform4fv", (void*)naclGlUniform4fv},
-  { "glDepthFunc", (void*)naclGlDepthFunc},
-  { "glEnable", (void*)naclGlEnable},
-  { "glDisable", (void*)naclGlDisable},
-  { NULL, NULL }  
-};
-
-void* _naclGetProcAddress(const char* lookupName) {
-  for (int i = 0; _nacl_lookup[i].name != NULL; i++) {
-    const naclProcEntry* entry = &_nacl_lookup[i];
-    if (!strcmp(entry->name, lookupName)) {
-      _naclPrintf("Returning %p for %s\n", entry->address, entry->name);
-      return entry->address;
-    }
-  }
-  _naclPrintf("Returning NULL for %s\n", lookupName);
-  return NULL;
+  messagePrint(buff);
 }
 
 static void myReshape(int w, int h)
@@ -370,19 +148,17 @@ void rotatingTriangle() {
 void openglES1Tutorial() {
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   GLfloat vertices[] = {1,0,0, 0,1,0, -1,0,0};
   GLfloat colors[] = { 0.25, 0.25, 0.25, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0};
-  glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
+  glEnableClientState(GL_VERTEX_ARRAY);
   glVertexPointer(3, GL_FLOAT, 0, vertices);
   glColorPointer(3, GL_FLOAT, 0, colors);
   glDrawArrays(GL_TRIANGLES, 0, 3);
-  glDisableClientState(GL_COLOR_ARRAY);
   glDisableClientState(GL_VERTEX_ARRAY);
-
+  glDisableClientState(GL_COLOR_ARRAY);
 }
 
 static void glutSolidSphere(float radius, int slices, int stacks) {
@@ -600,7 +376,7 @@ static void materialDemo() {
 }
 
 static void frameCallback(void* user_data, int32_t result) {
-    clearColor += 0.01;
+  clearColor += 0.01;
   if (clearColor > 1.0) {
     clearColor = 0.0;
   }
@@ -673,14 +449,17 @@ static PP_Bool Instance_DidCreate(PP_Instance instance,
   opengl_context = ppb_graphics3d_interface->Create(instance, opengl_context, attribs);
   ppb_instance_interface->BindGraphics(instance, opengl_context);
   RegalMakeCurrent(reinterpret_cast<void*>(opengl_context));
+  RegalNaCLRegisterPrintfCallback(messagePrint);
+  RegalNaCLRegisterContext(opengl_context);
+  RegalNaCLRegisterInterface(ppb_opengl_interface);
   int32_t r = 0;
   r = ppb_input_interface->RequestInputEvents(instance, PP_INPUTEVENT_CLASS_MOUSE);
   if (r != PP_OK) {
-    _naclPrintf("Mouse request = %x\n", r);
+    messagePrintf("Mouse request = %x\n", r);
   }
   r = ppb_input_interface->RequestFilteringInputEvents(instance, PP_INPUTEVENT_CLASS_KEYBOARD);
   if (r != PP_OK) {
-    _naclPrintf("Keyboard request = %x\n", r);  
+    messagePrintf("Keyboard request = %x\n", r);  
   }
   frameCallback(NULL, 0);
   return PP_TRUE;
@@ -714,11 +493,6 @@ static void Instance_DidChangeView(PP_Instance instance,
   ppb_view_interface->GetRect(view_resource, &rect);
   vp.width = rect.size.width;
   vp.height = rect.size.height;
-  {
-  //char blah[512];
-  //snprintf(&blah[0], 512, "(%d, %d) x (%d, %d)", rect.point.x, rect.point.y, rect.point.x + rect.size.width, rect.point.y + rect.size.height);
-  //ppb_messaging_interface->PostMessage(instance, CStrToVar(blah));  
-  }
 }
 
 /**
@@ -741,9 +515,9 @@ static void Instance_DidChangeView(PP_Instance instance,
 static void Instance_DidChangeFocus(PP_Instance instance,
                                     PP_Bool has_focus) {
   if (has_focus) {
-    _naclPrintf("Gained focus");
+    messagePrintf("Gained focus");
   } else {
-    _naclPrintf("Lost focus");
+    messagePrintf("Lost focus");
   }
 }
 
@@ -768,7 +542,7 @@ PP_Bool Instance_HandleInput(PP_Instance instance, PP_Resource event) {
     uint32_t code = ppb_keyboard_interface->GetKeyCode(event);
     if (code >= '1' && code <= '9') {
       demoMode = code - '1';
-      _naclPrintf("Demo %d\n", demoMode);
+      messagePrintf("Demo %d\n", demoMode);
       return PP_TRUE;
     }
   }
@@ -820,7 +594,7 @@ PP_EXPORT const void* PPP_GetInterface(const char* interface_name) {
     };
     return &input_interface;
   }
-  _naclPrintf("can't find interface: %s\n", interface_name);
+  messagePrintf("can't find interface: %s\n", interface_name);
   return NULL;
 }
 
