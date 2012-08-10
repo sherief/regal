@@ -1047,16 +1047,6 @@ typedef Bool ( * PFNGLXWAITFORSBCOMLPROC) (Display* dpy, GLXDrawable drawable, i
 #ifndef GLX_SGIS_color_range
 #define GLX_SGIS_color_range 1
 
-#define GLX_MIN_RED_SGIS 0
-#define GLX_MAX_GREEN_SGIS 0
-#define GLX_MIN_BLUE_SGIS 0
-#define GLX_MAX_ALPHA_SGIS 0
-#define GLX_MIN_GREEN_SGIS 0
-#define GLX_MIN_ALPHA_SGIS 0
-#define GLX_MAX_RED_SGIS 0
-#define GLX_EXTENDED_RANGE_SGIS 0
-#define GLX_MAX_BLUE_SGIS 0
-
 #define GLXEW_SGIS_color_range GLXEW_GET_VAR(__GLXEW_SGIS_color_range)
 
 #endif /* GLX_SGIS_color_range */
@@ -1393,7 +1383,7 @@ typedef int ( * PFNGLXVIDEORESIZESUNPROC) (Display* display, GLXDrawable window,
 /* ------------------------------------------------------------------------- */
 
 #ifdef GLEW_MX
-#define GLXEW_FUN_EXPORT
+#define GLXEW_FUN_EXPORT GLEW_FUN_EXPORT
 #define GLXEW_VAR_EXPORT
 #else
 #define GLXEW_FUN_EXPORT GLEW_FUN_EXPORT
