@@ -763,13 +763,14 @@ struct RegalIff : public RegalEmu {
     }
 
     void Flush( RegalContext * ctx ) {
-        DispatchTable &tbl = ctx->dsp->emuTbl;
-
-        tbl.glBufferData( GL_ARRAY_BUFFER, immCurrent * sizeof( Attributes ), immArray, GL_DYNAMIC_DRAW );
-        if( ( ctx->info->core == true || ctx->info->gles ) && immPrim == GL_QUADS ) {
-            tbl.glDrawElements( GL_TRIANGLES, immCurrent * 3 / 2, GL_UNSIGNED_SHORT, 0 );
-        } else {
-            tbl.glDrawArrays( immPrim, 0, immCurrent );
+        if (immCurrent>0) {  // Do nothing for empty buffer
+            DispatchTable &tbl = ctx->dsp->emuTbl;
+            tbl.glBufferData( GL_ARRAY_BUFFER, immCurrent * sizeof( Attributes ), immArray, GL_DYNAMIC_DRAW );
+            if( ( ctx->info->core == true || ctx->info->gles ) && immPrim == GL_QUADS ) {
+                tbl.glDrawElements( GL_TRIANGLES, immCurrent * 3 / 2, GL_UNSIGNED_SHORT, 0 );
+            } else {
+                tbl.glDrawArrays( immPrim, 0, immCurrent );
+            }
         }
     }
 
@@ -802,13 +803,23 @@ struct RegalIff : public RegalEmu {
                 default:
                     break;
             }
-            int offset = REGAL_IMMEDIATE_BUFFER_SIZE - restartVerts;
-            memcpy( immArray, immArray + offset * maxVertexAttribs * 16, restartVerts * maxVertexAttribs * 16);
-            immCurrent = restartVerts;
+            
+            // For triangle fan we need the first and last vertices
+            // for restarting.  All others concern the most recent n.
+
+            if (immPrim==GL_TRIANGLE_FAN)
+            {
+                memcpy( immArray + maxVertexAttribs * 16, immArray + (REGAL_IMMEDIATE_BUFFER_SIZE - 1) * maxVertexAttribs * 16, maxVertexAttribs * 16);                
+                immCurrent = 2;
+            }
+            else
+            {
+                int offset = REGAL_IMMEDIATE_BUFFER_SIZE - restartVerts;
+                memcpy( immArray, immArray + offset * maxVertexAttribs * 16, restartVerts * maxVertexAttribs * 16);
+                immCurrent = restartVerts;
+            }
         }
-
     }
-
 
     template <int N, typename T> void Attribute( RegalContext * ctx, GLuint idx, const bool normalize, const T * v ) {
         if( idx >= maxVertexAttribs ) {

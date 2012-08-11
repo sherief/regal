@@ -104,6 +104,36 @@ are permitted provided that the following conditions are met:
 #define REGAL_FORCE_EMULATION 0
 #endif
 
+// Debug dispatch disabled by default in
+// release mode
+
+#ifndef REGAL_DEBUG
+#ifdef NDEBUG
+#define REGAL_DEBUG 0
+#else
+#define REGAL_DEBUG 1
+#endif
+#endif
+
+// Error dispatch disabled by default in
+// release mode
+
+#ifndef REGAL_ERROR
+#ifdef NDEBUG
+#define REGAL_ERROR 0
+#else
+#define REGAL_ERROR 1
+#endif
+#endif
+
+#ifndef REGAL_LOG
+#ifdef NDEBUG
+#define REGAL_LOG 0
+#else
+#define REGAL_LOG 1
+#endif
+#endif
+
 #ifndef REGAL_EMU_PPA
 #define REGAL_EMU_PPA 1
 #endif

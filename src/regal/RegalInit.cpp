@@ -46,6 +46,13 @@ using namespace std;
 #include "RegalDispatchState.h"
 #include "RegalPrivate.h"
 
+RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
+{
+  ::REGAL_NAMESPACE_INTERNAL::RegalContext * ctx = GET_REGAL_CONTEXT();
+  RegalAssert(ctx);
+  return ctx->err.callback = callback;
+}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN

@@ -351,7 +351,7 @@ struct RegalVao : public RegalEmu {
         UNUSED_PARAMETER(ctx);
         RegalAssert( currVao != NULL );
         for( GLuint i = 0; i < maxVertexAttribs; i++ ) {
-#ifndef NDEBUG
+#if !defined(REGAL_NO_ASSERT)
             const Array &a = currVao->a[ i ];
             RegalAssert( !( a.enabled && a.buffer == 0 && GLuint64( a.pointer ) < 1024 ) );
 #endif

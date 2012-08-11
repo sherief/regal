@@ -36,6 +36,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_LOG
+
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
@@ -31004,3 +31006,5 @@ void InitDispatchTableLog(DispatchTable &tbl)
 }
 
 REGAL_NAMESPACE_END
+
+#endif

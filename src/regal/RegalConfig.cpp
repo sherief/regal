@@ -51,6 +51,7 @@ bool forceEmulation   = REGAL_FORCE_EMULATION;
 bool enableEmulation  = true;
 bool enableDebug      = false;
 bool enableError      = false;
+bool enableLog        = true;
 bool enableEmuPpa     = REGAL_EMU_PPA;
 bool enableEmuObj     = REGAL_EMU_OBJ;
 bool enableEmuBin     = REGAL_EMU_BIN;
@@ -76,11 +77,15 @@ void Init()
   tmp = GetEnv( "REGAL_NO_EMULATION" );
   if (tmp) enableEmulation = atoi(tmp)==0;
 
+#if REGAL_DEBUG
   tmp = GetEnv( "REGAL_DEBUG" );
   if (tmp) enableDebug = atoi(tmp)!=0;
+#endif
 
+#if REGAL_ERROR
   tmp = GetEnv( "REGAL_ERROR" );
   if (tmp) enableError = atoi(tmp)!=0;
+#endif
 
 #if REGAL_EMU_PPA
   tmp = GetEnv( "REGAL_EMU_PPA" );
@@ -121,12 +126,8 @@ void Init()
   enableEmulation = (REGAL_NO_EMULATION) == 0;
 #endif
 
-#ifdef REGAL_DEBUG
-  enableDebug = (REGAL_DEBUG) != 0;
-#endif
-
-#ifdef REGAL_ERROR
-  enableDebug = (REGAL_ERROR) != 0;
+#if !REGAL_LOG
+  enableLog = false;
 #endif
 
   Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");

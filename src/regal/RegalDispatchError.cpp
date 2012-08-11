@@ -36,6 +36,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_ERROR
+
 REGAL_GLOBAL_BEGIN
 
 #include <string>
@@ -47,13 +49,6 @@ using namespace std;
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatchState.h"
-
-RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback )
-{
-   ::REGAL_NAMESPACE_INTERNAL::RegalContext * ctx = GET_REGAL_CONTEXT();
-   RegalAssert(ctx);
-   return ctx->err.callback = callback;
-}
 
 REGAL_GLOBAL_END
 
@@ -60588,3 +60583,5 @@ void InitDispatchTableError(DispatchTable &tbl)
 }
 
 REGAL_NAMESPACE_END
+
+#endif
