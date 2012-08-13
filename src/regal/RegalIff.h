@@ -1874,7 +1874,7 @@ struct RegalIff : public RegalEmu {
 
 
     void BindVertexArray( RegalContext * ctx, GLuint vao ) {
-    UNUSED_PARAMETER(ctx);
+        UNUSED_PARAMETER(ctx);
         vaoAttrMap[ currVao ] = ffstate.raw.attrArrayFlags;
         currVao = vao;
         ffstate.raw.attrArrayFlags = vaoAttrMap[ currVao ];

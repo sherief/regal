@@ -1,14 +1,6 @@
 #!/usr/bin/python -B
 
 vaoFormulae = {
-    'Begin' : {
-        'entries' : [ 'glBegin' ],
-        'prefix' : [ 'rCtx->vao->Begin( rCtx, ${arg0} );' ],
-    },
-    'End' : {
-        'entries' : [ 'glEnd' ],
-        'prefix' : [ 'rCtx->vao->End( rCtx );' ],
-    },
     # TODO - GL_ARB_base_instance ?
     'Validate' : {
         'entries' : [ 'gl(Multi|)Draw(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],

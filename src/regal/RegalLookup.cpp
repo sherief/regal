@@ -47,7 +47,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Lookup {
 
-const char * const gl_Name[2467] = {
+const char * const gl_Name[2468] = {
   "glAccum",
   "glActiveProgramEXT",
   "glActiveShaderProgram",
@@ -1133,6 +1133,7 @@ const char * const gl_Name[2467] = {
   "glLoadTransposeMatrixf",
   "glLoadTransposeMatrixfARB",
   "glLockArraysEXT",
+  "glLogMessageCallbackREGAL",
   "glLogicOp",
   "glMakeBufferNonResidentNV",
   "glMakeBufferResidentNV",
@@ -2517,7 +2518,7 @@ const char * const gl_Name[2467] = {
   NULL
 };
 
-const void *gl_Value[2467] = {
+const void *gl_Value[2468] = {
   (void *)(glAccum),
   (void *)(glActiveProgramEXT),
   (void *)(glActiveShaderProgram),
@@ -3603,6 +3604,7 @@ const void *gl_Value[2467] = {
   (void *)(glLoadTransposeMatrixf),
   (void *)(glLoadTransposeMatrixfARB),
   (void *)(glLockArraysEXT),
+  (void *)(glLogMessageCallbackREGAL),
   (void *)(glLogicOp),
   (void *)(glMakeBufferNonResidentNV),
   (void *)(glMakeBufferResidentNV),
@@ -4987,7 +4989,7 @@ const void *gl_Value[2467] = {
   NULL
 };
 
-const size_t gl_Offset[2467] = {
+const size_t gl_Offset[2468] = {
   offsetof(DispatchTable,glAccum)/sizeof(void *),
   offsetof(DispatchTable,glActiveProgramEXT)/sizeof(void *),
   offsetof(DispatchTable,glActiveShaderProgram)/sizeof(void *),
@@ -6073,6 +6075,7 @@ const size_t gl_Offset[2467] = {
   offsetof(DispatchTable,glLoadTransposeMatrixf)/sizeof(void *),
   offsetof(DispatchTable,glLoadTransposeMatrixfARB)/sizeof(void *),
   offsetof(DispatchTable,glLockArraysEXT)/sizeof(void *),
+  offsetof(DispatchTable,glLogMessageCallbackREGAL)/sizeof(void *),
   offsetof(DispatchTable,glLogicOp)/sizeof(void *),
   offsetof(DispatchTable,glMakeBufferNonResidentNV)/sizeof(void *),
   offsetof(DispatchTable,glMakeBufferResidentNV)/sizeof(void *),

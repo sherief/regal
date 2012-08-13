@@ -9,14 +9,6 @@ ppcFormulae = {
         'entries' : [ 'glPopClientAttrib' ],
         'impl' : [ 'rCtx->ppc->PopClientAttrib( rCtx );', ],
     },
-    'Begin' : {
-        'entries' : [ 'glBegin' ],
-        'prefix' : [ 'rCtx->ppc->Begin( rCtx, ${arg0} );' ],
-    },
-    'End' : {
-        'entries' : [ 'glEnd' ],
-        'prefix' : [ 'rCtx->ppc->End( rCtx );' ],
-    },
     'PixelStore' : {
         'entries' : [ 'glPixelStore(i|f)' ],
         'prefix' : [ 'rCtx->ppc->PixelStore( rCtx, ${arg0plus} );' ],

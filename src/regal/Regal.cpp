@@ -46,11 +46,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalMarker.h"
 
-void RegalMakeCurrent( RegalSystemContext ctx )
-{
-  ::REGAL_NAMESPACE_INTERNAL::RegalPrivateMakeCurrent( ctx );
-}
-
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
@@ -97,6 +92,8 @@ REGAL_DECL void REGAL_CALL glBegin(GLenum mode)
   RegalAssert(rCtx->dsp->curr);
   RegalAssert(rCtx->dsp->curr->glBegin);
   RegalAssert(rCtx->dsp->curr->glBegin != glBegin);
+  RegalAssert(rCtx);
+  rCtx->depthBeginEnd++;
   rCtx->dsp->curr->glBegin(mode);
 }
 
@@ -873,6 +870,8 @@ REGAL_DECL void REGAL_CALL glEnd(void)
   RegalAssert(rCtx->dsp->curr);
   RegalAssert(rCtx->dsp->curr->glEnd);
   RegalAssert(rCtx->dsp->curr->glEnd != glEnd);
+  RegalAssert(rCtx);
+  rCtx->depthBeginEnd--;
   rCtx->dsp->curr->glEnd();
 }
 
@@ -2454,6 +2453,8 @@ REGAL_DECL void REGAL_CALL glPopAttrib(void)
   RegalAssert(rCtx->dsp->curr);
   RegalAssert(rCtx->dsp->curr->glPopAttrib);
   RegalAssert(rCtx->dsp->curr->glPopAttrib != glPopAttrib);
+  RegalAssert(rCtx);
+  rCtx->depthPushAttrib--;
   rCtx->dsp->curr->glPopAttrib();
 }
 
@@ -2493,6 +2494,8 @@ REGAL_DECL void REGAL_CALL glPushAttrib(GLbitfield mask)
   RegalAssert(rCtx->dsp->curr);
   RegalAssert(rCtx->dsp->curr->glPushAttrib);
   RegalAssert(rCtx->dsp->curr->glPushAttrib != glPushAttrib);
+  RegalAssert(rCtx);
+  rCtx->depthPushAttrib++;
   rCtx->dsp->curr->glPushAttrib(mask);
 }
 
@@ -30819,6 +30822,27 @@ REGAL_DECL GLboolean REGAL_CALL glIsSupportedREGAL(const GLchar *ext)
   if (!rCtx->info->gl_regal_extension_query)
     return rCtx->info->isSupported(ext) ? GL_TRUE : GL_FALSE;
   return rCtx->dsp->curr->glIsSupportedREGAL(ext);
+}
+
+/* GL_REGAL_log */
+
+REGAL_DECL void REGAL_CALL glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  RTrace("glLogMessageCallbackREGAL()");
+  if (!rCtx) return;
+  RegalAssert(rCtx);
+  RegalAssert(rCtx->dsp);
+  RegalAssert(rCtx->dsp->curr);
+  RegalAssert(rCtx->dsp->curr->glLogMessageCallbackREGAL);
+  RegalAssert(rCtx->dsp->curr->glLogMessageCallbackREGAL != glLogMessageCallbackREGAL);
+  // Emulate GL_REGAL_log, if necessary.
+  if (!rCtx->info->gl_regal_log)
+  {
+    rCtx->logCallback = callback;
+    return;
+  }
+  rCtx->dsp->curr->glLogMessageCallbackREGAL(callback);
 }
 
 /* GL_SGIS_detail_texture */

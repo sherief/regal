@@ -44,6 +44,13 @@ static void myKeyboard(unsigned char c, int x, int y)
   }
 }
 
+static void myOutput(GLenum stream, GLsizei length, const GLchar *message, GLvoid *context)
+{
+  static int line = 0;
+  fprintf(stdout,"%6d | %s",++line,message);
+  fflush(stdout);
+}
+
 static void myError(GLenum error)
 {
   printf("dreamtorus error: %s\n",glErrorStringREGAL(error));
@@ -55,6 +62,8 @@ int main(int argc, const char *argv[])
   glutInitWindowSize(500, 500);
   glutInit( &argc, (char **) argv);
   glutCreateWindow("dreamtorus");
+
+  glLogMessageCallbackREGAL(myOutput);
 
   // Regal workaround for OSX GLUT
 

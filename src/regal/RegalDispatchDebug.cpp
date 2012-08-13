@@ -16906,6 +16906,15 @@ static GLboolean REGAL_CALL debug_glIsSupportedREGAL(const GLchar *ext)
   return ret;
 }
 
+// GL_REGAL_log
+
+static void REGAL_CALL debug_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLogMessageCallbackREGAL(callback);
+}
+
 // GL_SGIS_detail_texture
 
 static void REGAL_CALL debug_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points)
@@ -20910,6 +20919,10 @@ void InitDispatchTableDebug(DispatchTable &tbl)
 
   tbl.glGetExtensionREGAL = debug_glGetExtensionREGAL;
   tbl.glIsSupportedREGAL = debug_glIsSupportedREGAL;
+
+  // GL_REGAL_log
+
+  tbl.glLogMessageCallbackREGAL = debug_glLogMessageCallbackREGAL;
 
   // GL_SGIS_detail_texture
 

@@ -5948,6 +5948,8 @@ static void _glewInfo_GL_REGAL_extension_query (void)
 static void _glewInfo_GL_REGAL_log (void)
 {
   glewPrintExt("GL_REGAL_log", GLEW_REGAL_log, glewIsSupported("GL_REGAL_log"), glewGetExtension("GL_REGAL_log"));
+
+  glewInfoFunc("glLogMessageCallbackREGAL", glLogMessageCallbackREGAL == NULL);
 }
 
 #endif /* GL_REGAL_log */

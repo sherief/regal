@@ -294,6 +294,7 @@ ContextInfo::ContextInfo()
   gl_pgi_misc_hints(false),
   gl_regal_error_string(false),
   gl_regal_extension_query(false),
+  gl_regal_log(false),
   gl_sgis_detail_texture(false),
   gl_sgis_fog_function(false),
   gl_sgis_multisample(false),
@@ -758,6 +759,7 @@ ContextInfo::init(const RegalContext &context)
   gl_pgi_misc_hints = e.find("GL_PGI_misc_hints")!=e.end();
   gl_regal_error_string = e.find("GL_REGAL_error_string")!=e.end();
   gl_regal_extension_query = e.find("GL_REGAL_extension_query")!=e.end();
+  gl_regal_log = e.find("GL_REGAL_log")!=e.end();
   gl_sgis_detail_texture = e.find("GL_SGIS_detail_texture")!=e.end();
   gl_sgis_fog_function = e.find("GL_SGIS_fog_function")!=e.end();
   gl_sgis_multisample = e.find("GL_SGIS_multisample")!=e.end();
@@ -1074,6 +1076,7 @@ ContextInfo::getExtension(const char *ext) const
   if (!strcmp(ext,"GL_PGI_misc_hints")) return gl_pgi_misc_hints;
   if (!strcmp(ext,"GL_REGAL_error_string")) return true;
   if (!strcmp(ext,"GL_REGAL_extension_query")) return true;
+  if (!strcmp(ext,"GL_REGAL_log")) return true;
   if (!strcmp(ext,"GL_SGIS_detail_texture")) return gl_sgis_detail_texture;
   if (!strcmp(ext,"GL_SGIS_fog_function")) return gl_sgis_fog_function;
   if (!strcmp(ext,"GL_SGIS_multisample")) return gl_sgis_multisample;

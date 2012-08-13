@@ -176,7 +176,14 @@ namespace Logging {
 #endif
 
     RegalContext *rCtx = GET_REGAL_CONTEXT();
-    return rCtx && rCtx->marker ? rCtx->marker->indent() : 0;
+
+    size_t indent = 0;
+    if (rCtx)
+    {
+      indent += (rCtx->depthBeginEnd + rCtx->depthPushAttrib)*2;
+      indent += rCtx->marker ? rCtx->marker->indent() : 0;
+    }
+    return indent;
   }
 
   inline string message(const char *prefix, const char *delim, const string &str)
@@ -212,62 +219,43 @@ namespace Logging {
 #define REGAL_LOG_TAG "Regal"
 #endif
 
-#if defined(REGAL_SYS_WGL)
-
   void Output(const char *prefix, const char *delim, const string &str)
   {
     if (str.length())
     {
       string m = message(prefix,delim,str);
-      OutputDebugStringA( m.c_str() );
-      fprintf( stderr, "%s", m.c_str() );
-      fflush( stderr );
-      append(m);
-    }
-  }
+      
+      RegalContext *rCtx = NULL;
 
-#elif defined(REGAL_SYS_ANDROID)
-
-  // ANDROID_LOG_INFO
-  // ANDROID_LOG_WARN
-  // ANDROID_LOG_ERROR
-
-  void Output(const char *prefix, const char *delim, const string &str)
-  {
-    if (str.length())
-    {
-      string m = message(prefix,delim,str);
-      __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
-      append(m);
-    }
-  }
-
-#elif REGAL_SYS_NACL
-
-  void Output(const char *prefix, const char *delim, const string &str)
-  {
-    if (str.length())
-    {
-      string m = message(prefix, delim, str);
-      _naclPrintf("%s %s", REGAL_LOG_TAG, m.c_str());
-      append(m);
-    }
-  }
+#ifndef REGAL_SYS_WGL
+      if (regalPrivateCurrentContextKey && pthread_getspecific(regalPrivateCurrentContextKey))
+        rCtx = GET_REGAL_CONTEXT();
 #else
-
-  void Output(const char *prefix, const char *delim, const string &str)
-  {
-    if (str.length())
-    {
-      string m = message(prefix,delim,str);
-      fprintf(stdout, "%s %s",REGAL_LOG_TAG, m.c_str());
-      fflush(stdout);
-      append(m);
-    }
-  }
-
+      rCtx = GET_REGAL_CONTEXT();
 #endif
 
+      if (rCtx && rCtx->logCallback)
+        rCtx->logCallback(GL_LOG_INFO_REGAL, (GLsizei) m.length(), m.c_str(), reinterpret_cast<void *>(rCtx->sysCtx));
+      else
+      {
+#if defined(REGAL_SYS_WGL)
+        OutputDebugStringA(m.c_str());
+        fprintf(stderr, "%s", m.c_str());
+        fflush(stderr);
+#elif defined(REGAL_SYS_ANDROID)
+        // ANDROID_LOG_INFO
+        // ANDROID_LOG_WARN
+        // ANDROID_LOG_ERROR
+        __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
+#elif REGAL_SYS_NACL
+#else
+        fprintf(stdout, "%s", m.c_str());
+        fflush(stdout);
+#endif
+      }
+      append(m);
+    }
+  }
 }
 
 REGAL_NAMESPACE_END

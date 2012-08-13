@@ -128,13 +128,6 @@ static void REGAL_CALL emu_glBegin(GLenum mode)
          #if REGAL_EMU_IFF
          if (rCtx->iff) break;
          #endif
-       case 1 :
-         #if REGAL_EMU_VAO
-         if (rCtx->vao) {
-             RegalEmuScopedActivate activate( rCtx, rCtx->vao );
-             rCtx->vao->Begin( rCtx, mode );
-         }
-         #endif
        default:
            break;
    }
@@ -1826,13 +1819,6 @@ static void REGAL_CALL emu_glEnd(void)
        case 2 :
          #if REGAL_EMU_IFF
          if (rCtx->iff) break;
-         #endif
-       case 1 :
-         #if REGAL_EMU_VAO
-         if (rCtx->vao) {
-             RegalEmuScopedActivate activate( rCtx, rCtx->vao );
-             rCtx->vao->End( rCtx );
-         }
          #endif
        default:
            break;
@@ -28014,6 +28000,8 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 // GL_REGAL_error_string
 
 // GL_REGAL_extension_query
+
+// GL_REGAL_log
 
 // GL_SGIS_detail_texture
 

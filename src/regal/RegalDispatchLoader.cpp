@@ -44717,6 +44717,27 @@ static GLboolean REGAL_CALL loader_glIsSupportedREGAL(const GLchar *ext)
    return driverTbl.glIsSupportedREGAL(ext);
 }
 
+// GL_REGAL_log
+
+extern void REGAL_CALL missing_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback);
+
+static void REGAL_CALL loader_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
+{
+   RegalContext * rCtx = GET_REGAL_CONTEXT();
+   RegalAssert(rCtx);
+   RegalAssert(rCtx->dsp);
+   DispatchTable & driverTbl = rCtx->dsp->driverTbl;
+   GetProcAddress( driverTbl.glLogMessageCallbackREGAL, "glLogMessageCallbackREGAL");
+   if ( !driverTbl.glLogMessageCallbackREGAL ) {
+      driverTbl.glLogMessageCallbackREGAL = missing_glLogMessageCallbackREGAL;
+   }
+   // If emu table is using the loader, update its entry too.
+   if (rCtx->dsp->emuTbl.glLogMessageCallbackREGAL == loader_glLogMessageCallbackREGAL) {
+      rCtx->dsp->emuTbl.glLogMessageCallbackREGAL = driverTbl.glLogMessageCallbackREGAL;
+   }
+   driverTbl.glLogMessageCallbackREGAL(callback);
+}
+
 // GL_SGIS_detail_texture
 
 extern void REGAL_CALL missing_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points);
@@ -50371,6 +50392,10 @@ void InitDispatchTableLoader(DispatchTable &tbl)
 
   tbl.glGetExtensionREGAL = loader_glGetExtensionREGAL;
   tbl.glIsSupportedREGAL = loader_glIsSupportedREGAL;
+
+  // GL_REGAL_log
+
+  tbl.glLogMessageCallbackREGAL = loader_glLogMessageCallbackREGAL;
 
   // GL_SGIS_detail_texture
 

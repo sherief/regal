@@ -19792,6 +19792,14 @@ GLboolean REGAL_CALL missing_glIsSupportedREGAL(const GLchar *ext)
   return ret;
 }
 
+// GL_REGAL_log
+
+void REGAL_CALL missing_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
+{
+   UNUSED_PARAMETER(callback);
+   Warning( "glLogMessageCallbackREGAL not available." );
+}
+
 // GL_SGIS_detail_texture
 
 void REGAL_CALL missing_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points)
@@ -23998,6 +24006,10 @@ void InitDispatchTableMissing(DispatchTable &tbl)
 
   tbl.glGetExtensionREGAL = missing_glGetExtensionREGAL;
   tbl.glIsSupportedREGAL = missing_glIsSupportedREGAL;
+
+  // GL_REGAL_log
+
+  tbl.glLogMessageCallbackREGAL = missing_glLogMessageCallbackREGAL;
 
   // GL_SGIS_detail_texture
 

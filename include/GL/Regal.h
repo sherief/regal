@@ -102,6 +102,12 @@
 typedef XID GLXDrawable;
 #endif
 
+#if REGAL_SYS_NACL
+#include <stdint.h>
+typedef int32_t PP_Resource;
+struct PPB_OpenGLES2;
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -248,6 +254,8 @@ typedef void  (*__eglMustCastToProperFunctionPointerType)(void);
 typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*GLDEBUGPROCARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
+
+typedef void (*GLLOGPROCREGAL)(GLenum stream, GLsizei length, const GLchar *message, GLvoid *context);
 
 #if REGAL_SYS_OSX
 
@@ -19319,6 +19327,18 @@ REGAL_DECL GLboolean REGAL_CALL glIsSupportedREGAL(const GLchar *ext);
 #define GL_LOG_HTTP_REGAL     0x9321     /* 37665 */
 #endif
 
+#ifndef REGAL_NO_TYPEDEF_GL_REGAL_LOG
+typedef void (REGAL_CALL *PFNGLLOGMESSAGECALLBACKREGALPROC)(GLLOGPROCREGAL callback);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_REGAL_LOG
+#define glLogMessageCallbackREGAL           rglLogMessageCallbackREGAL
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_REGAL_LOG
+REGAL_DECL void REGAL_CALL glLogMessageCallbackREGAL(GLLOGPROCREGAL callback);
+#endif
+
 /**
  ** GL_REND_screen_coordinates
  **/
@@ -30643,8 +30663,13 @@ extern "C" {
 typedef void (*RegalErrorCallback)(GLenum);
 REGAL_DECL RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback );
 
+#if REGAL_SYS_NACL
+typedef PP_Resource RegalSystemContext;
+REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx, struct PPB_OpenGLES2 *interface );
+#else
 typedef void * RegalSystemContext;
 REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx );
+#endif
 
 #ifdef __cplusplus
 }
