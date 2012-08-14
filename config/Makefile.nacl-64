@@ -1,15 +1,5 @@
 NAME = $(REGAL_NAME)
 
-M_PREFIX = i686
-M_NAME ?= $(shell uname -s)
-ifeq (Linux,${M_NAME})
-M_PREFIX = i686
-endif
-
-CC  = $(M_PREFIX)-nacl-gcc
-CXX = $(M_PREFIX)-nacl-g++
-LD  = $(M_PREFIX)-nacl-ld
-AR  = $(M_PREFIX)-nacl-ar
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =
 LIBDIR =
@@ -28,9 +18,9 @@ LIB.SONAME = lib$(NAME).so.$(SO_MAJOR)
 LIB.DEVLNK = lib$(NAME).so
 LIB.SHARED = lib$(NAME).so.$(SO_VERSION)
 LIB.STATIC = lib$(NAME).a
-LDFLAGS.SO = $(LDFLAGS.DYNAMIC) -soname=$(LIB.SONAME)
+LDFLAGS.SO = $(LDFLAGS.DYNAMIC)
 LIB.SONAME.MX = lib$(NAME)mx.so.$(SO_MAJOR)
 LIB.DEVLNK.MX = lib$(NAME)mx.so
 LIB.SHARED.MX = lib$(NAME)mx.so.$(SO_VERSION)
 LIB.STATIC.MX = lib$(NAME)mx.a
-LDFLAGS.SO.MX = $(LDFLAGS.DYNAMIC) -soname=$(LIB.SONAME.MX)
+LDFLAGS.SO.MX = $(LDFLAGS.DYNAMIC)
