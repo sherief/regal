@@ -48,4 +48,15 @@ logFormulae = {
 '  default: break;',
 '}', ],
     },
+    'Callback' : {
+        'entries' : [ 'glLogMessageCallbackREGAL' ],
+        'impl' : [
+          '// Emulate GL_REGAL_log, if necessary.',
+          'if (!rCtx->info->gl_regal_log)',
+          '{',
+          '  rCtx->logCallback = callback;',
+          '  return;',
+          '}',
+        ],
+    },
 }

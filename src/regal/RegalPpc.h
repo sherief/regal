@@ -428,7 +428,6 @@ struct RegalPpc : public RegalEmu {
         ClientVertexArrayState vertexArrayState;
     };
 
-    bool insideBeginEnd;
     int topOfStack;
     ClientState stack[REGAL_PPC_MAX_CLIENT_ATTRIB_STACK_DEPTH];
     ClientState currentClientState;
@@ -443,7 +442,6 @@ struct RegalPpc : public RegalEmu {
 
     void Init( RegalContext * ctx )
     {
-        insideBeginEnd = false;
         topOfStack = -1;
 
         maxVertexAttribs = ctx->ctxInf->maxVertexAttribs;
@@ -539,20 +537,6 @@ struct RegalPpc : public RegalEmu {
         return pAS;
     }
 
-    void Begin( RegalContext * ctx, GLenum mode )
-    {
-        if ( insideBeginEnd == false ) {
-            insideBeginEnd = true;
-        }
-    }
-
-    void End( RegalContext * ctx )
-    {
-        if ( insideBeginEnd == true ) {
-            insideBeginEnd = false;
-        }
-    }
-
     void BindBuffer( RegalContext * ctx, GLenum target, GLuint buffer)
     {
         switch (target)
@@ -594,7 +578,7 @@ struct RegalPpc : public RegalEmu {
 
     void ClientActiveTexture( RegalContext * ctx, GLenum _texture)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         GLint index = _texture - GL_TEXTURE0;
@@ -606,7 +590,7 @@ struct RegalPpc : public RegalEmu {
     void InterleavedArrays( RegalContext * ctx, GLenum format,
                             GLsizei stride, const GLvoid *pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         //<> how can stride be invalid?
@@ -836,7 +820,7 @@ struct RegalPpc : public RegalEmu {
 
     template <typename T> void PixelStore( RegalContext * ctx, GLenum pname, T param )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (pname)
@@ -982,7 +966,7 @@ struct RegalPpc : public RegalEmu {
 
     void EnableClientState( RegalContext * ctx, GLenum array )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         ShadowEnableDisableClientState( ctx, array, GL_TRUE );
@@ -990,7 +974,7 @@ struct RegalPpc : public RegalEmu {
 
     void DisableClientState( RegalContext * ctx, GLenum array )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         ShadowEnableDisableClientState( ctx, array, GL_FALSE );
@@ -1024,7 +1008,7 @@ struct RegalPpc : public RegalEmu {
     {
         // do nothing for these various error conditions
 
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (_index >= REGAL_PPC_MAX_VERTEX_ATTRIBS)
@@ -1149,7 +1133,7 @@ struct RegalPpc : public RegalEmu {
 
     void ColorPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -1184,7 +1168,7 @@ struct RegalPpc : public RegalEmu {
 
     void SecondaryColorPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (size != 3)
@@ -1213,7 +1197,7 @@ struct RegalPpc : public RegalEmu {
 
     void TexCoordPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -1246,7 +1230,7 @@ struct RegalPpc : public RegalEmu {
 
     void VertexPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -1278,7 +1262,7 @@ struct RegalPpc : public RegalEmu {
 
     void IndexPointer(RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (type)
@@ -1301,7 +1285,7 @@ struct RegalPpc : public RegalEmu {
 
     void NormalPointer(RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (type)
@@ -1324,7 +1308,7 @@ struct RegalPpc : public RegalEmu {
 
     void FogCoordPointer(RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (type)
@@ -1344,7 +1328,7 @@ struct RegalPpc : public RegalEmu {
 
     void EdgeFlagPointer(RegalContext * ctx, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (stride < 0)
@@ -1355,7 +1339,7 @@ struct RegalPpc : public RegalEmu {
 
     void PushClientAttrib( RegalContext * ctx, GLbitfield mask )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (topOfStack >= REGAL_PPC_MAX_CLIENT_ATTRIB_STACK_DEPTH-1) {
@@ -1382,7 +1366,7 @@ struct RegalPpc : public RegalEmu {
 
     void PopClientAttrib( RegalContext * ctx )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (topOfStack < 0) {

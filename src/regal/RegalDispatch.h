@@ -3598,6 +3598,10 @@ struct DispatchTable {
     GLboolean (REGAL_CALL *glGetExtensionREGAL)(const GLchar *ext);
     GLboolean (REGAL_CALL *glIsSupportedREGAL)(const GLchar *ext);
 
+    // GL_REGAL_log
+
+    void (REGAL_CALL *glLogMessageCallbackREGAL)(GLLOGPROCREGAL callback);
+
     // GL_SGIS_detail_texture
 
     void (REGAL_CALL *glDetailTexFuncSGIS)(GLenum target, GLsizei n, const GLfloat *points);

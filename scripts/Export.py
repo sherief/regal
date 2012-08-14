@@ -21,6 +21,7 @@ from ApiUtil import typeIsVoid
 
 from ApiCodeGen import *
 
+from EmuContextState   import formulae as contextStateFormulae
 from EmuGetString      import formulae as getStringFormulae
 from EmuForceCore      import formulae as forceCoreFormulae
 from EmuLookup         import formulae as lookupFormulae
@@ -43,6 +44,7 @@ from DispatchDebug import debugDispatchFormulae
 # Regal.cpp emulation
 
 emuRegal = [
+    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
@@ -188,6 +190,7 @@ def generate(apis, args):
   generateEmuSource( apis, args )
   generateDispatchLog( apis, args )
   generateNaclSource( apis, args )
+  generateMissingSource( apis, args )
   generateSource(apis, args)
 
 ##############################################################################################
@@ -265,6 +268,12 @@ ${LICENSE}
 typedef XID GLXDrawable;
 #endif
 
+#if REGAL_SYS_NACL
+#include <stdint.h>
+typedef int32_t PP_Resource;
+struct PPB_OpenGLES2;
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -292,6 +301,7 @@ typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsi
 typedef void (*GLDEBUGPROCARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 
+typedef void (*GLLOGPROCREGAL)(GLenum stream, GLsizei length, const GLchar *message, GLvoid *context);
 
 ${API_ENUM}
 
@@ -316,8 +326,13 @@ extern "C" {
 typedef void (*RegalErrorCallback)(GLenum);
 REGAL_DECL RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback );
 
+#if REGAL_SYS_NACL
+typedef PP_Resource RegalSystemContext;
+REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx, struct PPB_OpenGLES2 *interface );
+#else
 typedef void * RegalSystemContext;
 REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx );
+#endif
 
 #ifdef __cplusplus
 }
@@ -446,6 +461,13 @@ ${EMU_MEMBER_DECLARE}
 
   RegalSystemContext  sysCtx;
   Thread              thread;
+
+  GLLOGPROCREGAL      logCallback;
+
+  // State tracked via EmuContextState.py / Regal.cpp
+
+  size_t              depthBeginEnd;   // Normally zero or one
+  size_t              depthPushAttrib; //
 };
 
 REGAL_NAMESPACE_END
@@ -479,13 +501,16 @@ RegalContext::RegalContext()
 : dsp(new DispatchState()),
   dbg(NULL),
   info(NULL),
-${EMU_MEMBER_CONSTRUCT}  
+${EMU_MEMBER_CONSTRUCT}
 #if defined(__native_client__)
   naclES2(NULL),
   naclResource(NULL),
 #endif
   sysCtx(NULL),
-  thread(NULL)
+  thread(0),
+  logCallback(NULL),
+  depthBeginEnd(0),
+  depthPushAttrib(0)
 {
   ITrace("RegalContext::RegalContext");
   dsp->Init();
@@ -1553,6 +1578,8 @@ ${LICENSE}
 
 #include "RegalUtil.h"
 
+#if REGAL_LOG
+
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
@@ -1585,6 +1612,8 @@ ${API_GLOBAL_DISPATCH_INIT}
 }
 
 REGAL_NAMESPACE_END
+
+#endif
 ''')
 
 
@@ -1716,11 +1745,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalMarker.h"
 
-void RegalMakeCurrent( RegalSystemContext ctx )
-{
-  ::REGAL_NAMESPACE_INTERNAL::RegalPrivateMakeCurrent( ctx );
-}
-
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
@@ -1824,8 +1848,8 @@ def generateLoaderSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
-  substitute['IFDEF'] = ''
-  substitute['ENDIF'] = ''
+  substitute['IFDEF'] = '#ifndef __native_client__\n\n'
+  substitute['ENDIF'] = '#endif\n'
 
   outputCode( '%s/RegalDispatchLoader.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
@@ -1876,15 +1900,6 @@ def generateEmuSource(apis, args):
 
 ##############################################################################################
 
-errorGlobalCode = '''
-RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback )
-{
-   ::REGAL_NAMESPACE_INTERNAL::RegalContext * ctx = GET_REGAL_CONTEXT();
-   RegalAssert(ctx);
-   return ctx->err.callback = callback;
-}
-'''
-
 def generateErrorSource(apis, args):
 
   funcDefine = apiErrorFuncDefineCode( apis, args )
@@ -1896,20 +1911,20 @@ def generateErrorSource(apis, args):
 
   substitute['LICENSE'] = regalLicense
   substitute['DISPATCH_NAME'] = 'Error'
-  substitute['LOCAL_INCLUDE'] = errorGlobalCode
+  substitute['LOCAL_INCLUDE'] = ''
   substitute['LOCAL_CODE']    = ''
   substitute['AUTOGENERATED'] = autoGeneratedMessage
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
-  substitute['IFDEF'] = ''
-  substitute['ENDIF'] = ''
+  substitute['IFDEF'] = '#if REGAL_ERROR\n\n'
+  substitute['ENDIF'] = '#endif\n'
 
   outputCode( '%s/RegalDispatchError.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
 ##############################################################################################
 
-# CodeGen for API error checking function definition.
+# CodeGen for NaCL dispatch functions
 
 def apiNaclFuncDefineCode(apis, args):
 
@@ -1952,7 +1967,7 @@ def apiNaclFuncDefineCode(apis, args):
 				if not typeIsVoid(rType):
 					code += '  return ret;\n'
 				code += '}\n\n'
-	
+
   return code
 
 def apiNaclFuncInitCode(apis, args):
@@ -1975,7 +1990,7 @@ def apiNaclFuncInitCode(apis, args):
 				rType  = typeCode(function.ret.type)
 
 				code += '  tbl.%s = %s_%s;\n' % ( name, 'nacl', name )
-	
+
   return code
 
 def generateNaclSource(apis, args):
@@ -1999,6 +2014,86 @@ def generateNaclSource(apis, args):
   substitute['ENDIF'] = '#endif\n'
 
   outputCode( '%s/RegalDispatchNacl.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
+
+
+##############################################################################################
+
+# CodeGen for missing dispatch functions
+
+def apiMissingFuncDefineCode(apis, args):
+
+  code = ''
+  categoryPrev = None
+
+  for api in apis:
+
+    code += '\n'
+    if api.name in cond:
+      code += '#if %s\n' % cond[api.name]
+
+    for function in api.functions:
+      if not function.needsContext:
+        continue
+
+      name   = function.name
+      params = paramsDefaultCode(function.parameters, True)
+      callParams = paramsNameCode(function.parameters)
+      rType  = typeCode(function.ret.type)
+      category  = getattr(function, 'category', None)
+      version   = getattr(function, 'version', None)
+
+      if category:
+        category = category.replace('_DEPRECATED', '')
+      elif version:
+        category = version.replace('.', '_')
+        category = 'GL_VERSION_' + category
+
+      # Close prev category block.
+      if categoryPrev and not (category == categoryPrev):
+        code += '\n'
+
+      # Begin new category block.
+      if category and not (category == categoryPrev):
+        code += '// %s\n\n' % category
+
+      categoryPrev = category
+
+      code += '%sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'missing_', name, params)
+      for param in function.parameters:
+        code += '   UNUSED_PARAMETER(%s);\n' % param.name
+      code += '   Warning( "%s not available." );\n' % name
+      if not typeIsVoid(rType):
+        if rType[-1] != '*':
+          code += '  %s ret = (%s)0;\n' % ( rType, rType )
+        else:
+          code += '  %s ret = NULL;\n' % rType
+        code += '  return ret;\n'
+      code += '}\n\n'
+
+    if api.name in cond:
+      code += '#endif // %s\n' % cond[api.name]
+    code += '\n'
+
+  return code
+
+def generateMissingSource(apis, args):
+
+  # Output
+
+  substitute = {}
+
+  substitute['LICENSE'] = regalLicense
+  substitute['DISPATCH_NAME'] = 'Missing'
+  substitute['LOCAL_INCLUDE'] = ''
+  substitute['LOCAL_CODE']    = ''
+  substitute['AUTOGENERATED'] = autoGeneratedMessage
+  substitute['COPYRIGHT']     = args.copyright
+  substitute['API_DISPATCH_FUNC_DEFINE'] = apiMissingFuncDefineCode( apis, args )
+  substitute['API_DISPATCH_FUNC_INIT']   = apiDispatchFuncInitCode( apis, args, 'missing' )
+  substitute['IFDEF'] = ''
+  substitute['ENDIF'] = ''
+
+  outputCode( '%s/RegalDispatchMissing.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
 
 ##############################################################################################
@@ -2027,8 +2122,8 @@ def generateDebugSource(apis, args):
   substitute['COPYRIGHT']     = args.copyright
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
-  substitute['IFDEF'] = ''
-  substitute['ENDIF'] = ''
+  substitute['IFDEF'] = '#if REGAL_DEBUG\n\n'
+  substitute['ENDIF'] = '#endif\n'
 
   outputCode( '%s/RegalDispatchDebug.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
 
@@ -2396,6 +2491,8 @@ def debugPrintFunction(function, trace = 'ITrace'):
         args.append(n)
     elif t.startswith('GLDEBUG'):
       pass
+    elif t.startswith('GLLOGPROC'):
+      pass
     else:
       args.append(n)
 
@@ -2545,20 +2642,7 @@ def apiLoaderFuncDefineCode(apis, args):
 
       categoryPrev = category
 
-      code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'missing_', name, params)
-      for param in function.parameters:
-        code += '   UNUSED_PARAMETER(%s);\n' % param.name
-
-      code += '   Warning( "%s not available." );\n' % name
-      if not typeIsVoid(rType):
-        if rType[-1] != '*':
-          code += '  %s ret = (%s)0;\n' % ( rType, rType )
-        else:
-          code += '  %s ret = NULL;\n' % rType
-        code += '  return ret;\n'
-      code += '}\n\n'
-
-
+      code += 'extern %sREGAL_CALL %s%s(%s);\n\n' % (rType, 'missing_', name, params)
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'loader_', name, params)
       code += '   RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
@@ -2761,21 +2845,17 @@ def apiErrorFuncDefineCode(apis, args):
       code += '    RegalAssert(rCtx)\n'
       code += '    RegalAssert(rCtx->dsp)\n'
       code += '    RegalAssert(rCtx->dsp->curr)\n'
-      if name == 'glBegin':
-        code += '    rCtx->err.inBeginEnd = true;\n'
       if name != 'glGetError':
         code += '    GLenum _error = GL_NO_ERROR;\n'
         code += '    DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
-        code += '    if (!rCtx->err.inBeginEnd)\n'
+        code += '    if (!rCtx->depthBeginEnd)\n'
         code += '      _error = rCtx->dsp->curr->glGetError();\n'
         code += '    RegalAssert(_error==GL_NO_ERROR);\n'
         code += '    '
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
         code += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
-        if name == 'glEnd':
-          code += '    rCtx->err.inBeginEnd = false;\n'
-        code += '    if (!rCtx->err.inBeginEnd) {\n'
+        code += '    if (!rCtx->depthBeginEnd) {\n'
         code += '      _error = rCtx->dsp->curr->glGetError();\n'
         code += '      if (_error!=GL_NO_ERROR) {\n'
         code += '        Error("%s : ",Token::GLerrorToString(_error));\n'%(name)

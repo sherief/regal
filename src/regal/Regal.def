@@ -1085,6 +1085,7 @@ EXPORTS
   glLoadTransposeMatrixf
   glLoadTransposeMatrixfARB
   glLockArraysEXT
+  glLogMessageCallbackREGAL
   glLogicOp
   glMakeBufferNonResidentNV
   glMakeBufferResidentNV

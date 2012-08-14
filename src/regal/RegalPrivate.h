@@ -113,8 +113,6 @@ const GLuint RFF2ATexEnd16 = 16;
 
 // end attrib mapping
 
-extern void RegalPrivateMakeCurrent(RegalSystemContext sysCtx);
-
 #if REGAL_SYS_WGL
     typedef DWORD Thread;
 #if REGAL_WIN_TLS

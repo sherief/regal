@@ -42,12 +42,13 @@ REGAL_NAMESPACE_BEGIN
 
 #define REGAL_MAX_DISPATCH_TABLE_STACK_SIZE 5
 
-void InitDispatchTableDebug (DispatchTable &tbl);
-void InitDispatchTableError (DispatchTable &tbl);
-void InitDispatchTableEmu   (DispatchTable &tbl);
-void InitDispatchTableLoader(DispatchTable &tbl);
-void InitDispatchTableLog   (DispatchTable &tbl);
-void InitDispatchTableNacl  (DispatchTable &tbl);
+void InitDispatchTableDebug  (DispatchTable &tbl);
+void InitDispatchTableError  (DispatchTable &tbl);
+void InitDispatchTableEmu    (DispatchTable &tbl);
+void InitDispatchTableLoader (DispatchTable &tbl);
+void InitDispatchTableLog    (DispatchTable &tbl);
+void InitDispatchTableNacl   (DispatchTable &tbl);
+void InitDispatchTableMissing(DispatchTable &tbl);
 
 enum RegalDispatchTableEnum {
    RDT_Debug  = 5,
@@ -66,22 +67,53 @@ struct DispatchState {
       stackSize = 0;
       stackCurr = 0; // todo: remove stackCurr
       curr = stack[ stackCurr ];
+
+      // Dispatch table initialization
+
+#if REGAL_DEBUG
       InitDispatchTableDebug( dbgTbl );
+#endif
+
+#if REGAL_ERROR
       InitDispatchTableError( errorTbl );
+#endif
+
+#if REGAL_LOG
       InitDispatchTableLog( emuTbl );
-      InitDispatchTableEmu( emuTbl );        // overrides emulated functions only
+#endif
+
+      InitDispatchTableEmu( emuTbl );   // overrides emulated functions only
+
+#if REGAL_LOG
       InitDispatchTableLog( logTbl );
+#endif
+
 #if defined(__native_client__)
-      InitDispatchTableNacl( driverTbl );
+      InitDispatchTableMissing(driverTbl);
+      InitDispatchTableNacl   (driverTbl);
 #else
       InitDispatchTableLoader( driverTbl );
 #endif
+
+      // Dispatch table stack
+
+#if REGAL_DEBUG
       if (Config::enableDebug)
         Insert(0, RDT_Debug);
+#endif
+
+#if REGAL_ERROR
       if (Config::enableError)
         Insert(0, RDT_Error);
+#endif
+
       Insert( 0, RDT_Emu );
-      Insert( 0, RDT_Log );
+
+#if REGAL_LOG
+      if (Config::enableLog)
+        Insert( 0, RDT_Log );
+#endif
+
       Insert( 0, RDT_Driver );
    }
    void StepDown()
@@ -99,11 +131,23 @@ struct DispatchState {
    DispatchTable *Table( RegalDispatchTableEnum dt )
    {
       switch( dt ) {
+
+#if REGAL_DEBUG
         case RDT_Debug:  return &dbgTbl;
+#endif
+
+#if REGAL_ERROR
         case RDT_Error:  return &errorTbl;
+#endif
+
         case RDT_Emu:    return &emuTbl;
+
+#if REGAL_ERROR
         case RDT_Log:    return &logTbl;
+#endif
+
         case RDT_Driver: return &driverTbl;
+
         default: break;
       }
       return NULL;
@@ -153,10 +197,20 @@ struct DispatchState {
    int stackSize;
    int stackCurr;
 
+#if REGAL_DEBUG
    DispatchTable dbgTbl;
+#endif
+
+#if REGAL_ERROR
    DispatchTable errorTbl;
+#endif
+
    DispatchTable emuTbl;
+
+#if REGAL_LOG
    DispatchTable logTbl;
+#endif
+
    DispatchTable driverTbl;
 };
 

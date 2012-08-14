@@ -92,6 +92,13 @@ struct RegalContext
 
   RegalSystemContext  sysCtx;
   Thread              thread;
+
+  GLLOGPROCREGAL      logCallback;
+
+  // State tracked via EmuContextState.py / Regal.cpp
+
+  size_t              depthBeginEnd;   // Normally zero or one
+  size_t              depthPushAttrib; //
 };
 
 REGAL_NAMESPACE_END

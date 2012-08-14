@@ -36780,6 +36780,17 @@ glIsSupportedREGAL.trace = True
 glIsSupportedREGAL.play = True
 gl.add(glIsSupportedREGAL)
 
+# GL_REGAL_log
+
+glLogMessageCallbackREGAL = Function('glLogMessageCallbackREGAL')
+glLogMessageCallbackREGAL.ret = Return('void')
+glLogMessageCallbackREGAL.add( Input( 'callback','GLLOGPROCREGAL' ))
+glLogMessageCallbackREGAL.version = '4.3'
+glLogMessageCallbackREGAL.category = 'GL_REGAL_log'
+glLogMessageCallbackREGAL.trace = True
+glLogMessageCallbackREGAL.play = True
+gl.add(glLogMessageCallbackREGAL)
+
 # GL_SGIS_detail_texture
 
 glDetailTexFuncSGIS = Function('glDetailTexFuncSGIS')

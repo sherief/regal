@@ -67,6 +67,8 @@ LIB.SRCS           += src/regal/RegalDispatchLog.cpp
 LIB.SRCS           += src/regal/RegalDispatchDebug.cpp
 LIB.SRCS           += src/regal/RegalDispatchError.cpp
 LIB.SRCS           += src/regal/RegalDispatchLoader.cpp
+LIB.SRCS           += src/regal/RegalDispatchNacl.cpp
+LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 

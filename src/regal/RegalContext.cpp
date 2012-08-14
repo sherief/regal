@@ -74,7 +74,10 @@ RegalContext::RegalContext()
   naclResource(NULL),
 #endif
   sysCtx(NULL),
-  thread(NULL)
+  thread(0),
+  logCallback(NULL),
+  depthBeginEnd(0),
+  depthPushAttrib(0)
 {
   ITrace("RegalContext::RegalContext");
   dsp->Init();

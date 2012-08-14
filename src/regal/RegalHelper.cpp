@@ -342,7 +342,7 @@ shaderSourceStrings(const GLsizei count, const GLchar **string,  const GLint *le
 
   tmp[count] = NULL;
 
-  assert(((GLchar *) tmp) + total == j);
+  RegalAssert(((GLchar *) tmp) + total == j);
 
   return (const GLchar **) tmp;
 }

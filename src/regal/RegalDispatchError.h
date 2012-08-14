@@ -46,8 +46,7 @@ struct DispatchErrorState
 {
 public:
   DispatchErrorState()
-  : callback(NULL),
-    inBeginEnd(false)
+  : callback(NULL)
   {
   }
 
@@ -58,7 +57,6 @@ public:
   ::RegalErrorCallback Set( RegalContext *ctx, ::RegalErrorCallback cb );
 
   ::RegalErrorCallback callback;
-  bool inBeginEnd;
 };
 
 REGAL_NAMESPACE_END

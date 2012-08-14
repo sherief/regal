@@ -5948,6 +5948,8 @@ static void _glewInfo_GL_REGAL_extension_query (void)
 static void _glewInfo_GL_REGAL_log (void)
 {
   glewPrintExt("GL_REGAL_log", GLEW_REGAL_log, glewIsSupported("GL_REGAL_log"), glewGetExtension("GL_REGAL_log"));
+
+  glewInfoFunc("glLogMessageCallbackREGAL", glLogMessageCallbackREGAL == NULL);
 }
 
 #endif /* GL_REGAL_log */
@@ -6816,6 +6818,24 @@ static void _glewInfo_WGL_ARB_render_texture (void)
 }
 
 #endif /* WGL_ARB_render_texture */
+
+#ifdef WGL_ARB_robustness_application_isolation
+
+static void _glewInfo_WGL_ARB_robustness_application_isolation (void)
+{
+  glewPrintExt("WGL_ARB_robustness_application_isolation", WGLEW_ARB_robustness_application_isolation, wglewIsSupported("WGL_ARB_robustness_application_isolation"), wglewGetExtension("WGL_ARB_robustness_application_isolation"));
+}
+
+#endif /* WGL_ARB_robustness_application_isolation */
+
+#ifdef WGL_ARB_robustness_share_group_isolation
+
+static void _glewInfo_WGL_ARB_robustness_share_group_isolation (void)
+{
+  glewPrintExt("WGL_ARB_robustness_share_group_isolation", WGLEW_ARB_robustness_share_group_isolation, wglewIsSupported("WGL_ARB_robustness_share_group_isolation"), wglewGetExtension("WGL_ARB_robustness_share_group_isolation"));
+}
+
+#endif /* WGL_ARB_robustness_share_group_isolation */
 
 #ifdef WGL_ATI_pixel_format_float
 
@@ -9402,6 +9422,12 @@ static void wglewInfo ()
 #ifdef WGL_ARB_render_texture
   _glewInfo_WGL_ARB_render_texture();
 #endif /* WGL_ARB_render_texture */
+#ifdef WGL_ARB_robustness_application_isolation
+  _glewInfo_WGL_ARB_robustness_application_isolation();
+#endif /* WGL_ARB_robustness_application_isolation */
+#ifdef WGL_ARB_robustness_share_group_isolation
+  _glewInfo_WGL_ARB_robustness_share_group_isolation();
+#endif /* WGL_ARB_robustness_share_group_isolation */
 #ifdef WGL_ATI_pixel_format_float
   _glewInfo_WGL_ATI_pixel_format_float();
 #endif /* WGL_ATI_pixel_format_float */

@@ -47,11 +47,20 @@ IP Status
 
 New Procedures and Functions
 
-    None
+    void LogMessageCallbackREGAL(LOGPROCREGAL callback);
 
 New Types
 
-    None
+    The callback function that applications can define, and
+    is accepted by LogMessageCallbackREGAL, is defined as:
+
+        typedef void (APIENTRY *LOGPROCREGAL)(enum stream,
+                                              sizei length,
+                                              const char *message,
+                                              void *context);
+
+    Note that this function pointer is defined as having the
+    same calling convention as the GL functions.
 
 New Tokens
 
@@ -90,6 +99,9 @@ Issues
     None.
 
 Revision History
+
+    Revision 2, 2012/08/12
+      - Add LogMessageCallbackREGAL.
 
     Revision 1, 2012/07/23
       - Initial revision.

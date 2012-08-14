@@ -2457,6 +2457,8 @@ PFNGLERRORSTRINGREGALPROC __glewErrorStringREGAL = NULL;
 PFNGLGETEXTENSIONREGALPROC __glewGetExtensionREGAL = NULL;
 PFNGLISSUPPORTEDREGALPROC __glewIsSupportedREGAL = NULL;
 
+PFNGLLOGMESSAGECALLBACKREGALPROC __glewLogMessageCallbackREGAL = NULL;
+
 PFNGLDETAILTEXFUNCSGISPROC __glewDetailTexFuncSGIS = NULL;
 PFNGLGETDETAILTEXFUNCSGISPROC __glewGetDetailTexFuncSGIS = NULL;
 
@@ -8327,6 +8329,15 @@ static GLboolean _glewInit_GL_REGAL_extension_query (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #ifdef GL_REGAL_log
 
+static GLboolean _glewInit_GL_REGAL_log (GLEW_CONTEXT_ARG_DEF_INIT)
+{
+  GLboolean r = GL_FALSE;
+
+  r = ((glLogMessageCallbackREGAL = (PFNGLLOGMESSAGECALLBACKREGALPROC)glewGetProcAddress((const GLubyte*)"glLogMessageCallbackREGAL")) == NULL) || r;
+
+  return r;
+}
+
 #endif /* GL_REGAL_log */
 
 #ifdef GL_REND_screen_coordinates
@@ -10347,6 +10358,7 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
 #endif /* GL_REGAL_extension_query */
 #ifdef GL_REGAL_log
   CONST_CAST(GLEW_REGAL_log) = _glewSearchExtension("GL_REGAL_log", extStart, extEnd);
+  if (glewExperimental || GLEW_REGAL_log) CONST_CAST(GLEW_REGAL_log) = !_glewInit_GL_REGAL_log(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_REGAL_log */
 #ifdef GL_REND_screen_coordinates
   CONST_CAST(GLEW_REND_screen_coordinates) = _glewSearchExtension("GL_REND_screen_coordinates", extStart, extEnd);
@@ -10727,6 +10739,8 @@ GLboolean __WGLEW_ARB_pbuffer = GL_FALSE;
 GLboolean __WGLEW_ARB_pixel_format = GL_FALSE;
 GLboolean __WGLEW_ARB_pixel_format_float = GL_FALSE;
 GLboolean __WGLEW_ARB_render_texture = GL_FALSE;
+GLboolean __WGLEW_ARB_robustness_application_isolation = GL_FALSE;
+GLboolean __WGLEW_ARB_robustness_share_group_isolation = GL_FALSE;
 GLboolean __WGLEW_ATI_pixel_format_float = GL_FALSE;
 GLboolean __WGLEW_ATI_render_texture_rectangle = GL_FALSE;
 GLboolean __WGLEW_EXT_create_context_es2_profile = GL_FALSE;
@@ -10925,6 +10939,14 @@ static GLboolean _glewInit_WGL_ARB_render_texture (WGLEW_CONTEXT_ARG_DEF_INIT)
 }
 
 #endif /* WGL_ARB_render_texture */
+
+#ifdef WGL_ARB_robustness_application_isolation
+
+#endif /* WGL_ARB_robustness_application_isolation */
+
+#ifdef WGL_ARB_robustness_share_group_isolation
+
+#endif /* WGL_ARB_robustness_share_group_isolation */
 
 #ifdef WGL_ATI_pixel_format_float
 
@@ -11418,6 +11440,12 @@ GLenum GLEWAPIENTRY wglewContextInit (WGLEW_CONTEXT_ARG_DEF_LIST)
   CONST_CAST(WGLEW_ARB_render_texture) = _glewSearchExtension("WGL_ARB_render_texture", extStart, extEnd);
   if (glewExperimental || WGLEW_ARB_render_texture|| crippled) CONST_CAST(WGLEW_ARB_render_texture)= !_glewInit_WGL_ARB_render_texture(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* WGL_ARB_render_texture */
+#ifdef WGL_ARB_robustness_application_isolation
+  CONST_CAST(WGLEW_ARB_robustness_application_isolation) = _glewSearchExtension("WGL_ARB_robustness_application_isolation", extStart, extEnd);
+#endif /* WGL_ARB_robustness_application_isolation */
+#ifdef WGL_ARB_robustness_share_group_isolation
+  CONST_CAST(WGLEW_ARB_robustness_share_group_isolation) = _glewSearchExtension("WGL_ARB_robustness_share_group_isolation", extStart, extEnd);
+#endif /* WGL_ARB_robustness_share_group_isolation */
 #ifdef WGL_ATI_pixel_format_float
   CONST_CAST(WGLEW_ATI_pixel_format_float) = _glewSearchExtension("WGL_ATI_pixel_format_float", extStart, extEnd);
 #endif /* WGL_ATI_pixel_format_float */
@@ -16202,6 +16230,20 @@ GLboolean GLEWAPIENTRY wglewIsSupported (const char* name)
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"render_texture", 14))
         {
           ret = WGLEW_ARB_render_texture;
+          continue;
+        }
+#endif
+#ifdef WGL_ARB_robustness_application_isolation
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"robustness_application_isolation", 32))
+        {
+          ret = WGLEW_ARB_robustness_application_isolation;
+          continue;
+        }
+#endif
+#ifdef WGL_ARB_robustness_share_group_isolation
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"robustness_share_group_isolation", 32))
+        {
+          ret = WGLEW_ARB_robustness_share_group_isolation;
           continue;
         }
 #endif

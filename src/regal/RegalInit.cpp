@@ -46,6 +46,13 @@ using namespace std;
 #include "RegalDispatchState.h"
 #include "RegalPrivate.h"
 
+RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
+{
+  ::REGAL_NAMESPACE_INTERNAL::RegalContext * ctx = GET_REGAL_CONTEXT();
+  RegalAssert(ctx);
+  return ctx->err.callback = callback;
+}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -147,7 +154,26 @@ DispatchTableGlobal dispatchTableGlobal;
 map<RegalSystemContext, RegalContext *> sc2rc;
 map<Thread, RegalContext *> th2rc;
 
-void RegalPrivateMakeCurrent(RegalSystemContext sysCtx)
+void RegalCheckForGLErrors( RegalContext *ctx )
+{
+    RegalAssert(ctx);
+    RegalAssert(ctx->dsp);
+    GLenum err = ctx->dsp->driverTbl.glGetError();
+    if (err != GL_NO_ERROR)
+        Error("GL error = ",toString(err));
+}
+
+REGAL_NAMESPACE_END
+
+using namespace ::REGAL_NAMESPACE_INTERNAL;
+
+REGAL_GLOBAL_BEGIN
+
+#if REGAL_SYS_NACL
+REGAL_DECL void RegalMakeCurrent( PP_Resource sysCtx, PPB_OpenGLES2 *interface )
+#else
+REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
+#endif
 {
   if (!init)
     init = new Init();
@@ -158,6 +184,10 @@ void RegalPrivateMakeCurrent(RegalSystemContext sysCtx)
         RegalContext * ctx = sc2rc.count( sysCtx ) > 0 ? sc2rc[ sysCtx ] : NULL;
         if (!ctx) {
             ctx = new RegalContext();
+#if REGAL_SYS_NACL
+            ctx->naclResource = sysCtx;
+            ctx->naclES2      = interface;
+#endif
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
             if (regalCurrentContextTLSIDX == ~0)
@@ -222,13 +252,4 @@ void RegalPrivateMakeCurrent(RegalSystemContext sysCtx)
   }
 }
 
-void RegalCheckForGLErrors( RegalContext *ctx )
-{
-    RegalAssert(ctx);
-    RegalAssert(ctx->dsp);
-    GLenum err = ctx->dsp->driverTbl.glGetError();
-    if (err != GL_NO_ERROR)
-        Error("GL error = ",toString(err));
-}
-
-REGAL_NAMESPACE_END
+REGAL_GLOBAL_END

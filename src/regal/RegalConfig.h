@@ -48,6 +48,7 @@ namespace Config
   extern bool enableEmulation;
   extern bool enableDebug;
   extern bool enableError;
+  extern bool enableLog;
 
   extern bool enableEmuPpa;
   extern bool enableEmuObj;

@@ -1085,6 +1085,7 @@ EXPORTS
   rglLoadTransposeMatrixf
   rglLoadTransposeMatrixfARB
   rglLockArraysEXT
+  rglLogMessageCallbackREGAL
   rglLogicOp
   rglMakeBufferNonResidentNV
   rglMakeBufferResidentNV

@@ -36,6 +36,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_LOG
+
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
@@ -26208,6 +26210,19 @@ static GLboolean REGAL_CALL log_glIsSupportedREGAL(const GLchar *ext)
     return ret;
 }
 
+// GL_REGAL_log
+
+static void REGAL_CALL log_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
+{
+    GTrace("glLogMessageCallbackREGAL()");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLogMessageCallbackREGAL(callback);
+}
+
 // GL_SGIS_detail_texture
 
 static void REGAL_CALL log_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points)
@@ -30773,6 +30788,10 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetExtensionREGAL = log_glGetExtensionREGAL;
   tbl.glIsSupportedREGAL = log_glIsSupportedREGAL;
 
+  // GL_REGAL_log
+
+  tbl.glLogMessageCallbackREGAL = log_glLogMessageCallbackREGAL;
+
   // GL_SGIS_detail_texture
 
   tbl.glDetailTexFuncSGIS = log_glDetailTexFuncSGIS;
@@ -31004,3 +31023,5 @@ void InitDispatchTableLog(DispatchTable &tbl)
 }
 
 REGAL_NAMESPACE_END
+
+#endif

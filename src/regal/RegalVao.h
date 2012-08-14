@@ -88,7 +88,6 @@ struct RegalVao : public RegalEmu {
 
     std::map<GLuint, Vao> objects;
 
-    bool insideBeginEnd;
     GLenum clientActiveTexture;
 
     GLuint current;
@@ -109,7 +108,6 @@ struct RegalVao : public RegalEmu {
 
     void Init( RegalContext * ctx ) {
 
-        insideBeginEnd = false;
         clientActiveTexture = GL_TEXTURE0;
 
         maxVertexAttribs = ctx->info->maxVertexAttribs;
@@ -262,7 +260,7 @@ struct RegalVao : public RegalEmu {
     {
         // do nothing for these various error conditions
 
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (index >= maxVertexAttribs)
@@ -351,7 +349,7 @@ struct RegalVao : public RegalEmu {
         UNUSED_PARAMETER(ctx);
         RegalAssert( currVao != NULL );
         for( GLuint i = 0; i < maxVertexAttribs; i++ ) {
-#ifndef NDEBUG
+#if !defined(REGAL_NO_ASSERT)
             const Array &a = currVao->a[ i ];
             RegalAssert( !( a.enabled && a.buffer == 0 && GLuint64( a.pointer ) < 1024 ) );
 #endif
@@ -477,7 +475,7 @@ struct RegalVao : public RegalEmu {
 
     void ColorPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -512,7 +510,7 @@ struct RegalVao : public RegalEmu {
 
     void SecondaryColorPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         if (size != 3)
@@ -541,7 +539,7 @@ struct RegalVao : public RegalEmu {
 
     void TexCoordPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -574,7 +572,7 @@ struct RegalVao : public RegalEmu {
 
     void VertexPointer(RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (size)
@@ -606,7 +604,7 @@ struct RegalVao : public RegalEmu {
 
     void NormalPointer(RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (type)
@@ -629,7 +627,7 @@ struct RegalVao : public RegalEmu {
 
     void FogCoordPointer(RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid * pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         switch (type)
@@ -650,30 +648,13 @@ struct RegalVao : public RegalEmu {
     void ClientActiveTexture( RegalContext * ctx, GLenum _texture)
     {
         UNUSED_PARAMETER(ctx);
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         GLint index = _texture - GL_TEXTURE0;
 
         if (index >= 0 && index < REGAL_VAO_NUM_ARRAYS)
             clientActiveTexture = _texture;
-    }
-
-    void Begin( RegalContext * ctx, GLenum mode )
-    {
-        UNUSED_PARAMETER(ctx);
-        UNUSED_PARAMETER(mode);
-        if ( insideBeginEnd == false ) {
-            insideBeginEnd = true;
-        }
-    }
-
-    void End( RegalContext * ctx )
-    {
-        UNUSED_PARAMETER(ctx);
-        if ( insideBeginEnd == true ) {
-            insideBeginEnd = false;
-        }
     }
 
     void ShadowEnableDisableClientState( RegalContext * ctx, GLenum array, GLboolean enable )
@@ -684,7 +665,7 @@ struct RegalVao : public RegalEmu {
 
     void EnableClientState( RegalContext * ctx, GLenum array )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         ShadowEnableDisableClientState( ctx, array, GL_TRUE );
@@ -692,7 +673,7 @@ struct RegalVao : public RegalEmu {
 
     void DisableClientState( RegalContext * ctx, GLenum array )
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         ShadowEnableDisableClientState( ctx, array, GL_FALSE );
@@ -701,7 +682,7 @@ struct RegalVao : public RegalEmu {
     void InterleavedArrays( RegalContext * ctx, GLenum format,
                             GLsizei stride, const GLvoid *pointer)
     {
-        if ( insideBeginEnd == true )
+        if ( ctx->depthBeginEnd )
             return;
 
         //<> how can stride be invalid?
