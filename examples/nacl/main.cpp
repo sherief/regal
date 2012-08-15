@@ -20,10 +20,6 @@
 
 #include <GL/Regal.h>
 #include <GL/RegalGLU.h>
-typedef void (*RegalNaCLPrintfCallback)(const char* str);
-void RegalNaCLRegisterPrintfCallback(RegalNaCLPrintfCallback callback);
-void RegalNaCLRegisterInterface(PPB_OpenGLES2* interface);
-void RegalNaCLRegisterContext(int32_t context);
 
 static PPB_Messaging* ppb_messaging_interface = NULL;
 static PPB_Var* ppb_var_interface = NULL;
@@ -66,8 +62,8 @@ static void messagePrint(const char* str) {
   }
 }
 
-static void messagePrintf(const char* str, ...) {
-   const int bufferSize = 1024;
+void messagePrintf(const char* str, ...) {
+  const int bufferSize = 1024;
   char buff[bufferSize];
   buff[0] = '\0';
   va_list vl;
@@ -75,6 +71,10 @@ static void messagePrintf(const char* str, ...) {
   vsnprintf(&buff[0], bufferSize, str, vl);
   va_end(vl);
   messagePrint(buff);
+}
+
+static void regalLogCallback(GLenum stream, GLsizei length, const GLchar *message, GLvoid *context) {
+  messagePrint(message);
 }
 
 static void myReshape(int w, int h)
@@ -443,15 +443,16 @@ static PP_Bool Instance_DidCreate(PP_Instance instance,
                                   const char* argn[],
                                   const char* argv[]) {
   printfInstance = instance;
-  ppb_messaging_interface->PostMessage(instance, 
-                                       CStrToVar("Hello a World (GLIBC)"));
+  messagePrintf("Hello World (GLIBC)");
   int32_t attribs[] = { PP_GRAPHICS3DATTRIB_WIDTH, 512, PP_GRAPHICS3DATTRIB_HEIGHT, 512, PP_GRAPHICS3DATTRIB_NONE};
   opengl_context = ppb_graphics3d_interface->Create(instance, opengl_context, attribs);
+  messagePrintf("Create2");
   ppb_instance_interface->BindGraphics(instance, opengl_context);
-  RegalNaCLRegisterPrintfCallback(messagePrint);
-  RegalNaCLRegisterContext(opengl_context);
-  RegalNaCLRegisterInterface(ppb_opengl_interface);
-  RegalMakeCurrent((void*)opengl_context);
+  messagePrintf("Bind");
+  RegalMakeCurrent(opengl_context, ppb_opengl_interface);
+  messagePrintf("MakeCurrent");
+  glLogMessageCallbackREGAL(regalLogCallback);
+  messagePrintf("Log");
   int32_t r = 0;
   r = ppb_input_interface->RequestInputEvents(instance, PP_INPUTEVENT_CLASS_MOUSE);
   if (r != PP_OK) {
