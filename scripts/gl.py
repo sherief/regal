@@ -9633,6 +9633,20 @@ defines.add(GL_VERTEX4_BIT_PGI)
 defines.add(GL_VERTEX_CONSISTENT_HINT_PGI)
 defines.add(GL_VERTEX_DATA_HINT_PGI)
 
+# GL_REGAL_enable
+
+GL_DEBUG_REGAL = Enumerant('GL_DEBUG_REGAL', 0x9323, 'GL_REGAL_enable')
+GL_EMULATION_REGAL = Enumerant('GL_EMULATION_REGAL', 0x9325, 'GL_REGAL_enable')
+GL_ERROR_REGAL = Enumerant('GL_ERROR_REGAL', 0x9322, 'GL_REGAL_enable')
+GL_LOADER_REGAL = Enumerant('GL_LOADER_REGAL', 0x9326, 'GL_REGAL_enable')
+GL_LOG_REGAL = Enumerant('GL_LOG_REGAL', 0x9324, 'GL_REGAL_enable')
+
+defines.add(GL_DEBUG_REGAL)
+defines.add(GL_EMULATION_REGAL)
+defines.add(GL_ERROR_REGAL)
+defines.add(GL_LOADER_REGAL)
+defines.add(GL_LOG_REGAL)
+
 # GL_REGAL_log
 
 GL_LOG_APP_REGAL = Enumerant('GL_LOG_APP_REGAL', 0x931c, 'GL_REGAL_log')

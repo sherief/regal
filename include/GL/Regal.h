@@ -143,13 +143,8 @@ typedef float GLclampf;
 typedef double GLdouble;
 typedef double GLclampd;
 typedef void GLvoid;
-#ifdef REGAL_SYS_NACL
-typedef long int GLintptr;
-typedef long int GLsizeiptr;
-#else
 typedef ptrdiff_t GLintptr;
 typedef ptrdiff_t GLsizeiptr;
-#endif
 typedef char GLchar;
 typedef signed long long GLint64;
 typedef unsigned long long GLuint64;
@@ -19219,6 +19214,38 @@ REGAL_DECL void REGAL_CALL glHintPGI(GLenum target, GLint mode);
 #define GL_MAT_EMISSION_BIT_PGI            0x800000       /* 8388608 */
 #define GL_NORMAL_BIT_PGI                  0x8000000      /* 134217728 */
 #define GL_TEXCOORD4_BIT_PGI               0x80000000     /* 2147483648 */
+#endif
+
+/**
+ ** GL_REGAL_enable
+ **/
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_ENUM_GL_REGAL_ENABLE)
+#define REGAL_NO_ENUM_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_TYPEDEF_GL_REGAL_ENABLE)
+#define REGAL_NO_TYPEDEF_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_NAMESPACE_GL_REGAL_ENABLE)
+#define REGAL_NO_NAMESPACE_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_DECLARATION_GL_REGAL_ENABLE)
+#define REGAL_NO_DECLARATION_GL_REGAL_ENABLE
+#endif
+
+#ifndef GL_REGAL_enable
+#define GL_REGAL_enable 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_REGAL_ENABLE
+#define GL_ERROR_REGAL     0x9322     /* 37666 */
+#define GL_DEBUG_REGAL     0x9323     /* 37667 */
+#define GL_LOG_REGAL       0x9324     /* 37668 */
+#define GL_EMULATION_REGAL 0x9325     /* 37669 */
+#define GL_LOADER_REGAL    0x9326     /* 37670 */
 #endif
 
 /**

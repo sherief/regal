@@ -28,6 +28,7 @@ from EmuLookup         import formulae as lookupFormulae
 from EmuMarker         import formulae as markerFormulae
 from EmuExtensionQuery import formulae as extensionQueryFormulae
 from EmuErrorString    import formulae as errorStringFormulae
+from EmuEnable         import formulae as enableFormulae
 
 from Emu       import emuFindEntry, emuCodeGen
 from EmuDsa    import dsaFormulae
@@ -52,6 +53,7 @@ emuRegal = [
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : logFormulae    },
+    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : enableFormulae },
 ]
 
 # RegalDispathEmu.cpp fixed-function emulation
@@ -858,14 +860,15 @@ ContextInfo::init(const RegalContext &context)
 #ifdef REGAL_GL_EXTENSIONS
   regalExtensions = REGAL_EQUOTE(REGAL_GL_EXTENSIONS);
 #else
-  static const char *ourExtensions[4] = {
+  static const char *ourExtensions[5] = {
     "GL_REGAL_error_string",
     "GL_REGAL_extension_query",
     "GL_REGAL_log",
+    "GL_REGAL_enable",
     "GL_EXT_debug_marker"
   };
   regalExtensionsSet.insert(extList.begin(),extList.end());
-  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[4]);
+  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[5]);
   regalExtensions = ::boost::print::detail::join(regalExtensionsSet,string(" "));
 #endif
 

@@ -3054,6 +3054,11 @@ namespace Token {
       case 0x0000931f: return "GL_LOG_DEBUG_REGAL";
       case 0x00009320: return "GL_LOG_STATUS_REGAL";
       case 0x00009321: return "GL_LOG_HTTP_REGAL";
+      case 0x00009322: return "GL_ERROR_REGAL";
+      case 0x00009323: return "GL_DEBUG_REGAL";
+      case 0x00009324: return "GL_LOG_REGAL";
+      case 0x00009325: return "GL_EMULATION_REGAL";
+      case 0x00009326: return "GL_LOADER_REGAL";
       case 0x00009380: return "GL_NUM_SAMPLE_COUNTS";
       case 0x000093b0: return "GL_COMPRESSED_RGBA_ASTC_4x4_KHR";
       case 0x000093b1: return "GL_COMPRESSED_RGBA_ASTC_5x4_KHR";

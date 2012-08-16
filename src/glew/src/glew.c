@@ -3000,6 +3000,7 @@ GLboolean __GLEW_OML_resample = GL_FALSE;
 GLboolean __GLEW_OML_subsample = GL_FALSE;
 GLboolean __GLEW_PGI_misc_hints = GL_FALSE;
 GLboolean __GLEW_PGI_vertex_hints = GL_FALSE;
+GLboolean __GLEW_REGAL_enable = GL_FALSE;
 GLboolean __GLEW_REGAL_error_string = GL_FALSE;
 GLboolean __GLEW_REGAL_extension_query = GL_FALSE;
 GLboolean __GLEW_REGAL_log = GL_FALSE;
@@ -8300,6 +8301,10 @@ static GLboolean _glewInit_GL_OES_single_precision (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GL_PGI_vertex_hints */
 
+#ifdef GL_REGAL_enable
+
+#endif /* GL_REGAL_enable */
+
 #ifdef GL_REGAL_error_string
 
 static GLboolean _glewInit_GL_REGAL_error_string (GLEW_CONTEXT_ARG_DEF_INIT)
@@ -10348,6 +10353,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
 #ifdef GL_PGI_vertex_hints
   CONST_CAST(GLEW_PGI_vertex_hints) = _glewSearchExtension("GL_PGI_vertex_hints", extStart, extEnd);
 #endif /* GL_PGI_vertex_hints */
+#ifdef GL_REGAL_enable
+  CONST_CAST(GLEW_REGAL_enable) = _glewSearchExtension("GL_REGAL_enable", extStart, extEnd);
+#endif /* GL_REGAL_enable */
 #ifdef GL_REGAL_error_string
   CONST_CAST(GLEW_REGAL_error_string) = _glewSearchExtension("GL_REGAL_error_string", extStart, extEnd);
   if (glewExperimental || GLEW_REGAL_error_string) CONST_CAST(GLEW_REGAL_error_string) = !_glewInit_GL_REGAL_error_string(GLEW_CONTEXT_ARG_VAR_INIT);
@@ -15616,6 +15624,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
       }
       if (_glewStrSame2(&pos, &len, (const GLubyte*)"REGAL_", 6))
       {
+#ifdef GL_REGAL_enable
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"enable", 6))
+        {
+          ret = GLEW_REGAL_enable;
+          continue;
+        }
+#endif
 #ifdef GL_REGAL_error_string
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"error_string", 12))
         {

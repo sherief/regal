@@ -781,6 +781,15 @@ REGAL_DECL void REGAL_CALL glDisable(GLenum cap)
     case GL_LOG_HTTP_REGAL:     Logging::enableHttp     = false; return;
     default: break;
   }
+  switch(cap)
+  {
+    case GL_ERROR_REGAL:      /* TODO */ return;
+    case GL_DEBUG_REGAL:      /* TODO */ return;
+    case GL_LOG_REGAL:        /* TODO */ return;
+    case GL_EMULATION_REGAL:  /* TODO */ return;
+    case GL_LOADER_REGAL:     /* TODO */ return;
+    default: break;
+  }
   rCtx->dsp->curr->glDisable(cap);
 }
 
@@ -855,6 +864,15 @@ REGAL_DECL void REGAL_CALL glEnable(GLenum cap)
     case GL_LOG_DRIVER_REGAL:   Logging::enableDriver   = true; return;
     case GL_LOG_INTERNAL_REGAL: Logging::enableInternal = true; return;
     case GL_LOG_HTTP_REGAL:     Logging::enableHttp     = true; return;
+    default: break;
+  }
+  switch(cap)
+  {
+    case GL_ERROR_REGAL:      /* TODO */ return;
+    case GL_DEBUG_REGAL:      /* TODO */ return;
+    case GL_LOG_REGAL:        /* TODO */ return;
+    case GL_EMULATION_REGAL:  /* TODO */ return;
+    case GL_LOADER_REGAL:     /* TODO */ return;
     default: break;
   }
   rCtx->dsp->curr->glEnable(cap);
@@ -1710,6 +1728,15 @@ REGAL_DECL GLboolean REGAL_CALL glIsEnabled(GLenum cap)
     case GL_LOG_DRIVER_REGAL:   return Logging::enableDriver   ? GL_TRUE : GL_FALSE;
     case GL_LOG_INTERNAL_REGAL: return Logging::enableInternal ? GL_TRUE : GL_FALSE;
     case GL_LOG_HTTP_REGAL:     return Logging::enableHttp     ? GL_TRUE : GL_FALSE;
+    default: break;
+  }
+  switch(cap)
+  {
+    case GL_ERROR_REGAL:      /* TODO */ return GL_TRUE;
+    case GL_DEBUG_REGAL:      /* TODO */ return GL_TRUE;
+    case GL_LOG_REGAL:        /* TODO */ return GL_TRUE;
+    case GL_EMULATION_REGAL:  /* TODO */ return GL_TRUE;
+    case GL_LOADER_REGAL:     /* TODO */ return GL_TRUE;
     default: break;
   }
   return rCtx->dsp->curr->glIsEnabled(cap);

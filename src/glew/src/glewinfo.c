@@ -5920,6 +5920,15 @@ static void _glewInfo_GL_PGI_vertex_hints (void)
 
 #endif /* GL_PGI_vertex_hints */
 
+#ifdef GL_REGAL_enable
+
+static void _glewInfo_GL_REGAL_enable (void)
+{
+  glewPrintExt("GL_REGAL_enable", GLEW_REGAL_enable, glewIsSupported("GL_REGAL_enable"), glewGetExtension("GL_REGAL_enable"));
+}
+
+#endif /* GL_REGAL_enable */
+
 #ifdef GL_REGAL_error_string
 
 static void _glewInfo_GL_REGAL_error_string (void)
@@ -9174,6 +9183,9 @@ static void glewInfo (void)
 #ifdef GL_PGI_vertex_hints
   _glewInfo_GL_PGI_vertex_hints();
 #endif /* GL_PGI_vertex_hints */
+#ifdef GL_REGAL_enable
+  _glewInfo_GL_REGAL_enable();
+#endif /* GL_REGAL_enable */
 #ifdef GL_REGAL_error_string
   _glewInfo_GL_REGAL_error_string();
 #endif /* GL_REGAL_error_string */

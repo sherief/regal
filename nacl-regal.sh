@@ -14,7 +14,7 @@ readonly PACKAGE_NAME=regal
 export NACL_GLIBC=1
 export NACL_PACKAGES_BITSIZE=64
 
-source ./build/nacl/common.sh
+source ../../build_tools/common.sh
 
 export CC=${NACLCC}
 export CXX=${NACLCXX}

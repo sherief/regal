@@ -13135,6 +13135,21 @@ typedef void (GLAPIENTRY * PFNGLORTHOFOESPROC) (GLfloat l, GLfloat r, GLfloat b,
 
 #endif /* GL_PGI_vertex_hints */
 
+/* ---------------------------- GL_REGAL_enable ---------------------------- */
+
+#ifndef GL_REGAL_enable
+#define GL_REGAL_enable 1
+
+#define GL_ERROR_REGAL 0x9322
+#define GL_DEBUG_REGAL 0x9323
+#define GL_LOG_REGAL 0x9324
+#define GL_EMULATION_REGAL 0x9325
+#define GL_LOADER_REGAL 0x9326
+
+#define GLEW_REGAL_enable GLEW_GET_VAR(__GLEW_REGAL_enable)
+
+#endif /* GL_REGAL_enable */
+
 /* ------------------------- GL_REGAL_error_string ------------------------- */
 
 #ifndef GL_REGAL_error_string
@@ -16966,6 +16981,7 @@ GLEW_VAR_EXPORT GLboolean __GLEW_OML_resample;
 GLEW_VAR_EXPORT GLboolean __GLEW_OML_subsample;
 GLEW_VAR_EXPORT GLboolean __GLEW_PGI_misc_hints;
 GLEW_VAR_EXPORT GLboolean __GLEW_PGI_vertex_hints;
+GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_enable;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_error_string;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_extension_query;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_log;
