@@ -446,13 +446,15 @@ static PP_Bool Instance_DidCreate(PP_Instance instance,
   messagePrintf("Hello World (GLIBC)");
   int32_t attribs[] = { PP_GRAPHICS3DATTRIB_WIDTH, 512, PP_GRAPHICS3DATTRIB_HEIGHT, 512, PP_GRAPHICS3DATTRIB_NONE};
   opengl_context = ppb_graphics3d_interface->Create(instance, opengl_context, attribs);
-  messagePrintf("Create2");
   ppb_instance_interface->BindGraphics(instance, opengl_context);
-  messagePrintf("Bind");
   RegalMakeCurrent(opengl_context, ppb_opengl_interface);
-  messagePrintf("MakeCurrent");
   glLogMessageCallbackREGAL(regalLogCallback);
-  messagePrintf("Log");
+  {
+    GLint texUnits;
+    glGetIntegerv(GL_MAX_TEXTURE_UNITS, &texUnits);
+    messagePrintf("%d\n", texUnits);
+  }
+  
   int32_t r = 0;
   r = ppb_input_interface->RequestInputEvents(instance, PP_INPUTEVENT_CLASS_MOUSE);
   if (r != PP_OK) {
