@@ -54061,6 +54061,1022 @@ static void REGAL_CALL error_glHintPGI(GLenum target, GLint mode)
     }
 }
 
+// GL_REGAL_ES1_0_compatibility
+
+static void REGAL_CALL error_glAlphaFuncx(GLenum func, GLclampx ref)
+{
+    ITrace("error_glAlphaFuncx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glAlphaFuncx(func, ref);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glAlphaFuncx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
+{
+    ITrace("error_glClearColorx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearColorx(red, green, blue, alpha);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearColorx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClearDepthx(GLclampx depth)
+{
+    ITrace("error_glClearDepthx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClearDepthx(depth);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClearDepthx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
+{
+    ITrace("error_glColor4x");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glColor4x(red, green, blue, alpha);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glColor4x : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glDepthRangex(GLclampx zNear, GLclampx zFar)
+{
+    ITrace("error_glDepthRangex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glDepthRangex(zNear, zFar);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glDepthRangex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glFogx(GLenum pname, GLfixed param)
+{
+    ITrace("error_glFogx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFogx(pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFogx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glFogxv(GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glFogxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFogxv(pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFogxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    ITrace("error_glFrustumf");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFrustumf(left, right, bottom, top, zNear, zFar);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFrustumf : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    ITrace("error_glFrustumx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glFrustumx(left, right, bottom, top, zNear, zFar);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glFrustumx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLightModelx(GLenum pname, GLfixed param)
+{
+    ITrace("error_glLightModelx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLightModelx(pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLightModelx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLightModelxv(GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glLightModelxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLightModelxv(pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLightModelxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLightx(GLenum light, GLenum pname, GLfixed param)
+{
+    ITrace("error_glLightx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLightx(light, pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLightx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glLightxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLightxv(light, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLightxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLineWidthx(GLfixed width)
+{
+    ITrace("error_glLineWidthx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLineWidthx(width);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLineWidthx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glLoadMatrixx(const GLfixed *m)
+{
+    ITrace("error_glLoadMatrixx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glLoadMatrixx(m);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glLoadMatrixx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMaterialx(GLenum face, GLenum pname, GLfixed param)
+{
+    ITrace("error_glMaterialx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMaterialx(face, pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMaterialx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glMaterialxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMaterialxv(face, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMaterialxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMultMatrixx(const GLfixed *m)
+{
+    ITrace("error_glMultMatrixx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMultMatrixx(m);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMultMatrixx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+{
+    ITrace("error_glMultiTexCoord4x");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glMultiTexCoord4x(target, s, t, r, q);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glMultiTexCoord4x : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
+{
+    ITrace("error_glNormal3x");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glNormal3x(nx, ny, nz);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glNormal3x : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    ITrace("error_glOrthof");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glOrthof(left, right, bottom, top, zNear, zFar);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glOrthof : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    ITrace("error_glOrthox");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glOrthox(left, right, bottom, top, zNear, zFar);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glOrthox : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPointSizex(GLfixed size)
+{
+    ITrace("error_glPointSizex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPointSizex(size);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPointSizex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPolygonOffsetx(GLfixed factor, GLfixed units)
+{
+    ITrace("error_glPolygonOffsetx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPolygonOffsetx(factor, units);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPolygonOffsetx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
+{
+    ITrace("error_glRotatex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glRotatex(angle, x, y, z);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glRotatex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glSampleCoveragex(GLclampx value, GLboolean invert)
+{
+    ITrace("error_glSampleCoveragex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glSampleCoveragex(value, invert);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glSampleCoveragex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glScalex(GLfixed x, GLfixed y, GLfixed z)
+{
+    ITrace("error_glScalex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glScalex(x, y, z);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glScalex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+{
+    ITrace("error_glTexEnvx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexEnvx(target, pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexEnvx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glTexEnvxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexEnvxv(target, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexEnvxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+{
+    ITrace("error_glTexParameterx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexParameterx(target, pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexParameterx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
+{
+    ITrace("error_glTranslatex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTranslatex(x, y, z);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTranslatex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+// GL_REGAL_ES1_1_compatibility
+
+static void REGAL_CALL error_glClipPlanef(GLenum plane, const GLfloat *equation)
+{
+    ITrace("error_glClipPlanef");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClipPlanef(plane, equation);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClipPlanef : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glClipPlanex(GLenum plane, const GLfixed *equation)
+{
+    ITrace("error_glClipPlanex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glClipPlanex(plane, equation);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glClipPlanex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetClipPlanef(GLenum pname, GLfloat eqn[4])
+{
+    ITrace("error_glGetClipPlanef");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetClipPlanef(pname, eqn);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetClipPlanef : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetClipPlanex(GLenum pname, GLfixed eqn[4])
+{
+    ITrace("error_glGetClipPlanex");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetClipPlanex(pname, eqn);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetClipPlanex : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetFixedv(GLenum pname, GLfixed *params)
+{
+    ITrace("error_glGetFixedv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetFixedv(pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetFixedv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
+{
+    ITrace("error_glGetLightxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetLightxv(light, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetLightxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
+{
+    ITrace("error_glGetMaterialxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetMaterialxv(face, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetMaterialxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
+{
+    ITrace("error_glGetTexEnvxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetTexEnvxv(env, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetTexEnvxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
+{
+    ITrace("error_glGetTexParameterxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glGetTexParameterxv(target, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glGetTexParameterxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPointParameterx(GLenum pname, GLfixed param)
+{
+    ITrace("error_glPointParameterx");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPointParameterx(pname, param);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPointParameterx : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPointParameterxv(GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glPointParameterxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPointParameterxv(pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPointParameterxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+    ITrace("error_glPointSizePointerOES");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glPointSizePointerOES(type, stride, pointer);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glPointSizePointerOES : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
+static void REGAL_CALL error_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    ITrace("error_glTexParameterxv");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx)
+    RegalAssert(rCtx->dsp)
+    RegalAssert(rCtx->dsp->curr)
+    GLenum _error = GL_NO_ERROR;
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    if (!rCtx->depthBeginEnd)
+      _error = rCtx->dsp->curr->glGetError();
+    RegalAssert(_error==GL_NO_ERROR);
+    rCtx->dsp->curr->glTexParameterxv(target, pname, params);
+    if (!rCtx->depthBeginEnd) {
+      _error = rCtx->dsp->curr->glGetError();
+      if (_error!=GL_NO_ERROR) {
+        Error("glTexParameterxv : ",Token::GLerrorToString(_error));
+        if (rCtx->err.callback)
+          rCtx->err.callback( _error );
+      }
+    }
+}
+
 // GL_REGAL_error_string
 
 static const GLchar *REGAL_CALL error_glErrorStringREGAL(GLenum error)
@@ -60365,6 +61381,56 @@ void InitDispatchTableError(DispatchTable &tbl)
   // GL_PGI_misc_hints
 
   tbl.glHintPGI = error_glHintPGI;
+
+  // GL_REGAL_ES1_0_compatibility
+
+  tbl.glAlphaFuncx = error_glAlphaFuncx;
+  tbl.glClearColorx = error_glClearColorx;
+  tbl.glClearDepthx = error_glClearDepthx;
+  tbl.glColor4x = error_glColor4x;
+  tbl.glDepthRangex = error_glDepthRangex;
+  tbl.glFogx = error_glFogx;
+  tbl.glFogxv = error_glFogxv;
+  tbl.glFrustumf = error_glFrustumf;
+  tbl.glFrustumx = error_glFrustumx;
+  tbl.glLightModelx = error_glLightModelx;
+  tbl.glLightModelxv = error_glLightModelxv;
+  tbl.glLightx = error_glLightx;
+  tbl.glLightxv = error_glLightxv;
+  tbl.glLineWidthx = error_glLineWidthx;
+  tbl.glLoadMatrixx = error_glLoadMatrixx;
+  tbl.glMaterialx = error_glMaterialx;
+  tbl.glMaterialxv = error_glMaterialxv;
+  tbl.glMultMatrixx = error_glMultMatrixx;
+  tbl.glMultiTexCoord4x = error_glMultiTexCoord4x;
+  tbl.glNormal3x = error_glNormal3x;
+  tbl.glOrthof = error_glOrthof;
+  tbl.glOrthox = error_glOrthox;
+  tbl.glPointSizex = error_glPointSizex;
+  tbl.glPolygonOffsetx = error_glPolygonOffsetx;
+  tbl.glRotatex = error_glRotatex;
+  tbl.glSampleCoveragex = error_glSampleCoveragex;
+  tbl.glScalex = error_glScalex;
+  tbl.glTexEnvx = error_glTexEnvx;
+  tbl.glTexEnvxv = error_glTexEnvxv;
+  tbl.glTexParameterx = error_glTexParameterx;
+  tbl.glTranslatex = error_glTranslatex;
+
+  // GL_REGAL_ES1_1_compatibility
+
+  tbl.glClipPlanef = error_glClipPlanef;
+  tbl.glClipPlanex = error_glClipPlanex;
+  tbl.glGetClipPlanef = error_glGetClipPlanef;
+  tbl.glGetClipPlanex = error_glGetClipPlanex;
+  tbl.glGetFixedv = error_glGetFixedv;
+  tbl.glGetLightxv = error_glGetLightxv;
+  tbl.glGetMaterialxv = error_glGetMaterialxv;
+  tbl.glGetTexEnvxv = error_glGetTexEnvxv;
+  tbl.glGetTexParameterxv = error_glGetTexParameterxv;
+  tbl.glPointParameterx = error_glPointParameterx;
+  tbl.glPointParameterxv = error_glPointParameterxv;
+  tbl.glPointSizePointerOES = error_glPointSizePointerOES;
+  tbl.glTexParameterxv = error_glTexParameterxv;
 
   // GL_REGAL_error_string
 

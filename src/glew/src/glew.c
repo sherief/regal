@@ -33,7 +33,7 @@
 
 #if defined(_WIN32)
 #  include <GL/wglew.h>
-#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
+#elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
 #  include <GL/glxew.h>
 #endif
 
@@ -165,6 +165,8 @@ void* NSGLGetProcAddress (const GLubyte *name)
 #elif defined(__sgi) || defined(__sun)
 #  define glewGetProcAddress(name) dlGetProcAddress(name)
 #elif defined(__ANDROID__)
+#  define glewGetProcAddress(name) NULL /* TODO */
+#elif defined(__native_client__)
 #  define glewGetProcAddress(name) NULL /* TODO */
 #else /* __linux */
 #  define glewGetProcAddress(name) (*glXGetProcAddressARB)(name)
@@ -2452,6 +2454,52 @@ PFNGLFRUSTUMFOESPROC __glewFrustumfOES = NULL;
 PFNGLGETCLIPPLANEFOESPROC __glewGetClipPlanefOES = NULL;
 PFNGLORTHOFOESPROC __glewOrthofOES = NULL;
 
+PFNGLALPHAFUNCXPROC __glewAlphaFuncx = NULL;
+PFNGLCLEARCOLORXPROC __glewClearColorx = NULL;
+PFNGLCLEARDEPTHXPROC __glewClearDepthx = NULL;
+PFNGLCOLOR4XPROC __glewColor4x = NULL;
+PFNGLDEPTHRANGEXPROC __glewDepthRangex = NULL;
+PFNGLFOGXPROC __glewFogx = NULL;
+PFNGLFOGXVPROC __glewFogxv = NULL;
+PFNGLFRUSTUMFPROC __glewFrustumf = NULL;
+PFNGLFRUSTUMXPROC __glewFrustumx = NULL;
+PFNGLLIGHTMODELXPROC __glewLightModelx = NULL;
+PFNGLLIGHTMODELXVPROC __glewLightModelxv = NULL;
+PFNGLLIGHTXPROC __glewLightx = NULL;
+PFNGLLIGHTXVPROC __glewLightxv = NULL;
+PFNGLLINEWIDTHXPROC __glewLineWidthx = NULL;
+PFNGLLOADMATRIXXPROC __glewLoadMatrixx = NULL;
+PFNGLMATERIALXPROC __glewMaterialx = NULL;
+PFNGLMATERIALXVPROC __glewMaterialxv = NULL;
+PFNGLMULTMATRIXXPROC __glewMultMatrixx = NULL;
+PFNGLMULTITEXCOORD4XPROC __glewMultiTexCoord4x = NULL;
+PFNGLNORMAL3XPROC __glewNormal3x = NULL;
+PFNGLORTHOFPROC __glewOrthof = NULL;
+PFNGLORTHOXPROC __glewOrthox = NULL;
+PFNGLPOINTSIZEXPROC __glewPointSizex = NULL;
+PFNGLPOLYGONOFFSETXPROC __glewPolygonOffsetx = NULL;
+PFNGLROTATEXPROC __glewRotatex = NULL;
+PFNGLSAMPLECOVERAGEXPROC __glewSampleCoveragex = NULL;
+PFNGLSCALEXPROC __glewScalex = NULL;
+PFNGLTEXENVXPROC __glewTexEnvx = NULL;
+PFNGLTEXENVXVPROC __glewTexEnvxv = NULL;
+PFNGLTEXPARAMETERXPROC __glewTexParameterx = NULL;
+PFNGLTRANSLATEXPROC __glewTranslatex = NULL;
+
+PFNGLCLIPPLANEFPROC __glewClipPlanef = NULL;
+PFNGLCLIPPLANEXPROC __glewClipPlanex = NULL;
+PFNGLGETCLIPPLANEFPROC __glewGetClipPlanef = NULL;
+PFNGLGETCLIPPLANEXPROC __glewGetClipPlanex = NULL;
+PFNGLGETFIXEDVPROC __glewGetFixedv = NULL;
+PFNGLGETLIGHTXVPROC __glewGetLightxv = NULL;
+PFNGLGETMATERIALXVPROC __glewGetMaterialxv = NULL;
+PFNGLGETTEXENVXVPROC __glewGetTexEnvxv = NULL;
+PFNGLGETTEXPARAMETERXVPROC __glewGetTexParameterxv = NULL;
+PFNGLPOINTPARAMETERXPROC __glewPointParameterx = NULL;
+PFNGLPOINTPARAMETERXVPROC __glewPointParameterxv = NULL;
+PFNGLPOINTSIZEPOINTEROESPROC __glewPointSizePointerOES = NULL;
+PFNGLTEXPARAMETERXVPROC __glewTexParameterxv = NULL;
+
 PFNGLERRORSTRINGREGALPROC __glewErrorStringREGAL = NULL;
 
 PFNGLGETEXTENSIONREGALPROC __glewGetExtensionREGAL = NULL;
@@ -3000,6 +3048,9 @@ GLboolean __GLEW_OML_resample = GL_FALSE;
 GLboolean __GLEW_OML_subsample = GL_FALSE;
 GLboolean __GLEW_PGI_misc_hints = GL_FALSE;
 GLboolean __GLEW_PGI_vertex_hints = GL_FALSE;
+GLboolean __GLEW_REGAL_ES1_0_compatibility = GL_FALSE;
+GLboolean __GLEW_REGAL_ES1_1_compatibility = GL_FALSE;
+GLboolean __GLEW_REGAL_enable = GL_FALSE;
 GLboolean __GLEW_REGAL_error_string = GL_FALSE;
 GLboolean __GLEW_REGAL_extension_query = GL_FALSE;
 GLboolean __GLEW_REGAL_log = GL_FALSE;
@@ -8300,6 +8351,78 @@ static GLboolean _glewInit_GL_OES_single_precision (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GL_PGI_vertex_hints */
 
+#ifdef GL_REGAL_ES1_0_compatibility
+
+static GLboolean _glewInit_GL_REGAL_ES1_0_compatibility (GLEW_CONTEXT_ARG_DEF_INIT)
+{
+  GLboolean r = GL_FALSE;
+
+  r = ((glAlphaFuncx = (PFNGLALPHAFUNCXPROC)glewGetProcAddress((const GLubyte*)"glAlphaFuncx")) == NULL) || r;
+  r = ((glClearColorx = (PFNGLCLEARCOLORXPROC)glewGetProcAddress((const GLubyte*)"glClearColorx")) == NULL) || r;
+  r = ((glClearDepthx = (PFNGLCLEARDEPTHXPROC)glewGetProcAddress((const GLubyte*)"glClearDepthx")) == NULL) || r;
+  r = ((glColor4x = (PFNGLCOLOR4XPROC)glewGetProcAddress((const GLubyte*)"glColor4x")) == NULL) || r;
+  r = ((glDepthRangex = (PFNGLDEPTHRANGEXPROC)glewGetProcAddress((const GLubyte*)"glDepthRangex")) == NULL) || r;
+  r = ((glFogx = (PFNGLFOGXPROC)glewGetProcAddress((const GLubyte*)"glFogx")) == NULL) || r;
+  r = ((glFogxv = (PFNGLFOGXVPROC)glewGetProcAddress((const GLubyte*)"glFogxv")) == NULL) || r;
+  r = ((glFrustumf = (PFNGLFRUSTUMFPROC)glewGetProcAddress((const GLubyte*)"glFrustumf")) == NULL) || r;
+  r = ((glFrustumx = (PFNGLFRUSTUMXPROC)glewGetProcAddress((const GLubyte*)"glFrustumx")) == NULL) || r;
+  r = ((glLightModelx = (PFNGLLIGHTMODELXPROC)glewGetProcAddress((const GLubyte*)"glLightModelx")) == NULL) || r;
+  r = ((glLightModelxv = (PFNGLLIGHTMODELXVPROC)glewGetProcAddress((const GLubyte*)"glLightModelxv")) == NULL) || r;
+  r = ((glLightx = (PFNGLLIGHTXPROC)glewGetProcAddress((const GLubyte*)"glLightx")) == NULL) || r;
+  r = ((glLightxv = (PFNGLLIGHTXVPROC)glewGetProcAddress((const GLubyte*)"glLightxv")) == NULL) || r;
+  r = ((glLineWidthx = (PFNGLLINEWIDTHXPROC)glewGetProcAddress((const GLubyte*)"glLineWidthx")) == NULL) || r;
+  r = ((glLoadMatrixx = (PFNGLLOADMATRIXXPROC)glewGetProcAddress((const GLubyte*)"glLoadMatrixx")) == NULL) || r;
+  r = ((glMaterialx = (PFNGLMATERIALXPROC)glewGetProcAddress((const GLubyte*)"glMaterialx")) == NULL) || r;
+  r = ((glMaterialxv = (PFNGLMATERIALXVPROC)glewGetProcAddress((const GLubyte*)"glMaterialxv")) == NULL) || r;
+  r = ((glMultMatrixx = (PFNGLMULTMATRIXXPROC)glewGetProcAddress((const GLubyte*)"glMultMatrixx")) == NULL) || r;
+  r = ((glMultiTexCoord4x = (PFNGLMULTITEXCOORD4XPROC)glewGetProcAddress((const GLubyte*)"glMultiTexCoord4x")) == NULL) || r;
+  r = ((glNormal3x = (PFNGLNORMAL3XPROC)glewGetProcAddress((const GLubyte*)"glNormal3x")) == NULL) || r;
+  r = ((glOrthof = (PFNGLORTHOFPROC)glewGetProcAddress((const GLubyte*)"glOrthof")) == NULL) || r;
+  r = ((glOrthox = (PFNGLORTHOXPROC)glewGetProcAddress((const GLubyte*)"glOrthox")) == NULL) || r;
+  r = ((glPointSizex = (PFNGLPOINTSIZEXPROC)glewGetProcAddress((const GLubyte*)"glPointSizex")) == NULL) || r;
+  r = ((glPolygonOffsetx = (PFNGLPOLYGONOFFSETXPROC)glewGetProcAddress((const GLubyte*)"glPolygonOffsetx")) == NULL) || r;
+  r = ((glRotatex = (PFNGLROTATEXPROC)glewGetProcAddress((const GLubyte*)"glRotatex")) == NULL) || r;
+  r = ((glSampleCoveragex = (PFNGLSAMPLECOVERAGEXPROC)glewGetProcAddress((const GLubyte*)"glSampleCoveragex")) == NULL) || r;
+  r = ((glScalex = (PFNGLSCALEXPROC)glewGetProcAddress((const GLubyte*)"glScalex")) == NULL) || r;
+  r = ((glTexEnvx = (PFNGLTEXENVXPROC)glewGetProcAddress((const GLubyte*)"glTexEnvx")) == NULL) || r;
+  r = ((glTexEnvxv = (PFNGLTEXENVXVPROC)glewGetProcAddress((const GLubyte*)"glTexEnvxv")) == NULL) || r;
+  r = ((glTexParameterx = (PFNGLTEXPARAMETERXPROC)glewGetProcAddress((const GLubyte*)"glTexParameterx")) == NULL) || r;
+  r = ((glTranslatex = (PFNGLTRANSLATEXPROC)glewGetProcAddress((const GLubyte*)"glTranslatex")) == NULL) || r;
+
+  return r;
+}
+
+#endif /* GL_REGAL_ES1_0_compatibility */
+
+#ifdef GL_REGAL_ES1_1_compatibility
+
+static GLboolean _glewInit_GL_REGAL_ES1_1_compatibility (GLEW_CONTEXT_ARG_DEF_INIT)
+{
+  GLboolean r = GL_FALSE;
+
+  r = ((glClipPlanef = (PFNGLCLIPPLANEFPROC)glewGetProcAddress((const GLubyte*)"glClipPlanef")) == NULL) || r;
+  r = ((glClipPlanex = (PFNGLCLIPPLANEXPROC)glewGetProcAddress((const GLubyte*)"glClipPlanex")) == NULL) || r;
+  r = ((glGetClipPlanef = (PFNGLGETCLIPPLANEFPROC)glewGetProcAddress((const GLubyte*)"glGetClipPlanef")) == NULL) || r;
+  r = ((glGetClipPlanex = (PFNGLGETCLIPPLANEXPROC)glewGetProcAddress((const GLubyte*)"glGetClipPlanex")) == NULL) || r;
+  r = ((glGetFixedv = (PFNGLGETFIXEDVPROC)glewGetProcAddress((const GLubyte*)"glGetFixedv")) == NULL) || r;
+  r = ((glGetLightxv = (PFNGLGETLIGHTXVPROC)glewGetProcAddress((const GLubyte*)"glGetLightxv")) == NULL) || r;
+  r = ((glGetMaterialxv = (PFNGLGETMATERIALXVPROC)glewGetProcAddress((const GLubyte*)"glGetMaterialxv")) == NULL) || r;
+  r = ((glGetTexEnvxv = (PFNGLGETTEXENVXVPROC)glewGetProcAddress((const GLubyte*)"glGetTexEnvxv")) == NULL) || r;
+  r = ((glGetTexParameterxv = (PFNGLGETTEXPARAMETERXVPROC)glewGetProcAddress((const GLubyte*)"glGetTexParameterxv")) == NULL) || r;
+  r = ((glPointParameterx = (PFNGLPOINTPARAMETERXPROC)glewGetProcAddress((const GLubyte*)"glPointParameterx")) == NULL) || r;
+  r = ((glPointParameterxv = (PFNGLPOINTPARAMETERXVPROC)glewGetProcAddress((const GLubyte*)"glPointParameterxv")) == NULL) || r;
+  r = ((glPointSizePointerOES = (PFNGLPOINTSIZEPOINTEROESPROC)glewGetProcAddress((const GLubyte*)"glPointSizePointerOES")) == NULL) || r;
+  r = ((glTexParameterxv = (PFNGLTEXPARAMETERXVPROC)glewGetProcAddress((const GLubyte*)"glTexParameterxv")) == NULL) || r;
+
+  return r;
+}
+
+#endif /* GL_REGAL_ES1_1_compatibility */
+
+#ifdef GL_REGAL_enable
+
+#endif /* GL_REGAL_enable */
+
 #ifdef GL_REGAL_error_string
 
 static GLboolean _glewInit_GL_REGAL_error_string (GLEW_CONTEXT_ARG_DEF_INIT)
@@ -10348,6 +10471,17 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
 #ifdef GL_PGI_vertex_hints
   CONST_CAST(GLEW_PGI_vertex_hints) = _glewSearchExtension("GL_PGI_vertex_hints", extStart, extEnd);
 #endif /* GL_PGI_vertex_hints */
+#ifdef GL_REGAL_ES1_0_compatibility
+  CONST_CAST(GLEW_REGAL_ES1_0_compatibility) = _glewSearchExtension("GL_REGAL_ES1_0_compatibility", extStart, extEnd);
+  if (glewExperimental || GLEW_REGAL_ES1_0_compatibility) CONST_CAST(GLEW_REGAL_ES1_0_compatibility) = !_glewInit_GL_REGAL_ES1_0_compatibility(GLEW_CONTEXT_ARG_VAR_INIT);
+#endif /* GL_REGAL_ES1_0_compatibility */
+#ifdef GL_REGAL_ES1_1_compatibility
+  CONST_CAST(GLEW_REGAL_ES1_1_compatibility) = _glewSearchExtension("GL_REGAL_ES1_1_compatibility", extStart, extEnd);
+  if (glewExperimental || GLEW_REGAL_ES1_1_compatibility) CONST_CAST(GLEW_REGAL_ES1_1_compatibility) = !_glewInit_GL_REGAL_ES1_1_compatibility(GLEW_CONTEXT_ARG_VAR_INIT);
+#endif /* GL_REGAL_ES1_1_compatibility */
+#ifdef GL_REGAL_enable
+  CONST_CAST(GLEW_REGAL_enable) = _glewSearchExtension("GL_REGAL_enable", extStart, extEnd);
+#endif /* GL_REGAL_enable */
 #ifdef GL_REGAL_error_string
   CONST_CAST(GLEW_REGAL_error_string) = _glewSearchExtension("GL_REGAL_error_string", extStart, extEnd);
   if (glewExperimental || GLEW_REGAL_error_string) CONST_CAST(GLEW_REGAL_error_string) = !_glewInit_GL_REGAL_error_string(GLEW_CONTEXT_ARG_VAR_INIT);
@@ -11576,7 +11710,7 @@ GLenum GLEWAPIENTRY wglewContextInit (WGLEW_CONTEXT_ARG_DEF_LIST)
   return GLEW_OK;
 }
 
-#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
+#elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
 
 PFNGLXGETCURRENTDISPLAYPROC __glewXGetCurrentDisplay = NULL;
 
@@ -12648,7 +12782,7 @@ GLenum glxewContextInit (GLXEW_CONTEXT_ARG_DEF_LIST)
   return GLEW_OK;
 }
 
-#endif /* !defined(__ANDROID__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX)) */
+#endif /* !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX)) */
 
 /* ------------------------------------------------------------------------ */
 
@@ -12688,7 +12822,7 @@ GLboolean glewExperimental = GL_FALSE;
 
 #if defined(_WIN32)
 extern GLenum GLEWAPIENTRY wglewContextInit (void);
-#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
+#elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX))
 extern GLenum GLEWAPIENTRY glxewContextInit (void);
 #endif /* _WIN32 */
 
@@ -12699,7 +12833,7 @@ GLenum GLEWAPIENTRY glewInit (void)
   if ( r != 0 ) return r;
 #if defined(_WIN32)
   return wglewContextInit();
-#elif !defined(__ANDROID__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX)) /* _UNIX */
+#elif !defined(__ANDROID__) && !defined(__native_client__) && (!defined(__APPLE__) || defined(GLEW_APPLE_GLX)) /* _UNIX */
   return glxewContextInit();
 #else
   return r;
@@ -15616,6 +15750,27 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
       }
       if (_glewStrSame2(&pos, &len, (const GLubyte*)"REGAL_", 6))
       {
+#ifdef GL_REGAL_ES1_0_compatibility
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"ES1_0_compatibility", 19))
+        {
+          ret = GLEW_REGAL_ES1_0_compatibility;
+          continue;
+        }
+#endif
+#ifdef GL_REGAL_ES1_1_compatibility
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"ES1_1_compatibility", 19))
+        {
+          ret = GLEW_REGAL_ES1_1_compatibility;
+          continue;
+        }
+#endif
+#ifdef GL_REGAL_enable
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"enable", 6))
+        {
+          ret = GLEW_REGAL_enable;
+          continue;
+        }
+#endif
 #ifdef GL_REGAL_error_string
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"error_string", 12))
         {
@@ -16514,7 +16669,7 @@ GLboolean GLEWAPIENTRY wglewIsSupported (const char* name)
   return ret;
 }
 
-#elif !defined(__ANDROID__) && !defined(__APPLE__) || defined(GLEW_APPLE_GLX)
+#elif !defined(__ANDROID__) && !defined(__native_client__) && !defined(__APPLE__) || defined(GLEW_APPLE_GLX)
 
 #if defined(GLEW_MX)
 GLboolean glxewContextIsSupported (const GLXEWContext* ctx, const char* name)

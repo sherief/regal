@@ -16878,6 +16878,318 @@ static void REGAL_CALL debug_glHintPGI(GLenum target, GLint mode)
   rCtx->dsp->curr->glHintPGI(target, mode);
 }
 
+// GL_REGAL_ES1_0_compatibility
+
+static void REGAL_CALL debug_glAlphaFuncx(GLenum func, GLclampx ref)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glAlphaFuncx(func, ref);
+}
+
+static void REGAL_CALL debug_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearColorx(red, green, blue, alpha);
+}
+
+static void REGAL_CALL debug_glClearDepthx(GLclampx depth)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClearDepthx(depth);
+}
+
+static void REGAL_CALL debug_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glColor4x(red, green, blue, alpha);
+}
+
+static void REGAL_CALL debug_glDepthRangex(GLclampx zNear, GLclampx zFar)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glDepthRangex(zNear, zFar);
+}
+
+static void REGAL_CALL debug_glFogx(GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFogx(pname, param);
+}
+
+static void REGAL_CALL debug_glFogxv(GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFogxv(pname, params);
+}
+
+static void REGAL_CALL debug_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFrustumf(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL debug_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glFrustumx(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL debug_glLightModelx(GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLightModelx(pname, param);
+}
+
+static void REGAL_CALL debug_glLightModelxv(GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLightModelxv(pname, params);
+}
+
+static void REGAL_CALL debug_glLightx(GLenum light, GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLightx(light, pname, param);
+}
+
+static void REGAL_CALL debug_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLightxv(light, pname, params);
+}
+
+static void REGAL_CALL debug_glLineWidthx(GLfixed width)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLineWidthx(width);
+}
+
+static void REGAL_CALL debug_glLoadMatrixx(const GLfixed *m)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glLoadMatrixx(m);
+}
+
+static void REGAL_CALL debug_glMaterialx(GLenum face, GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMaterialx(face, pname, param);
+}
+
+static void REGAL_CALL debug_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMaterialxv(face, pname, params);
+}
+
+static void REGAL_CALL debug_glMultMatrixx(const GLfixed *m)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMultMatrixx(m);
+}
+
+static void REGAL_CALL debug_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glMultiTexCoord4x(target, s, t, r, q);
+}
+
+static void REGAL_CALL debug_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glNormal3x(nx, ny, nz);
+}
+
+static void REGAL_CALL debug_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glOrthof(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL debug_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glOrthox(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL debug_glPointSizex(GLfixed size)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPointSizex(size);
+}
+
+static void REGAL_CALL debug_glPolygonOffsetx(GLfixed factor, GLfixed units)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPolygonOffsetx(factor, units);
+}
+
+static void REGAL_CALL debug_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glRotatex(angle, x, y, z);
+}
+
+static void REGAL_CALL debug_glSampleCoveragex(GLclampx value, GLboolean invert)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glSampleCoveragex(value, invert);
+}
+
+static void REGAL_CALL debug_glScalex(GLfixed x, GLfixed y, GLfixed z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glScalex(x, y, z);
+}
+
+static void REGAL_CALL debug_glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexEnvx(target, pname, param);
+}
+
+static void REGAL_CALL debug_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexEnvxv(target, pname, params);
+}
+
+static void REGAL_CALL debug_glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexParameterx(target, pname, param);
+}
+
+static void REGAL_CALL debug_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTranslatex(x, y, z);
+}
+
+// GL_REGAL_ES1_1_compatibility
+
+static void REGAL_CALL debug_glClipPlanef(GLenum plane, const GLfloat *equation)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClipPlanef(plane, equation);
+}
+
+static void REGAL_CALL debug_glClipPlanex(GLenum plane, const GLfixed *equation)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glClipPlanex(plane, equation);
+}
+
+static void REGAL_CALL debug_glGetClipPlanef(GLenum pname, GLfloat eqn[4])
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetClipPlanef(pname, eqn);
+}
+
+static void REGAL_CALL debug_glGetClipPlanex(GLenum pname, GLfixed eqn[4])
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetClipPlanex(pname, eqn);
+}
+
+static void REGAL_CALL debug_glGetFixedv(GLenum pname, GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetFixedv(pname, params);
+}
+
+static void REGAL_CALL debug_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetLightxv(light, pname, params);
+}
+
+static void REGAL_CALL debug_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetMaterialxv(face, pname, params);
+}
+
+static void REGAL_CALL debug_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetTexEnvxv(env, pname, params);
+}
+
+static void REGAL_CALL debug_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glGetTexParameterxv(target, pname, params);
+}
+
+static void REGAL_CALL debug_glPointParameterx(GLenum pname, GLfixed param)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPointParameterx(pname, param);
+}
+
+static void REGAL_CALL debug_glPointParameterxv(GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPointParameterxv(pname, params);
+}
+
+static void REGAL_CALL debug_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glPointSizePointerOES(type, stride, pointer);
+}
+
+static void REGAL_CALL debug_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  DispatchStateScopedStepDown stepDown(rCtx->dsp);
+  rCtx->dsp->curr->glTexParameterxv(target, pname, params);
+}
+
 // GL_REGAL_error_string
 
 static const GLchar *REGAL_CALL debug_glErrorStringREGAL(GLenum error)
@@ -20910,6 +21222,56 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   // GL_PGI_misc_hints
 
   tbl.glHintPGI = debug_glHintPGI;
+
+  // GL_REGAL_ES1_0_compatibility
+
+  tbl.glAlphaFuncx = debug_glAlphaFuncx;
+  tbl.glClearColorx = debug_glClearColorx;
+  tbl.glClearDepthx = debug_glClearDepthx;
+  tbl.glColor4x = debug_glColor4x;
+  tbl.glDepthRangex = debug_glDepthRangex;
+  tbl.glFogx = debug_glFogx;
+  tbl.glFogxv = debug_glFogxv;
+  tbl.glFrustumf = debug_glFrustumf;
+  tbl.glFrustumx = debug_glFrustumx;
+  tbl.glLightModelx = debug_glLightModelx;
+  tbl.glLightModelxv = debug_glLightModelxv;
+  tbl.glLightx = debug_glLightx;
+  tbl.glLightxv = debug_glLightxv;
+  tbl.glLineWidthx = debug_glLineWidthx;
+  tbl.glLoadMatrixx = debug_glLoadMatrixx;
+  tbl.glMaterialx = debug_glMaterialx;
+  tbl.glMaterialxv = debug_glMaterialxv;
+  tbl.glMultMatrixx = debug_glMultMatrixx;
+  tbl.glMultiTexCoord4x = debug_glMultiTexCoord4x;
+  tbl.glNormal3x = debug_glNormal3x;
+  tbl.glOrthof = debug_glOrthof;
+  tbl.glOrthox = debug_glOrthox;
+  tbl.glPointSizex = debug_glPointSizex;
+  tbl.glPolygonOffsetx = debug_glPolygonOffsetx;
+  tbl.glRotatex = debug_glRotatex;
+  tbl.glSampleCoveragex = debug_glSampleCoveragex;
+  tbl.glScalex = debug_glScalex;
+  tbl.glTexEnvx = debug_glTexEnvx;
+  tbl.glTexEnvxv = debug_glTexEnvxv;
+  tbl.glTexParameterx = debug_glTexParameterx;
+  tbl.glTranslatex = debug_glTranslatex;
+
+  // GL_REGAL_ES1_1_compatibility
+
+  tbl.glClipPlanef = debug_glClipPlanef;
+  tbl.glClipPlanex = debug_glClipPlanex;
+  tbl.glGetClipPlanef = debug_glGetClipPlanef;
+  tbl.glGetClipPlanex = debug_glGetClipPlanex;
+  tbl.glGetFixedv = debug_glGetFixedv;
+  tbl.glGetLightxv = debug_glGetLightxv;
+  tbl.glGetMaterialxv = debug_glGetMaterialxv;
+  tbl.glGetTexEnvxv = debug_glGetTexEnvxv;
+  tbl.glGetTexParameterxv = debug_glGetTexParameterxv;
+  tbl.glPointParameterx = debug_glPointParameterx;
+  tbl.glPointParameterxv = debug_glPointParameterxv;
+  tbl.glPointSizePointerOES = debug_glPointSizePointerOES;
+  tbl.glTexParameterxv = debug_glTexParameterxv;
 
   // GL_REGAL_error_string
 

@@ -1,16 +1,38 @@
-//
-//  GlesView.mm
-//  gles
-//
-//  Created by Cass Everitt on 3/15/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/*
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org/>
+
+- Created by Cass Everitt on 3/15/11.
+
+*/
 
 #import "RegalView.h"
 #import "RGLOpenGLContext.h"
 #include "render.h"
 #include <stdio.h>
-
 
 
 @implementation GlesView
@@ -52,7 +74,7 @@ NSTimer *timer = nil;
     [self windowResized:NULL];
     resized = true;
   }
-  display( true );
+  dreamTorusDisplay( true );
   [[self openGLContext] flushBuffer];
 }
 
@@ -79,7 +101,7 @@ NSTimer *timer = nil;
     NSRect crect = NSRectFromCGRect( CGRectMake( 0, 0, rect.size.width, rect.size.height ) );
     [self setFrame: crect];
     [self lockFocus];
-    reshape( rect.size.width, rect.size.height );
+    dreamTorusReshape( rect.size.width, rect.size.height );
     resized = true;
     [self unlockFocus];
 }

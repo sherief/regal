@@ -5920,6 +5920,79 @@ static void _glewInfo_GL_PGI_vertex_hints (void)
 
 #endif /* GL_PGI_vertex_hints */
 
+#ifdef GL_REGAL_ES1_0_compatibility
+
+static void _glewInfo_GL_REGAL_ES1_0_compatibility (void)
+{
+  glewPrintExt("GL_REGAL_ES1_0_compatibility", GLEW_REGAL_ES1_0_compatibility, glewIsSupported("GL_REGAL_ES1_0_compatibility"), glewGetExtension("GL_REGAL_ES1_0_compatibility"));
+
+  glewInfoFunc("glAlphaFuncx", glAlphaFuncx == NULL);
+  glewInfoFunc("glClearColorx", glClearColorx == NULL);
+  glewInfoFunc("glClearDepthx", glClearDepthx == NULL);
+  glewInfoFunc("glColor4x", glColor4x == NULL);
+  glewInfoFunc("glDepthRangex", glDepthRangex == NULL);
+  glewInfoFunc("glFogx", glFogx == NULL);
+  glewInfoFunc("glFogxv", glFogxv == NULL);
+  glewInfoFunc("glFrustumf", glFrustumf == NULL);
+  glewInfoFunc("glFrustumx", glFrustumx == NULL);
+  glewInfoFunc("glLightModelx", glLightModelx == NULL);
+  glewInfoFunc("glLightModelxv", glLightModelxv == NULL);
+  glewInfoFunc("glLightx", glLightx == NULL);
+  glewInfoFunc("glLightxv", glLightxv == NULL);
+  glewInfoFunc("glLineWidthx", glLineWidthx == NULL);
+  glewInfoFunc("glLoadMatrixx", glLoadMatrixx == NULL);
+  glewInfoFunc("glMaterialx", glMaterialx == NULL);
+  glewInfoFunc("glMaterialxv", glMaterialxv == NULL);
+  glewInfoFunc("glMultMatrixx", glMultMatrixx == NULL);
+  glewInfoFunc("glMultiTexCoord4x", glMultiTexCoord4x == NULL);
+  glewInfoFunc("glNormal3x", glNormal3x == NULL);
+  glewInfoFunc("glOrthof", glOrthof == NULL);
+  glewInfoFunc("glOrthox", glOrthox == NULL);
+  glewInfoFunc("glPointSizex", glPointSizex == NULL);
+  glewInfoFunc("glPolygonOffsetx", glPolygonOffsetx == NULL);
+  glewInfoFunc("glRotatex", glRotatex == NULL);
+  glewInfoFunc("glSampleCoveragex", glSampleCoveragex == NULL);
+  glewInfoFunc("glScalex", glScalex == NULL);
+  glewInfoFunc("glTexEnvx", glTexEnvx == NULL);
+  glewInfoFunc("glTexEnvxv", glTexEnvxv == NULL);
+  glewInfoFunc("glTexParameterx", glTexParameterx == NULL);
+  glewInfoFunc("glTranslatex", glTranslatex == NULL);
+}
+
+#endif /* GL_REGAL_ES1_0_compatibility */
+
+#ifdef GL_REGAL_ES1_1_compatibility
+
+static void _glewInfo_GL_REGAL_ES1_1_compatibility (void)
+{
+  glewPrintExt("GL_REGAL_ES1_1_compatibility", GLEW_REGAL_ES1_1_compatibility, glewIsSupported("GL_REGAL_ES1_1_compatibility"), glewGetExtension("GL_REGAL_ES1_1_compatibility"));
+
+  glewInfoFunc("glClipPlanef", glClipPlanef == NULL);
+  glewInfoFunc("glClipPlanex", glClipPlanex == NULL);
+  glewInfoFunc("glGetClipPlanef", glGetClipPlanef == NULL);
+  glewInfoFunc("glGetClipPlanex", glGetClipPlanex == NULL);
+  glewInfoFunc("glGetFixedv", glGetFixedv == NULL);
+  glewInfoFunc("glGetLightxv", glGetLightxv == NULL);
+  glewInfoFunc("glGetMaterialxv", glGetMaterialxv == NULL);
+  glewInfoFunc("glGetTexEnvxv", glGetTexEnvxv == NULL);
+  glewInfoFunc("glGetTexParameterxv", glGetTexParameterxv == NULL);
+  glewInfoFunc("glPointParameterx", glPointParameterx == NULL);
+  glewInfoFunc("glPointParameterxv", glPointParameterxv == NULL);
+  glewInfoFunc("glPointSizePointerOES", glPointSizePointerOES == NULL);
+  glewInfoFunc("glTexParameterxv", glTexParameterxv == NULL);
+}
+
+#endif /* GL_REGAL_ES1_1_compatibility */
+
+#ifdef GL_REGAL_enable
+
+static void _glewInfo_GL_REGAL_enable (void)
+{
+  glewPrintExt("GL_REGAL_enable", GLEW_REGAL_enable, glewIsSupported("GL_REGAL_enable"), glewGetExtension("GL_REGAL_enable"));
+}
+
+#endif /* GL_REGAL_enable */
+
 #ifdef GL_REGAL_error_string
 
 static void _glewInfo_GL_REGAL_error_string (void)
@@ -9174,6 +9247,15 @@ static void glewInfo (void)
 #ifdef GL_PGI_vertex_hints
   _glewInfo_GL_PGI_vertex_hints();
 #endif /* GL_PGI_vertex_hints */
+#ifdef GL_REGAL_ES1_0_compatibility
+  _glewInfo_GL_REGAL_ES1_0_compatibility();
+#endif /* GL_REGAL_ES1_0_compatibility */
+#ifdef GL_REGAL_ES1_1_compatibility
+  _glewInfo_GL_REGAL_ES1_1_compatibility();
+#endif /* GL_REGAL_ES1_1_compatibility */
+#ifdef GL_REGAL_enable
+  _glewInfo_GL_REGAL_enable();
+#endif /* GL_REGAL_enable */
 #ifdef GL_REGAL_error_string
   _glewInfo_GL_REGAL_error_string();
 #endif /* GL_REGAL_error_string */

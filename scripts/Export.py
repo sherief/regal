@@ -28,6 +28,7 @@ from EmuLookup         import formulae as lookupFormulae
 from EmuMarker         import formulae as markerFormulae
 from EmuExtensionQuery import formulae as extensionQueryFormulae
 from EmuErrorString    import formulae as errorStringFormulae
+from EmuEnable         import formulae as enableFormulae
 
 from Emu       import emuFindEntry, emuCodeGen
 from EmuDsa    import dsaFormulae
@@ -52,6 +53,7 @@ emuRegal = [
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : logFormulae    },
+    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : enableFormulae },
 ]
 
 # RegalDispathEmu.cpp fixed-function emulation
@@ -268,12 +270,6 @@ ${LICENSE}
 typedef XID GLXDrawable;
 #endif
 
-#if REGAL_SYS_NACL
-#include <stdint.h>
-typedef int32_t PP_Resource;
-struct PPB_OpenGLES2;
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -316,6 +312,11 @@ ${API_FUNC_DECLARE}
 #ifndef REGAL_API_H
 #define REGAL_API_H
 
+#if REGAL_SYS_NACL
+#include <stdint.h>
+struct PPB_OpenGLES2;
+#endif
+
 // Regal-specific API... try to keep this minimal
 // this is a seperate include guard to work nicely with RegalGLEW.h
 
@@ -327,7 +328,7 @@ typedef void (*RegalErrorCallback)(GLenum);
 REGAL_DECL RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback );
 
 #if REGAL_SYS_NACL
-typedef PP_Resource RegalSystemContext;
+typedef int32_t RegalSystemContext;
 REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx, struct PPB_OpenGLES2 *interface );
 #else
 typedef void * RegalSystemContext;
@@ -858,14 +859,15 @@ ContextInfo::init(const RegalContext &context)
 #ifdef REGAL_GL_EXTENSIONS
   regalExtensions = REGAL_EQUOTE(REGAL_GL_EXTENSIONS);
 #else
-  static const char *ourExtensions[4] = {
+  static const char *ourExtensions[5] = {
     "GL_REGAL_error_string",
     "GL_REGAL_extension_query",
     "GL_REGAL_log",
+    "GL_REGAL_enable",
     "GL_EXT_debug_marker"
   };
   regalExtensionsSet.insert(extList.begin(),extList.end());
-  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[4]);
+  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[5]);
   regalExtensions = ::boost::print::detail::join(regalExtensionsSet,string(" "));
 #endif
 
@@ -1932,41 +1934,41 @@ def apiNaclFuncDefineCode(apis, args):
 
   for api in apis:
 
-		if api.name=='gl':
+    if api.name=='gl':
 
-			for function in api.functions:
-				if not function.needsContext:
-					continue
-				if getattr(function,'gles',None)!='2.0':
-					continue
+      for function in api.functions:
+        if not function.needsContext:
+          continue
+        if getattr(function,'esVersions',None)==None or 2.0 not in function.esVersions:
+          continue
 
-				name   = function.name
-				params = paramsDefaultCode(function.parameters, True)
-				callParams = paramsNameCode(function.parameters)
-				rType  = typeCode(function.ret.type)
-				naclName = name
-				if naclName.startswith('gl'):
-					naclName = naclName[2:]
+        name   = function.name
+        params = paramsDefaultCode(function.parameters, True)
+        callParams = paramsNameCode(function.parameters)
+        rType  = typeCode(function.ret.type)
+        naclName = name
+        if naclName.startswith('gl'):
+          naclName = naclName[2:]
 
-				code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'nacl_', name, params)
-				code += '  ITrace("nacl_%s");\n' % name
-				code += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
-				code += '  RegalAssert(rCtx)\n'
-				code += '  RegalAssert(rCtx->naclES2)\n'
-				code += '  RegalAssert(rCtx->naclES2->%s)\n'%(naclName)
-				code += '  RegalAssert(rCtx->naclResource)\n'
-				if not typeIsVoid(rType):
-					code += '  %s ret = ' % rType
-				else:
-				  code += '  '
-				if len(callParams):
-					callParams = 'rCtx->naclResource, %s'%callParams
-				else:
-					callParams = 'rCtx->naclResource'
-				code += 'rCtx->naclES2->%s(%s);\n' % ( naclName, callParams )
-				if not typeIsVoid(rType):
-					code += '  return ret;\n'
-				code += '}\n\n'
+        code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'nacl_', name, params)
+        code += '  ITrace("nacl_%s");\n' % name
+        code += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
+        code += '  RegalAssert(rCtx)\n'
+        code += '  RegalAssert(rCtx->naclES2)\n'
+        code += '  RegalAssert(rCtx->naclES2->%s)\n'%(naclName)
+        code += '  RegalAssert(rCtx->naclResource)\n'
+        if not typeIsVoid(rType):
+          code += '  %s ret = ' % rType
+        else:
+          code += '  '
+        if len(callParams):
+          callParams = 'rCtx->naclResource, %s'%callParams
+        else:
+          callParams = 'rCtx->naclResource'
+        code += 'rCtx->naclES2->%s(%s);\n' % ( naclName, callParams )
+        if not typeIsVoid(rType):
+          code += '  return ret;\n'
+        code += '}\n\n'
 
   return code
 
@@ -1976,20 +1978,20 @@ def apiNaclFuncInitCode(apis, args):
 
   for api in apis:
 
-		if api.name=='gl':
+    if api.name=='gl':
 
-			for function in api.functions:
-				if not function.needsContext:
-					continue
-				if getattr(function,'gles',None)!='2.0':
-					continue
+      for function in api.functions:
+        if not function.needsContext:
+          continue
+        if getattr(function,'esVersions',None)==None or 2.0 not in function.esVersions:
+          continue
 
-				name   = function.name
-				params = paramsDefaultCode(function.parameters, True)
-				callParams = paramsNameCode(function.parameters)
-				rType  = typeCode(function.ret.type)
+        name   = function.name
+        params = paramsDefaultCode(function.parameters, True)
+        callParams = paramsNameCode(function.parameters)
+        rType  = typeCode(function.ret.type)
 
-				code += '  tbl.%s = %s_%s;\n' % ( name, 'nacl', name )
+        code += '  tbl.%s = %s_%s;\n' % ( name, 'nacl', name )
 
   return code
 

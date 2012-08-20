@@ -166,7 +166,7 @@ namespace Logging {
     // trying to create a RegalContext and triggering more
     // (recursive) logging.
 
-#ifndef REGAL_SYS_WGL
+#if !defined(REGAL_SYS_WGL) && !REGAL_NO_TLS
     if (!regalPrivateCurrentContextKey || !pthread_getspecific(regalPrivateCurrentContextKey))
       return 0;
 #endif
@@ -223,7 +223,7 @@ namespace Logging {
       
       RegalContext *rCtx = NULL;
 
-#ifndef REGAL_SYS_WGL
+#if !defined(REGAL_SYS_WGL) && !REGAL_NO_TLS
       if (regalPrivateCurrentContextKey && pthread_getspecific(regalPrivateCurrentContextKey))
         rCtx = GET_REGAL_CONTEXT();
 #else

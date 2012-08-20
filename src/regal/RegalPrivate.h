@@ -113,50 +113,87 @@ const GLuint RFF2ATexEnd16 = 16;
 
 // end attrib mapping
 
+struct RegalContext;
+
+extern RegalContext *currentContext;
+
+#if REGAL_NO_TLS
+
+typedef int Thread;
+
+inline void *RegalPrivateGetCurrentContext()
+{
+  return currentContext;
+}
+
+#else // REGAL_NO_TLS
+
 #if REGAL_SYS_WGL
-    typedef DWORD Thread;
 #if REGAL_WIN_TLS
 
-    extern "C" { DWORD __stdcall TlsAlloc    (void);          }
-    extern "C" { int   __stdcall TlsFree     (DWORD);         }
-    extern "C" { void* __stdcall TlsGetValue (DWORD);         }
-    extern "C" { int   __stdcall TlsSetValue (DWORD, void *); }
+  // Windows TLS API
 
-    extern DWORD regalCurrentContextTLSIDX;
+  typedef DWORD Thread;
 
-    inline void * RegalPrivateGetCurrentContext()
-    {
-        return TlsGetValue( regalCurrentContextTLSIDX );
+  extern "C" { DWORD __stdcall TlsAlloc    (void);          }
+  extern "C" { int   __stdcall TlsFree     (DWORD);         }
+  extern "C" { void* __stdcall TlsGetValue (DWORD);         }
+  extern "C" { int   __stdcall TlsSetValue (DWORD, void *); }
+
+  extern DWORD regalCurrentContextTLSIDX;
+
+  inline void * RegalPrivateGetCurrentContext()
+  {
+    return TlsGetValue( regalCurrentContextTLSIDX );
+  }
+
+#else // REGAL_WIN_TLS
+
+  // Windows __declspec( thread )
+
+  typedef DWORD Thread;
+
+  extern __declspec( thread ) void *regalCurrentContext;
+
+  inline void * RegalPrivateGetCurrentContext()
+  {
+    return regalCurrentContext;
+  }
+
+#endif // REGAL_WIN_TLS
+#else  // REGAL_SYS_WGL
+#if REGAL_SYS_OSX
+
+  // Mac OS X
+
+  typedef pthread_t Thread;
+  extern pthread_key_t regalPrivateCurrentContextKey;
+
+  inline void *RegalPrivateGetCurrentContext()
+  {
+    void *v = pthread_getspecific(regalPrivateCurrentContextKey);
+    if (!v) {
+      RegalMakeCurrent(CGLGetCurrentContext());
+      return pthread_getspecific(regalPrivateCurrentContextKey);
     }
-#else
-    extern __declspec( thread ) void * regalCurrentContext;
+    return v;
+  }
 
-    inline void * RegalPrivateGetCurrentContext()
-    {
-        return regalCurrentContext;
-    }
-#endif
-#else
-    typedef pthread_t Thread;
+#else  // REGAL_SYS_OSX
 
-    extern pthread_key_t regalPrivateCurrentContextKey;
+  // Linux, etc
 
-    inline void * RegalPrivateGetCurrentContext()
-    {
-#if ! REGAL_SYS_OSX
-        return pthread_getspecific( regalPrivateCurrentContextKey );
-#else
-        void * v = pthread_getspecific( regalPrivateCurrentContextKey );
-        if( v == NULL ) {
-           RegalMakeCurrent( CGLGetCurrentContext() );
-           return pthread_getspecific( regalPrivateCurrentContextKey );
-        }
-        return v;
-#endif
-    }
-#endif
+  typedef pthread_t Thread;
+  extern pthread_key_t regalPrivateCurrentContextKey;
 
-struct RegalContext;
+  inline void *RegalPrivateGetCurrentContext()
+  {
+    return pthread_getspecific(regalPrivateCurrentContextKey);
+  }
+
+#endif // REGAL_SYS_OSX
+#endif // REGAL_SYS_WGL
+#endif // REGAL_NO_TLS
 
 REGAL_NAMESPACE_END
 

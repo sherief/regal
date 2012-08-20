@@ -26170,6 +26170,494 @@ static void REGAL_CALL log_glHintPGI(GLenum target, GLint mode)
     rCtx->dsp->driverTbl.glHintPGI(target, mode);
 }
 
+// GL_REGAL_ES1_0_compatibility
+
+static void REGAL_CALL log_glAlphaFuncx(GLenum func, GLclampx ref)
+{
+    GTrace("glAlphaFuncx(", toString(func), ", ", ref, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glAlphaFuncx(func, ref);
+}
+
+static void REGAL_CALL log_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
+{
+    GTrace("glClearColorx(", red, ", ", green, ", ", blue, ", ", alpha, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearColorx(red, green, blue, alpha);
+}
+
+static void REGAL_CALL log_glClearDepthx(GLclampx depth)
+{
+    GTrace("glClearDepthx(", depth, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClearDepthx(depth);
+}
+
+static void REGAL_CALL log_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
+{
+    GTrace("glColor4x(", red, ", ", green, ", ", blue, ", ", alpha, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glColor4x(red, green, blue, alpha);
+}
+
+static void REGAL_CALL log_glDepthRangex(GLclampx zNear, GLclampx zFar)
+{
+    GTrace("glDepthRangex(", zNear, ", ", zFar, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glDepthRangex(zNear, zFar);
+}
+
+static void REGAL_CALL log_glFogx(GLenum pname, GLfixed param)
+{
+    GTrace("glFogx(", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFogx(pname, param);
+}
+
+static void REGAL_CALL log_glFogxv(GLenum pname, const GLfixed *params)
+{
+    GTrace("glFogxv(", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFogxv(pname, params);
+}
+
+static void REGAL_CALL log_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    GTrace("glFrustumf(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFrustumf(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL log_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    GTrace("glFrustumx(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glFrustumx(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL log_glLightModelx(GLenum pname, GLfixed param)
+{
+    GTrace("glLightModelx(", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLightModelx(pname, param);
+}
+
+static void REGAL_CALL log_glLightModelxv(GLenum pname, const GLfixed *params)
+{
+    GTrace("glLightModelxv(", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLightModelxv(pname, params);
+}
+
+static void REGAL_CALL log_glLightx(GLenum light, GLenum pname, GLfixed param)
+{
+    GTrace("glLightx(", toString(light), ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLightx(light, pname, param);
+}
+
+static void REGAL_CALL log_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
+{
+    GTrace("glLightxv(", toString(light), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLightxv(light, pname, params);
+}
+
+static void REGAL_CALL log_glLineWidthx(GLfixed width)
+{
+    GTrace("glLineWidthx(", width, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLineWidthx(width);
+}
+
+static void REGAL_CALL log_glLoadMatrixx(const GLfixed *m)
+{
+    GTrace("glLoadMatrixx(", m, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glLoadMatrixx(m);
+}
+
+static void REGAL_CALL log_glMaterialx(GLenum face, GLenum pname, GLfixed param)
+{
+    GTrace("glMaterialx(", toString(face), ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMaterialx(face, pname, param);
+}
+
+static void REGAL_CALL log_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
+{
+    GTrace("glMaterialxv(", toString(face), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMaterialxv(face, pname, params);
+}
+
+static void REGAL_CALL log_glMultMatrixx(const GLfixed *m)
+{
+    GTrace("glMultMatrixx(", m, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMultMatrixx(m);
+}
+
+static void REGAL_CALL log_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+{
+    GTrace("glMultiTexCoord4x(", toString(target), ", ", s, ", ", t, ", ", r, ", ", q, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glMultiTexCoord4x(target, s, t, r, q);
+}
+
+static void REGAL_CALL log_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
+{
+    GTrace("glNormal3x(", nx, ", ", ny, ", ", nz, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glNormal3x(nx, ny, nz);
+}
+
+static void REGAL_CALL log_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    GTrace("glOrthof(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glOrthof(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL log_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    GTrace("glOrthox(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glOrthox(left, right, bottom, top, zNear, zFar);
+}
+
+static void REGAL_CALL log_glPointSizex(GLfixed size)
+{
+    GTrace("glPointSizex(", size, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPointSizex(size);
+}
+
+static void REGAL_CALL log_glPolygonOffsetx(GLfixed factor, GLfixed units)
+{
+    GTrace("glPolygonOffsetx(", factor, ", ", units, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPolygonOffsetx(factor, units);
+}
+
+static void REGAL_CALL log_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
+{
+    GTrace("glRotatex(", angle, ", ", x, ", ", y, ", ", z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glRotatex(angle, x, y, z);
+}
+
+static void REGAL_CALL log_glSampleCoveragex(GLclampx value, GLboolean invert)
+{
+    GTrace("glSampleCoveragex(", value, ", ", toString(invert), ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glSampleCoveragex(value, invert);
+}
+
+static void REGAL_CALL log_glScalex(GLfixed x, GLfixed y, GLfixed z)
+{
+    GTrace("glScalex(", x, ", ", y, ", ", z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glScalex(x, y, z);
+}
+
+static void REGAL_CALL log_glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+{
+    GTrace("glTexEnvx(", toString(target), ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexEnvx(target, pname, param);
+}
+
+static void REGAL_CALL log_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    GTrace("glTexEnvxv(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexEnvxv(target, pname, params);
+}
+
+static void REGAL_CALL log_glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+{
+    GTrace("glTexParameterx(", toString(target), ", ", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexParameterx(target, pname, param);
+}
+
+static void REGAL_CALL log_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
+{
+    GTrace("glTranslatex(", x, ", ", y, ", ", z, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTranslatex(x, y, z);
+}
+
+// GL_REGAL_ES1_1_compatibility
+
+static void REGAL_CALL log_glClipPlanef(GLenum plane, const GLfloat *equation)
+{
+    GTrace("glClipPlanef(", toString(plane), ", ", equation, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClipPlanef(plane, equation);
+}
+
+static void REGAL_CALL log_glClipPlanex(GLenum plane, const GLfixed *equation)
+{
+    GTrace("glClipPlanex(", toString(plane), ", ", equation, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glClipPlanex(plane, equation);
+}
+
+static void REGAL_CALL log_glGetClipPlanef(GLenum pname, GLfloat eqn[4])
+{
+    GTrace("glGetClipPlanef(", toString(pname), ", ", eqn, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetClipPlanef(pname, eqn);
+}
+
+static void REGAL_CALL log_glGetClipPlanex(GLenum pname, GLfixed eqn[4])
+{
+    GTrace("glGetClipPlanex(", toString(pname), ", ", eqn, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetClipPlanex(pname, eqn);
+}
+
+static void REGAL_CALL log_glGetFixedv(GLenum pname, GLfixed *params)
+{
+    GTrace("glGetFixedv(", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetFixedv(pname, params);
+}
+
+static void REGAL_CALL log_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
+{
+    GTrace("glGetLightxv(", toString(light), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetLightxv(light, pname, params);
+}
+
+static void REGAL_CALL log_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
+{
+    GTrace("glGetMaterialxv(", toString(face), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetMaterialxv(face, pname, params);
+}
+
+static void REGAL_CALL log_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
+{
+    GTrace("glGetTexEnvxv(", toString(env), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetTexEnvxv(env, pname, params);
+}
+
+static void REGAL_CALL log_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
+{
+    GTrace("glGetTexParameterxv(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glGetTexParameterxv(target, pname, params);
+}
+
+static void REGAL_CALL log_glPointParameterx(GLenum pname, GLfixed param)
+{
+    GTrace("glPointParameterx(", toString(pname), ", ", param, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPointParameterx(pname, param);
+}
+
+static void REGAL_CALL log_glPointParameterxv(GLenum pname, const GLfixed *params)
+{
+    GTrace("glPointParameterxv(", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPointParameterxv(pname, params);
+}
+
+static void REGAL_CALL log_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+    GTrace("glPointSizePointerOES(", toString(type), ", ", stride, ", ", pointer, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glPointSizePointerOES(type, stride, pointer);
+}
+
+static void REGAL_CALL log_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    GTrace("glTexParameterxv(", toString(target), ", ", toString(pname), ", ", params, ")");
+    RegalContext * rCtx = GET_REGAL_CONTEXT();
+    RegalAssert(rCtx);
+    RegalAssert(rCtx->dsp);
+    DispatchStateScopedStepDown stepDown(rCtx->dsp);
+    RegalAssert(rCtx->dsp->curr);
+    rCtx->dsp->driverTbl.glTexParameterxv(target, pname, params);
+}
+
 // GL_REGAL_error_string
 
 static const GLchar *REGAL_CALL log_glErrorStringREGAL(GLenum error)
@@ -30778,6 +31266,56 @@ void InitDispatchTableLog(DispatchTable &tbl)
   // GL_PGI_misc_hints
 
   tbl.glHintPGI = log_glHintPGI;
+
+  // GL_REGAL_ES1_0_compatibility
+
+  tbl.glAlphaFuncx = log_glAlphaFuncx;
+  tbl.glClearColorx = log_glClearColorx;
+  tbl.glClearDepthx = log_glClearDepthx;
+  tbl.glColor4x = log_glColor4x;
+  tbl.glDepthRangex = log_glDepthRangex;
+  tbl.glFogx = log_glFogx;
+  tbl.glFogxv = log_glFogxv;
+  tbl.glFrustumf = log_glFrustumf;
+  tbl.glFrustumx = log_glFrustumx;
+  tbl.glLightModelx = log_glLightModelx;
+  tbl.glLightModelxv = log_glLightModelxv;
+  tbl.glLightx = log_glLightx;
+  tbl.glLightxv = log_glLightxv;
+  tbl.glLineWidthx = log_glLineWidthx;
+  tbl.glLoadMatrixx = log_glLoadMatrixx;
+  tbl.glMaterialx = log_glMaterialx;
+  tbl.glMaterialxv = log_glMaterialxv;
+  tbl.glMultMatrixx = log_glMultMatrixx;
+  tbl.glMultiTexCoord4x = log_glMultiTexCoord4x;
+  tbl.glNormal3x = log_glNormal3x;
+  tbl.glOrthof = log_glOrthof;
+  tbl.glOrthox = log_glOrthox;
+  tbl.glPointSizex = log_glPointSizex;
+  tbl.glPolygonOffsetx = log_glPolygonOffsetx;
+  tbl.glRotatex = log_glRotatex;
+  tbl.glSampleCoveragex = log_glSampleCoveragex;
+  tbl.glScalex = log_glScalex;
+  tbl.glTexEnvx = log_glTexEnvx;
+  tbl.glTexEnvxv = log_glTexEnvxv;
+  tbl.glTexParameterx = log_glTexParameterx;
+  tbl.glTranslatex = log_glTranslatex;
+
+  // GL_REGAL_ES1_1_compatibility
+
+  tbl.glClipPlanef = log_glClipPlanef;
+  tbl.glClipPlanex = log_glClipPlanex;
+  tbl.glGetClipPlanef = log_glGetClipPlanef;
+  tbl.glGetClipPlanex = log_glGetClipPlanex;
+  tbl.glGetFixedv = log_glGetFixedv;
+  tbl.glGetLightxv = log_glGetLightxv;
+  tbl.glGetMaterialxv = log_glGetMaterialxv;
+  tbl.glGetTexEnvxv = log_glGetTexEnvxv;
+  tbl.glGetTexParameterxv = log_glGetTexParameterxv;
+  tbl.glPointParameterx = log_glPointParameterx;
+  tbl.glPointParameterxv = log_glPointParameterxv;
+  tbl.glPointSizePointerOES = log_glPointSizePointerOES;
+  tbl.glTexParameterxv = log_glTexParameterxv;
 
   // GL_REGAL_error_string
 

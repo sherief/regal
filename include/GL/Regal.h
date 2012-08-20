@@ -102,12 +102,6 @@
 typedef XID GLXDrawable;
 #endif
 
-#if REGAL_SYS_NACL
-#include <stdint.h>
-typedef int32_t PP_Resource;
-struct PPB_OpenGLES2;
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -143,13 +137,8 @@ typedef float GLclampf;
 typedef double GLdouble;
 typedef double GLclampd;
 typedef void GLvoid;
-#ifdef REGAL_SYS_NACL
-typedef long int GLintptr;
-typedef long int GLsizeiptr;
-#else
 typedef ptrdiff_t GLintptr;
 typedef ptrdiff_t GLsizeiptr;
-#endif
 typedef char GLchar;
 typedef signed long long GLint64;
 typedef unsigned long long GLuint64;
@@ -165,6 +154,8 @@ typedef unsigned short GLhalfNV;
 typedef int64_t GLint64EXT;
 typedef uint64_t GLuint64EXT;
 typedef GLintptr GLvdpauSurfaceNV;
+typedef int GLfixed;
+typedef int GLclampx;
 
 #if REGAL_SYS_WGL
 #ifdef  REGAL_SYS_WGL_DECLARE_WGL
@@ -19222,6 +19213,236 @@ REGAL_DECL void REGAL_CALL glHintPGI(GLenum target, GLint mode);
 #endif
 
 /**
+ ** GL_REGAL_ES1_0_compatibility
+ **/
+
+#if (defined(GL_REGAL_ES1_0_COMPATIBILITY) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_REGAL_ES1_0_COMPATIBILITY)) && !defined(REGAL_NO_ENUM_GL_REGAL_ES1_0_COMPATIBILITY)
+#define REGAL_NO_ENUM_GL_REGAL_ES1_0_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_0_COMPATIBILITY) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_REGAL_ES1_0_COMPATIBILITY)) && !defined(REGAL_NO_TYPEDEF_GL_REGAL_ES1_0_COMPATIBILITY)
+#define REGAL_NO_TYPEDEF_GL_REGAL_ES1_0_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_0_COMPATIBILITY) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_REGAL_ES1_0_COMPATIBILITY)) && !defined(REGAL_NO_NAMESPACE_GL_REGAL_ES1_0_COMPATIBILITY)
+#define REGAL_NO_NAMESPACE_GL_REGAL_ES1_0_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_0_COMPATIBILITY) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_REGAL_ES1_0_COMPATIBILITY)) && !defined(REGAL_NO_DECLARATION_GL_REGAL_ES1_0_COMPATIBILITY)
+#define REGAL_NO_DECLARATION_GL_REGAL_ES1_0_COMPATIBILITY
+#endif
+
+#ifndef GL_REGAL_ES1_0_compatibility
+#define GL_REGAL_ES1_0_compatibility 1
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_REGAL_ES1_0_COMPATIBILITY
+typedef void (REGAL_CALL *PFNGLALPHAFUNCXPROC)(GLenum func, GLclampx ref);
+typedef void (REGAL_CALL *PFNGLCLEARCOLORXPROC)(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
+typedef void (REGAL_CALL *PFNGLCLEARDEPTHXPROC)(GLclampx depth);
+typedef void (REGAL_CALL *PFNGLCOLOR4XPROC)(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+typedef void (REGAL_CALL *PFNGLDEPTHRANGEXPROC)(GLclampx zNear, GLclampx zFar);
+typedef void (REGAL_CALL *PFNGLFOGXPROC)(GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLFOGXVPROC)(GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLFRUSTUMFPROC)(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (REGAL_CALL *PFNGLFRUSTUMXPROC)(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (REGAL_CALL *PFNGLLIGHTMODELXPROC)(GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLLIGHTMODELXVPROC)(GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLLIGHTXPROC)(GLenum light, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLLIGHTXVPROC)(GLenum light, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLLINEWIDTHXPROC)(GLfixed width);
+typedef void (REGAL_CALL *PFNGLLOADMATRIXXPROC)(const GLfixed *m);
+typedef void (REGAL_CALL *PFNGLMATERIALXPROC)(GLenum face, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLMATERIALXVPROC)(GLenum face, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLMULTITEXCOORD4XPROC)(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+typedef void (REGAL_CALL *PFNGLMULTMATRIXXPROC)(const GLfixed *m);
+typedef void (REGAL_CALL *PFNGLNORMAL3XPROC)(GLfixed nx, GLfixed ny, GLfixed nz);
+typedef void (REGAL_CALL *PFNGLORTHOFPROC)(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (REGAL_CALL *PFNGLORTHOXPROC)(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (REGAL_CALL *PFNGLPOINTSIZEXPROC)(GLfixed size);
+typedef void (REGAL_CALL *PFNGLPOLYGONOFFSETXPROC)(GLfixed factor, GLfixed units);
+typedef void (REGAL_CALL *PFNGLROTATEXPROC)(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+typedef void (REGAL_CALL *PFNGLSAMPLECOVERAGEXPROC)(GLclampx value, GLboolean invert);
+typedef void (REGAL_CALL *PFNGLSCALEXPROC)(GLfixed x, GLfixed y, GLfixed z);
+typedef void (REGAL_CALL *PFNGLTEXENVXPROC)(GLenum target, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLTEXENVXVPROC)(GLenum target, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLTEXPARAMETERXPROC)(GLenum target, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLTRANSLATEXPROC)(GLfixed x, GLfixed y, GLfixed z);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_REGAL_ES1_0_COMPATIBILITY
+#define glAlphaFuncx                        rglAlphaFuncx
+#define glClearColorx                       rglClearColorx
+#define glClearDepthx                       rglClearDepthx
+#define glColor4x                           rglColor4x
+#define glDepthRangex                       rglDepthRangex
+#define glFogx                              rglFogx
+#define glFogxv                             rglFogxv
+#define glFrustumf                          rglFrustumf
+#define glFrustumx                          rglFrustumx
+#define glLightModelx                       rglLightModelx
+#define glLightModelxv                      rglLightModelxv
+#define glLightx                            rglLightx
+#define glLightxv                           rglLightxv
+#define glLineWidthx                        rglLineWidthx
+#define glLoadMatrixx                       rglLoadMatrixx
+#define glMaterialx                         rglMaterialx
+#define glMaterialxv                        rglMaterialxv
+#define glMultMatrixx                       rglMultMatrixx
+#define glMultiTexCoord4x                   rglMultiTexCoord4x
+#define glNormal3x                          rglNormal3x
+#define glOrthof                            rglOrthof
+#define glOrthox                            rglOrthox
+#define glPointSizex                        rglPointSizex
+#define glPolygonOffsetx                    rglPolygonOffsetx
+#define glRotatex                           rglRotatex
+#define glSampleCoveragex                   rglSampleCoveragex
+#define glScalex                            rglScalex
+#define glTexEnvx                           rglTexEnvx
+#define glTexEnvxv                          rglTexEnvxv
+#define glTexParameterx                     rglTexParameterx
+#define glTranslatex                        rglTranslatex
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_REGAL_ES1_0_COMPATIBILITY
+REGAL_DECL void REGAL_CALL glAlphaFuncx(GLenum func, GLclampx ref);
+REGAL_DECL void REGAL_CALL glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
+REGAL_DECL void REGAL_CALL glClearDepthx(GLclampx depth);
+REGAL_DECL void REGAL_CALL glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+REGAL_DECL void REGAL_CALL glDepthRangex(GLclampx zNear, GLclampx zFar);
+REGAL_DECL void REGAL_CALL glFogx(GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glFogxv(GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+REGAL_DECL void REGAL_CALL glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+REGAL_DECL void REGAL_CALL glLightModelx(GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glLightModelxv(GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glLightx(GLenum light, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glLightxv(GLenum light, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glLineWidthx(GLfixed width);
+REGAL_DECL void REGAL_CALL glLoadMatrixx(const GLfixed *m);
+REGAL_DECL void REGAL_CALL glMaterialx(GLenum face, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glMaterialxv(GLenum face, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glMultMatrixx(const GLfixed *m);
+REGAL_DECL void REGAL_CALL glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+REGAL_DECL void REGAL_CALL glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz);
+REGAL_DECL void REGAL_CALL glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+REGAL_DECL void REGAL_CALL glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+REGAL_DECL void REGAL_CALL glPointSizex(GLfixed size);
+REGAL_DECL void REGAL_CALL glPolygonOffsetx(GLfixed factor, GLfixed units);
+REGAL_DECL void REGAL_CALL glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+REGAL_DECL void REGAL_CALL glSampleCoveragex(GLclampx value, GLboolean invert);
+REGAL_DECL void REGAL_CALL glScalex(GLfixed x, GLfixed y, GLfixed z);
+REGAL_DECL void REGAL_CALL glTexEnvx(GLenum target, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glTexParameterx(GLenum target, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z);
+#endif
+
+/**
+ ** GL_REGAL_ES1_1_compatibility
+ **/
+
+#if (defined(GL_REGAL_ES1_1_COMPATIBILITY) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_REGAL_ES1_1_COMPATIBILITY)) && !defined(REGAL_NO_ENUM_GL_REGAL_ES1_1_COMPATIBILITY)
+#define REGAL_NO_ENUM_GL_REGAL_ES1_1_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_1_COMPATIBILITY) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_REGAL_ES1_1_COMPATIBILITY)) && !defined(REGAL_NO_TYPEDEF_GL_REGAL_ES1_1_COMPATIBILITY)
+#define REGAL_NO_TYPEDEF_GL_REGAL_ES1_1_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_1_COMPATIBILITY) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_REGAL_ES1_1_COMPATIBILITY)) && !defined(REGAL_NO_NAMESPACE_GL_REGAL_ES1_1_COMPATIBILITY)
+#define REGAL_NO_NAMESPACE_GL_REGAL_ES1_1_COMPATIBILITY
+#endif
+
+#if (defined(GL_REGAL_ES1_1_COMPATIBILITY) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_REGAL_ES1_1_COMPATIBILITY)) && !defined(REGAL_NO_DECLARATION_GL_REGAL_ES1_1_COMPATIBILITY)
+#define REGAL_NO_DECLARATION_GL_REGAL_ES1_1_COMPATIBILITY
+#endif
+
+#ifndef GL_REGAL_ES1_1_compatibility
+#define GL_REGAL_ES1_1_compatibility 1
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_REGAL_ES1_1_COMPATIBILITY
+typedef void (REGAL_CALL *PFNGLCLIPPLANEFPROC)(GLenum plane, const GLfloat *equation);
+typedef void (REGAL_CALL *PFNGLCLIPPLANEXPROC)(GLenum plane, const GLfixed *equation);
+typedef void (REGAL_CALL *PFNGLGETCLIPPLANEFPROC)(GLenum pname, GLfloat eqn[4]);
+typedef void (REGAL_CALL *PFNGLGETCLIPPLANEXPROC)(GLenum pname, GLfixed eqn[4]);
+typedef void (REGAL_CALL *PFNGLGETFIXEDVPROC)(GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *PFNGLGETLIGHTXVPROC)(GLenum light, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *PFNGLGETMATERIALXVPROC)(GLenum face, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *PFNGLGETTEXENVXVPROC)(GLenum env, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *PFNGLGETTEXPARAMETERXVPROC)(GLenum target, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *PFNGLPOINTPARAMETERXPROC)(GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *PFNGLPOINTPARAMETERXVPROC)(GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *PFNGLPOINTSIZEPOINTEROESPROC)(GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *PFNGLTEXPARAMETERXVPROC)(GLenum target, GLenum pname, const GLfixed *params);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_REGAL_ES1_1_COMPATIBILITY
+#define glClipPlanef                        rglClipPlanef
+#define glClipPlanex                        rglClipPlanex
+#define glGetClipPlanef                     rglGetClipPlanef
+#define glGetClipPlanex                     rglGetClipPlanex
+#define glGetFixedv                         rglGetFixedv
+#define glGetLightxv                        rglGetLightxv
+#define glGetMaterialxv                     rglGetMaterialxv
+#define glGetTexEnvxv                       rglGetTexEnvxv
+#define glGetTexParameterxv                 rglGetTexParameterxv
+#define glPointParameterx                   rglPointParameterx
+#define glPointParameterxv                  rglPointParameterxv
+#define glPointSizePointerOES               rglPointSizePointerOES
+#define glTexParameterxv                    rglTexParameterxv
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_REGAL_ES1_1_COMPATIBILITY
+REGAL_DECL void REGAL_CALL glClipPlanef(GLenum plane, const GLfloat *equation);
+REGAL_DECL void REGAL_CALL glClipPlanex(GLenum plane, const GLfixed *equation);
+REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat eqn[4]);
+REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed eqn[4]);
+REGAL_DECL void REGAL_CALL glGetFixedv(GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL glGetLightxv(GLenum light, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL glPointParameterx(GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL glPointParameterxv(GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params);
+#endif
+
+/**
+ ** GL_REGAL_enable
+ **/
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_ENUM_GL_REGAL_ENABLE)
+#define REGAL_NO_ENUM_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_TYPEDEF_GL_REGAL_ENABLE)
+#define REGAL_NO_TYPEDEF_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_NAMESPACE_GL_REGAL_ENABLE)
+#define REGAL_NO_NAMESPACE_GL_REGAL_ENABLE
+#endif
+
+#if (defined(GL_REGAL_ENABLE) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_REGAL_ENABLE)) && !defined(REGAL_NO_DECLARATION_GL_REGAL_ENABLE)
+#define REGAL_NO_DECLARATION_GL_REGAL_ENABLE
+#endif
+
+#ifndef GL_REGAL_enable
+#define GL_REGAL_enable 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_REGAL_ENABLE
+#define GL_ERROR_REGAL     0x9322     /* 37666 */
+#define GL_DEBUG_REGAL     0x9323     /* 37667 */
+#define GL_LOG_REGAL       0x9324     /* 37668 */
+#define GL_EMULATION_REGAL 0x9325     /* 37669 */
+#define GL_LOADER_REGAL    0x9326     /* 37670 */
+#endif
+
+/**
  ** GL_REGAL_error_string
  **/
 
@@ -30658,6 +30879,11 @@ REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void);
 #ifndef REGAL_API_H
 #define REGAL_API_H
 
+#if REGAL_SYS_NACL
+#include <stdint.h>
+struct PPB_OpenGLES2;
+#endif
+
 // Regal-specific API... try to keep this minimal
 // this is a seperate include guard to work nicely with RegalGLEW.h
 
@@ -30669,7 +30895,7 @@ typedef void (*RegalErrorCallback)(GLenum);
 REGAL_DECL RegalErrorCallback RegalSetErrorCallback( RegalErrorCallback callback );
 
 #if REGAL_SYS_NACL
-typedef PP_Resource RegalSystemContext;
+typedef int32_t RegalSystemContext;
 REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx, struct PPB_OpenGLES2 *interface );
 #else
 typedef void * RegalSystemContext;

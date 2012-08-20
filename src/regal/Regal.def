@@ -12,6 +12,7 @@ EXPORTS
   glAlphaFragmentOp2ATI
   glAlphaFragmentOp3ATI
   glAlphaFunc
+  glAlphaFuncx
   glApplyTextureEXT
   glAreProgramsResidentNV
   glAreTexturesResident
@@ -140,9 +141,11 @@ EXPORTS
   glClearColor
   glClearColorIiEXT
   glClearColorIuiEXT
+  glClearColorx
   glClearDepth
   glClearDepthdNV
   glClearDepthf
+  glClearDepthx
   glClearIndex
   glClearNamedBufferDataEXT
   glClearNamedBufferSubDataEXT
@@ -153,6 +156,8 @@ EXPORTS
   glClientAttribDefaultEXT
   glClientWaitSync
   glClipPlane
+  glClipPlanef
+  glClipPlanex
   glColor3b
   glColor3bv
   glColor3d
@@ -197,6 +202,7 @@ EXPORTS
   glColor4uiv
   glColor4us
   glColor4usv
+  glColor4x
   glColorFormatNV
   glColorFragmentOp1ATI
   glColorFragmentOp2ATI
@@ -371,6 +377,7 @@ EXPORTS
   glDepthRangeIndexed
   glDepthRangedNV
   glDepthRangef
+  glDepthRangex
   glDetachObjectARB
   glDetachShader
   glDetailTexFuncSGIS
@@ -513,6 +520,8 @@ EXPORTS
   glFogfv
   glFogi
   glFogiv
+  glFogx
+  glFogxv
   glFragmentColorMaterialEXT
   glFragmentColorMaterialSGIX
   glFragmentLightModelfEXT
@@ -565,6 +574,8 @@ EXPORTS
   glFreeObjectBufferATI
   glFrontFace
   glFrustum
+  glFrustumf
+  glFrustumx
   glGenAsyncMarkersSGIX
   glGenBuffers
   glGenBuffersARB
@@ -629,6 +640,8 @@ EXPORTS
   glGetBufferSubData
   glGetBufferSubDataARB
   glGetClipPlane
+  glGetClipPlanef
+  glGetClipPlanex
   glGetColorTable
   glGetColorTableEXT
   glGetColorTableParameterfv
@@ -666,6 +679,7 @@ EXPORTS
   glGetFenceivNV
   glGetFinalCombinerInputParameterfvNV
   glGetFinalCombinerInputParameterivNV
+  glGetFixedv
   glGetFloatIndexedvEXT
   glGetFloati_v
   glGetFloati_vEXT
@@ -713,6 +727,7 @@ EXPORTS
   glGetInvariantIntegervEXT
   glGetLightfv
   glGetLightiv
+  glGetLightxv
   glGetListParameterfvSGIX
   glGetListParameterivSGIX
   glGetLocalConstantBooleanvEXT
@@ -728,6 +743,7 @@ EXPORTS
   glGetMapiv
   glGetMaterialfv
   glGetMaterialiv
+  glGetMaterialxv
   glGetMinmax
   glGetMinmaxEXT
   glGetMinmaxParameterfv
@@ -864,6 +880,7 @@ EXPORTS
   glGetTexBumpParameterivATI
   glGetTexEnvfv
   glGetTexEnviv
+  glGetTexEnvxv
   glGetTexFilterFuncSGIS
   glGetTexGendv
   glGetTexGenfv
@@ -878,6 +895,7 @@ EXPORTS
   glGetTexParameterPointervAPPLE
   glGetTexParameterfv
   glGetTexParameteriv
+  glGetTexParameterxv
   glGetTextureHandleNV
   glGetTextureImageEXT
   glGetTextureLevelParameterfvEXT
@@ -1061,12 +1079,17 @@ EXPORTS
   glLightModelfv
   glLightModeli
   glLightModeliv
+  glLightModelx
+  glLightModelxv
   glLightf
   glLightfv
   glLighti
   glLightiv
+  glLightx
+  glLightxv
   glLineStipple
   glLineWidth
+  glLineWidthx
   glLinkProgram
   glLinkProgramARB
   glListBase
@@ -1078,6 +1101,7 @@ EXPORTS
   glLoadIdentityDeformationMapSGIX
   glLoadMatrixd
   glLoadMatrixf
+  glLoadMatrixx
   glLoadName
   glLoadProgramNV
   glLoadTransposeMatrixd
@@ -1120,6 +1144,8 @@ EXPORTS
   glMaterialfv
   glMateriali
   glMaterialiv
+  glMaterialx
+  glMaterialxv
   glMatrixFrustumEXT
   glMatrixIndexPointerARB
   glMatrixIndexubvARB
@@ -1152,6 +1178,7 @@ EXPORTS
   glMinmaxEXT
   glMultMatrixd
   glMultMatrixf
+  glMultMatrixx
   glMultTransposeMatrixd
   glMultTransposeMatrixdARB
   glMultTransposeMatrixf
@@ -1242,6 +1269,7 @@ EXPORTS
   glMultiTexCoord4sARB
   glMultiTexCoord4sv
   glMultiTexCoord4svARB
+  glMultiTexCoord4x
   glMultiTexCoordP1ui
   glMultiTexCoordP1uiv
   glMultiTexCoordP2ui
@@ -1318,6 +1346,7 @@ EXPORTS
   glNormal3iv
   glNormal3s
   glNormal3sv
+  glNormal3x
   glNormalFormatNV
   glNormalP3ui
   glNormalP3uiv
@@ -1340,6 +1369,8 @@ EXPORTS
   glObjectPurgeableAPPLE
   glObjectUnpurgeableAPPLE
   glOrtho
+  glOrthof
+  glOrthox
   glPNTrianglesfATI
   glPNTrianglesiATI
   glPassTexCoordATI
@@ -1395,12 +1426,17 @@ EXPORTS
   glPointParameteriNV
   glPointParameteriv
   glPointParameterivNV
+  glPointParameterx
+  glPointParameterxv
   glPointSize
+  glPointSizePointerOES
+  glPointSizex
   glPollAsyncSGIX
   glPollInstrumentsSGIX
   glPolygonMode
   glPolygonOffset
   glPolygonOffsetEXT
+  glPolygonOffsetx
   glPolygonStipple
   glPopAttrib
   glPopClientAttrib
@@ -1664,8 +1700,10 @@ EXPORTS
   glResumeTransformFeedbackNV
   glRotated
   glRotatef
+  glRotatex
   glSampleCoverage
   glSampleCoverageARB
+  glSampleCoveragex
   glSampleMapATI
   glSampleMaskEXT
   glSampleMaskIndexedNV
@@ -1681,6 +1719,7 @@ EXPORTS
   glSamplerParameteriv
   glScaled
   glScalef
+  glScalex
   glScissor
   glScissorArrayv
   glScissorIndexed
@@ -1862,6 +1901,8 @@ EXPORTS
   glTexEnvfv
   glTexEnvi
   glTexEnviv
+  glTexEnvx
+  glTexEnvxv
   glTexFilterFuncSGIS
   glTexGend
   glTexGendv
@@ -1886,6 +1927,8 @@ EXPORTS
   glTexParameterfv
   glTexParameteri
   glTexParameteriv
+  glTexParameterx
+  glTexParameterxv
   glTexRenderbufferNV
   glTexScissorFuncINTEL
   glTexScissorINTEL
@@ -1941,6 +1984,7 @@ EXPORTS
   glTransformPathNV
   glTranslated
   glTranslatef
+  glTranslatex
   glUniform1d
   glUniform1dv
   glUniform1f

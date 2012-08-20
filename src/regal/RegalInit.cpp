@@ -102,6 +102,14 @@ extern "C" { DWORD __stdcall GetCurrentThreadId(void); }
 
 DispatchTableGlobal dispatchTableGlobal;
 
+// Single-threaded RegalContext 
+
+RegalContext *currentContext = NULL;
+
+#if REGAL_NO_TLS
+inline Thread RegalPrivateThreadSelf() { return 1; }
+#else
+
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
     DWORD regalCurrentContextTLSIDX = DWORD(~0);
@@ -125,10 +133,6 @@ DispatchTableGlobal dispatchTableGlobal;
     {
         return GetCurrentThreadId();
     }
-    inline bool RegalPrivateThreadsEqual( Thread t0, Thread t1 )
-    {
-        return t0 == t1;
-    }
 #else
     pthread_key_t regalPrivateCurrentContextKey = 0;
 
@@ -145,10 +149,7 @@ DispatchTableGlobal dispatchTableGlobal;
         return pthread_self();
     }
 
-    inline bool RegalPrivateThreadsEqual( Thread t0, Thread t1 )
-    {
-        return pthread_equal( t0, t1 ) != 0;
-    }
+#endif
 #endif
 
 map<RegalSystemContext, RegalContext *> sc2rc;
@@ -184,10 +185,12 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
         RegalContext * ctx = sc2rc.count( sysCtx ) > 0 ? sc2rc[ sysCtx ] : NULL;
         if (!ctx) {
             ctx = new RegalContext();
+            currentContext = ctx;
 #if REGAL_SYS_NACL
             ctx->naclResource = sysCtx;
             ctx->naclES2      = interface;
 #endif
+#if !REGAL_NO_TLS
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
             if (regalCurrentContextTLSIDX == ~0)
@@ -201,6 +204,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
                 pthread_key_create( & regalPrivateCurrentContextKey, NULL );
             }
             pthread_setspecific( regalPrivateCurrentContextKey, ctx );
+#endif
 #endif
             ctx->Init();
             sc2rc[ sysCtx ] = ctx;
@@ -219,6 +223,8 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
     RegalAssert( ctx->thread == 0 );
     th2rc[ thread ] = ctx;
     ctx->thread = thread;
+    
+#if !REGAL_NO_TLS
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
     if (regalCurrentContextTLSIDX == ~0)
@@ -230,7 +236,10 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
 #else
     pthread_setspecific( regalPrivateCurrentContextKey, ctx );
 #endif
-  } else {
+#endif
+  } 
+  else
+  {
     if( th2rc.count( thread ) ) {
       RegalContext * & ctx = th2rc[ thread ];
       if( ctx != NULL ) {
@@ -240,6 +249,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
         RegalAssert( th2rc[ thread ] == NULL );
       }
     }
+#if !REGAL_NO_TLS
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
     TlsSetValue( regalCurrentContextTLSIDX, NULL );
@@ -248,6 +258,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
 #endif
 #else
     pthread_setspecific( regalPrivateCurrentContextKey, NULL );
+#endif
 #endif
   }
 }
