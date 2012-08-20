@@ -1,15 +1,19 @@
 NAME = $(REGAL_NAME)
 
+# Building without NACL_SDK_ROOT set?
+
+ifeq ($(NACL_SDK_ROOT),)
 M_PREFIX = i686
 M_NAME ?= $(shell uname -s)
 ifeq (Linux,${M_NAME})
 M_PREFIX = i686
 endif
+CC  := $(M_PREFIX)-nacl-gcc
+CXX := $(M_PREFIX)-nacl-g++
+LD  := $(M_PREFIX)-nacl-ld
+STRIP ?=
+endif
 
-CC  = $(M_PREFIX)-nacl-gcc
-CXX = $(M_PREFIX)-nacl-g++
-LD  = $(M_PREFIX)-nacl-ld
-AR  = $(M_PREFIX)-nacl-ar
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =
 LIBDIR =

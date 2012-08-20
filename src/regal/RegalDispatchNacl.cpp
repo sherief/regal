@@ -578,6 +578,17 @@ static void REGAL_CALL nacl_glBlendEquation(GLenum mode)
   rCtx->naclES2->BlendEquation(rCtx->naclResource, mode);
 }
 
+static void REGAL_CALL nacl_glActiveTexture(GLenum texture)
+{
+  ITrace("nacl_glActiveTexture");
+  RegalContext * rCtx = GET_REGAL_CONTEXT();
+  RegalAssert(rCtx)
+  RegalAssert(rCtx->naclES2)
+  RegalAssert(rCtx->naclES2->ActiveTexture)
+  RegalAssert(rCtx->naclResource)
+  rCtx->naclES2->ActiveTexture(rCtx->naclResource, texture);
+}
+
 static void REGAL_CALL nacl_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
   ITrace("nacl_glCompressedTexImage2D");
@@ -1672,6 +1683,7 @@ void InitDispatchTableNacl(DispatchTable &tbl)
   tbl.glTexSubImage2D = nacl_glTexSubImage2D;
   tbl.glBlendColor = nacl_glBlendColor;
   tbl.glBlendEquation = nacl_glBlendEquation;
+  tbl.glActiveTexture = nacl_glActiveTexture;
   tbl.glCompressedTexImage2D = nacl_glCompressedTexImage2D;
   tbl.glCompressedTexSubImage2D = nacl_glCompressedTexSubImage2D;
   tbl.glSampleCoverage = nacl_glSampleCoverage;

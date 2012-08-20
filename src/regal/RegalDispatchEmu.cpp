@@ -27997,6 +27997,10 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 
 // GL_PGI_misc_hints
 
+// GL_REGAL_ES1_0_compatibility
+
+// GL_REGAL_ES1_1_compatibility
+
 // GL_REGAL_error_string
 
 // GL_REGAL_extension_query

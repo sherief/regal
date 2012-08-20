@@ -36,7 +36,7 @@ endif
 INCLUDE = -Iinclude
 CFLAGS = $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
 
-all: regal.lib glew.lib glut.lib regal.bin
+all: regal.lib glew.lib glu.lib glut.lib regal.bin
 
 # Debug target implies Regal targets, only
 
@@ -46,6 +46,14 @@ debug: regal.lib
 
 export:
 	scripts/Export.py --api gl 4.2 --api wgl 4.0 --api glx 4.0 --api cgl 1.4 --api egl 1.0 --outdir src/regal
+
+# Disable mongoose and Regal HTTP for NaCL build
+
+ifneq ($(filter nacl%,$(SYSTEM)),)
+CFLAGS += -DREGAL_NO_HTTP
+endif
+
+#
 
 LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
 LIB.LIBS           := 
@@ -72,12 +80,15 @@ LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 
+ifeq ($(filter %REGAL_NO_HTTP%,$(CFLAGS)),)
 LIB.SRCS           += src/mongoose/mongoose.c
+endif
+
+LIB.INCLUDE        += -Isrc/mongoose
 
 LIB.SRCS.NAMES     := $(notdir $(LIB.SRCS))
 
 LIB.INCLUDE        += -Isrc/boost
-LIB.INCLUDE        += -Isrc/mongoose
 
 LIB.DEPS           :=
 LIB.DEPS           += include/GL/Regal.h
@@ -89,8 +100,6 @@ LIB.OBJS           := $(LIB.OBJS:.cpp=.o)
 LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
-
-#CFLAGS += -DREGAL_NO_HTTP
 
 regal.lib: lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
 
@@ -182,16 +191,14 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
-
-ifneq ($(filter darwin%,$(SYSTEM)),)
-glu.lib:
-glut.lib:
-
-else
-
 #
 # RegalGLU
 #
+
+ifneq ($(filter darwin%,$(SYSTEM)),)
+glu.lib:
+
+else
 
 GLU.SRCS        += src/glu/libtess/dict.c
 GLU.SRCS        += src/glu/libtess/geom.c
@@ -324,10 +331,20 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
+endif
 
 #
 # RegalGLUT
 #
+
+# Don't build GLUT for OS X or NaCL
+
+ifneq ($(filter darwin%,$(SYSTEM)),)
+glut.lib:
+else
+ifneq ($(filter nacl%,$(SYSTEM)),)
+glut.lib:
+else
 
 # NOT for windows...
 
@@ -407,10 +424,15 @@ ifneq ($(STRIP),)
 endif
 
 endif
+endif
 
 # Examples
 
+ifneq ($(filter nacl%,$(SYSTEM)),)
+regal.bin: lib bin
+else
 regal.bin: lib bin bin/glewinfo bin/dreamtorus bin/tiger
+endif
 
 bin:
 	mkdir bin
@@ -442,6 +464,14 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
+# GLUT and GLU dependency for non-Mac, non-Nacl builds
+
+ifeq ($(filter darwin%,$(SYSTEM)),)
+ifeq ($(filter nacl%,$(SYSTEM)),)
+bin/dreamtorus: lib/$(GLUT.SHARED) lib/$(GLU.SHARED)
+endif
+endif
+
 #
 # tiger
 #
@@ -466,16 +496,15 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
-#
-# GLUT dependency for non-Mac, non-Nacl builds
-#
+# GLUT and GLU dependency for non-Mac, non-Nacl builds
 
 ifeq ($(filter darwin%,$(SYSTEM)),)
 ifeq ($(filter nacl%,$(SYSTEM)),)
 bin/tiger:      lib/$(GLUT.SHARED) lib/$(GLU.SHARED)
-bin/dreamtorus: lib/$(GLUT.SHARED) lib/$(GLU.SHARED)
 endif
 endif
+
+######################################
 
 clean:
 	$(RM) -r tmp/

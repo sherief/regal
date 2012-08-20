@@ -12,6 +12,7 @@ EXPORTS
   rglAlphaFragmentOp2ATI
   rglAlphaFragmentOp3ATI
   rglAlphaFunc
+  rglAlphaFuncx
   rglApplyTextureEXT
   rglAreProgramsResidentNV
   rglAreTexturesResident
@@ -140,9 +141,11 @@ EXPORTS
   rglClearColor
   rglClearColorIiEXT
   rglClearColorIuiEXT
+  rglClearColorx
   rglClearDepth
   rglClearDepthdNV
   rglClearDepthf
+  rglClearDepthx
   rglClearIndex
   rglClearNamedBufferDataEXT
   rglClearNamedBufferSubDataEXT
@@ -153,6 +156,8 @@ EXPORTS
   rglClientAttribDefaultEXT
   rglClientWaitSync
   rglClipPlane
+  rglClipPlanef
+  rglClipPlanex
   rglColor3b
   rglColor3bv
   rglColor3d
@@ -197,6 +202,7 @@ EXPORTS
   rglColor4uiv
   rglColor4us
   rglColor4usv
+  rglColor4x
   rglColorFormatNV
   rglColorFragmentOp1ATI
   rglColorFragmentOp2ATI
@@ -371,6 +377,7 @@ EXPORTS
   rglDepthRangeIndexed
   rglDepthRangedNV
   rglDepthRangef
+  rglDepthRangex
   rglDetachObjectARB
   rglDetachShader
   rglDetailTexFuncSGIS
@@ -513,6 +520,8 @@ EXPORTS
   rglFogfv
   rglFogi
   rglFogiv
+  rglFogx
+  rglFogxv
   rglFragmentColorMaterialEXT
   rglFragmentColorMaterialSGIX
   rglFragmentLightModelfEXT
@@ -565,6 +574,8 @@ EXPORTS
   rglFreeObjectBufferATI
   rglFrontFace
   rglFrustum
+  rglFrustumf
+  rglFrustumx
   rglGenAsyncMarkersSGIX
   rglGenBuffers
   rglGenBuffersARB
@@ -629,6 +640,8 @@ EXPORTS
   rglGetBufferSubData
   rglGetBufferSubDataARB
   rglGetClipPlane
+  rglGetClipPlanef
+  rglGetClipPlanex
   rglGetColorTable
   rglGetColorTableEXT
   rglGetColorTableParameterfv
@@ -666,6 +679,7 @@ EXPORTS
   rglGetFenceivNV
   rglGetFinalCombinerInputParameterfvNV
   rglGetFinalCombinerInputParameterivNV
+  rglGetFixedv
   rglGetFloatIndexedvEXT
   rglGetFloati_v
   rglGetFloati_vEXT
@@ -713,6 +727,7 @@ EXPORTS
   rglGetInvariantIntegervEXT
   rglGetLightfv
   rglGetLightiv
+  rglGetLightxv
   rglGetListParameterfvSGIX
   rglGetListParameterivSGIX
   rglGetLocalConstantBooleanvEXT
@@ -728,6 +743,7 @@ EXPORTS
   rglGetMapiv
   rglGetMaterialfv
   rglGetMaterialiv
+  rglGetMaterialxv
   rglGetMinmax
   rglGetMinmaxEXT
   rglGetMinmaxParameterfv
@@ -864,6 +880,7 @@ EXPORTS
   rglGetTexBumpParameterivATI
   rglGetTexEnvfv
   rglGetTexEnviv
+  rglGetTexEnvxv
   rglGetTexFilterFuncSGIS
   rglGetTexGendv
   rglGetTexGenfv
@@ -878,6 +895,7 @@ EXPORTS
   rglGetTexParameterPointervAPPLE
   rglGetTexParameterfv
   rglGetTexParameteriv
+  rglGetTexParameterxv
   rglGetTextureHandleNV
   rglGetTextureImageEXT
   rglGetTextureLevelParameterfvEXT
@@ -1061,12 +1079,17 @@ EXPORTS
   rglLightModelfv
   rglLightModeli
   rglLightModeliv
+  rglLightModelx
+  rglLightModelxv
   rglLightf
   rglLightfv
   rglLighti
   rglLightiv
+  rglLightx
+  rglLightxv
   rglLineStipple
   rglLineWidth
+  rglLineWidthx
   rglLinkProgram
   rglLinkProgramARB
   rglListBase
@@ -1078,6 +1101,7 @@ EXPORTS
   rglLoadIdentityDeformationMapSGIX
   rglLoadMatrixd
   rglLoadMatrixf
+  rglLoadMatrixx
   rglLoadName
   rglLoadProgramNV
   rglLoadTransposeMatrixd
@@ -1120,6 +1144,8 @@ EXPORTS
   rglMaterialfv
   rglMateriali
   rglMaterialiv
+  rglMaterialx
+  rglMaterialxv
   rglMatrixFrustumEXT
   rglMatrixIndexPointerARB
   rglMatrixIndexubvARB
@@ -1152,6 +1178,7 @@ EXPORTS
   rglMinmaxEXT
   rglMultMatrixd
   rglMultMatrixf
+  rglMultMatrixx
   rglMultTransposeMatrixd
   rglMultTransposeMatrixdARB
   rglMultTransposeMatrixf
@@ -1242,6 +1269,7 @@ EXPORTS
   rglMultiTexCoord4sARB
   rglMultiTexCoord4sv
   rglMultiTexCoord4svARB
+  rglMultiTexCoord4x
   rglMultiTexCoordP1ui
   rglMultiTexCoordP1uiv
   rglMultiTexCoordP2ui
@@ -1318,6 +1346,7 @@ EXPORTS
   rglNormal3iv
   rglNormal3s
   rglNormal3sv
+  rglNormal3x
   rglNormalFormatNV
   rglNormalP3ui
   rglNormalP3uiv
@@ -1340,6 +1369,8 @@ EXPORTS
   rglObjectPurgeableAPPLE
   rglObjectUnpurgeableAPPLE
   rglOrtho
+  rglOrthof
+  rglOrthox
   rglPNTrianglesfATI
   rglPNTrianglesiATI
   rglPassTexCoordATI
@@ -1395,12 +1426,17 @@ EXPORTS
   rglPointParameteriNV
   rglPointParameteriv
   rglPointParameterivNV
+  rglPointParameterx
+  rglPointParameterxv
   rglPointSize
+  rglPointSizePointerOES
+  rglPointSizex
   rglPollAsyncSGIX
   rglPollInstrumentsSGIX
   rglPolygonMode
   rglPolygonOffset
   rglPolygonOffsetEXT
+  rglPolygonOffsetx
   rglPolygonStipple
   rglPopAttrib
   rglPopClientAttrib
@@ -1664,8 +1700,10 @@ EXPORTS
   rglResumeTransformFeedbackNV
   rglRotated
   rglRotatef
+  rglRotatex
   rglSampleCoverage
   rglSampleCoverageARB
+  rglSampleCoveragex
   rglSampleMapATI
   rglSampleMaskEXT
   rglSampleMaskIndexedNV
@@ -1681,6 +1719,7 @@ EXPORTS
   rglSamplerParameteriv
   rglScaled
   rglScalef
+  rglScalex
   rglScissor
   rglScissorArrayv
   rglScissorIndexed
@@ -1862,6 +1901,8 @@ EXPORTS
   rglTexEnvfv
   rglTexEnvi
   rglTexEnviv
+  rglTexEnvx
+  rglTexEnvxv
   rglTexFilterFuncSGIS
   rglTexGend
   rglTexGendv
@@ -1886,6 +1927,8 @@ EXPORTS
   rglTexParameterfv
   rglTexParameteri
   rglTexParameteriv
+  rglTexParameterx
+  rglTexParameterxv
   rglTexRenderbufferNV
   rglTexScissorFuncINTEL
   rglTexScissorINTEL
@@ -1941,6 +1984,7 @@ EXPORTS
   rglTransformPathNV
   rglTranslated
   rglTranslatef
+  rglTranslatex
   rglUniform1d
   rglUniform1dv
   rglUniform1f

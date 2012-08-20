@@ -3127,6 +3127,8 @@ typedef void (GLAPIENTRY * PFNGLMAPVERTEXATTRIB2FAPPLEPROC) (GLuint index, GLuin
 #define GL_MAX_VARYING_VECTORS 0x8DFC
 #define GL_MAX_FRAGMENT_UNIFORM_VECTORS 0x8DFD
 
+typedef int GLfixed;
+
 typedef void (GLAPIENTRY * PFNGLCLEARDEPTHFPROC) (GLclampf d);
 typedef void (GLAPIENTRY * PFNGLDEPTHRANGEFPROC) (GLclampf n, GLclampf f);
 typedef void (GLAPIENTRY * PFNGLGETSHADERPRECISIONFORMATPROC) (GLenum shadertype, GLenum precisiontype, GLint* range, GLint *precision);
@@ -13135,6 +13137,118 @@ typedef void (GLAPIENTRY * PFNGLORTHOFOESPROC) (GLfloat l, GLfloat r, GLfloat b,
 
 #endif /* GL_PGI_vertex_hints */
 
+/* ---------------------- GL_REGAL_ES1_0_compatibility --------------------- */
+
+#ifndef GL_REGAL_ES1_0_compatibility
+#define GL_REGAL_ES1_0_compatibility 1
+
+typedef int GLclampx;
+
+typedef void (GLAPIENTRY * PFNGLALPHAFUNCXPROC) (GLenum func, GLclampx ref);
+typedef void (GLAPIENTRY * PFNGLCLEARCOLORXPROC) (GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
+typedef void (GLAPIENTRY * PFNGLCLEARDEPTHXPROC) (GLclampx depth);
+typedef void (GLAPIENTRY * PFNGLCOLOR4XPROC) (GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+typedef void (GLAPIENTRY * PFNGLDEPTHRANGEXPROC) (GLclampx zNear, GLclampx zFar);
+typedef void (GLAPIENTRY * PFNGLFOGXPROC) (GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLFOGXVPROC) (GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLFRUSTUMFPROC) (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (GLAPIENTRY * PFNGLFRUSTUMXPROC) (GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (GLAPIENTRY * PFNGLLIGHTMODELXPROC) (GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLLIGHTMODELXVPROC) (GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLLIGHTXPROC) (GLenum light, GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLLIGHTXVPROC) (GLenum light, GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLLINEWIDTHXPROC) (GLfixed width);
+typedef void (GLAPIENTRY * PFNGLLOADMATRIXXPROC) (const GLfixed* m);
+typedef void (GLAPIENTRY * PFNGLMATERIALXPROC) (GLenum face, GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLMATERIALXVPROC) (GLenum face, GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLMULTMATRIXXPROC) (const GLfixed* m);
+typedef void (GLAPIENTRY * PFNGLMULTITEXCOORD4XPROC) (GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+typedef void (GLAPIENTRY * PFNGLNORMAL3XPROC) (GLfixed nx, GLfixed ny, GLfixed nz);
+typedef void (GLAPIENTRY * PFNGLORTHOFPROC) (GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (GLAPIENTRY * PFNGLORTHOXPROC) (GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (GLAPIENTRY * PFNGLPOINTSIZEXPROC) (GLfixed size);
+typedef void (GLAPIENTRY * PFNGLPOLYGONOFFSETXPROC) (GLfixed factor, GLfixed units);
+typedef void (GLAPIENTRY * PFNGLROTATEXPROC) (GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+typedef void (GLAPIENTRY * PFNGLSAMPLECOVERAGEXPROC) (GLclampx value, GLboolean invert);
+typedef void (GLAPIENTRY * PFNGLSCALEXPROC) (GLfixed x, GLfixed y, GLfixed z);
+typedef void (GLAPIENTRY * PFNGLTEXENVXPROC) (GLenum target, GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLTEXENVXVPROC) (GLenum target, GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLTEXPARAMETERXPROC) (GLenum target, GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLTRANSLATEXPROC) (GLfixed x, GLfixed y, GLfixed z);
+
+#define glAlphaFuncx GLEW_GET_FUN(__glewAlphaFuncx)
+#define glClearColorx GLEW_GET_FUN(__glewClearColorx)
+#define glClearDepthx GLEW_GET_FUN(__glewClearDepthx)
+#define glColor4x GLEW_GET_FUN(__glewColor4x)
+#define glDepthRangex GLEW_GET_FUN(__glewDepthRangex)
+#define glFogx GLEW_GET_FUN(__glewFogx)
+#define glFogxv GLEW_GET_FUN(__glewFogxv)
+#define glFrustumf GLEW_GET_FUN(__glewFrustumf)
+#define glFrustumx GLEW_GET_FUN(__glewFrustumx)
+#define glLightModelx GLEW_GET_FUN(__glewLightModelx)
+#define glLightModelxv GLEW_GET_FUN(__glewLightModelxv)
+#define glLightx GLEW_GET_FUN(__glewLightx)
+#define glLightxv GLEW_GET_FUN(__glewLightxv)
+#define glLineWidthx GLEW_GET_FUN(__glewLineWidthx)
+#define glLoadMatrixx GLEW_GET_FUN(__glewLoadMatrixx)
+#define glMaterialx GLEW_GET_FUN(__glewMaterialx)
+#define glMaterialxv GLEW_GET_FUN(__glewMaterialxv)
+#define glMultMatrixx GLEW_GET_FUN(__glewMultMatrixx)
+#define glMultiTexCoord4x GLEW_GET_FUN(__glewMultiTexCoord4x)
+#define glNormal3x GLEW_GET_FUN(__glewNormal3x)
+#define glOrthof GLEW_GET_FUN(__glewOrthof)
+#define glOrthox GLEW_GET_FUN(__glewOrthox)
+#define glPointSizex GLEW_GET_FUN(__glewPointSizex)
+#define glPolygonOffsetx GLEW_GET_FUN(__glewPolygonOffsetx)
+#define glRotatex GLEW_GET_FUN(__glewRotatex)
+#define glSampleCoveragex GLEW_GET_FUN(__glewSampleCoveragex)
+#define glScalex GLEW_GET_FUN(__glewScalex)
+#define glTexEnvx GLEW_GET_FUN(__glewTexEnvx)
+#define glTexEnvxv GLEW_GET_FUN(__glewTexEnvxv)
+#define glTexParameterx GLEW_GET_FUN(__glewTexParameterx)
+#define glTranslatex GLEW_GET_FUN(__glewTranslatex)
+
+#define GLEW_REGAL_ES1_0_compatibility GLEW_GET_VAR(__GLEW_REGAL_ES1_0_compatibility)
+
+#endif /* GL_REGAL_ES1_0_compatibility */
+
+/* ---------------------- GL_REGAL_ES1_1_compatibility --------------------- */
+
+#ifndef GL_REGAL_ES1_1_compatibility
+#define GL_REGAL_ES1_1_compatibility 1
+
+typedef void (GLAPIENTRY * PFNGLCLIPPLANEFPROC) (GLenum plane, const GLfloat* equation);
+typedef void (GLAPIENTRY * PFNGLCLIPPLANEXPROC) (GLenum plane, const GLfixed* equation);
+typedef void (GLAPIENTRY * PFNGLGETCLIPPLANEFPROC) (GLenum pname, GLfloat eqn[4]);
+typedef void (GLAPIENTRY * PFNGLGETCLIPPLANEXPROC) (GLenum pname, GLfixed eqn[4]);
+typedef void (GLAPIENTRY * PFNGLGETFIXEDVPROC) (GLenum pname, GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLGETLIGHTXVPROC) (GLenum light, GLenum pname, GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLGETMATERIALXVPROC) (GLenum face, GLenum pname, GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLGETTEXENVXVPROC) (GLenum env, GLenum pname, GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLGETTEXPARAMETERXVPROC) (GLenum target, GLenum pname, GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLPOINTPARAMETERXPROC) (GLenum pname, GLfixed param);
+typedef void (GLAPIENTRY * PFNGLPOINTPARAMETERXVPROC) (GLenum pname, const GLfixed* params);
+typedef void (GLAPIENTRY * PFNGLPOINTSIZEPOINTEROESPROC) (GLenum type, GLsizei stride, const GLvoid* pointer);
+typedef void (GLAPIENTRY * PFNGLTEXPARAMETERXVPROC) (GLenum target, GLenum pname, const GLfixed* params);
+
+#define glClipPlanef GLEW_GET_FUN(__glewClipPlanef)
+#define glClipPlanex GLEW_GET_FUN(__glewClipPlanex)
+#define glGetClipPlanef GLEW_GET_FUN(__glewGetClipPlanef)
+#define glGetClipPlanex GLEW_GET_FUN(__glewGetClipPlanex)
+#define glGetFixedv GLEW_GET_FUN(__glewGetFixedv)
+#define glGetLightxv GLEW_GET_FUN(__glewGetLightxv)
+#define glGetMaterialxv GLEW_GET_FUN(__glewGetMaterialxv)
+#define glGetTexEnvxv GLEW_GET_FUN(__glewGetTexEnvxv)
+#define glGetTexParameterxv GLEW_GET_FUN(__glewGetTexParameterxv)
+#define glPointParameterx GLEW_GET_FUN(__glewPointParameterx)
+#define glPointParameterxv GLEW_GET_FUN(__glewPointParameterxv)
+#define glPointSizePointerOES GLEW_GET_FUN(__glewPointSizePointerOES)
+#define glTexParameterxv GLEW_GET_FUN(__glewTexParameterxv)
+
+#define GLEW_REGAL_ES1_1_compatibility GLEW_GET_VAR(__GLEW_REGAL_ES1_1_compatibility)
+
+#endif /* GL_REGAL_ES1_1_compatibility */
+
 /* ---------------------------- GL_REGAL_enable ---------------------------- */
 
 #ifndef GL_REGAL_enable
@@ -16432,6 +16546,52 @@ GLEW_FUN_EXPORT PFNGLFRUSTUMFOESPROC __glewFrustumfOES;
 GLEW_FUN_EXPORT PFNGLGETCLIPPLANEFOESPROC __glewGetClipPlanefOES;
 GLEW_FUN_EXPORT PFNGLORTHOFOESPROC __glewOrthofOES;
 
+GLEW_FUN_EXPORT PFNGLALPHAFUNCXPROC __glewAlphaFuncx;
+GLEW_FUN_EXPORT PFNGLCLEARCOLORXPROC __glewClearColorx;
+GLEW_FUN_EXPORT PFNGLCLEARDEPTHXPROC __glewClearDepthx;
+GLEW_FUN_EXPORT PFNGLCOLOR4XPROC __glewColor4x;
+GLEW_FUN_EXPORT PFNGLDEPTHRANGEXPROC __glewDepthRangex;
+GLEW_FUN_EXPORT PFNGLFOGXPROC __glewFogx;
+GLEW_FUN_EXPORT PFNGLFOGXVPROC __glewFogxv;
+GLEW_FUN_EXPORT PFNGLFRUSTUMFPROC __glewFrustumf;
+GLEW_FUN_EXPORT PFNGLFRUSTUMXPROC __glewFrustumx;
+GLEW_FUN_EXPORT PFNGLLIGHTMODELXPROC __glewLightModelx;
+GLEW_FUN_EXPORT PFNGLLIGHTMODELXVPROC __glewLightModelxv;
+GLEW_FUN_EXPORT PFNGLLIGHTXPROC __glewLightx;
+GLEW_FUN_EXPORT PFNGLLIGHTXVPROC __glewLightxv;
+GLEW_FUN_EXPORT PFNGLLINEWIDTHXPROC __glewLineWidthx;
+GLEW_FUN_EXPORT PFNGLLOADMATRIXXPROC __glewLoadMatrixx;
+GLEW_FUN_EXPORT PFNGLMATERIALXPROC __glewMaterialx;
+GLEW_FUN_EXPORT PFNGLMATERIALXVPROC __glewMaterialxv;
+GLEW_FUN_EXPORT PFNGLMULTMATRIXXPROC __glewMultMatrixx;
+GLEW_FUN_EXPORT PFNGLMULTITEXCOORD4XPROC __glewMultiTexCoord4x;
+GLEW_FUN_EXPORT PFNGLNORMAL3XPROC __glewNormal3x;
+GLEW_FUN_EXPORT PFNGLORTHOFPROC __glewOrthof;
+GLEW_FUN_EXPORT PFNGLORTHOXPROC __glewOrthox;
+GLEW_FUN_EXPORT PFNGLPOINTSIZEXPROC __glewPointSizex;
+GLEW_FUN_EXPORT PFNGLPOLYGONOFFSETXPROC __glewPolygonOffsetx;
+GLEW_FUN_EXPORT PFNGLROTATEXPROC __glewRotatex;
+GLEW_FUN_EXPORT PFNGLSAMPLECOVERAGEXPROC __glewSampleCoveragex;
+GLEW_FUN_EXPORT PFNGLSCALEXPROC __glewScalex;
+GLEW_FUN_EXPORT PFNGLTEXENVXPROC __glewTexEnvx;
+GLEW_FUN_EXPORT PFNGLTEXENVXVPROC __glewTexEnvxv;
+GLEW_FUN_EXPORT PFNGLTEXPARAMETERXPROC __glewTexParameterx;
+GLEW_FUN_EXPORT PFNGLTRANSLATEXPROC __glewTranslatex;
+
+GLEW_FUN_EXPORT PFNGLCLIPPLANEFPROC __glewClipPlanef;
+GLEW_FUN_EXPORT PFNGLCLIPPLANEXPROC __glewClipPlanex;
+GLEW_FUN_EXPORT PFNGLGETCLIPPLANEFPROC __glewGetClipPlanef;
+GLEW_FUN_EXPORT PFNGLGETCLIPPLANEXPROC __glewGetClipPlanex;
+GLEW_FUN_EXPORT PFNGLGETFIXEDVPROC __glewGetFixedv;
+GLEW_FUN_EXPORT PFNGLGETLIGHTXVPROC __glewGetLightxv;
+GLEW_FUN_EXPORT PFNGLGETMATERIALXVPROC __glewGetMaterialxv;
+GLEW_FUN_EXPORT PFNGLGETTEXENVXVPROC __glewGetTexEnvxv;
+GLEW_FUN_EXPORT PFNGLGETTEXPARAMETERXVPROC __glewGetTexParameterxv;
+GLEW_FUN_EXPORT PFNGLPOINTPARAMETERXPROC __glewPointParameterx;
+GLEW_FUN_EXPORT PFNGLPOINTPARAMETERXVPROC __glewPointParameterxv;
+GLEW_FUN_EXPORT PFNGLPOINTSIZEPOINTEROESPROC __glewPointSizePointerOES;
+GLEW_FUN_EXPORT PFNGLTEXPARAMETERXVPROC __glewTexParameterxv;
+
 GLEW_FUN_EXPORT PFNGLERRORSTRINGREGALPROC __glewErrorStringREGAL;
 
 GLEW_FUN_EXPORT PFNGLGETEXTENSIONREGALPROC __glewGetExtensionREGAL;
@@ -16981,6 +17141,8 @@ GLEW_VAR_EXPORT GLboolean __GLEW_OML_resample;
 GLEW_VAR_EXPORT GLboolean __GLEW_OML_subsample;
 GLEW_VAR_EXPORT GLboolean __GLEW_PGI_misc_hints;
 GLEW_VAR_EXPORT GLboolean __GLEW_PGI_vertex_hints;
+GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_ES1_0_compatibility;
+GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_ES1_1_compatibility;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_enable;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_error_string;
 GLEW_VAR_EXPORT GLboolean __GLEW_REGAL_extension_query;
