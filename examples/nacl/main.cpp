@@ -123,7 +123,7 @@ void staticTriangle() {
         glVertex3f(1, 0, 0);
         glColor3f(0.0, 0.0, 1.0);
         glVertex3f(0, 1, 0);
-  glEnd();  
+  glEnd();
 }
 
 void rotatingTriangle() {
@@ -161,7 +161,9 @@ void openglES1Tutorial() {
   glDisableClientState(GL_COLOR_ARRAY);
 }
 
+
 static void glutSolidSphere(float radius, int slices, int stacks) {
+#if 0
   static GLUquadricObj *quadObj = NULL;
   if (quadObj == NULL) {
     quadObj = gluNewQuadric();
@@ -174,7 +176,9 @@ static void glutSolidSphere(float radius, int slices, int stacks) {
   gluSphere(quadObj, radius, slices, stacks);
   //gluCylinder(quadObj, radius, radius, radius*2, slices, stacks);
   //REGALGLU_DECL void REGALGLU_CALL gluCylinder (GLUquadric* quad, GLdouble base, GLdouble top, GLdouble height, GLint slices, GLint stacks);
+#endif
 }
+
 
 static void materialDemo() {
   myReshape(512, 512);
@@ -375,6 +379,52 @@ static void materialDemo() {
   }
 }
 
+void textureTest() {
+  static GLuint textureID = 0;
+  if (textureID == 0) {
+    const int texWidth = 4;
+    const int texHeight = 4;
+    uint32_t* pixels = (uint32_t*)malloc(sizeof(uint32_t)*texWidth*texHeight);
+    for (int i = 0; i < texWidth; i++) {
+      for (int j = 0; j < texHeight; j++) {
+        uint32_t color = 0xFFFFFFFF;
+        if ((j >= 2 && i < 2) || (j < 2 && i >= 2)) {
+          color = 0xFFCCCCCC;
+        }
+        // j is row, i is column
+        pixels[j * 4 + i] = color;
+      }
+    }
+    glActiveTexture(GL_TEXTURE0);
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, &pixels[0]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glGenerateMipmap(GL_TEXTURE_2D);
+  }
+
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, textureID);
+  glEnable(GL_TEXTURE_2D);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glBegin(GL_TRIANGLES);
+        glColor3f(1.0, 1.0, 1.0);
+        glTexCoord2f(0.0, 0.0);
+        glVertex3f(0, 0, 0);
+        glColor3f(1.0, 1.0, 1.0);
+        glTexCoord2f(20.0, 0.0);
+        glVertex3f(1, 0, 0);
+        glColor3f(1.0, 1.0, 1.0);
+        glTexCoord2f(0.0, 20.0);
+        glVertex3f(0, 1, 0);
+  glEnd();
+  glDisable(GL_TEXTURE_2D);
+}
+
 static void frameCallback(void* user_data, int32_t result) {
   clearColor += 0.01;
   if (clearColor > 1.0) {
@@ -400,6 +450,8 @@ static void frameCallback(void* user_data, int32_t result) {
     break;
     case 4:
       opengl1mix3();
+    case 5:
+      textureTest();
     break;
     default:
     break;
@@ -438,6 +490,51 @@ static void frameCallback(void* user_data, int32_t result) {
  */
 
 
+struct glStateQuery {
+  int e;
+  const char* s;
+};
+
+static void queryGLLimits() {
+  glStateQuery queries[] = {
+    { GL_SMOOTH_POINT_SIZE_RANGE, "GL_SMOOTH_POINT_SIZE_RANGE" },
+    { GL_SMOOTH_LINE_WIDTH_RANGE, "GL_SMOOTH_LINE_WIDTH_RANGE" },
+    { GL_ALIASED_POINT_SIZE_RANGE, "GL_ALIASED_POINT_SIZE_RANGE" },
+    { GL_ALIASED_LINE_WIDTH_RANGE, "GL_ALIASED_LINE_WIDTH_RANGE" },
+    { GL_IMPLEMENTATION_COLOR_READ_TYPE_OES, "GL_IMPLEMENTATION_COLOR_READ_TYPE_OES" },
+    { GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES, "GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES" },
+    { GL_MAX_LIGHTS, "GL_MAX_LIGHTS" },
+    { GL_MAX_TEXTURE_SIZE, "GL_MAX_TEXTURE_SIZE" },
+    { GL_MAX_MODELVIEW_STACK_DEPTH, "GL_MAX_MODELVIEW_STACK_DEPTH" },
+    { GL_MAX_PROJECTION_STACK_DEPTH, "GL_MAX_PROJECTION_STACK_DEPTH" },
+    { GL_MAX_TEXTURE_STACK_DEPTH, "GL_MAX_TEXTURE_STACK_DEPTH" },
+    { GL_MAX_VIEWPORT_DIMS, "GL_MAX_VIEWPORT_DIMS" },
+    { GL_MAX_TEXTURE_UNITS, "GL_MAX_TEXTURE_UNITS" },
+    { GL_NUM_COMPRESSED_TEXTURE_FORMATS, "GL_NUM_COMPRESSED_TEXTURE_FORMATS" },
+    { GL_COMPRESSED_TEXTURE_FORMATS, "GL_COMPRESSED_TEXTURE_FORMATS" },
+    { GL_SUBPIXEL_BITS, "GL_SUBPIXEL_BITS" },
+    { GL_RED_BITS, "GL_RED_BITS" },
+    { GL_GREEN_BITS, "GL_GREEN_BITS" },
+    { GL_BLUE_BITS, "GL_BLUE_BITS" },
+    { GL_ALPHA_BITS, "GL_ALPHA_BITS" },
+    { GL_DEPTH_BITS, "GL_DEPTH_BITS" },
+    { GL_STENCIL_BITS, "GL_STENCIL_BITS" },
+    { GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, "GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS" },
+    { GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, "GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS" },
+    { GL_MAX_TEXTURE_IMAGE_UNITS, "GL_MAX_TEXTURE_IMAGE_UNITS" },
+    { GL_MAX_3D_TEXTURE_SIZE, "GL_MAX_3D_TEXTURE_SIZE"},
+    { GL_MAX_CUBE_MAP_TEXTURE_SIZE, "GL_MAX_CUBE_MAP_TEXTURE_SIZE"},
+    { GL_MAX_TEXTURE_COORDS, "GL_MAX_TEXTURE_COORDS"},
+    { 0, NULL}
+  };
+  for (int i = 0; queries[i].s != NULL; i++) {
+    GLint value = -1;
+    glGetIntegerv(queries[i].e, &value);
+    messagePrintf("%s: %d\n", queries[i].s, value);  
+  }
+  
+}
+
 static PP_Bool Instance_DidCreate(PP_Instance instance,
                                   uint32_t argc,
                                   const char* argn[],
@@ -446,13 +543,10 @@ static PP_Bool Instance_DidCreate(PP_Instance instance,
   messagePrintf("Hello World (GLIBC)");
   int32_t attribs[] = { PP_GRAPHICS3DATTRIB_WIDTH, 512, PP_GRAPHICS3DATTRIB_HEIGHT, 512, PP_GRAPHICS3DATTRIB_NONE};
   opengl_context = ppb_graphics3d_interface->Create(instance, opengl_context, attribs);
-  messagePrintf("Create2");
   ppb_instance_interface->BindGraphics(instance, opengl_context);
-  messagePrintf("Bind");
   RegalMakeCurrent(opengl_context, ppb_opengl_interface);
-  messagePrintf("MakeCurrent");
   glLogMessageCallbackREGAL(regalLogCallback);
-  messagePrintf("Log");
+  queryGLLimits();
   int32_t r = 0;
   r = ppb_input_interface->RequestInputEvents(instance, PP_INPUTEVENT_CLASS_MOUSE);
   if (r != PP_OK) {

@@ -51,11 +51,6 @@ extern "C" {
 }
 #endif
 
-#if REGAL_SYS_NACL
-extern void _naclPrintf(const char* str, ...);
-extern void* _naclGetProcAddress(const char* name);
-#endif
-
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
