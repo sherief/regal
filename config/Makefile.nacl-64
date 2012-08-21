@@ -12,6 +12,7 @@ CC  := $(M_PREFIX)-nacl-gcc
 CXX := $(M_PREFIX)-nacl-g++
 LD  := $(M_PREFIX)-nacl-ld
 STRIP ?=
+LDFLAGS.EXTRA += -melf64_nacl
 endif
 
 EXT.DYNAMIC = so
@@ -19,7 +20,6 @@ LDFLAGS.EXTRA =
 LIBDIR =
 CFLAGS.EXTRA  += -fPIC
 CFLAGS.EXTRA  += -m64
-LDFLAGS.EXTRA +=
 LDFLAGS.GL =
 LDFLAGS.GLU = -lRegalGLU
 LDFLAGS.GLUT = -lRegalGLUT
