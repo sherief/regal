@@ -47,7 +47,6 @@ using namespace std;
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
 #include "RegalContext.h"
-#include "RegalDispatchState.h"
 #include <ppapi/c/ppb_opengles2.h>
 
 REGAL_GLOBAL_END

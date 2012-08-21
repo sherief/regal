@@ -49,7 +49,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalLog.h"
 #include "RegalToken.h"
-#include "RegalDispatchState.h"
 
 REGAL_GLOBAL_END
 
@@ -94,7 +93,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
     // Pass the rest through, for now
 
     if (mask)
-      ctx->dsp->emuTbl.glPushAttrib(mask);
+      ctx->dispatcher.emulation.glPushAttrib(mask);
   }
 
   void PopAttrib(RegalContext *ctx)
@@ -118,7 +117,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Depth::set(ctx->dsp->emuTbl);
+        State::Depth::set(ctx->dispatcher.emulation);
 
         mask &= ~GL_DEPTH_BUFFER_BIT;
       }
@@ -134,7 +133,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Stencil::set(ctx->dsp->emuTbl);
+        State::Stencil::set(ctx->dispatcher.emulation);
 
         mask &= ~GL_STENCIL_BUFFER_BIT;
       }
@@ -150,7 +149,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Polygon::set(ctx->dsp->emuTbl);
+        State::Polygon::set(ctx->dispatcher.emulation);
 
         mask &= ~GL_POLYGON_BIT;
       }
@@ -158,7 +157,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
       // Pass the rest through, for now
 
       if (mask)
-        ctx->dsp->emuTbl.glPopAttrib();
+        ctx->dispatcher.emulation.glPopAttrib();
     }
   }
 

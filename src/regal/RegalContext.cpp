@@ -40,7 +40,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalConfig.h"
 #include "RegalContext.h"
-#include "RegalDispatchState.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 #include "RegalMarker.h"
@@ -58,10 +57,11 @@ REGAL_NAMESPACE_BEGIN
 using namespace Logging;
 
 RegalContext::RegalContext()
-: dsp(new DispatchState()),
+: dispatcher(),
   dbg(NULL),
   info(NULL),
   marker(NULL),
+  emuLevel(0),
   obj(NULL),
   ppa(NULL),
   bin(NULL),
@@ -80,12 +80,10 @@ RegalContext::RegalContext()
   depthPushAttrib(0)
 {
   ITrace("RegalContext::RegalContext");
-  dsp->Init();
   if (Config::enableDebug) {
-     dbg = new DebugInfo();
-     dbg->Init(this);
+    dbg = new DebugInfo();
+    dbg->Init(this);
   }
-  RegalAssert(dsp);
 }
 
 void
@@ -177,7 +175,6 @@ RegalContext::Init()
 RegalContext::~RegalContext()
 {
   ITrace("RegalContext::~RegalContext");
-  delete dsp;
   delete info;
   delete marker;
   // emu

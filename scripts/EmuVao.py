@@ -4,74 +4,74 @@ vaoFormulae = {
     # TODO - GL_ARB_base_instance ?
     'Validate' : {
         'entries' : [ 'gl(Multi|)Draw(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
-        'prefix' : [  '// rCtx->vao->Validate( rCtx );' ],
+        'prefix' : [  '// _context->vao->Validate( _context );' ],
     },
     'BufferBinding' : {
         'entries' : [ 'glBindBuffer(ARB|)' ],
-        'prefix' : [ 'rCtx->vao->ShadowBufferBinding( ${arg0}, ${arg1} );' ],
+        'prefix' : [ '_context->vao->ShadowBufferBinding( ${arg0}, ${arg1} );' ],
     },
     'BindVertexArray' : {
         'entries' : [ 'glBindVertexArray(ARB|)' ],
-        'impl' : [ 'rCtx->vao->BindVertexArray( rCtx, ${arg0} );' ],
+        'impl' : [ '_context->vao->BindVertexArray( _context, ${arg0} );' ],
     },
    'GenVertexArrays' : {
         'entries' : [ 'glGenVertexArrays(ARB|)' ],
-        'impl' : [ 'rCtx->vao->GenVertexArrays( ${arg0}, ${arg1} );' ],
+        'impl' : [ '_context->vao->GenVertexArrays( ${arg0}, ${arg1} );' ],
     },
    'DeleteVertexArrays' : {
         'entries' : [ 'glDeleteVertexArrays(ARB|)' ],
-        'impl' : [ 'rCtx->vao->DeleteVertexArrays( ${arg0}, ${arg1} );' ],
+        'impl' : [ '_context->vao->DeleteVertexArrays( ${arg0}, ${arg1} );' ],
     },
    'IsVertexArray' : {
         'entries' : [ 'glIsVertexArray(ARB|)' ],
-        'impl' : [ 'return rCtx->vao->IsVertexArray( ${arg0} );' ],
+        'impl' : [ 'return _context->vao->IsVertexArray( ${arg0} );' ],
     },
    'EnableVertexAttribArray' : {
         'entries' : [ 'gl(Enable|Disable)VertexAttribArray(ARB|)' ],
-        'impl' : [ 'return rCtx->vao->${m1}VertexAttribArray( rCtx, ${arg0} );' ],
+        'impl' : [ 'return _context->vao->${m1}VertexAttribArray( _context, ${arg0} );' ],
     },
     'EnableDisableClientState' : {
         'entries' : [ 'gl(Enable|Disable)ClientState' ],
-        'impl' : [ 'rCtx->vao->${m1}ClientState( rCtx, ${arg0} );' ],
+        'impl' : [ '_context->vao->${m1}ClientState( _context, ${arg0} );' ],
     },
    'AttribPointer' : {
         'entries' : [ 'glVertexAttribPointer(ARB|)' ],
-        'impl' : [ 'return rCtx->vao->AttribPointer( rCtx, ${arg0}, ${arg1plus} );' ],
+        'impl' : [ 'return _context->vao->AttribPointer( _context, ${arg0}, ${arg1plus} );' ],
     },
     'GetAttrib' : {
         'entries' : [ 'glGetVertexAttrib(d|f|i|Pointer)v(ARB|)' ],
-        'impl' : [ 'rCtx->vao->GetAttrib( ${arg0}, ${arg1}, ${arg2} );' ],
+        'impl' : [ '_context->vao->GetAttrib( ${arg0}, ${arg1}, ${arg2} );' ],
     },
     'GetVertexAttribPointerv' : {
         'entries' : [ 'glGetVertexAttribPointerv(ARB|)' ],
         'impl' : [
-            'if ( !rCtx->vao->GetVertexAttribPointerv( ${arg0}, ${arg1plus} ) ) {',
-            '   rCtx->dsp->emuTbl.glGetVertexAttribPointerv${m1}( ${arg0}, ${arg1plus} );',
+            'if ( !_context->vao->GetVertexAttribPointerv( ${arg0}, ${arg1plus} ) ) {',
+            '   _context->dispatcher.emulation.glGetVertexAttribPointerv${m1}( ${arg0}, ${arg1plus} );',
             '}',
         ]
     },
     'Get' : {
         'entries' : [ 'glGet(Boolean|Double|Float|Integer|Integer64)v' ],
         'impl' : [
-            'if( !rCtx->vao->Get( ${arg0}, ${arg1} ) ) {',
-            '   rCtx->dsp->emuTbl.glGet${m1}v( ${arg0}, ${arg1} );',
+            'if( !_context->vao->Get( ${arg0}, ${arg1} ) ) {',
+            '   _context->dispatcher.emulation.glGet${m1}v( ${arg0}, ${arg1} );',
             '}',
         ]
     },
     'InterleavedArrays' : {
         'entries' : [ 'glInterleavedArrays' ],
-        'impl' : [ 'rCtx->vao->InterleavedArrays( rCtx, ${arg0}, ${arg1plus} );' ],
+        'impl' : [ '_context->vao->InterleavedArrays( _context, ${arg0}, ${arg1plus} );' ],
     },
     'Pointer4' : {
         'entries' : [ 'gl(Color|SecondaryColor|TexCoord|Vertex)Pointer' ],
-        'impl' : [ 'rCtx->vao->${m1}Pointer( rCtx, ${arg0}, ${arg1}, ${arg2}, ${arg3} );' ],
+        'impl' : [ '_context->vao->${m1}Pointer( _context, ${arg0}, ${arg1}, ${arg2}, ${arg3} );' ],
     },
     'Pointer3' : {
         'entries' : [ 'gl(FogCoord|Normal)Pointer' ],
-        'impl' : [ 'rCtx->vao->${m1}Pointer( rCtx, ${arg0}, ${arg1}, ${arg2} );' ],
+        'impl' : [ '_context->vao->${m1}Pointer( _context, ${arg0}, ${arg1}, ${arg2} );' ],
     },
     'ClientActiveTexture' : {
         'entries' : [ 'glClientActiveTexture' ],
-        'prefix' : [ 'rCtx->vao->ClientActiveTexture( rCtx, ${arg0} );' ],
+        'prefix' : [ '_context->vao->ClientActiveTexture( _context, ${arg0} );' ],
     },
 }

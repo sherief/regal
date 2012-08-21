@@ -406,8 +406,8 @@ ContextInfo::~ContextInfo()
 inline string getString(const RegalContext &context, const GLenum e)
 {
   ITrace("getString ",toString(e));
-  RegalAssert(context.dsp->driverTbl.glGetString);
-  const GLubyte *str = context.dsp->driverTbl.glGetString(e);
+  RegalAssert(context.dispatcher.driver.glGetString);
+  const GLubyte *str = context.dispatcher.driver.glGetString(e);
   return str ? string(reinterpret_cast<const char *>(str)) : string();
 }
 
@@ -443,8 +443,8 @@ ContextInfo::init(const RegalContext &context)
   if (!gles && gl_version_major>=3)
   {
     GLint flags = 0;
-    RegalAssert(context.dsp->driverTbl.glGetIntegerv);
-    context.dsp->driverTbl.glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &flags);
+    RegalAssert(context.dispatcher.driver.glGetIntegerv);
+    context.dispatcher.driver.glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &flags);
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
@@ -456,14 +456,14 @@ ContextInfo::init(const RegalContext &context)
 
   if (core)
   {
-    RegalAssert(context.dsp->driverTbl.glGetStringi);
-    RegalAssert(context.dsp->driverTbl.glGetIntegerv);
+    RegalAssert(context.dispatcher.driver.glGetStringi);
+    RegalAssert(context.dispatcher.driver.glGetIntegerv);
 
     GLint n = 0;
-    context.dsp->driverTbl.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
+    context.dispatcher.driver.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
 
     for (GLint i=0; i<n; ++i)
-      extList.push_back(reinterpret_cast<const char *>(context.dsp->driverTbl.glGetStringi(GL_EXTENSIONS,i)));
+      extList.push_back(reinterpret_cast<const char *>(context.dispatcher.driver.glGetStringi(GL_EXTENSIONS,i)));
     extensions = extList.join(" ");
   }
   else
@@ -863,8 +863,8 @@ ContextInfo::init(const RegalContext &context)
   glx_sun_video_resize = e.find("GLX_SUN_video_resize")!=e.end();
 #endif
 
-  RegalAssert(context.dsp->driverTbl.glGetIntegerv);
-  context.dsp->driverTbl.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
+  RegalAssert(context.dispatcher.driver.glGetIntegerv);
+  context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
 
   if (maxVertexAttribs > REGAL_MAX_VERTEX_ATTRIBS)
       maxVertexAttribs = REGAL_MAX_VERTEX_ATTRIBS;

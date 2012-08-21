@@ -42,7 +42,6 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
-#include "RegalDispatchState.h"
 
 REGAL_GLOBAL_END
 
@@ -55,7 +54,7 @@ struct RegalBin : public RegalEmu {
     }
 
     void ShaderBinary( RegalContext * ctx, GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void * binary, GLsizei length) {
-        DispatchTable & tbl = ctx->dsp->emuTbl;
+        DispatchTable & tbl = ctx->dispatcher.emulation;
         tbl.glShaderBinary( count, shaders, binaryFormat, binary, length );
     }
 };

@@ -1316,67 +1316,67 @@ void State::SetClip( RegalIff * ffn, GLenum plane, const GLfloat * equation ) {
 void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSrc, const GLchar *fsSrc ) {
     ver = 0;
     progcount = 0;
-    DispatchTable & tbl = ctx->dsp->emuTbl;
+    DispatchTable & tbl = ctx->dispatcher.emulation;
     store = sstore;
-    pg = tbl.glCreateProgram();
-    Shader( tbl, GL_VERTEX_SHADER, vs, vsSrc );
-    Shader( tbl, GL_FRAGMENT_SHADER, fs, fsSrc );
+    pg = ctx->dispatcher.call(&tbl.glCreateProgram)();
+    Shader( ctx, tbl, GL_VERTEX_SHADER, vs, vsSrc );
+    Shader( ctx, tbl, GL_FRAGMENT_SHADER, fs, fsSrc );
     Attribs( ctx );
-    tbl.glLinkProgram( pg );
-    tbl.glGetProgramInfoLog( pg, (1<<15) - 2, &dbgLogLen, dbgLog );
+    ctx->dispatcher.call(&tbl.glLinkProgram)( pg );
+    ctx->dispatcher.call(&tbl.glGetProgramInfoLog)( pg, (1<<15) - 2, &dbgLogLen, dbgLog );
     dbgLog[ dbgLogLen ] = 0;
     if( dbgLogLen > 0 ) {
         ITrace( dbgLog );
     }
 
-    tbl.glUseProgram( pg );
-    Samplers( tbl );
-    Uniforms( tbl );
-    tbl.glUseProgram( ctx->iff->program );
+    ctx->dispatcher.call(&tbl.glUseProgram)( pg );
+    Samplers( ctx, tbl );
+    Uniforms( ctx, tbl );
+    ctx->dispatcher.call(&tbl.glUseProgram)( ctx->iff->program );
 }
 void Program::Init( RegalContext * ctx, const Store & sstore ) {
     ver = 0;
     progcount = 0;
-    DispatchTable & tbl = ctx->dsp->emuTbl;
+    DispatchTable & tbl = ctx->dispatcher.emulation;
     store = sstore;
     Attribs( ctx );
-    ctx->dsp->emuTbl.glLinkProgram( pg );
-    ctx->dsp->emuTbl.glUseProgram( pg );
-    Samplers( tbl );
-    Uniforms( tbl );
-    ctx->dsp->emuTbl.glUseProgram( ctx->iff->program );
+    ctx->dispatcher.emulation.glLinkProgram( pg );
+    ctx->dispatcher.emulation.glUseProgram( pg );
+    Samplers( ctx, tbl );
+    Uniforms( ctx, tbl );
+    ctx->dispatcher.emulation.glUseProgram( ctx->iff->program );
 }
 
-void Program::Shader( DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src ) {
+void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src ) {
     const GLchar *srcs[] = { src };
     GLint len[] = { 0 };
     len[0] = (GLint)strlen( src );
-    shader = tbl.glCreateShader( type );
-    tbl.glShaderSource( shader, 1, srcs, len );
-    tbl.glCompileShader( shader );
-    tbl.glGetShaderInfoLog( shader, (1<<15) - 2, &dbgLogLen, dbgLog );
+    shader = ctx->dispatcher.call(&tbl.glCreateShader)(type);
+    ctx->dispatcher.call(&tbl.glShaderSource)( shader, 1, srcs, len );
+    ctx->dispatcher.call(&tbl.glCompileShader)( shader );
+    ctx->dispatcher.call(&tbl.glGetShaderInfoLog)( shader, (1<<15) - 2, &dbgLogLen, dbgLog );
     dbgLog[ dbgLogLen ] = 0;
     if( dbgLogLen > 0 ) {
         ITrace( dbgLog );
     }
-    tbl.glAttachShader( pg, shader );
+    ctx->dispatcher.call(&tbl.glAttachShader)( pg, shader );
 }
 void Program::Attribs( RegalContext * ctx ) {
-    DispatchTable & tbl = ctx->dsp->emuTbl;
+    DispatchTable & tbl = ctx->dispatcher.emulation;
 
-    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
-    //tbl.glBindAttribLocation( pg, 1, "rglWeight" );
+    ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+    //ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, 1, "rglWeight" );
     if( store.lighting ) {
-        tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+        ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
     }
     if( store.attrArrayFlags & ( 1 << ctx->iff->ffAttrMap[ RFF2A_Color ] ) && ( store.lighting == false || store.colorMaterial ) ) {
-        tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+        ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
     }
     if( store.colorSum  && store.lighting == false ) {
-        tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+        ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
     }
     if( store.fog.enable && store.fog.useDepth == false ) {
-        tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+        ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
     }
     GLuint units = std::min( (GLuint)ctx->iff->ffAttrNumTex, (GLuint)REGAL_FIXED_FUNCTION_MAX_TEXTURE_UNITS );
     for( GLuint i = 0; i < units; i++ ) {
@@ -1387,26 +1387,26 @@ void Program::Attribs( RegalContext * ctx ) {
         #endif
         string_list ss;
         ss << "rglMultiTexCoord" << i;
-        tbl.glBindAttribLocation( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
+        ctx->dispatcher.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
     }
 }
-void Program::Samplers( DispatchTable & tbl ) {
+void Program::Samplers( RegalContext * ctx, DispatchTable & tbl ) {
     GLchar samp[64];
     strcpy( samp, "rglSamplerN" );
     int len = (int)strlen( samp );
     for( GLchar i = 0; i < REGAL_FIXED_FUNCTION_MAX_TEXTURE_UNITS; i++ ) {
         samp[ len - 1 ] = '0' + i;
-        GLint slot = tbl.glGetUniformLocation( pg, samp );
+        GLint slot = ctx->dispatcher.call(&tbl.glGetUniformLocation)( pg, samp );
         if( slot >= 0 ) {
-            tbl.glUniform1i( slot, i );
+            ctx->dispatcher.call(&tbl.glUniform1i)( slot, i );
         }
     }
 }
 
-void Program::Uniforms( DispatchTable & tbl ) {
+void Program::Uniforms( RegalContext * ctx, DispatchTable & tbl ) {
     for( size_t i = 1; i < sizeof(regalFFUniformInfo)/sizeof(regalFFUniformInfo[0]); i++ ) {
         const RegalFFUniformInfo & ri = regalFFUniformInfo[i];
-        GLint slot = tbl.glGetUniformLocation( pg, ri.name );
+        GLint slot = ctx->dispatcher.call(&tbl.glGetUniformLocation)( pg, ri.name );
         if( slot > -1 ) {
             UniformInfo ui;
             ui.slot = slot;
@@ -1424,10 +1424,7 @@ void RFF::InitFixedFunction( RegalContext * ctx ) {
 #else
     es = GetProcAddress( "glClearDepth" ) == NULL;
 #endif
-    const char* v = (const char *)ctx->dsp->emuTbl.glGetString( GL_VERSION );
-    // FIXME: Handle detecting legacy more generally...
-    legacy = !v || (v[0] == '2' && v[1] == '.');
-    //legacy = v.find( "2.1 " ) != string::npos;
+    legacy = ctx->info->compat && ctx->info->gl_version_major<=2;
 
     shadowMatrixMode = GL_MODELVIEW;
     currMatrixStack = &modelview;
@@ -1735,7 +1732,7 @@ void RFF::State::Process( RegalIff * ffn ) {
 
 void RFF::UpdateUniforms( RegalContext * ctx ) {
     Program & pgm = *currprog;
-    DispatchTable & tbl = ctx->dsp->emuTbl;
+    DispatchTable & tbl = ctx->dispatcher.emulation;
     if( pgm.ver != ffstate.Ver() ) {
         pgm.ver = ffstate.Ver();
         const State::Store & p = ffstate.processed;
@@ -1936,7 +1933,7 @@ void RFF::UseFixedFunctionProgram( RegalContext * ctx ) {
     if( currprog->pg == 0 ) {
         Warning( "The program is 0. That can't be right.\n" );
     }
-    ctx->dsp->emuTbl.glUseProgram( currprog->pg );
+    ctx->dispatcher.emulation.glUseProgram( currprog->pg );
     UpdateUniforms( ctx );
 }
 
@@ -1960,7 +1957,7 @@ void RFF::UseShaderProgram( RegalContext * ctx ) {
 void RFF::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
 {
     if( string[0][0] == '#' && string[0][1] == 'v' ) {
-      ctx->dsp->emuTbl.glShaderSource( shader, count, string, length );
+      ctx->dispatcher.emulation.glShaderSource( shader, count, string, length );
       return;
     }
 
@@ -2014,11 +2011,11 @@ void RFF::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
     std::string preamble = ss.str();
     s[0] = preamble.c_str();
     l[0] = static_cast<GLint>( strlen( s[0] ) );
-    ctx->dsp->emuTbl.glShaderSource( shader, count + 1, &s[0], &l[0] );
+    ctx->dispatcher.emulation.glShaderSource( shader, count + 1, &s[0], &l[0] );
 }
 
 void RFF::LinkProgram( RegalContext *ctx, GLuint program ) {
-    ctx->dsp->emuTbl.glLinkProgram( program );
+    ctx->dispatcher.emulation.glLinkProgram( program );
 }
 
 REGAL_NAMESPACE_END

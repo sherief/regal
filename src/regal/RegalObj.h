@@ -129,14 +129,14 @@ struct RegalObj : public RegalEmu {
 
     void Init( RegalContext * ctx ) {
         RegalEmuScopedActivate activate( ctx, this );
-        bufferNames.gen = ctx->dsp->emuTbl.glGenBuffers;
-        bufferNames.del = ctx->dsp->emuTbl.glDeleteBuffers;
-		vaoNames.gen = ctx->dsp->emuTbl.glGenVertexArrays;
-		vaoNames.del = ctx->dsp->emuTbl.glDeleteVertexArrays;
+        bufferNames.gen = ctx->dispatcher.emulation.glGenBuffers;
+        bufferNames.del = ctx->dispatcher.emulation.glDeleteBuffers;
+		vaoNames.gen = ctx->dispatcher.emulation.glGenVertexArrays;
+		vaoNames.del = ctx->dispatcher.emulation.glDeleteVertexArrays;
     }
 
 	void BindBuffer( RegalContext * ctx, GLenum target, GLuint bufferBinding ) {
-		DispatchTable & tbl = ctx->dsp->emuTbl;
+		DispatchTable & tbl = ctx->dispatcher.emulation;
 		tbl.glBindBuffer( target, bufferNames.ToDriverName( bufferBinding ) );
 	}
 
@@ -161,7 +161,7 @@ struct RegalObj : public RegalEmu {
 
 
 	void BindVertexArray( RegalContext * ctx, GLuint vao ) {
-		DispatchTable & tbl = ctx->dsp->emuTbl;
+		DispatchTable & tbl = ctx->dispatcher.emulation;
 		tbl.glBindVertexArray( vaoNames.ToDriverName( vao ) );
 	}
 

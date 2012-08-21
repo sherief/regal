@@ -120,8 +120,8 @@
     <ClInclude Include="..\..\..\src\regal\RegalContext.h" />
     <ClInclude Include="..\..\..\src\regal\RegalContextInfo.h" />
     <ClInclude Include="..\..\..\src\regal\RegalDebugInfo.h" />
+    <ClInclude Include="..\..\..\src\regal\RegalDispatcher.h" />
     <ClInclude Include="..\..\..\src\regal\RegalDispatchError.h" />
-    <ClInclude Include="..\..\..\src\regal\RegalDispatchState.h" />
     <ClInclude Include="..\..\..\src\regal\RegalDsa.h" />
     <ClInclude Include="..\..\..\src\regal\RegalEmu.h" />
     <ClInclude Include="..\..\..\src\regal\RegalHelper.h" />
@@ -143,11 +143,13 @@
     <ClCompile Include="..\..\..\src\regal\RegalContextInfo.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchDebug.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchEmu.cpp" />
+    <ClCompile Include="..\..\..\src\regal\RegalDispatcher.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchError.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchLoader.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchLog.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchMissing.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchNacl.cpp" />
+    <ClCompile Include="..\..\..\src\regal\RegalDispatchStaticES2.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDllMain.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalFavicon.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalHelper.cpp" />

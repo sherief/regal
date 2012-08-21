@@ -171,6 +171,15 @@ def traverse(apis, args):
 def generate(apis, args):
 
   traverse(apis, args)
+  generateSource(apis, args)
+  generateEmuSource( apis, args )
+  generateDispatchLog( apis, args )
+  generateErrorSource( apis, args )
+  generateDebugSource( apis, args )
+  generateLoaderSource( apis, args )
+  generateMissingSource( apis, args )
+  generateNaclSource( apis, args )
+  generateStaticES2Source( apis, args )
   generatePublicHeader(apis, args)
   generateDispatchHeader(apis, args)
   generateContextHeader(apis, args)
@@ -186,14 +195,6 @@ def generate(apis, args):
   additional_exports = ['RegalSetErrorCallback', 'RegalMakeCurrent']
 
   generateDefFile( apis, args, additional_exports)
-  generateLoaderSource( apis, args )
-  generateErrorSource( apis, args )
-  generateDebugSource( apis, args )
-  generateEmuSource( apis, args )
-  generateDispatchLog( apis, args )
-  generateNaclSource( apis, args )
-  generateMissingSource( apis, args )
-  generateSource(apis, args)
 
 ##############################################################################################
 
@@ -424,6 +425,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
+#include "RegalDispatcher.h"
 #include "RegalDispatchError.h"
 
 #if defined(__native_client__)
@@ -438,7 +440,6 @@ REGAL_NAMESPACE_BEGIN
 
 struct DebugInfo;
 struct ContextInfo;
-struct DispatchState;
 
 ${EMU_FORWARD_DECLARE}
 
@@ -449,7 +450,7 @@ struct RegalContext
 
   void Init();
 
-  DispatchState      *dsp;
+  Dispatcher          dispatcher;
   DispatchErrorState  err;
   DebugInfo          *dbg;
   ContextInfo        *info;
@@ -487,7 +488,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalConfig.h"
 #include "RegalContext.h"
-#include "RegalDispatchState.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 ${EMU_INCLUDES}
@@ -499,7 +499,7 @@ REGAL_NAMESPACE_BEGIN
 using namespace Logging;
 
 RegalContext::RegalContext()
-: dsp(new DispatchState()),
+: dispatcher(),
   dbg(NULL),
   info(NULL),
 ${EMU_MEMBER_CONSTRUCT}
@@ -514,12 +514,10 @@ ${EMU_MEMBER_CONSTRUCT}
   depthPushAttrib(0)
 {
   ITrace("RegalContext::RegalContext");
-  dsp->Init();
   if (Config::enableDebug) {
-     dbg = new DebugInfo();
-     dbg->Init(this);
+    dbg = new DebugInfo();
+    dbg->Init(this);
   }
-  RegalAssert(dsp);
 }
 
 void
@@ -557,7 +555,6 @@ ${EMU_MEMBER_INIT}
 RegalContext::~RegalContext()
 {
   ITrace("RegalContext::~RegalContext");
-  delete dsp;
   delete info;
 ${EMU_MEMBER_CLEANUP}
 }
@@ -612,6 +609,8 @@ def generateContextSource(apis, args):
         emuIncludes        += '#include "Regal%s.h"\n' % i['type']
         memberInit         += '  %s = new %s;\n'%(i['member'],i['type'])
         emuMemberCleanup   += '  delete %s;\n' % i['member']
+
+    emuMemberConstruct += '  emuLevel(0),\n'
 
     emuMemberInit += '    // emu\n'
     emuMemberInit += '    emuLevel = %d;\n' % ( len( emu ) - 1 )
@@ -768,8 +767,8 @@ ContextInfo::~ContextInfo()
 inline string getString(const RegalContext &context, const GLenum e)
 {
   ITrace("getString ",toString(e));
-  RegalAssert(context.dsp->driverTbl.glGetString);
-  const GLubyte *str = context.dsp->driverTbl.glGetString(e);
+  RegalAssert(context.dispatcher.driver.glGetString);
+  const GLubyte *str = context.dispatcher.driver.glGetString(e);
   return str ? string(reinterpret_cast<const char *>(str)) : string();
 }
 
@@ -805,8 +804,8 @@ ContextInfo::init(const RegalContext &context)
   if (!gles && gl_version_major>=3)
   {
     GLint flags = 0;
-    RegalAssert(context.dsp->driverTbl.glGetIntegerv);
-    context.dsp->driverTbl.glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &flags);
+    RegalAssert(context.dispatcher.driver.glGetIntegerv);
+    context.dispatcher.driver.glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &flags);
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
@@ -818,14 +817,14 @@ ContextInfo::init(const RegalContext &context)
 
   if (core)
   {
-    RegalAssert(context.dsp->driverTbl.glGetStringi);
-    RegalAssert(context.dsp->driverTbl.glGetIntegerv);
+    RegalAssert(context.dispatcher.driver.glGetStringi);
+    RegalAssert(context.dispatcher.driver.glGetIntegerv);
 
     GLint n = 0;
-    context.dsp->driverTbl.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
+    context.dispatcher.driver.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
 
     for (GLint i=0; i<n; ++i)
-      extList.push_back(reinterpret_cast<const char *>(context.dsp->driverTbl.glGetStringi(GL_EXTENSIONS,i)));
+      extList.push_back(reinterpret_cast<const char *>(context.dispatcher.driver.glGetStringi(GL_EXTENSIONS,i)));
     extensions = extList.join(" ");
   }
   else
@@ -901,8 +900,8 @@ ${VERSION_DETECT}
 
 ${EXT_INIT}
 
-  RegalAssert(context.dsp->driverTbl.glGetIntegerv);
-  context.dsp->driverTbl.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
+  RegalAssert(context.dispatcher.driver.glGetIntegerv);
+  context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
 
   if (maxVertexAttribs > REGAL_MAX_VERTEX_ATTRIBS)
       maxVertexAttribs = REGAL_MAX_VERTEX_ATTRIBS;
@@ -1588,7 +1587,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
-#include "RegalDispatchState.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
@@ -1661,15 +1659,13 @@ def generateDispatchLog(apis, args):
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'log_', name, params)
       code += '    %s\n' % debugPrintFunction( function, 'GTrace' )
-      code += '    RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
-      code += '    RegalAssert(rCtx);\n'
-      code += '    RegalAssert(rCtx->dsp);\n'
-      code += '    DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
-      code += '    RegalAssert(rCtx->dsp->curr);\n'
+      code += '    RegalContext *_context = GET_REGAL_CONTEXT();\n'
+      code += '    RegalAssert(_context);\n'
+      code += '    Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
       code += '    '
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
-      code += 'rCtx->dsp->driverTbl.%s(%s);\n' % ( name, callParams )
+      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '    return ret;\n'
       code += '}\n\n'
@@ -1805,7 +1801,6 @@ using namespace std;
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
 #include "RegalContext.h"
-#include "RegalDispatchState.h"
 ${LOCAL_INCLUDE}
 
 REGAL_GLOBAL_END
@@ -2020,6 +2015,59 @@ def generateNaclSource(apis, args):
 
 ##############################################################################################
 
+def apiStaticES2FuncInitCode(apis, args):
+
+  code = ''
+
+  code += '#ifdef REGAL_NAMESPACE\n'
+  code += '#undef REGAL_NAMESPACE\n'
+  code += '\n'
+
+  code = '// OpenGL ES 2.0 only\n'
+
+  for api in apis:
+
+    if api.name=='gl':
+
+      for function in api.functions:
+        if not function.needsContext:
+          continue
+        if getattr(function,'esVersions',None)==None or 2.0 not in function.esVersions:
+          continue
+
+        name   = function.name
+        params = paramsDefaultCode(function.parameters, True)
+        callParams = paramsNameCode(function.parameters)
+        rType  = typeCode(function.ret.type)
+
+        code += '  tbl.%s = %s;\n' % ( name, name )
+
+  return code
+
+def generateStaticES2Source(apis, args):
+
+  funcInit   = apiStaticES2FuncInitCode( apis, args )
+
+  # Output
+
+  substitute = {}
+
+  substitute['LICENSE'] = regalLicense
+  substitute['DISPATCH_NAME'] = 'StaticES2'
+  substitute['LOCAL_INCLUDE'] = ''
+  substitute['LOCAL_CODE']    = ''
+  substitute['AUTOGENERATED'] = autoGeneratedMessage
+  substitute['COPYRIGHT']     = args.copyright
+  substitute['API_DISPATCH_FUNC_DEFINE'] = ''
+  substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['IFDEF'] = '#if REGAL_STATIC_ES2\n'
+  substitute['ENDIF'] = '#endif\n'
+
+  outputCode( '%s/RegalDispatchStaticES2.cpp' % args.outdir, dispatchSourceTemplate.substitute(substitute))
+
+
+##############################################################################################
+
 # CodeGen for missing dispatch functions
 
 def apiMissingFuncDefineCode(apis, args):
@@ -2062,14 +2110,13 @@ def apiMissingFuncDefineCode(apis, args):
 
       code += '%sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'missing_', name, params)
       for param in function.parameters:
-        code += '   UNUSED_PARAMETER(%s);\n' % param.name
-      code += '   Warning( "%s not available." );\n' % name
+        code += '  UNUSED_PARAMETER(%s);\n' % param.name
+      code += '  Warning( "%s not available." );\n' % name
       if not typeIsVoid(rType):
         if rType[-1] != '*':
-          code += '  %s ret = (%s)0;\n' % ( rType, rType )
+          code += '  return (%s)0;\n' % ( rType )
         else:
-          code += '  %s ret = NULL;\n' % rType
-        code += '  return ret;\n'
+          code += '  return NULL;\n'
       code += '}\n\n'
 
     if api.name in cond:
@@ -2534,9 +2581,9 @@ def apiFuncDefineCode(apis, args):
       emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emuRegal ]
 
       if function.needsContext:
-        c += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
+        c += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
         c += '  %s\n' % debugPrintFunction( function, 'RTrace' )
-        c += '  if (!rCtx) return'
+        c += '  if (!_context) return'
         if typeIsVoid(rType):
           c += ';\n'
         else:
@@ -2545,18 +2592,12 @@ def apiFuncDefineCode(apis, args):
           else:
             c += ' NULL;\n'
 
-        c += '  RegalAssert(rCtx);\n'
-        c += '  RegalAssert(rCtx->dsp);\n'
-        c += '  RegalAssert(rCtx->dsp->curr);\n'
-        c += '  RegalAssert(rCtx->dsp->curr->%s);\n' % ( name)
-        c += '  RegalAssert(rCtx->dsp->curr->%s != %s);\n' % ( name, name)
-
         c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
 
         c += '  '
         if not typeIsVoid(rType):
           c += 'return '
-        c += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
+        c += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
       else:
         c += '  %s\n' % debugPrintFunction(function, 'RTrace' )
         c += '  if (dispatchTableGlobal.%s == NULL) {\n' % name
@@ -2644,25 +2685,22 @@ def apiLoaderFuncDefineCode(apis, args):
 
       categoryPrev = category
 
-      code += 'extern %sREGAL_CALL %s%s(%s);\n\n' % (rType, 'missing_', name, params)
-
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'loader_', name, params)
-      code += '   RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
-      code += '   RegalAssert(rCtx);\n'
-      code += '   RegalAssert(rCtx->dsp);\n'
-      code += '   DispatchTable & driverTbl = rCtx->dsp->driverTbl;\n'
-      code += '   GetProcAddress( driverTbl.%s, "%s");\n' % (name, name)
-      code += '   if ( !driverTbl.%s ) {\n' % name
-      code += '      driverTbl.%s = missing_%s;\n' % (name, name)
-      code += '   }\n'
-      code += '   // If emu table is using the loader, update its entry too.\n'
-      code += '   if (rCtx->dsp->emuTbl.%s == loader_%s) {\n' % (name, name)
-      code += '      rCtx->dsp->emuTbl.%s = driverTbl.%s;\n' % (name, name)
-      code += '   }\n'
-      code += '   '
+      code += '  RegalContext * _context = GET_REGAL_CONTEXT();\n'
+      code += '  RegalAssert(_context);\n'
+      code += '  DispatchTable &_driver = _context->dispatcher.driver;\n'
+      code += '  GetProcAddress(_driver.%s, "%s");\n' % (name, name)
+      code += '  if (_driver.%s) {\n    ' % name
       if not typeIsVoid(rType):
         code += 'return '
-      code += 'driverTbl.%s(%s);\n' % ( name, callParams )
+      code += '_driver.%s(%s);\n' % ( name, callParams )
+      if typeIsVoid(rType):
+        code += '    return;\n'
+      code += '  }\n'
+      code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n  '
+      if not typeIsVoid(rType):
+        code += 'return '
+      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n'%(name, callParams)
       code += '}\n\n'
 
     if api.name in cond:
@@ -2721,7 +2759,7 @@ def apiEmuFuncDefineCode(apis, args):
                 continue
 
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
-            code += '   RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
+            code += '   RegalContext *_context = GET_REGAL_CONTEXT();\n'
             #code += '   RegalCheckGLError( rCtx );\n'
             code += '\n'
 
@@ -2729,7 +2767,7 @@ def apiEmuFuncDefineCode(apis, args):
 
             if not all(i[1]==None or not 'prefix' in i[1] and not 'impl' in i[1] for i in level):
               code += '   // prefix\n'
-              code += '   switch( rCtx->emuLevel ) {\n'
+              code += '   switch( _context->emuLevel ) {\n'
               for i in level:
                   l,e = i[0], i[1]
                   code += '       case %d :\n' % l['level']
@@ -2737,14 +2775,14 @@ def apiEmuFuncDefineCode(apis, args):
                       code += '         #if %s\n' % l['ifdef']
                   if e != None and 'prefix' in e :
                       if l['member'] :
-                          code += '         if (rCtx->%s) {\n' % l['member']
-                          code += '             RegalEmuScopedActivate activate( rCtx, rCtx->%s );\n' % l['member']
+                          code += '         if (_context->%s) {\n' % l['member']
+                          code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
                       for j in e['prefix'] :
                           code += '             %s\n' % j
                       if l['member'] :
                           code += '         }\n'
                   if e!= None and 'impl' in e and l['member']:
-                      code += '         if (rCtx->%s) break;\n' % l['member'];
+                      code += '         if (_context->%s) break;\n' % l['member'];
                   if l['ifdef']:
                       code += '         #endif\n'
               code += '       default:\n'
@@ -2753,7 +2791,7 @@ def apiEmuFuncDefineCode(apis, args):
 
             if not all(i[1]==None or not 'impl' in i[1] for i in level):
               code += '   // impl\n'
-              code += '   switch( rCtx->emuLevel ) {\n'
+              code += '   switch( _context->emuLevel ) {\n'
               for i in level:
                   l,e = i[0], i[1]
                   code += '       case %d :\n' % l['level']
@@ -2761,8 +2799,8 @@ def apiEmuFuncDefineCode(apis, args):
                       code += '         #if %s\n' % l['ifdef']
                   if e != None and 'impl' in e :
                       if l['member'] :
-                        code += '         if (rCtx->%s) {\n' % l['member']
-                        code += '             RegalEmuScopedActivate activate( rCtx, rCtx->%s );\n' % l['member']
+                        code += '         if (_context->%s) {\n' % l['member']
+                        code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
                       for j in e['impl'] :
                           code += '             %s\n' % j
                       if l['member'] :
@@ -2775,20 +2813,21 @@ def apiEmuFuncDefineCode(apis, args):
               # debug print
               # code += '           %s\n' % debugPrintFunction( function, 'GTrace' )
               # debug print
-              code += '         DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
+              code += '         Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
               code += '         '
               if not typeIsVoid(rType):
                   code += 'return '
-              code += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
+
+              code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
               code += '         break;\n'
               code += '       }\n\n'
               code += '   }\n\n'
             else:
-              code += '   DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
+              code += '   Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
               code += '   '
               if not typeIsVoid(rType):
                   code += 'return '
-              code += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
+              code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
             code += '}\n\n'
 
         if api.name in cond:
@@ -2842,35 +2881,33 @@ def apiErrorFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'error_', name, params)
-      code += '    ITrace("error_%s");\n' % name
-      code += '    RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
-      code += '    RegalAssert(rCtx)\n'
-      code += '    RegalAssert(rCtx->dsp)\n'
-      code += '    RegalAssert(rCtx->dsp->curr)\n'
+      code += '  ITrace("error_%s");\n' % name
+      code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
+      code += '  RegalAssert(_context);\n'
       if name != 'glGetError':
-        code += '    GLenum _error = GL_NO_ERROR;\n'
-        code += '    DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
-        code += '    if (!rCtx->depthBeginEnd)\n'
-        code += '      _error = rCtx->dsp->curr->glGetError();\n'
-        code += '    RegalAssert(_error==GL_NO_ERROR);\n'
-        code += '    '
+        code += '  GLenum _error = GL_NO_ERROR;\n'
+        code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+        code += '  if (!_context->depthBeginEnd)\n'
+        code += '    _error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '  RegalAssert(_error==GL_NO_ERROR);\n'
+        code += '  '
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
-        code += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
-        code += '    if (!rCtx->depthBeginEnd) {\n'
-        code += '      _error = rCtx->dsp->curr->glGetError();\n'
-        code += '      if (_error!=GL_NO_ERROR) {\n'
-        code += '        Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
-        code += '        if (rCtx->err.callback)\n'
-        code += '          rCtx->err.callback( _error );\n'
-        code += '      }\n'
+        code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+        code += '  if (!_context->depthBeginEnd) {\n'
+        code += '    _error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '    if (_error!=GL_NO_ERROR) {\n'
+        code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
+        code += '      if (_context->err.callback)\n'
+        code += '        _context->err.callback( _error );\n'
         code += '    }\n'
+        code += '  }\n'
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '    DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
-        code += '    GLenum err = rCtx->dsp->curr->glGetError();\n'
-        code += '    return err;\n'
+        code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+        code += '  GLenum error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '  return error;\n'
       code += '}\n\n'
 
     if api.name in cond:
@@ -2924,8 +2961,9 @@ def apiDebugFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'debug_', name, params)
-      code += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
-      code += '  DispatchStateScopedStepDown stepDown(rCtx->dsp);\n'
+      code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
+      code += '  RegalAssert(_context);\n'
+      code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
       e = emuFindEntry( function, debugDispatchFormulae, '' )
       if e != None and 'prefix' in e :
         for l in e['prefix'] :
@@ -2933,7 +2971,7 @@ def apiDebugFuncDefineCode(apis, args):
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType
-      code += 'rCtx->dsp->curr->%s(%s);\n' % ( name, callParams )
+      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '  return ret;\n'
       code += '}\n\n'

@@ -3,11 +3,11 @@
 debugDispatchFormulae = {
     'MatrixMode' : {
         'entries' : [ 'glMatrixMode' ],
-        'prefix' : [ 'rCtx->dbg->MatrixMode( rCtx, ${arg0plus} );', ],
+        'prefix' : [ '_context->dbg->MatrixMode( _context, ${arg0plus} );', ],
     },
     'ClientActiveTexture' : {
         'entries' : [ 'gl(Client|)(ActiveTexture)' ],
-        'prefix' : [ 'rCtx->dbg->${m1}${m2}( rCtx, ${arg0plus} );', ],
+        'prefix' : [ '_context->dbg->${m1}${m2}( _context, ${arg0plus} );', ],
     },
 }
 

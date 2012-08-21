@@ -40,6 +40,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
+#include "RegalDispatcher.h"
 #include "RegalDispatchError.h"
 
 #if defined(__native_client__)
@@ -54,7 +55,6 @@ REGAL_NAMESPACE_BEGIN
 
 struct DebugInfo;
 struct ContextInfo;
-struct DispatchState;
 
 struct Marker;
 struct RegalObj;
@@ -71,7 +71,7 @@ struct RegalContext
 
   void Init();
 
-  DispatchState      *dsp;
+  Dispatcher          dispatcher;
   DispatchErrorState  err;
   DebugInfo          *dbg;
   ContextInfo        *info;

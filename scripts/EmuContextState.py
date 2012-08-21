@@ -6,29 +6,29 @@
 formulae = {
   'Begin' : {
     'entries' : [ 'glBegin' ],
-    'impl' : [ 'RegalAssert(rCtx);',
-               'rCtx->depthBeginEnd++;'
+    'impl' : [ 'RegalAssert(_context);',
+               '_context->depthBeginEnd++;'
              ]
   },
 
   'End' : {
     'entries' : [ 'glEnd' ],
-    'impl' : [ 'RegalAssert(rCtx);',
-               'rCtx->depthBeginEnd--;'
+    'impl' : [ 'RegalAssert(_context);',
+               '_context->depthBeginEnd--;'
              ]
   },
 
   'PushAttrib' : {
     'entries' : [ 'glPushAttrib' ],
-    'impl' : [ 'RegalAssert(rCtx);',
-               'rCtx->depthPushAttrib++;'
+    'impl' : [ 'RegalAssert(_context);',
+               '_context->depthPushAttrib++;'
              ]
   },
 
   'PopAttrib' : {
     'entries' : [ 'glPopAttrib' ],
-    'impl' : [ 'RegalAssert(rCtx);',
-               'rCtx->depthPushAttrib--;'
+    'impl' : [ 'RegalAssert(_context);',
+               '_context->depthPushAttrib--;'
              ]
   },
 

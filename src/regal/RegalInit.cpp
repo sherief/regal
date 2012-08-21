@@ -43,7 +43,7 @@ using namespace std;
 #include "RegalHttp.h"
 #include "RegalToken.h"
 #include "RegalDispatch.h"
-#include "RegalDispatchState.h"
+#include "RegalDispatcher.h"
 #include "RegalPrivate.h"
 
 RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
@@ -158,8 +158,7 @@ map<Thread, RegalContext *> th2rc;
 void RegalCheckForGLErrors( RegalContext *ctx )
 {
     RegalAssert(ctx);
-    RegalAssert(ctx->dsp);
-    GLenum err = ctx->dsp->driverTbl.glGetError();
+    GLenum err = ctx->dispatcher.driver.glGetError();
     if (err != GL_NO_ERROR)
         Error("GL error = ",toString(err));
 }
