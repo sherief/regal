@@ -56,6 +56,17 @@ static void myTick(int dummy)
   glutTimerFunc( 16, myTick, 0 );
 }
 
+static void myToggle(GLenum e, const char *message)
+{
+  if (glIsEnabled(e))
+    glDisable(e);
+  else
+    glEnable(e);
+
+  if (message)
+    printf("%s %s.\n",message, glIsEnabled(e) ? "enabled" : "disabled");
+}
+
 static void myKeyboard(unsigned char c, int x, int y)
 {
   switch (c)
@@ -63,6 +74,34 @@ static void myKeyboard(unsigned char c, int x, int y)
     case 'q':
     case 27:  /* Esc key */
       exit(0);
+      break;
+
+    // GL_REGAL_enable
+    // https://github.com/p3/regal/blob/master/doc/extensions/GL_REGAL_enable.txt
+
+    case 'e':
+    case 'E':
+      myToggle(GL_ERROR_REGAL,"Regal error checking is");
+      break;
+
+    case 'd':
+    case 'D':
+      myToggle(GL_DEBUG_REGAL,"Regal debug checking is");
+      break;
+
+    case 'l':
+    case 'L':
+      myToggle(GL_LOG_REGAL,"Regal driver logging is");
+      break;
+
+    case 'm':
+    case 'M':
+      myToggle(GL_EMULATION_REGAL,"Regal emulation is");
+      break;
+
+    case 'r':
+    case 'R':
+      myToggle(GL_LOADER_REGAL,"Regal driver is");
       break;
   }
 }
@@ -122,6 +161,14 @@ int main(int argc, const char *argv[])
     else
       printf("GL_NV_path_rendering is not supported.\n");
   }
+
+  printf("\n");
+  printf("E - Toggle GL error checking.\n");
+  printf("D - Toggle debug checking.\n");
+  printf("L - Toggle driver logging.\n");
+  printf("M - Toggle emulation.\n");
+  printf("R - Toggle driver calls.\n");
+  printf("\n");
 
   glutTimerFunc(16, myTick, 0);
   glutDisplayFunc(myDisplay);

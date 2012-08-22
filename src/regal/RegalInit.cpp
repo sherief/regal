@@ -102,7 +102,7 @@ extern "C" { DWORD __stdcall GetCurrentThreadId(void); }
 
 DispatchTableGlobal dispatchTableGlobal;
 
-// Single-threaded RegalContext 
+// Single-threaded RegalContext
 
 RegalContext *currentContext = NULL;
 
@@ -222,7 +222,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
     RegalAssert( ctx->thread == 0 );
     th2rc[ thread ] = ctx;
     ctx->thread = thread;
-    
+
 #if !REGAL_NO_TLS
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
@@ -236,7 +236,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
     pthread_setspecific( regalPrivateCurrentContextKey, ctx );
 #endif
 #endif
-  } 
+  }
   else
   {
     if( th2rc.count( thread ) ) {

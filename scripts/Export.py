@@ -1740,6 +1740,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalState.h"
 #include "RegalHelper.h"
+#include "RegalDebugInfo.h"
 
 #include "RegalMarker.h"
 

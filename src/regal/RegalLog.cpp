@@ -220,7 +220,7 @@ namespace Logging {
     if (str.length())
     {
       string m = message(prefix,delim,str);
-      
+
       RegalContext *rCtx = NULL;
 
 #if !defined(REGAL_SYS_WGL) && !REGAL_NO_TLS

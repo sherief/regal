@@ -1484,13 +1484,13 @@ void RFF::InitFixedFunction( RegalContext * ctx ) {
 
     fmtmap[ GL_RGBA16F ] = GL_RGBA16F;
     fmtmap[ GL_SRGB8_ALPHA8 ] = GL_SRGB8_ALPHA8;
-  
+
     fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
     fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
     fmtmap[ GL_INTENSITY16F_ARB ] = GL_INTENSITY;
-    
+
     // GL_ARB_ES2_compatibility
-    
+
     fmtmap[ GL_RGB565 ]           = GL_RGB;
 }
 

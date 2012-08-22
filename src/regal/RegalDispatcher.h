@@ -90,6 +90,8 @@ public:
   void enable(DispatchTable &table);
   void disable(DispatchTable &table);
 
+  bool isEnabled(DispatchTable &table) const;
+
   DispatchTable &
   table()
   {

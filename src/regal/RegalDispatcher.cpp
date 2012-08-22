@@ -56,12 +56,12 @@ Dispatcher::Dispatcher()
   InitDispatchTableDebug(debug);
   push_back(debug,Config::enableDebug);
   #endif
-  
+
   #if REGAL_ERROR
   InitDispatchTableError(error);
   push_back(error,Config::enableError);
   #endif
-  
+
 #if 0
   #if REGAL_LOG
   InitDispatchTableLog(emulation);
@@ -71,12 +71,12 @@ Dispatcher::Dispatcher()
   ::memset(&emulation,0,sizeof(DispatchTable));
   InitDispatchTableEmu(emulation);   // overrides emulated functions only
   push_back(emulation,true);
-  
+
   #if REGAL_LOG
   InitDispatchTableLog(logging);
   push_back(logging,Config::enableLog);
   #endif
-  
+
   #if defined(__native_client__)
   ::memset(&emulation,0,sizeof(DispatchTable));
   InitDispatchTableNacl   (driver);
@@ -116,21 +116,34 @@ void
 Dispatcher::enable(DispatchTable &table)
 {
   RegalAssert(enabled.size()==disabled.size());
-  for (std::size_t i=0; i<enabled.size(); ++i)
-    if (enabled[i]==&table)
+  for (std::size_t i=0; i<disabled.size(); ++i)
+    if (disabled[i]==&table)
       std::swap(enabled[i],disabled[i]);
 }
 
 void
 Dispatcher::disable(DispatchTable &table)
 {
-   // Disabling the missing table would be bad!
+  // Disabling the missing table would be bad!
   RegalAssert(&table!=&missing);
 
   RegalAssert(enabled.size()==disabled.size());
-  for (std::size_t i=0; i<disabled.size(); ++i)
-    if (disabled[i]==&table)
+  for (std::size_t i=0; i<enabled.size(); ++i)
+    if (enabled[i]==&table)
       std::swap(enabled[i],disabled[i]);
+}
+
+bool
+Dispatcher::isEnabled(DispatchTable &table) const
+{
+  RegalAssert(enabled.size()==disabled.size());
+  for (std::size_t i=0; i<enabled.size(); ++i)
+  {
+    if (enabled[i]==&table)  return true;
+    if (disabled[i]==&table) return false;
+  }
+
+  return false;
 }
 
 REGAL_NAMESPACE_END

@@ -43,6 +43,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalState.h"
 #include "RegalHelper.h"
+#include "RegalDebugInfo.h"
 
 #include "RegalMarker.h"
 
@@ -508,11 +509,36 @@ REGAL_DECL void REGAL_CALL glDisable(GLenum cap)
   }
   switch(cap)
   {
-    case GL_ERROR_REGAL:      /* TODO */ return;
-    case GL_DEBUG_REGAL:      /* TODO */ return;
-    case GL_LOG_REGAL:        /* TODO */ return;
-    case GL_EMULATION_REGAL:  /* TODO */ return;
-    case GL_LOADER_REGAL:     /* TODO */ return;
+    case GL_ERROR_REGAL:
+      #if REGAL_ERROR
+      _context->dispatcher.disable(_context->dispatcher.error);
+      #endif
+      return;
+
+    case GL_DEBUG_REGAL:
+      #if REGAL_DEBUG
+      _context->dispatcher.disable(_context->dispatcher.debug);
+      #endif
+      return;
+
+    case GL_LOG_REGAL:
+      #if REGAL_LOG
+      _context->dispatcher.disable(_context->dispatcher.logging);
+      #endif
+      return;
+
+    case GL_EMULATION_REGAL:
+      #if REGAL_EMULATION
+      _context->dispatcher.disable(_context->dispatcher.emulation);
+      #endif
+      return;
+
+    case GL_LOADER_REGAL:
+      #if REGAL_DRIVER
+      _context->dispatcher.disable(_context->dispatcher.driver);
+      #endif
+      return;
+
     default: break;
   }
   _context->dispatcher.call(&_context->dispatcher.table().glDisable)(cap);
@@ -568,11 +594,41 @@ REGAL_DECL void REGAL_CALL glEnable(GLenum cap)
   }
   switch(cap)
   {
-    case GL_ERROR_REGAL:      /* TODO */ return;
-    case GL_DEBUG_REGAL:      /* TODO */ return;
-    case GL_LOG_REGAL:        /* TODO */ return;
-    case GL_EMULATION_REGAL:  /* TODO */ return;
-    case GL_LOADER_REGAL:     /* TODO */ return;
+    case GL_ERROR_REGAL:
+      #if REGAL_ERROR
+      _context->dispatcher.enable(_context->dispatcher.error);
+      #endif
+      return;
+
+    case GL_DEBUG_REGAL:
+      #if REGAL_DEBUG
+      _context->dispatcher.enable(_context->dispatcher.debug);
+      if (!_context->dbg)
+      {
+         _context->dbg = new DebugInfo();
+         _context->dbg->Init(_context);
+      }
+      #endif
+      return;
+
+    case GL_LOG_REGAL:
+      #if REGAL_LOG
+      _context->dispatcher.enable(_context->dispatcher.logging);
+      #endif
+      return;
+
+    case GL_EMULATION_REGAL:
+      #if REGAL_EMULATION
+      _context->dispatcher.enable(_context->dispatcher.emulation);
+      #endif
+      return;
+
+    case GL_LOADER_REGAL:
+      #if REGAL_DRIVER
+      _context->dispatcher.enable(_context->dispatcher.driver);
+      #endif
+      return;
+
     default: break;
   }
   _context->dispatcher.call(&_context->dispatcher.table().glEnable)(cap);
@@ -1112,11 +1168,41 @@ REGAL_DECL GLboolean REGAL_CALL glIsEnabled(GLenum cap)
   }
   switch(cap)
   {
-    case GL_ERROR_REGAL:      /* TODO */ return GL_TRUE;
-    case GL_DEBUG_REGAL:      /* TODO */ return GL_TRUE;
-    case GL_LOG_REGAL:        /* TODO */ return GL_TRUE;
-    case GL_EMULATION_REGAL:  /* TODO */ return GL_TRUE;
-    case GL_LOADER_REGAL:     /* TODO */ return GL_TRUE;
+    case GL_ERROR_REGAL:
+      #if REGAL_ERROR
+      return _context->dispatcher.isEnabled(_context->dispatcher.error) ? GL_TRUE : GL_FALSE;
+      #else
+      return GL_FALSE;
+      #endif
+
+    case GL_DEBUG_REGAL:
+      #if REGAL_DEBUG
+      return _context->dispatcher.isEnabled(_context->dispatcher.debug) ? GL_TRUE : GL_FALSE;
+      #else
+      return GL_FALSE;
+      #endif
+
+    case GL_LOG_REGAL:
+      #if REGAL_LOG
+      return _context->dispatcher.isEnabled(_context->dispatcher.logging) ? GL_TRUE : GL_FALSE;
+      #else
+      return GL_FALSE;
+      #endif
+
+    case GL_EMULATION_REGAL:
+      #if REGAL_EMULATION
+      return _context->dispatcher.isEnabled(_context->dispatcher.emulation) ? GL_TRUE : GL_FALSE;
+      #else
+      return GL_FALSE;
+      #endif
+
+    case GL_LOADER_REGAL:
+      #if REGAL_DRIVER
+      return _context->dispatcher.isEnabled(_context->dispatcher.driver) ? GL_TRUE : GL_FALSE;
+      #else
+      return GL_FALSE;
+      #endif
+
     default: break;
   }
   return _context->dispatcher.call(&_context->dispatcher.table().glIsEnabled)(cap);

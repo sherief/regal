@@ -82,7 +82,7 @@ LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 
-ifeq ($(filter %REGAL_NO_HTTP%,$(CFLAGS)),)
+ifeq ($(filter -DREGAL_NO_HTTP%,$(CFLAGS)),)
 LIB.SRCS           += src/mongoose/mongoose.c
 endif
 

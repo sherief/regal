@@ -126,6 +126,18 @@ are permitted provided that the following conditions are met:
 #endif
 #endif
 
+// Emulation dispatch enabled by default
+
+#ifndef REGAL_EMULATION
+#define REGAL_EMULATION 1
+#endif
+
+// Driver dispatch enabled by default
+
+#ifndef REGAL_DRIVER
+#define REGAL_DRIVER 1
+#endif
+
 #ifndef REGAL_LOG
 #ifdef NDEBUG
 #define REGAL_LOG 0

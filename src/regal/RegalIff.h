@@ -802,13 +802,13 @@ struct RegalIff : public RegalEmu {
                 default:
                     break;
             }
-            
+
             // For triangle fan we need the first and last vertices
             // for restarting.  All others concern the most recent n.
 
             if (immPrim==GL_TRIANGLE_FAN)
             {
-                memcpy( immArray + maxVertexAttribs * 16, immArray + (REGAL_IMMEDIATE_BUFFER_SIZE - 1) * maxVertexAttribs * 16, maxVertexAttribs * 16);                
+                memcpy( immArray + maxVertexAttribs * 16, immArray + (REGAL_IMMEDIATE_BUFFER_SIZE - 1) * maxVertexAttribs * 16, maxVertexAttribs * 16);
                 immCurrent = 2;
             }
             else
@@ -1556,7 +1556,7 @@ struct RegalIff : public RegalEmu {
         int idx = 0;
         switch( coord ) {
             case GL_S: case GL_T: case GL_R: case GL_Q: idx = coord - GL_S; break;
-            default: 
+            default:
               RegalAssert(coord==GL_S || coord==GL_T || coord==GL_R || coord==GL_Q || coord==GL_S);
               return;
         }
@@ -1569,7 +1569,7 @@ struct RegalIff : public RegalEmu {
                     case GL_SPHERE_MAP: mode = TG_SphereMap; break;
                     case GL_NORMAL_MAP: mode = TG_NormalMap; break;
                     case GL_REFLECTION_MAP: mode = TG_ReflectionMap; break;
-                    default: 
+                    default:
                         RegalAssert(0);
                         return;
                 }
