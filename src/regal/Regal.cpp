@@ -43,7 +43,9 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalState.h"
 #include "RegalHelper.h"
+#include "RegalPrivate.h"
 #include "RegalDebugInfo.h"
+#include "RegalContextInfo.h"
 
 #include "RegalMarker.h"
 
@@ -533,7 +535,7 @@ REGAL_DECL void REGAL_CALL glDisable(GLenum cap)
       #endif
       return;
 
-    case GL_LOADER_REGAL:
+    case GL_DRIVER_REGAL:
       #if REGAL_DRIVER
       _context->dispatcher.disable(_context->dispatcher.driver);
       #endif
@@ -623,7 +625,7 @@ REGAL_DECL void REGAL_CALL glEnable(GLenum cap)
       #endif
       return;
 
-    case GL_LOADER_REGAL:
+    case GL_DRIVER_REGAL:
       #if REGAL_DRIVER
       _context->dispatcher.enable(_context->dispatcher.driver);
       #endif
@@ -1196,7 +1198,7 @@ REGAL_DECL GLboolean REGAL_CALL glIsEnabled(GLenum cap)
       return GL_FALSE;
       #endif
 
-    case GL_LOADER_REGAL:
+    case GL_DRIVER_REGAL:
       #if REGAL_DRIVER
       return _context->dispatcher.isEnabled(_context->dispatcher.driver) ? GL_TRUE : GL_FALSE;
       #else
@@ -20843,6 +20845,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetStereoEmitterState3DL(HDC hDC, UINT uState)
   if (dispatchTableGlobal.wglSetStereoEmitterState3DL == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetStereoEmitterState3DL, "wglSetStereoEmitterState3DL" );
     RegalAssert(dispatchTableGlobal.wglSetStereoEmitterState3DL!=wglSetStereoEmitterState3DL);
+    if (dispatchTableGlobal.wglSetStereoEmitterState3DL==wglSetStereoEmitterState3DL)
+      dispatchTableGlobal.wglSetStereoEmitterState3DL = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetStereoEmitterState3DL) {
@@ -20862,6 +20866,8 @@ REGAL_DECL VOID REGAL_CALL wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX
   if (dispatchTableGlobal.wglBlitContextFramebufferAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBlitContextFramebufferAMD, "wglBlitContextFramebufferAMD" );
     RegalAssert(dispatchTableGlobal.wglBlitContextFramebufferAMD!=wglBlitContextFramebufferAMD);
+    if (dispatchTableGlobal.wglBlitContextFramebufferAMD==wglBlitContextFramebufferAMD)
+      dispatchTableGlobal.wglBlitContextFramebufferAMD = NULL;
   }
   if (dispatchTableGlobal.wglBlitContextFramebufferAMD) {
     GTrace("wglBlitContextFramebufferAMD(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
@@ -20877,6 +20883,8 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateAssociatedContextAMD(UINT id)
   if (dispatchTableGlobal.wglCreateAssociatedContextAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateAssociatedContextAMD, "wglCreateAssociatedContextAMD" );
     RegalAssert(dispatchTableGlobal.wglCreateAssociatedContextAMD!=wglCreateAssociatedContextAMD);
+    if (dispatchTableGlobal.wglCreateAssociatedContextAMD==wglCreateAssociatedContextAMD)
+      dispatchTableGlobal.wglCreateAssociatedContextAMD = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglCreateAssociatedContextAMD) {
@@ -20894,6 +20902,8 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateAssociatedContextAttribsAMD(UINT id, HGLRC 
   if (dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD, "wglCreateAssociatedContextAttribsAMD" );
     RegalAssert(dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD!=wglCreateAssociatedContextAttribsAMD);
+    if (dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD==wglCreateAssociatedContextAttribsAMD)
+      dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD) {
@@ -20911,6 +20921,8 @@ REGAL_DECL BOOL REGAL_CALL wglDeleteAssociatedContextAMD(HGLRC hglrc)
   if (dispatchTableGlobal.wglDeleteAssociatedContextAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDeleteAssociatedContextAMD, "wglDeleteAssociatedContextAMD" );
     RegalAssert(dispatchTableGlobal.wglDeleteAssociatedContextAMD!=wglDeleteAssociatedContextAMD);
+    if (dispatchTableGlobal.wglDeleteAssociatedContextAMD==wglDeleteAssociatedContextAMD)
+      dispatchTableGlobal.wglDeleteAssociatedContextAMD = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDeleteAssociatedContextAMD) {
@@ -20928,6 +20940,8 @@ REGAL_DECL UINT REGAL_CALL wglGetContextGPUIDAMD(HGLRC hglrc)
   if (dispatchTableGlobal.wglGetContextGPUIDAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetContextGPUIDAMD, "wglGetContextGPUIDAMD" );
     RegalAssert(dispatchTableGlobal.wglGetContextGPUIDAMD!=wglGetContextGPUIDAMD);
+    if (dispatchTableGlobal.wglGetContextGPUIDAMD==wglGetContextGPUIDAMD)
+      dispatchTableGlobal.wglGetContextGPUIDAMD = NULL;
   }
   UINT  ret = (UINT )0;
   if (dispatchTableGlobal.wglGetContextGPUIDAMD) {
@@ -20945,6 +20959,8 @@ REGAL_DECL HGLRC REGAL_CALL wglGetCurrentAssociatedContextAMD(void)
   if (dispatchTableGlobal.wglGetCurrentAssociatedContextAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetCurrentAssociatedContextAMD, "wglGetCurrentAssociatedContextAMD" );
     RegalAssert(dispatchTableGlobal.wglGetCurrentAssociatedContextAMD!=wglGetCurrentAssociatedContextAMD);
+    if (dispatchTableGlobal.wglGetCurrentAssociatedContextAMD==wglGetCurrentAssociatedContextAMD)
+      dispatchTableGlobal.wglGetCurrentAssociatedContextAMD = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglGetCurrentAssociatedContextAMD) {
@@ -20962,6 +20978,8 @@ REGAL_DECL UINT REGAL_CALL wglGetGPUIDsAMD(UINT maxCount, UINT *ids)
   if (dispatchTableGlobal.wglGetGPUIDsAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGPUIDsAMD, "wglGetGPUIDsAMD" );
     RegalAssert(dispatchTableGlobal.wglGetGPUIDsAMD!=wglGetGPUIDsAMD);
+    if (dispatchTableGlobal.wglGetGPUIDsAMD==wglGetGPUIDsAMD)
+      dispatchTableGlobal.wglGetGPUIDsAMD = NULL;
   }
   UINT  ret = (UINT )0;
   if (dispatchTableGlobal.wglGetGPUIDsAMD) {
@@ -20979,6 +20997,8 @@ REGAL_DECL INT REGAL_CALL wglGetGPUInfoAMD(UINT id, int property, GLenum dataTyp
   if (dispatchTableGlobal.wglGetGPUInfoAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGPUInfoAMD, "wglGetGPUInfoAMD" );
     RegalAssert(dispatchTableGlobal.wglGetGPUInfoAMD!=wglGetGPUInfoAMD);
+    if (dispatchTableGlobal.wglGetGPUInfoAMD==wglGetGPUInfoAMD)
+      dispatchTableGlobal.wglGetGPUInfoAMD = NULL;
   }
   INT  ret = (INT )0;
   if (dispatchTableGlobal.wglGetGPUInfoAMD) {
@@ -20996,6 +21016,8 @@ REGAL_DECL BOOL REGAL_CALL wglMakeAssociatedContextCurrentAMD(HGLRC hglrc)
   if (dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD == NULL) {
     GetProcAddress( dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD, "wglMakeAssociatedContextCurrentAMD" );
     RegalAssert(dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD!=wglMakeAssociatedContextCurrentAMD);
+    if (dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD==wglMakeAssociatedContextCurrentAMD)
+      dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD) {
@@ -21015,6 +21037,8 @@ REGAL_DECL HANDLE REGAL_CALL wglCreateBufferRegionARB(HDC hDC, int iLayerPlane, 
   if (dispatchTableGlobal.wglCreateBufferRegionARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateBufferRegionARB, "wglCreateBufferRegionARB" );
     RegalAssert(dispatchTableGlobal.wglCreateBufferRegionARB!=wglCreateBufferRegionARB);
+    if (dispatchTableGlobal.wglCreateBufferRegionARB==wglCreateBufferRegionARB)
+      dispatchTableGlobal.wglCreateBufferRegionARB = NULL;
   }
   HANDLE  ret = (HANDLE )0;
   if (dispatchTableGlobal.wglCreateBufferRegionARB) {
@@ -21032,6 +21056,8 @@ REGAL_DECL VOID REGAL_CALL wglDeleteBufferRegionARB(HANDLE hRegion)
   if (dispatchTableGlobal.wglDeleteBufferRegionARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDeleteBufferRegionARB, "wglDeleteBufferRegionARB" );
     RegalAssert(dispatchTableGlobal.wglDeleteBufferRegionARB!=wglDeleteBufferRegionARB);
+    if (dispatchTableGlobal.wglDeleteBufferRegionARB==wglDeleteBufferRegionARB)
+      dispatchTableGlobal.wglDeleteBufferRegionARB = NULL;
   }
   if (dispatchTableGlobal.wglDeleteBufferRegionARB) {
     GTrace("wglDeleteBufferRegionARB(", hRegion, ")");
@@ -21047,6 +21073,8 @@ REGAL_DECL BOOL REGAL_CALL wglRestoreBufferRegionARB(HANDLE hRegion, int x, int 
   if (dispatchTableGlobal.wglRestoreBufferRegionARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglRestoreBufferRegionARB, "wglRestoreBufferRegionARB" );
     RegalAssert(dispatchTableGlobal.wglRestoreBufferRegionARB!=wglRestoreBufferRegionARB);
+    if (dispatchTableGlobal.wglRestoreBufferRegionARB==wglRestoreBufferRegionARB)
+      dispatchTableGlobal.wglRestoreBufferRegionARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglRestoreBufferRegionARB) {
@@ -21064,6 +21092,8 @@ REGAL_DECL BOOL REGAL_CALL wglSaveBufferRegionARB(HANDLE hRegion, int x, int y, 
   if (dispatchTableGlobal.wglSaveBufferRegionARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSaveBufferRegionARB, "wglSaveBufferRegionARB" );
     RegalAssert(dispatchTableGlobal.wglSaveBufferRegionARB!=wglSaveBufferRegionARB);
+    if (dispatchTableGlobal.wglSaveBufferRegionARB==wglSaveBufferRegionARB)
+      dispatchTableGlobal.wglSaveBufferRegionARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSaveBufferRegionARB) {
@@ -21083,6 +21113,8 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateContextAttribsARB(HDC hDC, HGLRC hShareCont
   if (dispatchTableGlobal.wglCreateContextAttribsARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateContextAttribsARB, "wglCreateContextAttribsARB" );
     RegalAssert(dispatchTableGlobal.wglCreateContextAttribsARB!=wglCreateContextAttribsARB);
+    if (dispatchTableGlobal.wglCreateContextAttribsARB==wglCreateContextAttribsARB)
+      dispatchTableGlobal.wglCreateContextAttribsARB = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglCreateContextAttribsARB) {
@@ -21102,6 +21134,8 @@ REGAL_DECL const char *REGAL_CALL wglGetExtensionsStringARB(HDC hDC)
   if (dispatchTableGlobal.wglGetExtensionsStringARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetExtensionsStringARB, "wglGetExtensionsStringARB" );
     RegalAssert(dispatchTableGlobal.wglGetExtensionsStringARB!=wglGetExtensionsStringARB);
+    if (dispatchTableGlobal.wglGetExtensionsStringARB==wglGetExtensionsStringARB)
+      dispatchTableGlobal.wglGetExtensionsStringARB = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.wglGetExtensionsStringARB) {
@@ -21121,6 +21155,8 @@ REGAL_DECL HDC REGAL_CALL wglGetCurrentReadDCARB(void)
   if (dispatchTableGlobal.wglGetCurrentReadDCARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetCurrentReadDCARB, "wglGetCurrentReadDCARB" );
     RegalAssert(dispatchTableGlobal.wglGetCurrentReadDCARB!=wglGetCurrentReadDCARB);
+    if (dispatchTableGlobal.wglGetCurrentReadDCARB==wglGetCurrentReadDCARB)
+      dispatchTableGlobal.wglGetCurrentReadDCARB = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglGetCurrentReadDCARB) {
@@ -21138,6 +21174,8 @@ REGAL_DECL BOOL REGAL_CALL wglMakeContextCurrentARB(HDC hDrawDC, HDC hReadDC, HG
   if (dispatchTableGlobal.wglMakeContextCurrentARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglMakeContextCurrentARB, "wglMakeContextCurrentARB" );
     RegalAssert(dispatchTableGlobal.wglMakeContextCurrentARB!=wglMakeContextCurrentARB);
+    if (dispatchTableGlobal.wglMakeContextCurrentARB==wglMakeContextCurrentARB)
+      dispatchTableGlobal.wglMakeContextCurrentARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglMakeContextCurrentARB) {
@@ -21157,6 +21195,8 @@ REGAL_DECL HPBUFFERARB REGAL_CALL wglCreatePbufferARB(HDC hDC, int iPixelFormat,
   if (dispatchTableGlobal.wglCreatePbufferARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreatePbufferARB, "wglCreatePbufferARB" );
     RegalAssert(dispatchTableGlobal.wglCreatePbufferARB!=wglCreatePbufferARB);
+    if (dispatchTableGlobal.wglCreatePbufferARB==wglCreatePbufferARB)
+      dispatchTableGlobal.wglCreatePbufferARB = NULL;
   }
   HPBUFFERARB  ret = (HPBUFFERARB )0;
   if (dispatchTableGlobal.wglCreatePbufferARB) {
@@ -21174,6 +21214,8 @@ REGAL_DECL BOOL REGAL_CALL wglDestroyPbufferARB(HPBUFFERARB hPbuffer)
   if (dispatchTableGlobal.wglDestroyPbufferARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDestroyPbufferARB, "wglDestroyPbufferARB" );
     RegalAssert(dispatchTableGlobal.wglDestroyPbufferARB!=wglDestroyPbufferARB);
+    if (dispatchTableGlobal.wglDestroyPbufferARB==wglDestroyPbufferARB)
+      dispatchTableGlobal.wglDestroyPbufferARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDestroyPbufferARB) {
@@ -21191,6 +21233,8 @@ REGAL_DECL HDC REGAL_CALL wglGetPbufferDCARB(HPBUFFERARB hPbuffer)
   if (dispatchTableGlobal.wglGetPbufferDCARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPbufferDCARB, "wglGetPbufferDCARB" );
     RegalAssert(dispatchTableGlobal.wglGetPbufferDCARB!=wglGetPbufferDCARB);
+    if (dispatchTableGlobal.wglGetPbufferDCARB==wglGetPbufferDCARB)
+      dispatchTableGlobal.wglGetPbufferDCARB = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglGetPbufferDCARB) {
@@ -21208,6 +21252,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryPbufferARB(HPBUFFERARB hPbuffer, int iAttribu
   if (dispatchTableGlobal.wglQueryPbufferARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryPbufferARB, "wglQueryPbufferARB" );
     RegalAssert(dispatchTableGlobal.wglQueryPbufferARB!=wglQueryPbufferARB);
+    if (dispatchTableGlobal.wglQueryPbufferARB==wglQueryPbufferARB)
+      dispatchTableGlobal.wglQueryPbufferARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryPbufferARB) {
@@ -21225,6 +21271,8 @@ REGAL_DECL int REGAL_CALL wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC)
   if (dispatchTableGlobal.wglReleasePbufferDCARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleasePbufferDCARB, "wglReleasePbufferDCARB" );
     RegalAssert(dispatchTableGlobal.wglReleasePbufferDCARB!=wglReleasePbufferDCARB);
+    if (dispatchTableGlobal.wglReleasePbufferDCARB==wglReleasePbufferDCARB)
+      dispatchTableGlobal.wglReleasePbufferDCARB = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglReleasePbufferDCARB) {
@@ -21244,6 +21292,8 @@ REGAL_DECL BOOL REGAL_CALL wglChoosePixelFormatARB(HDC hDC, const int *piAttribI
   if (dispatchTableGlobal.wglChoosePixelFormatARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglChoosePixelFormatARB, "wglChoosePixelFormatARB" );
     RegalAssert(dispatchTableGlobal.wglChoosePixelFormatARB!=wglChoosePixelFormatARB);
+    if (dispatchTableGlobal.wglChoosePixelFormatARB==wglChoosePixelFormatARB)
+      dispatchTableGlobal.wglChoosePixelFormatARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglChoosePixelFormatARB) {
@@ -21261,6 +21311,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribfvARB(HDC hDC, int iPixelForma
   if (dispatchTableGlobal.wglGetPixelFormatAttribfvARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribfvARB, "wglGetPixelFormatAttribfvARB" );
     RegalAssert(dispatchTableGlobal.wglGetPixelFormatAttribfvARB!=wglGetPixelFormatAttribfvARB);
+    if (dispatchTableGlobal.wglGetPixelFormatAttribfvARB==wglGetPixelFormatAttribfvARB)
+      dispatchTableGlobal.wglGetPixelFormatAttribfvARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetPixelFormatAttribfvARB) {
@@ -21278,6 +21330,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivARB(HDC hDC, int iPixelForma
   if (dispatchTableGlobal.wglGetPixelFormatAttribivARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribivARB, "wglGetPixelFormatAttribivARB" );
     RegalAssert(dispatchTableGlobal.wglGetPixelFormatAttribivARB!=wglGetPixelFormatAttribivARB);
+    if (dispatchTableGlobal.wglGetPixelFormatAttribivARB==wglGetPixelFormatAttribivARB)
+      dispatchTableGlobal.wglGetPixelFormatAttribivARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetPixelFormatAttribivARB) {
@@ -21297,6 +21351,8 @@ REGAL_DECL BOOL REGAL_CALL wglBindTexImageARB(HPBUFFERARB hPbuffer, int iBuffer)
   if (dispatchTableGlobal.wglBindTexImageARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindTexImageARB, "wglBindTexImageARB" );
     RegalAssert(dispatchTableGlobal.wglBindTexImageARB!=wglBindTexImageARB);
+    if (dispatchTableGlobal.wglBindTexImageARB==wglBindTexImageARB)
+      dispatchTableGlobal.wglBindTexImageARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBindTexImageARB) {
@@ -21314,6 +21370,8 @@ REGAL_DECL BOOL REGAL_CALL wglReleaseTexImageARB(HPBUFFERARB hPbuffer, int iBuff
   if (dispatchTableGlobal.wglReleaseTexImageARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleaseTexImageARB, "wglReleaseTexImageARB" );
     RegalAssert(dispatchTableGlobal.wglReleaseTexImageARB!=wglReleaseTexImageARB);
+    if (dispatchTableGlobal.wglReleaseTexImageARB==wglReleaseTexImageARB)
+      dispatchTableGlobal.wglReleaseTexImageARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglReleaseTexImageARB) {
@@ -21331,6 +21389,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const in
   if (dispatchTableGlobal.wglSetPbufferAttribARB == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetPbufferAttribARB, "wglSetPbufferAttribARB" );
     RegalAssert(dispatchTableGlobal.wglSetPbufferAttribARB!=wglSetPbufferAttribARB);
+    if (dispatchTableGlobal.wglSetPbufferAttribARB==wglSetPbufferAttribARB)
+      dispatchTableGlobal.wglSetPbufferAttribARB = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetPbufferAttribARB) {
@@ -21350,6 +21410,8 @@ REGAL_DECL GLboolean REGAL_CALL wglBindDisplayColorTableEXT(GLushort id)
   if (dispatchTableGlobal.wglBindDisplayColorTableEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindDisplayColorTableEXT, "wglBindDisplayColorTableEXT" );
     RegalAssert(dispatchTableGlobal.wglBindDisplayColorTableEXT!=wglBindDisplayColorTableEXT);
+    if (dispatchTableGlobal.wglBindDisplayColorTableEXT==wglBindDisplayColorTableEXT)
+      dispatchTableGlobal.wglBindDisplayColorTableEXT = NULL;
   }
   GLboolean  ret = (GLboolean )0;
   if (dispatchTableGlobal.wglBindDisplayColorTableEXT) {
@@ -21367,6 +21429,8 @@ REGAL_DECL GLboolean REGAL_CALL wglCreateDisplayColorTableEXT(GLushort id)
   if (dispatchTableGlobal.wglCreateDisplayColorTableEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateDisplayColorTableEXT, "wglCreateDisplayColorTableEXT" );
     RegalAssert(dispatchTableGlobal.wglCreateDisplayColorTableEXT!=wglCreateDisplayColorTableEXT);
+    if (dispatchTableGlobal.wglCreateDisplayColorTableEXT==wglCreateDisplayColorTableEXT)
+      dispatchTableGlobal.wglCreateDisplayColorTableEXT = NULL;
   }
   GLboolean  ret = (GLboolean )0;
   if (dispatchTableGlobal.wglCreateDisplayColorTableEXT) {
@@ -21384,6 +21448,8 @@ REGAL_DECL VOID REGAL_CALL wglDestroyDisplayColorTableEXT(GLushort id)
   if (dispatchTableGlobal.wglDestroyDisplayColorTableEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDestroyDisplayColorTableEXT, "wglDestroyDisplayColorTableEXT" );
     RegalAssert(dispatchTableGlobal.wglDestroyDisplayColorTableEXT!=wglDestroyDisplayColorTableEXT);
+    if (dispatchTableGlobal.wglDestroyDisplayColorTableEXT==wglDestroyDisplayColorTableEXT)
+      dispatchTableGlobal.wglDestroyDisplayColorTableEXT = NULL;
   }
   if (dispatchTableGlobal.wglDestroyDisplayColorTableEXT) {
     GTrace("wglDestroyDisplayColorTableEXT(", id, ")");
@@ -21399,6 +21465,8 @@ REGAL_DECL GLboolean REGAL_CALL wglLoadDisplayColorTableEXT(const GLushort *tabl
   if (dispatchTableGlobal.wglLoadDisplayColorTableEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglLoadDisplayColorTableEXT, "wglLoadDisplayColorTableEXT" );
     RegalAssert(dispatchTableGlobal.wglLoadDisplayColorTableEXT!=wglLoadDisplayColorTableEXT);
+    if (dispatchTableGlobal.wglLoadDisplayColorTableEXT==wglLoadDisplayColorTableEXT)
+      dispatchTableGlobal.wglLoadDisplayColorTableEXT = NULL;
   }
   GLboolean  ret = (GLboolean )0;
   if (dispatchTableGlobal.wglLoadDisplayColorTableEXT) {
@@ -21418,6 +21486,8 @@ REGAL_DECL const char *REGAL_CALL wglGetExtensionsStringEXT(void)
   if (dispatchTableGlobal.wglGetExtensionsStringEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetExtensionsStringEXT, "wglGetExtensionsStringEXT" );
     RegalAssert(dispatchTableGlobal.wglGetExtensionsStringEXT!=wglGetExtensionsStringEXT);
+    if (dispatchTableGlobal.wglGetExtensionsStringEXT==wglGetExtensionsStringEXT)
+      dispatchTableGlobal.wglGetExtensionsStringEXT = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.wglGetExtensionsStringEXT) {
@@ -21437,6 +21507,8 @@ REGAL_DECL HDC REGAL_CALL wglGetCurrentReadDCEXT(void)
   if (dispatchTableGlobal.wglGetCurrentReadDCEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetCurrentReadDCEXT, "wglGetCurrentReadDCEXT" );
     RegalAssert(dispatchTableGlobal.wglGetCurrentReadDCEXT!=wglGetCurrentReadDCEXT);
+    if (dispatchTableGlobal.wglGetCurrentReadDCEXT==wglGetCurrentReadDCEXT)
+      dispatchTableGlobal.wglGetCurrentReadDCEXT = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglGetCurrentReadDCEXT) {
@@ -21454,6 +21526,8 @@ REGAL_DECL BOOL REGAL_CALL wglMakeContextCurrentEXT(HDC hDrawDC, HDC hReadDC, HG
   if (dispatchTableGlobal.wglMakeContextCurrentEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglMakeContextCurrentEXT, "wglMakeContextCurrentEXT" );
     RegalAssert(dispatchTableGlobal.wglMakeContextCurrentEXT!=wglMakeContextCurrentEXT);
+    if (dispatchTableGlobal.wglMakeContextCurrentEXT==wglMakeContextCurrentEXT)
+      dispatchTableGlobal.wglMakeContextCurrentEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglMakeContextCurrentEXT) {
@@ -21473,6 +21547,8 @@ REGAL_DECL HPBUFFEREXT REGAL_CALL wglCreatePbufferEXT(HDC hDC, int iPixelFormat,
   if (dispatchTableGlobal.wglCreatePbufferEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreatePbufferEXT, "wglCreatePbufferEXT" );
     RegalAssert(dispatchTableGlobal.wglCreatePbufferEXT!=wglCreatePbufferEXT);
+    if (dispatchTableGlobal.wglCreatePbufferEXT==wglCreatePbufferEXT)
+      dispatchTableGlobal.wglCreatePbufferEXT = NULL;
   }
   HPBUFFEREXT  ret = (HPBUFFEREXT )0;
   if (dispatchTableGlobal.wglCreatePbufferEXT) {
@@ -21490,6 +21566,8 @@ REGAL_DECL BOOL REGAL_CALL wglDestroyPbufferEXT(HPBUFFEREXT hPbuffer)
   if (dispatchTableGlobal.wglDestroyPbufferEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDestroyPbufferEXT, "wglDestroyPbufferEXT" );
     RegalAssert(dispatchTableGlobal.wglDestroyPbufferEXT!=wglDestroyPbufferEXT);
+    if (dispatchTableGlobal.wglDestroyPbufferEXT==wglDestroyPbufferEXT)
+      dispatchTableGlobal.wglDestroyPbufferEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDestroyPbufferEXT) {
@@ -21507,6 +21585,8 @@ REGAL_DECL HDC REGAL_CALL wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer)
   if (dispatchTableGlobal.wglGetPbufferDCEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPbufferDCEXT, "wglGetPbufferDCEXT" );
     RegalAssert(dispatchTableGlobal.wglGetPbufferDCEXT!=wglGetPbufferDCEXT);
+    if (dispatchTableGlobal.wglGetPbufferDCEXT==wglGetPbufferDCEXT)
+      dispatchTableGlobal.wglGetPbufferDCEXT = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglGetPbufferDCEXT) {
@@ -21524,6 +21604,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryPbufferEXT(HPBUFFEREXT hPbuffer, int iAttribu
   if (dispatchTableGlobal.wglQueryPbufferEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryPbufferEXT, "wglQueryPbufferEXT" );
     RegalAssert(dispatchTableGlobal.wglQueryPbufferEXT!=wglQueryPbufferEXT);
+    if (dispatchTableGlobal.wglQueryPbufferEXT==wglQueryPbufferEXT)
+      dispatchTableGlobal.wglQueryPbufferEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryPbufferEXT) {
@@ -21541,6 +21623,8 @@ REGAL_DECL int REGAL_CALL wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC)
   if (dispatchTableGlobal.wglReleasePbufferDCEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleasePbufferDCEXT, "wglReleasePbufferDCEXT" );
     RegalAssert(dispatchTableGlobal.wglReleasePbufferDCEXT!=wglReleasePbufferDCEXT);
+    if (dispatchTableGlobal.wglReleasePbufferDCEXT==wglReleasePbufferDCEXT)
+      dispatchTableGlobal.wglReleasePbufferDCEXT = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglReleasePbufferDCEXT) {
@@ -21560,6 +21644,8 @@ REGAL_DECL BOOL REGAL_CALL wglChoosePixelFormatEXT(HDC hDC, const int *piAttribI
   if (dispatchTableGlobal.wglChoosePixelFormatEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglChoosePixelFormatEXT, "wglChoosePixelFormatEXT" );
     RegalAssert(dispatchTableGlobal.wglChoosePixelFormatEXT!=wglChoosePixelFormatEXT);
+    if (dispatchTableGlobal.wglChoosePixelFormatEXT==wglChoosePixelFormatEXT)
+      dispatchTableGlobal.wglChoosePixelFormatEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglChoosePixelFormatEXT) {
@@ -21577,6 +21663,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribfvEXT(HDC hDC, int iPixelForma
   if (dispatchTableGlobal.wglGetPixelFormatAttribfvEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribfvEXT, "wglGetPixelFormatAttribfvEXT" );
     RegalAssert(dispatchTableGlobal.wglGetPixelFormatAttribfvEXT!=wglGetPixelFormatAttribfvEXT);
+    if (dispatchTableGlobal.wglGetPixelFormatAttribfvEXT==wglGetPixelFormatAttribfvEXT)
+      dispatchTableGlobal.wglGetPixelFormatAttribfvEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetPixelFormatAttribfvEXT) {
@@ -21594,6 +21682,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivEXT(HDC hDC, int iPixelForma
   if (dispatchTableGlobal.wglGetPixelFormatAttribivEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribivEXT, "wglGetPixelFormatAttribivEXT" );
     RegalAssert(dispatchTableGlobal.wglGetPixelFormatAttribivEXT!=wglGetPixelFormatAttribivEXT);
+    if (dispatchTableGlobal.wglGetPixelFormatAttribivEXT==wglGetPixelFormatAttribivEXT)
+      dispatchTableGlobal.wglGetPixelFormatAttribivEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetPixelFormatAttribivEXT) {
@@ -21613,6 +21703,8 @@ REGAL_DECL int REGAL_CALL wglGetSwapIntervalEXT(void)
   if (dispatchTableGlobal.wglGetSwapIntervalEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetSwapIntervalEXT, "wglGetSwapIntervalEXT" );
     RegalAssert(dispatchTableGlobal.wglGetSwapIntervalEXT!=wglGetSwapIntervalEXT);
+    if (dispatchTableGlobal.wglGetSwapIntervalEXT==wglGetSwapIntervalEXT)
+      dispatchTableGlobal.wglGetSwapIntervalEXT = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglGetSwapIntervalEXT) {
@@ -21630,6 +21722,8 @@ REGAL_DECL BOOL REGAL_CALL wglSwapIntervalEXT(int interval)
   if (dispatchTableGlobal.wglSwapIntervalEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapIntervalEXT, "wglSwapIntervalEXT" );
     RegalAssert(dispatchTableGlobal.wglSwapIntervalEXT!=wglSwapIntervalEXT);
+    if (dispatchTableGlobal.wglSwapIntervalEXT==wglSwapIntervalEXT)
+      dispatchTableGlobal.wglSwapIntervalEXT = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSwapIntervalEXT) {
@@ -21649,6 +21743,8 @@ REGAL_DECL int REGAL_CALL wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIP
   if (dispatchTableGlobal.wglChoosePixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.wglChoosePixelFormat, "wglChoosePixelFormat" );
     RegalAssert(dispatchTableGlobal.wglChoosePixelFormat!=wglChoosePixelFormat);
+    if (dispatchTableGlobal.wglChoosePixelFormat==wglChoosePixelFormat)
+      dispatchTableGlobal.wglChoosePixelFormat = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglChoosePixelFormat) {
@@ -21666,6 +21762,8 @@ REGAL_DECL int REGAL_CALL wglDescribePixelFormat(HDC hDC, int iPixelFormat, UINT
   if (dispatchTableGlobal.wglDescribePixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDescribePixelFormat, "wglDescribePixelFormat" );
     RegalAssert(dispatchTableGlobal.wglDescribePixelFormat!=wglDescribePixelFormat);
+    if (dispatchTableGlobal.wglDescribePixelFormat==wglDescribePixelFormat)
+      dispatchTableGlobal.wglDescribePixelFormat = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglDescribePixelFormat) {
@@ -21683,6 +21781,8 @@ REGAL_DECL int REGAL_CALL wglGetPixelFormat(HDC hDC)
   if (dispatchTableGlobal.wglGetPixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetPixelFormat, "wglGetPixelFormat" );
     RegalAssert(dispatchTableGlobal.wglGetPixelFormat!=wglGetPixelFormat);
+    if (dispatchTableGlobal.wglGetPixelFormat==wglGetPixelFormat)
+      dispatchTableGlobal.wglGetPixelFormat = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglGetPixelFormat) {
@@ -21700,6 +21800,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetPixelFormat(HDC hDC, int iPixelFormat, const PI
   if (dispatchTableGlobal.wglSetPixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetPixelFormat, "wglSetPixelFormat" );
     RegalAssert(dispatchTableGlobal.wglSetPixelFormat!=wglSetPixelFormat);
+    if (dispatchTableGlobal.wglSetPixelFormat==wglSetPixelFormat)
+      dispatchTableGlobal.wglSetPixelFormat = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetPixelFormat) {
@@ -21717,6 +21819,8 @@ REGAL_DECL BOOL REGAL_CALL wglSwapBuffers(HDC hDC)
   if (dispatchTableGlobal.wglSwapBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapBuffers, "wglSwapBuffers" );
     RegalAssert(dispatchTableGlobal.wglSwapBuffers!=wglSwapBuffers);
+    if (dispatchTableGlobal.wglSwapBuffers==wglSwapBuffers)
+      dispatchTableGlobal.wglSwapBuffers = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSwapBuffers) {
@@ -21736,6 +21840,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribu
   if (dispatchTableGlobal.wglGetDigitalVideoParametersI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetDigitalVideoParametersI3D, "wglGetDigitalVideoParametersI3D" );
     RegalAssert(dispatchTableGlobal.wglGetDigitalVideoParametersI3D!=wglGetDigitalVideoParametersI3D);
+    if (dispatchTableGlobal.wglGetDigitalVideoParametersI3D==wglGetDigitalVideoParametersI3D)
+      dispatchTableGlobal.wglGetDigitalVideoParametersI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetDigitalVideoParametersI3D) {
@@ -21753,6 +21859,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribu
   if (dispatchTableGlobal.wglSetDigitalVideoParametersI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetDigitalVideoParametersI3D, "wglSetDigitalVideoParametersI3D" );
     RegalAssert(dispatchTableGlobal.wglSetDigitalVideoParametersI3D!=wglSetDigitalVideoParametersI3D);
+    if (dispatchTableGlobal.wglSetDigitalVideoParametersI3D==wglSetDigitalVideoParametersI3D)
+      dispatchTableGlobal.wglSetDigitalVideoParametersI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetDigitalVideoParametersI3D) {
@@ -21772,6 +21880,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGammaTableI3D(HDC hDC, int iEntries, USHORT *pu
   if (dispatchTableGlobal.wglGetGammaTableI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGammaTableI3D, "wglGetGammaTableI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGammaTableI3D!=wglGetGammaTableI3D);
+    if (dispatchTableGlobal.wglGetGammaTableI3D==wglGetGammaTableI3D)
+      dispatchTableGlobal.wglGetGammaTableI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGammaTableI3D) {
@@ -21789,6 +21899,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGammaTableParametersI3D(HDC hDC, int iAttribute
   if (dispatchTableGlobal.wglGetGammaTableParametersI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGammaTableParametersI3D, "wglGetGammaTableParametersI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGammaTableParametersI3D!=wglGetGammaTableParametersI3D);
+    if (dispatchTableGlobal.wglGetGammaTableParametersI3D==wglGetGammaTableParametersI3D)
+      dispatchTableGlobal.wglGetGammaTableParametersI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGammaTableParametersI3D) {
@@ -21806,6 +21918,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetGammaTableI3D(HDC hDC, int iEntries, const USHO
   if (dispatchTableGlobal.wglSetGammaTableI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetGammaTableI3D, "wglSetGammaTableI3D" );
     RegalAssert(dispatchTableGlobal.wglSetGammaTableI3D!=wglSetGammaTableI3D);
+    if (dispatchTableGlobal.wglSetGammaTableI3D==wglSetGammaTableI3D)
+      dispatchTableGlobal.wglSetGammaTableI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetGammaTableI3D) {
@@ -21823,6 +21937,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetGammaTableParametersI3D(HDC hDC, int iAttribute
   if (dispatchTableGlobal.wglSetGammaTableParametersI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetGammaTableParametersI3D, "wglSetGammaTableParametersI3D" );
     RegalAssert(dispatchTableGlobal.wglSetGammaTableParametersI3D!=wglSetGammaTableParametersI3D);
+    if (dispatchTableGlobal.wglSetGammaTableParametersI3D==wglSetGammaTableParametersI3D)
+      dispatchTableGlobal.wglSetGammaTableParametersI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSetGammaTableParametersI3D) {
@@ -21842,6 +21958,8 @@ REGAL_DECL BOOL REGAL_CALL wglDisableGenlockI3D(HDC hDC)
   if (dispatchTableGlobal.wglDisableGenlockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDisableGenlockI3D, "wglDisableGenlockI3D" );
     RegalAssert(dispatchTableGlobal.wglDisableGenlockI3D!=wglDisableGenlockI3D);
+    if (dispatchTableGlobal.wglDisableGenlockI3D==wglDisableGenlockI3D)
+      dispatchTableGlobal.wglDisableGenlockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDisableGenlockI3D) {
@@ -21859,6 +21977,8 @@ REGAL_DECL BOOL REGAL_CALL wglEnableGenlockI3D(HDC hDC)
   if (dispatchTableGlobal.wglEnableGenlockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnableGenlockI3D, "wglEnableGenlockI3D" );
     RegalAssert(dispatchTableGlobal.wglEnableGenlockI3D!=wglEnableGenlockI3D);
+    if (dispatchTableGlobal.wglEnableGenlockI3D==wglEnableGenlockI3D)
+      dispatchTableGlobal.wglEnableGenlockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEnableGenlockI3D) {
@@ -21876,6 +21996,8 @@ REGAL_DECL BOOL REGAL_CALL wglGenlockSampleRateI3D(HDC hDC, UINT uRate)
   if (dispatchTableGlobal.wglGenlockSampleRateI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGenlockSampleRateI3D, "wglGenlockSampleRateI3D" );
     RegalAssert(dispatchTableGlobal.wglGenlockSampleRateI3D!=wglGenlockSampleRateI3D);
+    if (dispatchTableGlobal.wglGenlockSampleRateI3D==wglGenlockSampleRateI3D)
+      dispatchTableGlobal.wglGenlockSampleRateI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGenlockSampleRateI3D) {
@@ -21893,6 +22015,8 @@ REGAL_DECL BOOL REGAL_CALL wglGenlockSourceDelayI3D(HDC hDC, UINT uDelay)
   if (dispatchTableGlobal.wglGenlockSourceDelayI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGenlockSourceDelayI3D, "wglGenlockSourceDelayI3D" );
     RegalAssert(dispatchTableGlobal.wglGenlockSourceDelayI3D!=wglGenlockSourceDelayI3D);
+    if (dispatchTableGlobal.wglGenlockSourceDelayI3D==wglGenlockSourceDelayI3D)
+      dispatchTableGlobal.wglGenlockSourceDelayI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGenlockSourceDelayI3D) {
@@ -21910,6 +22034,8 @@ REGAL_DECL BOOL REGAL_CALL wglGenlockSourceEdgeI3D(HDC hDC, UINT uEdge)
   if (dispatchTableGlobal.wglGenlockSourceEdgeI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGenlockSourceEdgeI3D, "wglGenlockSourceEdgeI3D" );
     RegalAssert(dispatchTableGlobal.wglGenlockSourceEdgeI3D!=wglGenlockSourceEdgeI3D);
+    if (dispatchTableGlobal.wglGenlockSourceEdgeI3D==wglGenlockSourceEdgeI3D)
+      dispatchTableGlobal.wglGenlockSourceEdgeI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGenlockSourceEdgeI3D) {
@@ -21927,6 +22053,8 @@ REGAL_DECL BOOL REGAL_CALL wglGenlockSourceI3D(HDC hDC, UINT uSource)
   if (dispatchTableGlobal.wglGenlockSourceI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGenlockSourceI3D, "wglGenlockSourceI3D" );
     RegalAssert(dispatchTableGlobal.wglGenlockSourceI3D!=wglGenlockSourceI3D);
+    if (dispatchTableGlobal.wglGenlockSourceI3D==wglGenlockSourceI3D)
+      dispatchTableGlobal.wglGenlockSourceI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGenlockSourceI3D) {
@@ -21944,6 +22072,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGenlockSampleRateI3D(HDC hDC, UINT *uRate)
   if (dispatchTableGlobal.wglGetGenlockSampleRateI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGenlockSampleRateI3D, "wglGetGenlockSampleRateI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGenlockSampleRateI3D!=wglGetGenlockSampleRateI3D);
+    if (dispatchTableGlobal.wglGetGenlockSampleRateI3D==wglGetGenlockSampleRateI3D)
+      dispatchTableGlobal.wglGetGenlockSampleRateI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGenlockSampleRateI3D) {
@@ -21961,6 +22091,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceDelayI3D(HDC hDC, UINT *uDelay)
   if (dispatchTableGlobal.wglGetGenlockSourceDelayI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceDelayI3D, "wglGetGenlockSourceDelayI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGenlockSourceDelayI3D!=wglGetGenlockSourceDelayI3D);
+    if (dispatchTableGlobal.wglGetGenlockSourceDelayI3D==wglGetGenlockSourceDelayI3D)
+      dispatchTableGlobal.wglGetGenlockSourceDelayI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGenlockSourceDelayI3D) {
@@ -21978,6 +22110,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceEdgeI3D(HDC hDC, UINT *uEdge)
   if (dispatchTableGlobal.wglGetGenlockSourceEdgeI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceEdgeI3D, "wglGetGenlockSourceEdgeI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGenlockSourceEdgeI3D!=wglGetGenlockSourceEdgeI3D);
+    if (dispatchTableGlobal.wglGetGenlockSourceEdgeI3D==wglGetGenlockSourceEdgeI3D)
+      dispatchTableGlobal.wglGetGenlockSourceEdgeI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGenlockSourceEdgeI3D) {
@@ -21995,6 +22129,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceI3D(HDC hDC, UINT *uSource)
   if (dispatchTableGlobal.wglGetGenlockSourceI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceI3D, "wglGetGenlockSourceI3D" );
     RegalAssert(dispatchTableGlobal.wglGetGenlockSourceI3D!=wglGetGenlockSourceI3D);
+    if (dispatchTableGlobal.wglGetGenlockSourceI3D==wglGetGenlockSourceI3D)
+      dispatchTableGlobal.wglGetGenlockSourceI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetGenlockSourceI3D) {
@@ -22012,6 +22148,8 @@ REGAL_DECL BOOL REGAL_CALL wglIsEnabledGenlockI3D(HDC hDC, BOOL *pFlag)
   if (dispatchTableGlobal.wglIsEnabledGenlockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglIsEnabledGenlockI3D, "wglIsEnabledGenlockI3D" );
     RegalAssert(dispatchTableGlobal.wglIsEnabledGenlockI3D!=wglIsEnabledGenlockI3D);
+    if (dispatchTableGlobal.wglIsEnabledGenlockI3D==wglIsEnabledGenlockI3D)
+      dispatchTableGlobal.wglIsEnabledGenlockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglIsEnabledGenlockI3D) {
@@ -22029,6 +22167,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT *uMaxL
   if (dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D, "wglQueryGenlockMaxSourceDelayI3D" );
     RegalAssert(dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D!=wglQueryGenlockMaxSourceDelayI3D);
+    if (dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D==wglQueryGenlockMaxSourceDelayI3D)
+      dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D) {
@@ -22048,6 +22188,8 @@ REGAL_DECL BOOL REGAL_CALL wglAssociateImageBufferEventsI3D(HDC hDC, const HANDL
   if (dispatchTableGlobal.wglAssociateImageBufferEventsI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglAssociateImageBufferEventsI3D, "wglAssociateImageBufferEventsI3D" );
     RegalAssert(dispatchTableGlobal.wglAssociateImageBufferEventsI3D!=wglAssociateImageBufferEventsI3D);
+    if (dispatchTableGlobal.wglAssociateImageBufferEventsI3D==wglAssociateImageBufferEventsI3D)
+      dispatchTableGlobal.wglAssociateImageBufferEventsI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglAssociateImageBufferEventsI3D) {
@@ -22065,6 +22207,8 @@ REGAL_DECL LPVOID REGAL_CALL wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT
   if (dispatchTableGlobal.wglCreateImageBufferI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateImageBufferI3D, "wglCreateImageBufferI3D" );
     RegalAssert(dispatchTableGlobal.wglCreateImageBufferI3D!=wglCreateImageBufferI3D);
+    if (dispatchTableGlobal.wglCreateImageBufferI3D==wglCreateImageBufferI3D)
+      dispatchTableGlobal.wglCreateImageBufferI3D = NULL;
   }
   LPVOID  ret = (LPVOID )0;
   if (dispatchTableGlobal.wglCreateImageBufferI3D) {
@@ -22082,6 +22226,8 @@ REGAL_DECL BOOL REGAL_CALL wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress)
   if (dispatchTableGlobal.wglDestroyImageBufferI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDestroyImageBufferI3D, "wglDestroyImageBufferI3D" );
     RegalAssert(dispatchTableGlobal.wglDestroyImageBufferI3D!=wglDestroyImageBufferI3D);
+    if (dispatchTableGlobal.wglDestroyImageBufferI3D==wglDestroyImageBufferI3D)
+      dispatchTableGlobal.wglDestroyImageBufferI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDestroyImageBufferI3D) {
@@ -22099,6 +22245,8 @@ REGAL_DECL BOOL REGAL_CALL wglReleaseImageBufferEventsI3D(HDC hDC, const LPVOID 
   if (dispatchTableGlobal.wglReleaseImageBufferEventsI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleaseImageBufferEventsI3D, "wglReleaseImageBufferEventsI3D" );
     RegalAssert(dispatchTableGlobal.wglReleaseImageBufferEventsI3D!=wglReleaseImageBufferEventsI3D);
+    if (dispatchTableGlobal.wglReleaseImageBufferEventsI3D==wglReleaseImageBufferEventsI3D)
+      dispatchTableGlobal.wglReleaseImageBufferEventsI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglReleaseImageBufferEventsI3D) {
@@ -22118,6 +22266,8 @@ REGAL_DECL BOOL REGAL_CALL wglDisableFrameLockI3D(void)
   if (dispatchTableGlobal.wglDisableFrameLockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDisableFrameLockI3D, "wglDisableFrameLockI3D" );
     RegalAssert(dispatchTableGlobal.wglDisableFrameLockI3D!=wglDisableFrameLockI3D);
+    if (dispatchTableGlobal.wglDisableFrameLockI3D==wglDisableFrameLockI3D)
+      dispatchTableGlobal.wglDisableFrameLockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDisableFrameLockI3D) {
@@ -22135,6 +22285,8 @@ REGAL_DECL BOOL REGAL_CALL wglEnableFrameLockI3D(void)
   if (dispatchTableGlobal.wglEnableFrameLockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnableFrameLockI3D, "wglEnableFrameLockI3D" );
     RegalAssert(dispatchTableGlobal.wglEnableFrameLockI3D!=wglEnableFrameLockI3D);
+    if (dispatchTableGlobal.wglEnableFrameLockI3D==wglEnableFrameLockI3D)
+      dispatchTableGlobal.wglEnableFrameLockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEnableFrameLockI3D) {
@@ -22152,6 +22304,8 @@ REGAL_DECL BOOL REGAL_CALL wglIsEnabledFrameLockI3D(BOOL *pFlag)
   if (dispatchTableGlobal.wglIsEnabledFrameLockI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglIsEnabledFrameLockI3D, "wglIsEnabledFrameLockI3D" );
     RegalAssert(dispatchTableGlobal.wglIsEnabledFrameLockI3D!=wglIsEnabledFrameLockI3D);
+    if (dispatchTableGlobal.wglIsEnabledFrameLockI3D==wglIsEnabledFrameLockI3D)
+      dispatchTableGlobal.wglIsEnabledFrameLockI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglIsEnabledFrameLockI3D) {
@@ -22169,6 +22323,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryFrameLockMasterI3D(BOOL *pFlag)
   if (dispatchTableGlobal.wglQueryFrameLockMasterI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryFrameLockMasterI3D, "wglQueryFrameLockMasterI3D" );
     RegalAssert(dispatchTableGlobal.wglQueryFrameLockMasterI3D!=wglQueryFrameLockMasterI3D);
+    if (dispatchTableGlobal.wglQueryFrameLockMasterI3D==wglQueryFrameLockMasterI3D)
+      dispatchTableGlobal.wglQueryFrameLockMasterI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryFrameLockMasterI3D) {
@@ -22188,6 +22344,8 @@ REGAL_DECL BOOL REGAL_CALL wglBeginFrameTrackingI3D(void)
   if (dispatchTableGlobal.wglBeginFrameTrackingI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBeginFrameTrackingI3D, "wglBeginFrameTrackingI3D" );
     RegalAssert(dispatchTableGlobal.wglBeginFrameTrackingI3D!=wglBeginFrameTrackingI3D);
+    if (dispatchTableGlobal.wglBeginFrameTrackingI3D==wglBeginFrameTrackingI3D)
+      dispatchTableGlobal.wglBeginFrameTrackingI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBeginFrameTrackingI3D) {
@@ -22205,6 +22363,8 @@ REGAL_DECL BOOL REGAL_CALL wglEndFrameTrackingI3D(void)
   if (dispatchTableGlobal.wglEndFrameTrackingI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEndFrameTrackingI3D, "wglEndFrameTrackingI3D" );
     RegalAssert(dispatchTableGlobal.wglEndFrameTrackingI3D!=wglEndFrameTrackingI3D);
+    if (dispatchTableGlobal.wglEndFrameTrackingI3D==wglEndFrameTrackingI3D)
+      dispatchTableGlobal.wglEndFrameTrackingI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEndFrameTrackingI3D) {
@@ -22222,6 +22382,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetFrameUsageI3D(float *pUsage)
   if (dispatchTableGlobal.wglGetFrameUsageI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetFrameUsageI3D, "wglGetFrameUsageI3D" );
     RegalAssert(dispatchTableGlobal.wglGetFrameUsageI3D!=wglGetFrameUsageI3D);
+    if (dispatchTableGlobal.wglGetFrameUsageI3D==wglGetFrameUsageI3D)
+      dispatchTableGlobal.wglGetFrameUsageI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetFrameUsageI3D) {
@@ -22239,6 +22401,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryFrameTrackingI3D(DWORD *pFrameCount, DWORD *p
   if (dispatchTableGlobal.wglQueryFrameTrackingI3D == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryFrameTrackingI3D, "wglQueryFrameTrackingI3D" );
     RegalAssert(dispatchTableGlobal.wglQueryFrameTrackingI3D!=wglQueryFrameTrackingI3D);
+    if (dispatchTableGlobal.wglQueryFrameTrackingI3D==wglQueryFrameTrackingI3D)
+      dispatchTableGlobal.wglQueryFrameTrackingI3D = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryFrameTrackingI3D) {
@@ -22258,6 +22422,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXCloseDeviceNV(HANDLE hDevice)
   if (dispatchTableGlobal.wglDXCloseDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXCloseDeviceNV, "wglDXCloseDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglDXCloseDeviceNV!=wglDXCloseDeviceNV);
+    if (dispatchTableGlobal.wglDXCloseDeviceNV==wglDXCloseDeviceNV)
+      dispatchTableGlobal.wglDXCloseDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXCloseDeviceNV) {
@@ -22275,6 +22441,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXLockObjectsNV(HANDLE hDevice, GLint count, HANDL
   if (dispatchTableGlobal.wglDXLockObjectsNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXLockObjectsNV, "wglDXLockObjectsNV" );
     RegalAssert(dispatchTableGlobal.wglDXLockObjectsNV!=wglDXLockObjectsNV);
+    if (dispatchTableGlobal.wglDXLockObjectsNV==wglDXLockObjectsNV)
+      dispatchTableGlobal.wglDXLockObjectsNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXLockObjectsNV) {
@@ -22292,6 +22460,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXObjectAccessNV(HANDLE hObject, GLenum access)
   if (dispatchTableGlobal.wglDXObjectAccessNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXObjectAccessNV, "wglDXObjectAccessNV" );
     RegalAssert(dispatchTableGlobal.wglDXObjectAccessNV!=wglDXObjectAccessNV);
+    if (dispatchTableGlobal.wglDXObjectAccessNV==wglDXObjectAccessNV)
+      dispatchTableGlobal.wglDXObjectAccessNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXObjectAccessNV) {
@@ -22309,6 +22479,8 @@ REGAL_DECL HANDLE REGAL_CALL wglDXOpenDeviceNV(GLvoid *dxDevice)
   if (dispatchTableGlobal.wglDXOpenDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXOpenDeviceNV, "wglDXOpenDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglDXOpenDeviceNV!=wglDXOpenDeviceNV);
+    if (dispatchTableGlobal.wglDXOpenDeviceNV==wglDXOpenDeviceNV)
+      dispatchTableGlobal.wglDXOpenDeviceNV = NULL;
   }
   HANDLE  ret = (HANDLE )0;
   if (dispatchTableGlobal.wglDXOpenDeviceNV) {
@@ -22326,6 +22498,8 @@ REGAL_DECL HANDLE REGAL_CALL wglDXRegisterObjectNV(HANDLE hDevice, GLvoid *dxObj
   if (dispatchTableGlobal.wglDXRegisterObjectNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXRegisterObjectNV, "wglDXRegisterObjectNV" );
     RegalAssert(dispatchTableGlobal.wglDXRegisterObjectNV!=wglDXRegisterObjectNV);
+    if (dispatchTableGlobal.wglDXRegisterObjectNV==wglDXRegisterObjectNV)
+      dispatchTableGlobal.wglDXRegisterObjectNV = NULL;
   }
   HANDLE  ret = (HANDLE )0;
   if (dispatchTableGlobal.wglDXRegisterObjectNV) {
@@ -22343,6 +22517,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXSetResourceShareHandleNV(GLvoid *dxObject, HANDL
   if (dispatchTableGlobal.wglDXSetResourceShareHandleNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXSetResourceShareHandleNV, "wglDXSetResourceShareHandleNV" );
     RegalAssert(dispatchTableGlobal.wglDXSetResourceShareHandleNV!=wglDXSetResourceShareHandleNV);
+    if (dispatchTableGlobal.wglDXSetResourceShareHandleNV==wglDXSetResourceShareHandleNV)
+      dispatchTableGlobal.wglDXSetResourceShareHandleNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXSetResourceShareHandleNV) {
@@ -22360,6 +22536,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXUnlockObjectsNV(HANDLE hDevice, GLint count, HAN
   if (dispatchTableGlobal.wglDXUnlockObjectsNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXUnlockObjectsNV, "wglDXUnlockObjectsNV" );
     RegalAssert(dispatchTableGlobal.wglDXUnlockObjectsNV!=wglDXUnlockObjectsNV);
+    if (dispatchTableGlobal.wglDXUnlockObjectsNV==wglDXUnlockObjectsNV)
+      dispatchTableGlobal.wglDXUnlockObjectsNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXUnlockObjectsNV) {
@@ -22377,6 +22555,8 @@ REGAL_DECL BOOL REGAL_CALL wglDXUnregisterObjectNV(HANDLE hDevice, HANDLE hObjec
   if (dispatchTableGlobal.wglDXUnregisterObjectNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDXUnregisterObjectNV, "wglDXUnregisterObjectNV" );
     RegalAssert(dispatchTableGlobal.wglDXUnregisterObjectNV!=wglDXUnregisterObjectNV);
+    if (dispatchTableGlobal.wglDXUnregisterObjectNV==wglDXUnregisterObjectNV)
+      dispatchTableGlobal.wglDXUnregisterObjectNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDXUnregisterObjectNV) {
@@ -22396,6 +22576,8 @@ REGAL_DECL BOOL REGAL_CALL wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, G
   if (dispatchTableGlobal.wglCopyImageSubDataNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCopyImageSubDataNV, "wglCopyImageSubDataNV" );
     RegalAssert(dispatchTableGlobal.wglCopyImageSubDataNV!=wglCopyImageSubDataNV);
+    if (dispatchTableGlobal.wglCopyImageSubDataNV==wglCopyImageSubDataNV)
+      dispatchTableGlobal.wglCopyImageSubDataNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglCopyImageSubDataNV) {
@@ -22415,6 +22597,8 @@ REGAL_DECL HDC REGAL_CALL wglCreateAffinityDCNV(const HGPUNV *phGpuList)
   if (dispatchTableGlobal.wglCreateAffinityDCNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateAffinityDCNV, "wglCreateAffinityDCNV" );
     RegalAssert(dispatchTableGlobal.wglCreateAffinityDCNV!=wglCreateAffinityDCNV);
+    if (dispatchTableGlobal.wglCreateAffinityDCNV==wglCreateAffinityDCNV)
+      dispatchTableGlobal.wglCreateAffinityDCNV = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglCreateAffinityDCNV) {
@@ -22432,6 +22616,8 @@ REGAL_DECL BOOL REGAL_CALL wglDeleteDCNV(HDC hAffinityDC)
   if (dispatchTableGlobal.wglDeleteDCNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDeleteDCNV, "wglDeleteDCNV" );
     RegalAssert(dispatchTableGlobal.wglDeleteDCNV!=wglDeleteDCNV);
+    if (dispatchTableGlobal.wglDeleteDCNV==wglDeleteDCNV)
+      dispatchTableGlobal.wglDeleteDCNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDeleteDCNV) {
@@ -22449,6 +22635,8 @@ REGAL_DECL BOOL REGAL_CALL wglEnumGpuDevicesNV(HGPUNV hGpu, UINT iDeviceIndex, P
   if (dispatchTableGlobal.wglEnumGpuDevicesNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnumGpuDevicesNV, "wglEnumGpuDevicesNV" );
     RegalAssert(dispatchTableGlobal.wglEnumGpuDevicesNV!=wglEnumGpuDevicesNV);
+    if (dispatchTableGlobal.wglEnumGpuDevicesNV==wglEnumGpuDevicesNV)
+      dispatchTableGlobal.wglEnumGpuDevicesNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEnumGpuDevicesNV) {
@@ -22466,6 +22654,8 @@ REGAL_DECL BOOL REGAL_CALL wglEnumGpusFromAffinityDCNV(HDC hAffinityDC, UINT iGp
   if (dispatchTableGlobal.wglEnumGpusFromAffinityDCNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnumGpusFromAffinityDCNV, "wglEnumGpusFromAffinityDCNV" );
     RegalAssert(dispatchTableGlobal.wglEnumGpusFromAffinityDCNV!=wglEnumGpusFromAffinityDCNV);
+    if (dispatchTableGlobal.wglEnumGpusFromAffinityDCNV==wglEnumGpusFromAffinityDCNV)
+      dispatchTableGlobal.wglEnumGpusFromAffinityDCNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEnumGpusFromAffinityDCNV) {
@@ -22483,6 +22673,8 @@ REGAL_DECL BOOL REGAL_CALL wglEnumGpusNV(UINT iGpuIndex, HGPUNV *phGpu)
   if (dispatchTableGlobal.wglEnumGpusNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnumGpusNV, "wglEnumGpusNV" );
     RegalAssert(dispatchTableGlobal.wglEnumGpusNV!=wglEnumGpusNV);
+    if (dispatchTableGlobal.wglEnumGpusNV==wglEnumGpusNV)
+      dispatchTableGlobal.wglEnumGpusNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglEnumGpusNV) {
@@ -22502,6 +22694,8 @@ REGAL_DECL BOOL REGAL_CALL wglBindVideoDeviceNV(HDC hDC, unsigned int uVideoSlot
   if (dispatchTableGlobal.wglBindVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindVideoDeviceNV, "wglBindVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglBindVideoDeviceNV!=wglBindVideoDeviceNV);
+    if (dispatchTableGlobal.wglBindVideoDeviceNV==wglBindVideoDeviceNV)
+      dispatchTableGlobal.wglBindVideoDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBindVideoDeviceNV) {
@@ -22519,6 +22713,8 @@ REGAL_DECL int REGAL_CALL wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICE
   if (dispatchTableGlobal.wglEnumerateVideoDevicesNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnumerateVideoDevicesNV, "wglEnumerateVideoDevicesNV" );
     RegalAssert(dispatchTableGlobal.wglEnumerateVideoDevicesNV!=wglEnumerateVideoDevicesNV);
+    if (dispatchTableGlobal.wglEnumerateVideoDevicesNV==wglEnumerateVideoDevicesNV)
+      dispatchTableGlobal.wglEnumerateVideoDevicesNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglEnumerateVideoDevicesNV) {
@@ -22536,6 +22732,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryCurrentContextNV(int iAttribute, int *piValue
   if (dispatchTableGlobal.wglQueryCurrentContextNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryCurrentContextNV, "wglQueryCurrentContextNV" );
     RegalAssert(dispatchTableGlobal.wglQueryCurrentContextNV!=wglQueryCurrentContextNV);
+    if (dispatchTableGlobal.wglQueryCurrentContextNV==wglQueryCurrentContextNV)
+      dispatchTableGlobal.wglQueryCurrentContextNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryCurrentContextNV) {
@@ -22555,6 +22753,8 @@ REGAL_DECL BOOL REGAL_CALL wglBindSwapBarrierNV(GLuint group, GLuint barrier)
   if (dispatchTableGlobal.wglBindSwapBarrierNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindSwapBarrierNV, "wglBindSwapBarrierNV" );
     RegalAssert(dispatchTableGlobal.wglBindSwapBarrierNV!=wglBindSwapBarrierNV);
+    if (dispatchTableGlobal.wglBindSwapBarrierNV==wglBindSwapBarrierNV)
+      dispatchTableGlobal.wglBindSwapBarrierNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBindSwapBarrierNV) {
@@ -22572,6 +22772,8 @@ REGAL_DECL BOOL REGAL_CALL wglJoinSwapGroupNV(HDC hDC, GLuint group)
   if (dispatchTableGlobal.wglJoinSwapGroupNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglJoinSwapGroupNV, "wglJoinSwapGroupNV" );
     RegalAssert(dispatchTableGlobal.wglJoinSwapGroupNV!=wglJoinSwapGroupNV);
+    if (dispatchTableGlobal.wglJoinSwapGroupNV==wglJoinSwapGroupNV)
+      dispatchTableGlobal.wglJoinSwapGroupNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglJoinSwapGroupNV) {
@@ -22589,6 +22791,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryFrameCountNV(HDC hDC, GLuint *count)
   if (dispatchTableGlobal.wglQueryFrameCountNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryFrameCountNV, "wglQueryFrameCountNV" );
     RegalAssert(dispatchTableGlobal.wglQueryFrameCountNV!=wglQueryFrameCountNV);
+    if (dispatchTableGlobal.wglQueryFrameCountNV==wglQueryFrameCountNV)
+      dispatchTableGlobal.wglQueryFrameCountNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryFrameCountNV) {
@@ -22606,6 +22810,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryMaxSwapGroupsNV(HDC hDC, GLuint *maxGroups, G
   if (dispatchTableGlobal.wglQueryMaxSwapGroupsNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryMaxSwapGroupsNV, "wglQueryMaxSwapGroupsNV" );
     RegalAssert(dispatchTableGlobal.wglQueryMaxSwapGroupsNV!=wglQueryMaxSwapGroupsNV);
+    if (dispatchTableGlobal.wglQueryMaxSwapGroupsNV==wglQueryMaxSwapGroupsNV)
+      dispatchTableGlobal.wglQueryMaxSwapGroupsNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryMaxSwapGroupsNV) {
@@ -22623,6 +22829,8 @@ REGAL_DECL BOOL REGAL_CALL wglQuerySwapGroupNV(HDC hDC, GLuint *group, GLuint *b
   if (dispatchTableGlobal.wglQuerySwapGroupNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQuerySwapGroupNV, "wglQuerySwapGroupNV" );
     RegalAssert(dispatchTableGlobal.wglQuerySwapGroupNV!=wglQuerySwapGroupNV);
+    if (dispatchTableGlobal.wglQuerySwapGroupNV==wglQuerySwapGroupNV)
+      dispatchTableGlobal.wglQuerySwapGroupNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQuerySwapGroupNV) {
@@ -22640,6 +22848,8 @@ REGAL_DECL BOOL REGAL_CALL wglResetFrameCountNV(HDC hDC)
   if (dispatchTableGlobal.wglResetFrameCountNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglResetFrameCountNV, "wglResetFrameCountNV" );
     RegalAssert(dispatchTableGlobal.wglResetFrameCountNV!=wglResetFrameCountNV);
+    if (dispatchTableGlobal.wglResetFrameCountNV==wglResetFrameCountNV)
+      dispatchTableGlobal.wglResetFrameCountNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglResetFrameCountNV) {
@@ -22659,6 +22869,8 @@ REGAL_DECL void *REGAL_CALL wglAllocateMemoryNV(GLsizei size, GLfloat readfreq, 
   if (dispatchTableGlobal.wglAllocateMemoryNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglAllocateMemoryNV, "wglAllocateMemoryNV" );
     RegalAssert(dispatchTableGlobal.wglAllocateMemoryNV!=wglAllocateMemoryNV);
+    if (dispatchTableGlobal.wglAllocateMemoryNV==wglAllocateMemoryNV)
+      dispatchTableGlobal.wglAllocateMemoryNV = NULL;
   }
   void * ret = NULL;
   if (dispatchTableGlobal.wglAllocateMemoryNV) {
@@ -22676,6 +22888,8 @@ REGAL_DECL void REGAL_CALL wglFreeMemoryNV(void *pointer)
   if (dispatchTableGlobal.wglFreeMemoryNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglFreeMemoryNV, "wglFreeMemoryNV" );
     RegalAssert(dispatchTableGlobal.wglFreeMemoryNV!=wglFreeMemoryNV);
+    if (dispatchTableGlobal.wglFreeMemoryNV==wglFreeMemoryNV)
+      dispatchTableGlobal.wglFreeMemoryNV = NULL;
   }
   if (dispatchTableGlobal.wglFreeMemoryNV) {
     GTrace("wglFreeMemoryNV(", pointer, ")");
@@ -22693,6 +22907,8 @@ REGAL_DECL BOOL REGAL_CALL wglBindVideoCaptureDeviceNV(UINT uVideoSlot, HVIDEOIN
   if (dispatchTableGlobal.wglBindVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindVideoCaptureDeviceNV, "wglBindVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglBindVideoCaptureDeviceNV!=wglBindVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.wglBindVideoCaptureDeviceNV==wglBindVideoCaptureDeviceNV)
+      dispatchTableGlobal.wglBindVideoCaptureDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBindVideoCaptureDeviceNV) {
@@ -22710,6 +22926,8 @@ REGAL_DECL UINT REGAL_CALL wglEnumerateVideoCaptureDevicesNV(HDC hDC, HVIDEOINPU
   if (dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV, "wglEnumerateVideoCaptureDevicesNV" );
     RegalAssert(dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV!=wglEnumerateVideoCaptureDevicesNV);
+    if (dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV==wglEnumerateVideoCaptureDevicesNV)
+      dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV = NULL;
   }
   UINT  ret = (UINT )0;
   if (dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV) {
@@ -22727,6 +22945,8 @@ REGAL_DECL BOOL REGAL_CALL wglLockVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVIC
   if (dispatchTableGlobal.wglLockVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglLockVideoCaptureDeviceNV, "wglLockVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglLockVideoCaptureDeviceNV!=wglLockVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.wglLockVideoCaptureDeviceNV==wglLockVideoCaptureDeviceNV)
+      dispatchTableGlobal.wglLockVideoCaptureDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglLockVideoCaptureDeviceNV) {
@@ -22744,6 +22964,8 @@ REGAL_DECL BOOL REGAL_CALL wglQueryVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVI
   if (dispatchTableGlobal.wglQueryVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglQueryVideoCaptureDeviceNV, "wglQueryVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglQueryVideoCaptureDeviceNV!=wglQueryVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.wglQueryVideoCaptureDeviceNV==wglQueryVideoCaptureDeviceNV)
+      dispatchTableGlobal.wglQueryVideoCaptureDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglQueryVideoCaptureDeviceNV) {
@@ -22761,6 +22983,8 @@ REGAL_DECL BOOL REGAL_CALL wglReleaseVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDE
   if (dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV, "wglReleaseVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV!=wglReleaseVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV==wglReleaseVideoCaptureDeviceNV)
+      dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV) {
@@ -22780,6 +23004,8 @@ REGAL_DECL BOOL REGAL_CALL wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFER
   if (dispatchTableGlobal.wglBindVideoImageNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglBindVideoImageNV, "wglBindVideoImageNV" );
     RegalAssert(dispatchTableGlobal.wglBindVideoImageNV!=wglBindVideoImageNV);
+    if (dispatchTableGlobal.wglBindVideoImageNV==wglBindVideoImageNV)
+      dispatchTableGlobal.wglBindVideoImageNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglBindVideoImageNV) {
@@ -22797,6 +23023,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetVideoDeviceNV(HDC hDC, int numDevices, HPVIDEOD
   if (dispatchTableGlobal.wglGetVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetVideoDeviceNV, "wglGetVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglGetVideoDeviceNV!=wglGetVideoDeviceNV);
+    if (dispatchTableGlobal.wglGetVideoDeviceNV==wglGetVideoDeviceNV)
+      dispatchTableGlobal.wglGetVideoDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetVideoDeviceNV) {
@@ -22814,6 +23042,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetVideoInfoNV(HPVIDEODEV hpVideoDevice, unsigned 
   if (dispatchTableGlobal.wglGetVideoInfoNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetVideoInfoNV, "wglGetVideoInfoNV" );
     RegalAssert(dispatchTableGlobal.wglGetVideoInfoNV!=wglGetVideoInfoNV);
+    if (dispatchTableGlobal.wglGetVideoInfoNV==wglGetVideoInfoNV)
+      dispatchTableGlobal.wglGetVideoInfoNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetVideoInfoNV) {
@@ -22831,6 +23061,8 @@ REGAL_DECL BOOL REGAL_CALL wglReleaseVideoDeviceNV(HPVIDEODEV hVideoDevice)
   if (dispatchTableGlobal.wglReleaseVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleaseVideoDeviceNV, "wglReleaseVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.wglReleaseVideoDeviceNV!=wglReleaseVideoDeviceNV);
+    if (dispatchTableGlobal.wglReleaseVideoDeviceNV==wglReleaseVideoDeviceNV)
+      dispatchTableGlobal.wglReleaseVideoDeviceNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglReleaseVideoDeviceNV) {
@@ -22848,6 +23080,8 @@ REGAL_DECL BOOL REGAL_CALL wglReleaseVideoImageNV(HPBUFFERARB hPbuffer, int iVid
   if (dispatchTableGlobal.wglReleaseVideoImageNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglReleaseVideoImageNV, "wglReleaseVideoImageNV" );
     RegalAssert(dispatchTableGlobal.wglReleaseVideoImageNV!=wglReleaseVideoImageNV);
+    if (dispatchTableGlobal.wglReleaseVideoImageNV==wglReleaseVideoImageNV)
+      dispatchTableGlobal.wglReleaseVideoImageNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglReleaseVideoImageNV) {
@@ -22865,6 +23099,8 @@ REGAL_DECL BOOL REGAL_CALL wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBu
   if (dispatchTableGlobal.wglSendPbufferToVideoNV == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSendPbufferToVideoNV, "wglSendPbufferToVideoNV" );
     RegalAssert(dispatchTableGlobal.wglSendPbufferToVideoNV!=wglSendPbufferToVideoNV);
+    if (dispatchTableGlobal.wglSendPbufferToVideoNV==wglSendPbufferToVideoNV)
+      dispatchTableGlobal.wglSendPbufferToVideoNV = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSendPbufferToVideoNV) {
@@ -22884,6 +23120,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetMscRateOML(HDC hDC, INT32 *numerator, INT32 *de
   if (dispatchTableGlobal.wglGetMscRateOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetMscRateOML, "wglGetMscRateOML" );
     RegalAssert(dispatchTableGlobal.wglGetMscRateOML!=wglGetMscRateOML);
+    if (dispatchTableGlobal.wglGetMscRateOML==wglGetMscRateOML)
+      dispatchTableGlobal.wglGetMscRateOML = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetMscRateOML) {
@@ -22901,6 +23139,8 @@ REGAL_DECL BOOL REGAL_CALL wglGetSyncValuesOML(HDC hDC, INT64 *ust, INT64 *msc, 
   if (dispatchTableGlobal.wglGetSyncValuesOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetSyncValuesOML, "wglGetSyncValuesOML" );
     RegalAssert(dispatchTableGlobal.wglGetSyncValuesOML!=wglGetSyncValuesOML);
+    if (dispatchTableGlobal.wglGetSyncValuesOML==wglGetSyncValuesOML)
+      dispatchTableGlobal.wglGetSyncValuesOML = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglGetSyncValuesOML) {
@@ -22918,6 +23158,8 @@ REGAL_DECL INT64 REGAL_CALL wglSwapBuffersMscOML(HDC hDC, INT64 target_msc, INT6
   if (dispatchTableGlobal.wglSwapBuffersMscOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapBuffersMscOML, "wglSwapBuffersMscOML" );
     RegalAssert(dispatchTableGlobal.wglSwapBuffersMscOML!=wglSwapBuffersMscOML);
+    if (dispatchTableGlobal.wglSwapBuffersMscOML==wglSwapBuffersMscOML)
+      dispatchTableGlobal.wglSwapBuffersMscOML = NULL;
   }
   INT64  ret = (INT64 )0;
   if (dispatchTableGlobal.wglSwapBuffersMscOML) {
@@ -22935,6 +23177,8 @@ REGAL_DECL INT64 REGAL_CALL wglSwapLayerBuffersMscOML(HDC hDC, int fuPlanes, INT
   if (dispatchTableGlobal.wglSwapLayerBuffersMscOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapLayerBuffersMscOML, "wglSwapLayerBuffersMscOML" );
     RegalAssert(dispatchTableGlobal.wglSwapLayerBuffersMscOML!=wglSwapLayerBuffersMscOML);
+    if (dispatchTableGlobal.wglSwapLayerBuffersMscOML==wglSwapLayerBuffersMscOML)
+      dispatchTableGlobal.wglSwapLayerBuffersMscOML = NULL;
   }
   INT64  ret = (INT64 )0;
   if (dispatchTableGlobal.wglSwapLayerBuffersMscOML) {
@@ -22952,6 +23196,8 @@ REGAL_DECL BOOL REGAL_CALL wglWaitForMscOML(HDC hDC, INT64 target_msc, INT64 div
   if (dispatchTableGlobal.wglWaitForMscOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglWaitForMscOML, "wglWaitForMscOML" );
     RegalAssert(dispatchTableGlobal.wglWaitForMscOML!=wglWaitForMscOML);
+    if (dispatchTableGlobal.wglWaitForMscOML==wglWaitForMscOML)
+      dispatchTableGlobal.wglWaitForMscOML = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglWaitForMscOML) {
@@ -22969,6 +23215,8 @@ REGAL_DECL BOOL REGAL_CALL wglWaitForSbcOML(HDC hDC, INT64 target_sbc, INT64 *us
   if (dispatchTableGlobal.wglWaitForSbcOML == NULL) {
     GetProcAddress( dispatchTableGlobal.wglWaitForSbcOML, "wglWaitForSbcOML" );
     RegalAssert(dispatchTableGlobal.wglWaitForSbcOML!=wglWaitForSbcOML);
+    if (dispatchTableGlobal.wglWaitForSbcOML==wglWaitForSbcOML)
+      dispatchTableGlobal.wglWaitForSbcOML = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglWaitForSbcOML) {
@@ -22988,6 +23236,8 @@ REGAL_DECL BOOL REGAL_CALL wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT m
   if (dispatchTableGlobal.wglCopyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCopyContext, "wglCopyContext" );
     RegalAssert(dispatchTableGlobal.wglCopyContext!=wglCopyContext);
+    if (dispatchTableGlobal.wglCopyContext==wglCopyContext)
+      dispatchTableGlobal.wglCopyContext = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglCopyContext) {
@@ -23005,6 +23255,8 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateContext(HDC hDC)
   if (dispatchTableGlobal.wglCreateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateContext, "wglCreateContext" );
     RegalAssert(dispatchTableGlobal.wglCreateContext!=wglCreateContext);
+    if (dispatchTableGlobal.wglCreateContext==wglCreateContext)
+      dispatchTableGlobal.wglCreateContext = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglCreateContext) {
@@ -23022,6 +23274,8 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateLayerContext(HDC hDC, int iLayerPlane)
   if (dispatchTableGlobal.wglCreateLayerContext == NULL) {
     GetProcAddress( dispatchTableGlobal.wglCreateLayerContext, "wglCreateLayerContext" );
     RegalAssert(dispatchTableGlobal.wglCreateLayerContext!=wglCreateLayerContext);
+    if (dispatchTableGlobal.wglCreateLayerContext==wglCreateLayerContext)
+      dispatchTableGlobal.wglCreateLayerContext = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglCreateLayerContext) {
@@ -23039,6 +23293,8 @@ REGAL_DECL BOOL REGAL_CALL wglDeleteContext(HGLRC hglrc)
   if (dispatchTableGlobal.wglDeleteContext == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDeleteContext, "wglDeleteContext" );
     RegalAssert(dispatchTableGlobal.wglDeleteContext!=wglDeleteContext);
+    if (dispatchTableGlobal.wglDeleteContext==wglDeleteContext)
+      dispatchTableGlobal.wglDeleteContext = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDeleteContext) {
@@ -23056,6 +23312,8 @@ REGAL_DECL BOOL REGAL_CALL wglDescribeLayerPlane(HDC hDC, int iPixelFormat, int 
   if (dispatchTableGlobal.wglDescribeLayerPlane == NULL) {
     GetProcAddress( dispatchTableGlobal.wglDescribeLayerPlane, "wglDescribeLayerPlane" );
     RegalAssert(dispatchTableGlobal.wglDescribeLayerPlane!=wglDescribeLayerPlane);
+    if (dispatchTableGlobal.wglDescribeLayerPlane==wglDescribeLayerPlane)
+      dispatchTableGlobal.wglDescribeLayerPlane = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglDescribeLayerPlane) {
@@ -23073,6 +23331,8 @@ REGAL_DECL HGLRC REGAL_CALL wglGetCurrentContext(void)
   if (dispatchTableGlobal.wglGetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetCurrentContext, "wglGetCurrentContext" );
     RegalAssert(dispatchTableGlobal.wglGetCurrentContext!=wglGetCurrentContext);
+    if (dispatchTableGlobal.wglGetCurrentContext==wglGetCurrentContext)
+      dispatchTableGlobal.wglGetCurrentContext = NULL;
   }
   HGLRC  ret = (HGLRC )0;
   if (dispatchTableGlobal.wglGetCurrentContext) {
@@ -23090,6 +23350,8 @@ REGAL_DECL HDC REGAL_CALL wglGetCurrentDC(void)
   if (dispatchTableGlobal.wglGetCurrentDC == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetCurrentDC, "wglGetCurrentDC" );
     RegalAssert(dispatchTableGlobal.wglGetCurrentDC!=wglGetCurrentDC);
+    if (dispatchTableGlobal.wglGetCurrentDC==wglGetCurrentDC)
+      dispatchTableGlobal.wglGetCurrentDC = NULL;
   }
   HDC  ret = (HDC )0;
   if (dispatchTableGlobal.wglGetCurrentDC) {
@@ -23107,6 +23369,8 @@ REGAL_DECL PROC REGAL_CALL wglGetDefaultProcAddress(LPCSTR lpszProc)
   if (dispatchTableGlobal.wglGetDefaultProcAddress == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetDefaultProcAddress, "wglGetDefaultProcAddress" );
     RegalAssert(dispatchTableGlobal.wglGetDefaultProcAddress!=wglGetDefaultProcAddress);
+    if (dispatchTableGlobal.wglGetDefaultProcAddress==wglGetDefaultProcAddress)
+      dispatchTableGlobal.wglGetDefaultProcAddress = NULL;
   }
   PROC  ret = (PROC )0;
   if (dispatchTableGlobal.wglGetDefaultProcAddress) {
@@ -23124,6 +23388,8 @@ REGAL_DECL int REGAL_CALL wglGetLayerPaletteEntries(HDC hDC, int iLayerPlane, in
   if (dispatchTableGlobal.wglGetLayerPaletteEntries == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetLayerPaletteEntries, "wglGetLayerPaletteEntries" );
     RegalAssert(dispatchTableGlobal.wglGetLayerPaletteEntries!=wglGetLayerPaletteEntries);
+    if (dispatchTableGlobal.wglGetLayerPaletteEntries==wglGetLayerPaletteEntries)
+      dispatchTableGlobal.wglGetLayerPaletteEntries = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglGetLayerPaletteEntries) {
@@ -23141,6 +23407,8 @@ REGAL_DECL PROC REGAL_CALL wglGetProcAddress(LPCSTR lpszProc)
   if (dispatchTableGlobal.wglGetProcAddress == NULL) {
     GetProcAddress( dispatchTableGlobal.wglGetProcAddress, "wglGetProcAddress" );
     RegalAssert(dispatchTableGlobal.wglGetProcAddress!=wglGetProcAddress);
+    if (dispatchTableGlobal.wglGetProcAddress==wglGetProcAddress)
+      dispatchTableGlobal.wglGetProcAddress = NULL;
   }
   PROC  ret = (PROC )0;
   RegalAssert(dispatchTableGlobal.wglGetProcAddress);
@@ -23168,12 +23436,14 @@ REGAL_DECL BOOL REGAL_CALL wglMakeCurrent(HDC hDC, HGLRC hglrc)
   if (dispatchTableGlobal.wglMakeCurrent == NULL) {
     GetProcAddress( dispatchTableGlobal.wglMakeCurrent, "wglMakeCurrent" );
     RegalAssert(dispatchTableGlobal.wglMakeCurrent!=wglMakeCurrent);
+    if (dispatchTableGlobal.wglMakeCurrent==wglMakeCurrent)
+      dispatchTableGlobal.wglMakeCurrent = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglMakeCurrent) {
     GTrace("wglMakeCurrent(", hDC, ", ", hglrc, ")");
     ret = dispatchTableGlobal.wglMakeCurrent(hDC, hglrc);
-       RegalMakeCurrent(RegalSystemContext(hglrc));
+    RegalMakeCurrent(RegalSystemContext(hglrc));
   }
   else
     Warning( "wglMakeCurrent not available." );
@@ -23186,6 +23456,8 @@ REGAL_DECL BOOL REGAL_CALL wglRealizeLayerPalette(HDC hDC, int iLayerPlane, BOOL
   if (dispatchTableGlobal.wglRealizeLayerPalette == NULL) {
     GetProcAddress( dispatchTableGlobal.wglRealizeLayerPalette, "wglRealizeLayerPalette" );
     RegalAssert(dispatchTableGlobal.wglRealizeLayerPalette!=wglRealizeLayerPalette);
+    if (dispatchTableGlobal.wglRealizeLayerPalette==wglRealizeLayerPalette)
+      dispatchTableGlobal.wglRealizeLayerPalette = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglRealizeLayerPalette) {
@@ -23203,6 +23475,8 @@ REGAL_DECL int REGAL_CALL wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, in
   if (dispatchTableGlobal.wglSetLayerPaletteEntries == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSetLayerPaletteEntries, "wglSetLayerPaletteEntries" );
     RegalAssert(dispatchTableGlobal.wglSetLayerPaletteEntries!=wglSetLayerPaletteEntries);
+    if (dispatchTableGlobal.wglSetLayerPaletteEntries==wglSetLayerPaletteEntries)
+      dispatchTableGlobal.wglSetLayerPaletteEntries = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.wglSetLayerPaletteEntries) {
@@ -23220,6 +23494,8 @@ REGAL_DECL BOOL REGAL_CALL wglShareLists(HGLRC hglrcShare, HGLRC hglrcSrc)
   if (dispatchTableGlobal.wglShareLists == NULL) {
     GetProcAddress( dispatchTableGlobal.wglShareLists, "wglShareLists" );
     RegalAssert(dispatchTableGlobal.wglShareLists!=wglShareLists);
+    if (dispatchTableGlobal.wglShareLists==wglShareLists)
+      dispatchTableGlobal.wglShareLists = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglShareLists) {
@@ -23237,6 +23513,8 @@ REGAL_DECL BOOL REGAL_CALL wglSwapLayerBuffers(HDC hDC, UINT fuPlanes)
   if (dispatchTableGlobal.wglSwapLayerBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapLayerBuffers, "wglSwapLayerBuffers" );
     RegalAssert(dispatchTableGlobal.wglSwapLayerBuffers!=wglSwapLayerBuffers);
+    if (dispatchTableGlobal.wglSwapLayerBuffers==wglSwapLayerBuffers)
+      dispatchTableGlobal.wglSwapLayerBuffers = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglSwapLayerBuffers) {
@@ -23254,6 +23532,8 @@ REGAL_DECL DWORD REGAL_CALL wglSwapMultipleBuffers(UINT n, const WGLSWAP *ps)
   if (dispatchTableGlobal.wglSwapMultipleBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.wglSwapMultipleBuffers, "wglSwapMultipleBuffers" );
     RegalAssert(dispatchTableGlobal.wglSwapMultipleBuffers!=wglSwapMultipleBuffers);
+    if (dispatchTableGlobal.wglSwapMultipleBuffers==wglSwapMultipleBuffers)
+      dispatchTableGlobal.wglSwapMultipleBuffers = NULL;
   }
   DWORD  ret = (DWORD )0;
   if (dispatchTableGlobal.wglSwapMultipleBuffers) {
@@ -23271,6 +23551,8 @@ REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count,
   if (dispatchTableGlobal.wglUseFontBitmapsA == NULL) {
     GetProcAddress( dispatchTableGlobal.wglUseFontBitmapsA, "wglUseFontBitmapsA" );
     RegalAssert(dispatchTableGlobal.wglUseFontBitmapsA!=wglUseFontBitmapsA);
+    if (dispatchTableGlobal.wglUseFontBitmapsA==wglUseFontBitmapsA)
+      dispatchTableGlobal.wglUseFontBitmapsA = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglUseFontBitmapsA) {
@@ -23288,6 +23570,8 @@ REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count,
   if (dispatchTableGlobal.wglUseFontBitmapsW == NULL) {
     GetProcAddress( dispatchTableGlobal.wglUseFontBitmapsW, "wglUseFontBitmapsW" );
     RegalAssert(dispatchTableGlobal.wglUseFontBitmapsW!=wglUseFontBitmapsW);
+    if (dispatchTableGlobal.wglUseFontBitmapsW==wglUseFontBitmapsW)
+      dispatchTableGlobal.wglUseFontBitmapsW = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglUseFontBitmapsW) {
@@ -23305,6 +23589,8 @@ REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count
   if (dispatchTableGlobal.wglUseFontOutlinesA == NULL) {
     GetProcAddress( dispatchTableGlobal.wglUseFontOutlinesA, "wglUseFontOutlinesA" );
     RegalAssert(dispatchTableGlobal.wglUseFontOutlinesA!=wglUseFontOutlinesA);
+    if (dispatchTableGlobal.wglUseFontOutlinesA==wglUseFontOutlinesA)
+      dispatchTableGlobal.wglUseFontOutlinesA = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglUseFontOutlinesA) {
@@ -23322,6 +23608,8 @@ REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count
   if (dispatchTableGlobal.wglUseFontOutlinesW == NULL) {
     GetProcAddress( dispatchTableGlobal.wglUseFontOutlinesW, "wglUseFontOutlinesW" );
     RegalAssert(dispatchTableGlobal.wglUseFontOutlinesW!=wglUseFontOutlinesW);
+    if (dispatchTableGlobal.wglUseFontOutlinesW==wglUseFontOutlinesW)
+      dispatchTableGlobal.wglUseFontOutlinesW = NULL;
   }
   BOOL  ret = (BOOL )0;
   if (dispatchTableGlobal.wglUseFontOutlinesW) {
@@ -23344,6 +23632,8 @@ REGAL_DECL XVisualInfo *REGAL_CALL glXChooseVisual(Display *dpy, int screen, int
   if (dispatchTableGlobal.glXChooseVisual == NULL) {
     GetProcAddress( dispatchTableGlobal.glXChooseVisual, "glXChooseVisual" );
     RegalAssert(dispatchTableGlobal.glXChooseVisual!=glXChooseVisual);
+    if (dispatchTableGlobal.glXChooseVisual==glXChooseVisual)
+      dispatchTableGlobal.glXChooseVisual = NULL;
   }
   XVisualInfo * ret = NULL;
   if (dispatchTableGlobal.glXChooseVisual) {
@@ -23361,6 +23651,8 @@ REGAL_DECL void REGAL_CALL glXCopyContext(Display *dpy, GLXContext src, GLXConte
   if (dispatchTableGlobal.glXCopyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCopyContext, "glXCopyContext" );
     RegalAssert(dispatchTableGlobal.glXCopyContext!=glXCopyContext);
+    if (dispatchTableGlobal.glXCopyContext==glXCopyContext)
+      dispatchTableGlobal.glXCopyContext = NULL;
   }
   if (dispatchTableGlobal.glXCopyContext) {
     GTrace("glXCopyContext(", dpy, ", ", src, ", ", dst, ", ", mask, ")");
@@ -23376,6 +23668,8 @@ REGAL_DECL GLXContext REGAL_CALL glXCreateContext(Display *dpy, XVisualInfo *vis
   if (dispatchTableGlobal.glXCreateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateContext, "glXCreateContext" );
     RegalAssert(dispatchTableGlobal.glXCreateContext!=glXCreateContext);
+    if (dispatchTableGlobal.glXCreateContext==glXCreateContext)
+      dispatchTableGlobal.glXCreateContext = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXCreateContext) {
@@ -23393,6 +23687,8 @@ REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmap(Display *dpy, XVisualInfo *vi
   if (dispatchTableGlobal.glXCreateGLXPixmap == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmap, "glXCreateGLXPixmap" );
     RegalAssert(dispatchTableGlobal.glXCreateGLXPixmap!=glXCreateGLXPixmap);
+    if (dispatchTableGlobal.glXCreateGLXPixmap==glXCreateGLXPixmap)
+      dispatchTableGlobal.glXCreateGLXPixmap = NULL;
   }
   GLXPixmap  ret = (GLXPixmap )0;
   if (dispatchTableGlobal.glXCreateGLXPixmap) {
@@ -23410,6 +23706,8 @@ REGAL_DECL void REGAL_CALL glXDestroyContext(Display *dpy, GLXContext ctx)
   if (dispatchTableGlobal.glXDestroyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyContext, "glXDestroyContext" );
     RegalAssert(dispatchTableGlobal.glXDestroyContext!=glXDestroyContext);
+    if (dispatchTableGlobal.glXDestroyContext==glXDestroyContext)
+      dispatchTableGlobal.glXDestroyContext = NULL;
   }
   if (dispatchTableGlobal.glXDestroyContext) {
     GTrace("glXDestroyContext(", dpy, ", ", ctx, ")");
@@ -23425,6 +23723,8 @@ REGAL_DECL void REGAL_CALL glXDestroyGLXPixmap(Display *dpy, GLXPixmap pix)
   if (dispatchTableGlobal.glXDestroyGLXPixmap == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyGLXPixmap, "glXDestroyGLXPixmap" );
     RegalAssert(dispatchTableGlobal.glXDestroyGLXPixmap!=glXDestroyGLXPixmap);
+    if (dispatchTableGlobal.glXDestroyGLXPixmap==glXDestroyGLXPixmap)
+      dispatchTableGlobal.glXDestroyGLXPixmap = NULL;
   }
   if (dispatchTableGlobal.glXDestroyGLXPixmap) {
     GTrace("glXDestroyGLXPixmap(", dpy, ", ", pix, ")");
@@ -23440,6 +23740,8 @@ REGAL_DECL int REGAL_CALL glXGetConfig(Display *dpy, XVisualInfo *vis, int attri
   if (dispatchTableGlobal.glXGetConfig == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetConfig, "glXGetConfig" );
     RegalAssert(dispatchTableGlobal.glXGetConfig!=glXGetConfig);
+    if (dispatchTableGlobal.glXGetConfig==glXGetConfig)
+      dispatchTableGlobal.glXGetConfig = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetConfig) {
@@ -23457,6 +23759,8 @@ REGAL_DECL GLXContext REGAL_CALL glXGetCurrentContext(void)
   if (dispatchTableGlobal.glXGetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetCurrentContext, "glXGetCurrentContext" );
     RegalAssert(dispatchTableGlobal.glXGetCurrentContext!=glXGetCurrentContext);
+    if (dispatchTableGlobal.glXGetCurrentContext==glXGetCurrentContext)
+      dispatchTableGlobal.glXGetCurrentContext = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXGetCurrentContext) {
@@ -23474,6 +23778,8 @@ REGAL_DECL GLXDrawable REGAL_CALL glXGetCurrentDrawable(void)
   if (dispatchTableGlobal.glXGetCurrentDrawable == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetCurrentDrawable, "glXGetCurrentDrawable" );
     RegalAssert(dispatchTableGlobal.glXGetCurrentDrawable!=glXGetCurrentDrawable);
+    if (dispatchTableGlobal.glXGetCurrentDrawable==glXGetCurrentDrawable)
+      dispatchTableGlobal.glXGetCurrentDrawable = NULL;
   }
   GLXDrawable  ret = (GLXDrawable )0;
   if (dispatchTableGlobal.glXGetCurrentDrawable) {
@@ -23491,6 +23797,8 @@ REGAL_DECL Bool REGAL_CALL glXIsDirect(Display *dpy, GLXContext ctx)
   if (dispatchTableGlobal.glXIsDirect == NULL) {
     GetProcAddress( dispatchTableGlobal.glXIsDirect, "glXIsDirect" );
     RegalAssert(dispatchTableGlobal.glXIsDirect!=glXIsDirect);
+    if (dispatchTableGlobal.glXIsDirect==glXIsDirect)
+      dispatchTableGlobal.glXIsDirect = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXIsDirect) {
@@ -23508,12 +23816,14 @@ REGAL_DECL Bool REGAL_CALL glXMakeCurrent(Display *dpy, GLXDrawable drawable, GL
   if (dispatchTableGlobal.glXMakeCurrent == NULL) {
     GetProcAddress( dispatchTableGlobal.glXMakeCurrent, "glXMakeCurrent" );
     RegalAssert(dispatchTableGlobal.glXMakeCurrent!=glXMakeCurrent);
+    if (dispatchTableGlobal.glXMakeCurrent==glXMakeCurrent)
+      dispatchTableGlobal.glXMakeCurrent = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXMakeCurrent) {
     GTrace("glXMakeCurrent(", dpy, ", ", drawable, ", ", ctx, ")");
     ret = dispatchTableGlobal.glXMakeCurrent(dpy, drawable, ctx);
-       RegalMakeCurrent( RegalSystemContext(ctx) );
+    RegalMakeCurrent( RegalSystemContext(ctx) );
   }
   else
     Warning( "glXMakeCurrent not available." );
@@ -23526,6 +23836,8 @@ REGAL_DECL Bool REGAL_CALL glXQueryExtension(Display *dpy, int *errorBase, int *
   if (dispatchTableGlobal.glXQueryExtension == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryExtension, "glXQueryExtension" );
     RegalAssert(dispatchTableGlobal.glXQueryExtension!=glXQueryExtension);
+    if (dispatchTableGlobal.glXQueryExtension==glXQueryExtension)
+      dispatchTableGlobal.glXQueryExtension = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQueryExtension) {
@@ -23543,6 +23855,8 @@ REGAL_DECL Bool REGAL_CALL glXQueryVersion(Display *dpy, int *major, int *minor)
   if (dispatchTableGlobal.glXQueryVersion == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryVersion, "glXQueryVersion" );
     RegalAssert(dispatchTableGlobal.glXQueryVersion!=glXQueryVersion);
+    if (dispatchTableGlobal.glXQueryVersion==glXQueryVersion)
+      dispatchTableGlobal.glXQueryVersion = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQueryVersion) {
@@ -23560,6 +23874,8 @@ REGAL_DECL void REGAL_CALL glXSwapBuffers(Display *dpy, GLXDrawable drawable)
   if (dispatchTableGlobal.glXSwapBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSwapBuffers, "glXSwapBuffers" );
     RegalAssert(dispatchTableGlobal.glXSwapBuffers!=glXSwapBuffers);
+    if (dispatchTableGlobal.glXSwapBuffers==glXSwapBuffers)
+      dispatchTableGlobal.glXSwapBuffers = NULL;
   }
   if (dispatchTableGlobal.glXSwapBuffers) {
     GTrace("glXSwapBuffers(", dpy, ", ", drawable, ")");
@@ -23575,6 +23891,8 @@ REGAL_DECL void REGAL_CALL glXUseXFont(Font font, int first, int count, int list
   if (dispatchTableGlobal.glXUseXFont == NULL) {
     GetProcAddress( dispatchTableGlobal.glXUseXFont, "glXUseXFont" );
     RegalAssert(dispatchTableGlobal.glXUseXFont!=glXUseXFont);
+    if (dispatchTableGlobal.glXUseXFont==glXUseXFont)
+      dispatchTableGlobal.glXUseXFont = NULL;
   }
   if (dispatchTableGlobal.glXUseXFont) {
     GTrace("glXUseXFont(", font, ", ", first, ", ", count, ", ", listBase, ")");
@@ -23590,6 +23908,8 @@ REGAL_DECL void REGAL_CALL glXWaitGL(void)
   if (dispatchTableGlobal.glXWaitGL == NULL) {
     GetProcAddress( dispatchTableGlobal.glXWaitGL, "glXWaitGL" );
     RegalAssert(dispatchTableGlobal.glXWaitGL!=glXWaitGL);
+    if (dispatchTableGlobal.glXWaitGL==glXWaitGL)
+      dispatchTableGlobal.glXWaitGL = NULL;
   }
   if (dispatchTableGlobal.glXWaitGL) {
     GTrace("glXWaitGL()");
@@ -23605,6 +23925,8 @@ REGAL_DECL void REGAL_CALL glXWaitX(void)
   if (dispatchTableGlobal.glXWaitX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXWaitX, "glXWaitX" );
     RegalAssert(dispatchTableGlobal.glXWaitX!=glXWaitX);
+    if (dispatchTableGlobal.glXWaitX==glXWaitX)
+      dispatchTableGlobal.glXWaitX = NULL;
   }
   if (dispatchTableGlobal.glXWaitX) {
     GTrace("glXWaitX()");
@@ -23622,6 +23944,8 @@ REGAL_DECL const char *REGAL_CALL glXGetClientString(Display *dpy, int name)
   if (dispatchTableGlobal.glXGetClientString == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetClientString, "glXGetClientString" );
     RegalAssert(dispatchTableGlobal.glXGetClientString!=glXGetClientString);
+    if (dispatchTableGlobal.glXGetClientString==glXGetClientString)
+      dispatchTableGlobal.glXGetClientString = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.glXGetClientString) {
@@ -23639,6 +23963,8 @@ REGAL_DECL const char *REGAL_CALL glXQueryExtensionsString(Display *dpy, int scr
   if (dispatchTableGlobal.glXQueryExtensionsString == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryExtensionsString, "glXQueryExtensionsString" );
     RegalAssert(dispatchTableGlobal.glXQueryExtensionsString!=glXQueryExtensionsString);
+    if (dispatchTableGlobal.glXQueryExtensionsString==glXQueryExtensionsString)
+      dispatchTableGlobal.glXQueryExtensionsString = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.glXQueryExtensionsString) {
@@ -23656,6 +23982,8 @@ REGAL_DECL const char *REGAL_CALL glXQueryServerString(Display *dpy, int screen,
   if (dispatchTableGlobal.glXQueryServerString == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryServerString, "glXQueryServerString" );
     RegalAssert(dispatchTableGlobal.glXQueryServerString!=glXQueryServerString);
+    if (dispatchTableGlobal.glXQueryServerString==glXQueryServerString)
+      dispatchTableGlobal.glXQueryServerString = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.glXQueryServerString) {
@@ -23675,6 +24003,8 @@ REGAL_DECL Display *REGAL_CALL glXGetCurrentDisplay(void)
   if (dispatchTableGlobal.glXGetCurrentDisplay == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetCurrentDisplay, "glXGetCurrentDisplay" );
     RegalAssert(dispatchTableGlobal.glXGetCurrentDisplay!=glXGetCurrentDisplay);
+    if (dispatchTableGlobal.glXGetCurrentDisplay==glXGetCurrentDisplay)
+      dispatchTableGlobal.glXGetCurrentDisplay = NULL;
   }
   Display * ret = NULL;
   if (dispatchTableGlobal.glXGetCurrentDisplay) {
@@ -23694,6 +24024,8 @@ REGAL_DECL GLXFBConfig *REGAL_CALL glXChooseFBConfig(Display *dpy, int screen, c
   if (dispatchTableGlobal.glXChooseFBConfig == NULL) {
     GetProcAddress( dispatchTableGlobal.glXChooseFBConfig, "glXChooseFBConfig" );
     RegalAssert(dispatchTableGlobal.glXChooseFBConfig!=glXChooseFBConfig);
+    if (dispatchTableGlobal.glXChooseFBConfig==glXChooseFBConfig)
+      dispatchTableGlobal.glXChooseFBConfig = NULL;
   }
   GLXFBConfig * ret = NULL;
   if (dispatchTableGlobal.glXChooseFBConfig) {
@@ -23711,6 +24043,8 @@ REGAL_DECL GLXContext REGAL_CALL glXCreateNewContext(Display *dpy, GLXFBConfig c
   if (dispatchTableGlobal.glXCreateNewContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateNewContext, "glXCreateNewContext" );
     RegalAssert(dispatchTableGlobal.glXCreateNewContext!=glXCreateNewContext);
+    if (dispatchTableGlobal.glXCreateNewContext==glXCreateNewContext)
+      dispatchTableGlobal.glXCreateNewContext = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXCreateNewContext) {
@@ -23728,6 +24062,8 @@ REGAL_DECL GLXPbuffer REGAL_CALL glXCreatePbuffer(Display *dpy, GLXFBConfig conf
   if (dispatchTableGlobal.glXCreatePbuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreatePbuffer, "glXCreatePbuffer" );
     RegalAssert(dispatchTableGlobal.glXCreatePbuffer!=glXCreatePbuffer);
+    if (dispatchTableGlobal.glXCreatePbuffer==glXCreatePbuffer)
+      dispatchTableGlobal.glXCreatePbuffer = NULL;
   }
   GLXPbuffer  ret = (GLXPbuffer )0;
   if (dispatchTableGlobal.glXCreatePbuffer) {
@@ -23745,6 +24081,8 @@ REGAL_DECL GLXPixmap REGAL_CALL glXCreatePixmap(Display *dpy, GLXFBConfig config
   if (dispatchTableGlobal.glXCreatePixmap == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreatePixmap, "glXCreatePixmap" );
     RegalAssert(dispatchTableGlobal.glXCreatePixmap!=glXCreatePixmap);
+    if (dispatchTableGlobal.glXCreatePixmap==glXCreatePixmap)
+      dispatchTableGlobal.glXCreatePixmap = NULL;
   }
   GLXPixmap  ret = (GLXPixmap )0;
   if (dispatchTableGlobal.glXCreatePixmap) {
@@ -23762,6 +24100,8 @@ REGAL_DECL GLXWindow REGAL_CALL glXCreateWindow(Display *dpy, GLXFBConfig config
   if (dispatchTableGlobal.glXCreateWindow == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateWindow, "glXCreateWindow" );
     RegalAssert(dispatchTableGlobal.glXCreateWindow!=glXCreateWindow);
+    if (dispatchTableGlobal.glXCreateWindow==glXCreateWindow)
+      dispatchTableGlobal.glXCreateWindow = NULL;
   }
   GLXWindow  ret = (GLXWindow )0;
   if (dispatchTableGlobal.glXCreateWindow) {
@@ -23779,6 +24119,8 @@ REGAL_DECL void REGAL_CALL glXDestroyPbuffer(Display *dpy, GLXPbuffer pbuf)
   if (dispatchTableGlobal.glXDestroyPbuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyPbuffer, "glXDestroyPbuffer" );
     RegalAssert(dispatchTableGlobal.glXDestroyPbuffer!=glXDestroyPbuffer);
+    if (dispatchTableGlobal.glXDestroyPbuffer==glXDestroyPbuffer)
+      dispatchTableGlobal.glXDestroyPbuffer = NULL;
   }
   if (dispatchTableGlobal.glXDestroyPbuffer) {
     GTrace("glXDestroyPbuffer(", dpy, ", ", pbuf, ")");
@@ -23794,6 +24136,8 @@ REGAL_DECL void REGAL_CALL glXDestroyPixmap(Display *dpy, GLXPixmap pixmap)
   if (dispatchTableGlobal.glXDestroyPixmap == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyPixmap, "glXDestroyPixmap" );
     RegalAssert(dispatchTableGlobal.glXDestroyPixmap!=glXDestroyPixmap);
+    if (dispatchTableGlobal.glXDestroyPixmap==glXDestroyPixmap)
+      dispatchTableGlobal.glXDestroyPixmap = NULL;
   }
   if (dispatchTableGlobal.glXDestroyPixmap) {
     GTrace("glXDestroyPixmap(", dpy, ", ", pixmap, ")");
@@ -23809,6 +24153,8 @@ REGAL_DECL void REGAL_CALL glXDestroyWindow(Display *dpy, GLXWindow win)
   if (dispatchTableGlobal.glXDestroyWindow == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyWindow, "glXDestroyWindow" );
     RegalAssert(dispatchTableGlobal.glXDestroyWindow!=glXDestroyWindow);
+    if (dispatchTableGlobal.glXDestroyWindow==glXDestroyWindow)
+      dispatchTableGlobal.glXDestroyWindow = NULL;
   }
   if (dispatchTableGlobal.glXDestroyWindow) {
     GTrace("glXDestroyWindow(", dpy, ", ", win, ")");
@@ -23824,6 +24170,8 @@ REGAL_DECL GLXDrawable REGAL_CALL glXGetCurrentReadDrawable(void)
   if (dispatchTableGlobal.glXGetCurrentReadDrawable == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetCurrentReadDrawable, "glXGetCurrentReadDrawable" );
     RegalAssert(dispatchTableGlobal.glXGetCurrentReadDrawable!=glXGetCurrentReadDrawable);
+    if (dispatchTableGlobal.glXGetCurrentReadDrawable==glXGetCurrentReadDrawable)
+      dispatchTableGlobal.glXGetCurrentReadDrawable = NULL;
   }
   GLXDrawable  ret = (GLXDrawable )0;
   if (dispatchTableGlobal.glXGetCurrentReadDrawable) {
@@ -23841,6 +24189,8 @@ REGAL_DECL int REGAL_CALL glXGetFBConfigAttrib(Display *dpy, GLXFBConfig config,
   if (dispatchTableGlobal.glXGetFBConfigAttrib == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetFBConfigAttrib, "glXGetFBConfigAttrib" );
     RegalAssert(dispatchTableGlobal.glXGetFBConfigAttrib!=glXGetFBConfigAttrib);
+    if (dispatchTableGlobal.glXGetFBConfigAttrib==glXGetFBConfigAttrib)
+      dispatchTableGlobal.glXGetFBConfigAttrib = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetFBConfigAttrib) {
@@ -23858,6 +24208,8 @@ REGAL_DECL GLXFBConfig *REGAL_CALL glXGetFBConfigs(Display *dpy, int screen, int
   if (dispatchTableGlobal.glXGetFBConfigs == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetFBConfigs, "glXGetFBConfigs" );
     RegalAssert(dispatchTableGlobal.glXGetFBConfigs!=glXGetFBConfigs);
+    if (dispatchTableGlobal.glXGetFBConfigs==glXGetFBConfigs)
+      dispatchTableGlobal.glXGetFBConfigs = NULL;
   }
   GLXFBConfig * ret = NULL;
   if (dispatchTableGlobal.glXGetFBConfigs) {
@@ -23875,6 +24227,8 @@ REGAL_DECL void REGAL_CALL glXGetSelectedEvent(Display *dpy, GLXDrawable draw, u
   if (dispatchTableGlobal.glXGetSelectedEvent == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetSelectedEvent, "glXGetSelectedEvent" );
     RegalAssert(dispatchTableGlobal.glXGetSelectedEvent!=glXGetSelectedEvent);
+    if (dispatchTableGlobal.glXGetSelectedEvent==glXGetSelectedEvent)
+      dispatchTableGlobal.glXGetSelectedEvent = NULL;
   }
   if (dispatchTableGlobal.glXGetSelectedEvent) {
     GTrace("glXGetSelectedEvent(", dpy, ", ", draw, ")");
@@ -23890,6 +24244,8 @@ REGAL_DECL XVisualInfo *REGAL_CALL glXGetVisualFromFBConfig(Display *dpy, GLXFBC
   if (dispatchTableGlobal.glXGetVisualFromFBConfig == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVisualFromFBConfig, "glXGetVisualFromFBConfig" );
     RegalAssert(dispatchTableGlobal.glXGetVisualFromFBConfig!=glXGetVisualFromFBConfig);
+    if (dispatchTableGlobal.glXGetVisualFromFBConfig==glXGetVisualFromFBConfig)
+      dispatchTableGlobal.glXGetVisualFromFBConfig = NULL;
   }
   XVisualInfo * ret = NULL;
   if (dispatchTableGlobal.glXGetVisualFromFBConfig) {
@@ -23907,6 +24263,8 @@ REGAL_DECL Bool REGAL_CALL glXMakeContextCurrent(Display *display, GLXDrawable d
   if (dispatchTableGlobal.glXMakeContextCurrent == NULL) {
     GetProcAddress( dispatchTableGlobal.glXMakeContextCurrent, "glXMakeContextCurrent" );
     RegalAssert(dispatchTableGlobal.glXMakeContextCurrent!=glXMakeContextCurrent);
+    if (dispatchTableGlobal.glXMakeContextCurrent==glXMakeContextCurrent)
+      dispatchTableGlobal.glXMakeContextCurrent = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXMakeContextCurrent) {
@@ -23924,6 +24282,8 @@ REGAL_DECL int REGAL_CALL glXQueryContext(Display *dpy, GLXContext ctx, int attr
   if (dispatchTableGlobal.glXQueryContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryContext, "glXQueryContext" );
     RegalAssert(dispatchTableGlobal.glXQueryContext!=glXQueryContext);
+    if (dispatchTableGlobal.glXQueryContext==glXQueryContext)
+      dispatchTableGlobal.glXQueryContext = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryContext) {
@@ -23941,6 +24301,8 @@ REGAL_DECL void REGAL_CALL glXQueryDrawable(Display *dpy, GLXDrawable draw, int 
   if (dispatchTableGlobal.glXQueryDrawable == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryDrawable, "glXQueryDrawable" );
     RegalAssert(dispatchTableGlobal.glXQueryDrawable!=glXQueryDrawable);
+    if (dispatchTableGlobal.glXQueryDrawable==glXQueryDrawable)
+      dispatchTableGlobal.glXQueryDrawable = NULL;
   }
   if (dispatchTableGlobal.glXQueryDrawable) {
     GTrace("glXQueryDrawable(", dpy, ", ", draw, ", ", attribute, ")");
@@ -23956,6 +24318,8 @@ REGAL_DECL void REGAL_CALL glXSelectEvent(Display *dpy, GLXDrawable draw, unsign
   if (dispatchTableGlobal.glXSelectEvent == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSelectEvent, "glXSelectEvent" );
     RegalAssert(dispatchTableGlobal.glXSelectEvent!=glXSelectEvent);
+    if (dispatchTableGlobal.glXSelectEvent==glXSelectEvent)
+      dispatchTableGlobal.glXSelectEvent = NULL;
   }
   if (dispatchTableGlobal.glXSelectEvent) {
     GTrace("glXSelectEvent(", dpy, ", ", draw, ", ", event_mask, ")");
@@ -23973,6 +24337,8 @@ REGAL_DECL void *REGAL_CALL glXGetProcAddress(const GLubyte *procName)
   if (dispatchTableGlobal.glXGetProcAddress == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetProcAddress, "glXGetProcAddress" );
     RegalAssert(dispatchTableGlobal.glXGetProcAddress!=glXGetProcAddress);
+    if (dispatchTableGlobal.glXGetProcAddress==glXGetProcAddress)
+      dispatchTableGlobal.glXGetProcAddress = NULL;
   }
   void * ret = NULL;
   ret = Lookup::gl_Lookup<void *>(reinterpret_cast<const char *>(procName));
@@ -23998,6 +24364,8 @@ REGAL_DECL GLXContext REGAL_CALL glXCreateContextAttribsARB(Display *dpy, GLXFBC
   if (dispatchTableGlobal.glXCreateContextAttribsARB == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateContextAttribsARB, "glXCreateContextAttribsARB" );
     RegalAssert(dispatchTableGlobal.glXCreateContextAttribsARB!=glXCreateContextAttribsARB);
+    if (dispatchTableGlobal.glXCreateContextAttribsARB==glXCreateContextAttribsARB)
+      dispatchTableGlobal.glXCreateContextAttribsARB = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXCreateContextAttribsARB) {
@@ -24017,6 +24385,8 @@ REGAL_DECL void *REGAL_CALL glXGetProcAddressARB(const GLubyte *procName)
   if (dispatchTableGlobal.glXGetProcAddressARB == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetProcAddressARB, "glXGetProcAddressARB" );
     RegalAssert(dispatchTableGlobal.glXGetProcAddressARB!=glXGetProcAddressARB);
+    if (dispatchTableGlobal.glXGetProcAddressARB==glXGetProcAddressARB)
+      dispatchTableGlobal.glXGetProcAddressARB = NULL;
   }
   void * ret = NULL;
   ret = Lookup::gl_Lookup<void *>(reinterpret_cast<const char *>(procName));
@@ -24042,6 +24412,8 @@ REGAL_DECL void REGAL_CALL glXBindTexImageATI(Display *dpy, GLXPbuffer pbuf, int
   if (dispatchTableGlobal.glXBindTexImageATI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindTexImageATI, "glXBindTexImageATI" );
     RegalAssert(dispatchTableGlobal.glXBindTexImageATI!=glXBindTexImageATI);
+    if (dispatchTableGlobal.glXBindTexImageATI==glXBindTexImageATI)
+      dispatchTableGlobal.glXBindTexImageATI = NULL;
   }
   if (dispatchTableGlobal.glXBindTexImageATI) {
     GTrace("glXBindTexImageATI(", dpy, ", ", pbuf, ", ", buffer, ")");
@@ -24057,6 +24429,8 @@ REGAL_DECL void REGAL_CALL glXDrawableAttribATI(Display *dpy, GLXDrawable draw, 
   if (dispatchTableGlobal.glXDrawableAttribATI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDrawableAttribATI, "glXDrawableAttribATI" );
     RegalAssert(dispatchTableGlobal.glXDrawableAttribATI!=glXDrawableAttribATI);
+    if (dispatchTableGlobal.glXDrawableAttribATI==glXDrawableAttribATI)
+      dispatchTableGlobal.glXDrawableAttribATI = NULL;
   }
   if (dispatchTableGlobal.glXDrawableAttribATI) {
     GTrace("glXDrawableAttribATI(", dpy, ", ", draw, ", ", attrib_list, ")");
@@ -24072,6 +24446,8 @@ REGAL_DECL void REGAL_CALL glXReleaseTexImageATI(Display *dpy, GLXPbuffer pbuf, 
   if (dispatchTableGlobal.glXReleaseTexImageATI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseTexImageATI, "glXReleaseTexImageATI" );
     RegalAssert(dispatchTableGlobal.glXReleaseTexImageATI!=glXReleaseTexImageATI);
+    if (dispatchTableGlobal.glXReleaseTexImageATI==glXReleaseTexImageATI)
+      dispatchTableGlobal.glXReleaseTexImageATI = NULL;
   }
   if (dispatchTableGlobal.glXReleaseTexImageATI) {
     GTrace("glXReleaseTexImageATI(", dpy, ", ", pbuf, ", ", buffer, ")");
@@ -24089,6 +24465,8 @@ REGAL_DECL void REGAL_CALL glXFreeContextEXT(Display *dpy, GLXContext context)
   if (dispatchTableGlobal.glXFreeContextEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXFreeContextEXT, "glXFreeContextEXT" );
     RegalAssert(dispatchTableGlobal.glXFreeContextEXT!=glXFreeContextEXT);
+    if (dispatchTableGlobal.glXFreeContextEXT==glXFreeContextEXT)
+      dispatchTableGlobal.glXFreeContextEXT = NULL;
   }
   if (dispatchTableGlobal.glXFreeContextEXT) {
     GTrace("glXFreeContextEXT(", dpy, ", ", context, ")");
@@ -24104,6 +24482,8 @@ REGAL_DECL GLXContextID REGAL_CALL glXGetContextIDEXT(const GLXContext context)
   if (dispatchTableGlobal.glXGetContextIDEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetContextIDEXT, "glXGetContextIDEXT" );
     RegalAssert(dispatchTableGlobal.glXGetContextIDEXT!=glXGetContextIDEXT);
+    if (dispatchTableGlobal.glXGetContextIDEXT==glXGetContextIDEXT)
+      dispatchTableGlobal.glXGetContextIDEXT = NULL;
   }
   GLXContextID  ret = (GLXContextID )0;
   if (dispatchTableGlobal.glXGetContextIDEXT) {
@@ -24121,6 +24501,8 @@ REGAL_DECL GLXContext REGAL_CALL glXImportContextEXT(Display *dpy, GLXContextID 
   if (dispatchTableGlobal.glXImportContextEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXImportContextEXT, "glXImportContextEXT" );
     RegalAssert(dispatchTableGlobal.glXImportContextEXT!=glXImportContextEXT);
+    if (dispatchTableGlobal.glXImportContextEXT==glXImportContextEXT)
+      dispatchTableGlobal.glXImportContextEXT = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXImportContextEXT) {
@@ -24138,6 +24520,8 @@ REGAL_DECL int REGAL_CALL glXQueryContextInfoEXT(Display *dpy, GLXContext contex
   if (dispatchTableGlobal.glXQueryContextInfoEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryContextInfoEXT, "glXQueryContextInfoEXT" );
     RegalAssert(dispatchTableGlobal.glXQueryContextInfoEXT!=glXQueryContextInfoEXT);
+    if (dispatchTableGlobal.glXQueryContextInfoEXT==glXQueryContextInfoEXT)
+      dispatchTableGlobal.glXQueryContextInfoEXT = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryContextInfoEXT) {
@@ -24157,6 +24541,8 @@ REGAL_DECL void REGAL_CALL glXSwapIntervalEXT(Display *dpy, GLXDrawable drawable
   if (dispatchTableGlobal.glXSwapIntervalEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSwapIntervalEXT, "glXSwapIntervalEXT" );
     RegalAssert(dispatchTableGlobal.glXSwapIntervalEXT!=glXSwapIntervalEXT);
+    if (dispatchTableGlobal.glXSwapIntervalEXT==glXSwapIntervalEXT)
+      dispatchTableGlobal.glXSwapIntervalEXT = NULL;
   }
   if (dispatchTableGlobal.glXSwapIntervalEXT) {
     GTrace("glXSwapIntervalEXT(", dpy, ", ", drawable, ", ", interval, ")");
@@ -24174,6 +24560,8 @@ REGAL_DECL void REGAL_CALL glXBindTexImageEXT(Display *display, GLXDrawable draw
   if (dispatchTableGlobal.glXBindTexImageEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindTexImageEXT, "glXBindTexImageEXT" );
     RegalAssert(dispatchTableGlobal.glXBindTexImageEXT!=glXBindTexImageEXT);
+    if (dispatchTableGlobal.glXBindTexImageEXT==glXBindTexImageEXT)
+      dispatchTableGlobal.glXBindTexImageEXT = NULL;
   }
   if (dispatchTableGlobal.glXBindTexImageEXT) {
     GTrace("glXBindTexImageEXT(", display, ", ", drawable, ", ", buffer, ", ", attrib_list, ")");
@@ -24189,6 +24577,8 @@ REGAL_DECL void REGAL_CALL glXReleaseTexImageEXT(Display *display, GLXDrawable d
   if (dispatchTableGlobal.glXReleaseTexImageEXT == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseTexImageEXT, "glXReleaseTexImageEXT" );
     RegalAssert(dispatchTableGlobal.glXReleaseTexImageEXT!=glXReleaseTexImageEXT);
+    if (dispatchTableGlobal.glXReleaseTexImageEXT==glXReleaseTexImageEXT)
+      dispatchTableGlobal.glXReleaseTexImageEXT = NULL;
   }
   if (dispatchTableGlobal.glXReleaseTexImageEXT) {
     GTrace("glXReleaseTexImageEXT(", display, ", ", drawable, ", ", buffer, ")");
@@ -24206,6 +24596,8 @@ REGAL_DECL unsigned int REGAL_CALL glXGetAGPOffsetMESA(const void *pointer)
   if (dispatchTableGlobal.glXGetAGPOffsetMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetAGPOffsetMESA, "glXGetAGPOffsetMESA" );
     RegalAssert(dispatchTableGlobal.glXGetAGPOffsetMESA!=glXGetAGPOffsetMESA);
+    if (dispatchTableGlobal.glXGetAGPOffsetMESA==glXGetAGPOffsetMESA)
+      dispatchTableGlobal.glXGetAGPOffsetMESA = NULL;
   }
   unsigned int  ret = (unsigned int )0;
   if (dispatchTableGlobal.glXGetAGPOffsetMESA) {
@@ -24225,6 +24617,8 @@ REGAL_DECL void REGAL_CALL glXCopySubBufferMESA(Display *dpy, GLXDrawable drawab
   if (dispatchTableGlobal.glXCopySubBufferMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCopySubBufferMESA, "glXCopySubBufferMESA" );
     RegalAssert(dispatchTableGlobal.glXCopySubBufferMESA!=glXCopySubBufferMESA);
+    if (dispatchTableGlobal.glXCopySubBufferMESA==glXCopySubBufferMESA)
+      dispatchTableGlobal.glXCopySubBufferMESA = NULL;
   }
   if (dispatchTableGlobal.glXCopySubBufferMESA) {
     GTrace("glXCopySubBufferMESA(", dpy, ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
@@ -24242,6 +24636,8 @@ REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmapMESA(Display *dpy, XVisualInfo
   if (dispatchTableGlobal.glXCreateGLXPixmapMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmapMESA, "glXCreateGLXPixmapMESA" );
     RegalAssert(dispatchTableGlobal.glXCreateGLXPixmapMESA!=glXCreateGLXPixmapMESA);
+    if (dispatchTableGlobal.glXCreateGLXPixmapMESA==glXCreateGLXPixmapMESA)
+      dispatchTableGlobal.glXCreateGLXPixmapMESA = NULL;
   }
   GLXPixmap  ret = (GLXPixmap )0;
   if (dispatchTableGlobal.glXCreateGLXPixmapMESA) {
@@ -24261,6 +24657,8 @@ REGAL_DECL Bool REGAL_CALL glXReleaseBuffersMESA(Display *dpy, GLXDrawable d)
   if (dispatchTableGlobal.glXReleaseBuffersMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseBuffersMESA, "glXReleaseBuffersMESA" );
     RegalAssert(dispatchTableGlobal.glXReleaseBuffersMESA!=glXReleaseBuffersMESA);
+    if (dispatchTableGlobal.glXReleaseBuffersMESA==glXReleaseBuffersMESA)
+      dispatchTableGlobal.glXReleaseBuffersMESA = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXReleaseBuffersMESA) {
@@ -24280,6 +24678,8 @@ REGAL_DECL GLboolean REGAL_CALL glXSet3DfxModeMESA(GLint mode)
   if (dispatchTableGlobal.glXSet3DfxModeMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSet3DfxModeMESA, "glXSet3DfxModeMESA" );
     RegalAssert(dispatchTableGlobal.glXSet3DfxModeMESA!=glXSet3DfxModeMESA);
+    if (dispatchTableGlobal.glXSet3DfxModeMESA==glXSet3DfxModeMESA)
+      dispatchTableGlobal.glXSet3DfxModeMESA = NULL;
   }
   GLboolean  ret = (GLboolean )0;
   if (dispatchTableGlobal.glXSet3DfxModeMESA) {
@@ -24299,6 +24699,8 @@ REGAL_DECL int REGAL_CALL glXGetSwapIntervalMESA(void)
   if (dispatchTableGlobal.glXGetSwapIntervalMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetSwapIntervalMESA, "glXGetSwapIntervalMESA" );
     RegalAssert(dispatchTableGlobal.glXGetSwapIntervalMESA!=glXGetSwapIntervalMESA);
+    if (dispatchTableGlobal.glXGetSwapIntervalMESA==glXGetSwapIntervalMESA)
+      dispatchTableGlobal.glXGetSwapIntervalMESA = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetSwapIntervalMESA) {
@@ -24316,6 +24718,8 @@ REGAL_DECL int REGAL_CALL glXSwapIntervalMESA(unsigned int interval)
   if (dispatchTableGlobal.glXSwapIntervalMESA == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSwapIntervalMESA, "glXSwapIntervalMESA" );
     RegalAssert(dispatchTableGlobal.glXSwapIntervalMESA!=glXSwapIntervalMESA);
+    if (dispatchTableGlobal.glXSwapIntervalMESA==glXSwapIntervalMESA)
+      dispatchTableGlobal.glXSwapIntervalMESA = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXSwapIntervalMESA) {
@@ -24335,6 +24739,8 @@ REGAL_DECL void REGAL_CALL glXCopyImageSubDataNV(Display *dpy, GLXContext srcCtx
   if (dispatchTableGlobal.glXCopyImageSubDataNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCopyImageSubDataNV, "glXCopyImageSubDataNV" );
     RegalAssert(dispatchTableGlobal.glXCopyImageSubDataNV!=glXCopyImageSubDataNV);
+    if (dispatchTableGlobal.glXCopyImageSubDataNV==glXCopyImageSubDataNV)
+      dispatchTableGlobal.glXCopyImageSubDataNV = NULL;
   }
   if (dispatchTableGlobal.glXCopyImageSubDataNV) {
     GTrace("glXCopyImageSubDataNV(", dpy, ", ", srcCtx, ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", dstCtx, ")");
@@ -24352,6 +24758,8 @@ REGAL_DECL int REGAL_CALL glXBindVideoDeviceNV(Display *dpy, unsigned int video_
   if (dispatchTableGlobal.glXBindVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindVideoDeviceNV, "glXBindVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXBindVideoDeviceNV!=glXBindVideoDeviceNV);
+    if (dispatchTableGlobal.glXBindVideoDeviceNV==glXBindVideoDeviceNV)
+      dispatchTableGlobal.glXBindVideoDeviceNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXBindVideoDeviceNV) {
@@ -24369,6 +24777,8 @@ REGAL_DECL unsigned int *REGAL_CALL glXEnumerateVideoDevicesNV(Display *dpy, int
   if (dispatchTableGlobal.glXEnumerateVideoDevicesNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXEnumerateVideoDevicesNV, "glXEnumerateVideoDevicesNV" );
     RegalAssert(dispatchTableGlobal.glXEnumerateVideoDevicesNV!=glXEnumerateVideoDevicesNV);
+    if (dispatchTableGlobal.glXEnumerateVideoDevicesNV==glXEnumerateVideoDevicesNV)
+      dispatchTableGlobal.glXEnumerateVideoDevicesNV = NULL;
   }
   unsigned int * ret = NULL;
   if (dispatchTableGlobal.glXEnumerateVideoDevicesNV) {
@@ -24388,6 +24798,8 @@ REGAL_DECL Bool REGAL_CALL glXBindSwapBarrierNV(Display *dpy, GLuint group, GLui
   if (dispatchTableGlobal.glXBindSwapBarrierNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindSwapBarrierNV, "glXBindSwapBarrierNV" );
     RegalAssert(dispatchTableGlobal.glXBindSwapBarrierNV!=glXBindSwapBarrierNV);
+    if (dispatchTableGlobal.glXBindSwapBarrierNV==glXBindSwapBarrierNV)
+      dispatchTableGlobal.glXBindSwapBarrierNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXBindSwapBarrierNV) {
@@ -24405,6 +24817,8 @@ REGAL_DECL Bool REGAL_CALL glXJoinSwapGroupNV(Display *dpy, GLXDrawable drawable
   if (dispatchTableGlobal.glXJoinSwapGroupNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXJoinSwapGroupNV, "glXJoinSwapGroupNV" );
     RegalAssert(dispatchTableGlobal.glXJoinSwapGroupNV!=glXJoinSwapGroupNV);
+    if (dispatchTableGlobal.glXJoinSwapGroupNV==glXJoinSwapGroupNV)
+      dispatchTableGlobal.glXJoinSwapGroupNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXJoinSwapGroupNV) {
@@ -24422,6 +24836,8 @@ REGAL_DECL Bool REGAL_CALL glXQueryFrameCountNV(Display *dpy, int screen, GLuint
   if (dispatchTableGlobal.glXQueryFrameCountNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryFrameCountNV, "glXQueryFrameCountNV" );
     RegalAssert(dispatchTableGlobal.glXQueryFrameCountNV!=glXQueryFrameCountNV);
+    if (dispatchTableGlobal.glXQueryFrameCountNV==glXQueryFrameCountNV)
+      dispatchTableGlobal.glXQueryFrameCountNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQueryFrameCountNV) {
@@ -24439,6 +24855,8 @@ REGAL_DECL Bool REGAL_CALL glXQueryMaxSwapGroupsNV(Display *dpy, int screen, GLu
   if (dispatchTableGlobal.glXQueryMaxSwapGroupsNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryMaxSwapGroupsNV, "glXQueryMaxSwapGroupsNV" );
     RegalAssert(dispatchTableGlobal.glXQueryMaxSwapGroupsNV!=glXQueryMaxSwapGroupsNV);
+    if (dispatchTableGlobal.glXQueryMaxSwapGroupsNV==glXQueryMaxSwapGroupsNV)
+      dispatchTableGlobal.glXQueryMaxSwapGroupsNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQueryMaxSwapGroupsNV) {
@@ -24456,6 +24874,8 @@ REGAL_DECL Bool REGAL_CALL glXQuerySwapGroupNV(Display *dpy, GLXDrawable drawabl
   if (dispatchTableGlobal.glXQuerySwapGroupNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQuerySwapGroupNV, "glXQuerySwapGroupNV" );
     RegalAssert(dispatchTableGlobal.glXQuerySwapGroupNV!=glXQuerySwapGroupNV);
+    if (dispatchTableGlobal.glXQuerySwapGroupNV==glXQuerySwapGroupNV)
+      dispatchTableGlobal.glXQuerySwapGroupNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQuerySwapGroupNV) {
@@ -24473,6 +24893,8 @@ REGAL_DECL Bool REGAL_CALL glXResetFrameCountNV(Display *dpy, int screen)
   if (dispatchTableGlobal.glXResetFrameCountNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXResetFrameCountNV, "glXResetFrameCountNV" );
     RegalAssert(dispatchTableGlobal.glXResetFrameCountNV!=glXResetFrameCountNV);
+    if (dispatchTableGlobal.glXResetFrameCountNV==glXResetFrameCountNV)
+      dispatchTableGlobal.glXResetFrameCountNV = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXResetFrameCountNV) {
@@ -24492,6 +24914,8 @@ REGAL_DECL void *REGAL_CALL glXAllocateMemoryNV(GLsizei size, GLfloat readFreque
   if (dispatchTableGlobal.glXAllocateMemoryNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXAllocateMemoryNV, "glXAllocateMemoryNV" );
     RegalAssert(dispatchTableGlobal.glXAllocateMemoryNV!=glXAllocateMemoryNV);
+    if (dispatchTableGlobal.glXAllocateMemoryNV==glXAllocateMemoryNV)
+      dispatchTableGlobal.glXAllocateMemoryNV = NULL;
   }
   void * ret = NULL;
   if (dispatchTableGlobal.glXAllocateMemoryNV) {
@@ -24509,6 +24933,8 @@ REGAL_DECL void REGAL_CALL glXFreeMemoryNV(void *pointer)
   if (dispatchTableGlobal.glXFreeMemoryNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXFreeMemoryNV, "glXFreeMemoryNV" );
     RegalAssert(dispatchTableGlobal.glXFreeMemoryNV!=glXFreeMemoryNV);
+    if (dispatchTableGlobal.glXFreeMemoryNV==glXFreeMemoryNV)
+      dispatchTableGlobal.glXFreeMemoryNV = NULL;
   }
   if (dispatchTableGlobal.glXFreeMemoryNV) {
     GTrace("glXFreeMemoryNV(", pointer, ")");
@@ -24526,6 +24952,8 @@ REGAL_DECL int REGAL_CALL glXBindVideoCaptureDeviceNV(Display *dpy, unsigned int
   if (dispatchTableGlobal.glXBindVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindVideoCaptureDeviceNV, "glXBindVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXBindVideoCaptureDeviceNV!=glXBindVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.glXBindVideoCaptureDeviceNV==glXBindVideoCaptureDeviceNV)
+      dispatchTableGlobal.glXBindVideoCaptureDeviceNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXBindVideoCaptureDeviceNV) {
@@ -24543,6 +24971,8 @@ REGAL_DECL GLXVideoCaptureDeviceNV *REGAL_CALL glXEnumerateVideoCaptureDevicesNV
   if (dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV, "glXEnumerateVideoCaptureDevicesNV" );
     RegalAssert(dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV!=glXEnumerateVideoCaptureDevicesNV);
+    if (dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV==glXEnumerateVideoCaptureDevicesNV)
+      dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV = NULL;
   }
   GLXVideoCaptureDeviceNV * ret = NULL;
   if (dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV) {
@@ -24560,6 +24990,8 @@ REGAL_DECL void REGAL_CALL glXLockVideoCaptureDeviceNV(Display *dpy, GLXVideoCap
   if (dispatchTableGlobal.glXLockVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXLockVideoCaptureDeviceNV, "glXLockVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXLockVideoCaptureDeviceNV!=glXLockVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.glXLockVideoCaptureDeviceNV==glXLockVideoCaptureDeviceNV)
+      dispatchTableGlobal.glXLockVideoCaptureDeviceNV = NULL;
   }
   if (dispatchTableGlobal.glXLockVideoCaptureDeviceNV) {
     GTrace("glXLockVideoCaptureDeviceNV(", dpy, ", ", device, ")");
@@ -24575,6 +25007,8 @@ REGAL_DECL int REGAL_CALL glXQueryVideoCaptureDeviceNV(Display *dpy, GLXVideoCap
   if (dispatchTableGlobal.glXQueryVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryVideoCaptureDeviceNV, "glXQueryVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXQueryVideoCaptureDeviceNV!=glXQueryVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.glXQueryVideoCaptureDeviceNV==glXQueryVideoCaptureDeviceNV)
+      dispatchTableGlobal.glXQueryVideoCaptureDeviceNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryVideoCaptureDeviceNV) {
@@ -24592,6 +25026,8 @@ REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideo
   if (dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV, "glXReleaseVideoCaptureDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV!=glXReleaseVideoCaptureDeviceNV);
+    if (dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV==glXReleaseVideoCaptureDeviceNV)
+      dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV = NULL;
   }
   if (dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV) {
     GTrace("glXReleaseVideoCaptureDeviceNV(", dpy, ", ", device, ")");
@@ -24609,6 +25045,8 @@ REGAL_DECL int REGAL_CALL glXBindVideoImageNV(Display *dpy, GLXVideoDeviceNV Vid
   if (dispatchTableGlobal.glXBindVideoImageNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindVideoImageNV, "glXBindVideoImageNV" );
     RegalAssert(dispatchTableGlobal.glXBindVideoImageNV!=glXBindVideoImageNV);
+    if (dispatchTableGlobal.glXBindVideoImageNV==glXBindVideoImageNV)
+      dispatchTableGlobal.glXBindVideoImageNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXBindVideoImageNV) {
@@ -24626,6 +25064,8 @@ REGAL_DECL int REGAL_CALL glXGetVideoDeviceNV(Display *dpy, int screen, int numV
   if (dispatchTableGlobal.glXGetVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVideoDeviceNV, "glXGetVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXGetVideoDeviceNV!=glXGetVideoDeviceNV);
+    if (dispatchTableGlobal.glXGetVideoDeviceNV==glXGetVideoDeviceNV)
+      dispatchTableGlobal.glXGetVideoDeviceNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetVideoDeviceNV) {
@@ -24643,6 +25083,8 @@ REGAL_DECL int REGAL_CALL glXGetVideoInfoNV(Display *dpy, int screen, GLXVideoDe
   if (dispatchTableGlobal.glXGetVideoInfoNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVideoInfoNV, "glXGetVideoInfoNV" );
     RegalAssert(dispatchTableGlobal.glXGetVideoInfoNV!=glXGetVideoInfoNV);
+    if (dispatchTableGlobal.glXGetVideoInfoNV==glXGetVideoInfoNV)
+      dispatchTableGlobal.glXGetVideoInfoNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetVideoInfoNV) {
@@ -24660,6 +25102,8 @@ REGAL_DECL int REGAL_CALL glXReleaseVideoDeviceNV(Display *dpy, int screen, GLXV
   if (dispatchTableGlobal.glXReleaseVideoDeviceNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseVideoDeviceNV, "glXReleaseVideoDeviceNV" );
     RegalAssert(dispatchTableGlobal.glXReleaseVideoDeviceNV!=glXReleaseVideoDeviceNV);
+    if (dispatchTableGlobal.glXReleaseVideoDeviceNV==glXReleaseVideoDeviceNV)
+      dispatchTableGlobal.glXReleaseVideoDeviceNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXReleaseVideoDeviceNV) {
@@ -24677,6 +25121,8 @@ REGAL_DECL int REGAL_CALL glXReleaseVideoImageNV(Display *dpy, GLXPbuffer pbuf)
   if (dispatchTableGlobal.glXReleaseVideoImageNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXReleaseVideoImageNV, "glXReleaseVideoImageNV" );
     RegalAssert(dispatchTableGlobal.glXReleaseVideoImageNV!=glXReleaseVideoImageNV);
+    if (dispatchTableGlobal.glXReleaseVideoImageNV==glXReleaseVideoImageNV)
+      dispatchTableGlobal.glXReleaseVideoImageNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXReleaseVideoImageNV) {
@@ -24694,6 +25140,8 @@ REGAL_DECL int REGAL_CALL glXSendPbufferToVideoNV(Display *dpy, GLXPbuffer pbuf,
   if (dispatchTableGlobal.glXSendPbufferToVideoNV == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSendPbufferToVideoNV, "glXSendPbufferToVideoNV" );
     RegalAssert(dispatchTableGlobal.glXSendPbufferToVideoNV!=glXSendPbufferToVideoNV);
+    if (dispatchTableGlobal.glXSendPbufferToVideoNV==glXSendPbufferToVideoNV)
+      dispatchTableGlobal.glXSendPbufferToVideoNV = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXSendPbufferToVideoNV) {
@@ -24713,6 +25161,8 @@ REGAL_DECL Bool REGAL_CALL glXGetMscRateOML(Display *dpy, GLXDrawable drawable, 
   if (dispatchTableGlobal.glXGetMscRateOML == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetMscRateOML, "glXGetMscRateOML" );
     RegalAssert(dispatchTableGlobal.glXGetMscRateOML!=glXGetMscRateOML);
+    if (dispatchTableGlobal.glXGetMscRateOML==glXGetMscRateOML)
+      dispatchTableGlobal.glXGetMscRateOML = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXGetMscRateOML) {
@@ -24730,6 +25180,8 @@ REGAL_DECL Bool REGAL_CALL glXGetSyncValuesOML(Display *dpy, GLXDrawable drawabl
   if (dispatchTableGlobal.glXGetSyncValuesOML == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetSyncValuesOML, "glXGetSyncValuesOML" );
     RegalAssert(dispatchTableGlobal.glXGetSyncValuesOML!=glXGetSyncValuesOML);
+    if (dispatchTableGlobal.glXGetSyncValuesOML==glXGetSyncValuesOML)
+      dispatchTableGlobal.glXGetSyncValuesOML = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXGetSyncValuesOML) {
@@ -24747,6 +25199,8 @@ REGAL_DECL int64_t REGAL_CALL glXSwapBuffersMscOML(Display *dpy, GLXDrawable dra
   if (dispatchTableGlobal.glXSwapBuffersMscOML == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSwapBuffersMscOML, "glXSwapBuffersMscOML" );
     RegalAssert(dispatchTableGlobal.glXSwapBuffersMscOML!=glXSwapBuffersMscOML);
+    if (dispatchTableGlobal.glXSwapBuffersMscOML==glXSwapBuffersMscOML)
+      dispatchTableGlobal.glXSwapBuffersMscOML = NULL;
   }
   int64_t  ret = (int64_t )0;
   if (dispatchTableGlobal.glXSwapBuffersMscOML) {
@@ -24764,6 +25218,8 @@ REGAL_DECL Bool REGAL_CALL glXWaitForMscOML(Display *dpy, GLXDrawable drawable, 
   if (dispatchTableGlobal.glXWaitForMscOML == NULL) {
     GetProcAddress( dispatchTableGlobal.glXWaitForMscOML, "glXWaitForMscOML" );
     RegalAssert(dispatchTableGlobal.glXWaitForMscOML!=glXWaitForMscOML);
+    if (dispatchTableGlobal.glXWaitForMscOML==glXWaitForMscOML)
+      dispatchTableGlobal.glXWaitForMscOML = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXWaitForMscOML) {
@@ -24781,6 +25237,8 @@ REGAL_DECL Bool REGAL_CALL glXWaitForSbcOML(Display *dpy, GLXDrawable drawable, 
   if (dispatchTableGlobal.glXWaitForSbcOML == NULL) {
     GetProcAddress( dispatchTableGlobal.glXWaitForSbcOML, "glXWaitForSbcOML" );
     RegalAssert(dispatchTableGlobal.glXWaitForSbcOML!=glXWaitForSbcOML);
+    if (dispatchTableGlobal.glXWaitForSbcOML==glXWaitForSbcOML)
+      dispatchTableGlobal.glXWaitForSbcOML = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXWaitForSbcOML) {
@@ -24800,6 +25258,8 @@ REGAL_DECL GLXFBConfigSGIX *REGAL_CALL glXChooseFBConfigSGIX(Display *dpy, int s
   if (dispatchTableGlobal.glXChooseFBConfigSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXChooseFBConfigSGIX, "glXChooseFBConfigSGIX" );
     RegalAssert(dispatchTableGlobal.glXChooseFBConfigSGIX!=glXChooseFBConfigSGIX);
+    if (dispatchTableGlobal.glXChooseFBConfigSGIX==glXChooseFBConfigSGIX)
+      dispatchTableGlobal.glXChooseFBConfigSGIX = NULL;
   }
   GLXFBConfigSGIX * ret = NULL;
   if (dispatchTableGlobal.glXChooseFBConfigSGIX) {
@@ -24817,6 +25277,8 @@ REGAL_DECL GLXContext REGAL_CALL glXCreateContextWithConfigSGIX(Display *dpy, GL
   if (dispatchTableGlobal.glXCreateContextWithConfigSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateContextWithConfigSGIX, "glXCreateContextWithConfigSGIX" );
     RegalAssert(dispatchTableGlobal.glXCreateContextWithConfigSGIX!=glXCreateContextWithConfigSGIX);
+    if (dispatchTableGlobal.glXCreateContextWithConfigSGIX==glXCreateContextWithConfigSGIX)
+      dispatchTableGlobal.glXCreateContextWithConfigSGIX = NULL;
   }
   GLXContext  ret = (GLXContext )0;
   if (dispatchTableGlobal.glXCreateContextWithConfigSGIX) {
@@ -24834,6 +25296,8 @@ REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmapWithConfigSGIX(Display *dpy, G
   if (dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX, "glXCreateGLXPixmapWithConfigSGIX" );
     RegalAssert(dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX!=glXCreateGLXPixmapWithConfigSGIX);
+    if (dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX==glXCreateGLXPixmapWithConfigSGIX)
+      dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX = NULL;
   }
   GLXPixmap  ret = (GLXPixmap )0;
   if (dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX) {
@@ -24851,6 +25315,8 @@ REGAL_DECL int REGAL_CALL glXGetFBConfigAttribSGIX(Display *dpy, GLXFBConfigSGIX
   if (dispatchTableGlobal.glXGetFBConfigAttribSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetFBConfigAttribSGIX, "glXGetFBConfigAttribSGIX" );
     RegalAssert(dispatchTableGlobal.glXGetFBConfigAttribSGIX!=glXGetFBConfigAttribSGIX);
+    if (dispatchTableGlobal.glXGetFBConfigAttribSGIX==glXGetFBConfigAttribSGIX)
+      dispatchTableGlobal.glXGetFBConfigAttribSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetFBConfigAttribSGIX) {
@@ -24868,6 +25334,8 @@ REGAL_DECL GLXFBConfigSGIX REGAL_CALL glXGetFBConfigFromVisualSGIX(Display *dpy,
   if (dispatchTableGlobal.glXGetFBConfigFromVisualSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetFBConfigFromVisualSGIX, "glXGetFBConfigFromVisualSGIX" );
     RegalAssert(dispatchTableGlobal.glXGetFBConfigFromVisualSGIX!=glXGetFBConfigFromVisualSGIX);
+    if (dispatchTableGlobal.glXGetFBConfigFromVisualSGIX==glXGetFBConfigFromVisualSGIX)
+      dispatchTableGlobal.glXGetFBConfigFromVisualSGIX = NULL;
   }
   GLXFBConfigSGIX  ret = (GLXFBConfigSGIX )0;
   if (dispatchTableGlobal.glXGetFBConfigFromVisualSGIX) {
@@ -24885,6 +25353,8 @@ REGAL_DECL XVisualInfo *REGAL_CALL glXGetVisualFromFBConfigSGIX(Display *dpy, GL
   if (dispatchTableGlobal.glXGetVisualFromFBConfigSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVisualFromFBConfigSGIX, "glXGetVisualFromFBConfigSGIX" );
     RegalAssert(dispatchTableGlobal.glXGetVisualFromFBConfigSGIX!=glXGetVisualFromFBConfigSGIX);
+    if (dispatchTableGlobal.glXGetVisualFromFBConfigSGIX==glXGetVisualFromFBConfigSGIX)
+      dispatchTableGlobal.glXGetVisualFromFBConfigSGIX = NULL;
   }
   XVisualInfo * ret = NULL;
   if (dispatchTableGlobal.glXGetVisualFromFBConfigSGIX) {
@@ -24904,6 +25374,8 @@ REGAL_DECL GLXPbuffer REGAL_CALL glXCreateGLXPbufferSGIX(Display *dpy, GLXFBConf
   if (dispatchTableGlobal.glXCreateGLXPbufferSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCreateGLXPbufferSGIX, "glXCreateGLXPbufferSGIX" );
     RegalAssert(dispatchTableGlobal.glXCreateGLXPbufferSGIX!=glXCreateGLXPbufferSGIX);
+    if (dispatchTableGlobal.glXCreateGLXPbufferSGIX==glXCreateGLXPbufferSGIX)
+      dispatchTableGlobal.glXCreateGLXPbufferSGIX = NULL;
   }
   GLXPbuffer  ret = (GLXPbuffer )0;
   if (dispatchTableGlobal.glXCreateGLXPbufferSGIX) {
@@ -24921,6 +25393,8 @@ REGAL_DECL void REGAL_CALL glXDestroyGLXPbufferSGIX(Display *dpy, GLXPbuffer pbu
   if (dispatchTableGlobal.glXDestroyGLXPbufferSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXDestroyGLXPbufferSGIX, "glXDestroyGLXPbufferSGIX" );
     RegalAssert(dispatchTableGlobal.glXDestroyGLXPbufferSGIX!=glXDestroyGLXPbufferSGIX);
+    if (dispatchTableGlobal.glXDestroyGLXPbufferSGIX==glXDestroyGLXPbufferSGIX)
+      dispatchTableGlobal.glXDestroyGLXPbufferSGIX = NULL;
   }
   if (dispatchTableGlobal.glXDestroyGLXPbufferSGIX) {
     GTrace("glXDestroyGLXPbufferSGIX(", dpy, ", ", pbuf, ")");
@@ -24936,6 +25410,8 @@ REGAL_DECL void REGAL_CALL glXGetSelectedEventSGIX(Display *dpy, GLXDrawable dra
   if (dispatchTableGlobal.glXGetSelectedEventSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetSelectedEventSGIX, "glXGetSelectedEventSGIX" );
     RegalAssert(dispatchTableGlobal.glXGetSelectedEventSGIX!=glXGetSelectedEventSGIX);
+    if (dispatchTableGlobal.glXGetSelectedEventSGIX==glXGetSelectedEventSGIX)
+      dispatchTableGlobal.glXGetSelectedEventSGIX = NULL;
   }
   if (dispatchTableGlobal.glXGetSelectedEventSGIX) {
     GTrace("glXGetSelectedEventSGIX(", dpy, ", ", drawable, ", ", boost::print::array(mask,1), ")");
@@ -24951,6 +25427,8 @@ REGAL_DECL void REGAL_CALL glXQueryGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf,
   if (dispatchTableGlobal.glXQueryGLXPbufferSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryGLXPbufferSGIX, "glXQueryGLXPbufferSGIX" );
     RegalAssert(dispatchTableGlobal.glXQueryGLXPbufferSGIX!=glXQueryGLXPbufferSGIX);
+    if (dispatchTableGlobal.glXQueryGLXPbufferSGIX==glXQueryGLXPbufferSGIX)
+      dispatchTableGlobal.glXQueryGLXPbufferSGIX = NULL;
   }
   if (dispatchTableGlobal.glXQueryGLXPbufferSGIX) {
     GTrace("glXQueryGLXPbufferSGIX(", dpy, ", ", pbuf, ", ", attribute, ", ", boost::print::array(value,1), ")");
@@ -24966,6 +25444,8 @@ REGAL_DECL void REGAL_CALL glXSelectEventSGIX(Display *dpy, GLXDrawable drawable
   if (dispatchTableGlobal.glXSelectEventSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSelectEventSGIX, "glXSelectEventSGIX" );
     RegalAssert(dispatchTableGlobal.glXSelectEventSGIX!=glXSelectEventSGIX);
+    if (dispatchTableGlobal.glXSelectEventSGIX==glXSelectEventSGIX)
+      dispatchTableGlobal.glXSelectEventSGIX = NULL;
   }
   if (dispatchTableGlobal.glXSelectEventSGIX) {
     GTrace("glXSelectEventSGIX(", dpy, ", ", drawable, ", ", mask, ")");
@@ -24983,6 +25463,8 @@ REGAL_DECL void REGAL_CALL glXBindSwapBarrierSGIX(Display *dpy, GLXDrawable draw
   if (dispatchTableGlobal.glXBindSwapBarrierSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindSwapBarrierSGIX, "glXBindSwapBarrierSGIX" );
     RegalAssert(dispatchTableGlobal.glXBindSwapBarrierSGIX!=glXBindSwapBarrierSGIX);
+    if (dispatchTableGlobal.glXBindSwapBarrierSGIX==glXBindSwapBarrierSGIX)
+      dispatchTableGlobal.glXBindSwapBarrierSGIX = NULL;
   }
   if (dispatchTableGlobal.glXBindSwapBarrierSGIX) {
     GTrace("glXBindSwapBarrierSGIX(", dpy, ", ", drawable, ", ", barrier, ")");
@@ -24998,6 +25480,8 @@ REGAL_DECL Bool REGAL_CALL glXQueryMaxSwapBarriersSGIX(Display *dpy, int screen,
   if (dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX, "glXQueryMaxSwapBarriersSGIX" );
     RegalAssert(dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX!=glXQueryMaxSwapBarriersSGIX);
+    if (dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX==glXQueryMaxSwapBarriersSGIX)
+      dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX) {
@@ -25017,6 +25501,8 @@ REGAL_DECL void REGAL_CALL glXJoinSwapGroupSGIX(Display *dpy, GLXDrawable drawab
   if (dispatchTableGlobal.glXJoinSwapGroupSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXJoinSwapGroupSGIX, "glXJoinSwapGroupSGIX" );
     RegalAssert(dispatchTableGlobal.glXJoinSwapGroupSGIX!=glXJoinSwapGroupSGIX);
+    if (dispatchTableGlobal.glXJoinSwapGroupSGIX==glXJoinSwapGroupSGIX)
+      dispatchTableGlobal.glXJoinSwapGroupSGIX = NULL;
   }
   if (dispatchTableGlobal.glXJoinSwapGroupSGIX) {
     GTrace("glXJoinSwapGroupSGIX(", dpy, ", ", drawable, ", ", member, ")");
@@ -25034,6 +25520,8 @@ REGAL_DECL int REGAL_CALL glXBindChannelToWindowSGIX(Display *display, int scree
   if (dispatchTableGlobal.glXBindChannelToWindowSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXBindChannelToWindowSGIX, "glXBindChannelToWindowSGIX" );
     RegalAssert(dispatchTableGlobal.glXBindChannelToWindowSGIX!=glXBindChannelToWindowSGIX);
+    if (dispatchTableGlobal.glXBindChannelToWindowSGIX==glXBindChannelToWindowSGIX)
+      dispatchTableGlobal.glXBindChannelToWindowSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXBindChannelToWindowSGIX) {
@@ -25051,6 +25539,8 @@ REGAL_DECL int REGAL_CALL glXChannelRectSGIX(Display *display, int screen, int c
   if (dispatchTableGlobal.glXChannelRectSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXChannelRectSGIX, "glXChannelRectSGIX" );
     RegalAssert(dispatchTableGlobal.glXChannelRectSGIX!=glXChannelRectSGIX);
+    if (dispatchTableGlobal.glXChannelRectSGIX==glXChannelRectSGIX)
+      dispatchTableGlobal.glXChannelRectSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXChannelRectSGIX) {
@@ -25068,6 +25558,8 @@ REGAL_DECL int REGAL_CALL glXChannelRectSyncSGIX(Display *display, int screen, i
   if (dispatchTableGlobal.glXChannelRectSyncSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXChannelRectSyncSGIX, "glXChannelRectSyncSGIX" );
     RegalAssert(dispatchTableGlobal.glXChannelRectSyncSGIX!=glXChannelRectSyncSGIX);
+    if (dispatchTableGlobal.glXChannelRectSyncSGIX==glXChannelRectSyncSGIX)
+      dispatchTableGlobal.glXChannelRectSyncSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXChannelRectSyncSGIX) {
@@ -25085,6 +25577,8 @@ REGAL_DECL int REGAL_CALL glXQueryChannelDeltasSGIX(Display *display, int screen
   if (dispatchTableGlobal.glXQueryChannelDeltasSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryChannelDeltasSGIX, "glXQueryChannelDeltasSGIX" );
     RegalAssert(dispatchTableGlobal.glXQueryChannelDeltasSGIX!=glXQueryChannelDeltasSGIX);
+    if (dispatchTableGlobal.glXQueryChannelDeltasSGIX==glXQueryChannelDeltasSGIX)
+      dispatchTableGlobal.glXQueryChannelDeltasSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryChannelDeltasSGIX) {
@@ -25102,6 +25596,8 @@ REGAL_DECL int REGAL_CALL glXQueryChannelRectSGIX(Display *display, int screen, 
   if (dispatchTableGlobal.glXQueryChannelRectSGIX == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryChannelRectSGIX, "glXQueryChannelRectSGIX" );
     RegalAssert(dispatchTableGlobal.glXQueryChannelRectSGIX!=glXQueryChannelRectSGIX);
+    if (dispatchTableGlobal.glXQueryChannelRectSGIX==glXQueryChannelRectSGIX)
+      dispatchTableGlobal.glXQueryChannelRectSGIX = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryChannelRectSGIX) {
@@ -25121,6 +25617,8 @@ REGAL_DECL void REGAL_CALL glXCushionSGI(Display *dpy, Window window, float cush
   if (dispatchTableGlobal.glXCushionSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXCushionSGI, "glXCushionSGI" );
     RegalAssert(dispatchTableGlobal.glXCushionSGI!=glXCushionSGI);
+    if (dispatchTableGlobal.glXCushionSGI==glXCushionSGI)
+      dispatchTableGlobal.glXCushionSGI = NULL;
   }
   if (dispatchTableGlobal.glXCushionSGI) {
     GTrace("glXCushionSGI(", dpy, ", ", window, ", ", cushion, ")");
@@ -25138,6 +25636,8 @@ REGAL_DECL GLXDrawable REGAL_CALL glXGetCurrentReadDrawableSGI(void)
   if (dispatchTableGlobal.glXGetCurrentReadDrawableSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetCurrentReadDrawableSGI, "glXGetCurrentReadDrawableSGI" );
     RegalAssert(dispatchTableGlobal.glXGetCurrentReadDrawableSGI!=glXGetCurrentReadDrawableSGI);
+    if (dispatchTableGlobal.glXGetCurrentReadDrawableSGI==glXGetCurrentReadDrawableSGI)
+      dispatchTableGlobal.glXGetCurrentReadDrawableSGI = NULL;
   }
   GLXDrawable  ret = (GLXDrawable )0;
   if (dispatchTableGlobal.glXGetCurrentReadDrawableSGI) {
@@ -25155,6 +25655,8 @@ REGAL_DECL Bool REGAL_CALL glXMakeCurrentReadSGI(Display *dpy, GLXDrawable draw,
   if (dispatchTableGlobal.glXMakeCurrentReadSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXMakeCurrentReadSGI, "glXMakeCurrentReadSGI" );
     RegalAssert(dispatchTableGlobal.glXMakeCurrentReadSGI!=glXMakeCurrentReadSGI);
+    if (dispatchTableGlobal.glXMakeCurrentReadSGI==glXMakeCurrentReadSGI)
+      dispatchTableGlobal.glXMakeCurrentReadSGI = NULL;
   }
   Bool  ret = (Bool )0;
   if (dispatchTableGlobal.glXMakeCurrentReadSGI) {
@@ -25174,6 +25676,8 @@ REGAL_DECL int REGAL_CALL glXSwapIntervalSGI(int interval)
   if (dispatchTableGlobal.glXSwapIntervalSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXSwapIntervalSGI, "glXSwapIntervalSGI" );
     RegalAssert(dispatchTableGlobal.glXSwapIntervalSGI!=glXSwapIntervalSGI);
+    if (dispatchTableGlobal.glXSwapIntervalSGI==glXSwapIntervalSGI)
+      dispatchTableGlobal.glXSwapIntervalSGI = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXSwapIntervalSGI) {
@@ -25193,6 +25697,8 @@ REGAL_DECL int REGAL_CALL glXGetVideoSyncSGI(unsigned int *count)
   if (dispatchTableGlobal.glXGetVideoSyncSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVideoSyncSGI, "glXGetVideoSyncSGI" );
     RegalAssert(dispatchTableGlobal.glXGetVideoSyncSGI!=glXGetVideoSyncSGI);
+    if (dispatchTableGlobal.glXGetVideoSyncSGI==glXGetVideoSyncSGI)
+      dispatchTableGlobal.glXGetVideoSyncSGI = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetVideoSyncSGI) {
@@ -25210,6 +25716,8 @@ REGAL_DECL int REGAL_CALL glXWaitVideoSyncSGI(int divisor, int remainder, unsign
   if (dispatchTableGlobal.glXWaitVideoSyncSGI == NULL) {
     GetProcAddress( dispatchTableGlobal.glXWaitVideoSyncSGI, "glXWaitVideoSyncSGI" );
     RegalAssert(dispatchTableGlobal.glXWaitVideoSyncSGI!=glXWaitVideoSyncSGI);
+    if (dispatchTableGlobal.glXWaitVideoSyncSGI==glXWaitVideoSyncSGI)
+      dispatchTableGlobal.glXWaitVideoSyncSGI = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXWaitVideoSyncSGI) {
@@ -25229,6 +25737,8 @@ REGAL_DECL Status REGAL_CALL glXGetTransparentIndexSUN(Display *dpy, Window over
   if (dispatchTableGlobal.glXGetTransparentIndexSUN == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetTransparentIndexSUN, "glXGetTransparentIndexSUN" );
     RegalAssert(dispatchTableGlobal.glXGetTransparentIndexSUN!=glXGetTransparentIndexSUN);
+    if (dispatchTableGlobal.glXGetTransparentIndexSUN==glXGetTransparentIndexSUN)
+      dispatchTableGlobal.glXGetTransparentIndexSUN = NULL;
   }
   Status  ret = (Status )0;
   if (dispatchTableGlobal.glXGetTransparentIndexSUN) {
@@ -25248,6 +25758,8 @@ REGAL_DECL int REGAL_CALL glXGetVideoResizeSUN(Display *display, GLXDrawable win
   if (dispatchTableGlobal.glXGetVideoResizeSUN == NULL) {
     GetProcAddress( dispatchTableGlobal.glXGetVideoResizeSUN, "glXGetVideoResizeSUN" );
     RegalAssert(dispatchTableGlobal.glXGetVideoResizeSUN!=glXGetVideoResizeSUN);
+    if (dispatchTableGlobal.glXGetVideoResizeSUN==glXGetVideoResizeSUN)
+      dispatchTableGlobal.glXGetVideoResizeSUN = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXGetVideoResizeSUN) {
@@ -25265,6 +25777,8 @@ REGAL_DECL int REGAL_CALL glXVideoResizeSUN(Display *display, GLXDrawable window
   if (dispatchTableGlobal.glXVideoResizeSUN == NULL) {
     GetProcAddress( dispatchTableGlobal.glXVideoResizeSUN, "glXVideoResizeSUN" );
     RegalAssert(dispatchTableGlobal.glXVideoResizeSUN!=glXVideoResizeSUN);
+    if (dispatchTableGlobal.glXVideoResizeSUN==glXVideoResizeSUN)
+      dispatchTableGlobal.glXVideoResizeSUN = NULL;
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXVideoResizeSUN) {
@@ -25287,6 +25801,8 @@ REGAL_DECL CGLError REGAL_CALL CGLChoosePixelFormat(const CGLPixelFormatAttribut
   if (dispatchTableGlobal.CGLChoosePixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLChoosePixelFormat, "CGLChoosePixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLChoosePixelFormat!=CGLChoosePixelFormat);
+    if (dispatchTableGlobal.CGLChoosePixelFormat==CGLChoosePixelFormat)
+      dispatchTableGlobal.CGLChoosePixelFormat = NULL;
   }
   CGLError  ret = (CGLError )0;
   static const CGLPixelFormatAttribute nattribs[] = {
@@ -25311,6 +25827,8 @@ REGAL_DECL CGLError REGAL_CALL CGLClearDrawable(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLClearDrawable == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLClearDrawable, "CGLClearDrawable" );
     RegalAssert(dispatchTableGlobal.CGLClearDrawable!=CGLClearDrawable);
+    if (dispatchTableGlobal.CGLClearDrawable==CGLClearDrawable)
+      dispatchTableGlobal.CGLClearDrawable = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLClearDrawable) {
@@ -25328,6 +25846,8 @@ REGAL_DECL CGLError REGAL_CALL CGLCopyContext(CGLContextObj src, CGLContextObj d
   if (dispatchTableGlobal.CGLCopyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLCopyContext, "CGLCopyContext" );
     RegalAssert(dispatchTableGlobal.CGLCopyContext!=CGLCopyContext);
+    if (dispatchTableGlobal.CGLCopyContext==CGLCopyContext)
+      dispatchTableGlobal.CGLCopyContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLCopyContext) {
@@ -25345,6 +25865,8 @@ REGAL_DECL CGLError REGAL_CALL CGLCreateContext(CGLPixelFormatObj pix, CGLContex
   if (dispatchTableGlobal.CGLCreateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLCreateContext, "CGLCreateContext" );
     RegalAssert(dispatchTableGlobal.CGLCreateContext!=CGLCreateContext);
+    if (dispatchTableGlobal.CGLCreateContext==CGLCreateContext)
+      dispatchTableGlobal.CGLCreateContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLCreateContext) {
@@ -25362,6 +25884,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDescribePixelFormat(CGLPixelFormatObj pix, GLi
   if (dispatchTableGlobal.CGLDescribePixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDescribePixelFormat, "CGLDescribePixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLDescribePixelFormat!=CGLDescribePixelFormat);
+    if (dispatchTableGlobal.CGLDescribePixelFormat==CGLDescribePixelFormat)
+      dispatchTableGlobal.CGLDescribePixelFormat = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDescribePixelFormat) {
@@ -25379,6 +25903,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDescribeRenderer(CGLRendererInfoObj rend, GLin
   if (dispatchTableGlobal.CGLDescribeRenderer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDescribeRenderer, "CGLDescribeRenderer" );
     RegalAssert(dispatchTableGlobal.CGLDescribeRenderer!=CGLDescribeRenderer);
+    if (dispatchTableGlobal.CGLDescribeRenderer==CGLDescribeRenderer)
+      dispatchTableGlobal.CGLDescribeRenderer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDescribeRenderer) {
@@ -25396,6 +25922,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDestroyContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLDestroyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDestroyContext, "CGLDestroyContext" );
     RegalAssert(dispatchTableGlobal.CGLDestroyContext!=CGLDestroyContext);
+    if (dispatchTableGlobal.CGLDestroyContext==CGLDestroyContext)
+      dispatchTableGlobal.CGLDestroyContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDestroyContext) {
@@ -25413,6 +25941,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDestroyPixelFormat(CGLPixelFormatObj pix)
   if (dispatchTableGlobal.CGLDestroyPixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDestroyPixelFormat, "CGLDestroyPixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLDestroyPixelFormat!=CGLDestroyPixelFormat);
+    if (dispatchTableGlobal.CGLDestroyPixelFormat==CGLDestroyPixelFormat)
+      dispatchTableGlobal.CGLDestroyPixelFormat = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDestroyPixelFormat) {
@@ -25430,6 +25960,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDestroyRendererInfo(CGLRendererInfoObj rend)
   if (dispatchTableGlobal.CGLDestroyRendererInfo == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDestroyRendererInfo, "CGLDestroyRendererInfo" );
     RegalAssert(dispatchTableGlobal.CGLDestroyRendererInfo!=CGLDestroyRendererInfo);
+    if (dispatchTableGlobal.CGLDestroyRendererInfo==CGLDestroyRendererInfo)
+      dispatchTableGlobal.CGLDestroyRendererInfo = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDestroyRendererInfo) {
@@ -25447,6 +25979,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDisable(CGLContextObj ctx, CGLContextEnable pn
   if (dispatchTableGlobal.CGLDisable == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDisable, "CGLDisable" );
     RegalAssert(dispatchTableGlobal.CGLDisable!=CGLDisable);
+    if (dispatchTableGlobal.CGLDisable==CGLDisable)
+      dispatchTableGlobal.CGLDisable = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDisable) {
@@ -25464,6 +25998,8 @@ REGAL_DECL CGLError REGAL_CALL CGLEnable(CGLContextObj ctx, CGLContextEnable pna
   if (dispatchTableGlobal.CGLEnable == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLEnable, "CGLEnable" );
     RegalAssert(dispatchTableGlobal.CGLEnable!=CGLEnable);
+    if (dispatchTableGlobal.CGLEnable==CGLEnable)
+      dispatchTableGlobal.CGLEnable = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLEnable) {
@@ -25481,6 +26017,8 @@ REGAL_DECL const char *REGAL_CALL CGLErrorString(CGLError error)
   if (dispatchTableGlobal.CGLErrorString == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLErrorString, "CGLErrorString" );
     RegalAssert(dispatchTableGlobal.CGLErrorString!=CGLErrorString);
+    if (dispatchTableGlobal.CGLErrorString==CGLErrorString)
+      dispatchTableGlobal.CGLErrorString = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.CGLErrorString) {
@@ -25498,6 +26036,8 @@ REGAL_DECL CGLError REGAL_CALL CGLFlushDrawable(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLFlushDrawable == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLFlushDrawable, "CGLFlushDrawable" );
     RegalAssert(dispatchTableGlobal.CGLFlushDrawable!=CGLFlushDrawable);
+    if (dispatchTableGlobal.CGLFlushDrawable==CGLFlushDrawable)
+      dispatchTableGlobal.CGLFlushDrawable = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLFlushDrawable) {
@@ -25515,6 +26055,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetOffScreen(CGLContextObj ctx, GLsizei *width
   if (dispatchTableGlobal.CGLGetOffScreen == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetOffScreen, "CGLGetOffScreen" );
     RegalAssert(dispatchTableGlobal.CGLGetOffScreen!=CGLGetOffScreen);
+    if (dispatchTableGlobal.CGLGetOffScreen==CGLGetOffScreen)
+      dispatchTableGlobal.CGLGetOffScreen = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetOffScreen) {
@@ -25532,6 +26074,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetOption(CGLGlobalOption pname, GLint *param)
   if (dispatchTableGlobal.CGLGetOption == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetOption, "CGLGetOption" );
     RegalAssert(dispatchTableGlobal.CGLGetOption!=CGLGetOption);
+    if (dispatchTableGlobal.CGLGetOption==CGLGetOption)
+      dispatchTableGlobal.CGLGetOption = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetOption) {
@@ -25549,6 +26093,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetParameter(CGLContextObj ctx, CGLContextEnab
   if (dispatchTableGlobal.CGLGetParameter == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetParameter, "CGLGetParameter" );
     RegalAssert(dispatchTableGlobal.CGLGetParameter!=CGLGetParameter);
+    if (dispatchTableGlobal.CGLGetParameter==CGLGetParameter)
+      dispatchTableGlobal.CGLGetParameter = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetParameter) {
@@ -25566,6 +26112,8 @@ REGAL_DECL void REGAL_CALL CGLGetVersion(GLint *majorvers, GLint *minorvers)
   if (dispatchTableGlobal.CGLGetVersion == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetVersion, "CGLGetVersion" );
     RegalAssert(dispatchTableGlobal.CGLGetVersion!=CGLGetVersion);
+    if (dispatchTableGlobal.CGLGetVersion==CGLGetVersion)
+      dispatchTableGlobal.CGLGetVersion = NULL;
   }
   if (dispatchTableGlobal.CGLGetVersion) {
     GTrace("CGLGetVersion()");
@@ -25581,6 +26129,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetVirtualScreen(CGLContextObj ctx, GLint *scr
   if (dispatchTableGlobal.CGLGetVirtualScreen == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetVirtualScreen, "CGLGetVirtualScreen" );
     RegalAssert(dispatchTableGlobal.CGLGetVirtualScreen!=CGLGetVirtualScreen);
+    if (dispatchTableGlobal.CGLGetVirtualScreen==CGLGetVirtualScreen)
+      dispatchTableGlobal.CGLGetVirtualScreen = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetVirtualScreen) {
@@ -25598,6 +26148,8 @@ REGAL_DECL CGLError REGAL_CALL CGLIsEnabled(CGLContextObj ctx, CGLContextEnable 
   if (dispatchTableGlobal.CGLIsEnabled == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLIsEnabled, "CGLIsEnabled" );
     RegalAssert(dispatchTableGlobal.CGLIsEnabled!=CGLIsEnabled);
+    if (dispatchTableGlobal.CGLIsEnabled==CGLIsEnabled)
+      dispatchTableGlobal.CGLIsEnabled = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLIsEnabled) {
@@ -25615,6 +26167,8 @@ REGAL_DECL CGLError REGAL_CALL CGLQueryRendererInfo(GLuint display_mask, CGLRend
   if (dispatchTableGlobal.CGLQueryRendererInfo == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLQueryRendererInfo, "CGLQueryRendererInfo" );
     RegalAssert(dispatchTableGlobal.CGLQueryRendererInfo!=CGLQueryRendererInfo);
+    if (dispatchTableGlobal.CGLQueryRendererInfo==CGLQueryRendererInfo)
+      dispatchTableGlobal.CGLQueryRendererInfo = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLQueryRendererInfo) {
@@ -25632,6 +26186,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetFullScreen(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLSetFullScreen == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetFullScreen, "CGLSetFullScreen" );
     RegalAssert(dispatchTableGlobal.CGLSetFullScreen!=CGLSetFullScreen);
+    if (dispatchTableGlobal.CGLSetFullScreen==CGLSetFullScreen)
+      dispatchTableGlobal.CGLSetFullScreen = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetFullScreen) {
@@ -25649,6 +26205,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetOffScreen(CGLContextObj ctx, GLsizei width,
   if (dispatchTableGlobal.CGLSetOffScreen == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetOffScreen, "CGLSetOffScreen" );
     RegalAssert(dispatchTableGlobal.CGLSetOffScreen!=CGLSetOffScreen);
+    if (dispatchTableGlobal.CGLSetOffScreen==CGLSetOffScreen)
+      dispatchTableGlobal.CGLSetOffScreen = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetOffScreen) {
@@ -25666,6 +26224,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetOption(CGLGlobalOption pname, GLint param)
   if (dispatchTableGlobal.CGLSetOption == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetOption, "CGLSetOption" );
     RegalAssert(dispatchTableGlobal.CGLSetOption!=CGLSetOption);
+    if (dispatchTableGlobal.CGLSetOption==CGLSetOption)
+      dispatchTableGlobal.CGLSetOption = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetOption) {
@@ -25683,6 +26243,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetParameter(CGLContextObj ctx, CGLContextEnab
   if (dispatchTableGlobal.CGLSetParameter == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetParameter, "CGLSetParameter" );
     RegalAssert(dispatchTableGlobal.CGLSetParameter!=CGLSetParameter);
+    if (dispatchTableGlobal.CGLSetParameter==CGLSetParameter)
+      dispatchTableGlobal.CGLSetParameter = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetParameter) {
@@ -25700,6 +26262,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetVirtualScreen(CGLContextObj ctx, GLint scre
   if (dispatchTableGlobal.CGLSetVirtualScreen == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetVirtualScreen, "CGLSetVirtualScreen" );
     RegalAssert(dispatchTableGlobal.CGLSetVirtualScreen!=CGLSetVirtualScreen);
+    if (dispatchTableGlobal.CGLSetVirtualScreen==CGLSetVirtualScreen)
+      dispatchTableGlobal.CGLSetVirtualScreen = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetVirtualScreen) {
@@ -25719,6 +26283,8 @@ REGAL_DECL CGLError REGAL_CALL CGLCreatePBuffer(GLsizei width, GLsizei height, G
   if (dispatchTableGlobal.CGLCreatePBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLCreatePBuffer, "CGLCreatePBuffer" );
     RegalAssert(dispatchTableGlobal.CGLCreatePBuffer!=CGLCreatePBuffer);
+    if (dispatchTableGlobal.CGLCreatePBuffer==CGLCreatePBuffer)
+      dispatchTableGlobal.CGLCreatePBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLCreatePBuffer) {
@@ -25736,6 +26302,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDescribePBuffer(CGLPBufferObj pbuffer, GLsizei
   if (dispatchTableGlobal.CGLDescribePBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDescribePBuffer, "CGLDescribePBuffer" );
     RegalAssert(dispatchTableGlobal.CGLDescribePBuffer!=CGLDescribePBuffer);
+    if (dispatchTableGlobal.CGLDescribePBuffer==CGLDescribePBuffer)
+      dispatchTableGlobal.CGLDescribePBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDescribePBuffer) {
@@ -25753,6 +26321,8 @@ REGAL_DECL CGLError REGAL_CALL CGLDestroyPBuffer(CGLPBufferObj pbuffer)
   if (dispatchTableGlobal.CGLDestroyPBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLDestroyPBuffer, "CGLDestroyPBuffer" );
     RegalAssert(dispatchTableGlobal.CGLDestroyPBuffer!=CGLDestroyPBuffer);
+    if (dispatchTableGlobal.CGLDestroyPBuffer==CGLDestroyPBuffer)
+      dispatchTableGlobal.CGLDestroyPBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLDestroyPBuffer) {
@@ -25770,6 +26340,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetPBuffer(CGLContextObj ctx, CGLPBufferObj *p
   if (dispatchTableGlobal.CGLGetPBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetPBuffer, "CGLGetPBuffer" );
     RegalAssert(dispatchTableGlobal.CGLGetPBuffer!=CGLGetPBuffer);
+    if (dispatchTableGlobal.CGLGetPBuffer==CGLGetPBuffer)
+      dispatchTableGlobal.CGLGetPBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetPBuffer) {
@@ -25787,6 +26359,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetPBuffer(CGLContextObj ctx, CGLPBufferObj pb
   if (dispatchTableGlobal.CGLSetPBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetPBuffer, "CGLSetPBuffer" );
     RegalAssert(dispatchTableGlobal.CGLSetPBuffer!=CGLSetPBuffer);
+    if (dispatchTableGlobal.CGLSetPBuffer==CGLSetPBuffer)
+      dispatchTableGlobal.CGLSetPBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetPBuffer) {
@@ -25804,6 +26378,8 @@ REGAL_DECL CGLError REGAL_CALL CGLTexImagePBuffer(CGLContextObj ctx, CGLPBufferO
   if (dispatchTableGlobal.CGLTexImagePBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLTexImagePBuffer, "CGLTexImagePBuffer" );
     RegalAssert(dispatchTableGlobal.CGLTexImagePBuffer!=CGLTexImagePBuffer);
+    if (dispatchTableGlobal.CGLTexImagePBuffer==CGLTexImagePBuffer)
+      dispatchTableGlobal.CGLTexImagePBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLTexImagePBuffer) {
@@ -25823,6 +26399,8 @@ REGAL_DECL GLuint REGAL_CALL CGLGetContextRetainCount(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLGetContextRetainCount == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetContextRetainCount, "CGLGetContextRetainCount" );
     RegalAssert(dispatchTableGlobal.CGLGetContextRetainCount!=CGLGetContextRetainCount);
+    if (dispatchTableGlobal.CGLGetContextRetainCount==CGLGetContextRetainCount)
+      dispatchTableGlobal.CGLGetContextRetainCount = NULL;
   }
   GLuint  ret = (GLuint )0;
   if (dispatchTableGlobal.CGLGetContextRetainCount) {
@@ -25840,6 +26418,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetGlobalOption(CGLGlobalOption pname, GLint *
   if (dispatchTableGlobal.CGLGetGlobalOption == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetGlobalOption, "CGLGetGlobalOption" );
     RegalAssert(dispatchTableGlobal.CGLGetGlobalOption!=CGLGetGlobalOption);
+    if (dispatchTableGlobal.CGLGetGlobalOption==CGLGetGlobalOption)
+      dispatchTableGlobal.CGLGetGlobalOption = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetGlobalOption) {
@@ -25857,6 +26437,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetPBufferRetainCount(CGLPBufferObj pbuffer)
   if (dispatchTableGlobal.CGLGetPBufferRetainCount == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetPBufferRetainCount, "CGLGetPBufferRetainCount" );
     RegalAssert(dispatchTableGlobal.CGLGetPBufferRetainCount!=CGLGetPBufferRetainCount);
+    if (dispatchTableGlobal.CGLGetPBufferRetainCount==CGLGetPBufferRetainCount)
+      dispatchTableGlobal.CGLGetPBufferRetainCount = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetPBufferRetainCount) {
@@ -25874,6 +26456,8 @@ REGAL_DECL CGLPixelFormatObj REGAL_CALL CGLGetPixelFormat(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLGetPixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetPixelFormat, "CGLGetPixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLGetPixelFormat!=CGLGetPixelFormat);
+    if (dispatchTableGlobal.CGLGetPixelFormat==CGLGetPixelFormat)
+      dispatchTableGlobal.CGLGetPixelFormat = NULL;
   }
   CGLPixelFormatObj  ret = (CGLPixelFormatObj )0;
   if (dispatchTableGlobal.CGLGetPixelFormat) {
@@ -25891,6 +26475,8 @@ REGAL_DECL GLuint REGAL_CALL CGLGetPixelFormatRetainCount(CGLPixelFormatObj pix)
   if (dispatchTableGlobal.CGLGetPixelFormatRetainCount == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetPixelFormatRetainCount, "CGLGetPixelFormatRetainCount" );
     RegalAssert(dispatchTableGlobal.CGLGetPixelFormatRetainCount!=CGLGetPixelFormatRetainCount);
+    if (dispatchTableGlobal.CGLGetPixelFormatRetainCount==CGLGetPixelFormatRetainCount)
+      dispatchTableGlobal.CGLGetPixelFormatRetainCount = NULL;
   }
   GLuint  ret = (GLuint )0;
   if (dispatchTableGlobal.CGLGetPixelFormatRetainCount) {
@@ -25908,6 +26494,8 @@ REGAL_DECL CGLError REGAL_CALL CGLLockContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLLockContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLLockContext, "CGLLockContext" );
     RegalAssert(dispatchTableGlobal.CGLLockContext!=CGLLockContext);
+    if (dispatchTableGlobal.CGLLockContext==CGLLockContext)
+      dispatchTableGlobal.CGLLockContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLLockContext) {
@@ -25925,6 +26513,8 @@ REGAL_DECL void REGAL_CALL CGLReleaseContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLReleaseContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLReleaseContext, "CGLReleaseContext" );
     RegalAssert(dispatchTableGlobal.CGLReleaseContext!=CGLReleaseContext);
+    if (dispatchTableGlobal.CGLReleaseContext==CGLReleaseContext)
+      dispatchTableGlobal.CGLReleaseContext = NULL;
   }
   if (dispatchTableGlobal.CGLReleaseContext) {
     GTrace("CGLReleaseContext(", ctx, ")");
@@ -25940,6 +26530,8 @@ REGAL_DECL CGLError REGAL_CALL CGLReleasePBuffer(CGLPBufferObj pbuffer)
   if (dispatchTableGlobal.CGLReleasePBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLReleasePBuffer, "CGLReleasePBuffer" );
     RegalAssert(dispatchTableGlobal.CGLReleasePBuffer!=CGLReleasePBuffer);
+    if (dispatchTableGlobal.CGLReleasePBuffer==CGLReleasePBuffer)
+      dispatchTableGlobal.CGLReleasePBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLReleasePBuffer) {
@@ -25957,6 +26549,8 @@ REGAL_DECL void REGAL_CALL CGLReleasePixelFormat(CGLPixelFormatObj pix)
   if (dispatchTableGlobal.CGLReleasePixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLReleasePixelFormat, "CGLReleasePixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLReleasePixelFormat!=CGLReleasePixelFormat);
+    if (dispatchTableGlobal.CGLReleasePixelFormat==CGLReleasePixelFormat)
+      dispatchTableGlobal.CGLReleasePixelFormat = NULL;
   }
   if (dispatchTableGlobal.CGLReleasePixelFormat) {
     GTrace("CGLReleasePixelFormat(", pix, ")");
@@ -25972,6 +26566,8 @@ REGAL_DECL CGLContextObj REGAL_CALL CGLRetainContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLRetainContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLRetainContext, "CGLRetainContext" );
     RegalAssert(dispatchTableGlobal.CGLRetainContext!=CGLRetainContext);
+    if (dispatchTableGlobal.CGLRetainContext==CGLRetainContext)
+      dispatchTableGlobal.CGLRetainContext = NULL;
   }
   CGLContextObj  ret = (CGLContextObj )0;
   if (dispatchTableGlobal.CGLRetainContext) {
@@ -25989,6 +26585,8 @@ REGAL_DECL CGLError REGAL_CALL CGLRetainPBuffer(CGLPBufferObj pbuffer)
   if (dispatchTableGlobal.CGLRetainPBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLRetainPBuffer, "CGLRetainPBuffer" );
     RegalAssert(dispatchTableGlobal.CGLRetainPBuffer!=CGLRetainPBuffer);
+    if (dispatchTableGlobal.CGLRetainPBuffer==CGLRetainPBuffer)
+      dispatchTableGlobal.CGLRetainPBuffer = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLRetainPBuffer) {
@@ -26006,6 +26604,8 @@ REGAL_DECL CGLPixelFormatObj REGAL_CALL CGLRetainPixelFormat(CGLPixelFormatObj p
   if (dispatchTableGlobal.CGLRetainPixelFormat == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLRetainPixelFormat, "CGLRetainPixelFormat" );
     RegalAssert(dispatchTableGlobal.CGLRetainPixelFormat!=CGLRetainPixelFormat);
+    if (dispatchTableGlobal.CGLRetainPixelFormat==CGLRetainPixelFormat)
+      dispatchTableGlobal.CGLRetainPixelFormat = NULL;
   }
   CGLPixelFormatObj  ret = (CGLPixelFormatObj )0;
   if (dispatchTableGlobal.CGLRetainPixelFormat) {
@@ -26023,6 +26623,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetGlobalOption(CGLGlobalOption pname, const G
   if (dispatchTableGlobal.CGLSetGlobalOption == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetGlobalOption, "CGLSetGlobalOption" );
     RegalAssert(dispatchTableGlobal.CGLSetGlobalOption!=CGLSetGlobalOption);
+    if (dispatchTableGlobal.CGLSetGlobalOption==CGLSetGlobalOption)
+      dispatchTableGlobal.CGLSetGlobalOption = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetGlobalOption) {
@@ -26040,6 +26642,8 @@ REGAL_DECL CGLError REGAL_CALL CGLUnlockContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLUnlockContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLUnlockContext, "CGLUnlockContext" );
     RegalAssert(dispatchTableGlobal.CGLUnlockContext!=CGLUnlockContext);
+    if (dispatchTableGlobal.CGLUnlockContext==CGLUnlockContext)
+      dispatchTableGlobal.CGLUnlockContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLUnlockContext) {
@@ -26059,6 +26663,8 @@ REGAL_DECL CGLContextObj REGAL_CALL CGLGetCurrentContext(void)
   if (dispatchTableGlobal.CGLGetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetCurrentContext, "CGLGetCurrentContext" );
     RegalAssert(dispatchTableGlobal.CGLGetCurrentContext!=CGLGetCurrentContext);
+    if (dispatchTableGlobal.CGLGetCurrentContext==CGLGetCurrentContext)
+      dispatchTableGlobal.CGLGetCurrentContext = NULL;
   }
   CGLContextObj  ret = (CGLContextObj )0;
   if (dispatchTableGlobal.CGLGetCurrentContext) {
@@ -26076,6 +26682,8 @@ REGAL_DECL CGLShareGroupObj REGAL_CALL CGLGetShareGroup(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLGetShareGroup == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetShareGroup, "CGLGetShareGroup" );
     RegalAssert(dispatchTableGlobal.CGLGetShareGroup!=CGLGetShareGroup);
+    if (dispatchTableGlobal.CGLGetShareGroup==CGLGetShareGroup)
+      dispatchTableGlobal.CGLGetShareGroup = NULL;
   }
   CGLShareGroupObj  ret = (CGLShareGroupObj )0;
   if (dispatchTableGlobal.CGLGetShareGroup) {
@@ -26093,6 +26701,8 @@ REGAL_DECL CGLError REGAL_CALL CGLGetSurface(CGLContextObj ctx, CGSConnectionID 
   if (dispatchTableGlobal.CGLGetSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLGetSurface, "CGLGetSurface" );
     RegalAssert(dispatchTableGlobal.CGLGetSurface!=CGLGetSurface);
+    if (dispatchTableGlobal.CGLGetSurface==CGLGetSurface)
+      dispatchTableGlobal.CGLGetSurface = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLGetSurface) {
@@ -26110,12 +26720,14 @@ REGAL_DECL CGLError REGAL_CALL CGLSetCurrentContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLSetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetCurrentContext, "CGLSetCurrentContext" );
     RegalAssert(dispatchTableGlobal.CGLSetCurrentContext!=CGLSetCurrentContext);
+    if (dispatchTableGlobal.CGLSetCurrentContext==CGLSetCurrentContext)
+      dispatchTableGlobal.CGLSetCurrentContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetCurrentContext) {
     GTrace("CGLSetCurrentContext(", ctx, ")");
     ret = dispatchTableGlobal.CGLSetCurrentContext(ctx);
-       RegalMakeCurrent( ctx );
+    RegalMakeCurrent( ctx );
   }
   else
     Warning( "CGLSetCurrentContext not available." );
@@ -26128,6 +26740,8 @@ REGAL_DECL CGLError REGAL_CALL CGLSetSurface(CGLContextObj ctx, CGSConnectionID 
   if (dispatchTableGlobal.CGLSetSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLSetSurface, "CGLSetSurface" );
     RegalAssert(dispatchTableGlobal.CGLSetSurface!=CGLSetSurface);
+    if (dispatchTableGlobal.CGLSetSurface==CGLSetSurface)
+      dispatchTableGlobal.CGLSetSurface = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLSetSurface) {
@@ -26145,6 +26759,8 @@ REGAL_DECL CGLError REGAL_CALL CGLTexImageIOSurface2D(CGLContextObj ctx, GLenum 
   if (dispatchTableGlobal.CGLTexImageIOSurface2D == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLTexImageIOSurface2D, "CGLTexImageIOSurface2D" );
     RegalAssert(dispatchTableGlobal.CGLTexImageIOSurface2D!=CGLTexImageIOSurface2D);
+    if (dispatchTableGlobal.CGLTexImageIOSurface2D==CGLTexImageIOSurface2D)
+      dispatchTableGlobal.CGLTexImageIOSurface2D = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLTexImageIOSurface2D) {
@@ -26162,6 +26778,8 @@ REGAL_DECL CGLError REGAL_CALL CGLUpdateContext(CGLContextObj ctx)
   if (dispatchTableGlobal.CGLUpdateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.CGLUpdateContext, "CGLUpdateContext" );
     RegalAssert(dispatchTableGlobal.CGLUpdateContext!=CGLUpdateContext);
+    if (dispatchTableGlobal.CGLUpdateContext==CGLUpdateContext)
+      dispatchTableGlobal.CGLUpdateContext = NULL;
   }
   CGLError  ret = (CGLError )0;
   if (dispatchTableGlobal.CGLUpdateContext) {
@@ -26184,6 +26802,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglChooseConfig(EGLDisplay dpy, const EGLint *a
   if (dispatchTableGlobal.eglChooseConfig == NULL) {
     GetProcAddress( dispatchTableGlobal.eglChooseConfig, "eglChooseConfig" );
     RegalAssert(dispatchTableGlobal.eglChooseConfig!=eglChooseConfig);
+    if (dispatchTableGlobal.eglChooseConfig==eglChooseConfig)
+      dispatchTableGlobal.eglChooseConfig = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglChooseConfig) {
@@ -26201,6 +26821,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglCopyBuffers(EGLDisplay dpy, EGLSurface surfa
   if (dispatchTableGlobal.eglCopyBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCopyBuffers, "eglCopyBuffers" );
     RegalAssert(dispatchTableGlobal.eglCopyBuffers!=eglCopyBuffers);
+    if (dispatchTableGlobal.eglCopyBuffers==eglCopyBuffers)
+      dispatchTableGlobal.eglCopyBuffers = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglCopyBuffers) {
@@ -26218,6 +26840,8 @@ REGAL_DECL EGLContext REGAL_CALL eglCreateContext(EGLDisplay dpy, EGLConfig conf
   if (dispatchTableGlobal.eglCreateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreateContext, "eglCreateContext" );
     RegalAssert(dispatchTableGlobal.eglCreateContext!=eglCreateContext);
+    if (dispatchTableGlobal.eglCreateContext==eglCreateContext)
+      dispatchTableGlobal.eglCreateContext = NULL;
   }
   EGLContext  ret = (EGLContext )0;
   if (dispatchTableGlobal.eglCreateContext) {
@@ -26235,6 +26859,8 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferSurface(EGLDisplay dpy, EGLConf
   if (dispatchTableGlobal.eglCreatePbufferSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePbufferSurface, "eglCreatePbufferSurface" );
     RegalAssert(dispatchTableGlobal.eglCreatePbufferSurface!=eglCreatePbufferSurface);
+    if (dispatchTableGlobal.eglCreatePbufferSurface==eglCreatePbufferSurface)
+      dispatchTableGlobal.eglCreatePbufferSurface = NULL;
   }
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePbufferSurface) {
@@ -26252,6 +26878,8 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePixmapSurface(EGLDisplay dpy, EGLConfi
   if (dispatchTableGlobal.eglCreatePixmapSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePixmapSurface, "eglCreatePixmapSurface" );
     RegalAssert(dispatchTableGlobal.eglCreatePixmapSurface!=eglCreatePixmapSurface);
+    if (dispatchTableGlobal.eglCreatePixmapSurface==eglCreatePixmapSurface)
+      dispatchTableGlobal.eglCreatePixmapSurface = NULL;
   }
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePixmapSurface) {
@@ -26269,6 +26897,8 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreateWindowSurface(EGLDisplay dpy, EGLConfi
   if (dispatchTableGlobal.eglCreateWindowSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreateWindowSurface, "eglCreateWindowSurface" );
     RegalAssert(dispatchTableGlobal.eglCreateWindowSurface!=eglCreateWindowSurface);
+    if (dispatchTableGlobal.eglCreateWindowSurface==eglCreateWindowSurface)
+      dispatchTableGlobal.eglCreateWindowSurface = NULL;
   }
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreateWindowSurface) {
@@ -26286,6 +26916,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglDestroyContext(EGLDisplay dpy, EGLContext ct
   if (dispatchTableGlobal.eglDestroyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglDestroyContext, "eglDestroyContext" );
     RegalAssert(dispatchTableGlobal.eglDestroyContext!=eglDestroyContext);
+    if (dispatchTableGlobal.eglDestroyContext==eglDestroyContext)
+      dispatchTableGlobal.eglDestroyContext = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglDestroyContext) {
@@ -26303,6 +26935,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglDestroySurface(EGLDisplay dpy, EGLSurface su
   if (dispatchTableGlobal.eglDestroySurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglDestroySurface, "eglDestroySurface" );
     RegalAssert(dispatchTableGlobal.eglDestroySurface!=eglDestroySurface);
+    if (dispatchTableGlobal.eglDestroySurface==eglDestroySurface)
+      dispatchTableGlobal.eglDestroySurface = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglDestroySurface) {
@@ -26320,6 +26954,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigAttrib(EGLDisplay dpy, EGLConfig co
   if (dispatchTableGlobal.eglGetConfigAttrib == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetConfigAttrib, "eglGetConfigAttrib" );
     RegalAssert(dispatchTableGlobal.eglGetConfigAttrib!=eglGetConfigAttrib);
+    if (dispatchTableGlobal.eglGetConfigAttrib==eglGetConfigAttrib)
+      dispatchTableGlobal.eglGetConfigAttrib = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglGetConfigAttrib) {
@@ -26337,6 +26973,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigs(EGLDisplay dpy, EGLConfig *config
   if (dispatchTableGlobal.eglGetConfigs == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetConfigs, "eglGetConfigs" );
     RegalAssert(dispatchTableGlobal.eglGetConfigs!=eglGetConfigs);
+    if (dispatchTableGlobal.eglGetConfigs==eglGetConfigs)
+      dispatchTableGlobal.eglGetConfigs = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglGetConfigs) {
@@ -26354,6 +26992,8 @@ REGAL_DECL EGLContext REGAL_CALL eglGetCurrentContext(void)
   if (dispatchTableGlobal.eglGetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentContext, "eglGetCurrentContext" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentContext!=eglGetCurrentContext);
+    if (dispatchTableGlobal.eglGetCurrentContext==eglGetCurrentContext)
+      dispatchTableGlobal.eglGetCurrentContext = NULL;
   }
   EGLContext  ret = (EGLContext )0;
   if (dispatchTableGlobal.eglGetCurrentContext) {
@@ -26371,6 +27011,8 @@ REGAL_DECL EGLDisplay REGAL_CALL eglGetCurrentDisplay(void)
   if (dispatchTableGlobal.eglGetCurrentDisplay == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentDisplay, "eglGetCurrentDisplay" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentDisplay!=eglGetCurrentDisplay);
+    if (dispatchTableGlobal.eglGetCurrentDisplay==eglGetCurrentDisplay)
+      dispatchTableGlobal.eglGetCurrentDisplay = NULL;
   }
   EGLDisplay  ret = (EGLDisplay )0;
   if (dispatchTableGlobal.eglGetCurrentDisplay) {
@@ -26388,6 +27030,8 @@ REGAL_DECL EGLSurface REGAL_CALL eglGetCurrentSurface(EGLint readdraw)
   if (dispatchTableGlobal.eglGetCurrentSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentSurface, "eglGetCurrentSurface" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentSurface!=eglGetCurrentSurface);
+    if (dispatchTableGlobal.eglGetCurrentSurface==eglGetCurrentSurface)
+      dispatchTableGlobal.eglGetCurrentSurface = NULL;
   }
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglGetCurrentSurface) {
@@ -26405,6 +27049,8 @@ REGAL_DECL EGLDisplay REGAL_CALL eglGetDisplay(EGLNativeDisplayType display_id)
   if (dispatchTableGlobal.eglGetDisplay == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetDisplay, "eglGetDisplay" );
     RegalAssert(dispatchTableGlobal.eglGetDisplay!=eglGetDisplay);
+    if (dispatchTableGlobal.eglGetDisplay==eglGetDisplay)
+      dispatchTableGlobal.eglGetDisplay = NULL;
   }
   EGLDisplay  ret = (EGLDisplay )0;
   if (dispatchTableGlobal.eglGetDisplay) {
@@ -26422,6 +27068,8 @@ REGAL_DECL EGLint REGAL_CALL eglGetError(void)
   if (dispatchTableGlobal.eglGetError == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetError, "eglGetError" );
     RegalAssert(dispatchTableGlobal.eglGetError!=eglGetError);
+    if (dispatchTableGlobal.eglGetError==eglGetError)
+      dispatchTableGlobal.eglGetError = NULL;
   }
   EGLint  ret = (EGLint )0;
   if (dispatchTableGlobal.eglGetError) {
@@ -26439,6 +27087,8 @@ REGAL_DECL __eglMustCastToProperFunctionPointerType REGAL_CALL eglGetProcAddress
   if (dispatchTableGlobal.eglGetProcAddress == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetProcAddress, "eglGetProcAddress" );
     RegalAssert(dispatchTableGlobal.eglGetProcAddress!=eglGetProcAddress);
+    if (dispatchTableGlobal.eglGetProcAddress==eglGetProcAddress)
+      dispatchTableGlobal.eglGetProcAddress = NULL;
   }
   __eglMustCastToProperFunctionPointerType  ret = (__eglMustCastToProperFunctionPointerType )0;
   if (dispatchTableGlobal.eglGetProcAddress) {
@@ -26456,6 +27106,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglInitialize(EGLDisplay dpy, EGLint *major, EG
   if (dispatchTableGlobal.eglInitialize == NULL) {
     GetProcAddress( dispatchTableGlobal.eglInitialize, "eglInitialize" );
     RegalAssert(dispatchTableGlobal.eglInitialize!=eglInitialize);
+    if (dispatchTableGlobal.eglInitialize==eglInitialize)
+      dispatchTableGlobal.eglInitialize = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglInitialize) {
@@ -26473,11 +27125,14 @@ REGAL_DECL EGLBoolean REGAL_CALL eglMakeCurrent(EGLDisplay dpy, EGLSurface draw,
   if (dispatchTableGlobal.eglMakeCurrent == NULL) {
     GetProcAddress( dispatchTableGlobal.eglMakeCurrent, "eglMakeCurrent" );
     RegalAssert(dispatchTableGlobal.eglMakeCurrent!=eglMakeCurrent);
+    if (dispatchTableGlobal.eglMakeCurrent==eglMakeCurrent)
+      dispatchTableGlobal.eglMakeCurrent = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglMakeCurrent) {
     GTrace("eglMakeCurrent(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
     ret = dispatchTableGlobal.eglMakeCurrent(dpy, draw, read, ctx);
+    RegalMakeCurrent( ctx );
   }
   else
     Warning( "eglMakeCurrent not available." );
@@ -26490,6 +27145,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglQueryContext(EGLDisplay dpy, EGLContext ctx,
   if (dispatchTableGlobal.eglQueryContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryContext, "eglQueryContext" );
     RegalAssert(dispatchTableGlobal.eglQueryContext!=eglQueryContext);
+    if (dispatchTableGlobal.eglQueryContext==eglQueryContext)
+      dispatchTableGlobal.eglQueryContext = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglQueryContext) {
@@ -26507,6 +27164,8 @@ REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name)
   if (dispatchTableGlobal.eglQueryString == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryString, "eglQueryString" );
     RegalAssert(dispatchTableGlobal.eglQueryString!=eglQueryString);
+    if (dispatchTableGlobal.eglQueryString==eglQueryString)
+      dispatchTableGlobal.eglQueryString = NULL;
   }
   const char * ret = NULL;
   if (dispatchTableGlobal.eglQueryString) {
@@ -26524,6 +27183,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurface(EGLDisplay dpy, EGLSurface surf
   if (dispatchTableGlobal.eglQuerySurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQuerySurface, "eglQuerySurface" );
     RegalAssert(dispatchTableGlobal.eglQuerySurface!=eglQuerySurface);
+    if (dispatchTableGlobal.eglQuerySurface==eglQuerySurface)
+      dispatchTableGlobal.eglQuerySurface = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglQuerySurface) {
@@ -26541,6 +27202,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSwapBuffers(EGLDisplay dpy, EGLSurface surfa
   if (dispatchTableGlobal.eglSwapBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSwapBuffers, "eglSwapBuffers" );
     RegalAssert(dispatchTableGlobal.eglSwapBuffers!=eglSwapBuffers);
+    if (dispatchTableGlobal.eglSwapBuffers==eglSwapBuffers)
+      dispatchTableGlobal.eglSwapBuffers = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSwapBuffers) {
@@ -26558,6 +27221,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglTerminate(EGLDisplay dpy)
   if (dispatchTableGlobal.eglTerminate == NULL) {
     GetProcAddress( dispatchTableGlobal.eglTerminate, "eglTerminate" );
     RegalAssert(dispatchTableGlobal.eglTerminate!=eglTerminate);
+    if (dispatchTableGlobal.eglTerminate==eglTerminate)
+      dispatchTableGlobal.eglTerminate = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglTerminate) {
@@ -26575,6 +27240,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitGL(void)
   if (dispatchTableGlobal.eglWaitGL == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitGL, "eglWaitGL" );
     RegalAssert(dispatchTableGlobal.eglWaitGL!=eglWaitGL);
+    if (dispatchTableGlobal.eglWaitGL==eglWaitGL)
+      dispatchTableGlobal.eglWaitGL = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitGL) {
@@ -26592,6 +27259,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitNative(EGLint engine)
   if (dispatchTableGlobal.eglWaitNative == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitNative, "eglWaitNative" );
     RegalAssert(dispatchTableGlobal.eglWaitNative!=eglWaitNative);
+    if (dispatchTableGlobal.eglWaitNative==eglWaitNative)
+      dispatchTableGlobal.eglWaitNative = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitNative) {
@@ -26611,6 +27280,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglBindTexImage(EGLDisplay dpy, EGLSurface surf
   if (dispatchTableGlobal.eglBindTexImage == NULL) {
     GetProcAddress( dispatchTableGlobal.eglBindTexImage, "eglBindTexImage" );
     RegalAssert(dispatchTableGlobal.eglBindTexImage!=eglBindTexImage);
+    if (dispatchTableGlobal.eglBindTexImage==eglBindTexImage)
+      dispatchTableGlobal.eglBindTexImage = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglBindTexImage) {
@@ -26628,6 +27299,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglReleaseTexImage(EGLDisplay dpy, EGLSurface s
   if (dispatchTableGlobal.eglReleaseTexImage == NULL) {
     GetProcAddress( dispatchTableGlobal.eglReleaseTexImage, "eglReleaseTexImage" );
     RegalAssert(dispatchTableGlobal.eglReleaseTexImage!=eglReleaseTexImage);
+    if (dispatchTableGlobal.eglReleaseTexImage==eglReleaseTexImage)
+      dispatchTableGlobal.eglReleaseTexImage = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglReleaseTexImage) {
@@ -26647,6 +27320,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglBindAPI(EGLenum api)
   if (dispatchTableGlobal.eglBindAPI == NULL) {
     GetProcAddress( dispatchTableGlobal.eglBindAPI, "eglBindAPI" );
     RegalAssert(dispatchTableGlobal.eglBindAPI!=eglBindAPI);
+    if (dispatchTableGlobal.eglBindAPI==eglBindAPI)
+      dispatchTableGlobal.eglBindAPI = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglBindAPI) {
@@ -26664,6 +27339,8 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy
   if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePbufferFromClientBuffer, "eglCreatePbufferFromClientBuffer" );
     RegalAssert(dispatchTableGlobal.eglCreatePbufferFromClientBuffer!=eglCreatePbufferFromClientBuffer);
+    if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer==eglCreatePbufferFromClientBuffer)
+      dispatchTableGlobal.eglCreatePbufferFromClientBuffer = NULL;
   }
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer) {
@@ -26681,6 +27358,8 @@ REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void)
   if (dispatchTableGlobal.eglQueryAPI == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryAPI, "eglQueryAPI" );
     RegalAssert(dispatchTableGlobal.eglQueryAPI!=eglQueryAPI);
+    if (dispatchTableGlobal.eglQueryAPI==eglQueryAPI)
+      dispatchTableGlobal.eglQueryAPI = NULL;
   }
   EGLenum  ret = (EGLenum )0;
   if (dispatchTableGlobal.eglQueryAPI) {
@@ -26698,6 +27377,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglReleaseThread(void)
   if (dispatchTableGlobal.eglReleaseThread == NULL) {
     GetProcAddress( dispatchTableGlobal.eglReleaseThread, "eglReleaseThread" );
     RegalAssert(dispatchTableGlobal.eglReleaseThread!=eglReleaseThread);
+    if (dispatchTableGlobal.eglReleaseThread==eglReleaseThread)
+      dispatchTableGlobal.eglReleaseThread = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglReleaseThread) {
@@ -26715,6 +27396,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSurfaceAttrib(EGLDisplay dpy, EGLSurface sur
   if (dispatchTableGlobal.eglSurfaceAttrib == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSurfaceAttrib, "eglSurfaceAttrib" );
     RegalAssert(dispatchTableGlobal.eglSurfaceAttrib!=eglSurfaceAttrib);
+    if (dispatchTableGlobal.eglSurfaceAttrib==eglSurfaceAttrib)
+      dispatchTableGlobal.eglSurfaceAttrib = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSurfaceAttrib) {
@@ -26732,6 +27415,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSwapInterval(EGLDisplay dpy, EGLint interval
   if (dispatchTableGlobal.eglSwapInterval == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSwapInterval, "eglSwapInterval" );
     RegalAssert(dispatchTableGlobal.eglSwapInterval!=eglSwapInterval);
+    if (dispatchTableGlobal.eglSwapInterval==eglSwapInterval)
+      dispatchTableGlobal.eglSwapInterval = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSwapInterval) {
@@ -26749,6 +27434,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitClient(void)
   if (dispatchTableGlobal.eglWaitClient == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitClient, "eglWaitClient" );
     RegalAssert(dispatchTableGlobal.eglWaitClient!=eglWaitClient);
+    if (dispatchTableGlobal.eglWaitClient==eglWaitClient)
+      dispatchTableGlobal.eglWaitClient = NULL;
   }
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitClient) {

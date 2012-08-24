@@ -44,11 +44,17 @@ namespace Config
   void Init();
 
   extern bool forceCoreProfile;
+
+  // Initial dispatch enable/disable state
+
   extern bool forceEmulation;
   extern bool enableEmulation;
   extern bool enableDebug;
   extern bool enableError;
   extern bool enableLog;
+  extern bool enableDriver;
+
+  // Initial emulation layer enable/disable
 
   extern bool enableEmuPpa;
   extern bool enableEmuObj;

@@ -42,13 +42,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
+
 #include "RegalMarker.h"
+#if REGAL_EMULATION
 #include "RegalObj.h"
 #include "RegalPpa.h"
 #include "RegalBin.h"
 #include "RegalDsa.h"
 #include "RegalIff.h"
 #include "RegalVao.h"
+#endif
 
 REGAL_GLOBAL_END
 
@@ -61,6 +64,7 @@ RegalContext::RegalContext()
   dbg(NULL),
   info(NULL),
   marker(NULL),
+#if REGAL_EMULATION
   emuLevel(0),
   obj(NULL),
   ppa(NULL),
@@ -68,7 +72,7 @@ RegalContext::RegalContext()
   dsa(NULL),
   iff(NULL),
   vao(NULL),
-
+#endif
 #if defined(__native_client__)
   naclES2(NULL),
   naclResource(NULL),
@@ -98,6 +102,7 @@ RegalContext::Init()
 
   marker = new Marker;
 
+#if REGAL_EMULATION
 #if !REGAL_FORCE_EMULATION
   if
   (
@@ -170,6 +175,7 @@ RegalContext::Init()
     #endif /* REGAL_EMU_OBJ */
 
   }
+#endif
 }
 
 RegalContext::~RegalContext()
@@ -177,6 +183,8 @@ RegalContext::~RegalContext()
   ITrace("RegalContext::~RegalContext");
   delete info;
   delete marker;
+
+#if REGAL_EMULATION
   // emu
   delete obj;
   delete ppa;
@@ -184,7 +192,7 @@ RegalContext::~RegalContext()
   delete dsa;
   delete iff;
   delete vao;
-
+#endif
 }
 
 REGAL_NAMESPACE_END

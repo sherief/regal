@@ -31,6 +31,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <string>
@@ -2019,3 +2021,5 @@ void RFF::LinkProgram( RegalContext *ctx, GLuint program ) {
 }
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION

@@ -61,6 +61,12 @@ using Token::toString;
 
 static Init *init = NULL;
 
+DispatchTableGlobal dispatchTableGlobal;
+
+#if REGAL_SYS_ANDROID && REGAL_STATIC_EGL
+extern void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl);
+#endif
+
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
 // Phony advapi32.dll, gdi32.dll and user32.dll dependencies for
 // closely matching opengl32.dll
@@ -84,6 +90,10 @@ Init::Init()
     return;
 #endif
 
+#if REGAL_SYS_ANDROID && REGAL_STATIC_EGL
+  InitDispatchTableStaticEGL(dispatchTableGlobal);
+#endif
+
   Logging::Init();
   Config::Init();
   Http::Init();
@@ -99,8 +109,6 @@ Init::~Init()
 #if REGAL_SYS_WGL
 extern "C" { DWORD __stdcall GetCurrentThreadId(void); }
 #endif
-
-DispatchTableGlobal dispatchTableGlobal;
 
 // Single-threaded RegalContext
 

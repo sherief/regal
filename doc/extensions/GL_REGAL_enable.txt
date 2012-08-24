@@ -22,8 +22,8 @@ Status
 
 Version
 
-    Last Modified Date: August 14, 2012
-    Revision: 1
+    Last Modified Date: August 22, 2012
+    Revision: 2
 
 Number
 
@@ -62,7 +62,7 @@ New Tokens
     DEBUG_REGAL        0x9323
     LOG_REGAL          0x9324
     EMULATION_REGAL    0x9325
-    LOADER_REGAL       0x9326
+    DRIVER_REGAL       0x9326
 
 Additions to Chapter x of the OpenGL 4.2 (Core Profile) Specification
 (OpenGL Operation)
@@ -86,6 +86,9 @@ Issues
     None.
 
 Revision History
+
+    Revision 2, 2012/08/22
+      - LOADER_REGAL renamed to DRIVER_REGAL 
 
     Revision 1, 2012/08/14
       - Initial revision.

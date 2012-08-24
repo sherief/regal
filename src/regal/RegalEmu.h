@@ -39,6 +39,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <assert.h>
@@ -131,6 +133,8 @@ struct RegalEmuScopedActivate {
 };
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_EMU_H__
 

@@ -170,6 +170,16 @@ are permitted provided that the following conditions are met:
 #define REGAL_EMU_VAO 1
 #endif
 
+//
+
+#ifndef REGAL_STATIC_ES2
+#define REGAL_STATIC_ES2 0
+#endif
+
+#ifndef REGAL_STATIC_EGL
+#define REGAL_STATIC_EGL 0
+#endif
+
 // AssertFunction depends on Error log, but
 // ideally we wouldn't depend on RegalLog.h here
 

@@ -41,13 +41,14 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void InitDispatchTableDebug  (DispatchTable &tbl);
-void InitDispatchTableError  (DispatchTable &tbl);
-void InitDispatchTableEmu    (DispatchTable &tbl);
-void InitDispatchTableLoader (DispatchTable &tbl);
-void InitDispatchTableLog    (DispatchTable &tbl);
-void InitDispatchTableNacl   (DispatchTable &tbl);
-void InitDispatchTableMissing(DispatchTable &tbl);
+void InitDispatchTableDebug    (DispatchTable &tbl);
+void InitDispatchTableError    (DispatchTable &tbl);
+void InitDispatchTableEmu      (DispatchTable &tbl);
+void InitDispatchTableLog      (DispatchTable &tbl);
+void InitDispatchTableLoader   (DispatchTable &tbl);
+void InitDispatchTableNacl     (DispatchTable &tbl);
+void InitDispatchTableStaticES2(DispatchTable &tbl);
+void InitDispatchTableMissing  (DispatchTable &tbl);
 
 Dispatcher::Dispatcher()
 : current(0)
@@ -62,28 +63,29 @@ Dispatcher::Dispatcher()
   push_back(error,Config::enableError);
   #endif
 
-#if 0
-  #if REGAL_LOG
-  InitDispatchTableLog(emulation);
-  #endif
-#endif
-
+  #if REGAL_EMULATION
   ::memset(&emulation,0,sizeof(DispatchTable));
-  InitDispatchTableEmu(emulation);   // overrides emulated functions only
-  push_back(emulation,true);
+  InitDispatchTableEmu(emulation);               // emulated functions only
+  push_back(emulation,Config::enableEmulation);
+  #endif
 
   #if REGAL_LOG
   InitDispatchTableLog(logging);
   push_back(logging,Config::enableLog);
   #endif
 
-  #if defined(__native_client__)
-  ::memset(&emulation,0,sizeof(DispatchTable));
-  InitDispatchTableNacl   (driver);
+  #if REGAL_DRIVER
+  #if REGAL_STATIC_ES2
+  ::memset(&driver,0,sizeof(DispatchTable));
+  InitDispatchTableStaticES2(driver);           // ES 2.0 functions only  
+  #elif defined(__native_client__)
+  ::memset(&driver,0,sizeof(DispatchTable));
+  InitDispatchTableNacl(driver);                // ES 2.0 functions only
   #else
-  InitDispatchTableLoader (driver);
+  InitDispatchTableLoader(driver);              // Desktop/ES2.0 lazy loader
   #endif
-  push_back(driver,true);
+  push_back(driver,Config::enableDriver);
+  #endif
 
   InitDispatchTableMissing(missing);
   push_back(missing,true);

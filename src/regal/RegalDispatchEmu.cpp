@@ -36,6 +36,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <string>
@@ -28946,3 +28948,5 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 }
 
 REGAL_NAMESPACE_END
+
+#endif

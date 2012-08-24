@@ -101,7 +101,7 @@ static void myKeyboard(unsigned char c, int x, int y)
 
     case 'r':
     case 'R':
-      myToggle(GL_LOADER_REGAL,"Regal driver is");
+      myToggle(GL_DRIVER_REGAL,"Regal driver is");
       break;
   }
 }

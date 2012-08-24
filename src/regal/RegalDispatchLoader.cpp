@@ -36,7 +36,7 @@
 
 #include "RegalUtil.h"
 
-#ifndef __native_client__
+#if REGAL_DRIVER && !defined(__native_client__)
 
 REGAL_GLOBAL_BEGIN
 

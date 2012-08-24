@@ -39,6 +39,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <vector>
@@ -202,5 +204,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 };
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_PPA_H__

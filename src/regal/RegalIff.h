@@ -39,6 +39,11 @@
 
 #include "RegalUtil.h"
 
+#define REGAL_MAX_VERTEX_ATTRIBS 16
+#define REGAL_IMMEDIATE_BUFFER_SIZE 8192
+
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <climits>
@@ -58,9 +63,6 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-#define REGAL_MAX_VERTEX_ATTRIBS 16
-#define REGAL_IMMEDIATE_BUFFER_SIZE 8192
-
 const GLenum texenvModeGL[] = {
     GL_FALSE,
     GL_REPLACE,
@@ -70,7 +72,6 @@ const GLenum texenvModeGL[] = {
     GL_BLEND,
     GL_COMBINE
 };
-
 
 #define REGAL_FIXED_FUNCTION_MAX_TEXTURE_UNITS 16
 #define REGAL_FIXED_FUNCTION_NUM_TEXTURE_TARGETS 5
@@ -2098,5 +2099,7 @@ inline bool operator < ( const RegalIff::State & lhs, const RegalIff::State & rh
 }
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION
 
 #endif // __REGAL_FIXED_FUNCTION_H__

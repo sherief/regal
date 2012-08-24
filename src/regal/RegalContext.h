@@ -57,12 +57,14 @@ struct DebugInfo;
 struct ContextInfo;
 
 struct Marker;
+#if REGAL_EMULATION
 struct RegalObj;
 struct RegalPpa;
 struct RegalBin;
 struct RegalDsa;
 struct RegalIff;
 struct RegalVao;
+#endif
 
 struct RegalContext
 {
@@ -76,6 +78,7 @@ struct RegalContext
   DebugInfo          *dbg;
   ContextInfo        *info;
   Marker             *marker;
+#if REGAL_EMULATION
   // Fixed function emulation
   int emuLevel;
   RegalObj           *obj;
@@ -84,6 +87,7 @@ struct RegalContext
   RegalDsa           *dsa;
   RegalIff           *iff;
   RegalVao           *vao;
+#endif
 
   #if defined(__native_client__)
   PPB_OpenGLES2      *naclES2;

@@ -48,10 +48,11 @@ namespace Config {
 
 bool forceCoreProfile = false;
 bool forceEmulation   = REGAL_FORCE_EMULATION;
-bool enableEmulation  = true;
+bool enableEmulation  = REGAL_EMULATION;
 bool enableDebug      = false;
 bool enableError      = false;
-bool enableLog        = true;
+bool enableLog        = REGAL_LOG;
+bool enableDriver     = REGAL_DRIVER;
 bool enableEmuPpa     = REGAL_EMU_PPA;
 bool enableEmuObj     = REGAL_EMU_OBJ;
 bool enableEmuBin     = REGAL_EMU_BIN;
@@ -74,6 +75,13 @@ void Init()
   if (tmp) forceEmulation = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMULATION
+  tmp = GetEnv( "REGAL_EMULATION" );
+  if (tmp) enableEmulation = atoi(tmp)!=0;
+#endif
+
+  // Deprecated
+
   tmp = GetEnv( "REGAL_NO_EMULATION" );
   if (tmp) enableEmulation = atoi(tmp)==0;
 
@@ -85,6 +93,16 @@ void Init()
 #if REGAL_ERROR
   tmp = GetEnv( "REGAL_ERROR" );
   if (tmp) enableError = atoi(tmp)!=0;
+#endif
+
+#if REGAL_LOG
+  tmp = GetEnv( "REGAL_LOG" );
+  if (tmp) enableLog = atoi(tmp)!=0;
+#endif
+
+#if REGAL_DRIVER
+  tmp = GetEnv( "REGAL_DRIVER" );
+  if (tmp) enableDriver = atoi(tmp)!=0;
 #endif
 
 #if REGAL_EMU_PPA
@@ -122,19 +140,20 @@ void Init()
   forceCoreProfile = (REGAL_FORCE_CORE_PROFILE) != 0;
 #endif
 
-#ifdef REGAL_NO_EMULATION
-  enableEmulation = (REGAL_NO_EMULATION) == 0;
-#endif
+  // REGAL_NO_EMULATION is deprecated, use REGAL_EMULATION=0 instead.
 
-#if !REGAL_LOG
-  enableLog = false;
+#if REGAL_EMULATION && defined(REGAL_NO_EMULATION) && REGAL_NO_EMULATION
+  enableEmulation = false;
 #endif
 
   Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
+
   Info("REGAL_FORCE_EMULATION    ", forceEmulation   ? "enabled" : "disabled");
-  Info("REGAL_NO_EMULATION       ", !enableEmulation ? "enabled" : "disabled");
   Info("REGAL_DEBUG              ", enableDebug      ? "enabled" : "disabled");
   Info("REGAL_ERROR              ", enableError      ? "enabled" : "disabled");
+  Info("REGAL_EMULATION          ", enableEmulation  ? "enabled" : "disabled");
+  Info("REGAL_LOG                ", enableLog        ? "enabled" : "disabled");
+  Info("REGAL_DRIVER             ", enableDriver     ? "enabled" : "disabled");
 
   Info("REGAL_EMU_PPA            ", enableEmuPpa     ? "enabled" : "disabled");
   Info("REGAL_EMU_OBJ            ", enableEmuObj     ? "enabled" : "disabled");

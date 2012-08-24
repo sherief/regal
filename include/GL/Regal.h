@@ -19439,7 +19439,7 @@ REGAL_DECL void REGAL_CALL glTexParameterxv(GLenum target, GLenum pname, const G
 #define GL_DEBUG_REGAL     0x9323     /* 37667 */
 #define GL_LOG_REGAL       0x9324     /* 37668 */
 #define GL_EMULATION_REGAL 0x9325     /* 37669 */
-#define GL_LOADER_REGAL    0x9326     /* 37670 */
+#define GL_DRIVER_REGAL    0x9326     /* 37670 */
 #endif
 
 /**

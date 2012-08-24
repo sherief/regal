@@ -186,6 +186,7 @@ namespace Http
                 body += br;
               }
 
+#if REGAL_EMULATION
               if (ctx->ppa)
               {
                 body += print_string("<b>GL_STENCIL_BIT</b><br/>",ctx->ppa->State::Stencil::toString(br),br);
@@ -193,6 +194,7 @@ namespace Http
                 body += print_string("<b>GL_POLYGON_BIT</b><br/>",ctx->ppa->State::Polygon::toString(br),br);
                 body += br;
               }
+#endif
             }
           }
         }
