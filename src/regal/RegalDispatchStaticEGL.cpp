@@ -126,9 +126,6 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
-using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
-
 void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl)
 {
   // EGL global dispatch

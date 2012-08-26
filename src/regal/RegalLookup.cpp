@@ -8561,7 +8561,7 @@ const size_t cgl_Offset[53] = {
 
 #endif
 
-#if REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#if REGAL_SYS_ANDROID
 const char * const egl_Name[35] = {
   "eglBindAPI",
   "eglBindTexImage",

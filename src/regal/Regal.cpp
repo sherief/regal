@@ -26792,19 +26792,23 @@ REGAL_DECL CGLError REGAL_CALL CGLUpdateContext(CGLContextObj ctx)
 }
 
 #endif /* REGAL_SYS_OSX */
-#if REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#if REGAL_SYS_ANDROID
 
 /* EGL_VERSION_1_0 */
 
 REGAL_DECL EGLBoolean REGAL_CALL eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config)
 {
   RTrace("eglChooseConfig(", dpy, ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglChooseConfig == NULL) {
     GetProcAddress( dispatchTableGlobal.eglChooseConfig, "eglChooseConfig" );
     RegalAssert(dispatchTableGlobal.eglChooseConfig!=eglChooseConfig);
     if (dispatchTableGlobal.eglChooseConfig==eglChooseConfig)
       dispatchTableGlobal.eglChooseConfig = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglChooseConfig) {
     GTrace("eglChooseConfig(", dpy, ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
@@ -26818,12 +26822,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglChooseConfig(EGLDisplay dpy, const EGLint *a
 REGAL_DECL EGLBoolean REGAL_CALL eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target)
 {
   RTrace("eglCopyBuffers(", dpy, ", ", surface, ", ", target, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCopyBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCopyBuffers, "eglCopyBuffers" );
     RegalAssert(dispatchTableGlobal.eglCopyBuffers!=eglCopyBuffers);
     if (dispatchTableGlobal.eglCopyBuffers==eglCopyBuffers)
       dispatchTableGlobal.eglCopyBuffers = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglCopyBuffers) {
     GTrace("eglCopyBuffers(", dpy, ", ", surface, ", ", target, ")");
@@ -26837,12 +26845,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglCopyBuffers(EGLDisplay dpy, EGLSurface surfa
 REGAL_DECL EGLContext REGAL_CALL eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list)
 {
   RTrace("eglCreateContext(", dpy, ", ", config, ", ", share_context, ", ", attrib_list, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCreateContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreateContext, "eglCreateContext" );
     RegalAssert(dispatchTableGlobal.eglCreateContext!=eglCreateContext);
     if (dispatchTableGlobal.eglCreateContext==eglCreateContext)
       dispatchTableGlobal.eglCreateContext = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLContext  ret = (EGLContext )0;
   if (dispatchTableGlobal.eglCreateContext) {
     GTrace("eglCreateContext(", dpy, ", ", config, ", ", share_context, ", ", attrib_list, ")");
@@ -26856,12 +26868,16 @@ REGAL_DECL EGLContext REGAL_CALL eglCreateContext(EGLDisplay dpy, EGLConfig conf
 REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list)
 {
   RTrace("eglCreatePbufferSurface(", dpy, ", ", config, ", ", attrib_list, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCreatePbufferSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePbufferSurface, "eglCreatePbufferSurface" );
     RegalAssert(dispatchTableGlobal.eglCreatePbufferSurface!=eglCreatePbufferSurface);
     if (dispatchTableGlobal.eglCreatePbufferSurface==eglCreatePbufferSurface)
       dispatchTableGlobal.eglCreatePbufferSurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePbufferSurface) {
     GTrace("eglCreatePbufferSurface(", dpy, ", ", config, ", ", attrib_list, ")");
@@ -26875,12 +26891,16 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferSurface(EGLDisplay dpy, EGLConf
 REGAL_DECL EGLSurface REGAL_CALL eglCreatePixmapSurface(EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list)
 {
   RTrace("eglCreatePixmapSurface(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCreatePixmapSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePixmapSurface, "eglCreatePixmapSurface" );
     RegalAssert(dispatchTableGlobal.eglCreatePixmapSurface!=eglCreatePixmapSurface);
     if (dispatchTableGlobal.eglCreatePixmapSurface==eglCreatePixmapSurface)
       dispatchTableGlobal.eglCreatePixmapSurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePixmapSurface) {
     GTrace("eglCreatePixmapSurface(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
@@ -26894,12 +26914,16 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePixmapSurface(EGLDisplay dpy, EGLConfi
 REGAL_DECL EGLSurface REGAL_CALL eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list)
 {
   RTrace("eglCreateWindowSurface(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCreateWindowSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreateWindowSurface, "eglCreateWindowSurface" );
     RegalAssert(dispatchTableGlobal.eglCreateWindowSurface!=eglCreateWindowSurface);
     if (dispatchTableGlobal.eglCreateWindowSurface==eglCreateWindowSurface)
       dispatchTableGlobal.eglCreateWindowSurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreateWindowSurface) {
     GTrace("eglCreateWindowSurface(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
@@ -26913,12 +26937,16 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreateWindowSurface(EGLDisplay dpy, EGLConfi
 REGAL_DECL EGLBoolean REGAL_CALL eglDestroyContext(EGLDisplay dpy, EGLContext ctx)
 {
   RTrace("eglDestroyContext(", dpy, ", ", ctx, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglDestroyContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglDestroyContext, "eglDestroyContext" );
     RegalAssert(dispatchTableGlobal.eglDestroyContext!=eglDestroyContext);
     if (dispatchTableGlobal.eglDestroyContext==eglDestroyContext)
       dispatchTableGlobal.eglDestroyContext = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglDestroyContext) {
     GTrace("eglDestroyContext(", dpy, ", ", ctx, ")");
@@ -26932,12 +26960,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglDestroyContext(EGLDisplay dpy, EGLContext ct
 REGAL_DECL EGLBoolean REGAL_CALL eglDestroySurface(EGLDisplay dpy, EGLSurface surface)
 {
   RTrace("eglDestroySurface(", dpy, ", ", surface, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglDestroySurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglDestroySurface, "eglDestroySurface" );
     RegalAssert(dispatchTableGlobal.eglDestroySurface!=eglDestroySurface);
     if (dispatchTableGlobal.eglDestroySurface==eglDestroySurface)
       dispatchTableGlobal.eglDestroySurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglDestroySurface) {
     GTrace("eglDestroySurface(", dpy, ", ", surface, ")");
@@ -26951,12 +26983,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglDestroySurface(EGLDisplay dpy, EGLSurface su
 REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value)
 {
   RTrace("eglGetConfigAttrib(", dpy, ", ", config, ", ", attribute, ", ", value, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetConfigAttrib == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetConfigAttrib, "eglGetConfigAttrib" );
     RegalAssert(dispatchTableGlobal.eglGetConfigAttrib!=eglGetConfigAttrib);
     if (dispatchTableGlobal.eglGetConfigAttrib==eglGetConfigAttrib)
       dispatchTableGlobal.eglGetConfigAttrib = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglGetConfigAttrib) {
     GTrace("eglGetConfigAttrib(", dpy, ", ", config, ", ", attribute, ", ", value, ")");
@@ -26970,12 +27006,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigAttrib(EGLDisplay dpy, EGLConfig co
 REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigs(EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config)
 {
   RTrace("eglGetConfigs(", dpy, ", ", configs, ", ", config_size, ", ", num_config, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetConfigs == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetConfigs, "eglGetConfigs" );
     RegalAssert(dispatchTableGlobal.eglGetConfigs!=eglGetConfigs);
     if (dispatchTableGlobal.eglGetConfigs==eglGetConfigs)
       dispatchTableGlobal.eglGetConfigs = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglGetConfigs) {
     GTrace("eglGetConfigs(", dpy, ", ", configs, ", ", config_size, ", ", num_config, ")");
@@ -26989,12 +27029,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigs(EGLDisplay dpy, EGLConfig *config
 REGAL_DECL EGLContext REGAL_CALL eglGetCurrentContext(void)
 {
   RTrace("eglGetCurrentContext()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetCurrentContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentContext, "eglGetCurrentContext" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentContext!=eglGetCurrentContext);
     if (dispatchTableGlobal.eglGetCurrentContext==eglGetCurrentContext)
       dispatchTableGlobal.eglGetCurrentContext = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLContext  ret = (EGLContext )0;
   if (dispatchTableGlobal.eglGetCurrentContext) {
     GTrace("eglGetCurrentContext()");
@@ -27008,12 +27052,16 @@ REGAL_DECL EGLContext REGAL_CALL eglGetCurrentContext(void)
 REGAL_DECL EGLDisplay REGAL_CALL eglGetCurrentDisplay(void)
 {
   RTrace("eglGetCurrentDisplay()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetCurrentDisplay == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentDisplay, "eglGetCurrentDisplay" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentDisplay!=eglGetCurrentDisplay);
     if (dispatchTableGlobal.eglGetCurrentDisplay==eglGetCurrentDisplay)
       dispatchTableGlobal.eglGetCurrentDisplay = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLDisplay  ret = (EGLDisplay )0;
   if (dispatchTableGlobal.eglGetCurrentDisplay) {
     GTrace("eglGetCurrentDisplay()");
@@ -27027,12 +27075,16 @@ REGAL_DECL EGLDisplay REGAL_CALL eglGetCurrentDisplay(void)
 REGAL_DECL EGLSurface REGAL_CALL eglGetCurrentSurface(EGLint readdraw)
 {
   RTrace("eglGetCurrentSurface(", readdraw, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetCurrentSurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetCurrentSurface, "eglGetCurrentSurface" );
     RegalAssert(dispatchTableGlobal.eglGetCurrentSurface!=eglGetCurrentSurface);
     if (dispatchTableGlobal.eglGetCurrentSurface==eglGetCurrentSurface)
       dispatchTableGlobal.eglGetCurrentSurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglGetCurrentSurface) {
     GTrace("eglGetCurrentSurface(", readdraw, ")");
@@ -27046,12 +27098,16 @@ REGAL_DECL EGLSurface REGAL_CALL eglGetCurrentSurface(EGLint readdraw)
 REGAL_DECL EGLDisplay REGAL_CALL eglGetDisplay(EGLNativeDisplayType display_id)
 {
   RTrace("eglGetDisplay(", display_id, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetDisplay == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetDisplay, "eglGetDisplay" );
     RegalAssert(dispatchTableGlobal.eglGetDisplay!=eglGetDisplay);
     if (dispatchTableGlobal.eglGetDisplay==eglGetDisplay)
       dispatchTableGlobal.eglGetDisplay = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLDisplay  ret = (EGLDisplay )0;
   if (dispatchTableGlobal.eglGetDisplay) {
     GTrace("eglGetDisplay(", display_id, ")");
@@ -27065,12 +27121,16 @@ REGAL_DECL EGLDisplay REGAL_CALL eglGetDisplay(EGLNativeDisplayType display_id)
 REGAL_DECL EGLint REGAL_CALL eglGetError(void)
 {
   RTrace("eglGetError()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetError == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetError, "eglGetError" );
     RegalAssert(dispatchTableGlobal.eglGetError!=eglGetError);
     if (dispatchTableGlobal.eglGetError==eglGetError)
       dispatchTableGlobal.eglGetError = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLint  ret = (EGLint )0;
   if (dispatchTableGlobal.eglGetError) {
     GTrace("eglGetError()");
@@ -27084,12 +27144,16 @@ REGAL_DECL EGLint REGAL_CALL eglGetError(void)
 REGAL_DECL __eglMustCastToProperFunctionPointerType REGAL_CALL eglGetProcAddress(const char *procname)
 {
   RTrace("eglGetProcAddress(", boost::print::quote(procname,'"'), ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglGetProcAddress == NULL) {
     GetProcAddress( dispatchTableGlobal.eglGetProcAddress, "eglGetProcAddress" );
     RegalAssert(dispatchTableGlobal.eglGetProcAddress!=eglGetProcAddress);
     if (dispatchTableGlobal.eglGetProcAddress==eglGetProcAddress)
       dispatchTableGlobal.eglGetProcAddress = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   __eglMustCastToProperFunctionPointerType  ret = (__eglMustCastToProperFunctionPointerType )0;
   if (dispatchTableGlobal.eglGetProcAddress) {
     GTrace("eglGetProcAddress(", boost::print::quote(procname,'"'), ")");
@@ -27103,12 +27167,16 @@ REGAL_DECL __eglMustCastToProperFunctionPointerType REGAL_CALL eglGetProcAddress
 REGAL_DECL EGLBoolean REGAL_CALL eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor)
 {
   RTrace("eglInitialize(", dpy, ", ", major, ", ", minor, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglInitialize == NULL) {
     GetProcAddress( dispatchTableGlobal.eglInitialize, "eglInitialize" );
     RegalAssert(dispatchTableGlobal.eglInitialize!=eglInitialize);
     if (dispatchTableGlobal.eglInitialize==eglInitialize)
       dispatchTableGlobal.eglInitialize = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglInitialize) {
     GTrace("eglInitialize(", dpy, ", ", major, ", ", minor, ")");
@@ -27122,12 +27190,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglInitialize(EGLDisplay dpy, EGLint *major, EG
 REGAL_DECL EGLBoolean REGAL_CALL eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
 {
   RTrace("eglMakeCurrent(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglMakeCurrent == NULL) {
     GetProcAddress( dispatchTableGlobal.eglMakeCurrent, "eglMakeCurrent" );
     RegalAssert(dispatchTableGlobal.eglMakeCurrent!=eglMakeCurrent);
     if (dispatchTableGlobal.eglMakeCurrent==eglMakeCurrent)
       dispatchTableGlobal.eglMakeCurrent = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglMakeCurrent) {
     GTrace("eglMakeCurrent(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
@@ -27142,12 +27214,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglMakeCurrent(EGLDisplay dpy, EGLSurface draw,
 REGAL_DECL EGLBoolean REGAL_CALL eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value)
 {
   RTrace("eglQueryContext(", dpy, ", ", ctx, ", ", attribute, ", ", value, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglQueryContext == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryContext, "eglQueryContext" );
     RegalAssert(dispatchTableGlobal.eglQueryContext!=eglQueryContext);
     if (dispatchTableGlobal.eglQueryContext==eglQueryContext)
       dispatchTableGlobal.eglQueryContext = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglQueryContext) {
     GTrace("eglQueryContext(", dpy, ", ", ctx, ", ", attribute, ", ", value, ")");
@@ -27161,12 +27237,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglQueryContext(EGLDisplay dpy, EGLContext ctx,
 REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name)
 {
   RTrace("eglQueryString(", dpy, ", ", name, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglQueryString == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryString, "eglQueryString" );
     RegalAssert(dispatchTableGlobal.eglQueryString!=eglQueryString);
     if (dispatchTableGlobal.eglQueryString==eglQueryString)
       dispatchTableGlobal.eglQueryString = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   const char * ret = NULL;
   if (dispatchTableGlobal.eglQueryString) {
     GTrace("eglQueryString(", dpy, ", ", name, ")");
@@ -27180,12 +27260,16 @@ REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name)
 REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value)
 {
   RTrace("eglQuerySurface(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglQuerySurface == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQuerySurface, "eglQuerySurface" );
     RegalAssert(dispatchTableGlobal.eglQuerySurface!=eglQuerySurface);
     if (dispatchTableGlobal.eglQuerySurface==eglQuerySurface)
       dispatchTableGlobal.eglQuerySurface = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglQuerySurface) {
     GTrace("eglQuerySurface(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
@@ -27199,12 +27283,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurface(EGLDisplay dpy, EGLSurface surf
 REGAL_DECL EGLBoolean REGAL_CALL eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
 {
   RTrace("eglSwapBuffers(", dpy, ", ", surface, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglSwapBuffers == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSwapBuffers, "eglSwapBuffers" );
     RegalAssert(dispatchTableGlobal.eglSwapBuffers!=eglSwapBuffers);
     if (dispatchTableGlobal.eglSwapBuffers==eglSwapBuffers)
       dispatchTableGlobal.eglSwapBuffers = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSwapBuffers) {
     GTrace("eglSwapBuffers(", dpy, ", ", surface, ")");
@@ -27218,12 +27306,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSwapBuffers(EGLDisplay dpy, EGLSurface surfa
 REGAL_DECL EGLBoolean REGAL_CALL eglTerminate(EGLDisplay dpy)
 {
   RTrace("eglTerminate(", dpy, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglTerminate == NULL) {
     GetProcAddress( dispatchTableGlobal.eglTerminate, "eglTerminate" );
     RegalAssert(dispatchTableGlobal.eglTerminate!=eglTerminate);
     if (dispatchTableGlobal.eglTerminate==eglTerminate)
       dispatchTableGlobal.eglTerminate = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglTerminate) {
     GTrace("eglTerminate(", dpy, ")");
@@ -27237,12 +27329,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglTerminate(EGLDisplay dpy)
 REGAL_DECL EGLBoolean REGAL_CALL eglWaitGL(void)
 {
   RTrace("eglWaitGL()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglWaitGL == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitGL, "eglWaitGL" );
     RegalAssert(dispatchTableGlobal.eglWaitGL!=eglWaitGL);
     if (dispatchTableGlobal.eglWaitGL==eglWaitGL)
       dispatchTableGlobal.eglWaitGL = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitGL) {
     GTrace("eglWaitGL()");
@@ -27256,12 +27352,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitGL(void)
 REGAL_DECL EGLBoolean REGAL_CALL eglWaitNative(EGLint engine)
 {
   RTrace("eglWaitNative(", engine, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglWaitNative == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitNative, "eglWaitNative" );
     RegalAssert(dispatchTableGlobal.eglWaitNative!=eglWaitNative);
     if (dispatchTableGlobal.eglWaitNative==eglWaitNative)
       dispatchTableGlobal.eglWaitNative = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitNative) {
     GTrace("eglWaitNative(", engine, ")");
@@ -27277,12 +27377,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitNative(EGLint engine)
 REGAL_DECL EGLBoolean REGAL_CALL eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
   RTrace("eglBindTexImage(", dpy, ", ", surface, ", ", buffer, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglBindTexImage == NULL) {
     GetProcAddress( dispatchTableGlobal.eglBindTexImage, "eglBindTexImage" );
     RegalAssert(dispatchTableGlobal.eglBindTexImage!=eglBindTexImage);
     if (dispatchTableGlobal.eglBindTexImage==eglBindTexImage)
       dispatchTableGlobal.eglBindTexImage = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglBindTexImage) {
     GTrace("eglBindTexImage(", dpy, ", ", surface, ", ", buffer, ")");
@@ -27296,12 +27400,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglBindTexImage(EGLDisplay dpy, EGLSurface surf
 REGAL_DECL EGLBoolean REGAL_CALL eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
   RTrace("eglReleaseTexImage(", dpy, ", ", surface, ", ", buffer, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglReleaseTexImage == NULL) {
     GetProcAddress( dispatchTableGlobal.eglReleaseTexImage, "eglReleaseTexImage" );
     RegalAssert(dispatchTableGlobal.eglReleaseTexImage!=eglReleaseTexImage);
     if (dispatchTableGlobal.eglReleaseTexImage==eglReleaseTexImage)
       dispatchTableGlobal.eglReleaseTexImage = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglReleaseTexImage) {
     GTrace("eglReleaseTexImage(", dpy, ", ", surface, ", ", buffer, ")");
@@ -27317,12 +27425,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglReleaseTexImage(EGLDisplay dpy, EGLSurface s
 REGAL_DECL EGLBoolean REGAL_CALL eglBindAPI(EGLenum api)
 {
   RTrace("eglBindAPI(", api, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglBindAPI == NULL) {
     GetProcAddress( dispatchTableGlobal.eglBindAPI, "eglBindAPI" );
     RegalAssert(dispatchTableGlobal.eglBindAPI!=eglBindAPI);
     if (dispatchTableGlobal.eglBindAPI==eglBindAPI)
       dispatchTableGlobal.eglBindAPI = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglBindAPI) {
     GTrace("eglBindAPI(", api, ")");
@@ -27336,12 +27448,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglBindAPI(EGLenum api)
 REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list)
 {
   RTrace("eglCreatePbufferFromClientBuffer(", dpy, ", ", buftype, ", ", buffer, ", ", config, ", ", attrib_list, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer == NULL) {
     GetProcAddress( dispatchTableGlobal.eglCreatePbufferFromClientBuffer, "eglCreatePbufferFromClientBuffer" );
     RegalAssert(dispatchTableGlobal.eglCreatePbufferFromClientBuffer!=eglCreatePbufferFromClientBuffer);
     if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer==eglCreatePbufferFromClientBuffer)
       dispatchTableGlobal.eglCreatePbufferFromClientBuffer = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLSurface  ret = (EGLSurface )0;
   if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer) {
     GTrace("eglCreatePbufferFromClientBuffer(", dpy, ", ", buftype, ", ", buffer, ", ", config, ", ", attrib_list, ")");
@@ -27355,12 +27471,16 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy
 REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void)
 {
   RTrace("eglQueryAPI()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglQueryAPI == NULL) {
     GetProcAddress( dispatchTableGlobal.eglQueryAPI, "eglQueryAPI" );
     RegalAssert(dispatchTableGlobal.eglQueryAPI!=eglQueryAPI);
     if (dispatchTableGlobal.eglQueryAPI==eglQueryAPI)
       dispatchTableGlobal.eglQueryAPI = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLenum  ret = (EGLenum )0;
   if (dispatchTableGlobal.eglQueryAPI) {
     GTrace("eglQueryAPI()");
@@ -27374,12 +27494,16 @@ REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void)
 REGAL_DECL EGLBoolean REGAL_CALL eglReleaseThread(void)
 {
   RTrace("eglReleaseThread()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglReleaseThread == NULL) {
     GetProcAddress( dispatchTableGlobal.eglReleaseThread, "eglReleaseThread" );
     RegalAssert(dispatchTableGlobal.eglReleaseThread!=eglReleaseThread);
     if (dispatchTableGlobal.eglReleaseThread==eglReleaseThread)
       dispatchTableGlobal.eglReleaseThread = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglReleaseThread) {
     GTrace("eglReleaseThread()");
@@ -27393,12 +27517,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglReleaseThread(void)
 REGAL_DECL EGLBoolean REGAL_CALL eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value)
 {
   RTrace("eglSurfaceAttrib(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglSurfaceAttrib == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSurfaceAttrib, "eglSurfaceAttrib" );
     RegalAssert(dispatchTableGlobal.eglSurfaceAttrib!=eglSurfaceAttrib);
     if (dispatchTableGlobal.eglSurfaceAttrib==eglSurfaceAttrib)
       dispatchTableGlobal.eglSurfaceAttrib = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSurfaceAttrib) {
     GTrace("eglSurfaceAttrib(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
@@ -27412,12 +27540,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSurfaceAttrib(EGLDisplay dpy, EGLSurface sur
 REGAL_DECL EGLBoolean REGAL_CALL eglSwapInterval(EGLDisplay dpy, EGLint interval)
 {
   RTrace("eglSwapInterval(", dpy, ", ", interval, ")");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglSwapInterval == NULL) {
     GetProcAddress( dispatchTableGlobal.eglSwapInterval, "eglSwapInterval" );
     RegalAssert(dispatchTableGlobal.eglSwapInterval!=eglSwapInterval);
     if (dispatchTableGlobal.eglSwapInterval==eglSwapInterval)
       dispatchTableGlobal.eglSwapInterval = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglSwapInterval) {
     GTrace("eglSwapInterval(", dpy, ", ", interval, ")");
@@ -27431,12 +27563,16 @@ REGAL_DECL EGLBoolean REGAL_CALL eglSwapInterval(EGLDisplay dpy, EGLint interval
 REGAL_DECL EGLBoolean REGAL_CALL eglWaitClient(void)
 {
   RTrace("eglWaitClient()");
+
+  #if !REGAL_STATIC_EGL
   if (dispatchTableGlobal.eglWaitClient == NULL) {
     GetProcAddress( dispatchTableGlobal.eglWaitClient, "eglWaitClient" );
     RegalAssert(dispatchTableGlobal.eglWaitClient!=eglWaitClient);
     if (dispatchTableGlobal.eglWaitClient==eglWaitClient)
       dispatchTableGlobal.eglWaitClient = NULL;
   }
+  #endif // !REGAL_STATIC_EGL
+
   EGLBoolean  ret = (EGLBoolean )0;
   if (dispatchTableGlobal.eglWaitClient) {
     GTrace("eglWaitClient()");
@@ -27447,7 +27583,7 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitClient(void)
   return ret;
 }
 
-#endif /* REGAL_SYS_ANDROID | REGAL_STATIC_EGL */
+#endif /* REGAL_SYS_ANDROID */
 
 #ifdef __cplusplus
 }

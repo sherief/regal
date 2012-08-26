@@ -59,7 +59,7 @@ REGAL_NAMESPACE_BEGIN
 
 using Token::toString;
 
-static Init *init = NULL;
+static ::REGAL_NAMESPACE_INTERNAL::Init *init = NULL;
 
 DispatchTableGlobal dispatchTableGlobal;
 
@@ -184,7 +184,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
 #endif
 {
   if (!init)
-    init = new Init();
+    init = new ::REGAL_NAMESPACE_INTERNAL::Init();
 
 //  Trace("RegalPrivateMakeCurrent ",sysCtx);
     Thread thread = RegalPrivateThreadSelf();

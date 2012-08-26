@@ -35,6 +35,8 @@ are permitted provided that the following conditions are met:
 
 #include <limits>
 
+#include "RegalSystem.h"
+
 // Visual Studio with /W4 complains about unused function
 // parameters.
 

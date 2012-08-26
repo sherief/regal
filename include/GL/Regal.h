@@ -43,20 +43,32 @@
 #define REGAL_DECLARATIONS_H
 
 #if _WIN32
-# define REGAL_SYS_WGL 1
+# ifndef REGAL_SYS_WGL
+#  define REGAL_SYS_WGL 1
+# endif
 #elif __APPLE__
 # include <TargetConditionals.h>
 # if TARGET_OS_IPHONE
-#  define REGAL_SYS_IOS 1
+#  ifndef REGAL_SYS_IOS
+#   define REGAL_SYS_IOS 1
+#  endif
 # else
-#  define REGAL_SYS_OSX 1
+#  ifndef REGAL_SYS_OSX
+#   define REGAL_SYS_OSX 1
+#  endif
 # endif
 #elif defined(__native_client__)
+# ifndef REGAL_SYS_NACL
 #  define REGAL_SYS_NACL 1
+# endif
 #elif defined(__ANDROID__)
+# ifndef REGAL_SYS_ANDROID
 #  define REGAL_SYS_ANDROID 1
+# endif
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
-# define REGAL_SYS_GLX 1
+# ifndef REGAL_SYS_GLX
+#  define REGAL_SYS_GLX 1
+# endif
 #endif
 
 #if REGAL_SYS_WGL
@@ -228,7 +240,7 @@ typedef void * CGSWindowID;
 typedef void * CGSSurfaceID;
 #endif // REGAL_SYS_OSX
 
-#if REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#if REGAL_SYS_ANDROID
 typedef struct ANativeWindow* EGLNativeWindowType;
 typedef struct egl_native_pixmap_t* EGLNativePixmapType;
 typedef void* EGLNativeDisplayType;
@@ -244,7 +256,7 @@ typedef void * EGLDisplay;
 typedef void * EGLSurface;
 typedef void * EGLClientBuffer;
 typedef void  (*__eglMustCastToProperFunctionPointerType)(void);
-#endif // REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#endif // REGAL_SYS_ANDROID
 
 // TODO: make this automatic?
 typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
@@ -30538,7 +30550,7 @@ REGAL_DECL CGLShareGroupObj REGAL_CALL CGLGetShareGroup(CGLContextObj ctx);
 
 #endif /* REGAL_SYS_OSX */
 
-#if REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#if REGAL_SYS_ANDROID
 #define EGL_NO_CONTEXT                  ((EGLContext)0)
 #define EGL_NO_DISPLAY                  ((EGLDisplay)0)
 #define EGL_DEFAULT_DISPLAY             ((EGLNativeDisplayType)0)
@@ -30868,7 +30880,7 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy
 REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void);
 #endif
 
-#endif /* REGAL_SYS_ANDROID | REGAL_STATIC_EGL */
+#endif /* REGAL_SYS_ANDROID */
 
 #ifdef __cplusplus
 }

@@ -137,7 +137,7 @@ inline size_t cgl_LookupOffset(const char *name)
 
 #endif
 
-#if REGAL_SYS_ANDROID | REGAL_STATIC_EGL
+#if REGAL_SYS_ANDROID
 
 extern const char * const egl_Name[35];
 extern const void *egl_Value[35];
