@@ -282,7 +282,7 @@
 		43A6C1BD15C48CD90063667E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = n/a;
 			};
 			buildConfigurationList = 43A6C1C015C48CD90063667E /* Build configuration list for PBXProject "Regal" */;
@@ -396,6 +396,7 @@
 		43A6C1CB15C48CD90063667E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -404,6 +405,7 @@
 		43A6C1CC15C48CD90063667E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

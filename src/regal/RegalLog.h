@@ -90,6 +90,18 @@ REGAL_NAMESPACE_BEGIN
 # define REGAL_LOG_MAX_LINES -1 // unlimited by default
 #endif
 
+#ifndef REGAL_LOG_CALLBACK
+# define REGAL_LOG_CALLBACK 1
+#endif
+
+#ifndef REGAL_LOG_STDOUT
+# ifdef NDEBUG
+#  define REGAL_LOG_STDOUT 0
+# else
+#  define REGAL_LOG_STDOUT 1
+# endif
+#endif
+
 #ifdef REGAL_LOG_ALL
 # undef REGAL_LOG_ERROR
 # undef REGAL_LOG_WARNING
@@ -126,6 +138,9 @@ namespace Logging
   // Logging configuration
 
   extern int  maxLines;
+
+  extern bool callback;
+  extern bool stdOut;
 
   // Buffering for HTTP query purposes
 

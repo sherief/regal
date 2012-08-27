@@ -45,13 +45,12 @@ REGAL_GLOBAL_BEGIN
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
 
-using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+REGAL_GLOBAL_END
+
+REGAL_NAMESPACE_BEGIN
 
 // GL_VERSION_1_0
 
@@ -23271,14 +23270,6 @@ static void REGAL_CALL log_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei width,
     Dispatcher::ScopedStep stepDown(_context->dispatcher);
     _context->dispatcher.call(&_context->dispatcher.table().glAddSwapHintRectWIN)(x, y, width, height);
 }
-
-#ifdef __cplusplus
-}
-#endif
-
-REGAL_GLOBAL_END
-
-REGAL_NAMESPACE_BEGIN
 
 void InitDispatchTableLog(DispatchTable &tbl)
 {

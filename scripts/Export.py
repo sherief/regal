@@ -1624,23 +1624,14 @@ REGAL_GLOBAL_BEGIN
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
 
-using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-${API_FUNC_DEFINE}
-
-#ifdef __cplusplus
-}
-#endif
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
+
+${API_FUNC_DEFINE}
 
 void InitDispatchTableLog(DispatchTable &tbl)
 {
@@ -2931,12 +2922,12 @@ def apiEmuFuncDefineCode(apis, args):
 
             emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emu ]
 
-            if all(i is None for i in emue):
+            if all(i is None for i in emue) and getattr(function,'remap',None)==None:
                 continue
 
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
             code += '   RegalContext *_context = GET_REGAL_CONTEXT();\n'
-            #code += '   RegalCheckGLError( rCtx );\n'
+            code += '   RegalAssert(_context);\n'
             code += '\n'
 
             level = [ (emu[i], emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] )) for i in range( len( emue ) - 1 ) ]
@@ -2965,6 +2956,12 @@ def apiEmuFuncDefineCode(apis, args):
               code += '           break;\n'
               code += '   }\n\n'
 
+            # Remap, as necessary
+            remap = getattr(function, 'remap', None)
+            es2Name = None
+            if remap != None:
+              es2Name = remap.get('ES2.0',None)
+
             if not all(i[1]==None or not 'impl' in i[1] for i in level):
               code += '   // impl\n'
               code += '   switch( _context->emuLevel ) {\n'
@@ -2989,18 +2986,56 @@ def apiEmuFuncDefineCode(apis, args):
               # debug print
               # code += '           %s\n' % debugPrintFunction( function, 'GTrace' )
               # debug print
+
+              if name=='glEnable' or name=='glDisable' or name=='glIsEnabled':
+                code += '         if (_context->info->gles)\n'
+                code += '           switch (cap)\n'
+                code += '           {\n'
+                for i in api.enums:
+                  if i.name=='defines':
+                    for j in i.enumerants:
+                      if getattr(j,'esVersions',None) != None and getattr(j,'enableCap',None) != None and 2.0 in j.esVersions and j.enableCap == True:
+                        code += '             case %s:\n'%(j.name)
+                code += '               break;\n'
+                code += '             default:\n'
+                code += '               Warning("%s does not support ",GLenumToString(cap)," for ES 2.0.");\n'%(name)
+                if name=='glIsEnabled':
+                  code += '               return GL_FALSE;\n'
+                else:
+                  code += '               return;\n'
+                code += '           }\n'
+                        
               code += '         Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+                         
+              if es2Name != None:
+                code += '         '
+                code += 'if (_context->info->gles)\n'
+                code += '         '
+                if not typeIsVoid(rType):
+                    code += '  return '
+                code += '  _context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( es2Name, callParams )
+                code += '         else\n  '
+
               code += '         '
               if not typeIsVoid(rType):
                   code += 'return '
-
               code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+
               code += '         break;\n'
               code += '       }\n\n'
               code += '   }\n\n'
             else:
               code += '   Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
               code += '   '
+
+              if es2Name != None:
+                code += 'if (_context->info->gles)\n'
+                code += '     '
+                if not typeIsVoid(rType):
+                    code += 'return '
+                code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( es2Name, callParams )
+                code += '   else\n     '
+              
               if not typeIsVoid(rType):
                   code += 'return '
               code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
@@ -3288,7 +3323,7 @@ def apiEmuDispatchFuncInitCode(apis, args):
       for i in range( len( emu ) - 1 ) :
         emue.append( emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] ) )
 
-      if all(i is None for i in emue):
+      if all(i is None for i in emue) and getattr(function,'remap',None)==None:
         continue
 
       params = paramsDefaultCode(function.parameters, True)

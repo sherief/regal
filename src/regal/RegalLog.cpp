@@ -80,6 +80,9 @@ namespace Logging {
 
   int maxLines = (REGAL_LOG_MAX_LINES);
 
+  bool callback = (REGAL_LOG_CALLBACK);
+  bool stdOut = (REGAL_LOG_STDOUT);
+
   std::list<std::string> *buffer = NULL;
   std::size_t             bufferSize  = 0;
   std::size_t             bufferLimit = 500;
@@ -118,6 +121,12 @@ namespace Logging {
 
     const char *bl = GetEnv("REGAL_HTTP_LOG_LIMIT");
     if (bl) bufferLimit = atoi(bl);
+
+    const char *cb = GetEnv("REGAL_LOG_CALLBACK");
+    if (cb) callback = atoi(cb)!=0;
+
+    const char *so = GetEnv("REGAL_LOG_STDOUT");
+    if (so) stdOut = atoi(so)!=0;
 #endif
 
 #ifdef REGAL_HTTP_LOG_LIMIT
@@ -230,25 +239,38 @@ namespace Logging {
       rCtx = GET_REGAL_CONTEXT();
 #endif
 
-      if (rCtx && rCtx->logCallback)
+#if REGAL_LOG_CALLBACK
+      if (callback && rCtx && rCtx->logCallback)
         rCtx->logCallback(GL_LOG_INFO_REGAL, (GLsizei) m.length(), m.c_str(), reinterpret_cast<void *>(rCtx->sysCtx));
-      else
+#endif
+
+#if REGAL_LOG_STDOUT
+      if (stdOut)
       {
-#if defined(REGAL_SYS_WGL)
+#if REGAL_SYS_WGL
         OutputDebugStringA(m.c_str());
-        fprintf(stderr, "%s", m.c_str());
-        fflush(stderr);
-#elif defined(REGAL_SYS_ANDROID)
-        // ANDROID_LOG_INFO
-        // ANDROID_LOG_WARN
-        // ANDROID_LOG_ERROR
-        __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
+        fprintf(stdout, "%s", m.c_str());
+        fflush(stdout);
+#elif REGAL_SYS_ANDROID
 #elif REGAL_SYS_NACL
+        fprintf(stdout, "%s", m.c_str());
+        fflush(stdout);
 #else
         fprintf(stdout, "%s", m.c_str());
         fflush(stdout);
 #endif
       }
+#endif
+
+#if REGAL_SYS_WGL
+      OutputDebugStringA(m.c_str());
+#elif REGAL_SYS_ANDROID
+      // ANDROID_LOG_INFO
+      // ANDROID_LOG_WARN
+      // ANDROID_LOG_ERROR
+      __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
+#endif
+
       append(m);
     }
   }

@@ -90,6 +90,10 @@ defines = Enum('defines')
       else:
         print >>file, '0x%04x,'%(value),
       print >>file, '\'%s\')'%(j.category)
+      if getattr(j,'esVersions',None) != None:
+        print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
+      if getattr(j,'enableCap',None) != None:
+        print >>file, '%s.enableCap = %s'%(j.name,j.enableCap)
       if getattr(j,'gluErrorString',None) != None:
         print >>file, '%s.gluErrorString = \'%s\''%(j.name,j.gluErrorString)
     print >>file, ''
@@ -142,6 +146,8 @@ def writeFunctions(file,name,functions):
         print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
       if getattr(j,'regal',None) != None:
         print >>file, '%s.regal = %s'%(j.name,j.regal)
+      if getattr(j,'remap',None) != None:
+        print >>file, '%s.remap = %s'%(j.name,j.remap)
       if getattr(j,'trace',None) != None:
         print >>file, '%s.trace = %s'%(j.name,j.trace)
       if getattr(j,'play',None) != None:
