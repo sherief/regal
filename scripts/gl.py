@@ -10531,7 +10531,7 @@ glClearDepth.ret = Return('void')
 glClearDepth.add( Input( 'depth','GLclampd' ))
 glClearDepth.version = '1.0'
 glClearDepth.category = 'GL_VERSION_1_0'
-glClearDepth.remap = {'ES2.0': 'glClearDepthf'}
+glClearDepth.remap = {'ES2.0': 'glClearDepthf((GLclampf)depth)'}
 glClearDepth.trace = True
 glClearDepth.play = True
 gl.add(glClearDepth)
@@ -10627,7 +10627,7 @@ glDepthRange.add( Input( 'zNear','GLclampd' ))
 glDepthRange.add( Input( 'zFar','GLclampd' ))
 glDepthRange.version = '1.0'
 glDepthRange.category = 'GL_VERSION_1_0'
-glDepthRange.remap = {'ES2.0': 'glDepthRangef'}
+glDepthRange.remap = {'ES2.0': 'glDepthRangef((GLclampf)zNear,(GLclampf)zFar)'}
 glDepthRange.trace = True
 glDepthRange.play = True
 gl.add(glDepthRange)

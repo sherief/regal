@@ -32,15 +32,8 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#define __gl_h_
-#define __GL_H__
-#define __X_GL_H
-#define __glext_h_
-#define __GLEXT_H_
-#define __gl_ATI_h_
-
-#ifndef REGAL_DECLARATIONS_H
-#define REGAL_DECLARATIONS_H
+#ifndef __REGAL_DECLARATIONS_H
+#define __REGAL_DECLARATIONS_H
 
 #if _WIN32
 # ifndef REGAL_SYS_WGL
@@ -103,10 +96,22 @@
 #  define REGAL_DECL
 #endif
 
-#endif // REGAL_DECLARATIONS_H
+#endif /* __REGAL_DECLARATIONS_H */
 
 #ifndef __REGAL_H__
 #define __REGAL_H__
+
+/* Skip OpenGL API if another header was included first. */
+
+#if !defined(__gl_h_) && !defined(__GL_H__) && !defined(__X_GL_H) && !defined(__gl2_h_) && !defined(__glext_h_) && !defined(__GLEXT_H_) && !defined(__gl_ATI_h_)
+
+#define __gl_h_
+#define __gl2_h_
+#define __GL_H__
+#define __X_GL_H
+#define __glext_h_
+#define __GLEXT_H_
+#define __gl_ATI_h_
 
 #if REGAL_SYS_GLX
 #include <X11/Xdefs.h>
@@ -258,7 +263,8 @@ typedef void * EGLClientBuffer;
 typedef void  (*__eglMustCastToProperFunctionPointerType)(void);
 #endif // REGAL_SYS_ANDROID
 
-// TODO: make this automatic?
+/* TODO: make this automatic? */
+
 typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*GLDEBUGPROCARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
@@ -30886,18 +30892,20 @@ REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void);
 }
 #endif
 
-#endif // __REGAL_H__
+#endif /* __gl_h_ etc */
+#endif /* __REGAL_H__ */
 
-#ifndef REGAL_API_H
-#define REGAL_API_H
+#ifndef __REGAL_API_H
+#define __REGAL_API_H
 
 #if REGAL_SYS_NACL
 #include <stdint.h>
 struct PPB_OpenGLES2;
 #endif
 
-// Regal-specific API... try to keep this minimal
-// this is a seperate include guard to work nicely with RegalGLEW.h
+/* Regal-specific API... try to keep this minimal
+   this is a seperate include guard to work nicely with RegalGLEW.h
+*/
 
 #ifdef __cplusplus
 extern "C" {
@@ -30918,4 +30926,4 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext ctx );
 }
 #endif
 
-#endif // REGAL_H
+#endif /* __REGAL_API_H */

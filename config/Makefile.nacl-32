@@ -10,7 +10,7 @@ M_PREFIX = i686
 endif
 CC  := $(M_PREFIX)-nacl-gcc
 CXX := $(M_PREFIX)-nacl-g++
-LD  := $(M_PREFIX)-nacl-ld
+LD  := $(M_PREFIX)-nacl-g++ -m32
 STRIP ?=
 endif
 

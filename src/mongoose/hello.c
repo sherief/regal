@@ -3,13 +3,13 @@
 #include "mongoose.h"
 
 static void *callback(enum mg_event event,
-                      struct mg_connection *conn,
-                      const struct mg_request_info *request_info) {
+                      struct mg_connection *conn)
+{
   if (event == MG_NEW_REQUEST) {
     char content[1024];
     int content_length = snprintf(content, sizeof(content),
                                   "<html><body><b>Hello from mongoose!</b><br/>Remote port: %d</body></html>",
-                                  request_info->remote_port);
+                                  mg_get_request_info(conn)->remote_port);
     mg_printf(conn,
               "HTTP/1.1 200 OK\r\n"
               "Content-Type: text/html\r\n"

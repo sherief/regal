@@ -180,7 +180,7 @@ static void REGAL_CALL emu_glClearDepth(GLclampd depth)
 
    Dispatcher::ScopedStep stepDown(_context->dispatcher);
    if (_context->info->gles)
-     _context->dispatcher.call(&_context->dispatcher.table().glClearDepthf)(depth);
+     _context->dispatcher.call(&_context->dispatcher.table().glClearDepthf)((GLclampf)depth);
    else
      _context->dispatcher.call(&_context->dispatcher.table().glClearDepth)(depth);
 }
@@ -1746,7 +1746,7 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
 
    Dispatcher::ScopedStep stepDown(_context->dispatcher);
    if (_context->info->gles)
-     _context->dispatcher.call(&_context->dispatcher.table().glDepthRangef)(zNear, zFar);
+     _context->dispatcher.call(&_context->dispatcher.table().glDepthRangef)((GLclampf)zNear,(GLclampf)zFar);
    else
      _context->dispatcher.call(&_context->dispatcher.table().glDepthRange)(zNear, zFar);
 }

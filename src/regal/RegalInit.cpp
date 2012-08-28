@@ -45,6 +45,7 @@ using namespace std;
 #include "RegalDispatch.h"
 #include "RegalDispatcher.h"
 #include "RegalPrivate.h"
+#include "RegalContextInfo.h"
 
 RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
 {
@@ -244,6 +245,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
     pthread_setspecific( regalPrivateCurrentContextKey, ctx );
 #endif
 #endif
+    ITrace("RegalMakeCurrent ",ctx," ",ctx->info->version);
   }
   else
   {

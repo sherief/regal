@@ -99,10 +99,10 @@ namespace Http
 
   const char * const br = "<br/>\n";
 
-  static void *callback(enum mg_event event,
-                      struct mg_connection *conn,
-                      const struct mg_request_info *request_info)
+  static void *callback(enum mg_event event, struct mg_connection *conn)
   {
+    const struct mg_request_info *request_info = mg_get_request_info(conn);
+
     switch (event)
     {
       case MG_EVENT_LOG:

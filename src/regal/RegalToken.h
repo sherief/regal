@@ -52,6 +52,10 @@ namespace Token {
   const char * GLbooleanToString     (GLboolean v);
   const char * internalFormatToString(GLint     v);
 
+  #if REGAL_SYS_GLX
+  const char * GLXenumToString       (int       v);
+  #endif
+
   inline const char *toString(const GLenum    v) { return GLenumToString(v);    }
   inline const char *toString(const GLboolean v) { return GLbooleanToString(v); }
 }

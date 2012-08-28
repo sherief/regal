@@ -66,7 +66,7 @@ Dispatcher::Dispatcher()
   #if REGAL_EMULATION
   ::memset(&emulation,0,sizeof(DispatchTable));
   InitDispatchTableEmu(emulation);               // emulated functions only
-  push_back(emulation,Config::enableEmulation);
+  push_back(emulation,Config::enableEmulation || Config::forceEmulation);
   #endif
 
   #if REGAL_LOG
