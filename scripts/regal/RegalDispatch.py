@@ -18,6 +18,9 @@ def apiGlobalDispatchTableDefineCode(apis, args):
   code = ''
 
   code += 'struct DispatchTableGlobal {\n'
+  code += '\n'
+  code += '  DispatchTableGlobal();\n'
+  code += '  ~DispatchTableGlobal();\n'
 
   for api in apis:
 

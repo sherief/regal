@@ -24278,7 +24278,7 @@ REGAL_DECL Bool REGAL_CALL glXMakeContextCurrent(Display *display, GLXDrawable d
 
 REGAL_DECL int REGAL_CALL glXQueryContext(Display *dpy, GLXContext ctx, int attribute, int *value)
 {
-  RTrace("glXQueryContext(", dpy, ", ", ctx, ", ", attribute, ")");
+  RTrace("glXQueryContext(", dpy, ", ", ctx, ", ", GLXenumToString(attribute), ")");
   if (dispatchTableGlobal.glXQueryContext == NULL) {
     GetProcAddress( dispatchTableGlobal.glXQueryContext, "glXQueryContext" );
     RegalAssert(dispatchTableGlobal.glXQueryContext!=glXQueryContext);
@@ -24287,7 +24287,7 @@ REGAL_DECL int REGAL_CALL glXQueryContext(Display *dpy, GLXContext ctx, int attr
   }
   int  ret = (int )0;
   if (dispatchTableGlobal.glXQueryContext) {
-    GTrace("glXQueryContext(", dpy, ", ", ctx, ", ", attribute, ")");
+    GTrace("glXQueryContext(", dpy, ", ", ctx, ", ", GLXenumToString(attribute), ")");
     ret = dispatchTableGlobal.glXQueryContext(dpy, ctx, attribute, value);
   }
   else

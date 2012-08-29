@@ -70,6 +70,7 @@ LIB.SRCS           += src/regal/RegalLookup.cpp
 LIB.SRCS           += src/regal/RegalHelper.cpp
 LIB.SRCS           += src/regal/RegalContext.cpp
 LIB.SRCS           += src/regal/RegalContextInfo.cpp
+LIB.SRCS           += src/regal/RegalDispatchGlobal.cpp
 LIB.SRCS           += src/regal/RegalDispatcher.cpp
 LIB.SRCS           += src/regal/RegalDispatchEmu.cpp
 LIB.SRCS           += src/regal/RegalDispatchLog.cpp

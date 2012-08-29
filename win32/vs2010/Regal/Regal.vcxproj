@@ -145,6 +145,7 @@
     <ClCompile Include="..\..\..\src\regal\RegalDispatchEmu.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatcher.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchError.cpp" />
+    <ClCompile Include="..\..\..\src\regal\RegalDispatchGlobal.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchLoader.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchLog.cpp" />
     <ClCompile Include="..\..\..\src\regal\RegalDispatchMissing.cpp" />

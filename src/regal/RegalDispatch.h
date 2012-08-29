@@ -47,6 +47,9 @@ REGAL_NAMESPACE_BEGIN
 
 struct DispatchTableGlobal {
 
+  DispatchTableGlobal();
+  ~DispatchTableGlobal();
+
 #if REGAL_SYS_WGL
     // WGL_3DL_stereo_control
 

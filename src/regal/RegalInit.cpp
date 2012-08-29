@@ -42,7 +42,6 @@ using namespace std;
 #include "RegalConfig.h"
 #include "RegalHttp.h"
 #include "RegalToken.h"
-#include "RegalDispatch.h"
 #include "RegalDispatcher.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
@@ -61,12 +60,6 @@ REGAL_NAMESPACE_BEGIN
 using Token::toString;
 
 static ::REGAL_NAMESPACE_INTERNAL::Init *init = NULL;
-
-DispatchTableGlobal dispatchTableGlobal;
-
-#if REGAL_SYS_ANDROID && REGAL_STATIC_EGL
-extern void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl);
-#endif
 
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
 // Phony advapi32.dll, gdi32.dll and user32.dll dependencies for
@@ -89,10 +82,6 @@ Init::Init()
 
   if (!myRegCloseKey || !myDeleteDC || !myGetFocus)
     return;
-#endif
-
-#if REGAL_SYS_ANDROID && REGAL_STATIC_EGL
-  InitDispatchTableStaticEGL(dispatchTableGlobal);
 #endif
 
   Logging::Init();

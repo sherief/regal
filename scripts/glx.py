@@ -2272,7 +2272,7 @@ glXQueryContext = Function('glXQueryContext')
 glXQueryContext.ret = Return('int')
 glXQueryContext.add( Input( 'dpy','Display *' ))
 glXQueryContext.add( Input( 'ctx','GLXContext' ))
-glXQueryContext.add( Input( 'attribute','int' ))
+glXQueryContext.add( Input( 'attribute','int' ,regalLog = 'GLXenumToString(attribute)' ))
 glXQueryContext.add( Output( 'value','int *' ,size = 1 ))
 glXQueryContext.version = '1.3'
 glXQueryContext.category = 'GLX_VERSION_1_3'
