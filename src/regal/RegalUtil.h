@@ -174,6 +174,20 @@ are permitted provided that the following conditions are met:
 
 //
 
+#ifndef REGAL_FORCE_CORE_PROFILE
+#define REGAL_FORCE_CORE_PROFILE 0
+#endif
+
+#ifndef REGAL_FORCE_ES2_PROFILE
+#define REGAL_FORCE_ES2_PROFILE 0
+#endif
+
+#if REGAL_FORCE_CORE_PROFILE && REGAL_FORCE_ES2_PROFILE
+#error Both core and ES2 profiles can not be forced: REGAL_FORCE_CORE_PROFILE && REGAL_FORCE_ES2_PROFILE
+#endif
+
+//
+
 #ifndef REGAL_STATIC_ES2
 #define REGAL_STATIC_ES2 0
 #endif

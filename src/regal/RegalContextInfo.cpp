@@ -450,6 +450,18 @@ ContextInfo::init(const RegalContext &context)
 
   compat = !core && !gles;
 
+  #if REGAL_FORCE_CORE_PROFILE
+  compat = false;
+  core   = true;
+  gles   = false;
+  #endif
+
+  #if REGAL_FORCE_ES2_PROFILE
+  compat = false;
+  core   = false;
+  gles   = true;
+  #endif
+
   // Detect extensions
 
   string_list<string> extList;

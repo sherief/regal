@@ -44,6 +44,7 @@ namespace Config
   void Init();
 
   extern bool forceCoreProfile;
+  extern bool forceES2Profile;
 
   // Initial dispatch enable/disable state
 

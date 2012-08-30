@@ -47,7 +47,7 @@ including compatibility, core and ES 2.0 OpenGL contexts.
     Set breakpoints on OpenGL functions.
     Step into the code.
     Inspect state.
-    
+
 * Efficiency
     If it cannot be implemented efficiently in Regal, it is not universally supported.
     For example, tessellation support requires tessellation hardware.
@@ -70,7 +70,7 @@ Emulation
 ---------
 
   - Fixed function texturing, lighting and fog.
-  - Direct State Access extension 
+  - Direct State Access extension
 
     http://www.opengl.org/registry/specs/EXT/direct_state_access.txt
 
@@ -81,8 +81,8 @@ Emulation
   - Fixed function and DSA emulation enabled by default, except when compatibility context
     with DSA extension detected.
 
-  - Build-time configuration: 
-  
+  - Build-time configuration:
+
     - **REGAL_EMULATION**         -- Enable/disable the use of emulation
     - **REGAL_FORCE_EMULATION**   -- Force the use of emulation, even for compatibility contexts with DSA
 
@@ -92,7 +92,7 @@ Emulation
     - **REGAL_FORCE_EMULATION**   -- Force the use of emulation, even for compatibility contexts with DSA
 
   - Runime configuration via GL_REGAL_enable_:
-  
+
     - **GL_EMULATION_REGAL**      -- glEnable/glDisable emulation
 
 OpenGL error checking
@@ -100,8 +100,8 @@ OpenGL error checking
 
   - Disabled by default.
 
-  - Build-time configuration: **REGAL_ERROR** 
-  
+  - Build-time configuration: **REGAL_ERROR**
+
   - Environment variable configuration: **REGAL_ERROR**
 
   - Runtime configuration via GL_REGAL_enable_: **GL_ERROR_REGAL**
@@ -121,14 +121,14 @@ Logging
 
   Build-time configuration:
 
-  - **REGAL_LOG_ERROR** 
+  - **REGAL_LOG_ERROR**
   - **REGAL_LOG_WARNING**
   - **REGAL_LOG_INFO**
   - **REGAL_LOG_APP**
   - **REGAL_LOG_DRIVER**
   - **REGAL_LOG_INTERNAL**
   - **REGAL_LOG_HTTP**
-  
+
   * Debug mode: All logging supported with error, warning, info and http logging enabled.
   * Release mode: Support for application, driver and internal logging disabled by default.
 
@@ -143,7 +143,7 @@ Logging
   - **REGAL_LOG_HTTP**
   - **REGAL_LOG_API**       --- Application + Driver OpenGL logging
   - **REGAL_LOG_NONE**      --- enable or disable all logging
-  
+
   Environment variable lookup is globally disabled by defining **REGAL_NO_GETENV**
   at compile-time.
 
@@ -162,8 +162,8 @@ Multi-threading support
 
   - Enabled by default.
 
-  - Build-time configuration: **REGAL_NO_TLS** 
-  
+  - Build-time configuration: **REGAL_NO_TLS**
+
 Spoofing OpenGL vendor, renderer, version and extension strings
 ---------------------------------------------------------------
 
@@ -173,7 +173,7 @@ Spoofing OpenGL vendor, renderer, version and extension strings
   - **REGAL_GL_RENDERER**
   - **REGAL_GL_VERSION**
   - **REGAL_GL_EXTENSION**
-  
+
   Environment variable configuration:
 
   - **REGAL_GL_VENDOR**
@@ -237,12 +237,22 @@ Limitations
 .. _GL_REGAL_log:             https://github.com/p3/regal/blob/master/doc/extensions/GL_REGAL_log.txt
 .. _GL_REGAL_enable:          https://github.com/p3/regal/blob/master/doc/extensions/GL_REGAL_enable.txt
 
+Other Information
+=================
+
+* opengl.org forum thread: `Introducing Regal <http://www.opengl.org/discussion_boards/showthread.php/178678-Introducing-Regal?p=1241199>`_.
+* Slides - `Regal for Software Development <http://www.slideshare.net/nigelstewart1/regal-tlf>`_.
+
+.. raw:: html
+
+    <iframe src="http://www.slideshare.net/slideshow/embed_code/13870512" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
 License and Credits
 ===================
 
 Regal code, API database and generators are `BSD <http://opensource.org/licenses/bsd-license.php>`_ licensed.
 
-:: 
+::
 
   Copyright (c) 2011 NVIDIA Corporation
   Copyright (c) 2011-2012 Cass Everitt
@@ -250,7 +260,7 @@ Regal code, API database and generators are `BSD <http://opensource.org/licenses
   Copyright (c) 2012 Mathias Schott
   Copyright (c) 2012 Nigel Stewart
   All rights reserved.
-  
+
   Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
 
@@ -283,9 +293,9 @@ GLUT license:
 ::
 
   /* Copyright (c) Mark J. Kilgard, 1994, 1995, 1996, 1998. */
-  
+
   /* This program is freely distributable without licensing fees  and is
      provided without guarantee or warrantee expressed or  implied. This
      program is -not- in the public domain. */
-     
+
 Dreamtorus example program is `public domain <http://unlicense.org/>`_.

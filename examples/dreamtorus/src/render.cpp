@@ -46,45 +46,46 @@ struct Torus {
     float circleRadius;
     float tubeRadius;
     Torus( float c, float t ) : circleRadius( c ), tubeRadius( t ) {}
-    void Vertex( float u, float v ) {
-        float theta = u * 2.0 * M_PI;
-        float rho = v * 2.0 * M_PI;
-        float x = cos( theta ) * ( circleRadius + cos( rho ) * tubeRadius );
-        float y = sin( theta ) * ( circleRadius + cos( rho ) * tubeRadius );
-        float z = sin( rho ) * tubeRadius;
-        float nx = cos( rho ) * cos(theta);
-        float ny = cos( rho ) * sin(theta);
-        float nz = sin( rho );
+    void Vertex( float u, float v )
+    {
+        float theta = (float) (u * 2.0 * M_PI);
+        float rho   = (float) (v * 2.0 * M_PI);
+        float x     = (float) (cos( theta ) * ( circleRadius + cos( rho ) * tubeRadius ));
+        float y     = (float) (sin( theta ) * ( circleRadius + cos( rho ) * tubeRadius ));
+        float z     = (float) (sin( rho ) * tubeRadius);
+        float nx    = (float) (cos( rho ) * cos(theta));
+        float ny    = (float) (cos( rho ) * sin(theta));
+        float nz    = (float) (sin( rho ));
 
         glNormal3f( nx, ny, nz );
         glMultiTexCoord2f( texunit, u, v );
         glVertex3f( x, y, z );
     }
-
 };
 
 static void drawAnObject()
 {
+  glPushGroupMarkerEXT(0, "drawAnObject");
 
-    glPushGroupMarkerEXT(0, "drawAnObject");
-
-    Torus t( 0.7f, 0.2f );
-    int I = 30;
-    int J = 30;
-    glColor3f( 0.8, 0.8, 0.8 );
-    for(int j = 0; j < J / 2 - 1; j++) {
-        float v0 = (j+0)/(J-1.0f);
-        float v1 = (j+1)/(J-1.0f);
-        glBegin( GL_TRIANGLE_STRIP );
-    for(int i = 0; i < I; i++) {
-      float u = i/(I-1.0);
-            t.Vertex( u, v1 );
-            t.Vertex( u, v0 );
+  Torus t( 0.7f, 0.2f );
+  int I = 30;
+  int J = 30;
+  glColor3f( 0.8, 0.8, 0.8 );
+  for(int j = 0; j < J / 2 - 1; j++)
+  {
+    float v0 = (j+0.0f)/(J-1.0f);
+    float v1 = (j+1.0f)/(J-1.0f);
+    glBegin( GL_TRIANGLE_STRIP );
+    for(int i = 0; i < I; i++)
+    {
+      float u = i/(I-1.0f);
+      t.Vertex( u, v1 );
+      t.Vertex( u, v0 );
     }
-        glEnd();
-    }
+    glEnd();
+  }
 
-    glPopGroupMarkerEXT();
+  glPopGroupMarkerEXT();
 }
 
 static int width;
@@ -148,15 +149,15 @@ static void init()
     glTextureParameteriEXT( tex, GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glBindMultiTextureEXT( texunit, GL_TEXTURE_2D, tex );
 
-    GLfloat mat_specular[] = { 0.0, 0.0, 1.0, 1.0 };
-    GLfloat mat_shininess[] = { 50.0 };
-    GLfloat light_position[] = { 1.0, 1.0, 0.2, 1.0 };
-    GLfloat light_atten[] = { 1.0, 1.0, 1.0 };
-    GLfloat light_diffuse[] = { 10.0, 10.0, 10.0, 10.0 };
-    GLfloat light_specular[] = { 10.0, 10.0, 10.0, 10.0 };
-    GLfloat light_spotdir[] = { -0.1, -0.1, -1.0f };
-    GLfloat light_spotcut[] = { 30 };
-    GLfloat light_spotexp[] = { 3 };
+    GLfloat mat_specular[]   = { 0.0f, 0.0f, 1.0f, 1.0f };
+    GLfloat mat_shininess[]  = { 50.0f };
+    GLfloat light_position[] = { 1.0f, 1.0f, 0.2f, 1.0f };
+    GLfloat light_atten[]    = { 1.0f, 1.0f, 1.0f };
+    GLfloat light_diffuse[]  = { 10.0f, 10.0f, 10.0f, 10.0f };
+    GLfloat light_specular[] = { 10.0f, 10.0f, 10.0f, 10.0f };
+    GLfloat light_spotdir[]  = { -0.1f, -0.1f, -1.0f };
+    GLfloat light_spotcut[]  = { 30.0f };
+    GLfloat light_spotexp[]  = { 3.0f };
     glClearColor (0.0, 0.0, 0.0, 0.0);
     //glShadeModel (GL_SMOOTH);
 
@@ -257,7 +258,7 @@ void dreamTorusDisplay( bool clear )
         glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
         glMatrixMode( GL_MODELVIEW );
         glPushMatrix();
-        glRotatef( count, -1, 1, 0 );
+        glRotatef( (float) count, -1.0f, 1.0f, 0.0f );
         glScalef( osc, osc, osc );
         drawAnObject();
         glPopMatrix();
@@ -266,7 +267,7 @@ void dreamTorusDisplay( bool clear )
         glDisable( GL_RESCALE_NORMAL );
         glMultiTexEnviEXT( texunit, GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
         glMatrixPushEXT( GL_MODELVIEW );
-        glMatrixRotatefEXT( GL_MODELVIEW, count, -1, 1, 0 );
+        glMatrixRotatefEXT( GL_MODELVIEW, (float) count, -1.0f, 1.0f, 0.0f );
         glMatrixScalefEXT( GL_MODELVIEW, osc, osc, osc );
         drawAnObject();
         glMatrixPopEXT( GL_MODELVIEW );

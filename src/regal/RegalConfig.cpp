@@ -46,7 +46,8 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Config {
 
-bool forceCoreProfile = false;
+bool forceCoreProfile = REGAL_FORCE_CORE_PROFILE;
+bool forceES2Profile  = REGAL_FORCE_ES2_PROFILE;
 bool forceEmulation   = REGAL_FORCE_EMULATION;
 bool enableEmulation  = REGAL_EMULATION;
 bool enableDebug      = false;
@@ -67,8 +68,15 @@ void Init()
 #ifndef REGAL_NO_GETENV
   const char *tmp;
 
+#if !REGAL_FORCE_CORE_PROFILE
   tmp = GetEnv( "REGAL_FORCE_CORE_PROFILE" );
   if (tmp) forceCoreProfile = atoi(tmp)!=0;
+#endif
+
+#if !REGAL_FORCE_ES2_PROFILE
+  tmp = GetEnv( "REGAL_FORCE_ES2_PROFILE" );
+  if (tmp) forceES2Profile = atoi(tmp)!=0;
+#endif
 
 #if !REGAL_FORCE_EMULATION
   tmp = GetEnv( "REGAL_FORCE_EMULATION" );
@@ -136,10 +144,6 @@ void Init()
 #endif
 #endif
 
-#ifdef REGAL_FORCE_CORE_PROFILE
-  forceCoreProfile = (REGAL_FORCE_CORE_PROFILE) != 0;
-#endif
-
   // REGAL_NO_EMULATION is deprecated, use REGAL_EMULATION=0 instead.
 
 #if REGAL_EMULATION && defined(REGAL_NO_EMULATION) && REGAL_NO_EMULATION
@@ -147,6 +151,7 @@ void Init()
 #endif
 
   Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
+  Info("REGAL_FORCE_ES2_PROFILE  ", forceES2Profile  ? "enabled" : "disabled");
 
   Info("REGAL_FORCE_EMULATION    ", forceEmulation   ? "enabled" : "disabled");
   Info("REGAL_DEBUG              ", enableDebug      ? "enabled" : "disabled");
