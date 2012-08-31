@@ -70,7 +70,7 @@ static void drawAnObject()
   Torus t( 0.7f, 0.2f );
   int I = 30;
   int J = 30;
-  glColor3f( 0.8, 0.8, 0.8 );
+  glColor3f( 0.8f, 0.8f, 0.8f );
   for(int j = 0; j < J / 2 - 1; j++)
   {
     float v0 = (j+0.0f)/(J-1.0f);

@@ -41,7 +41,7 @@ For more information, please refer to <http://unlicense.org/>
 #include <cstdlib>
 using namespace std;
 
-LONG WINAPI
+LRESULT WINAPI
 WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
   static PAINTSTRUCT ps;
@@ -182,5 +182,5 @@ WinMain(HINSTANCE hCurrentInst, HINSTANCE hPreviousInst, LPSTR lpszCmdLine, int 
   wglDeleteContext(hRC);
   DestroyWindow(hWnd);
 
-  return msg.wParam;
+  return (int) msg.wParam;
 }
