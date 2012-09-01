@@ -58,6 +58,9 @@
 # ifndef REGAL_SYS_ANDROID
 #  define REGAL_SYS_ANDROID 1
 # endif
+# ifndef REGAL_SYS_EGL
+#  define REGAL_SYS_EGL 1
+# endif
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1

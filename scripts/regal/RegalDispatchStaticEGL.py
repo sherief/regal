@@ -95,7 +95,7 @@ def generateStaticEGLSource(apis, args):
   substitute['LOCAL_CODE']    = ''
   substitute['API_DISPATCH_FUNC_DEFINE'] = ''
   substitute['API_DISPATCH_FUNC_INIT'] = apiStaticEGLFuncInitCode( apis, args )
-  substitute['IFDEF'] = '#if REGAL_SYS_ANDROID && REGAL_DRIVER && REGAL_STATIC_EGL\n\n'
+  substitute['IFDEF'] = '#if REGAL_SYS_EGL && REGAL_DRIVER && REGAL_STATIC_EGL\n\n'
   substitute['ENDIF'] = '#endif\n'
 
   outputCode( '%s/RegalDispatchStaticEGL.cpp' % args.outdir, dispatchGlobalSourceTemplate.substitute(substitute))

@@ -52,7 +52,11 @@ def generateLookupSource(apis, args):
     if( i.name == "gl" ):
         table = "DispatchTable"
 
-    val = [ (j,"offsetof(%s,%s)/sizeof(void *)"%(table,j)) for j in names ]
+    if( i.name == "gl" ):
+      val = [ (j,"offsetof(%s,%s)/sizeof(void *)"%(table,j)) for j in names ]
+    else:
+      val = [ (j,"((char *)(&dispatchTableGlobal.%s)-(char *)(&dispatchTableGlobal))/sizeof(void *)"%(j)) for j in names ]
+    
     val = sorted( val )
     code.append( 'const size_t %s_Offset[%d] = {'       % (i.name, len(val)+1) ) # terminating NULL
     for j in val:

@@ -26792,7 +26792,7 @@ REGAL_DECL CGLError REGAL_CALL CGLUpdateContext(CGLContextObj ctx)
 }
 
 #endif /* REGAL_SYS_OSX */
-#if REGAL_SYS_ANDROID
+#if REGAL_SYS_EGL
 
 /* EGL_VERSION_1_0 */
 
@@ -27583,7 +27583,7 @@ REGAL_DECL EGLBoolean REGAL_CALL eglWaitClient(void)
   return ret;
 }
 
-#endif /* REGAL_SYS_ANDROID */
+#endif /* REGAL_SYS_EGL */
 
 #ifdef __cplusplus
 }

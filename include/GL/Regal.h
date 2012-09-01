@@ -58,6 +58,9 @@
 # ifndef REGAL_SYS_ANDROID
 #  define REGAL_SYS_ANDROID 1
 # endif
+# ifndef REGAL_SYS_EGL
+#  define REGAL_SYS_EGL 1
+# endif
 #elif !defined(_WIN32) && !defined(__APPLE__) && !defined(__native_client__)
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1
@@ -245,7 +248,7 @@ typedef void * CGSWindowID;
 typedef void * CGSSurfaceID;
 #endif // REGAL_SYS_OSX
 
-#if REGAL_SYS_ANDROID
+#if REGAL_SYS_EGL
 typedef struct ANativeWindow* EGLNativeWindowType;
 typedef struct egl_native_pixmap_t* EGLNativePixmapType;
 typedef void* EGLNativeDisplayType;
@@ -261,7 +264,7 @@ typedef void * EGLDisplay;
 typedef void * EGLSurface;
 typedef void * EGLClientBuffer;
 typedef void  (*__eglMustCastToProperFunctionPointerType)(void);
-#endif // REGAL_SYS_ANDROID
+#endif // REGAL_SYS_EGL
 
 /* TODO: make this automatic? */
 
@@ -30556,7 +30559,7 @@ REGAL_DECL CGLShareGroupObj REGAL_CALL CGLGetShareGroup(CGLContextObj ctx);
 
 #endif /* REGAL_SYS_OSX */
 
-#if REGAL_SYS_ANDROID
+#if REGAL_SYS_EGL
 #define EGL_NO_CONTEXT                  ((EGLContext)0)
 #define EGL_NO_DISPLAY                  ((EGLDisplay)0)
 #define EGL_DEFAULT_DISPLAY             ((EGLNativeDisplayType)0)
@@ -30886,7 +30889,7 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy
 REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void);
 #endif
 
-#endif /* REGAL_SYS_ANDROID */
+#endif /* REGAL_SYS_EGL */
 
 #ifdef __cplusplus
 }
