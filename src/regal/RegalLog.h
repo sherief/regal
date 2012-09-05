@@ -38,6 +38,7 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 #include <list>
 
+#include <boost/print/json.hpp>           // Note - shouldn't need this in RegalLog.h
 #include <boost/print/print_string.hpp>
 
 REGAL_GLOBAL_END
@@ -90,6 +91,10 @@ REGAL_NAMESPACE_BEGIN
 # define REGAL_LOG_MAX_LINES -1 // unlimited by default
 #endif
 
+#ifndef REGAL_LOG_JSON
+# define REGAL_LOG_JSON 1
+#endif
+
 #ifndef REGAL_LOG_CALLBACK
 # define REGAL_LOG_CALLBACK 1
 #endif
@@ -139,6 +144,7 @@ namespace Logging
 
   extern int  maxLines;
 
+  extern bool json;
   extern bool callback;
   extern bool stdOut;
 

@@ -36,11 +36,8 @@ REGAL_GLOBAL_BEGIN
 
 #include <cstdio>
 #include <cstdarg>
-using namespace std;
 
-#include <boost/print/print_string.hpp>
-using boost::print::print_string;
-using boost::print::trim;
+#include <boost/print/string_list.hpp>
 
 #include "RegalLog.h"
 #include "RegalMarker.h"
@@ -68,6 +65,15 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+using namespace ::std;
+
+using ::boost::print::trim;
+using ::boost::print::print_string;
+
+using namespace ::boost::print;
+
+typedef boost::print::string_list<string> string_list;
+
 namespace Logging {
 
   bool enableError    = true;
@@ -80,8 +86,9 @@ namespace Logging {
 
   int maxLines = (REGAL_LOG_MAX_LINES);
 
+  bool json     = false;
   bool callback = (REGAL_LOG_CALLBACK);
-  bool stdOut = (REGAL_LOG_STDOUT);
+  bool stdOut   = (REGAL_LOG_STDOUT);
 
   std::list<std::string> *buffer = NULL;
   std::size_t             bufferSize  = 0;
@@ -121,6 +128,9 @@ namespace Logging {
 
     const char *bl = GetEnv("REGAL_HTTP_LOG_LIMIT");
     if (bl) bufferLimit = atoi(bl);
+
+    const char *js = GetEnv("REGAL_LOG_JSON");
+    if (js) json = atoi(js)!=0;
 
     const char *cb = GetEnv("REGAL_LOG_CALLBACK");
     if (cb) callback = atoi(cb)!=0;
@@ -167,6 +177,18 @@ namespace Logging {
 #if REGAL_LOG_HTTP
     Info("REGAL_LOG_HTTP     ", enableHttp     ? "enabled" : "disabled");
 #endif
+
+#if REGAL_LOG_JSON
+    Info("REGAL_LOG_JSON     ", json           ? "enabled" : "disabled");
+#endif
+
+#if REGAL_LOG_CALLBACK
+    Info("REGAL_LOG_CALLBACK ", callback       ? "enabled" : "disabled");
+#endif
+
+#if REGAL_LOG_STDOUT
+    Info("REGAL_LOG_STDOUT   ", stdOut         ? "enabled" : "disabled");
+#endif
   }
 
   inline size_t indent()
@@ -196,10 +218,41 @@ namespace Logging {
     const static string trimSuffix(" ...");
 
     std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '));
-
     return print_string(trim(str,'\n',maxLines>0 ? maxLines : ~0,trimPrefix,trimSuffix), '\n');
   }
 
+  inline string jsonObject(const char *prefix, const string &str)
+  {
+
+    //
+    // http://www.altdevblogaday.com/2012/08/21/using-chrometracing-to-view-your-inline-profiling-data/
+    //
+    // object {
+    // "cat": "MY_SUBSYSTEM",  //catagory
+    // "pid": 4260,  //process ID
+    // "tid": 4776, //thread ID
+    // "ts": 2168627922668, //time-stamp of this event
+    // "ph": "B", // Begin sample
+    // "name": "doSomethingCostly", //name of this event
+    // "args": { //arguments associated with this event.
+    //}
+    //
+
+    string_list os;
+    const char *endl = "\n";
+
+    os << "object {" << endl;
+    os << json::member(json::pair("cat",prefix));
+    os << json::member(json::pair("pid",0));        // TODO - process ID
+    os << json::member(json::pair("tid",0));        // TODO - thread ID
+    os << json::member(json::pair("ts",0));         // TODO - timestamp
+    os << json::member(json::pair("ph","I"));
+    os << json::member(json::pair("name",str));
+    os << "\"args\" : { }" << endl;
+    os << "}" << endl;
+
+    return os.str();
+  }
   // Append to the log buffer
 
   inline void append(string &str)
@@ -244,6 +297,20 @@ namespace Logging {
         rCtx->logCallback(GL_LOG_INFO_REGAL, (GLsizei) m.length(), m.c_str(), reinterpret_cast<void *>(rCtx->sysCtx));
 #endif
 
+#if REGAL_SYS_WGL
+      OutputDebugStringA(m.c_str());
+#elif REGAL_SYS_ANDROID
+      // ANDROID_LOG_INFO
+      // ANDROID_LOG_WARN
+      // ANDROID_LOG_ERROR
+      __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
+#endif
+
+#if REGAL_LOG_JSON
+      if (json)
+        m = jsonObject(prefix,str);
+#endif
+
 #if REGAL_LOG_STDOUT
       if (stdOut)
       {
@@ -260,15 +327,6 @@ namespace Logging {
         fflush(stdout);
 #endif
       }
-#endif
-
-#if REGAL_SYS_WGL
-      OutputDebugStringA(m.c_str());
-#elif REGAL_SYS_ANDROID
-      // ANDROID_LOG_INFO
-      // ANDROID_LOG_WARN
-      // ANDROID_LOG_ERROR
-      __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
 #endif
 
       append(m);

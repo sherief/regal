@@ -18,10 +18,11 @@
 #pragma once
 #endif
 
-#include <cstring>
 #include <string>
 
-#include "interface.hpp"
+//#include <boost/print/core.hpp>   // <- Including this breaks THIS!
+#include <boost/print/detail.hpp>
+#include <boost/print/interface.hpp>
 
 // See: http://www.json.org/
 
@@ -109,53 +110,55 @@ inline void write(Iterator &i, const char *val)
 
 namespace boost { namespace print { namespace json {
 
+using namespace ::boost::print;
+
 // null
 
-boost::print::detail::json::pair_null                 pair(const char *str)                               { return boost::print::detail::json::pair_null(str);  }
+inline detail::json::pair_null                 pair(const char *str)                               { return detail::json::pair_null(str);  }
 
-boost::print::detail::json::pair<bool>                pair(const char *str, const bool val)               { return boost::print::detail::json::pair<bool>(str,val); }
+inline detail::json::pair<bool>                pair(const char *str, const bool val)               { return detail::json::pair<bool>(str,val); }
 
-boost::print::detail::json::pair<unsigned short    >  pair(const char *str, const unsigned short     val) { return boost::print::detail::json::pair<unsigned short>(str,val); }
-boost::print::detail::json::pair<unsigned int      >  pair(const char *str, const unsigned int       val) { return boost::print::detail::json::pair<unsigned int>(str,val); }
-boost::print::detail::json::pair<unsigned long     >  pair(const char *str, const unsigned long      val) { return boost::print::detail::json::pair<unsigned long>(str,val); }
-boost::print::detail::json::pair<unsigned long long>  pair(const char *str, const unsigned long long val) { return boost::print::detail::json::pair<unsigned long long>(str,val); }
+inline detail::json::pair<unsigned short    >  pair(const char *str, const unsigned short     val) { return detail::json::pair<unsigned short>(str,val); }
+inline detail::json::pair<unsigned int      >  pair(const char *str, const unsigned int       val) { return detail::json::pair<unsigned int>(str,val); }
+inline detail::json::pair<unsigned long     >  pair(const char *str, const unsigned long      val) { return detail::json::pair<unsigned long>(str,val); }
+inline detail::json::pair<unsigned long long>  pair(const char *str, const unsigned long long val) { return detail::json::pair<unsigned long long>(str,val); }
 
-boost::print::detail::json::pair<signed short>        pair(const char *str, const signed short       val) { return boost::print::detail::json::pair<signed short>(str,val); }
-boost::print::detail::json::pair<signed int>          pair(const char *str, const signed int         val) { return boost::print::detail::json::pair<signed int>(str,val); }
-boost::print::detail::json::pair<signed long>         pair(const char *str, const signed long        val) { return boost::print::detail::json::pair<signed long>(str,val); }
-boost::print::detail::json::pair<signed long long>    pair(const char *str, const signed long long   val) { return boost::print::detail::json::pair<signed long long>(str,val); }
+inline detail::json::pair<signed short>        pair(const char *str, const signed short       val) { return detail::json::pair<signed short>(str,val); }
+inline detail::json::pair<signed int>          pair(const char *str, const signed int         val) { return detail::json::pair<signed int>(str,val); }
+inline detail::json::pair<signed long>         pair(const char *str, const signed long        val) { return detail::json::pair<signed long>(str,val); }
+inline detail::json::pair<signed long long>    pair(const char *str, const signed long long   val) { return detail::json::pair<signed long long>(str,val); }
 
-boost::print::detail::json::pair<float>               pair(const char *str, const float  val)             { return boost::print::detail::json::pair<float>(str,val); }
-boost::print::detail::json::pair<double>              pair(const char *str, const double val)             { return boost::print::detail::json::pair<double>(str,val); }
+inline detail::json::pair<float>               pair(const char *str, const float  val)             { return detail::json::pair<float>(str,val); }
+inline detail::json::pair<double>              pair(const char *str, const double val)             { return detail::json::pair<double>(str,val); }
 
-boost::print::detail::json::pair<const char       *>  pair(const char *str, const char        *val)       { return boost::print::detail::json::pair<const char *>(str,val); }
-boost::print::detail::json::pair<std::string>         pair(const char *str, const std::string &val)       { return boost::print::detail::json::pair<std::string>(str,val); }
+inline detail::json::pair<const char       *>  pair(const char *str, const char        *val)       { return detail::json::pair<const char *>(str,val); }
+inline detail::json::pair<std::string>         pair(const char *str, const std::string &val)       { return detail::json::pair<std::string>(str,val); }
 
 // array
 
 template<typename T>
-detail::json::pair_array<T>
+inline detail::json::pair_array<T>
 pair(const char *str, const T *value, const std::size_t size)
 {
-  return boost::print::detail::json::pair_array<T>(str,value,size);
+  return detail::json::pair_array<T>(str,value,size);
 }
 
 // array
 
 #if 0
 template<typename T>
-detail::json::pair_array<T>
+inline detail::json::pair_array<T>
 iterator_pair(const char *str, const T &begin, const T &end)
 {
-  return boost::print::detail::json::pair_array<T>(str,value,size);
+  return detail::json::pair_array<T>(str,value,size);
 }
 #endif
 
 template<typename P>
-boost::print::detail::json::member<P>
+inline detail::json::member<P>
 member(const P &pair, const bool comma = true)
 {
-  return boost::print::detail::json::member<P>(pair,comma);
+  return detail::json::member<P>(pair,comma);
 }
 
 }}}
@@ -166,26 +169,21 @@ member(const P &pair, const bool comma = true)
 
 namespace boost { namespace print { namespace extend {
 
-using boost::print::detail::json::pair_null;
-using boost::print::detail::json::pair;
-using boost::print::detail::json::pair_array;
-using boost::print::detail::json::member;
-
-inline size_t length(const pair_null &val) { return length(val._string) + 3 + 4; }
+inline size_t length(const boost::print::detail::json::pair_null &val) { return boost::print::detail::json::length(val._string) + 3 + 4; }
 
 template<typename T>
-inline size_t length(const pair<T> &val) { return length(val._string) + 3 + length(val._value); }
+inline size_t length(const boost::print::detail::json::pair<T> &val) { return boost::print::detail::json::length(val._string) + 3 + length(val._value); }
 
 template<>
-inline size_t length(const pair<const char *> &val) { return length(val._string) + 3 + boost::print::detail::json::length(val._value); }
+inline size_t length(const boost::print::detail::json::pair<const char *> &val) { return boost::print::detail::json::length(val._string) + 3 + boost::print::detail::json::length(val._value); }
 
 template<>
-inline size_t length(const pair<std::string> &val) { return length(val._string) + 3 + boost::print::detail::json::length(val._value.c_str()); }
+inline size_t length(const boost::print::detail::json::pair<std::string> &val) { return boost::print::detail::json::length(val._string) + 3 + boost::print::detail::json::length(val._value.c_str()); }
 
 template<typename T>
-inline size_t length(const pair_array<T> &val)
+inline size_t length(const boost::print::detail::json::pair_array<T> &val)
 {
-  size_t len = length(val._string) + 5;
+  size_t len = boost::print::detail::json::length(val._string) + 5;
   if (val._size)
   {
     len += length(val._value[0]);
@@ -196,9 +194,9 @@ inline size_t length(const pair_array<T> &val)
 }
 
 template<>
-inline size_t length(const pair_array<const char *> &val)
+inline size_t length(const boost::print::detail::json::pair_array<const char *> &val)
 {
-  size_t len = length(val._string) + 5;
+  size_t len = boost::print::detail::json::length(val._string) + 5;
   if (val._size)
   {
     len += boost::print::detail::json::length(val._value[0]);
@@ -209,9 +207,9 @@ inline size_t length(const pair_array<const char *> &val)
 }
 
 template<>
-inline size_t length(const pair_array<std::string> &val)
+inline size_t length(const boost::print::detail::json::pair_array<std::string> &val)
 {
-  size_t len = length(val._string) + 5;
+  size_t len = boost::print::detail::json::length(val._string) + 5;
   if (val._size)
   {
     len += boost::print::detail::json::length(val._value[0].c_str());
@@ -221,44 +219,59 @@ inline size_t length(const pair_array<std::string> &val)
   return len;
 }
 
-template<typename P>
-inline size_t length(const member<P> &pair)
+inline size_t length(const ::boost::print::detail::json::member< ::boost::print::detail::json::pair_null> &val)
 {
-  return length(pair._pair) + (pair._comma ? 2 : 1);
+  return length(val._pair) + (val._comma ? 2 : 1);
+}
+
+template<typename T>
+inline size_t length(const ::boost::print::detail::json::member< ::boost::print::detail::json::pair<T> > &val)
+{
+  return length(val._pair) + (val._comma ? 2 : 1);
+}
+
+template<typename T>
+inline size_t length(const ::boost::print::detail::json::member< ::boost::print::detail::json::pair_array<T> > &val)
+{
+  return length(val._pair) + (val._comma ? 2 : 1);
 }
 
 /////////////////////
 
 template<typename Iterator>
-inline void write(Iterator &i, const pair_null &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair_null &val)
 {
-  write(i,val._string," : null");
+  boost::print::detail::json::write(i,val._string);
+  write(i," : null");
 }
 
 template<typename Iterator, typename T>
-inline void write(Iterator &i, const pair<T> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair<T> &val)
 {
-  write(i,val._string," : ",val._value);
+  boost::print::detail::json::write(i,val._string);
+  write(i," : ",val._value);
 }
 
 template<typename Iterator>
-inline void write(Iterator &i, const pair<const char *> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair<const char *> &val)
 {
-  write(i,val._string," : ");
+  boost::print::detail::json::write(i,val._string);
+  write(i," : ");
   boost::print::detail::json::write(i,val._value);
 }
 
 template<typename Iterator>
-inline void write(Iterator &i, const pair<std::string> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair<std::string> &val)
 {
-  write(i,val._string," : ");
+  boost::print::detail::json::write(i,val._string);
+  write(i," : ");
   boost::print::detail::json::write(i,val._value.c_str());
 }
 
 template<typename Iterator, typename T>
-inline void write(Iterator &i, const pair_array<T> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair_array<T> &val)
 {
-  write(i,val._string);
+  boost::print::detail::json::write(i,val._string);
   write(i," : [");
   if (val._size)
   {
@@ -273,9 +286,9 @@ inline void write(Iterator &i, const pair_array<T> &val)
 }
 
 template<typename Iterator>
-inline void write(Iterator &i, const pair_array<const char *> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair_array<const char *> &val)
 {
-  write(i,val._string);
+  boost::print::detail::json::write(i,val._string);
   write(i," : [");
   if (val._size)
   {
@@ -290,9 +303,9 @@ inline void write(Iterator &i, const pair_array<const char *> &val)
 }
 
 template<typename Iterator>
-inline void write(Iterator &i, const pair_array<std::string> &val)
+inline void write(Iterator &i, const boost::print::detail::json::pair_array<std::string> &val)
 {
-  write(i,val._string);
+  boost::print::detail::json::write(i,val._string);
   write(i," : [");
   if (val._size)
   {
@@ -307,7 +320,7 @@ inline void write(Iterator &i, const pair_array<std::string> &val)
 }
 
 template<typename Iterator, typename P>
-inline void write(Iterator &i, const member<P> &val)
+inline void write(Iterator &i, const boost::print::detail::json::member<P> &val)
 {
   write(i,val._pair);
   write(i,val._comma ? ",\n" : "\n");
