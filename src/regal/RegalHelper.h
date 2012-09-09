@@ -45,6 +45,7 @@ namespace helper {
 
   namespace size {
 
+    std::size_t get(GLenum pname);
     std::size_t callLists(GLsizei, GLenum);
     std::size_t fogv(GLenum);
     std::size_t lightv(GLenum);

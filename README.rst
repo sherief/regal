@@ -240,6 +240,7 @@ Limitations
 Other Information
 =================
 
+* #AltDevBlogADay blog: `Bringing Regal OpenGL to Native Client <http://www.altdevblogaday.com/2012/09/04/bringing-regal-opengl-to-native-client/>`_.
 * opengl.org forum thread: `Introducing Regal <http://www.opengl.org/discussion_boards/showthread.php/178678-Introducing-Regal?p=1241199>`_.
 * Slides - `Regal for Software Development <http://www.slideshare.net/nigelstewart1/regal-tlf>`_.
 

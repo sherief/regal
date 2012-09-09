@@ -32,6 +32,8 @@ def apiDebugFuncDefineCode(apis, args):
     for function in api.functions:
       if not function.needsContext:
         continue
+      if getattr(function,'regalOnly',False)==True:
+        continue
 
       name   = function.name
       params = paramsDefaultCode(function.parameters, True)

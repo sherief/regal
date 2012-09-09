@@ -27,7 +27,11 @@ def apiMissingFuncDefineCode(apis, args):
       code += '#if %s\n' % cond[api.name]
 
     for function in api.functions:
+
       if not function.needsContext:
+        continue
+
+      if getattr(function,'regalOnly',False)==True:
         continue
 
       name   = function.name

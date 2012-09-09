@@ -22,7 +22,11 @@ def apiDispatchFuncInitCode(apis, args, dispatchName):
       code += '#if %s\n' % cond[api.name]
 
     for function in api.functions:
+
       if not function.needsContext:
+        continue
+
+      if getattr(function,'regalOnly',False)==True:
         continue
 
       name   = function.name
@@ -111,6 +115,8 @@ def generateDispatchLog(apis, args):
 
     for function in api.functions:
       if not function.needsContext:
+        continue
+      if getattr(function,'regalOnly',False)==True:
         continue
 
       name   = function.name

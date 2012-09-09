@@ -10531,7 +10531,7 @@ glClearDepth.ret = Return('void')
 glClearDepth.add( Input( 'depth','GLclampd' ))
 glClearDepth.version = '1.0'
 glClearDepth.category = 'GL_VERSION_1_0'
-glClearDepth.remap = {'ES2.0': 'glClearDepthf((GLclampf)depth)'}
+glClearDepth.regalRemap = {'ES2.0': 'glClearDepthf((GLclampf)depth)'}
 glClearDepth.trace = True
 glClearDepth.play = True
 gl.add(glClearDepth)
@@ -10627,7 +10627,7 @@ glDepthRange.add( Input( 'zNear','GLclampd' ))
 glDepthRange.add( Input( 'zFar','GLclampd' ))
 glDepthRange.version = '1.0'
 glDepthRange.category = 'GL_VERSION_1_0'
-glDepthRange.remap = {'ES2.0': 'glDepthRangef((GLclampf)zNear,(GLclampf)zFar)'}
+glDepthRange.regalRemap = {'ES2.0': 'glDepthRangef((GLclampf)zNear,(GLclampf)zFar)'}
 glDepthRange.trace = True
 glDepthRange.play = True
 gl.add(glDepthRange)
@@ -37124,6 +37124,8 @@ glAlphaFuncx.add( Input( 'ref','GLclampx' ))
 glAlphaFuncx.version = ''
 glAlphaFuncx.category = 'GL_REGAL_ES1_0_compatibility'
 glAlphaFuncx.esVersions = [1.0, 1.1]
+glAlphaFuncx.regalOnly = True
+glAlphaFuncx.regalRemap = 'glAlphaFunc(func, fixedToFloat(ref))'
 glAlphaFuncx.trace = True
 glAlphaFuncx.play = True
 gl.add(glAlphaFuncx)
@@ -37137,6 +37139,8 @@ glClearColorx.add( Input( 'alpha','GLclampx' ))
 glClearColorx.version = ''
 glClearColorx.category = 'GL_REGAL_ES1_0_compatibility'
 glClearColorx.esVersions = [1.0, 1.1]
+glClearColorx.regalOnly = True
+glClearColorx.regalRemap = 'glClearColor(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha))'
 glClearColorx.trace = True
 glClearColorx.play = True
 gl.add(glClearColorx)
@@ -37147,6 +37151,8 @@ glClearDepthx.add( Input( 'depth','GLclampx' ))
 glClearDepthx.version = ''
 glClearDepthx.category = 'GL_REGAL_ES1_0_compatibility'
 glClearDepthx.esVersions = [1.0, 1.1]
+glClearDepthx.regalOnly = True
+glClearDepthx.regalRemap = 'glClearDepth(fixedToFloat(depth))'
 glClearDepthx.trace = True
 glClearDepthx.play = True
 gl.add(glClearDepthx)
@@ -37160,6 +37166,8 @@ glColor4x.add( Input( 'alpha','GLfixed' ))
 glColor4x.version = ''
 glColor4x.category = 'GL_REGAL_ES1_0_compatibility'
 glColor4x.esVersions = [1.0, 1.1]
+glColor4x.regalOnly = True
+glColor4x.regalRemap = 'glColor4f(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha))'
 glColor4x.trace = True
 glColor4x.play = True
 gl.add(glColor4x)
@@ -37171,6 +37179,8 @@ glDepthRangex.add( Input( 'zFar','GLclampx' ))
 glDepthRangex.version = ''
 glDepthRangex.category = 'GL_REGAL_ES1_0_compatibility'
 glDepthRangex.esVersions = [1.0, 1.1]
+glDepthRangex.regalOnly = True
+glDepthRangex.regalRemap = 'glDepthRange(fixedToFloat(zNear), fixedToFloat(zFar))'
 glDepthRangex.trace = True
 glDepthRangex.play = True
 gl.add(glDepthRangex)
@@ -37182,6 +37192,8 @@ glFogx.add( Input( 'param','GLfixed' ))
 glFogx.version = ''
 glFogx.category = 'GL_REGAL_ES1_0_compatibility'
 glFogx.esVersions = [1.0, 1.1]
+glFogx.regalOnly = True
+glFogx.regalRemap = 'glFogf(pname, fixedToFloat(param))'
 glFogx.trace = True
 glFogx.play = True
 gl.add(glFogx)
@@ -37193,6 +37205,8 @@ glFogxv.add( Input( 'params','const GLfixed *' ))
 glFogxv.version = ''
 glFogxv.category = 'GL_REGAL_ES1_0_compatibility'
 glFogxv.esVersions = [1.0, 1.1]
+glFogxv.regalOnly = True
+glFogxv.regalRemap = ['GLfloat tmp[4];', 'fixedToFloat(tmp,params,pname==GL_FOG_COLOR ? 4 : 1);', 'glFogfv(pname,tmp);']
 glFogxv.trace = True
 glFogxv.play = True
 gl.add(glFogxv)
@@ -37208,6 +37222,8 @@ glFrustumf.add( Input( 'zFar','GLfloat' ))
 glFrustumf.version = ''
 glFrustumf.category = 'GL_REGAL_ES1_0_compatibility'
 glFrustumf.esVersions = [1.0, 1.1]
+glFrustumf.regalOnly = True
+glFrustumf.regalRemap = 'glFrustum(left,right,bottom,top,zNear,zFar)'
 glFrustumf.trace = True
 glFrustumf.play = True
 gl.add(glFrustumf)
@@ -37223,6 +37239,8 @@ glFrustumx.add( Input( 'zFar','GLfixed' ))
 glFrustumx.version = ''
 glFrustumx.category = 'GL_REGAL_ES1_0_compatibility'
 glFrustumx.esVersions = [1.0, 1.1]
+glFrustumx.regalOnly = True
+glFrustumx.regalRemap = 'glFrustumf(fixedToFloat(left), fixedToFloat(right), fixedToFloat(bottom), fixedToFloat(top), fixedToFloat(zNear), fixedToFloat(zFar))'
 glFrustumx.trace = True
 glFrustumx.play = True
 gl.add(glFrustumx)
@@ -37234,6 +37252,8 @@ glLightModelx.add( Input( 'param','GLfixed' ))
 glLightModelx.version = ''
 glLightModelx.category = 'GL_REGAL_ES1_0_compatibility'
 glLightModelx.esVersions = [1.0, 1.1]
+glLightModelx.regalOnly = True
+glLightModelx.regalRemap = 'glLightModelf(pname, fixedToFloat(param))'
 glLightModelx.trace = True
 glLightModelx.play = True
 gl.add(glLightModelx)
@@ -37245,6 +37265,8 @@ glLightModelxv.add( Input( 'params','const GLfixed *' ))
 glLightModelxv.version = ''
 glLightModelxv.category = 'GL_REGAL_ES1_0_compatibility'
 glLightModelxv.esVersions = [1.0, 1.1]
+glLightModelxv.regalOnly = True
+glLightModelxv.regalRemap = ['GLfloat tmp[4];', 'fixedToFloat(tmp,params,pname==GL_LIGHT_MODEL_AMBIENT ? 4 : 1);', 'glLightModelfv(pname,tmp);']
 glLightModelxv.trace = True
 glLightModelxv.play = True
 gl.add(glLightModelxv)
@@ -37257,6 +37279,8 @@ glLightx.add( Input( 'param','GLfixed' ))
 glLightx.version = ''
 glLightx.category = 'GL_REGAL_ES1_0_compatibility'
 glLightx.esVersions = [1.0, 1.1]
+glLightx.regalOnly = True
+glLightx.regalRemap = 'glLightf(light, pname, fixedToFloat(param))'
 glLightx.trace = True
 glLightx.play = True
 gl.add(glLightx)
@@ -37269,6 +37293,8 @@ glLightxv.add( Input( 'params','const GLfixed *' ))
 glLightxv.version = ''
 glLightxv.category = 'GL_REGAL_ES1_0_compatibility'
 glLightxv.esVersions = [1.0, 1.1]
+glLightxv.regalOnly = True
+glLightxv.regalRemap = ['GLfloat tmp[4];', 'fixedToFloat(tmp,params,(pname==GL_AMBIENT || pname==GL_DIFFUSE || pname==GL_SPECULAR || pname==GL_POSITION) ? 4 : (pname==GL_SPOT_DIRECTION ? 3 : 1));', 'glLightfv(light,pname,tmp);']
 glLightxv.trace = True
 glLightxv.play = True
 gl.add(glLightxv)
@@ -37279,6 +37305,8 @@ glLineWidthx.add( Input( 'width','GLfixed' ))
 glLineWidthx.version = ''
 glLineWidthx.category = 'GL_REGAL_ES1_0_compatibility'
 glLineWidthx.esVersions = [1.0, 1.1]
+glLineWidthx.regalOnly = True
+glLineWidthx.regalRemap = 'glLineWidth(fixedToFloat(width))'
 glLineWidthx.trace = True
 glLineWidthx.play = True
 gl.add(glLineWidthx)
@@ -37289,6 +37317,8 @@ glLoadMatrixx.add( Input( 'm','const GLfixed *' ))
 glLoadMatrixx.version = ''
 glLoadMatrixx.category = 'GL_REGAL_ES1_0_compatibility'
 glLoadMatrixx.esVersions = [1.0, 1.1]
+glLoadMatrixx.regalOnly = True
+glLoadMatrixx.regalRemap = ['GLfloat tmp[16];', 'fixedToFloat(tmp,m,16);', 'glLoadMatrixf(tmp);']
 glLoadMatrixx.trace = True
 glLoadMatrixx.play = True
 gl.add(glLoadMatrixx)
@@ -37301,6 +37331,8 @@ glMaterialx.add( Input( 'param','GLfixed' ))
 glMaterialx.version = ''
 glMaterialx.category = 'GL_REGAL_ES1_0_compatibility'
 glMaterialx.esVersions = [1.0, 1.1]
+glMaterialx.regalOnly = True
+glMaterialx.regalRemap = 'glMaterialf(face,pname,fixedToFloat(param))'
 glMaterialx.trace = True
 glMaterialx.play = True
 gl.add(glMaterialx)
@@ -37313,6 +37345,8 @@ glMaterialxv.add( Input( 'params','const GLfixed *' ))
 glMaterialxv.version = ''
 glMaterialxv.category = 'GL_REGAL_ES1_0_compatibility'
 glMaterialxv.esVersions = [1.0, 1.1]
+glMaterialxv.regalOnly = True
+glMaterialxv.regalRemap = ['GLfloat tmp[16];', 'fixedToFloat(tmp,params,pname==GL_SHININESS ? 1 : 4);', 'glMaterialfv(face,pname,tmp);']
 glMaterialxv.trace = True
 glMaterialxv.play = True
 gl.add(glMaterialxv)
@@ -37323,6 +37357,8 @@ glMultMatrixx.add( Input( 'm','const GLfixed *' ))
 glMultMatrixx.version = ''
 glMultMatrixx.category = 'GL_REGAL_ES1_0_compatibility'
 glMultMatrixx.esVersions = [1.0, 1.1]
+glMultMatrixx.regalOnly = True
+glMultMatrixx.regalRemap = ['GLfloat tmp[16];', 'fixedToFloat(tmp,m,16);', 'glMultMatrixf(tmp);']
 glMultMatrixx.trace = True
 glMultMatrixx.play = True
 gl.add(glMultMatrixx)
@@ -37337,6 +37373,8 @@ glMultiTexCoord4x.add( Input( 'q','GLfixed' ))
 glMultiTexCoord4x.version = ''
 glMultiTexCoord4x.category = 'GL_REGAL_ES1_0_compatibility'
 glMultiTexCoord4x.esVersions = [1.0, 1.1]
+glMultiTexCoord4x.regalOnly = True
+glMultiTexCoord4x.regalRemap = 'glMultiTexCoord4f(target,fixedToFloat(s),fixedToFloat(t),fixedToFloat(r),fixedToFloat(q))'
 glMultiTexCoord4x.trace = True
 glMultiTexCoord4x.play = True
 gl.add(glMultiTexCoord4x)
@@ -37349,6 +37387,8 @@ glNormal3x.add( Input( 'nz','GLfixed' ))
 glNormal3x.version = ''
 glNormal3x.category = 'GL_REGAL_ES1_0_compatibility'
 glNormal3x.esVersions = [1.0, 1.1]
+glNormal3x.regalOnly = True
+glNormal3x.regalRemap = 'glNormal3f(fixedToFloat(nx),fixedToFloat(ny),fixedToFloat(nz))'
 glNormal3x.trace = True
 glNormal3x.play = True
 gl.add(glNormal3x)
@@ -37364,6 +37404,8 @@ glOrthof.add( Input( 'zFar','GLfloat' ))
 glOrthof.version = ''
 glOrthof.category = 'GL_REGAL_ES1_0_compatibility'
 glOrthof.esVersions = [1.0, 1.1]
+glOrthof.regalOnly = True
+glOrthof.regalRemap = 'glOrtho(left,right,bottom,top,zNear,zFar)'
 glOrthof.trace = True
 glOrthof.play = True
 gl.add(glOrthof)
@@ -37379,6 +37421,8 @@ glOrthox.add( Input( 'zFar','GLfixed' ))
 glOrthox.version = ''
 glOrthox.category = 'GL_REGAL_ES1_0_compatibility'
 glOrthox.esVersions = [1.0, 1.1]
+glOrthox.regalOnly = True
+glOrthox.regalRemap = 'glOrthof(fixedToFloat(left),fixedToFloat(right),fixedToFloat(bottom),fixedToFloat(top),fixedToFloat(zNear),fixedToFloat(zFar))'
 glOrthox.trace = True
 glOrthox.play = True
 gl.add(glOrthox)
@@ -37389,6 +37433,8 @@ glPointSizex.add( Input( 'size','GLfixed' ))
 glPointSizex.version = ''
 glPointSizex.category = 'GL_REGAL_ES1_0_compatibility'
 glPointSizex.esVersions = [1.0, 1.1]
+glPointSizex.regalOnly = True
+glPointSizex.regalRemap = 'glPointSize(fixedToFloat(size))'
 glPointSizex.trace = True
 glPointSizex.play = True
 gl.add(glPointSizex)
@@ -37400,6 +37446,8 @@ glPolygonOffsetx.add( Input( 'units','GLfixed' ))
 glPolygonOffsetx.version = ''
 glPolygonOffsetx.category = 'GL_REGAL_ES1_0_compatibility'
 glPolygonOffsetx.esVersions = [1.0, 1.1]
+glPolygonOffsetx.regalOnly = True
+glPolygonOffsetx.regalRemap = 'glPolygonOffset(fixedToFloat(factor),fixedToFloat(units))'
 glPolygonOffsetx.trace = True
 glPolygonOffsetx.play = True
 gl.add(glPolygonOffsetx)
@@ -37413,6 +37461,8 @@ glRotatex.add( Input( 'z','GLfixed' ))
 glRotatex.version = ''
 glRotatex.category = 'GL_REGAL_ES1_0_compatibility'
 glRotatex.esVersions = [1.0, 1.1]
+glRotatex.regalOnly = True
+glRotatex.regalRemap = 'glRotatef(fixedToFloat(angle),fixedToFloat(x),fixedToFloat(y),fixedToFloat(z))'
 glRotatex.trace = True
 glRotatex.play = True
 gl.add(glRotatex)
@@ -37424,6 +37474,8 @@ glSampleCoveragex.add( Input( 'invert','GLboolean' ))
 glSampleCoveragex.version = ''
 glSampleCoveragex.category = 'GL_REGAL_ES1_0_compatibility'
 glSampleCoveragex.esVersions = [1.0, 1.1]
+glSampleCoveragex.regalOnly = True
+glSampleCoveragex.regalRemap = 'glSampleCoverage(fixedToFloat(value),invert)'
 glSampleCoveragex.trace = True
 glSampleCoveragex.play = True
 gl.add(glSampleCoveragex)
@@ -37436,6 +37488,8 @@ glScalex.add( Input( 'z','GLfixed' ))
 glScalex.version = ''
 glScalex.category = 'GL_REGAL_ES1_0_compatibility'
 glScalex.esVersions = [1.0, 1.1]
+glScalex.regalOnly = True
+glScalex.regalRemap = 'glScalef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z))'
 glScalex.trace = True
 glScalex.play = True
 gl.add(glScalex)
@@ -37448,6 +37502,8 @@ glTexEnvx.add( Input( 'param','GLfixed' ))
 glTexEnvx.version = ''
 glTexEnvx.category = 'GL_REGAL_ES1_0_compatibility'
 glTexEnvx.esVersions = [1.0, 1.1]
+glTexEnvx.regalOnly = True
+glTexEnvx.regalRemap = 'glTexEnvf(target,pname,fixedToFloat(param))'
 glTexEnvx.trace = True
 glTexEnvx.play = True
 gl.add(glTexEnvx)
@@ -37460,6 +37516,8 @@ glTexEnvxv.add( Input( 'params','const GLfixed *' ))
 glTexEnvxv.version = ''
 glTexEnvxv.category = 'GL_REGAL_ES1_0_compatibility'
 glTexEnvxv.esVersions = [1.0, 1.1]
+glTexEnvxv.regalOnly = True
+glTexEnvxv.regalRemap = ['GLfloat tmp[16];', 'fixedToFloat(tmp,params,pname==GL_TEXTURE_ENV_COLOR ? 4 : 1);', 'glTexEnvfv(target,pname,tmp);']
 glTexEnvxv.trace = True
 glTexEnvxv.play = True
 gl.add(glTexEnvxv)
@@ -37472,6 +37530,8 @@ glTexParameterx.add( Input( 'param','GLfixed' ))
 glTexParameterx.version = ''
 glTexParameterx.category = 'GL_REGAL_ES1_0_compatibility'
 glTexParameterx.esVersions = [1.0, 1.1]
+glTexParameterx.regalOnly = True
+glTexParameterx.regalRemap = 'glTexParameterf(target,pname,fixedToFloat(param))'
 glTexParameterx.trace = True
 glTexParameterx.play = True
 gl.add(glTexParameterx)
@@ -37484,6 +37544,8 @@ glTranslatex.add( Input( 'z','GLfixed' ))
 glTranslatex.version = ''
 glTranslatex.category = 'GL_REGAL_ES1_0_compatibility'
 glTranslatex.esVersions = [1.0, 1.1]
+glTranslatex.regalOnly = True
+glTranslatex.regalRemap = 'glTranslatef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z))'
 glTranslatex.trace = True
 glTranslatex.play = True
 gl.add(glTranslatex)
@@ -37497,6 +37559,8 @@ glClipPlanef.add( Input( 'equation','const GLfloat *' ))
 glClipPlanef.version = ''
 glClipPlanef.category = 'GL_REGAL_ES1_1_compatibility'
 glClipPlanef.esVersions = [1.1]
+glClipPlanef.regalOnly = True
+glClipPlanef.regalRemap = ['GLdouble tmp[4];', 'floatToDouble(tmp,equation,4);', 'glClipPlane(plane,tmp);']
 glClipPlanef.trace = True
 glClipPlanef.play = True
 gl.add(glClipPlanef)
@@ -37508,6 +37572,8 @@ glClipPlanex.add( Input( 'equation','const GLfixed *' ))
 glClipPlanex.version = ''
 glClipPlanex.category = 'GL_REGAL_ES1_1_compatibility'
 glClipPlanex.esVersions = [1.1]
+glClipPlanex.regalOnly = True
+glClipPlanex.regalRemap = ['GLdouble tmp[4];', 'fixedToDouble(tmp,equation,4);', 'glClipPlane(plane,tmp);']
 glClipPlanex.trace = True
 glClipPlanex.play = True
 gl.add(glClipPlanex)
@@ -37515,10 +37581,12 @@ gl.add(glClipPlanex)
 glGetClipPlanef = Function('glGetClipPlanef')
 glGetClipPlanef.ret = Return('void')
 glGetClipPlanef.add( Input( 'pname','GLenum' ))
-glGetClipPlanef.add( Input( 'eqn','GLfloat[4]' ))
+glGetClipPlanef.add( Input( 'eqn','GLfloat *' ))
 glGetClipPlanef.version = ''
 glGetClipPlanef.category = 'GL_REGAL_ES1_1_compatibility'
 glGetClipPlanef.esVersions = [1.1]
+glGetClipPlanef.regalOnly = True
+glGetClipPlanef.regalRemap = ['GLdouble tmp[4];', 'glGetClipPlane(pname,tmp);', 'doubleToFloat(eqn,tmp,4);']
 glGetClipPlanef.trace = True
 glGetClipPlanef.play = True
 gl.add(glGetClipPlanef)
@@ -37526,10 +37594,12 @@ gl.add(glGetClipPlanef)
 glGetClipPlanex = Function('glGetClipPlanex')
 glGetClipPlanex.ret = Return('void')
 glGetClipPlanex.add( Input( 'pname','GLenum' ))
-glGetClipPlanex.add( Input( 'eqn','GLfixed[4]' ))
+glGetClipPlanex.add( Input( 'eqn','GLfixed *' ))
 glGetClipPlanex.version = ''
 glGetClipPlanex.category = 'GL_REGAL_ES1_1_compatibility'
 glGetClipPlanex.esVersions = [1.1]
+glGetClipPlanex.regalOnly = True
+glGetClipPlanex.regalRemap = ['GLdouble tmp[4];', 'glGetClipPlane(pname,tmp);', 'doubleToFixed(eqn,tmp,4);']
 glGetClipPlanex.trace = True
 glGetClipPlanex.play = True
 gl.add(glGetClipPlanex)
@@ -37541,6 +37611,8 @@ glGetFixedv.add( Input( 'params','GLfixed *' ))
 glGetFixedv.version = ''
 glGetFixedv.category = 'GL_REGAL_ES1_1_compatibility'
 glGetFixedv.esVersions = [1.1]
+glGetFixedv.regalOnly = True
+glGetFixedv.regalRemap = ['GLfloat tmp[4];', 'glGetFloatv(pname,tmp);', 'floatToFixed(params,tmp,helper::size::get(pname));']
 glGetFixedv.trace = True
 glGetFixedv.play = True
 gl.add(glGetFixedv)
@@ -37553,6 +37625,8 @@ glGetLightxv.add( Input( 'params','GLfixed *' ))
 glGetLightxv.version = ''
 glGetLightxv.category = 'GL_REGAL_ES1_1_compatibility'
 glGetLightxv.esVersions = [1.1]
+glGetLightxv.regalOnly = True
+glGetLightxv.regalRemap = ['GLfloat tmp[4];', 'glGetLightfv(light,pname,tmp);', 'floatToFixed(params,tmp,helper::size::lightv(pname));']
 glGetLightxv.trace = True
 glGetLightxv.play = True
 gl.add(glGetLightxv)
@@ -37565,6 +37639,8 @@ glGetMaterialxv.add( Input( 'params','GLfixed *' ))
 glGetMaterialxv.version = ''
 glGetMaterialxv.category = 'GL_REGAL_ES1_1_compatibility'
 glGetMaterialxv.esVersions = [1.1]
+glGetMaterialxv.regalOnly = True
+glGetMaterialxv.regalRemap = ['GLfloat tmp[4];', 'glGetMaterialfv(face,pname,tmp);', 'floatToFixed(params,tmp,helper::size::materialv(pname));']
 glGetMaterialxv.trace = True
 glGetMaterialxv.play = True
 gl.add(glGetMaterialxv)
@@ -37577,6 +37653,8 @@ glGetTexEnvxv.add( Input( 'params','GLfixed *' ))
 glGetTexEnvxv.version = ''
 glGetTexEnvxv.category = 'GL_REGAL_ES1_1_compatibility'
 glGetTexEnvxv.esVersions = [1.1]
+glGetTexEnvxv.regalOnly = True
+glGetTexEnvxv.regalRemap = ['GLfloat tmp[4];', 'glGetTexEnvfv(env,pname,tmp);', 'floatToFixed(params,tmp,helper::size::texEnvv(env,pname));']
 glGetTexEnvxv.trace = True
 glGetTexEnvxv.play = True
 gl.add(glGetTexEnvxv)
@@ -37589,6 +37667,8 @@ glGetTexParameterxv.add( Input( 'params','GLfixed *' ))
 glGetTexParameterxv.version = ''
 glGetTexParameterxv.category = 'GL_REGAL_ES1_1_compatibility'
 glGetTexParameterxv.esVersions = [1.1]
+glGetTexParameterxv.regalOnly = True
+glGetTexParameterxv.regalRemap = ['GLfloat tmp[4];', 'glGetTexParameterfv(target,pname,tmp);', 'floatToFixed(params,tmp,helper::size::texParameterv(pname));']
 glGetTexParameterxv.trace = True
 glGetTexParameterxv.play = True
 gl.add(glGetTexParameterxv)
@@ -37600,6 +37680,8 @@ glPointParameterx.add( Input( 'param','GLfixed' ))
 glPointParameterx.version = ''
 glPointParameterx.category = 'GL_REGAL_ES1_1_compatibility'
 glPointParameterx.esVersions = [1.1]
+glPointParameterx.regalOnly = True
+glPointParameterx.regalRemap = ['glPointParameterf(pname,fixedToFloat(param));']
 glPointParameterx.trace = True
 glPointParameterx.play = True
 gl.add(glPointParameterx)
@@ -37611,6 +37693,8 @@ glPointParameterxv.add( Input( 'params','const GLfixed *' ))
 glPointParameterxv.version = ''
 glPointParameterxv.category = 'GL_REGAL_ES1_1_compatibility'
 glPointParameterxv.esVersions = [1.1]
+glPointParameterxv.regalOnly = True
+glPointParameterxv.regalRemap = ['GLfloat tmp[4];', 'fixedToFloat(tmp,params,pname==GL_POINT_DISTANCE_ATTENUATION ? 3 : 1);', 'glPointParameterfv(pname,tmp);']
 glPointParameterxv.trace = True
 glPointParameterxv.play = True
 gl.add(glPointParameterxv)
@@ -37635,6 +37719,8 @@ glTexParameterxv.add( Input( 'params','const GLfixed *' ))
 glTexParameterxv.version = ''
 glTexParameterxv.category = 'GL_REGAL_ES1_1_compatibility'
 glTexParameterxv.esVersions = [1.1]
+glTexParameterxv.regalOnly = True
+glTexParameterxv.regalRemap = ['GLfloat tmp[4];', 'fixedToFloat(tmp,params,helper::size::texParameterv(pname));', 'glTexParameterfv(target,pname,tmp);']
 glTexParameterxv.trace = True
 glTexParameterxv.play = True
 gl.add(glTexParameterxv)
@@ -37646,6 +37732,7 @@ glErrorStringREGAL.ret = Return('const GLchar *')
 glErrorStringREGAL.add( Input( 'error','GLenum' ))
 glErrorStringREGAL.version = '4.1'
 glErrorStringREGAL.category = 'GL_REGAL_error_string'
+glErrorStringREGAL.regalOnly = True
 glErrorStringREGAL.trace = True
 glErrorStringREGAL.play = True
 gl.add(glErrorStringREGAL)
@@ -37657,6 +37744,7 @@ glGetExtensionREGAL.ret = Return('GLboolean')
 glGetExtensionREGAL.add( Input( 'ext','const GLchar *' ))
 glGetExtensionREGAL.version = '4.1'
 glGetExtensionREGAL.category = 'GL_REGAL_extension_query'
+glGetExtensionREGAL.regalOnly = True
 glGetExtensionREGAL.trace = True
 glGetExtensionREGAL.play = True
 gl.add(glGetExtensionREGAL)
@@ -37666,6 +37754,7 @@ glIsSupportedREGAL.ret = Return('GLboolean')
 glIsSupportedREGAL.add( Input( 'ext','const GLchar *' ))
 glIsSupportedREGAL.version = '4.1'
 glIsSupportedREGAL.category = 'GL_REGAL_extension_query'
+glIsSupportedREGAL.regalOnly = True
 glIsSupportedREGAL.trace = True
 glIsSupportedREGAL.play = True
 gl.add(glIsSupportedREGAL)

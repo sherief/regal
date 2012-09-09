@@ -42,30 +42,39 @@ def generateLookupSource(apis, args):
     for j in i.functions:
       names.append(j.name)
 
+    regalOnly = set()
+    for j in i.functions:
+      if getattr(j,'regalOnly',False)==True:
+        regalOnly.add(j.name);
+
     if i.name in cond:
       code.append( '#if %s'%cond[i.name] )
 
     code.extend(pointerLookupByNameCode([ (j,j) for j in names ],("%s_Name"%i.name,"%s_Value"%i.name),valueCast = '(void *)(%s)'))
+
+    #
+
+    code.append( 'const size_t %s_Offset[%d] = {'       % (i.name, len(names)+1) ) # terminating NULL
+
+    names.sort()
 
     # offset table
     table = "DispatchTableGlobal"
     if( i.name == "gl" ):
         table = "DispatchTable"
 
-    if( i.name == "gl" ):
-      val = [ (j,"offsetof(%s,%s)/sizeof(void *)"%(table,j)) for j in names ]
-    else:
-      val = [ (j,"((char *)(&dispatchTableGlobal.%s)-(char *)(&dispatchTableGlobal))/sizeof(void *)"%(j)) for j in names ]
+    for j in names:
+      if j in regalOnly:
+        code.append("  0,")
+      else:
+        if i.name == "gl":
+          code.append("  offsetof(%s,%s)/sizeof(void *),"%(table,j))
+        else:          
+          code.append("  ((char *)(&dispatchTableGlobal.%s)-(char *)(&dispatchTableGlobal))/sizeof(void *),"%(j))
     
-    val = sorted( val )
-    code.append( 'const size_t %s_Offset[%d] = {'       % (i.name, len(val)+1) ) # terminating NULL
-    for j in val:
-      code.append( '  ' + j[1] + ',' )
     code.append( '  0')
     code.append('};')
     code.append('')
-
-
 
     if i.name in cond:
       code.append( '#endif' )

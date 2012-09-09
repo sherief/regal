@@ -226,10 +226,20 @@ def apiFuncDefineCode(apis, args):
 
         c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
 
-        c += '  '
-        if not typeIsVoid(rType):
-          c += 'return '
-        c += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+        if getattr(function,'regalRemap',None)!=None and (isinstance(function.regalRemap, list) or isinstance(function.regalRemap, str) or isinstance(function.regalRemap, unicode)):
+          c += '  '
+          if not typeIsVoid(rType):
+            c += 'return '
+          if isinstance(function.regalRemap, list):
+            c += '\n  '.join(function.regalRemap) + '\n'
+          else:
+            c += '%s;\n'%(function.regalRemap)
+        else:
+          if getattr(function,'regalOnly',False)==False:
+            c += '  '
+            if not typeIsVoid(rType):
+              c += 'return '
+            c += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
       else:
         c += '  %s\n' % debugPrintFunction(function, 'RTrace' )
 
