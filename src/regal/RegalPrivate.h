@@ -52,6 +52,49 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+inline GLfloat  fixedToFloat (const GLfixed  v) { return v / 65536.0f;          }
+inline GLdouble fixedToDouble(const GLfixed  v) { return v / 65536.0;           }
+inline GLfixed  floatToFixed (const GLfloat  v) { return GLfixed(v * 65536.0f); }
+inline GLdouble floatToDouble(const GLfloat  v) { return GLdouble(v);           }
+inline GLfixed  doubleToFixed(const GLdouble v) { return GLfixed(v * 65536.0);  }
+inline GLfloat  doubleToFloat(const GLdouble v) { return GLfloat(v);            }
+
+inline void fixedToFloat(GLfloat *dest, const GLfixed *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = fixedToFloat(src[i]);
+}
+
+inline void fixedToDouble(GLdouble *dest, const GLfixed *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = fixedToFloat(src[i]);
+}
+
+inline void floatToFixed(GLfixed *dest, const GLfloat *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = floatToFixed(src[i]);
+}
+
+inline void floatToDouble(GLdouble *dest, const GLfloat *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = floatToDouble(src[i]);
+}
+
+inline void doubleToFixed(GLfixed *dest, const GLdouble *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = doubleToFixed(src[i]);
+}
+
+inline void doubleToFloat(GLfloat *dest, const GLdouble *src, const size_t n)
+{ 
+  for (size_t i=0; i<n; ++i)
+    dest[i] = doubleToFloat(src[i]);
+}
+
 using ::RegalErrorCallback;
 
 #define REGAL_DECL_EXPORT 1

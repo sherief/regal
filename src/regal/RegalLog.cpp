@@ -216,14 +216,12 @@ namespace Logging {
   inline string message(const char *prefix, const char *delim, const string &str)
   {
     const static string trimSuffix(" ...");
-
     std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '));
     return print_string(trim(str,'\n',maxLines>0 ? maxLines : ~0,trimPrefix,trimSuffix), '\n');
   }
 
   inline string jsonObject(const char *prefix, const string &str)
   {
-
     //
     // http://www.altdevblogaday.com/2012/08/21/using-chrometracing-to-view-your-inline-profiling-data/
     //
@@ -242,12 +240,12 @@ namespace Logging {
     const char *endl = "\n";
 
     os << "object {" << endl;
-    os << json::member(json::pair("cat",prefix));
-    os << json::member(json::pair("pid",0));        // TODO - process ID
-    os << json::member(json::pair("tid",0));        // TODO - thread ID
-    os << json::member(json::pair("ts",0));         // TODO - timestamp
-    os << json::member(json::pair("ph","I"));
-    os << json::member(json::pair("name",str));
+    os << ::boost::print::json::member(::boost::print::json::pair("cat",prefix));
+    os << ::boost::print::json::member(::boost::print::json::pair("pid",0));        // TODO - process ID
+    os << ::boost::print::json::member(::boost::print::json::pair("tid",0));        // TODO - thread ID
+    os << ::boost::print::json::member(::boost::print::json::pair("ts",0));         // TODO - timestamp
+    os << ::boost::print::json::member(::boost::print::json::pair("ph","I"));
+    os << ::boost::print::json::member(::boost::print::json::pair("name",str));
     os << "\"args\" : { }" << endl;
     os << "}" << endl;
 

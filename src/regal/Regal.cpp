@@ -19266,7 +19266,7 @@ REGAL_DECL void REGAL_CALL glAlphaFuncx(GLenum func, GLclampx ref)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glAlphaFuncx(", toString(func), ", ", ref, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glAlphaFuncx)(func, ref);
+  glAlphaFunc(func, fixedToFloat(ref));
 }
 
 REGAL_DECL void REGAL_CALL glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
@@ -19274,7 +19274,7 @@ REGAL_DECL void REGAL_CALL glClearColorx(GLclampx red, GLclampx green, GLclampx 
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glClearColorx(", red, ", ", green, ", ", blue, ", ", alpha, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glClearColorx)(red, green, blue, alpha);
+  glClearColor(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha));
 }
 
 REGAL_DECL void REGAL_CALL glClearDepthx(GLclampx depth)
@@ -19282,7 +19282,7 @@ REGAL_DECL void REGAL_CALL glClearDepthx(GLclampx depth)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glClearDepthx(", depth, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glClearDepthx)(depth);
+  glClearDepth(fixedToFloat(depth));
 }
 
 REGAL_DECL void REGAL_CALL glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
@@ -19290,7 +19290,7 @@ REGAL_DECL void REGAL_CALL glColor4x(GLfixed red, GLfixed green, GLfixed blue, G
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glColor4x(", red, ", ", green, ", ", blue, ", ", alpha, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glColor4x)(red, green, blue, alpha);
+  glColor4f(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha));
 }
 
 REGAL_DECL void REGAL_CALL glDepthRangex(GLclampx zNear, GLclampx zFar)
@@ -19298,7 +19298,7 @@ REGAL_DECL void REGAL_CALL glDepthRangex(GLclampx zNear, GLclampx zFar)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glDepthRangex(", zNear, ", ", zFar, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glDepthRangex)(zNear, zFar);
+  glDepthRange(fixedToFloat(zNear), fixedToFloat(zFar));
 }
 
 REGAL_DECL void REGAL_CALL glFogx(GLenum pname, GLfixed param)
@@ -19306,7 +19306,7 @@ REGAL_DECL void REGAL_CALL glFogx(GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glFogx(", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glFogx)(pname, param);
+  glFogf(pname, fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glFogxv(GLenum pname, const GLfixed *params)
@@ -19314,7 +19314,9 @@ REGAL_DECL void REGAL_CALL glFogxv(GLenum pname, const GLfixed *params)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glFogxv(", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glFogxv)(pname, params);
+  GLfloat tmp[4];
+  fixedToFloat(tmp,params,pname==GL_FOG_COLOR ? 4 : 1);
+  glFogfv(pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
@@ -19322,7 +19324,7 @@ REGAL_DECL void REGAL_CALL glFrustumf(GLfloat left, GLfloat right, GLfloat botto
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glFrustumf(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glFrustumf)(left, right, bottom, top, zNear, zFar);
+  glFrustum(left,right,bottom,top,zNear,zFar);
 }
 
 REGAL_DECL void REGAL_CALL glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
@@ -19330,7 +19332,7 @@ REGAL_DECL void REGAL_CALL glFrustumx(GLfixed left, GLfixed right, GLfixed botto
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glFrustumx(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glFrustumx)(left, right, bottom, top, zNear, zFar);
+  glFrustumf(fixedToFloat(left), fixedToFloat(right), fixedToFloat(bottom), fixedToFloat(top), fixedToFloat(zNear), fixedToFloat(zFar));
 }
 
 REGAL_DECL void REGAL_CALL glLightModelx(GLenum pname, GLfixed param)
@@ -19338,7 +19340,7 @@ REGAL_DECL void REGAL_CALL glLightModelx(GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLightModelx(", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLightModelx)(pname, param);
+  glLightModelf(pname, fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glLightModelxv(GLenum pname, const GLfixed *params)
@@ -19346,7 +19348,9 @@ REGAL_DECL void REGAL_CALL glLightModelxv(GLenum pname, const GLfixed *params)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLightModelxv(", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLightModelxv)(pname, params);
+  GLfloat tmp[4];
+  fixedToFloat(tmp,params,pname==GL_LIGHT_MODEL_AMBIENT ? 4 : 1);
+  glLightModelfv(pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glLightx(GLenum light, GLenum pname, GLfixed param)
@@ -19354,7 +19358,7 @@ REGAL_DECL void REGAL_CALL glLightx(GLenum light, GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLightx(", toString(light), ", ", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLightx)(light, pname, param);
+  glLightf(light, pname, fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glLightxv(GLenum light, GLenum pname, const GLfixed *params)
@@ -19362,7 +19366,9 @@ REGAL_DECL void REGAL_CALL glLightxv(GLenum light, GLenum pname, const GLfixed *
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLightxv(", toString(light), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLightxv)(light, pname, params);
+  GLfloat tmp[4];
+  fixedToFloat(tmp,params,(pname==GL_AMBIENT || pname==GL_DIFFUSE || pname==GL_SPECULAR || pname==GL_POSITION) ? 4 : (pname==GL_SPOT_DIRECTION ? 3 : 1));
+  glLightfv(light,pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glLineWidthx(GLfixed width)
@@ -19370,7 +19376,7 @@ REGAL_DECL void REGAL_CALL glLineWidthx(GLfixed width)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLineWidthx(", width, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLineWidthx)(width);
+  glLineWidth(fixedToFloat(width));
 }
 
 REGAL_DECL void REGAL_CALL glLoadMatrixx(const GLfixed *m)
@@ -19378,7 +19384,9 @@ REGAL_DECL void REGAL_CALL glLoadMatrixx(const GLfixed *m)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glLoadMatrixx(", m, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glLoadMatrixx)(m);
+  GLfloat tmp[16];
+  fixedToFloat(tmp,m,16);
+  glLoadMatrixf(tmp);
 }
 
 REGAL_DECL void REGAL_CALL glMaterialx(GLenum face, GLenum pname, GLfixed param)
@@ -19386,7 +19394,7 @@ REGAL_DECL void REGAL_CALL glMaterialx(GLenum face, GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glMaterialx(", toString(face), ", ", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glMaterialx)(face, pname, param);
+  glMaterialf(face,pname,fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
@@ -19394,7 +19402,9 @@ REGAL_DECL void REGAL_CALL glMaterialxv(GLenum face, GLenum pname, const GLfixed
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glMaterialxv(", toString(face), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glMaterialxv)(face, pname, params);
+  GLfloat tmp[16];
+  fixedToFloat(tmp,params,pname==GL_SHININESS ? 1 : 4);
+  glMaterialfv(face,pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glMultMatrixx(const GLfixed *m)
@@ -19402,7 +19412,9 @@ REGAL_DECL void REGAL_CALL glMultMatrixx(const GLfixed *m)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glMultMatrixx(", m, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glMultMatrixx)(m);
+  GLfloat tmp[16];
+  fixedToFloat(tmp,m,16);
+  glMultMatrixf(tmp);
 }
 
 REGAL_DECL void REGAL_CALL glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
@@ -19410,7 +19422,7 @@ REGAL_DECL void REGAL_CALL glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glMultiTexCoord4x(", toString(target), ", ", s, ", ", t, ", ", r, ", ", q, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glMultiTexCoord4x)(target, s, t, r, q);
+  glMultiTexCoord4f(target,fixedToFloat(s),fixedToFloat(t),fixedToFloat(r),fixedToFloat(q));
 }
 
 REGAL_DECL void REGAL_CALL glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
@@ -19418,7 +19430,7 @@ REGAL_DECL void REGAL_CALL glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glNormal3x(", nx, ", ", ny, ", ", nz, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glNormal3x)(nx, ny, nz);
+  glNormal3f(fixedToFloat(nx),fixedToFloat(ny),fixedToFloat(nz));
 }
 
 REGAL_DECL void REGAL_CALL glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
@@ -19426,7 +19438,7 @@ REGAL_DECL void REGAL_CALL glOrthof(GLfloat left, GLfloat right, GLfloat bottom,
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glOrthof(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glOrthof)(left, right, bottom, top, zNear, zFar);
+  glOrtho(left,right,bottom,top,zNear,zFar);
 }
 
 REGAL_DECL void REGAL_CALL glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
@@ -19434,7 +19446,7 @@ REGAL_DECL void REGAL_CALL glOrthox(GLfixed left, GLfixed right, GLfixed bottom,
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glOrthox(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glOrthox)(left, right, bottom, top, zNear, zFar);
+  glOrthof(fixedToFloat(left),fixedToFloat(right),fixedToFloat(bottom),fixedToFloat(top),fixedToFloat(zNear),fixedToFloat(zFar));
 }
 
 REGAL_DECL void REGAL_CALL glPointSizex(GLfixed size)
@@ -19442,7 +19454,7 @@ REGAL_DECL void REGAL_CALL glPointSizex(GLfixed size)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glPointSizex(", size, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glPointSizex)(size);
+  glPointSize(fixedToFloat(size));
 }
 
 REGAL_DECL void REGAL_CALL glPolygonOffsetx(GLfixed factor, GLfixed units)
@@ -19450,7 +19462,7 @@ REGAL_DECL void REGAL_CALL glPolygonOffsetx(GLfixed factor, GLfixed units)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glPolygonOffsetx(", factor, ", ", units, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glPolygonOffsetx)(factor, units);
+  glPolygonOffset(fixedToFloat(factor),fixedToFloat(units));
 }
 
 REGAL_DECL void REGAL_CALL glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
@@ -19458,7 +19470,7 @@ REGAL_DECL void REGAL_CALL glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixe
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glRotatex(", angle, ", ", x, ", ", y, ", ", z, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glRotatex)(angle, x, y, z);
+  glRotatef(fixedToFloat(angle),fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
 }
 
 REGAL_DECL void REGAL_CALL glSampleCoveragex(GLclampx value, GLboolean invert)
@@ -19466,7 +19478,7 @@ REGAL_DECL void REGAL_CALL glSampleCoveragex(GLclampx value, GLboolean invert)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glSampleCoveragex(", value, ", ", toString(invert), ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glSampleCoveragex)(value, invert);
+  glSampleCoverage(fixedToFloat(value),invert);
 }
 
 REGAL_DECL void REGAL_CALL glScalex(GLfixed x, GLfixed y, GLfixed z)
@@ -19474,7 +19486,7 @@ REGAL_DECL void REGAL_CALL glScalex(GLfixed x, GLfixed y, GLfixed z)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glScalex(", x, ", ", y, ", ", z, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glScalex)(x, y, z);
+  glScalef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
 }
 
 REGAL_DECL void REGAL_CALL glTexEnvx(GLenum target, GLenum pname, GLfixed param)
@@ -19482,7 +19494,7 @@ REGAL_DECL void REGAL_CALL glTexEnvx(GLenum target, GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glTexEnvx(", toString(target), ", ", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glTexEnvx)(target, pname, param);
+  glTexEnvf(target,pname,fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
@@ -19490,7 +19502,9 @@ REGAL_DECL void REGAL_CALL glTexEnvxv(GLenum target, GLenum pname, const GLfixed
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glTexEnvxv(", toString(target), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glTexEnvxv)(target, pname, params);
+  GLfloat tmp[16];
+  fixedToFloat(tmp,params,pname==GL_TEXTURE_ENV_COLOR ? 4 : 1);
+  glTexEnvfv(target,pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glTexParameterx(GLenum target, GLenum pname, GLfixed param)
@@ -19498,7 +19512,7 @@ REGAL_DECL void REGAL_CALL glTexParameterx(GLenum target, GLenum pname, GLfixed 
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glTexParameterx(", toString(target), ", ", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glTexParameterx)(target, pname, param);
+  glTexParameterf(target,pname,fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z)
@@ -19506,7 +19520,7 @@ REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glTranslatex(", x, ", ", y, ", ", z, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glTranslatex)(x, y, z);
+  glTranslatef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
 }
 
 /* GL_REGAL_ES1_1_compatibility */
@@ -19516,7 +19530,9 @@ REGAL_DECL void REGAL_CALL glClipPlanef(GLenum plane, const GLfloat *equation)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glClipPlanef(", toString(plane), ", ", equation, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glClipPlanef)(plane, equation);
+  GLdouble tmp[4];
+  floatToDouble(tmp,equation,4);
+  glClipPlane(plane,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glClipPlanex(GLenum plane, const GLfixed *equation)
@@ -19524,23 +19540,29 @@ REGAL_DECL void REGAL_CALL glClipPlanex(GLenum plane, const GLfixed *equation)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glClipPlanex(", toString(plane), ", ", equation, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glClipPlanex)(plane, equation);
+  GLdouble tmp[4];
+  fixedToDouble(tmp,equation,4);
+  glClipPlane(plane,tmp);
 }
 
-REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat eqn[4])
+REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat *eqn)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetClipPlanef(", toString(pname), ", ", eqn, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetClipPlanef)(pname, eqn);
+  GLdouble tmp[4];
+  glGetClipPlane(pname,tmp);
+  doubleToFloat(eqn,tmp,4);
 }
 
-REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed eqn[4])
+REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed *eqn)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetClipPlanex(", toString(pname), ", ", eqn, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetClipPlanex)(pname, eqn);
+  GLdouble tmp[4];
+  glGetClipPlane(pname,tmp);
+  doubleToFixed(eqn,tmp,4);
 }
 
 REGAL_DECL void REGAL_CALL glGetFixedv(GLenum pname, GLfixed *params)
@@ -19548,7 +19570,9 @@ REGAL_DECL void REGAL_CALL glGetFixedv(GLenum pname, GLfixed *params)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetFixedv(", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetFixedv)(pname, params);
+  GLfloat tmp[4];
+  glGetFloatv(pname,tmp);
+  floatToFixed(params,tmp,helper::size::get(pname));
 }
 
 REGAL_DECL void REGAL_CALL glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
@@ -19556,7 +19580,9 @@ REGAL_DECL void REGAL_CALL glGetLightxv(GLenum light, GLenum pname, GLfixed *par
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetLightxv(", toString(light), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetLightxv)(light, pname, params);
+  GLfloat tmp[4];
+  glGetLightfv(light,pname,tmp);
+  floatToFixed(params,tmp,helper::size::lightv(pname));
 }
 
 REGAL_DECL void REGAL_CALL glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
@@ -19564,7 +19590,9 @@ REGAL_DECL void REGAL_CALL glGetMaterialxv(GLenum face, GLenum pname, GLfixed *p
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetMaterialxv(", toString(face), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetMaterialxv)(face, pname, params);
+  GLfloat tmp[4];
+  glGetMaterialfv(face,pname,tmp);
+  floatToFixed(params,tmp,helper::size::materialv(pname));
 }
 
 REGAL_DECL void REGAL_CALL glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
@@ -19572,7 +19600,9 @@ REGAL_DECL void REGAL_CALL glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *para
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetTexEnvxv(", toString(env), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetTexEnvxv)(env, pname, params);
+  GLfloat tmp[4];
+  glGetTexEnvfv(env,pname,tmp);
+  floatToFixed(params,tmp,helper::size::texEnvv(env,pname));
 }
 
 REGAL_DECL void REGAL_CALL glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
@@ -19580,7 +19610,9 @@ REGAL_DECL void REGAL_CALL glGetTexParameterxv(GLenum target, GLenum pname, GLfi
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glGetTexParameterxv(", toString(target), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glGetTexParameterxv)(target, pname, params);
+  GLfloat tmp[4];
+  glGetTexParameterfv(target,pname,tmp);
+  floatToFixed(params,tmp,helper::size::texParameterv(pname));
 }
 
 REGAL_DECL void REGAL_CALL glPointParameterx(GLenum pname, GLfixed param)
@@ -19588,7 +19620,7 @@ REGAL_DECL void REGAL_CALL glPointParameterx(GLenum pname, GLfixed param)
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glPointParameterx(", toString(pname), ", ", param, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glPointParameterx)(pname, param);
+  glPointParameterf(pname,fixedToFloat(param));
 }
 
 REGAL_DECL void REGAL_CALL glPointParameterxv(GLenum pname, const GLfixed *params)
@@ -19596,7 +19628,9 @@ REGAL_DECL void REGAL_CALL glPointParameterxv(GLenum pname, const GLfixed *param
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glPointParameterxv(", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glPointParameterxv)(pname, params);
+  GLfloat tmp[4];
+  fixedToFloat(tmp,params,pname==GL_POINT_DISTANCE_ATTENUATION ? 3 : 1);
+  glPointParameterfv(pname,tmp);
 }
 
 REGAL_DECL void REGAL_CALL glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -19612,7 +19646,9 @@ REGAL_DECL void REGAL_CALL glTexParameterxv(GLenum target, GLenum pname, const G
   RegalContext *_context = GET_REGAL_CONTEXT();
   RTrace("glTexParameterxv(", toString(target), ", ", toString(pname), ", ", params, ")");
   if (!_context) return;
-  _context->dispatcher.call(&_context->dispatcher.table().glTexParameterxv)(target, pname, params);
+  GLfloat tmp[4];
+  fixedToFloat(tmp,params,helper::size::texParameterv(pname));
+  glTexParameterfv(target,pname,tmp);
 }
 
 /* GL_REGAL_error_string */
@@ -19623,10 +19659,7 @@ REGAL_DECL const GLchar *REGAL_CALL glErrorStringREGAL(GLenum error)
   RTrace("glErrorStringREGAL(", toString(error), ")");
   if (!_context) return NULL;
   RegalAssert(_context->info);
-  // Emulate GL_REGAL_error_string, if necessary.
-  if (!_context->info->gl_regal_error_string)
-    return Token::GLerrorToString(error);
-  return _context->dispatcher.call(&_context->dispatcher.table().glErrorStringREGAL)(error);
+  return Token::GLerrorToString(error);
 }
 
 /* GL_REGAL_extension_query */
@@ -19637,10 +19670,7 @@ REGAL_DECL GLboolean REGAL_CALL glGetExtensionREGAL(const GLchar *ext)
   RTrace("glGetExtensionREGAL(", boost::print::quote(ext,'"'), ")");
   if (!_context) return (GLboolean )0;
   RegalAssert(_context->info);
-  // Emulate GL_REGAL_extension_query, if necessary.
-  if (!_context->info->gl_regal_extension_query)
-    return _context->info->getExtension(ext) ? GL_TRUE : GL_FALSE;
-  return _context->dispatcher.call(&_context->dispatcher.table().glGetExtensionREGAL)(ext);
+  return _context->info->getExtension(ext) ? GL_TRUE : GL_FALSE;
 }
 
 REGAL_DECL GLboolean REGAL_CALL glIsSupportedREGAL(const GLchar *ext)
@@ -19649,10 +19679,7 @@ REGAL_DECL GLboolean REGAL_CALL glIsSupportedREGAL(const GLchar *ext)
   RTrace("glIsSupportedREGAL(", boost::print::quote(ext,'"'), ")");
   if (!_context) return (GLboolean )0;
   RegalAssert(_context->info);
-  // Emulate GL_REGAL_extension_query, if necessary.
-  if (!_context->info->gl_regal_extension_query)
-    return _context->info->isSupported(ext) ? GL_TRUE : GL_FALSE;
-  return _context->dispatcher.call(&_context->dispatcher.table().glIsSupportedREGAL)(ext);
+  return _context->info->isSupported(ext) ? GL_TRUE : GL_FALSE;
 }
 
 /* GL_REGAL_log */

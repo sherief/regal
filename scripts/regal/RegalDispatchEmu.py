@@ -69,6 +69,8 @@ def apiEmuFuncDefineCode(apis, args):
         for function in api.functions:
             if not function.needsContext:
                 continue
+            if getattr(function,'regalOnly',False)==True:
+              continue
 
             name   = function.name
             params = paramsDefaultCode(function.parameters, True)
@@ -95,7 +97,7 @@ def apiEmuFuncDefineCode(apis, args):
 
             emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emu ]
 
-            if all(i is None for i in emue) and getattr(function,'remap',None)==None:
+            if all(i is None for i in emue) and (getattr(function,'regalRemap',None)==None or isinstance(function.regalRemap, str) or isinstance(function.regalRemap, unicode)):
                 continue
 
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
@@ -130,7 +132,7 @@ def apiEmuFuncDefineCode(apis, args):
               code += '   }\n\n'
 
             # Remap, as necessary
-            remap = getattr(function, 'remap', None)
+            remap = getattr(function, 'regalRemap', None)
             es2Name = None
             if remap != None:
               es2Name = remap.get('ES2.0',None)
@@ -246,6 +248,8 @@ def apiEmuDispatchFuncInitCode(apis, args):
     for function in api.functions:
       if not function.needsContext:
         continue
+      if getattr(function,'regalOnly',False)==True:
+        continue
 
       name   = function.name
 
@@ -253,7 +257,7 @@ def apiEmuDispatchFuncInitCode(apis, args):
       for i in range( len( emu ) - 1 ) :
         emue.append( emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] ) )
 
-      if all(i is None for i in emue) and getattr(function,'remap',None)==None:
+      if all(i is None for i in emue) and (getattr(function,'regalRemap',None)==None or isinstance(function.regalRemap, str) or isinstance(function.regalRemap, unicode)):
         continue
 
       params = paramsDefaultCode(function.parameters, True)

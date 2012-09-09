@@ -28,6 +28,8 @@ def apiNaclFuncDefineCode(apis, args):
           continue
         if getattr(function,'esVersions',None)==None or 2.0 not in function.esVersions:
           continue
+        if getattr(function,'regalOnly',False)==True:
+          continue
 
         name   = function.name
         params = paramsDefaultCode(function.parameters, True)

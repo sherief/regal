@@ -33,6 +33,9 @@ def apiGlobalDispatchTableDefineCode(apis, args):
       if function.needsContext:
         continue
 
+      if getattr(function,'regalOnly',False)==True:
+        continue
+
       name   = function.name
       params = paramsDefaultCode(function.parameters, True)
       rType  = typeCode(function.ret.type)
@@ -85,6 +88,9 @@ def apiDispatchTableDefineCode(apis, args):
     for function in api.functions:
 
       if not function.needsContext:
+        continue
+
+      if getattr(function,'regalOnly',False)==True:
         continue
 
       name   = function.name

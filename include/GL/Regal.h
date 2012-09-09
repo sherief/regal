@@ -19386,8 +19386,8 @@ REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z);
 #ifndef REGAL_NO_TYPEDEF_GL_REGAL_ES1_1_COMPATIBILITY
 typedef void (REGAL_CALL *PFNGLCLIPPLANEFPROC)(GLenum plane, const GLfloat *equation);
 typedef void (REGAL_CALL *PFNGLCLIPPLANEXPROC)(GLenum plane, const GLfixed *equation);
-typedef void (REGAL_CALL *PFNGLGETCLIPPLANEFPROC)(GLenum pname, GLfloat eqn[4]);
-typedef void (REGAL_CALL *PFNGLGETCLIPPLANEXPROC)(GLenum pname, GLfixed eqn[4]);
+typedef void (REGAL_CALL *PFNGLGETCLIPPLANEFPROC)(GLenum pname, GLfloat *eqn);
+typedef void (REGAL_CALL *PFNGLGETCLIPPLANEXPROC)(GLenum pname, GLfixed *eqn);
 typedef void (REGAL_CALL *PFNGLGETFIXEDVPROC)(GLenum pname, GLfixed *params);
 typedef void (REGAL_CALL *PFNGLGETLIGHTXVPROC)(GLenum light, GLenum pname, GLfixed *params);
 typedef void (REGAL_CALL *PFNGLGETMATERIALXVPROC)(GLenum face, GLenum pname, GLfixed *params);
@@ -19418,8 +19418,8 @@ typedef void (REGAL_CALL *PFNGLTEXPARAMETERXVPROC)(GLenum target, GLenum pname, 
 #ifndef REGAL_NO_DECLARATION_GL_REGAL_ES1_1_COMPATIBILITY
 REGAL_DECL void REGAL_CALL glClipPlanef(GLenum plane, const GLfloat *equation);
 REGAL_DECL void REGAL_CALL glClipPlanex(GLenum plane, const GLfixed *equation);
-REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat eqn[4]);
-REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed eqn[4]);
+REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat *eqn);
+REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed *eqn);
 REGAL_DECL void REGAL_CALL glGetFixedv(GLenum pname, GLfixed *params);
 REGAL_DECL void REGAL_CALL glGetLightxv(GLenum light, GLenum pname, GLfixed *params);
 REGAL_DECL void REGAL_CALL glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params);

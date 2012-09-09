@@ -146,8 +146,13 @@ def writeFunctions(file,name,functions):
         print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
       if getattr(j,'regal',None) != None:
         print >>file, '%s.regal = %s'%(j.name,j.regal)
-      if getattr(j,'remap',None) != None:
-        print >>file, '%s.remap = %s'%(j.name,j.remap)
+      if getattr(j,'regalOnly',None) != None:
+        print >>file, '%s.regalOnly = %s'%(j.name,j.regalOnly)
+      if getattr(j,'regalRemap',None) != None:
+        if isinstance(j.regalRemap, str) or isinstance(j.regalRemap, unicode):
+          print >>file, '%s.regalRemap = \'%s\''%(j.name,j.regalRemap)
+        else:
+          print >>file, '%s.regalRemap = %s'%(j.name,j.regalRemap)
       if getattr(j,'trace',None) != None:
         print >>file, '%s.trace = %s'%(j.name,j.trace)
       if getattr(j,'play',None) != None:

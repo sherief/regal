@@ -45,6 +45,171 @@ REGAL_NAMESPACE_BEGIN
 namespace helper { namespace size {
 
 size_t
+get(GLenum pname)
+{
+  size_t size = 0;
+
+  switch (pname)
+  {
+    // ES 1.1
+    // http://www.khronos.org/opengles/sdk/1.1/docs/man/glGet.xml
+
+    case GL_ACTIVE_TEXTURE:                       size = 1;  break;
+    case GL_ALIASED_POINT_SIZE_RANGE:             size = 2;  break;
+    case GL_ALIASED_LINE_WIDTH_RANGE:             size = 2;  break;
+    case GL_ALPHA_BITS:                           size = 1;  break;
+    case GL_ALPHA_TEST:                           size = 1;  break;
+    case GL_ALPHA_TEST_FUNC:                      size = 1;  break;
+    case GL_ALPHA_TEST_REF:                       size = 1;  break;
+    case GL_ARRAY_BUFFER_BINDING:                 size = 1;  break;
+    case GL_BLEND:                                size = 1;  break;
+    case GL_BLEND_DST:                            size = 1;  break;
+    case GL_BLEND_SRC:                            size = 1;  break;
+    case GL_BLUE_BITS:                            size = 1;  break;
+    case GL_CLIENT_ACTIVE_TEXTURE:                size = 1;  break;
+    case GL_CLIP_PLANE0:                          size = 1;  break;
+    case GL_CLIP_PLANE1:                          size = 1;  break;
+    case GL_CLIP_PLANE2:                          size = 1;  break;
+    case GL_CLIP_PLANE3:                          size = 1;  break;
+    case GL_CLIP_PLANE4:                          size = 1;  break;
+    case GL_CLIP_PLANE5:                          size = 1;  break;
+//    case GL_CLIP_PLANE6:                          size = 1;  break;
+//    case GL_CLIP_PLANE7:                          size = 1;  break;
+    case GL_COLOR_ARRAY:                          size = 1;  break;
+    case GL_COLOR_ARRAY_BUFFER_BINDING:           size = 1;  break;
+    case GL_COLOR_ARRAY_SIZE:                     size = 1;  break;
+    case GL_COLOR_ARRAY_STRIDE:                   size = 1;  break;
+    case GL_COLOR_ARRAY_TYPE:                     size = 1;  break;
+    case GL_COLOR_CLEAR_VALUE:                    size = 4;  break;
+    case GL_COLOR_LOGIC_OP:                       size = 1;  break;
+    case GL_COLOR_MATERIAL:                       size = 1;  break;
+    case GL_COLOR_WRITEMASK:                      size = 4;  break;
+    case GL_COMPRESSED_TEXTURE_FORMATS:           size = 1;  break;
+    case GL_CULL_FACE:                            size = 1;  break;
+    case GL_CULL_FACE_MODE:                       size = 1;  break;
+    case GL_CURRENT_COLOR:                        size = 4;  break;
+    case GL_CURRENT_NORMAL:                       size = 3;  break;
+    case GL_CURRENT_TEXTURE_COORDS:               size = 4;  break;
+    case GL_DEPTH_BITS:                           size = 1;  break;
+    case GL_DEPTH_CLEAR_VALUE:                    size = 1;  break;
+    case GL_DEPTH_FUNC:                           size = 1;  break;
+    case GL_DEPTH_RANGE:                          size = 2;  break;
+    case GL_DEPTH_TEST:                           size = 1;  break;
+    case GL_DEPTH_WRITEMASK:                      size = 1;  break;
+    case GL_ELEMENT_ARRAY_BUFFER_BINDING:         size = 1;  break;
+    case GL_FOG:                                  size = 1;  break;
+    case GL_FOG_COLOR:                            size = 4;  break;
+    case GL_FOG_DENSITY:                          size = 1;  break;
+    case GL_FOG_END:                              size = 1;  break;
+    case GL_FOG_HINT:                             size = 1;  break;
+    case GL_FOG_MODE:                             size = 1;  break;
+    case GL_FOG_START:                            size = 1;  break;
+    case GL_FRONT_FACE:                           size = 1;  break;
+    case GL_GREEN_BITS:                           size = 1;  break;
+    case GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES: size = 1;  break;
+    case GL_IMPLEMENTATION_COLOR_READ_TYPE_OES:   size = 1;  break;
+    case GL_LIGHT_MODEL_AMBIENT:                  size = 4;  break;
+    case GL_LIGHT_MODEL_TWO_SIDE:                 size = 1;  break;
+    case GL_LIGHT0:                               size = 1;  break;
+    case GL_LIGHT1:                               size = 1;  break;
+    case GL_LIGHT2:                               size = 1;  break;
+    case GL_LIGHT3:                               size = 1;  break;
+    case GL_LIGHT4:                               size = 1;  break;
+    case GL_LIGHT5:                               size = 1;  break;
+    case GL_LIGHT6:                               size = 1;  break;
+    case GL_LIGHT7:                               size = 1;  break;
+//    case GL_LIGHT8:                               size = 1;  break;
+//    case GL_LIGHT9:                               size = 1;  break;
+    case GL_LIGHTING:                             size = 1;  break;
+    case GL_LINE_SMOOTH:                          size = 1;  break;
+    case GL_LINE_WIDTH:                           size = 1;  break;
+    case GL_LOGIC_OP_MODE:                        size = 1;  break;
+    case GL_MATRIX_MODE:                          size = 1;  break;
+    case GL_MAX_CLIP_PLANES:                      size = 1;  break;
+    case GL_MAX_LIGHTS:                           size = 1;  break;
+    case GL_MAX_MODELVIEW_STACK_DEPTH:            size = 1;  break;
+    case GL_MAX_PROJECTION_STACK_DEPTH:           size = 1;  break;
+    case GL_MAX_TEXTURE_SIZE:                     size = 1;  break;
+    case GL_MAX_TEXTURE_STACK_DEPTH:              size = 1;  break;
+    case GL_MAX_TEXTURE_UNITS:                    size = 1;  break;
+    case GL_MAX_VIEWPORT_DIMS:                    size = 2;  break;
+    case GL_MODELVIEW_MATRIX:                     size = 16; break;
+    case GL_MODELVIEW_STACK_DEPTH:                size = 1;  break;
+    case GL_MULTISAMPLE:                          size = 1;  break;
+    case GL_NORMAL_ARRAY:                         size = 1;  break;
+    case GL_NORMAL_ARRAY_BUFFER_BINDING:          size = 1;  break;
+    case GL_NORMAL_ARRAY_STRIDE:                  size = 1;  break;
+    case GL_NORMAL_ARRAY_TYPE:                    size = 1;  break;
+    case GL_NORMALIZE:                            size = 1;  break;
+    case GL_NUM_COMPRESSED_TEXTURE_FORMATS:       size = 1;  break;
+    case GL_PACK_ALIGNMENT:                       size = 1;  break;
+    case GL_PERSPECTIVE_CORRECTION_HINT:          size = 1;  break;
+    case GL_POINT_DISTANCE_ATTENUATION:           size = 3;  break;
+    case GL_POINT_FADE_THRESHOLD_SIZE:            size = 1;  break;
+    case GL_POINT_SIZE:                           size = 1;  break;
+//    case GL_POINT_SIZE_ARRAY_BUFFER_BINDING_OES:  size = 1;  break;
+//    case GL_POINT_SIZE_ARRAY_OES:                 size = 1;  break;
+//    case GL_POINT_SIZE_ARRAY_STRIDE_OES:          size = 1;  break;
+//    case GL_POINT_SIZE_ARRAY_TYPE_OES:            size = 1;  break;
+    case GL_POINT_SIZE_MAX:                       size = 1;  break;
+    case GL_POINT_SIZE_MIN:                       size = 1;  break;
+    case GL_POINT_SMOOTH:                         size = 1;  break;
+    case GL_POINT_SMOOTH_HINT:                    size = 1;  break;
+//    case GL_POINT_SPRITE_OES:                     size = 1;  break;
+    case GL_POLYGON_OFFSET_FACTOR:                size = 1;  break;
+    case GL_POLYGON_OFFSET_FILL:                  size = 1;  break;
+    case GL_POLYGON_OFFSET_UNITS:                 size = 1;  break;
+    case GL_PROJECTION_MATRIX:                    size = 16; break;
+    case GL_PROJECTION_STACK_DEPTH:               size = 1;  break;
+    case GL_RED_BITS:                             size = 1;  break;
+    case GL_RESCALE_NORMAL:                       size = 1;  break;
+    case GL_SAMPLE_ALPHA_TO_COVERAGE:             size = 1;  break;
+    case GL_SAMPLE_ALPHA_TO_ONE:                  size = 1;  break;
+    case GL_SAMPLE_BUFFERS:                       size = 1;  break;
+    case GL_SAMPLE_COVERAGE:                      size = 1;  break;
+    case GL_SAMPLE_COVERAGE_INVERT:               size = 1;  break;
+    case GL_SAMPLE_COVERAGE_VALUE:                size = 1;  break;
+    case GL_SAMPLES:                              size = 1;  break;
+    case GL_SCISSOR_BOX:                          size = 4;  break;
+    case GL_SCISSOR_TEST:                         size = 1;  break;
+    case GL_SHADE_MODEL:                          size = 1;  break;
+    case GL_SMOOTH_LINE_WIDTH_RANGE:              size = 2;  break;
+    case GL_SMOOTH_POINT_SIZE_RANGE:              size = 2;  break;
+    case GL_STENCIL_BITS:                         size = 1;  break;
+    case GL_STENCIL_CLEAR_VALUE:                  size = 1;  break;
+    case GL_STENCIL_FAIL:                         size = 1;  break;
+    case GL_STENCIL_FUNC:                         size = 1;  break;
+    case GL_STENCIL_PASS_DEPTH_FAIL:              size = 1;  break;
+    case GL_STENCIL_PASS_DEPTH_PASS:              size = 1;  break;
+    case GL_STENCIL_REF:                          size = 1;  break;
+    case GL_STENCIL_TEST:                         size = 1;  break;
+    case GL_STENCIL_VALUE_MASK:                   size = 1;  break;
+    case GL_STENCIL_WRITEMASK:                    size = 1;  break;
+    case GL_SUBPIXEL_BITS:                        size = 1;  break;
+    case GL_TEXTURE_2D:                           size = 1;  break;
+    case GL_TEXTURE_BINDING_2D:                   size = 1;  break;
+    case GL_TEXTURE_COORD_ARRAY:                  size = 1;  break;
+    case GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING:   size = 1;  break;
+    case GL_TEXTURE_COORD_ARRAY_SIZE:             size = 1;  break;
+    case GL_TEXTURE_COORD_ARRAY_STRIDE:           size = 1;  break;
+    case GL_TEXTURE_COORD_ARRAY_TYPE:             size = 1;  break;
+    case GL_TEXTURE_MATRIX:                       size = 16; break;
+    case GL_TEXTURE_STACK_DEPTH:                  size = 1;  break;
+    case GL_UNPACK_ALIGNMENT:                     size = 1;  break;
+    case GL_VIEWPORT:                             size = 4;  break;
+    case GL_VERTEX_ARRAY:                         size = 1;  break;
+    case GL_VERTEX_ARRAY_BUFFER_BINDING:          size = 1;  break;
+    case GL_VERTEX_ARRAY_SIZE:                    size = 1;  break;
+    case GL_VERTEX_ARRAY_STRIDE:                  size = 1;  break;
+    case GL_VERTEX_ARRAY_TYPE:                    size = 1;  break;
+
+    default: break;
+  }
+
+  return size;
+}
+
+size_t
 callLists(GLsizei n, GLenum type)
 {
   size_t size = 0;
