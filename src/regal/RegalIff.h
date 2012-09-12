@@ -1257,7 +1257,11 @@ struct RegalIff : public RegalEmu {
         }
 
         void Pop() {
-            /*RegalAssert( stack.size()>1 );*/
+            /* The stack size warning messages ought to be the responsibility
+               of the debug layer, rather than emulation.  (Opt-in only)
+               Should emulation set an error in the underflow situation here? */
+
+            /* RegalAssert( stack.size()>1 ); */
             if ( stack.size()>1 )
                 stack.pop_back();
         }

@@ -104,12 +104,12 @@ ContextInfo::ContextInfo()
 ${VERSION_INIT}
   maxVertexAttribs(0)
 {
-   Internal("ContextInfo::ContextInfo");
+   Internal("ContextInfo::ContextInfo","()");
 }
 
 ContextInfo::~ContextInfo()
 {
-   Internal("ContextInfo::~ContextInfo");
+   Internal("ContextInfo::~ContextInfo","()");
 }
 
 inline string getString(const RegalContext &context, const GLenum e)
