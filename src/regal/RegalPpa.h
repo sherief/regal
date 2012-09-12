@@ -114,7 +114,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         State::Depth::swap(depthStack.back());
         depthStack.pop_back();
 
-        ITrace("RegalPpa::PopAttrib GL_DEPTH_BUFFER_BIT ",State::Depth::toString());
+        Internal("RegalPpa::PopAttrib GL_DEPTH_BUFFER_BIT ",State::Depth::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -130,7 +130,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         State::Stencil::swap(stencilStack.back());
         stencilStack.pop_back();
 
-        ITrace("RegalPpa::PopAttrib GL_STENCIL_BUFFER_BIT ",State::Stencil::toString());
+        Internal("RegalPpa::PopAttrib GL_STENCIL_BUFFER_BIT ",State::Stencil::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -146,7 +146,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
         State::Polygon::swap(polygonStack.back());
         polygonStack.pop_back();
 
-        ITrace("RegalPpa::PopAttrib GL_POLYGON_BIT ",State::Polygon::toString());
+        Internal("RegalPpa::PopAttrib GL_POLYGON_BIT ",State::Polygon::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -165,7 +165,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 
   void Enable(GLenum cap)
   {
-    ITrace("RegalPpa::Enable ",Token::toString(cap));
+    Internal("RegalPpa::Enable ",Token::toString(cap));
     switch (cap)
     {
       case GL_DEPTH_TEST:           State::Depth::enable          = GL_TRUE; break;
@@ -182,7 +182,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 
   void Disable(GLenum cap)
   {
-    ITrace("RegalPpa::Disable ",Token::toString(cap));
+    Internal("RegalPpa::Disable ",Token::toString(cap));
     switch (cap)
     {
       case GL_DEPTH_TEST:           State::Depth::enable          = GL_FALSE; break;

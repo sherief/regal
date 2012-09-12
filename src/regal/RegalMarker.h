@@ -57,23 +57,23 @@ struct Marker {
   void Init(RegalContext *ctx)
   {
     UNUSED_PARAMETER(ctx);
-    ITrace("RegalMarker::Init()");
+    Internal("RegalMarker::Init","()");
   }
 
   void InsertEventMarker(RegalContext *ctx, GLsizei length, const char *marker)
   {
     UNUSED_PARAMETER(ctx);
-    ITrace("RegalMarker::InsertEventMarker()");
+    Internal("RegalMarker::InsertEventMarker","()");
     std::string m = toString(length,marker);
-    RTrace("/* ",m," */");
+    Info("/* ",m," */");
   }
 
   void PushGroupMarker(RegalContext *ctx, GLsizei length, const char *marker)
   {
     UNUSED_PARAMETER(ctx);
-    ITrace("RegalMarker::PushGroupMarker()");
+    Internal("RegalMarker::PushGroupMarker","()");
     std::string m = toString(length,marker);
-    RTrace("/* ",m," ... */");
+    Info("/* ",m," ... */");
     markerStack.push_back(std::string());
     markerStack.back().swap(m);
   }
@@ -81,11 +81,11 @@ struct Marker {
   void PopGroupMarker(RegalContext *ctx)
   {
     UNUSED_PARAMETER(ctx);
-    ITrace("RegalMarker::PopGroupMarkerEXT()");
+    Internal("RegalMarker::PopGroupMarkerEXT","()");
     std::string m;
     m.swap(markerStack.back());
     markerStack.pop_back();
-    RTrace("/* ... ",m," */");
+    Info("/* ... ",m," */");
   }
 
   std::size_t indent() const { return markerStack.size()*2; }

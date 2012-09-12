@@ -104,17 +104,17 @@ ContextInfo::ContextInfo()
 ${VERSION_INIT}
   maxVertexAttribs(0)
 {
-   ITrace("ContextInfo::ContextInfo");
+   Internal("ContextInfo::ContextInfo");
 }
 
 ContextInfo::~ContextInfo()
 {
-   ITrace("ContextInfo::~ContextInfo");
+   Internal("ContextInfo::~ContextInfo");
 }
 
 inline string getString(const RegalContext &context, const GLenum e)
 {
-  ITrace("getString ",toString(e));
+  Internal("getString ",toString(e));
   RegalAssert(context.dispatcher.driver.glGetString);
   const GLubyte *str = context.dispatcher.driver.glGetString(e);
   return str ? string(reinterpret_cast<const char *>(str)) : string();
@@ -439,7 +439,7 @@ def getExtensionCode(apis, args):
   code += 'bool\n'
   code += 'ContextInfo::getExtension(const char *ext) const\n'
   code += '{\n'
-  code += '  ITrace("ContextInfo::getExtension ",boost::print::quote(ext,\'"\'));\n'
+  code += '  Internal("ContextInfo::getExtension ",boost::print::quote(ext,\'"\'));\n'
   code += '\n'
 
   for api in apis:
@@ -463,7 +463,7 @@ def getExtensionCode(apis, args):
   code += 'bool\n'
   code += 'ContextInfo::isSupported(const char *ext) const\n'
   code += '{\n'
-  code += '  ITrace("ContextInfo::isSupported ",boost::print::quote(ext,\'"\'));\n'
+  code += '  Internal("ContextInfo::isSupported ",boost::print::quote(ext,\'"\'));\n'
   code += '\n'
   code += '  string_list<string> e;\n'
   code += '  e.split(ext,\' \');\n'

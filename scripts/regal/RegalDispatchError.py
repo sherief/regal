@@ -55,7 +55,7 @@ def apiErrorFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'error_', name, params)
-      code += '  ITrace("error_%s");\n' % name
+      code += '  Internal("error_%s","()");\n' % name
       code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
       if name != 'glGetError':

@@ -40,6 +40,7 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/string_list.hpp>
 
 #include "RegalLog.h"
+#include "RegalTimer.h"
 #include "RegalMarker.h"
 #include "RegalContext.h"
 #include "RegalPrivate.h"
@@ -86,13 +87,18 @@ namespace Logging {
 
   int maxLines = (REGAL_LOG_MAX_LINES);
 
-  bool json     = false;
   bool callback = (REGAL_LOG_CALLBACK);
   bool stdOut   = (REGAL_LOG_STDOUT);
+
+  bool         json         = false;
+  std::string  jsonFilename;
+  FILE        *jsonOutput   = NULL;
 
   std::list<std::string> *buffer = NULL;
   std::size_t             bufferSize  = 0;
   std::size_t             bufferLimit = 500;
+
+  Timer                   timer;
 
   void Init()
   {
@@ -132,6 +138,9 @@ namespace Logging {
     const char *js = GetEnv("REGAL_LOG_JSON");
     if (js) json = atoi(js)!=0;
 
+    const char *jf = GetEnv("REGAL_LOG_JSON_FILE");
+    if (jf) jsonFilename = jf;
+
     const char *cb = GetEnv("REGAL_LOG_CALLBACK");
     if (cb) callback = atoi(cb)!=0;
 
@@ -148,7 +157,23 @@ namespace Logging {
     if (bufferLimit)
       buffer = new list<string>();
 
-    ITrace("Logging::Init");
+    if (jsonFilename.length())
+    {
+      if (jsonFilename=="stdout")
+        jsonOutput = stdout;
+      else
+      {
+        if (jsonFilename=="stderr")
+          jsonOutput = stderr;
+        else
+          jsonOutput = fopen(jsonFilename.c_str(),"wt");
+      }
+
+      if (jsonOutput)
+        fprintf(jsonOutput,"%s","{ \"traceEvents\" : [\n");
+    }
+
+    Internal("Logging::Init","()");
 
 #if REGAL_LOG_ERROR
     Info("REGAL_LOG_ERROR    ", enableError    ? "enabled" : "disabled");
@@ -213,14 +238,34 @@ namespace Logging {
     return indent;
   }
 
-  inline string message(const char *prefix, const char *delim, const string &str)
+  void Cleanup()
+  {
+    Internal("Logging::Cleanup","()");
+
+    if (jsonFilename.length())
+    {
+      if (jsonOutput)
+      {
+        if (jsonOutput)
+          fprintf(jsonOutput,"%s","{} ] }\n");
+
+        if (jsonFilename!="stdout" && jsonFilename!="stderr")
+        {
+          fclose(jsonOutput);
+          jsonOutput = stdout;
+        }
+      }
+    }
+  }
+
+  inline string message(const char *prefix, const char *delim, const char *name, const string &str)
   {
     const static string trimSuffix(" ...");
-    std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '));
+    std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '), name ? name : "");
     return print_string(trim(str,'\n',maxLines>0 ? maxLines : ~0,trimPrefix,trimSuffix), '\n');
   }
 
-  inline string jsonObject(const char *prefix, const string &str)
+  inline string jsonObject(const char *prefix, const char *name, const string &str)
   {
     //
     // http://www.altdevblogaday.com/2012/08/21/using-chrometracing-to-view-your-inline-profiling-data/
@@ -237,18 +282,69 @@ namespace Logging {
     //
 
     string_list os;
-    const char *endl = "\n";
-
-    os << "object {" << endl;
+    os << "{\n";
     os << ::boost::print::json::member(::boost::print::json::pair("cat",prefix));
-    os << ::boost::print::json::member(::boost::print::json::pair("pid",0));        // TODO - process ID
-    os << ::boost::print::json::member(::boost::print::json::pair("tid",0));        // TODO - thread ID
-    os << ::boost::print::json::member(::boost::print::json::pair("ts",0));         // TODO - timestamp
-    os << ::boost::print::json::member(::boost::print::json::pair("ph","I"));
-    os << ::boost::print::json::member(::boost::print::json::pair("name",str));
-    os << "\"args\" : { }" << endl;
-    os << "}" << endl;
+    os << ::boost::print::json::member(::boost::print::json::pair("pid",procId()));
+    os << ::boost::print::json::member(::boost::print::json::pair("tid",threadId()%(1<<16)));
+    os << ::boost::print::json::member(::boost::print::json::pair("ts",timer.now()));
 
+    if (!name)
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","I"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name",str));
+      os << "\"args\" : {} \n";
+    }
+    else if (!strcmp(name,"glBegin"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","B"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glBegin"));
+      os << "\"args\" : { ";
+      os << ::boost::print::json::member(::boost::print::json::pair("inputs",str),false);
+      os << "}\n";
+    }
+    else if (!strcmp(name,"glEnd"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","E"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glBegin"));
+      os << "\"args\" : {} \n";
+    }
+    else if (!strcmp(name,"glPushMatrix"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","B"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glPushMatrix"));
+      os << "\"args\" : { ";
+      os << ::boost::print::json::member(::boost::print::json::pair("inputs",str),false);
+      os << "}\n";
+    }
+    else if (!strcmp(name,"glPopMatrix"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","E"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glPushMatrix"));
+      os << "\"args\" : {} \n";
+    }
+    else if (!strcmp(name,"glPushGroupMarkerEXT"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","B"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glPushGroupMarkerExt"));
+      os << "\"args\" : { ";
+      os << ::boost::print::json::member(::boost::print::json::pair("inputs",str),false);
+      os << "}\n";
+    }
+    else if (!strcmp(name,"glPopGroupMarkerEXT"))
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","E"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name","glPushGroupMarkerExt"));
+      os << "\"args\" : {} \n";
+    }
+    else
+    {
+      os << ::boost::print::json::member(::boost::print::json::pair("ph","I"));
+      os << ::boost::print::json::member(::boost::print::json::pair("name",name ? name : ""));
+      os << "\"args\" : { ";
+      os << ::boost::print::json::member(::boost::print::json::pair("inputs",str),false);
+      os << "}\n";
+    }
+    os << "},\n";
     return os.str();
   }
   // Append to the log buffer
@@ -275,11 +371,11 @@ namespace Logging {
 #define REGAL_LOG_TAG "Regal"
 #endif
 
-  void Output(const char *prefix, const char *delim, const string &str)
+  void Output(const char *prefix, const char *delim, const char *name, const string &str)
   {
     if (str.length())
     {
-      string m = message(prefix,delim,str);
+      string m = message(prefix,delim,name,str);
 
       RegalContext *rCtx = NULL;
 
@@ -305,8 +401,11 @@ namespace Logging {
 #endif
 
 #if REGAL_LOG_JSON
-      if (json)
-        m = jsonObject(prefix,str);
+      if (json && jsonOutput)
+      {
+        string m = jsonObject(prefix,name,str);
+        fwrite(m.c_str(),m.length(),1,jsonOutput);
+      }
 #endif
 
 #if REGAL_LOG_STDOUT

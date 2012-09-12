@@ -60,7 +60,7 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
 static void REGAL_CALL error_glAccum(GLenum op, GLfloat value)
 {
-  ITrace("error_glAccum");
+  Internal("error_glAccum","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -81,7 +81,7 @@ static void REGAL_CALL error_glAccum(GLenum op, GLfloat value)
 
 static void REGAL_CALL error_glAlphaFunc(GLenum func, GLclampf ref)
 {
-  ITrace("error_glAlphaFunc");
+  Internal("error_glAlphaFunc","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -102,7 +102,7 @@ static void REGAL_CALL error_glAlphaFunc(GLenum func, GLclampf ref)
 
 static void REGAL_CALL error_glBegin(GLenum mode)
 {
-  ITrace("error_glBegin");
+  Internal("error_glBegin","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -123,7 +123,7 @@ static void REGAL_CALL error_glBegin(GLenum mode)
 
 static void REGAL_CALL error_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
 {
-  ITrace("error_glBitmap");
+  Internal("error_glBitmap","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -144,7 +144,7 @@ static void REGAL_CALL error_glBitmap(GLsizei width, GLsizei height, GLfloat xor
 
 static void REGAL_CALL error_glBlendFunc(GLenum sfactor, GLenum dfactor)
 {
-  ITrace("error_glBlendFunc");
+  Internal("error_glBlendFunc","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -165,7 +165,7 @@ static void REGAL_CALL error_glBlendFunc(GLenum sfactor, GLenum dfactor)
 
 static void REGAL_CALL error_glCallList(GLuint list)
 {
-  ITrace("error_glCallList");
+  Internal("error_glCallList","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -186,7 +186,7 @@ static void REGAL_CALL error_glCallList(GLuint list)
 
 static void REGAL_CALL error_glCallLists(GLsizei n, GLenum type, const GLvoid *lists)
 {
-  ITrace("error_glCallLists");
+  Internal("error_glCallLists","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -207,7 +207,7 @@ static void REGAL_CALL error_glCallLists(GLsizei n, GLenum type, const GLvoid *l
 
 static void REGAL_CALL error_glClear(GLbitfield mask)
 {
-  ITrace("error_glClear");
+  Internal("error_glClear","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -228,7 +228,7 @@ static void REGAL_CALL error_glClear(GLbitfield mask)
 
 static void REGAL_CALL error_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-  ITrace("error_glClearAccum");
+  Internal("error_glClearAccum","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -249,7 +249,7 @@ static void REGAL_CALL error_glClearAccum(GLfloat red, GLfloat green, GLfloat bl
 
 static void REGAL_CALL error_glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  ITrace("error_glClearColor");
+  Internal("error_glClearColor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -270,7 +270,7 @@ static void REGAL_CALL error_glClearColor(GLclampf red, GLclampf green, GLclampf
 
 static void REGAL_CALL error_glClearDepth(GLclampd depth)
 {
-  ITrace("error_glClearDepth");
+  Internal("error_glClearDepth","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -291,7 +291,7 @@ static void REGAL_CALL error_glClearDepth(GLclampd depth)
 
 static void REGAL_CALL error_glClearIndex(GLfloat c)
 {
-  ITrace("error_glClearIndex");
+  Internal("error_glClearIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -312,7 +312,7 @@ static void REGAL_CALL error_glClearIndex(GLfloat c)
 
 static void REGAL_CALL error_glClearStencil(GLint s)
 {
-  ITrace("error_glClearStencil");
+  Internal("error_glClearStencil","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -333,7 +333,7 @@ static void REGAL_CALL error_glClearStencil(GLint s)
 
 static void REGAL_CALL error_glClipPlane(GLenum plane, const GLdouble *equation)
 {
-  ITrace("error_glClipPlane");
+  Internal("error_glClipPlane","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -354,7 +354,7 @@ static void REGAL_CALL error_glClipPlane(GLenum plane, const GLdouble *equation)
 
 static void REGAL_CALL error_glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
-  ITrace("error_glColor3b");
+  Internal("error_glColor3b","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -375,7 +375,7 @@ static void REGAL_CALL error_glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 
 static void REGAL_CALL error_glColor3bv(const GLbyte *v)
 {
-  ITrace("error_glColor3bv");
+  Internal("error_glColor3bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -396,7 +396,7 @@ static void REGAL_CALL error_glColor3bv(const GLbyte *v)
 
 static void REGAL_CALL error_glColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
-  ITrace("error_glColor3d");
+  Internal("error_glColor3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -417,7 +417,7 @@ static void REGAL_CALL error_glColor3d(GLdouble red, GLdouble green, GLdouble bl
 
 static void REGAL_CALL error_glColor3dv(const GLdouble *v)
 {
-  ITrace("error_glColor3dv");
+  Internal("error_glColor3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -438,7 +438,7 @@ static void REGAL_CALL error_glColor3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
-  ITrace("error_glColor3f");
+  Internal("error_glColor3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -459,7 +459,7 @@ static void REGAL_CALL error_glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 
 static void REGAL_CALL error_glColor3fv(const GLfloat *v)
 {
-  ITrace("error_glColor3fv");
+  Internal("error_glColor3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -480,7 +480,7 @@ static void REGAL_CALL error_glColor3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glColor3i(GLint red, GLint green, GLint blue)
 {
-  ITrace("error_glColor3i");
+  Internal("error_glColor3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -501,7 +501,7 @@ static void REGAL_CALL error_glColor3i(GLint red, GLint green, GLint blue)
 
 static void REGAL_CALL error_glColor3iv(const GLint *v)
 {
-  ITrace("error_glColor3iv");
+  Internal("error_glColor3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -522,7 +522,7 @@ static void REGAL_CALL error_glColor3iv(const GLint *v)
 
 static void REGAL_CALL error_glColor3s(GLshort red, GLshort green, GLshort blue)
 {
-  ITrace("error_glColor3s");
+  Internal("error_glColor3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -543,7 +543,7 @@ static void REGAL_CALL error_glColor3s(GLshort red, GLshort green, GLshort blue)
 
 static void REGAL_CALL error_glColor3sv(const GLshort *v)
 {
-  ITrace("error_glColor3sv");
+  Internal("error_glColor3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -564,7 +564,7 @@ static void REGAL_CALL error_glColor3sv(const GLshort *v)
 
 static void REGAL_CALL error_glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
-  ITrace("error_glColor3ub");
+  Internal("error_glColor3ub","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -585,7 +585,7 @@ static void REGAL_CALL error_glColor3ub(GLubyte red, GLubyte green, GLubyte blue
 
 static void REGAL_CALL error_glColor3ubv(const GLubyte *v)
 {
-  ITrace("error_glColor3ubv");
+  Internal("error_glColor3ubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -606,7 +606,7 @@ static void REGAL_CALL error_glColor3ubv(const GLubyte *v)
 
 static void REGAL_CALL error_glColor3ui(GLuint red, GLuint green, GLuint blue)
 {
-  ITrace("error_glColor3ui");
+  Internal("error_glColor3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -627,7 +627,7 @@ static void REGAL_CALL error_glColor3ui(GLuint red, GLuint green, GLuint blue)
 
 static void REGAL_CALL error_glColor3uiv(const GLuint *v)
 {
-  ITrace("error_glColor3uiv");
+  Internal("error_glColor3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -648,7 +648,7 @@ static void REGAL_CALL error_glColor3uiv(const GLuint *v)
 
 static void REGAL_CALL error_glColor3us(GLushort red, GLushort green, GLushort blue)
 {
-  ITrace("error_glColor3us");
+  Internal("error_glColor3us","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -669,7 +669,7 @@ static void REGAL_CALL error_glColor3us(GLushort red, GLushort green, GLushort b
 
 static void REGAL_CALL error_glColor3usv(const GLushort *v)
 {
-  ITrace("error_glColor3usv");
+  Internal("error_glColor3usv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -690,7 +690,7 @@ static void REGAL_CALL error_glColor3usv(const GLushort *v)
 
 static void REGAL_CALL error_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
-  ITrace("error_glColor4b");
+  Internal("error_glColor4b","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -711,7 +711,7 @@ static void REGAL_CALL error_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GL
 
 static void REGAL_CALL error_glColor4bv(const GLbyte *v)
 {
-  ITrace("error_glColor4bv");
+  Internal("error_glColor4bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -732,7 +732,7 @@ static void REGAL_CALL error_glColor4bv(const GLbyte *v)
 
 static void REGAL_CALL error_glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
-  ITrace("error_glColor4d");
+  Internal("error_glColor4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -753,7 +753,7 @@ static void REGAL_CALL error_glColor4d(GLdouble red, GLdouble green, GLdouble bl
 
 static void REGAL_CALL error_glColor4dv(const GLdouble *v)
 {
-  ITrace("error_glColor4dv");
+  Internal("error_glColor4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -774,7 +774,7 @@ static void REGAL_CALL error_glColor4dv(const GLdouble *v)
 
 static void REGAL_CALL error_glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-  ITrace("error_glColor4f");
+  Internal("error_glColor4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -795,7 +795,7 @@ static void REGAL_CALL error_glColor4f(GLfloat red, GLfloat green, GLfloat blue,
 
 static void REGAL_CALL error_glColor4fv(const GLfloat *v)
 {
-  ITrace("error_glColor4fv");
+  Internal("error_glColor4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -816,7 +816,7 @@ static void REGAL_CALL error_glColor4fv(const GLfloat *v)
 
 static void REGAL_CALL error_glColor4i(GLint red, GLint green, GLint blue, GLint alpha)
 {
-  ITrace("error_glColor4i");
+  Internal("error_glColor4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -837,7 +837,7 @@ static void REGAL_CALL error_glColor4i(GLint red, GLint green, GLint blue, GLint
 
 static void REGAL_CALL error_glColor4iv(const GLint *v)
 {
-  ITrace("error_glColor4iv");
+  Internal("error_glColor4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -858,7 +858,7 @@ static void REGAL_CALL error_glColor4iv(const GLint *v)
 
 static void REGAL_CALL error_glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
-  ITrace("error_glColor4s");
+  Internal("error_glColor4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -879,7 +879,7 @@ static void REGAL_CALL error_glColor4s(GLshort red, GLshort green, GLshort blue,
 
 static void REGAL_CALL error_glColor4sv(const GLshort *v)
 {
-  ITrace("error_glColor4sv");
+  Internal("error_glColor4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -900,7 +900,7 @@ static void REGAL_CALL error_glColor4sv(const GLshort *v)
 
 static void REGAL_CALL error_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
-  ITrace("error_glColor4ub");
+  Internal("error_glColor4ub","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -921,7 +921,7 @@ static void REGAL_CALL error_glColor4ub(GLubyte red, GLubyte green, GLubyte blue
 
 static void REGAL_CALL error_glColor4ubv(const GLubyte *v)
 {
-  ITrace("error_glColor4ubv");
+  Internal("error_glColor4ubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -942,7 +942,7 @@ static void REGAL_CALL error_glColor4ubv(const GLubyte *v)
 
 static void REGAL_CALL error_glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
-  ITrace("error_glColor4ui");
+  Internal("error_glColor4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -963,7 +963,7 @@ static void REGAL_CALL error_glColor4ui(GLuint red, GLuint green, GLuint blue, G
 
 static void REGAL_CALL error_glColor4uiv(const GLuint *v)
 {
-  ITrace("error_glColor4uiv");
+  Internal("error_glColor4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -984,7 +984,7 @@ static void REGAL_CALL error_glColor4uiv(const GLuint *v)
 
 static void REGAL_CALL error_glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
-  ITrace("error_glColor4us");
+  Internal("error_glColor4us","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1005,7 +1005,7 @@ static void REGAL_CALL error_glColor4us(GLushort red, GLushort green, GLushort b
 
 static void REGAL_CALL error_glColor4usv(const GLushort *v)
 {
-  ITrace("error_glColor4usv");
+  Internal("error_glColor4usv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1026,7 +1026,7 @@ static void REGAL_CALL error_glColor4usv(const GLushort *v)
 
 static void REGAL_CALL error_glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
-  ITrace("error_glColorMask");
+  Internal("error_glColorMask","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1047,7 +1047,7 @@ static void REGAL_CALL error_glColorMask(GLboolean red, GLboolean green, GLboole
 
 static void REGAL_CALL error_glColorMaterial(GLenum face, GLenum mode)
 {
-  ITrace("error_glColorMaterial");
+  Internal("error_glColorMaterial","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1068,7 +1068,7 @@ static void REGAL_CALL error_glColorMaterial(GLenum face, GLenum mode)
 
 static void REGAL_CALL error_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
-  ITrace("error_glCopyPixels");
+  Internal("error_glCopyPixels","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1089,7 +1089,7 @@ static void REGAL_CALL error_glCopyPixels(GLint x, GLint y, GLsizei width, GLsiz
 
 static void REGAL_CALL error_glCullFace(GLenum mode)
 {
-  ITrace("error_glCullFace");
+  Internal("error_glCullFace","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1110,7 +1110,7 @@ static void REGAL_CALL error_glCullFace(GLenum mode)
 
 static void REGAL_CALL error_glDeleteLists(GLuint list, GLsizei range)
 {
-  ITrace("error_glDeleteLists");
+  Internal("error_glDeleteLists","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1131,7 +1131,7 @@ static void REGAL_CALL error_glDeleteLists(GLuint list, GLsizei range)
 
 static void REGAL_CALL error_glDepthFunc(GLenum func)
 {
-  ITrace("error_glDepthFunc");
+  Internal("error_glDepthFunc","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1152,7 +1152,7 @@ static void REGAL_CALL error_glDepthFunc(GLenum func)
 
 static void REGAL_CALL error_glDepthMask(GLboolean flag)
 {
-  ITrace("error_glDepthMask");
+  Internal("error_glDepthMask","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1173,7 +1173,7 @@ static void REGAL_CALL error_glDepthMask(GLboolean flag)
 
 static void REGAL_CALL error_glDepthRange(GLclampd zNear, GLclampd zFar)
 {
-  ITrace("error_glDepthRange");
+  Internal("error_glDepthRange","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1194,7 +1194,7 @@ static void REGAL_CALL error_glDepthRange(GLclampd zNear, GLclampd zFar)
 
 static void REGAL_CALL error_glDisable(GLenum cap)
 {
-  ITrace("error_glDisable");
+  Internal("error_glDisable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1215,7 +1215,7 @@ static void REGAL_CALL error_glDisable(GLenum cap)
 
 static void REGAL_CALL error_glDrawBuffer(GLenum mode)
 {
-  ITrace("error_glDrawBuffer");
+  Internal("error_glDrawBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1236,7 +1236,7 @@ static void REGAL_CALL error_glDrawBuffer(GLenum mode)
 
 static void REGAL_CALL error_glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glDrawPixels");
+  Internal("error_glDrawPixels","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1257,7 +1257,7 @@ static void REGAL_CALL error_glDrawPixels(GLsizei width, GLsizei height, GLenum 
 
 static void REGAL_CALL error_glEdgeFlag(GLboolean flag)
 {
-  ITrace("error_glEdgeFlag");
+  Internal("error_glEdgeFlag","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1278,7 +1278,7 @@ static void REGAL_CALL error_glEdgeFlag(GLboolean flag)
 
 static void REGAL_CALL error_glEdgeFlagv(const GLboolean *flag)
 {
-  ITrace("error_glEdgeFlagv");
+  Internal("error_glEdgeFlagv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1299,7 +1299,7 @@ static void REGAL_CALL error_glEdgeFlagv(const GLboolean *flag)
 
 static void REGAL_CALL error_glEnable(GLenum cap)
 {
-  ITrace("error_glEnable");
+  Internal("error_glEnable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1320,7 +1320,7 @@ static void REGAL_CALL error_glEnable(GLenum cap)
 
 static void REGAL_CALL error_glEnd(void)
 {
-  ITrace("error_glEnd");
+  Internal("error_glEnd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1341,7 +1341,7 @@ static void REGAL_CALL error_glEnd(void)
 
 static void REGAL_CALL error_glEndList(void)
 {
-  ITrace("error_glEndList");
+  Internal("error_glEndList","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1362,7 +1362,7 @@ static void REGAL_CALL error_glEndList(void)
 
 static void REGAL_CALL error_glEvalCoord1d(GLdouble u)
 {
-  ITrace("error_glEvalCoord1d");
+  Internal("error_glEvalCoord1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1383,7 +1383,7 @@ static void REGAL_CALL error_glEvalCoord1d(GLdouble u)
 
 static void REGAL_CALL error_glEvalCoord1dv(const GLdouble *u)
 {
-  ITrace("error_glEvalCoord1dv");
+  Internal("error_glEvalCoord1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1404,7 +1404,7 @@ static void REGAL_CALL error_glEvalCoord1dv(const GLdouble *u)
 
 static void REGAL_CALL error_glEvalCoord1f(GLfloat u)
 {
-  ITrace("error_glEvalCoord1f");
+  Internal("error_glEvalCoord1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1425,7 +1425,7 @@ static void REGAL_CALL error_glEvalCoord1f(GLfloat u)
 
 static void REGAL_CALL error_glEvalCoord1fv(const GLfloat *u)
 {
-  ITrace("error_glEvalCoord1fv");
+  Internal("error_glEvalCoord1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1446,7 +1446,7 @@ static void REGAL_CALL error_glEvalCoord1fv(const GLfloat *u)
 
 static void REGAL_CALL error_glEvalCoord2d(GLdouble u, GLdouble v)
 {
-  ITrace("error_glEvalCoord2d");
+  Internal("error_glEvalCoord2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1467,7 +1467,7 @@ static void REGAL_CALL error_glEvalCoord2d(GLdouble u, GLdouble v)
 
 static void REGAL_CALL error_glEvalCoord2dv(const GLdouble *u)
 {
-  ITrace("error_glEvalCoord2dv");
+  Internal("error_glEvalCoord2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1488,7 +1488,7 @@ static void REGAL_CALL error_glEvalCoord2dv(const GLdouble *u)
 
 static void REGAL_CALL error_glEvalCoord2f(GLfloat u, GLfloat v)
 {
-  ITrace("error_glEvalCoord2f");
+  Internal("error_glEvalCoord2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1509,7 +1509,7 @@ static void REGAL_CALL error_glEvalCoord2f(GLfloat u, GLfloat v)
 
 static void REGAL_CALL error_glEvalCoord2fv(const GLfloat *u)
 {
-  ITrace("error_glEvalCoord2fv");
+  Internal("error_glEvalCoord2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1530,7 +1530,7 @@ static void REGAL_CALL error_glEvalCoord2fv(const GLfloat *u)
 
 static void REGAL_CALL error_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
 {
-  ITrace("error_glEvalMesh1");
+  Internal("error_glEvalMesh1","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1551,7 +1551,7 @@ static void REGAL_CALL error_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
 
 static void REGAL_CALL error_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
-  ITrace("error_glEvalMesh2");
+  Internal("error_glEvalMesh2","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1572,7 +1572,7 @@ static void REGAL_CALL error_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint 
 
 static void REGAL_CALL error_glEvalPoint1(GLint i)
 {
-  ITrace("error_glEvalPoint1");
+  Internal("error_glEvalPoint1","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1593,7 +1593,7 @@ static void REGAL_CALL error_glEvalPoint1(GLint i)
 
 static void REGAL_CALL error_glEvalPoint2(GLint i, GLint j)
 {
-  ITrace("error_glEvalPoint2");
+  Internal("error_glEvalPoint2","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1614,7 +1614,7 @@ static void REGAL_CALL error_glEvalPoint2(GLint i, GLint j)
 
 static void REGAL_CALL error_glFeedbackBuffer(GLsizei size, GLenum type, GLfloat *buffer)
 {
-  ITrace("error_glFeedbackBuffer");
+  Internal("error_glFeedbackBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1635,7 +1635,7 @@ static void REGAL_CALL error_glFeedbackBuffer(GLsizei size, GLenum type, GLfloat
 
 static void REGAL_CALL error_glFinish(void)
 {
-  ITrace("error_glFinish");
+  Internal("error_glFinish","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1656,7 +1656,7 @@ static void REGAL_CALL error_glFinish(void)
 
 static void REGAL_CALL error_glFlush(void)
 {
-  ITrace("error_glFlush");
+  Internal("error_glFlush","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1677,7 +1677,7 @@ static void REGAL_CALL error_glFlush(void)
 
 static void REGAL_CALL error_glFogf(GLenum pname, GLfloat param)
 {
-  ITrace("error_glFogf");
+  Internal("error_glFogf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1698,7 +1698,7 @@ static void REGAL_CALL error_glFogf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glFogfv(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glFogfv");
+  Internal("error_glFogfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1719,7 +1719,7 @@ static void REGAL_CALL error_glFogfv(GLenum pname, const GLfloat *params)
 
 static void REGAL_CALL error_glFogi(GLenum pname, GLint param)
 {
-  ITrace("error_glFogi");
+  Internal("error_glFogi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1740,7 +1740,7 @@ static void REGAL_CALL error_glFogi(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glFogiv(GLenum pname, const GLint *params)
 {
-  ITrace("error_glFogiv");
+  Internal("error_glFogiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1761,7 +1761,7 @@ static void REGAL_CALL error_glFogiv(GLenum pname, const GLint *params)
 
 static void REGAL_CALL error_glFrontFace(GLenum mode)
 {
-  ITrace("error_glFrontFace");
+  Internal("error_glFrontFace","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1782,7 +1782,7 @@ static void REGAL_CALL error_glFrontFace(GLenum mode)
 
 static void REGAL_CALL error_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  ITrace("error_glFrustum");
+  Internal("error_glFrustum","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1803,7 +1803,7 @@ static void REGAL_CALL error_glFrustum(GLdouble left, GLdouble right, GLdouble b
 
 static GLuint REGAL_CALL error_glGenLists(GLsizei range)
 {
-  ITrace("error_glGenLists");
+  Internal("error_glGenLists","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1825,7 +1825,7 @@ return ret;
 
 static void REGAL_CALL error_glGetBooleanv(GLenum pname, GLboolean *params)
 {
-  ITrace("error_glGetBooleanv");
+  Internal("error_glGetBooleanv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1846,7 +1846,7 @@ static void REGAL_CALL error_glGetBooleanv(GLenum pname, GLboolean *params)
 
 static void REGAL_CALL error_glGetClipPlane(GLenum plane, GLdouble *equation)
 {
-  ITrace("error_glGetClipPlane");
+  Internal("error_glGetClipPlane","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1867,7 +1867,7 @@ static void REGAL_CALL error_glGetClipPlane(GLenum plane, GLdouble *equation)
 
 static void REGAL_CALL error_glGetDoublev(GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetDoublev");
+  Internal("error_glGetDoublev","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1888,7 +1888,7 @@ static void REGAL_CALL error_glGetDoublev(GLenum pname, GLdouble *params)
 
 static GLenum REGAL_CALL error_glGetError(void)
 {
-  ITrace("error_glGetError");
+  Internal("error_glGetError","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   Dispatcher::ScopedStep stepDown(_context->dispatcher);
@@ -1898,7 +1898,7 @@ static GLenum REGAL_CALL error_glGetError(void)
 
 static void REGAL_CALL error_glGetFloatv(GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetFloatv");
+  Internal("error_glGetFloatv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1919,7 +1919,7 @@ static void REGAL_CALL error_glGetFloatv(GLenum pname, GLfloat *params)
 
 static void REGAL_CALL error_glGetIntegerv(GLenum pname, GLint *params)
 {
-  ITrace("error_glGetIntegerv");
+  Internal("error_glGetIntegerv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1940,7 +1940,7 @@ static void REGAL_CALL error_glGetIntegerv(GLenum pname, GLint *params)
 
 static void REGAL_CALL error_glGetLightfv(GLenum light, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetLightfv");
+  Internal("error_glGetLightfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1961,7 +1961,7 @@ static void REGAL_CALL error_glGetLightfv(GLenum light, GLenum pname, GLfloat *p
 
 static void REGAL_CALL error_glGetLightiv(GLenum light, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetLightiv");
+  Internal("error_glGetLightiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -1982,7 +1982,7 @@ static void REGAL_CALL error_glGetLightiv(GLenum light, GLenum pname, GLint *par
 
 static void REGAL_CALL error_glGetMapdv(GLenum target, GLenum query, GLdouble *v)
 {
-  ITrace("error_glGetMapdv");
+  Internal("error_glGetMapdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2003,7 +2003,7 @@ static void REGAL_CALL error_glGetMapdv(GLenum target, GLenum query, GLdouble *v
 
 static void REGAL_CALL error_glGetMapfv(GLenum target, GLenum query, GLfloat *v)
 {
-  ITrace("error_glGetMapfv");
+  Internal("error_glGetMapfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2024,7 +2024,7 @@ static void REGAL_CALL error_glGetMapfv(GLenum target, GLenum query, GLfloat *v)
 
 static void REGAL_CALL error_glGetMapiv(GLenum target, GLenum query, GLint *v)
 {
-  ITrace("error_glGetMapiv");
+  Internal("error_glGetMapiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2045,7 +2045,7 @@ static void REGAL_CALL error_glGetMapiv(GLenum target, GLenum query, GLint *v)
 
 static void REGAL_CALL error_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMaterialfv");
+  Internal("error_glGetMaterialfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2066,7 +2066,7 @@ static void REGAL_CALL error_glGetMaterialfv(GLenum face, GLenum pname, GLfloat 
 
 static void REGAL_CALL error_glGetMaterialiv(GLenum face, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMaterialiv");
+  Internal("error_glGetMaterialiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2087,7 +2087,7 @@ static void REGAL_CALL error_glGetMaterialiv(GLenum face, GLenum pname, GLint *p
 
 static void REGAL_CALL error_glGetPixelMapfv(GLenum map, GLfloat *values)
 {
-  ITrace("error_glGetPixelMapfv");
+  Internal("error_glGetPixelMapfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2108,7 +2108,7 @@ static void REGAL_CALL error_glGetPixelMapfv(GLenum map, GLfloat *values)
 
 static void REGAL_CALL error_glGetPixelMapuiv(GLenum map, GLuint *values)
 {
-  ITrace("error_glGetPixelMapuiv");
+  Internal("error_glGetPixelMapuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2129,7 +2129,7 @@ static void REGAL_CALL error_glGetPixelMapuiv(GLenum map, GLuint *values)
 
 static void REGAL_CALL error_glGetPixelMapusv(GLenum map, GLushort *values)
 {
-  ITrace("error_glGetPixelMapusv");
+  Internal("error_glGetPixelMapusv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2150,7 +2150,7 @@ static void REGAL_CALL error_glGetPixelMapusv(GLenum map, GLushort *values)
 
 static void REGAL_CALL error_glGetPolygonStipple(GLubyte *mask)
 {
-  ITrace("error_glGetPolygonStipple");
+  Internal("error_glGetPolygonStipple","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2171,7 +2171,7 @@ static void REGAL_CALL error_glGetPolygonStipple(GLubyte *mask)
 
 static const GLubyte *REGAL_CALL error_glGetString(GLenum name)
 {
-  ITrace("error_glGetString");
+  Internal("error_glGetString","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2193,7 +2193,7 @@ return ret;
 
 static void REGAL_CALL error_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTexEnvfv");
+  Internal("error_glGetTexEnvfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2214,7 +2214,7 @@ static void REGAL_CALL error_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat 
 
 static void REGAL_CALL error_glGetTexEnviv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexEnviv");
+  Internal("error_glGetTexEnviv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2235,7 +2235,7 @@ static void REGAL_CALL error_glGetTexEnviv(GLenum target, GLenum pname, GLint *p
 
 static void REGAL_CALL error_glGetTexGendv(GLenum coord, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetTexGendv");
+  Internal("error_glGetTexGendv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2256,7 +2256,7 @@ static void REGAL_CALL error_glGetTexGendv(GLenum coord, GLenum pname, GLdouble 
 
 static void REGAL_CALL error_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTexGenfv");
+  Internal("error_glGetTexGenfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2277,7 +2277,7 @@ static void REGAL_CALL error_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *
 
 static void REGAL_CALL error_glGetTexGeniv(GLenum coord, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexGeniv");
+  Internal("error_glGetTexGeniv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2298,7 +2298,7 @@ static void REGAL_CALL error_glGetTexGeniv(GLenum coord, GLenum pname, GLint *pa
 
 static void REGAL_CALL error_glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("error_glGetTexImage");
+  Internal("error_glGetTexImage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2319,7 +2319,7 @@ static void REGAL_CALL error_glGetTexImage(GLenum target, GLint level, GLenum fo
 
 static void REGAL_CALL error_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTexLevelParameterfv");
+  Internal("error_glGetTexLevelParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2340,7 +2340,7 @@ static void REGAL_CALL error_glGetTexLevelParameterfv(GLenum target, GLint level
 
 static void REGAL_CALL error_glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexLevelParameteriv");
+  Internal("error_glGetTexLevelParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2361,7 +2361,7 @@ static void REGAL_CALL error_glGetTexLevelParameteriv(GLenum target, GLint level
 
 static void REGAL_CALL error_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTexParameterfv");
+  Internal("error_glGetTexParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2382,7 +2382,7 @@ static void REGAL_CALL error_glGetTexParameterfv(GLenum target, GLenum pname, GL
 
 static void REGAL_CALL error_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexParameteriv");
+  Internal("error_glGetTexParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2403,7 +2403,7 @@ static void REGAL_CALL error_glGetTexParameteriv(GLenum target, GLenum pname, GL
 
 static void REGAL_CALL error_glHint(GLenum target, GLenum mode)
 {
-  ITrace("error_glHint");
+  Internal("error_glHint","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2424,7 +2424,7 @@ static void REGAL_CALL error_glHint(GLenum target, GLenum mode)
 
 static void REGAL_CALL error_glIndexMask(GLuint mask)
 {
-  ITrace("error_glIndexMask");
+  Internal("error_glIndexMask","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2445,7 +2445,7 @@ static void REGAL_CALL error_glIndexMask(GLuint mask)
 
 static void REGAL_CALL error_glIndexd(GLdouble c)
 {
-  ITrace("error_glIndexd");
+  Internal("error_glIndexd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2466,7 +2466,7 @@ static void REGAL_CALL error_glIndexd(GLdouble c)
 
 static void REGAL_CALL error_glIndexdv(const GLdouble *c)
 {
-  ITrace("error_glIndexdv");
+  Internal("error_glIndexdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2487,7 +2487,7 @@ static void REGAL_CALL error_glIndexdv(const GLdouble *c)
 
 static void REGAL_CALL error_glIndexf(GLfloat c)
 {
-  ITrace("error_glIndexf");
+  Internal("error_glIndexf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2508,7 +2508,7 @@ static void REGAL_CALL error_glIndexf(GLfloat c)
 
 static void REGAL_CALL error_glIndexfv(const GLfloat *c)
 {
-  ITrace("error_glIndexfv");
+  Internal("error_glIndexfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2529,7 +2529,7 @@ static void REGAL_CALL error_glIndexfv(const GLfloat *c)
 
 static void REGAL_CALL error_glIndexi(GLint c)
 {
-  ITrace("error_glIndexi");
+  Internal("error_glIndexi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2550,7 +2550,7 @@ static void REGAL_CALL error_glIndexi(GLint c)
 
 static void REGAL_CALL error_glIndexiv(const GLint *c)
 {
-  ITrace("error_glIndexiv");
+  Internal("error_glIndexiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2571,7 +2571,7 @@ static void REGAL_CALL error_glIndexiv(const GLint *c)
 
 static void REGAL_CALL error_glIndexs(GLshort c)
 {
-  ITrace("error_glIndexs");
+  Internal("error_glIndexs","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2592,7 +2592,7 @@ static void REGAL_CALL error_glIndexs(GLshort c)
 
 static void REGAL_CALL error_glIndexsv(const GLshort *c)
 {
-  ITrace("error_glIndexsv");
+  Internal("error_glIndexsv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2613,7 +2613,7 @@ static void REGAL_CALL error_glIndexsv(const GLshort *c)
 
 static void REGAL_CALL error_glInitNames(void)
 {
-  ITrace("error_glInitNames");
+  Internal("error_glInitNames","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2634,7 +2634,7 @@ static void REGAL_CALL error_glInitNames(void)
 
 static GLboolean REGAL_CALL error_glIsEnabled(GLenum cap)
 {
-  ITrace("error_glIsEnabled");
+  Internal("error_glIsEnabled","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2656,7 +2656,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsList(GLuint list)
 {
-  ITrace("error_glIsList");
+  Internal("error_glIsList","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2678,7 +2678,7 @@ return ret;
 
 static void REGAL_CALL error_glLightModelf(GLenum pname, GLfloat param)
 {
-  ITrace("error_glLightModelf");
+  Internal("error_glLightModelf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2699,7 +2699,7 @@ static void REGAL_CALL error_glLightModelf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glLightModelfv(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glLightModelfv");
+  Internal("error_glLightModelfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2720,7 +2720,7 @@ static void REGAL_CALL error_glLightModelfv(GLenum pname, const GLfloat *params)
 
 static void REGAL_CALL error_glLightModeli(GLenum pname, GLint param)
 {
-  ITrace("error_glLightModeli");
+  Internal("error_glLightModeli","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2741,7 +2741,7 @@ static void REGAL_CALL error_glLightModeli(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glLightModeliv(GLenum pname, const GLint *params)
 {
-  ITrace("error_glLightModeliv");
+  Internal("error_glLightModeliv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2762,7 +2762,7 @@ static void REGAL_CALL error_glLightModeliv(GLenum pname, const GLint *params)
 
 static void REGAL_CALL error_glLightf(GLenum light, GLenum pname, GLfloat param)
 {
-  ITrace("error_glLightf");
+  Internal("error_glLightf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2783,7 +2783,7 @@ static void REGAL_CALL error_glLightf(GLenum light, GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glLightfv(GLenum light, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glLightfv");
+  Internal("error_glLightfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2804,7 +2804,7 @@ static void REGAL_CALL error_glLightfv(GLenum light, GLenum pname, const GLfloat
 
 static void REGAL_CALL error_glLighti(GLenum light, GLenum pname, GLint param)
 {
-  ITrace("error_glLighti");
+  Internal("error_glLighti","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2825,7 +2825,7 @@ static void REGAL_CALL error_glLighti(GLenum light, GLenum pname, GLint param)
 
 static void REGAL_CALL error_glLightiv(GLenum light, GLenum pname, const GLint *params)
 {
-  ITrace("error_glLightiv");
+  Internal("error_glLightiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2846,7 +2846,7 @@ static void REGAL_CALL error_glLightiv(GLenum light, GLenum pname, const GLint *
 
 static void REGAL_CALL error_glLineStipple(GLint factor, GLushort pattern)
 {
-  ITrace("error_glLineStipple");
+  Internal("error_glLineStipple","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2867,7 +2867,7 @@ static void REGAL_CALL error_glLineStipple(GLint factor, GLushort pattern)
 
 static void REGAL_CALL error_glLineWidth(GLfloat width)
 {
-  ITrace("error_glLineWidth");
+  Internal("error_glLineWidth","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2888,7 +2888,7 @@ static void REGAL_CALL error_glLineWidth(GLfloat width)
 
 static void REGAL_CALL error_glListBase(GLuint base)
 {
-  ITrace("error_glListBase");
+  Internal("error_glListBase","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2909,7 +2909,7 @@ static void REGAL_CALL error_glListBase(GLuint base)
 
 static void REGAL_CALL error_glLoadIdentity(void)
 {
-  ITrace("error_glLoadIdentity");
+  Internal("error_glLoadIdentity","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2930,7 +2930,7 @@ static void REGAL_CALL error_glLoadIdentity(void)
 
 static void REGAL_CALL error_glLoadMatrixd(const GLdouble *m)
 {
-  ITrace("error_glLoadMatrixd");
+  Internal("error_glLoadMatrixd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2951,7 +2951,7 @@ static void REGAL_CALL error_glLoadMatrixd(const GLdouble *m)
 
 static void REGAL_CALL error_glLoadMatrixf(const GLfloat *m)
 {
-  ITrace("error_glLoadMatrixf");
+  Internal("error_glLoadMatrixf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2972,7 +2972,7 @@ static void REGAL_CALL error_glLoadMatrixf(const GLfloat *m)
 
 static void REGAL_CALL error_glLoadName(GLuint name)
 {
-  ITrace("error_glLoadName");
+  Internal("error_glLoadName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -2993,7 +2993,7 @@ static void REGAL_CALL error_glLoadName(GLuint name)
 
 static void REGAL_CALL error_glLogicOp(GLenum opcode)
 {
-  ITrace("error_glLogicOp");
+  Internal("error_glLogicOp","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3014,7 +3014,7 @@ static void REGAL_CALL error_glLogicOp(GLenum opcode)
 
 static void REGAL_CALL error_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 {
-  ITrace("error_glMap1d");
+  Internal("error_glMap1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3035,7 +3035,7 @@ static void REGAL_CALL error_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GL
 
 static void REGAL_CALL error_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 {
-  ITrace("error_glMap1f");
+  Internal("error_glMap1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3056,7 +3056,7 @@ static void REGAL_CALL error_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLin
 
 static void REGAL_CALL error_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 {
-  ITrace("error_glMap2d");
+  Internal("error_glMap2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3077,7 +3077,7 @@ static void REGAL_CALL error_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GL
 
 static void REGAL_CALL error_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 {
-  ITrace("error_glMap2f");
+  Internal("error_glMap2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3098,7 +3098,7 @@ static void REGAL_CALL error_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLin
 
 static void REGAL_CALL error_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 {
-  ITrace("error_glMapGrid1d");
+  Internal("error_glMapGrid1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3119,7 +3119,7 @@ static void REGAL_CALL error_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 
 static void REGAL_CALL error_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
 {
-  ITrace("error_glMapGrid1f");
+  Internal("error_glMapGrid1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3140,7 +3140,7 @@ static void REGAL_CALL error_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
 
 static void REGAL_CALL error_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
-  ITrace("error_glMapGrid2d");
+  Internal("error_glMapGrid2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3161,7 +3161,7 @@ static void REGAL_CALL error_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLi
 
 static void REGAL_CALL error_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
-  ITrace("error_glMapGrid2f");
+  Internal("error_glMapGrid2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3182,7 +3182,7 @@ static void REGAL_CALL error_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint
 
 static void REGAL_CALL error_glMaterialf(GLenum face, GLenum pname, GLfloat param)
 {
-  ITrace("error_glMaterialf");
+  Internal("error_glMaterialf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3203,7 +3203,7 @@ static void REGAL_CALL error_glMaterialf(GLenum face, GLenum pname, GLfloat para
 
 static void REGAL_CALL error_glMaterialfv(GLenum face, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glMaterialfv");
+  Internal("error_glMaterialfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3224,7 +3224,7 @@ static void REGAL_CALL error_glMaterialfv(GLenum face, GLenum pname, const GLflo
 
 static void REGAL_CALL error_glMateriali(GLenum face, GLenum pname, GLint param)
 {
-  ITrace("error_glMateriali");
+  Internal("error_glMateriali","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3245,7 +3245,7 @@ static void REGAL_CALL error_glMateriali(GLenum face, GLenum pname, GLint param)
 
 static void REGAL_CALL error_glMaterialiv(GLenum face, GLenum pname, const GLint *params)
 {
-  ITrace("error_glMaterialiv");
+  Internal("error_glMaterialiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3266,7 +3266,7 @@ static void REGAL_CALL error_glMaterialiv(GLenum face, GLenum pname, const GLint
 
 static void REGAL_CALL error_glMatrixMode(GLenum mode)
 {
-  ITrace("error_glMatrixMode");
+  Internal("error_glMatrixMode","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3287,7 +3287,7 @@ static void REGAL_CALL error_glMatrixMode(GLenum mode)
 
 static void REGAL_CALL error_glMultMatrixd(const GLdouble *m)
 {
-  ITrace("error_glMultMatrixd");
+  Internal("error_glMultMatrixd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3308,7 +3308,7 @@ static void REGAL_CALL error_glMultMatrixd(const GLdouble *m)
 
 static void REGAL_CALL error_glMultMatrixf(const GLfloat *m)
 {
-  ITrace("error_glMultMatrixf");
+  Internal("error_glMultMatrixf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3329,7 +3329,7 @@ static void REGAL_CALL error_glMultMatrixf(const GLfloat *m)
 
 static void REGAL_CALL error_glNewList(GLuint list, GLenum mode)
 {
-  ITrace("error_glNewList");
+  Internal("error_glNewList","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3350,7 +3350,7 @@ static void REGAL_CALL error_glNewList(GLuint list, GLenum mode)
 
 static void REGAL_CALL error_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 {
-  ITrace("error_glNormal3b");
+  Internal("error_glNormal3b","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3371,7 +3371,7 @@ static void REGAL_CALL error_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 
 static void REGAL_CALL error_glNormal3bv(const GLbyte *v)
 {
-  ITrace("error_glNormal3bv");
+  Internal("error_glNormal3bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3392,7 +3392,7 @@ static void REGAL_CALL error_glNormal3bv(const GLbyte *v)
 
 static void REGAL_CALL error_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 {
-  ITrace("error_glNormal3d");
+  Internal("error_glNormal3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3413,7 +3413,7 @@ static void REGAL_CALL error_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 
 static void REGAL_CALL error_glNormal3dv(const GLdouble *v)
 {
-  ITrace("error_glNormal3dv");
+  Internal("error_glNormal3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3434,7 +3434,7 @@ static void REGAL_CALL error_glNormal3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 {
-  ITrace("error_glNormal3f");
+  Internal("error_glNormal3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3455,7 +3455,7 @@ static void REGAL_CALL error_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 
 static void REGAL_CALL error_glNormal3fv(const GLfloat *v)
 {
-  ITrace("error_glNormal3fv");
+  Internal("error_glNormal3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3476,7 +3476,7 @@ static void REGAL_CALL error_glNormal3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glNormal3i(GLint nx, GLint ny, GLint nz)
 {
-  ITrace("error_glNormal3i");
+  Internal("error_glNormal3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3497,7 +3497,7 @@ static void REGAL_CALL error_glNormal3i(GLint nx, GLint ny, GLint nz)
 
 static void REGAL_CALL error_glNormal3iv(const GLint *v)
 {
-  ITrace("error_glNormal3iv");
+  Internal("error_glNormal3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3518,7 +3518,7 @@ static void REGAL_CALL error_glNormal3iv(const GLint *v)
 
 static void REGAL_CALL error_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 {
-  ITrace("error_glNormal3s");
+  Internal("error_glNormal3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3539,7 +3539,7 @@ static void REGAL_CALL error_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 
 static void REGAL_CALL error_glNormal3sv(const GLshort *v)
 {
-  ITrace("error_glNormal3sv");
+  Internal("error_glNormal3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3560,7 +3560,7 @@ static void REGAL_CALL error_glNormal3sv(const GLshort *v)
 
 static void REGAL_CALL error_glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  ITrace("error_glOrtho");
+  Internal("error_glOrtho","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3581,7 +3581,7 @@ static void REGAL_CALL error_glOrtho(GLdouble left, GLdouble right, GLdouble bot
 
 static void REGAL_CALL error_glPassThrough(GLfloat token)
 {
-  ITrace("error_glPassThrough");
+  Internal("error_glPassThrough","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3602,7 +3602,7 @@ static void REGAL_CALL error_glPassThrough(GLfloat token)
 
 static void REGAL_CALL error_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat *values)
 {
-  ITrace("error_glPixelMapfv");
+  Internal("error_glPixelMapfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3623,7 +3623,7 @@ static void REGAL_CALL error_glPixelMapfv(GLenum map, GLsizei mapsize, const GLf
 
 static void REGAL_CALL error_glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint *values)
 {
-  ITrace("error_glPixelMapuiv");
+  Internal("error_glPixelMapuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3644,7 +3644,7 @@ static void REGAL_CALL error_glPixelMapuiv(GLenum map, GLsizei mapsize, const GL
 
 static void REGAL_CALL error_glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort *values)
 {
-  ITrace("error_glPixelMapusv");
+  Internal("error_glPixelMapusv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3665,7 +3665,7 @@ static void REGAL_CALL error_glPixelMapusv(GLenum map, GLsizei mapsize, const GL
 
 static void REGAL_CALL error_glPixelStoref(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPixelStoref");
+  Internal("error_glPixelStoref","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3686,7 +3686,7 @@ static void REGAL_CALL error_glPixelStoref(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPixelStorei(GLenum pname, GLint param)
 {
-  ITrace("error_glPixelStorei");
+  Internal("error_glPixelStorei","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3707,7 +3707,7 @@ static void REGAL_CALL error_glPixelStorei(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glPixelTransferf(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPixelTransferf");
+  Internal("error_glPixelTransferf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3728,7 +3728,7 @@ static void REGAL_CALL error_glPixelTransferf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPixelTransferi(GLenum pname, GLint param)
 {
-  ITrace("error_glPixelTransferi");
+  Internal("error_glPixelTransferi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3749,7 +3749,7 @@ static void REGAL_CALL error_glPixelTransferi(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
 {
-  ITrace("error_glPixelZoom");
+  Internal("error_glPixelZoom","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3770,7 +3770,7 @@ static void REGAL_CALL error_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
 
 static void REGAL_CALL error_glPointSize(GLfloat size)
 {
-  ITrace("error_glPointSize");
+  Internal("error_glPointSize","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3791,7 +3791,7 @@ static void REGAL_CALL error_glPointSize(GLfloat size)
 
 static void REGAL_CALL error_glPolygonMode(GLenum face, GLenum mode)
 {
-  ITrace("error_glPolygonMode");
+  Internal("error_glPolygonMode","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3812,7 +3812,7 @@ static void REGAL_CALL error_glPolygonMode(GLenum face, GLenum mode)
 
 static void REGAL_CALL error_glPolygonStipple(const GLubyte *mask)
 {
-  ITrace("error_glPolygonStipple");
+  Internal("error_glPolygonStipple","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3833,7 +3833,7 @@ static void REGAL_CALL error_glPolygonStipple(const GLubyte *mask)
 
 static void REGAL_CALL error_glPopAttrib(void)
 {
-  ITrace("error_glPopAttrib");
+  Internal("error_glPopAttrib","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3854,7 +3854,7 @@ static void REGAL_CALL error_glPopAttrib(void)
 
 static void REGAL_CALL error_glPopMatrix(void)
 {
-  ITrace("error_glPopMatrix");
+  Internal("error_glPopMatrix","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3875,7 +3875,7 @@ static void REGAL_CALL error_glPopMatrix(void)
 
 static void REGAL_CALL error_glPopName(void)
 {
-  ITrace("error_glPopName");
+  Internal("error_glPopName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3896,7 +3896,7 @@ static void REGAL_CALL error_glPopName(void)
 
 static void REGAL_CALL error_glPushAttrib(GLbitfield mask)
 {
-  ITrace("error_glPushAttrib");
+  Internal("error_glPushAttrib","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3917,7 +3917,7 @@ static void REGAL_CALL error_glPushAttrib(GLbitfield mask)
 
 static void REGAL_CALL error_glPushMatrix(void)
 {
-  ITrace("error_glPushMatrix");
+  Internal("error_glPushMatrix","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3938,7 +3938,7 @@ static void REGAL_CALL error_glPushMatrix(void)
 
 static void REGAL_CALL error_glPushName(GLuint name)
 {
-  ITrace("error_glPushName");
+  Internal("error_glPushName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3959,7 +3959,7 @@ static void REGAL_CALL error_glPushName(GLuint name)
 
 static void REGAL_CALL error_glRasterPos2d(GLdouble x, GLdouble y)
 {
-  ITrace("error_glRasterPos2d");
+  Internal("error_glRasterPos2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -3980,7 +3980,7 @@ static void REGAL_CALL error_glRasterPos2d(GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glRasterPos2dv(const GLdouble *v)
 {
-  ITrace("error_glRasterPos2dv");
+  Internal("error_glRasterPos2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4001,7 +4001,7 @@ static void REGAL_CALL error_glRasterPos2dv(const GLdouble *v)
 
 static void REGAL_CALL error_glRasterPos2f(GLfloat x, GLfloat y)
 {
-  ITrace("error_glRasterPos2f");
+  Internal("error_glRasterPos2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4022,7 +4022,7 @@ static void REGAL_CALL error_glRasterPos2f(GLfloat x, GLfloat y)
 
 static void REGAL_CALL error_glRasterPos2fv(const GLfloat *v)
 {
-  ITrace("error_glRasterPos2fv");
+  Internal("error_glRasterPos2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4043,7 +4043,7 @@ static void REGAL_CALL error_glRasterPos2fv(const GLfloat *v)
 
 static void REGAL_CALL error_glRasterPos2i(GLint x, GLint y)
 {
-  ITrace("error_glRasterPos2i");
+  Internal("error_glRasterPos2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4064,7 +4064,7 @@ static void REGAL_CALL error_glRasterPos2i(GLint x, GLint y)
 
 static void REGAL_CALL error_glRasterPos2iv(const GLint *v)
 {
-  ITrace("error_glRasterPos2iv");
+  Internal("error_glRasterPos2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4085,7 +4085,7 @@ static void REGAL_CALL error_glRasterPos2iv(const GLint *v)
 
 static void REGAL_CALL error_glRasterPos2s(GLshort x, GLshort y)
 {
-  ITrace("error_glRasterPos2s");
+  Internal("error_glRasterPos2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4106,7 +4106,7 @@ static void REGAL_CALL error_glRasterPos2s(GLshort x, GLshort y)
 
 static void REGAL_CALL error_glRasterPos2sv(const GLshort *v)
 {
-  ITrace("error_glRasterPos2sv");
+  Internal("error_glRasterPos2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4127,7 +4127,7 @@ static void REGAL_CALL error_glRasterPos2sv(const GLshort *v)
 
 static void REGAL_CALL error_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glRasterPos3d");
+  Internal("error_glRasterPos3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4148,7 +4148,7 @@ static void REGAL_CALL error_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL error_glRasterPos3dv(const GLdouble *v)
 {
-  ITrace("error_glRasterPos3dv");
+  Internal("error_glRasterPos3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4169,7 +4169,7 @@ static void REGAL_CALL error_glRasterPos3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glRasterPos3f");
+  Internal("error_glRasterPos3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4190,7 +4190,7 @@ static void REGAL_CALL error_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glRasterPos3fv(const GLfloat *v)
 {
-  ITrace("error_glRasterPos3fv");
+  Internal("error_glRasterPos3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4211,7 +4211,7 @@ static void REGAL_CALL error_glRasterPos3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glRasterPos3i(GLint x, GLint y, GLint z)
 {
-  ITrace("error_glRasterPos3i");
+  Internal("error_glRasterPos3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4232,7 +4232,7 @@ static void REGAL_CALL error_glRasterPos3i(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL error_glRasterPos3iv(const GLint *v)
 {
-  ITrace("error_glRasterPos3iv");
+  Internal("error_glRasterPos3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4253,7 +4253,7 @@ static void REGAL_CALL error_glRasterPos3iv(const GLint *v)
 
 static void REGAL_CALL error_glRasterPos3s(GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glRasterPos3s");
+  Internal("error_glRasterPos3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4274,7 +4274,7 @@ static void REGAL_CALL error_glRasterPos3s(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL error_glRasterPos3sv(const GLshort *v)
 {
-  ITrace("error_glRasterPos3sv");
+  Internal("error_glRasterPos3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4295,7 +4295,7 @@ static void REGAL_CALL error_glRasterPos3sv(const GLshort *v)
 
 static void REGAL_CALL error_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glRasterPos4d");
+  Internal("error_glRasterPos4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4316,7 +4316,7 @@ static void REGAL_CALL error_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, G
 
 static void REGAL_CALL error_glRasterPos4dv(const GLdouble *v)
 {
-  ITrace("error_glRasterPos4dv");
+  Internal("error_glRasterPos4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4337,7 +4337,7 @@ static void REGAL_CALL error_glRasterPos4dv(const GLdouble *v)
 
 static void REGAL_CALL error_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glRasterPos4f");
+  Internal("error_glRasterPos4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4358,7 +4358,7 @@ static void REGAL_CALL error_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfl
 
 static void REGAL_CALL error_glRasterPos4fv(const GLfloat *v)
 {
-  ITrace("error_glRasterPos4fv");
+  Internal("error_glRasterPos4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4379,7 +4379,7 @@ static void REGAL_CALL error_glRasterPos4fv(const GLfloat *v)
 
 static void REGAL_CALL error_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glRasterPos4i");
+  Internal("error_glRasterPos4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4400,7 +4400,7 @@ static void REGAL_CALL error_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
 
 static void REGAL_CALL error_glRasterPos4iv(const GLint *v)
 {
-  ITrace("error_glRasterPos4iv");
+  Internal("error_glRasterPos4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4421,7 +4421,7 @@ static void REGAL_CALL error_glRasterPos4iv(const GLint *v)
 
 static void REGAL_CALL error_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glRasterPos4s");
+  Internal("error_glRasterPos4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4442,7 +4442,7 @@ static void REGAL_CALL error_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLsh
 
 static void REGAL_CALL error_glRasterPos4sv(const GLshort *v)
 {
-  ITrace("error_glRasterPos4sv");
+  Internal("error_glRasterPos4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4463,7 +4463,7 @@ static void REGAL_CALL error_glRasterPos4sv(const GLshort *v)
 
 static void REGAL_CALL error_glReadBuffer(GLenum mode)
 {
-  ITrace("error_glReadBuffer");
+  Internal("error_glReadBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4484,7 +4484,7 @@ static void REGAL_CALL error_glReadBuffer(GLenum mode)
 
 static void REGAL_CALL error_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("error_glReadPixels");
+  Internal("error_glReadPixels","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4505,7 +4505,7 @@ static void REGAL_CALL error_glReadPixels(GLint x, GLint y, GLsizei width, GLsiz
 
 static void REGAL_CALL error_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
-  ITrace("error_glRectd");
+  Internal("error_glRectd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4526,7 +4526,7 @@ static void REGAL_CALL error_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdo
 
 static void REGAL_CALL error_glRectdv(const GLdouble *v1, const GLdouble *v2)
 {
-  ITrace("error_glRectdv");
+  Internal("error_glRectdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4547,7 +4547,7 @@ static void REGAL_CALL error_glRectdv(const GLdouble *v1, const GLdouble *v2)
 
 static void REGAL_CALL error_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
-  ITrace("error_glRectf");
+  Internal("error_glRectf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4568,7 +4568,7 @@ static void REGAL_CALL error_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat
 
 static void REGAL_CALL error_glRectfv(const GLfloat *v1, const GLfloat *v2)
 {
-  ITrace("error_glRectfv");
+  Internal("error_glRectfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4589,7 +4589,7 @@ static void REGAL_CALL error_glRectfv(const GLfloat *v1, const GLfloat *v2)
 
 static void REGAL_CALL error_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
 {
-  ITrace("error_glRecti");
+  Internal("error_glRecti","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4610,7 +4610,7 @@ static void REGAL_CALL error_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
 
 static void REGAL_CALL error_glRectiv(const GLint *v1, const GLint *v2)
 {
-  ITrace("error_glRectiv");
+  Internal("error_glRectiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4631,7 +4631,7 @@ static void REGAL_CALL error_glRectiv(const GLint *v1, const GLint *v2)
 
 static void REGAL_CALL error_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
-  ITrace("error_glRects");
+  Internal("error_glRects","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4652,7 +4652,7 @@ static void REGAL_CALL error_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort
 
 static void REGAL_CALL error_glRectsv(const GLshort *v1, const GLshort *v2)
 {
-  ITrace("error_glRectsv");
+  Internal("error_glRectsv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4673,7 +4673,7 @@ static void REGAL_CALL error_glRectsv(const GLshort *v1, const GLshort *v2)
 
 static GLint REGAL_CALL error_glRenderMode(GLenum mode)
 {
-  ITrace("error_glRenderMode");
+  Internal("error_glRenderMode","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4695,7 +4695,7 @@ return ret;
 
 static void REGAL_CALL error_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glRotated");
+  Internal("error_glRotated","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4716,7 +4716,7 @@ static void REGAL_CALL error_glRotated(GLdouble angle, GLdouble x, GLdouble y, G
 
 static void REGAL_CALL error_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glRotatef");
+  Internal("error_glRotatef","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4737,7 +4737,7 @@ static void REGAL_CALL error_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfl
 
 static void REGAL_CALL error_glScaled(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glScaled");
+  Internal("error_glScaled","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4758,7 +4758,7 @@ static void REGAL_CALL error_glScaled(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL error_glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glScalef");
+  Internal("error_glScalef","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4779,7 +4779,7 @@ static void REGAL_CALL error_glScalef(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glScissor");
+  Internal("error_glScissor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4800,7 +4800,7 @@ static void REGAL_CALL error_glScissor(GLint x, GLint y, GLsizei width, GLsizei 
 
 static void REGAL_CALL error_glSelectBuffer(GLsizei size, GLuint *buffer)
 {
-  ITrace("error_glSelectBuffer");
+  Internal("error_glSelectBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4821,7 +4821,7 @@ static void REGAL_CALL error_glSelectBuffer(GLsizei size, GLuint *buffer)
 
 static void REGAL_CALL error_glShadeModel(GLenum mode)
 {
-  ITrace("error_glShadeModel");
+  Internal("error_glShadeModel","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4842,7 +4842,7 @@ static void REGAL_CALL error_glShadeModel(GLenum mode)
 
 static void REGAL_CALL error_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
-  ITrace("error_glStencilFunc");
+  Internal("error_glStencilFunc","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4863,7 +4863,7 @@ static void REGAL_CALL error_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 
 static void REGAL_CALL error_glStencilMask(GLuint mask)
 {
-  ITrace("error_glStencilMask");
+  Internal("error_glStencilMask","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4884,7 +4884,7 @@ static void REGAL_CALL error_glStencilMask(GLuint mask)
 
 static void REGAL_CALL error_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
-  ITrace("error_glStencilOp");
+  Internal("error_glStencilOp","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4905,7 +4905,7 @@ static void REGAL_CALL error_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass
 
 static void REGAL_CALL error_glTexCoord1d(GLdouble s)
 {
-  ITrace("error_glTexCoord1d");
+  Internal("error_glTexCoord1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4926,7 +4926,7 @@ static void REGAL_CALL error_glTexCoord1d(GLdouble s)
 
 static void REGAL_CALL error_glTexCoord1dv(const GLdouble *v)
 {
-  ITrace("error_glTexCoord1dv");
+  Internal("error_glTexCoord1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4947,7 +4947,7 @@ static void REGAL_CALL error_glTexCoord1dv(const GLdouble *v)
 
 static void REGAL_CALL error_glTexCoord1f(GLfloat s)
 {
-  ITrace("error_glTexCoord1f");
+  Internal("error_glTexCoord1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4968,7 +4968,7 @@ static void REGAL_CALL error_glTexCoord1f(GLfloat s)
 
 static void REGAL_CALL error_glTexCoord1fv(const GLfloat *v)
 {
-  ITrace("error_glTexCoord1fv");
+  Internal("error_glTexCoord1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -4989,7 +4989,7 @@ static void REGAL_CALL error_glTexCoord1fv(const GLfloat *v)
 
 static void REGAL_CALL error_glTexCoord1i(GLint s)
 {
-  ITrace("error_glTexCoord1i");
+  Internal("error_glTexCoord1i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5010,7 +5010,7 @@ static void REGAL_CALL error_glTexCoord1i(GLint s)
 
 static void REGAL_CALL error_glTexCoord1iv(const GLint *v)
 {
-  ITrace("error_glTexCoord1iv");
+  Internal("error_glTexCoord1iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5031,7 +5031,7 @@ static void REGAL_CALL error_glTexCoord1iv(const GLint *v)
 
 static void REGAL_CALL error_glTexCoord1s(GLshort s)
 {
-  ITrace("error_glTexCoord1s");
+  Internal("error_glTexCoord1s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5052,7 +5052,7 @@ static void REGAL_CALL error_glTexCoord1s(GLshort s)
 
 static void REGAL_CALL error_glTexCoord1sv(const GLshort *v)
 {
-  ITrace("error_glTexCoord1sv");
+  Internal("error_glTexCoord1sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5073,7 +5073,7 @@ static void REGAL_CALL error_glTexCoord1sv(const GLshort *v)
 
 static void REGAL_CALL error_glTexCoord2d(GLdouble s, GLdouble t)
 {
-  ITrace("error_glTexCoord2d");
+  Internal("error_glTexCoord2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5094,7 +5094,7 @@ static void REGAL_CALL error_glTexCoord2d(GLdouble s, GLdouble t)
 
 static void REGAL_CALL error_glTexCoord2dv(const GLdouble *v)
 {
-  ITrace("error_glTexCoord2dv");
+  Internal("error_glTexCoord2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5115,7 +5115,7 @@ static void REGAL_CALL error_glTexCoord2dv(const GLdouble *v)
 
 static void REGAL_CALL error_glTexCoord2f(GLfloat s, GLfloat t)
 {
-  ITrace("error_glTexCoord2f");
+  Internal("error_glTexCoord2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5136,7 +5136,7 @@ static void REGAL_CALL error_glTexCoord2f(GLfloat s, GLfloat t)
 
 static void REGAL_CALL error_glTexCoord2fv(const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fv");
+  Internal("error_glTexCoord2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5157,7 +5157,7 @@ static void REGAL_CALL error_glTexCoord2fv(const GLfloat *v)
 
 static void REGAL_CALL error_glTexCoord2i(GLint s, GLint t)
 {
-  ITrace("error_glTexCoord2i");
+  Internal("error_glTexCoord2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5178,7 +5178,7 @@ static void REGAL_CALL error_glTexCoord2i(GLint s, GLint t)
 
 static void REGAL_CALL error_glTexCoord2iv(const GLint *v)
 {
-  ITrace("error_glTexCoord2iv");
+  Internal("error_glTexCoord2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5199,7 +5199,7 @@ static void REGAL_CALL error_glTexCoord2iv(const GLint *v)
 
 static void REGAL_CALL error_glTexCoord2s(GLshort s, GLshort t)
 {
-  ITrace("error_glTexCoord2s");
+  Internal("error_glTexCoord2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5220,7 +5220,7 @@ static void REGAL_CALL error_glTexCoord2s(GLshort s, GLshort t)
 
 static void REGAL_CALL error_glTexCoord2sv(const GLshort *v)
 {
-  ITrace("error_glTexCoord2sv");
+  Internal("error_glTexCoord2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5241,7 +5241,7 @@ static void REGAL_CALL error_glTexCoord2sv(const GLshort *v)
 
 static void REGAL_CALL error_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 {
-  ITrace("error_glTexCoord3d");
+  Internal("error_glTexCoord3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5262,7 +5262,7 @@ static void REGAL_CALL error_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 
 static void REGAL_CALL error_glTexCoord3dv(const GLdouble *v)
 {
-  ITrace("error_glTexCoord3dv");
+  Internal("error_glTexCoord3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5283,7 +5283,7 @@ static void REGAL_CALL error_glTexCoord3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 {
-  ITrace("error_glTexCoord3f");
+  Internal("error_glTexCoord3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5304,7 +5304,7 @@ static void REGAL_CALL error_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 
 static void REGAL_CALL error_glTexCoord3fv(const GLfloat *v)
 {
-  ITrace("error_glTexCoord3fv");
+  Internal("error_glTexCoord3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5325,7 +5325,7 @@ static void REGAL_CALL error_glTexCoord3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glTexCoord3i(GLint s, GLint t, GLint r)
 {
-  ITrace("error_glTexCoord3i");
+  Internal("error_glTexCoord3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5346,7 +5346,7 @@ static void REGAL_CALL error_glTexCoord3i(GLint s, GLint t, GLint r)
 
 static void REGAL_CALL error_glTexCoord3iv(const GLint *v)
 {
-  ITrace("error_glTexCoord3iv");
+  Internal("error_glTexCoord3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5367,7 +5367,7 @@ static void REGAL_CALL error_glTexCoord3iv(const GLint *v)
 
 static void REGAL_CALL error_glTexCoord3s(GLshort s, GLshort t, GLshort r)
 {
-  ITrace("error_glTexCoord3s");
+  Internal("error_glTexCoord3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5388,7 +5388,7 @@ static void REGAL_CALL error_glTexCoord3s(GLshort s, GLshort t, GLshort r)
 
 static void REGAL_CALL error_glTexCoord3sv(const GLshort *v)
 {
-  ITrace("error_glTexCoord3sv");
+  Internal("error_glTexCoord3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5409,7 +5409,7 @@ static void REGAL_CALL error_glTexCoord3sv(const GLshort *v)
 
 static void REGAL_CALL error_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-  ITrace("error_glTexCoord4d");
+  Internal("error_glTexCoord4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5430,7 +5430,7 @@ static void REGAL_CALL error_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GL
 
 static void REGAL_CALL error_glTexCoord4dv(const GLdouble *v)
 {
-  ITrace("error_glTexCoord4dv");
+  Internal("error_glTexCoord4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5451,7 +5451,7 @@ static void REGAL_CALL error_glTexCoord4dv(const GLdouble *v)
 
 static void REGAL_CALL error_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-  ITrace("error_glTexCoord4f");
+  Internal("error_glTexCoord4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5472,7 +5472,7 @@ static void REGAL_CALL error_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLflo
 
 static void REGAL_CALL error_glTexCoord4fv(const GLfloat *v)
 {
-  ITrace("error_glTexCoord4fv");
+  Internal("error_glTexCoord4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5493,7 +5493,7 @@ static void REGAL_CALL error_glTexCoord4fv(const GLfloat *v)
 
 static void REGAL_CALL error_glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 {
-  ITrace("error_glTexCoord4i");
+  Internal("error_glTexCoord4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5514,7 +5514,7 @@ static void REGAL_CALL error_glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 
 static void REGAL_CALL error_glTexCoord4iv(const GLint *v)
 {
-  ITrace("error_glTexCoord4iv");
+  Internal("error_glTexCoord4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5535,7 +5535,7 @@ static void REGAL_CALL error_glTexCoord4iv(const GLint *v)
 
 static void REGAL_CALL error_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
 {
-  ITrace("error_glTexCoord4s");
+  Internal("error_glTexCoord4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5556,7 +5556,7 @@ static void REGAL_CALL error_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLsho
 
 static void REGAL_CALL error_glTexCoord4sv(const GLshort *v)
 {
-  ITrace("error_glTexCoord4sv");
+  Internal("error_glTexCoord4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5577,7 +5577,7 @@ static void REGAL_CALL error_glTexCoord4sv(const GLshort *v)
 
 static void REGAL_CALL error_glTexEnvf(GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glTexEnvf");
+  Internal("error_glTexEnvf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5598,7 +5598,7 @@ static void REGAL_CALL error_glTexEnvf(GLenum target, GLenum pname, GLfloat para
 
 static void REGAL_CALL error_glTexEnvfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glTexEnvfv");
+  Internal("error_glTexEnvfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5619,7 +5619,7 @@ static void REGAL_CALL error_glTexEnvfv(GLenum target, GLenum pname, const GLflo
 
 static void REGAL_CALL error_glTexEnvi(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glTexEnvi");
+  Internal("error_glTexEnvi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5640,7 +5640,7 @@ static void REGAL_CALL error_glTexEnvi(GLenum target, GLenum pname, GLint param)
 
 static void REGAL_CALL error_glTexEnviv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTexEnviv");
+  Internal("error_glTexEnviv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5661,7 +5661,7 @@ static void REGAL_CALL error_glTexEnviv(GLenum target, GLenum pname, const GLint
 
 static void REGAL_CALL error_glTexGend(GLenum coord, GLenum pname, GLdouble param)
 {
-  ITrace("error_glTexGend");
+  Internal("error_glTexGend","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5682,7 +5682,7 @@ static void REGAL_CALL error_glTexGend(GLenum coord, GLenum pname, GLdouble para
 
 static void REGAL_CALL error_glTexGendv(GLenum coord, GLenum pname, const GLdouble *params)
 {
-  ITrace("error_glTexGendv");
+  Internal("error_glTexGendv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5703,7 +5703,7 @@ static void REGAL_CALL error_glTexGendv(GLenum coord, GLenum pname, const GLdoub
 
 static void REGAL_CALL error_glTexGenf(GLenum coord, GLenum pname, GLfloat param)
 {
-  ITrace("error_glTexGenf");
+  Internal("error_glTexGenf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5724,7 +5724,7 @@ static void REGAL_CALL error_glTexGenf(GLenum coord, GLenum pname, GLfloat param
 
 static void REGAL_CALL error_glTexGenfv(GLenum coord, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glTexGenfv");
+  Internal("error_glTexGenfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5745,7 +5745,7 @@ static void REGAL_CALL error_glTexGenfv(GLenum coord, GLenum pname, const GLfloa
 
 static void REGAL_CALL error_glTexGeni(GLenum coord, GLenum pname, GLint param)
 {
-  ITrace("error_glTexGeni");
+  Internal("error_glTexGeni","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5766,7 +5766,7 @@ static void REGAL_CALL error_glTexGeni(GLenum coord, GLenum pname, GLint param)
 
 static void REGAL_CALL error_glTexGeniv(GLenum coord, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTexGeniv");
+  Internal("error_glTexGeniv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5787,7 +5787,7 @@ static void REGAL_CALL error_glTexGeniv(GLenum coord, GLenum pname, const GLint 
 
 static void REGAL_CALL error_glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexImage1D");
+  Internal("error_glTexImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5808,7 +5808,7 @@ static void REGAL_CALL error_glTexImage1D(GLenum target, GLint level, GLint inte
 
 static void REGAL_CALL error_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexImage2D");
+  Internal("error_glTexImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5829,7 +5829,7 @@ static void REGAL_CALL error_glTexImage2D(GLenum target, GLint level, GLint inte
 
 static void REGAL_CALL error_glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glTexParameterf");
+  Internal("error_glTexParameterf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5850,7 +5850,7 @@ static void REGAL_CALL error_glTexParameterf(GLenum target, GLenum pname, GLfloa
 
 static void REGAL_CALL error_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glTexParameterfv");
+  Internal("error_glTexParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5871,7 +5871,7 @@ static void REGAL_CALL error_glTexParameterfv(GLenum target, GLenum pname, const
 
 static void REGAL_CALL error_glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glTexParameteri");
+  Internal("error_glTexParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5892,7 +5892,7 @@ static void REGAL_CALL error_glTexParameteri(GLenum target, GLenum pname, GLint 
 
 static void REGAL_CALL error_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTexParameteriv");
+  Internal("error_glTexParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5913,7 +5913,7 @@ static void REGAL_CALL error_glTexParameteriv(GLenum target, GLenum pname, const
 
 static void REGAL_CALL error_glTranslated(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glTranslated");
+  Internal("error_glTranslated","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5934,7 +5934,7 @@ static void REGAL_CALL error_glTranslated(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL error_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTranslatef");
+  Internal("error_glTranslatef","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5955,7 +5955,7 @@ static void REGAL_CALL error_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glVertex2d(GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertex2d");
+  Internal("error_glVertex2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5976,7 +5976,7 @@ static void REGAL_CALL error_glVertex2d(GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glVertex2dv(const GLdouble *v)
 {
-  ITrace("error_glVertex2dv");
+  Internal("error_glVertex2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -5997,7 +5997,7 @@ static void REGAL_CALL error_glVertex2dv(const GLdouble *v)
 
 static void REGAL_CALL error_glVertex2f(GLfloat x, GLfloat y)
 {
-  ITrace("error_glVertex2f");
+  Internal("error_glVertex2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6018,7 +6018,7 @@ static void REGAL_CALL error_glVertex2f(GLfloat x, GLfloat y)
 
 static void REGAL_CALL error_glVertex2fv(const GLfloat *v)
 {
-  ITrace("error_glVertex2fv");
+  Internal("error_glVertex2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6039,7 +6039,7 @@ static void REGAL_CALL error_glVertex2fv(const GLfloat *v)
 
 static void REGAL_CALL error_glVertex2i(GLint x, GLint y)
 {
-  ITrace("error_glVertex2i");
+  Internal("error_glVertex2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6060,7 +6060,7 @@ static void REGAL_CALL error_glVertex2i(GLint x, GLint y)
 
 static void REGAL_CALL error_glVertex2iv(const GLint *v)
 {
-  ITrace("error_glVertex2iv");
+  Internal("error_glVertex2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6081,7 +6081,7 @@ static void REGAL_CALL error_glVertex2iv(const GLint *v)
 
 static void REGAL_CALL error_glVertex2s(GLshort x, GLshort y)
 {
-  ITrace("error_glVertex2s");
+  Internal("error_glVertex2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6102,7 +6102,7 @@ static void REGAL_CALL error_glVertex2s(GLshort x, GLshort y)
 
 static void REGAL_CALL error_glVertex2sv(const GLshort *v)
 {
-  ITrace("error_glVertex2sv");
+  Internal("error_glVertex2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6123,7 +6123,7 @@ static void REGAL_CALL error_glVertex2sv(const GLshort *v)
 
 static void REGAL_CALL error_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertex3d");
+  Internal("error_glVertex3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6144,7 +6144,7 @@ static void REGAL_CALL error_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL error_glVertex3dv(const GLdouble *v)
 {
-  ITrace("error_glVertex3dv");
+  Internal("error_glVertex3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6165,7 +6165,7 @@ static void REGAL_CALL error_glVertex3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glVertex3f");
+  Internal("error_glVertex3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6186,7 +6186,7 @@ static void REGAL_CALL error_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glVertex3fv(const GLfloat *v)
 {
-  ITrace("error_glVertex3fv");
+  Internal("error_glVertex3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6207,7 +6207,7 @@ static void REGAL_CALL error_glVertex3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glVertex3i(GLint x, GLint y, GLint z)
 {
-  ITrace("error_glVertex3i");
+  Internal("error_glVertex3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6228,7 +6228,7 @@ static void REGAL_CALL error_glVertex3i(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL error_glVertex3iv(const GLint *v)
 {
-  ITrace("error_glVertex3iv");
+  Internal("error_glVertex3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6249,7 +6249,7 @@ static void REGAL_CALL error_glVertex3iv(const GLint *v)
 
 static void REGAL_CALL error_glVertex3s(GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glVertex3s");
+  Internal("error_glVertex3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6270,7 +6270,7 @@ static void REGAL_CALL error_glVertex3s(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL error_glVertex3sv(const GLshort *v)
 {
-  ITrace("error_glVertex3sv");
+  Internal("error_glVertex3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6291,7 +6291,7 @@ static void REGAL_CALL error_glVertex3sv(const GLshort *v)
 
 static void REGAL_CALL error_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertex4d");
+  Internal("error_glVertex4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6312,7 +6312,7 @@ static void REGAL_CALL error_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdo
 
 static void REGAL_CALL error_glVertex4dv(const GLdouble *v)
 {
-  ITrace("error_glVertex4dv");
+  Internal("error_glVertex4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6333,7 +6333,7 @@ static void REGAL_CALL error_glVertex4dv(const GLdouble *v)
 
 static void REGAL_CALL error_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glVertex4f");
+  Internal("error_glVertex4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6354,7 +6354,7 @@ static void REGAL_CALL error_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat
 
 static void REGAL_CALL error_glVertex4fv(const GLfloat *v)
 {
-  ITrace("error_glVertex4fv");
+  Internal("error_glVertex4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6375,7 +6375,7 @@ static void REGAL_CALL error_glVertex4fv(const GLfloat *v)
 
 static void REGAL_CALL error_glVertex4i(GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glVertex4i");
+  Internal("error_glVertex4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6396,7 +6396,7 @@ static void REGAL_CALL error_glVertex4i(GLint x, GLint y, GLint z, GLint w)
 
 static void REGAL_CALL error_glVertex4iv(const GLint *v)
 {
-  ITrace("error_glVertex4iv");
+  Internal("error_glVertex4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6417,7 +6417,7 @@ static void REGAL_CALL error_glVertex4iv(const GLint *v)
 
 static void REGAL_CALL error_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glVertex4s");
+  Internal("error_glVertex4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6438,7 +6438,7 @@ static void REGAL_CALL error_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort
 
 static void REGAL_CALL error_glVertex4sv(const GLshort *v)
 {
-  ITrace("error_glVertex4sv");
+  Internal("error_glVertex4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6459,7 +6459,7 @@ static void REGAL_CALL error_glVertex4sv(const GLshort *v)
 
 static void REGAL_CALL error_glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glViewport");
+  Internal("error_glViewport","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6482,7 +6482,7 @@ static void REGAL_CALL error_glViewport(GLint x, GLint y, GLsizei width, GLsizei
 
 static GLboolean REGAL_CALL error_glAreTexturesResident(GLsizei n, const GLuint *textures, GLboolean *residences)
 {
-  ITrace("error_glAreTexturesResident");
+  Internal("error_glAreTexturesResident","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6504,7 +6504,7 @@ return ret;
 
 static void REGAL_CALL error_glArrayElement(GLint index)
 {
-  ITrace("error_glArrayElement");
+  Internal("error_glArrayElement","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6525,7 +6525,7 @@ static void REGAL_CALL error_glArrayElement(GLint index)
 
 static void REGAL_CALL error_glBindTexture(GLenum target, GLuint texture)
 {
-  ITrace("error_glBindTexture");
+  Internal("error_glBindTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6546,7 +6546,7 @@ static void REGAL_CALL error_glBindTexture(GLenum target, GLuint texture)
 
 static void REGAL_CALL error_glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glColorPointer");
+  Internal("error_glColorPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6567,7 +6567,7 @@ static void REGAL_CALL error_glColorPointer(GLint size, GLenum type, GLsizei str
 
 static void REGAL_CALL error_glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  ITrace("error_glCopyTexImage1D");
+  Internal("error_glCopyTexImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6588,7 +6588,7 @@ static void REGAL_CALL error_glCopyTexImage1D(GLenum target, GLint level, GLenum
 
 static void REGAL_CALL error_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  ITrace("error_glCopyTexImage2D");
+  Internal("error_glCopyTexImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6609,7 +6609,7 @@ static void REGAL_CALL error_glCopyTexImage2D(GLenum target, GLint level, GLenum
 
 static void REGAL_CALL error_glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyTexSubImage1D");
+  Internal("error_glCopyTexSubImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6630,7 +6630,7 @@ static void REGAL_CALL error_glCopyTexSubImage1D(GLenum target, GLint level, GLi
 
 static void REGAL_CALL error_glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTexSubImage2D");
+  Internal("error_glCopyTexSubImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6651,7 +6651,7 @@ static void REGAL_CALL error_glCopyTexSubImage2D(GLenum target, GLint level, GLi
 
 static void REGAL_CALL error_glDeleteTextures(GLsizei n, const GLuint *textures)
 {
-  ITrace("error_glDeleteTextures");
+  Internal("error_glDeleteTextures","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6672,7 +6672,7 @@ static void REGAL_CALL error_glDeleteTextures(GLsizei n, const GLuint *textures)
 
 static void REGAL_CALL error_glDisableClientState(GLenum cap)
 {
-  ITrace("error_glDisableClientState");
+  Internal("error_glDisableClientState","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6693,7 +6693,7 @@ static void REGAL_CALL error_glDisableClientState(GLenum cap)
 
 static void REGAL_CALL error_glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
-  ITrace("error_glDrawArrays");
+  Internal("error_glDrawArrays","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6714,7 +6714,7 @@ static void REGAL_CALL error_glDrawArrays(GLenum mode, GLint first, GLsizei coun
 
 static void REGAL_CALL error_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  ITrace("error_glDrawElements");
+  Internal("error_glDrawElements","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6735,7 +6735,7 @@ static void REGAL_CALL error_glDrawElements(GLenum mode, GLsizei count, GLenum t
 
 static void REGAL_CALL error_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glEdgeFlagPointer");
+  Internal("error_glEdgeFlagPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6756,7 +6756,7 @@ static void REGAL_CALL error_glEdgeFlagPointer(GLsizei stride, const GLvoid *poi
 
 static void REGAL_CALL error_glEnableClientState(GLenum cap)
 {
-  ITrace("error_glEnableClientState");
+  Internal("error_glEnableClientState","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6777,7 +6777,7 @@ static void REGAL_CALL error_glEnableClientState(GLenum cap)
 
 static void REGAL_CALL error_glGenTextures(GLsizei n, GLuint *textures)
 {
-  ITrace("error_glGenTextures");
+  Internal("error_glGenTextures","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6798,7 +6798,7 @@ static void REGAL_CALL error_glGenTextures(GLsizei n, GLuint *textures)
 
 static void REGAL_CALL error_glGetPointerv(GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetPointerv");
+  Internal("error_glGetPointerv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6819,7 +6819,7 @@ static void REGAL_CALL error_glGetPointerv(GLenum pname, GLvoid **params)
 
 static void REGAL_CALL error_glIndexPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glIndexPointer");
+  Internal("error_glIndexPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6840,7 +6840,7 @@ static void REGAL_CALL error_glIndexPointer(GLenum type, GLsizei stride, const G
 
 static void REGAL_CALL error_glIndexub(GLubyte c)
 {
-  ITrace("error_glIndexub");
+  Internal("error_glIndexub","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6861,7 +6861,7 @@ static void REGAL_CALL error_glIndexub(GLubyte c)
 
 static void REGAL_CALL error_glIndexubv(const GLubyte *c)
 {
-  ITrace("error_glIndexubv");
+  Internal("error_glIndexubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6882,7 +6882,7 @@ static void REGAL_CALL error_glIndexubv(const GLubyte *c)
 
 static void REGAL_CALL error_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glInterleavedArrays");
+  Internal("error_glInterleavedArrays","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6903,7 +6903,7 @@ static void REGAL_CALL error_glInterleavedArrays(GLenum format, GLsizei stride, 
 
 static GLboolean REGAL_CALL error_glIsTexture(GLuint texture)
 {
-  ITrace("error_glIsTexture");
+  Internal("error_glIsTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6925,7 +6925,7 @@ return ret;
 
 static void REGAL_CALL error_glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glNormalPointer");
+  Internal("error_glNormalPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6946,7 +6946,7 @@ static void REGAL_CALL error_glNormalPointer(GLenum type, GLsizei stride, const 
 
 static void REGAL_CALL error_glPolygonOffset(GLfloat factor, GLfloat units)
 {
-  ITrace("error_glPolygonOffset");
+  Internal("error_glPolygonOffset","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6967,7 +6967,7 @@ static void REGAL_CALL error_glPolygonOffset(GLfloat factor, GLfloat units)
 
 static void REGAL_CALL error_glPopClientAttrib(void)
 {
-  ITrace("error_glPopClientAttrib");
+  Internal("error_glPopClientAttrib","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -6988,7 +6988,7 @@ static void REGAL_CALL error_glPopClientAttrib(void)
 
 static void REGAL_CALL error_glPrioritizeTextures(GLsizei n, const GLuint *textures, const GLclampf *priorities)
 {
-  ITrace("error_glPrioritizeTextures");
+  Internal("error_glPrioritizeTextures","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7009,7 +7009,7 @@ static void REGAL_CALL error_glPrioritizeTextures(GLsizei n, const GLuint *textu
 
 static void REGAL_CALL error_glPushClientAttrib(GLbitfield mask)
 {
-  ITrace("error_glPushClientAttrib");
+  Internal("error_glPushClientAttrib","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7030,7 +7030,7 @@ static void REGAL_CALL error_glPushClientAttrib(GLbitfield mask)
 
 static void REGAL_CALL error_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glTexCoordPointer");
+  Internal("error_glTexCoordPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7051,7 +7051,7 @@ static void REGAL_CALL error_glTexCoordPointer(GLint size, GLenum type, GLsizei 
 
 static void REGAL_CALL error_glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage1D");
+  Internal("error_glTexSubImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7072,7 +7072,7 @@ static void REGAL_CALL error_glTexSubImage1D(GLenum target, GLint level, GLint x
 
 static void REGAL_CALL error_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage2D");
+  Internal("error_glTexSubImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7093,7 +7093,7 @@ static void REGAL_CALL error_glTexSubImage2D(GLenum target, GLint level, GLint x
 
 static void REGAL_CALL error_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexPointer");
+  Internal("error_glVertexPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7116,7 +7116,7 @@ static void REGAL_CALL error_glVertexPointer(GLint size, GLenum type, GLsizei st
 
 static void REGAL_CALL error_glBlendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  ITrace("error_glBlendColor");
+  Internal("error_glBlendColor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7137,7 +7137,7 @@ static void REGAL_CALL error_glBlendColor(GLclampf red, GLclampf green, GLclampf
 
 static void REGAL_CALL error_glBlendEquation(GLenum mode)
 {
-  ITrace("error_glBlendEquation");
+  Internal("error_glBlendEquation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7158,7 +7158,7 @@ static void REGAL_CALL error_glBlendEquation(GLenum mode)
 
 static void REGAL_CALL error_glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTexSubImage3D");
+  Internal("error_glCopyTexSubImage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7179,7 +7179,7 @@ static void REGAL_CALL error_glCopyTexSubImage3D(GLenum target, GLint level, GLi
 
 static void REGAL_CALL error_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  ITrace("error_glDrawRangeElements");
+  Internal("error_glDrawRangeElements","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7200,7 +7200,7 @@ static void REGAL_CALL error_glDrawRangeElements(GLenum mode, GLuint start, GLui
 
 static void REGAL_CALL error_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexImage3D");
+  Internal("error_glTexImage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7221,7 +7221,7 @@ static void REGAL_CALL error_glTexImage3D(GLenum target, GLint level, GLint inte
 
 static void REGAL_CALL error_glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage3D");
+  Internal("error_glTexSubImage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7244,7 +7244,7 @@ static void REGAL_CALL error_glTexSubImage3D(GLenum target, GLint level, GLint x
 
 static void REGAL_CALL error_glActiveTexture(GLenum texture)
 {
-  ITrace("error_glActiveTexture");
+  Internal("error_glActiveTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7265,7 +7265,7 @@ static void REGAL_CALL error_glActiveTexture(GLenum texture)
 
 static void REGAL_CALL error_glClientActiveTexture(GLenum texture)
 {
-  ITrace("error_glClientActiveTexture");
+  Internal("error_glClientActiveTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7286,7 +7286,7 @@ static void REGAL_CALL error_glClientActiveTexture(GLenum texture)
 
 static void REGAL_CALL error_glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage1D");
+  Internal("error_glCompressedTexImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7307,7 +7307,7 @@ static void REGAL_CALL error_glCompressedTexImage1D(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage2D");
+  Internal("error_glCompressedTexImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7328,7 +7328,7 @@ static void REGAL_CALL error_glCompressedTexImage2D(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage3D");
+  Internal("error_glCompressedTexImage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7349,7 +7349,7 @@ static void REGAL_CALL error_glCompressedTexImage3D(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage1D");
+  Internal("error_glCompressedTexSubImage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7370,7 +7370,7 @@ static void REGAL_CALL error_glCompressedTexSubImage1D(GLenum target, GLint leve
 
 static void REGAL_CALL error_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage2D");
+  Internal("error_glCompressedTexSubImage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7391,7 +7391,7 @@ static void REGAL_CALL error_glCompressedTexSubImage2D(GLenum target, GLint leve
 
 static void REGAL_CALL error_glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage3D");
+  Internal("error_glCompressedTexSubImage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7412,7 +7412,7 @@ static void REGAL_CALL error_glCompressedTexSubImage3D(GLenum target, GLint leve
 
 static void REGAL_CALL error_glGetCompressedTexImage(GLenum target, GLint lod, GLvoid *img)
 {
-  ITrace("error_glGetCompressedTexImage");
+  Internal("error_glGetCompressedTexImage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7433,7 +7433,7 @@ static void REGAL_CALL error_glGetCompressedTexImage(GLenum target, GLint lod, G
 
 static void REGAL_CALL error_glLoadTransposeMatrixd(const GLdouble *m)
 {
-  ITrace("error_glLoadTransposeMatrixd");
+  Internal("error_glLoadTransposeMatrixd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7454,7 +7454,7 @@ static void REGAL_CALL error_glLoadTransposeMatrixd(const GLdouble *m)
 
 static void REGAL_CALL error_glLoadTransposeMatrixf(const GLfloat *m)
 {
-  ITrace("error_glLoadTransposeMatrixf");
+  Internal("error_glLoadTransposeMatrixf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7475,7 +7475,7 @@ static void REGAL_CALL error_glLoadTransposeMatrixf(const GLfloat *m)
 
 static void REGAL_CALL error_glMultTransposeMatrixd(const GLdouble *m)
 {
-  ITrace("error_glMultTransposeMatrixd");
+  Internal("error_glMultTransposeMatrixd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7496,7 +7496,7 @@ static void REGAL_CALL error_glMultTransposeMatrixd(const GLdouble *m)
 
 static void REGAL_CALL error_glMultTransposeMatrixf(const GLfloat *m)
 {
-  ITrace("error_glMultTransposeMatrixf");
+  Internal("error_glMultTransposeMatrixf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7517,7 +7517,7 @@ static void REGAL_CALL error_glMultTransposeMatrixf(const GLfloat *m)
 
 static void REGAL_CALL error_glMultiTexCoord1d(GLenum target, GLdouble s)
 {
-  ITrace("error_glMultiTexCoord1d");
+  Internal("error_glMultiTexCoord1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7538,7 +7538,7 @@ static void REGAL_CALL error_glMultiTexCoord1d(GLenum target, GLdouble s)
 
 static void REGAL_CALL error_glMultiTexCoord1dv(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord1dv");
+  Internal("error_glMultiTexCoord1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7559,7 +7559,7 @@ static void REGAL_CALL error_glMultiTexCoord1dv(GLenum target, const GLdouble *v
 
 static void REGAL_CALL error_glMultiTexCoord1f(GLenum target, GLfloat s)
 {
-  ITrace("error_glMultiTexCoord1f");
+  Internal("error_glMultiTexCoord1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7580,7 +7580,7 @@ static void REGAL_CALL error_glMultiTexCoord1f(GLenum target, GLfloat s)
 
 static void REGAL_CALL error_glMultiTexCoord1fv(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord1fv");
+  Internal("error_glMultiTexCoord1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7601,7 +7601,7 @@ static void REGAL_CALL error_glMultiTexCoord1fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL error_glMultiTexCoord1i(GLenum target, GLint s)
 {
-  ITrace("error_glMultiTexCoord1i");
+  Internal("error_glMultiTexCoord1i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7622,7 +7622,7 @@ static void REGAL_CALL error_glMultiTexCoord1i(GLenum target, GLint s)
 
 static void REGAL_CALL error_glMultiTexCoord1iv(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord1iv");
+  Internal("error_glMultiTexCoord1iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7643,7 +7643,7 @@ static void REGAL_CALL error_glMultiTexCoord1iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL error_glMultiTexCoord1s(GLenum target, GLshort s)
 {
-  ITrace("error_glMultiTexCoord1s");
+  Internal("error_glMultiTexCoord1s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7664,7 +7664,7 @@ static void REGAL_CALL error_glMultiTexCoord1s(GLenum target, GLshort s)
 
 static void REGAL_CALL error_glMultiTexCoord1sv(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord1sv");
+  Internal("error_glMultiTexCoord1sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7685,7 +7685,7 @@ static void REGAL_CALL error_glMultiTexCoord1sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL error_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble t)
 {
-  ITrace("error_glMultiTexCoord2d");
+  Internal("error_glMultiTexCoord2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7706,7 +7706,7 @@ static void REGAL_CALL error_glMultiTexCoord2d(GLenum target, GLdouble s, GLdoub
 
 static void REGAL_CALL error_glMultiTexCoord2dv(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord2dv");
+  Internal("error_glMultiTexCoord2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7727,7 +7727,7 @@ static void REGAL_CALL error_glMultiTexCoord2dv(GLenum target, const GLdouble *v
 
 static void REGAL_CALL error_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t)
 {
-  ITrace("error_glMultiTexCoord2f");
+  Internal("error_glMultiTexCoord2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7748,7 +7748,7 @@ static void REGAL_CALL error_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat
 
 static void REGAL_CALL error_glMultiTexCoord2fv(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord2fv");
+  Internal("error_glMultiTexCoord2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7769,7 +7769,7 @@ static void REGAL_CALL error_glMultiTexCoord2fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL error_glMultiTexCoord2i(GLenum target, GLint s, GLint t)
 {
-  ITrace("error_glMultiTexCoord2i");
+  Internal("error_glMultiTexCoord2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7790,7 +7790,7 @@ static void REGAL_CALL error_glMultiTexCoord2i(GLenum target, GLint s, GLint t)
 
 static void REGAL_CALL error_glMultiTexCoord2iv(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord2iv");
+  Internal("error_glMultiTexCoord2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7811,7 +7811,7 @@ static void REGAL_CALL error_glMultiTexCoord2iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL error_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t)
 {
-  ITrace("error_glMultiTexCoord2s");
+  Internal("error_glMultiTexCoord2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7832,7 +7832,7 @@ static void REGAL_CALL error_glMultiTexCoord2s(GLenum target, GLshort s, GLshort
 
 static void REGAL_CALL error_glMultiTexCoord2sv(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord2sv");
+  Internal("error_glMultiTexCoord2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7853,7 +7853,7 @@ static void REGAL_CALL error_glMultiTexCoord2sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL error_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble t, GLdouble r)
 {
-  ITrace("error_glMultiTexCoord3d");
+  Internal("error_glMultiTexCoord3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7874,7 +7874,7 @@ static void REGAL_CALL error_glMultiTexCoord3d(GLenum target, GLdouble s, GLdoub
 
 static void REGAL_CALL error_glMultiTexCoord3dv(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord3dv");
+  Internal("error_glMultiTexCoord3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7895,7 +7895,7 @@ static void REGAL_CALL error_glMultiTexCoord3dv(GLenum target, const GLdouble *v
 
 static void REGAL_CALL error_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t, GLfloat r)
 {
-  ITrace("error_glMultiTexCoord3f");
+  Internal("error_glMultiTexCoord3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7916,7 +7916,7 @@ static void REGAL_CALL error_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat
 
 static void REGAL_CALL error_glMultiTexCoord3fv(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord3fv");
+  Internal("error_glMultiTexCoord3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7937,7 +7937,7 @@ static void REGAL_CALL error_glMultiTexCoord3fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL error_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GLint r)
 {
-  ITrace("error_glMultiTexCoord3i");
+  Internal("error_glMultiTexCoord3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7958,7 +7958,7 @@ static void REGAL_CALL error_glMultiTexCoord3i(GLenum target, GLint s, GLint t, 
 
 static void REGAL_CALL error_glMultiTexCoord3iv(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord3iv");
+  Internal("error_glMultiTexCoord3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -7979,7 +7979,7 @@ static void REGAL_CALL error_glMultiTexCoord3iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL error_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t, GLshort r)
 {
-  ITrace("error_glMultiTexCoord3s");
+  Internal("error_glMultiTexCoord3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8000,7 +8000,7 @@ static void REGAL_CALL error_glMultiTexCoord3s(GLenum target, GLshort s, GLshort
 
 static void REGAL_CALL error_glMultiTexCoord3sv(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord3sv");
+  Internal("error_glMultiTexCoord3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8021,7 +8021,7 @@ static void REGAL_CALL error_glMultiTexCoord3sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL error_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-  ITrace("error_glMultiTexCoord4d");
+  Internal("error_glMultiTexCoord4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8042,7 +8042,7 @@ static void REGAL_CALL error_glMultiTexCoord4d(GLenum target, GLdouble s, GLdoub
 
 static void REGAL_CALL error_glMultiTexCoord4dv(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord4dv");
+  Internal("error_glMultiTexCoord4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8063,7 +8063,7 @@ static void REGAL_CALL error_glMultiTexCoord4dv(GLenum target, const GLdouble *v
 
 static void REGAL_CALL error_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-  ITrace("error_glMultiTexCoord4f");
+  Internal("error_glMultiTexCoord4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8084,7 +8084,7 @@ static void REGAL_CALL error_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat
 
 static void REGAL_CALL error_glMultiTexCoord4fv(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord4fv");
+  Internal("error_glMultiTexCoord4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8105,7 +8105,7 @@ static void REGAL_CALL error_glMultiTexCoord4fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL error_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GLint r, GLint q)
 {
-  ITrace("error_glMultiTexCoord4i");
+  Internal("error_glMultiTexCoord4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8126,7 +8126,7 @@ static void REGAL_CALL error_glMultiTexCoord4i(GLenum target, GLint s, GLint t, 
 
 static void REGAL_CALL error_glMultiTexCoord4iv(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord4iv");
+  Internal("error_glMultiTexCoord4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8147,7 +8147,7 @@ static void REGAL_CALL error_glMultiTexCoord4iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL error_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 {
-  ITrace("error_glMultiTexCoord4s");
+  Internal("error_glMultiTexCoord4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8168,7 +8168,7 @@ static void REGAL_CALL error_glMultiTexCoord4s(GLenum target, GLshort s, GLshort
 
 static void REGAL_CALL error_glMultiTexCoord4sv(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord4sv");
+  Internal("error_glMultiTexCoord4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8189,7 +8189,7 @@ static void REGAL_CALL error_glMultiTexCoord4sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL error_glSampleCoverage(GLclampf value, GLboolean invert)
 {
-  ITrace("error_glSampleCoverage");
+  Internal("error_glSampleCoverage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8212,7 +8212,7 @@ static void REGAL_CALL error_glSampleCoverage(GLclampf value, GLboolean invert)
 
 static void REGAL_CALL error_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
-  ITrace("error_glBlendFuncSeparate");
+  Internal("error_glBlendFuncSeparate","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8233,7 +8233,7 @@ static void REGAL_CALL error_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfact
 
 static void REGAL_CALL error_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glFogCoordPointer");
+  Internal("error_glFogCoordPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8254,7 +8254,7 @@ static void REGAL_CALL error_glFogCoordPointer(GLenum type, GLsizei stride, cons
 
 static void REGAL_CALL error_glFogCoordd(GLdouble coord)
 {
-  ITrace("error_glFogCoordd");
+  Internal("error_glFogCoordd","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8275,7 +8275,7 @@ static void REGAL_CALL error_glFogCoordd(GLdouble coord)
 
 static void REGAL_CALL error_glFogCoorddv(const GLdouble *coord)
 {
-  ITrace("error_glFogCoorddv");
+  Internal("error_glFogCoorddv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8296,7 +8296,7 @@ static void REGAL_CALL error_glFogCoorddv(const GLdouble *coord)
 
 static void REGAL_CALL error_glFogCoordf(GLfloat coord)
 {
-  ITrace("error_glFogCoordf");
+  Internal("error_glFogCoordf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8317,7 +8317,7 @@ static void REGAL_CALL error_glFogCoordf(GLfloat coord)
 
 static void REGAL_CALL error_glFogCoordfv(const GLfloat *coord)
 {
-  ITrace("error_glFogCoordfv");
+  Internal("error_glFogCoordfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8338,7 +8338,7 @@ static void REGAL_CALL error_glFogCoordfv(const GLfloat *coord)
 
 static void REGAL_CALL error_glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawArrays");
+  Internal("error_glMultiDrawArrays","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8359,7 +8359,7 @@ static void REGAL_CALL error_glMultiDrawArrays(GLenum mode, const GLint *first, 
 
 static void REGAL_CALL error_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawElements");
+  Internal("error_glMultiDrawElements","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8380,7 +8380,7 @@ static void REGAL_CALL error_glMultiDrawElements(GLenum mode, const GLsizei *cou
 
 static void REGAL_CALL error_glPointParameterf(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPointParameterf");
+  Internal("error_glPointParameterf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8401,7 +8401,7 @@ static void REGAL_CALL error_glPointParameterf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPointParameterfv(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glPointParameterfv");
+  Internal("error_glPointParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8422,7 +8422,7 @@ static void REGAL_CALL error_glPointParameterfv(GLenum pname, const GLfloat *par
 
 static void REGAL_CALL error_glPointParameteri(GLenum pname, GLint param)
 {
-  ITrace("error_glPointParameteri");
+  Internal("error_glPointParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8443,7 +8443,7 @@ static void REGAL_CALL error_glPointParameteri(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glPointParameteriv(GLenum pname, const GLint *params)
 {
-  ITrace("error_glPointParameteriv");
+  Internal("error_glPointParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8464,7 +8464,7 @@ static void REGAL_CALL error_glPointParameteriv(GLenum pname, const GLint *param
 
 static void REGAL_CALL error_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
-  ITrace("error_glSecondaryColor3b");
+  Internal("error_glSecondaryColor3b","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8485,7 +8485,7 @@ static void REGAL_CALL error_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte
 
 static void REGAL_CALL error_glSecondaryColor3bv(const GLbyte *v)
 {
-  ITrace("error_glSecondaryColor3bv");
+  Internal("error_glSecondaryColor3bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8506,7 +8506,7 @@ static void REGAL_CALL error_glSecondaryColor3bv(const GLbyte *v)
 
 static void REGAL_CALL error_glSecondaryColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
-  ITrace("error_glSecondaryColor3d");
+  Internal("error_glSecondaryColor3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8527,7 +8527,7 @@ static void REGAL_CALL error_glSecondaryColor3d(GLdouble red, GLdouble green, GL
 
 static void REGAL_CALL error_glSecondaryColor3dv(const GLdouble *v)
 {
-  ITrace("error_glSecondaryColor3dv");
+  Internal("error_glSecondaryColor3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8548,7 +8548,7 @@ static void REGAL_CALL error_glSecondaryColor3dv(const GLdouble *v)
 
 static void REGAL_CALL error_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
-  ITrace("error_glSecondaryColor3f");
+  Internal("error_glSecondaryColor3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8569,7 +8569,7 @@ static void REGAL_CALL error_glSecondaryColor3f(GLfloat red, GLfloat green, GLfl
 
 static void REGAL_CALL error_glSecondaryColor3fv(const GLfloat *v)
 {
-  ITrace("error_glSecondaryColor3fv");
+  Internal("error_glSecondaryColor3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8590,7 +8590,7 @@ static void REGAL_CALL error_glSecondaryColor3fv(const GLfloat *v)
 
 static void REGAL_CALL error_glSecondaryColor3i(GLint red, GLint green, GLint blue)
 {
-  ITrace("error_glSecondaryColor3i");
+  Internal("error_glSecondaryColor3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8611,7 +8611,7 @@ static void REGAL_CALL error_glSecondaryColor3i(GLint red, GLint green, GLint bl
 
 static void REGAL_CALL error_glSecondaryColor3iv(const GLint *v)
 {
-  ITrace("error_glSecondaryColor3iv");
+  Internal("error_glSecondaryColor3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8632,7 +8632,7 @@ static void REGAL_CALL error_glSecondaryColor3iv(const GLint *v)
 
 static void REGAL_CALL error_glSecondaryColor3s(GLshort red, GLshort green, GLshort blue)
 {
-  ITrace("error_glSecondaryColor3s");
+  Internal("error_glSecondaryColor3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8653,7 +8653,7 @@ static void REGAL_CALL error_glSecondaryColor3s(GLshort red, GLshort green, GLsh
 
 static void REGAL_CALL error_glSecondaryColor3sv(const GLshort *v)
 {
-  ITrace("error_glSecondaryColor3sv");
+  Internal("error_glSecondaryColor3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8674,7 +8674,7 @@ static void REGAL_CALL error_glSecondaryColor3sv(const GLshort *v)
 
 static void REGAL_CALL error_glSecondaryColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
-  ITrace("error_glSecondaryColor3ub");
+  Internal("error_glSecondaryColor3ub","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8695,7 +8695,7 @@ static void REGAL_CALL error_glSecondaryColor3ub(GLubyte red, GLubyte green, GLu
 
 static void REGAL_CALL error_glSecondaryColor3ubv(const GLubyte *v)
 {
-  ITrace("error_glSecondaryColor3ubv");
+  Internal("error_glSecondaryColor3ubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8716,7 +8716,7 @@ static void REGAL_CALL error_glSecondaryColor3ubv(const GLubyte *v)
 
 static void REGAL_CALL error_glSecondaryColor3ui(GLuint red, GLuint green, GLuint blue)
 {
-  ITrace("error_glSecondaryColor3ui");
+  Internal("error_glSecondaryColor3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8737,7 +8737,7 @@ static void REGAL_CALL error_glSecondaryColor3ui(GLuint red, GLuint green, GLuin
 
 static void REGAL_CALL error_glSecondaryColor3uiv(const GLuint *v)
 {
-  ITrace("error_glSecondaryColor3uiv");
+  Internal("error_glSecondaryColor3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8758,7 +8758,7 @@ static void REGAL_CALL error_glSecondaryColor3uiv(const GLuint *v)
 
 static void REGAL_CALL error_glSecondaryColor3us(GLushort red, GLushort green, GLushort blue)
 {
-  ITrace("error_glSecondaryColor3us");
+  Internal("error_glSecondaryColor3us","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8779,7 +8779,7 @@ static void REGAL_CALL error_glSecondaryColor3us(GLushort red, GLushort green, G
 
 static void REGAL_CALL error_glSecondaryColor3usv(const GLushort *v)
 {
-  ITrace("error_glSecondaryColor3usv");
+  Internal("error_glSecondaryColor3usv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8800,7 +8800,7 @@ static void REGAL_CALL error_glSecondaryColor3usv(const GLushort *v)
 
 static void REGAL_CALL error_glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glSecondaryColorPointer");
+  Internal("error_glSecondaryColorPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8821,7 +8821,7 @@ static void REGAL_CALL error_glSecondaryColorPointer(GLint size, GLenum type, GL
 
 static void REGAL_CALL error_glWindowPos2d(GLdouble x, GLdouble y)
 {
-  ITrace("error_glWindowPos2d");
+  Internal("error_glWindowPos2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8842,7 +8842,7 @@ static void REGAL_CALL error_glWindowPos2d(GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glWindowPos2dv(const GLdouble *p)
 {
-  ITrace("error_glWindowPos2dv");
+  Internal("error_glWindowPos2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8863,7 +8863,7 @@ static void REGAL_CALL error_glWindowPos2dv(const GLdouble *p)
 
 static void REGAL_CALL error_glWindowPos2f(GLfloat x, GLfloat y)
 {
-  ITrace("error_glWindowPos2f");
+  Internal("error_glWindowPos2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8884,7 +8884,7 @@ static void REGAL_CALL error_glWindowPos2f(GLfloat x, GLfloat y)
 
 static void REGAL_CALL error_glWindowPos2fv(const GLfloat *p)
 {
-  ITrace("error_glWindowPos2fv");
+  Internal("error_glWindowPos2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8905,7 +8905,7 @@ static void REGAL_CALL error_glWindowPos2fv(const GLfloat *p)
 
 static void REGAL_CALL error_glWindowPos2i(GLint x, GLint y)
 {
-  ITrace("error_glWindowPos2i");
+  Internal("error_glWindowPos2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8926,7 +8926,7 @@ static void REGAL_CALL error_glWindowPos2i(GLint x, GLint y)
 
 static void REGAL_CALL error_glWindowPos2iv(const GLint *p)
 {
-  ITrace("error_glWindowPos2iv");
+  Internal("error_glWindowPos2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8947,7 +8947,7 @@ static void REGAL_CALL error_glWindowPos2iv(const GLint *p)
 
 static void REGAL_CALL error_glWindowPos2s(GLshort x, GLshort y)
 {
-  ITrace("error_glWindowPos2s");
+  Internal("error_glWindowPos2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8968,7 +8968,7 @@ static void REGAL_CALL error_glWindowPos2s(GLshort x, GLshort y)
 
 static void REGAL_CALL error_glWindowPos2sv(const GLshort *p)
 {
-  ITrace("error_glWindowPos2sv");
+  Internal("error_glWindowPos2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -8989,7 +8989,7 @@ static void REGAL_CALL error_glWindowPos2sv(const GLshort *p)
 
 static void REGAL_CALL error_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glWindowPos3d");
+  Internal("error_glWindowPos3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9010,7 +9010,7 @@ static void REGAL_CALL error_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL error_glWindowPos3dv(const GLdouble *p)
 {
-  ITrace("error_glWindowPos3dv");
+  Internal("error_glWindowPos3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9031,7 +9031,7 @@ static void REGAL_CALL error_glWindowPos3dv(const GLdouble *p)
 
 static void REGAL_CALL error_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glWindowPos3f");
+  Internal("error_glWindowPos3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9052,7 +9052,7 @@ static void REGAL_CALL error_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glWindowPos3fv(const GLfloat *p)
 {
-  ITrace("error_glWindowPos3fv");
+  Internal("error_glWindowPos3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9073,7 +9073,7 @@ static void REGAL_CALL error_glWindowPos3fv(const GLfloat *p)
 
 static void REGAL_CALL error_glWindowPos3i(GLint x, GLint y, GLint z)
 {
-  ITrace("error_glWindowPos3i");
+  Internal("error_glWindowPos3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9094,7 +9094,7 @@ static void REGAL_CALL error_glWindowPos3i(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL error_glWindowPos3iv(const GLint *p)
 {
-  ITrace("error_glWindowPos3iv");
+  Internal("error_glWindowPos3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9115,7 +9115,7 @@ static void REGAL_CALL error_glWindowPos3iv(const GLint *p)
 
 static void REGAL_CALL error_glWindowPos3s(GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glWindowPos3s");
+  Internal("error_glWindowPos3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9136,7 +9136,7 @@ static void REGAL_CALL error_glWindowPos3s(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL error_glWindowPos3sv(const GLshort *p)
 {
-  ITrace("error_glWindowPos3sv");
+  Internal("error_glWindowPos3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9159,7 +9159,7 @@ static void REGAL_CALL error_glWindowPos3sv(const GLshort *p)
 
 static void REGAL_CALL error_glBeginQuery(GLenum target, GLuint id)
 {
-  ITrace("error_glBeginQuery");
+  Internal("error_glBeginQuery","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9180,7 +9180,7 @@ static void REGAL_CALL error_glBeginQuery(GLenum target, GLuint id)
 
 static void REGAL_CALL error_glBindBuffer(GLenum target, GLuint buffer)
 {
-  ITrace("error_glBindBuffer");
+  Internal("error_glBindBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9201,7 +9201,7 @@ static void REGAL_CALL error_glBindBuffer(GLenum target, GLuint buffer)
 
 static void REGAL_CALL error_glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  ITrace("error_glBufferData");
+  Internal("error_glBufferData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9222,7 +9222,7 @@ static void REGAL_CALL error_glBufferData(GLenum target, GLsizeiptr size, const 
 
 static void REGAL_CALL error_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  ITrace("error_glBufferSubData");
+  Internal("error_glBufferSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9243,7 +9243,7 @@ static void REGAL_CALL error_glBufferSubData(GLenum target, GLintptr offset, GLs
 
 static void REGAL_CALL error_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 {
-  ITrace("error_glDeleteBuffers");
+  Internal("error_glDeleteBuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9264,7 +9264,7 @@ static void REGAL_CALL error_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 
 static void REGAL_CALL error_glDeleteQueries(GLsizei n, const GLuint *ids)
 {
-  ITrace("error_glDeleteQueries");
+  Internal("error_glDeleteQueries","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9285,7 +9285,7 @@ static void REGAL_CALL error_glDeleteQueries(GLsizei n, const GLuint *ids)
 
 static void REGAL_CALL error_glEndQuery(GLenum target)
 {
-  ITrace("error_glEndQuery");
+  Internal("error_glEndQuery","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9306,7 +9306,7 @@ static void REGAL_CALL error_glEndQuery(GLenum target)
 
 static void REGAL_CALL error_glGenBuffers(GLsizei n, GLuint *buffers)
 {
-  ITrace("error_glGenBuffers");
+  Internal("error_glGenBuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9327,7 +9327,7 @@ static void REGAL_CALL error_glGenBuffers(GLsizei n, GLuint *buffers)
 
 static void REGAL_CALL error_glGenQueries(GLsizei n, GLuint *ids)
 {
-  ITrace("error_glGenQueries");
+  Internal("error_glGenQueries","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9348,7 +9348,7 @@ static void REGAL_CALL error_glGenQueries(GLsizei n, GLuint *ids)
 
 static void REGAL_CALL error_glGetBufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetBufferParameteriv");
+  Internal("error_glGetBufferParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9369,7 +9369,7 @@ static void REGAL_CALL error_glGetBufferParameteriv(GLenum target, GLenum pname,
 
 static void REGAL_CALL error_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetBufferPointerv");
+  Internal("error_glGetBufferPointerv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9390,7 +9390,7 @@ static void REGAL_CALL error_glGetBufferPointerv(GLenum target, GLenum pname, GL
 
 static void REGAL_CALL error_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  ITrace("error_glGetBufferSubData");
+  Internal("error_glGetBufferSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9411,7 +9411,7 @@ static void REGAL_CALL error_glGetBufferSubData(GLenum target, GLintptr offset, 
 
 static void REGAL_CALL error_glGetQueryObjectiv(GLuint id, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetQueryObjectiv");
+  Internal("error_glGetQueryObjectiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9432,7 +9432,7 @@ static void REGAL_CALL error_glGetQueryObjectiv(GLuint id, GLenum pname, GLint *
 
 static void REGAL_CALL error_glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetQueryObjectuiv");
+  Internal("error_glGetQueryObjectuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9453,7 +9453,7 @@ static void REGAL_CALL error_glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint
 
 static void REGAL_CALL error_glGetQueryiv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetQueryiv");
+  Internal("error_glGetQueryiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9474,7 +9474,7 @@ static void REGAL_CALL error_glGetQueryiv(GLenum target, GLenum pname, GLint *pa
 
 static GLboolean REGAL_CALL error_glIsBuffer(GLuint buffer)
 {
-  ITrace("error_glIsBuffer");
+  Internal("error_glIsBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9496,7 +9496,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsQuery(GLuint id)
 {
-  ITrace("error_glIsQuery");
+  Internal("error_glIsQuery","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9518,7 +9518,7 @@ return ret;
 
 static GLvoid *REGAL_CALL error_glMapBuffer(GLenum target, GLenum access)
 {
-  ITrace("error_glMapBuffer");
+  Internal("error_glMapBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9540,7 +9540,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glUnmapBuffer(GLenum target)
 {
-  ITrace("error_glUnmapBuffer");
+  Internal("error_glUnmapBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9564,7 +9564,7 @@ return ret;
 
 static void REGAL_CALL error_glAttachShader(GLuint program, GLuint shader)
 {
-  ITrace("error_glAttachShader");
+  Internal("error_glAttachShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9585,7 +9585,7 @@ static void REGAL_CALL error_glAttachShader(GLuint program, GLuint shader)
 
 static void REGAL_CALL error_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name)
 {
-  ITrace("error_glBindAttribLocation");
+  Internal("error_glBindAttribLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9606,7 +9606,7 @@ static void REGAL_CALL error_glBindAttribLocation(GLuint program, GLuint index, 
 
 static void REGAL_CALL error_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("error_glBlendEquationSeparate");
+  Internal("error_glBlendEquationSeparate","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9627,7 +9627,7 @@ static void REGAL_CALL error_glBlendEquationSeparate(GLenum modeRGB, GLenum mode
 
 static void REGAL_CALL error_glCompileShader(GLuint shader)
 {
-  ITrace("error_glCompileShader");
+  Internal("error_glCompileShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9648,7 +9648,7 @@ static void REGAL_CALL error_glCompileShader(GLuint shader)
 
 static GLuint REGAL_CALL error_glCreateProgram(void)
 {
-  ITrace("error_glCreateProgram");
+  Internal("error_glCreateProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9670,7 +9670,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glCreateShader(GLenum type)
 {
-  ITrace("error_glCreateShader");
+  Internal("error_glCreateShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9692,7 +9692,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteProgram(GLuint program)
 {
-  ITrace("error_glDeleteProgram");
+  Internal("error_glDeleteProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9713,7 +9713,7 @@ static void REGAL_CALL error_glDeleteProgram(GLuint program)
 
 static void REGAL_CALL error_glDeleteShader(GLuint shader)
 {
-  ITrace("error_glDeleteShader");
+  Internal("error_glDeleteShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9734,7 +9734,7 @@ static void REGAL_CALL error_glDeleteShader(GLuint shader)
 
 static void REGAL_CALL error_glDetachShader(GLuint program, GLuint shader)
 {
-  ITrace("error_glDetachShader");
+  Internal("error_glDetachShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9755,7 +9755,7 @@ static void REGAL_CALL error_glDetachShader(GLuint program, GLuint shader)
 
 static void REGAL_CALL error_glDisableVertexAttribArray(GLuint index)
 {
-  ITrace("error_glDisableVertexAttribArray");
+  Internal("error_glDisableVertexAttribArray","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9776,7 +9776,7 @@ static void REGAL_CALL error_glDisableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL error_glDrawBuffers(GLsizei n, const GLenum *bufs)
 {
-  ITrace("error_glDrawBuffers");
+  Internal("error_glDrawBuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9797,7 +9797,7 @@ static void REGAL_CALL error_glDrawBuffers(GLsizei n, const GLenum *bufs)
 
 static void REGAL_CALL error_glEnableVertexAttribArray(GLuint index)
 {
-  ITrace("error_glEnableVertexAttribArray");
+  Internal("error_glEnableVertexAttribArray","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9818,7 +9818,7 @@ static void REGAL_CALL error_glEnableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL error_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name)
 {
-  ITrace("error_glGetActiveAttrib");
+  Internal("error_glGetActiveAttrib","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9839,7 +9839,7 @@ static void REGAL_CALL error_glGetActiveAttrib(GLuint program, GLuint index, GLs
 
 static void REGAL_CALL error_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name)
 {
-  ITrace("error_glGetActiveUniform");
+  Internal("error_glGetActiveUniform","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9860,7 +9860,7 @@ static void REGAL_CALL error_glGetActiveUniform(GLuint program, GLuint index, GL
 
 static void REGAL_CALL error_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders)
 {
-  ITrace("error_glGetAttachedShaders");
+  Internal("error_glGetAttachedShaders","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9881,7 +9881,7 @@ static void REGAL_CALL error_glGetAttachedShaders(GLuint program, GLsizei maxCou
 
 static GLint REGAL_CALL error_glGetAttribLocation(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetAttribLocation");
+  Internal("error_glGetAttribLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9903,7 +9903,7 @@ return ret;
 
 static void REGAL_CALL error_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 {
-  ITrace("error_glGetProgramInfoLog");
+  Internal("error_glGetProgramInfoLog","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9924,7 +9924,7 @@ static void REGAL_CALL error_glGetProgramInfoLog(GLuint program, GLsizei bufSize
 
 static void REGAL_CALL error_glGetProgramiv(GLuint program, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetProgramiv");
+  Internal("error_glGetProgramiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9945,7 +9945,7 @@ static void REGAL_CALL error_glGetProgramiv(GLuint program, GLenum pname, GLint 
 
 static void REGAL_CALL error_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 {
-  ITrace("error_glGetShaderInfoLog");
+  Internal("error_glGetShaderInfoLog","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9966,7 +9966,7 @@ static void REGAL_CALL error_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, 
 
 static void REGAL_CALL error_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source)
 {
-  ITrace("error_glGetShaderSource");
+  Internal("error_glGetShaderSource","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -9987,7 +9987,7 @@ static void REGAL_CALL error_glGetShaderSource(GLuint shader, GLsizei bufSize, G
 
 static void REGAL_CALL error_glGetShaderiv(GLuint shader, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetShaderiv");
+  Internal("error_glGetShaderiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10008,7 +10008,7 @@ static void REGAL_CALL error_glGetShaderiv(GLuint shader, GLenum pname, GLint *p
 
 static GLint REGAL_CALL error_glGetUniformLocation(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetUniformLocation");
+  Internal("error_glGetUniformLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10030,7 +10030,7 @@ return ret;
 
 static void REGAL_CALL error_glGetUniformfv(GLuint program, GLint location, GLfloat *params)
 {
-  ITrace("error_glGetUniformfv");
+  Internal("error_glGetUniformfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10051,7 +10051,7 @@ static void REGAL_CALL error_glGetUniformfv(GLuint program, GLint location, GLfl
 
 static void REGAL_CALL error_glGetUniformiv(GLuint program, GLint location, GLint *params)
 {
-  ITrace("error_glGetUniformiv");
+  Internal("error_glGetUniformiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10072,7 +10072,7 @@ static void REGAL_CALL error_glGetUniformiv(GLuint program, GLint location, GLin
 
 static void REGAL_CALL error_glGetVertexAttribPointerv(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  ITrace("error_glGetVertexAttribPointerv");
+  Internal("error_glGetVertexAttribPointerv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10093,7 +10093,7 @@ static void REGAL_CALL error_glGetVertexAttribPointerv(GLuint index, GLenum pnam
 
 static void REGAL_CALL error_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVertexAttribdv");
+  Internal("error_glGetVertexAttribdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10114,7 +10114,7 @@ static void REGAL_CALL error_glGetVertexAttribdv(GLuint index, GLenum pname, GLd
 
 static void REGAL_CALL error_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVertexAttribfv");
+  Internal("error_glGetVertexAttribfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10135,7 +10135,7 @@ static void REGAL_CALL error_glGetVertexAttribfv(GLuint index, GLenum pname, GLf
 
 static void REGAL_CALL error_glGetVertexAttribiv(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribiv");
+  Internal("error_glGetVertexAttribiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10156,7 +10156,7 @@ static void REGAL_CALL error_glGetVertexAttribiv(GLuint index, GLenum pname, GLi
 
 static GLboolean REGAL_CALL error_glIsProgram(GLuint program)
 {
-  ITrace("error_glIsProgram");
+  Internal("error_glIsProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10178,7 +10178,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsShader(GLuint shader)
 {
-  ITrace("error_glIsShader");
+  Internal("error_glIsShader","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10200,7 +10200,7 @@ return ret;
 
 static void REGAL_CALL error_glLinkProgram(GLuint program)
 {
-  ITrace("error_glLinkProgram");
+  Internal("error_glLinkProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10221,7 +10221,7 @@ static void REGAL_CALL error_glLinkProgram(GLuint program)
 
 static void REGAL_CALL error_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
 {
-  ITrace("error_glShaderSource");
+  Internal("error_glShaderSource","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10242,7 +10242,7 @@ static void REGAL_CALL error_glShaderSource(GLuint shader, GLsizei count, const 
 
 static void REGAL_CALL error_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
 {
-  ITrace("error_glStencilFuncSeparate");
+  Internal("error_glStencilFuncSeparate","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10263,7 +10263,7 @@ static void REGAL_CALL error_glStencilFuncSeparate(GLenum face, GLenum func, GLi
 
 static void REGAL_CALL error_glStencilMaskSeparate(GLenum face, GLuint mask)
 {
-  ITrace("error_glStencilMaskSeparate");
+  Internal("error_glStencilMaskSeparate","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10284,7 +10284,7 @@ static void REGAL_CALL error_glStencilMaskSeparate(GLenum face, GLuint mask)
 
 static void REGAL_CALL error_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
 {
-  ITrace("error_glStencilOpSeparate");
+  Internal("error_glStencilOpSeparate","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10305,7 +10305,7 @@ static void REGAL_CALL error_glStencilOpSeparate(GLenum face, GLenum fail, GLenu
 
 static void REGAL_CALL error_glUniform1f(GLint location, GLfloat v0)
 {
-  ITrace("error_glUniform1f");
+  Internal("error_glUniform1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10326,7 +10326,7 @@ static void REGAL_CALL error_glUniform1f(GLint location, GLfloat v0)
 
 static void REGAL_CALL error_glUniform1fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform1fv");
+  Internal("error_glUniform1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10347,7 +10347,7 @@ static void REGAL_CALL error_glUniform1fv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform1i(GLint location, GLint v0)
 {
-  ITrace("error_glUniform1i");
+  Internal("error_glUniform1i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10368,7 +10368,7 @@ static void REGAL_CALL error_glUniform1i(GLint location, GLint v0)
 
 static void REGAL_CALL error_glUniform1iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform1iv");
+  Internal("error_glUniform1iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10389,7 +10389,7 @@ static void REGAL_CALL error_glUniform1iv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 {
-  ITrace("error_glUniform2f");
+  Internal("error_glUniform2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10410,7 +10410,7 @@ static void REGAL_CALL error_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 
 static void REGAL_CALL error_glUniform2fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform2fv");
+  Internal("error_glUniform2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10431,7 +10431,7 @@ static void REGAL_CALL error_glUniform2fv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform2i(GLint location, GLint v0, GLint v1)
 {
-  ITrace("error_glUniform2i");
+  Internal("error_glUniform2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10452,7 +10452,7 @@ static void REGAL_CALL error_glUniform2i(GLint location, GLint v0, GLint v1)
 
 static void REGAL_CALL error_glUniform2iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform2iv");
+  Internal("error_glUniform2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10473,7 +10473,7 @@ static void REGAL_CALL error_glUniform2iv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  ITrace("error_glUniform3f");
+  Internal("error_glUniform3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10494,7 +10494,7 @@ static void REGAL_CALL error_glUniform3f(GLint location, GLfloat v0, GLfloat v1,
 
 static void REGAL_CALL error_glUniform3fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform3fv");
+  Internal("error_glUniform3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10515,7 +10515,7 @@ static void REGAL_CALL error_glUniform3fv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2)
 {
-  ITrace("error_glUniform3i");
+  Internal("error_glUniform3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10536,7 +10536,7 @@ static void REGAL_CALL error_glUniform3i(GLint location, GLint v0, GLint v1, GLi
 
 static void REGAL_CALL error_glUniform3iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform3iv");
+  Internal("error_glUniform3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10557,7 +10557,7 @@ static void REGAL_CALL error_glUniform3iv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  ITrace("error_glUniform4f");
+  Internal("error_glUniform4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10578,7 +10578,7 @@ static void REGAL_CALL error_glUniform4f(GLint location, GLfloat v0, GLfloat v1,
 
 static void REGAL_CALL error_glUniform4fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform4fv");
+  Internal("error_glUniform4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10599,7 +10599,7 @@ static void REGAL_CALL error_glUniform4fv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  ITrace("error_glUniform4i");
+  Internal("error_glUniform4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10620,7 +10620,7 @@ static void REGAL_CALL error_glUniform4i(GLint location, GLint v0, GLint v1, GLi
 
 static void REGAL_CALL error_glUniform4iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform4iv");
+  Internal("error_glUniform4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10641,7 +10641,7 @@ static void REGAL_CALL error_glUniform4iv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix2fv");
+  Internal("error_glUniformMatrix2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10662,7 +10662,7 @@ static void REGAL_CALL error_glUniformMatrix2fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix3fv");
+  Internal("error_glUniformMatrix3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10683,7 +10683,7 @@ static void REGAL_CALL error_glUniformMatrix3fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix4fv");
+  Internal("error_glUniformMatrix4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10704,7 +10704,7 @@ static void REGAL_CALL error_glUniformMatrix4fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUseProgram(GLuint program)
 {
-  ITrace("error_glUseProgram");
+  Internal("error_glUseProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10725,7 +10725,7 @@ static void REGAL_CALL error_glUseProgram(GLuint program)
 
 static void REGAL_CALL error_glValidateProgram(GLuint program)
 {
-  ITrace("error_glValidateProgram");
+  Internal("error_glValidateProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10746,7 +10746,7 @@ static void REGAL_CALL error_glValidateProgram(GLuint program)
 
 static void REGAL_CALL error_glVertexAttrib1d(GLuint index, GLdouble x)
 {
-  ITrace("error_glVertexAttrib1d");
+  Internal("error_glVertexAttrib1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10767,7 +10767,7 @@ static void REGAL_CALL error_glVertexAttrib1d(GLuint index, GLdouble x)
 
 static void REGAL_CALL error_glVertexAttrib1dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib1dv");
+  Internal("error_glVertexAttrib1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10788,7 +10788,7 @@ static void REGAL_CALL error_glVertexAttrib1dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttrib1f(GLuint index, GLfloat x)
 {
-  ITrace("error_glVertexAttrib1f");
+  Internal("error_glVertexAttrib1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10809,7 +10809,7 @@ static void REGAL_CALL error_glVertexAttrib1f(GLuint index, GLfloat x)
 
 static void REGAL_CALL error_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib1fv");
+  Internal("error_glVertexAttrib1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10830,7 +10830,7 @@ static void REGAL_CALL error_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib1s(GLuint index, GLshort x)
 {
-  ITrace("error_glVertexAttrib1s");
+  Internal("error_glVertexAttrib1s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10851,7 +10851,7 @@ static void REGAL_CALL error_glVertexAttrib1s(GLuint index, GLshort x)
 
 static void REGAL_CALL error_glVertexAttrib1sv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib1sv");
+  Internal("error_glVertexAttrib1sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10872,7 +10872,7 @@ static void REGAL_CALL error_glVertexAttrib1sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexAttrib2d");
+  Internal("error_glVertexAttrib2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10893,7 +10893,7 @@ static void REGAL_CALL error_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble
 
 static void REGAL_CALL error_glVertexAttrib2dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib2dv");
+  Internal("error_glVertexAttrib2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10914,7 +10914,7 @@ static void REGAL_CALL error_glVertexAttrib2dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 {
-  ITrace("error_glVertexAttrib2f");
+  Internal("error_glVertexAttrib2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10935,7 +10935,7 @@ static void REGAL_CALL error_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y
 
 static void REGAL_CALL error_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib2fv");
+  Internal("error_glVertexAttrib2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10956,7 +10956,7 @@ static void REGAL_CALL error_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
 {
-  ITrace("error_glVertexAttrib2s");
+  Internal("error_glVertexAttrib2s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10977,7 +10977,7 @@ static void REGAL_CALL error_glVertexAttrib2s(GLuint index, GLshort x, GLshort y
 
 static void REGAL_CALL error_glVertexAttrib2sv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib2sv");
+  Internal("error_glVertexAttrib2sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -10998,7 +10998,7 @@ static void REGAL_CALL error_glVertexAttrib2sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexAttrib3d");
+  Internal("error_glVertexAttrib3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11019,7 +11019,7 @@ static void REGAL_CALL error_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble
 
 static void REGAL_CALL error_glVertexAttrib3dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib3dv");
+  Internal("error_glVertexAttrib3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11040,7 +11040,7 @@ static void REGAL_CALL error_glVertexAttrib3dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glVertexAttrib3f");
+  Internal("error_glVertexAttrib3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11061,7 +11061,7 @@ static void REGAL_CALL error_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y
 
 static void REGAL_CALL error_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib3fv");
+  Internal("error_glVertexAttrib3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11082,7 +11082,7 @@ static void REGAL_CALL error_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glVertexAttrib3s");
+  Internal("error_glVertexAttrib3s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11103,7 +11103,7 @@ static void REGAL_CALL error_glVertexAttrib3s(GLuint index, GLshort x, GLshort y
 
 static void REGAL_CALL error_glVertexAttrib3sv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib3sv");
+  Internal("error_glVertexAttrib3sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11124,7 +11124,7 @@ static void REGAL_CALL error_glVertexAttrib3sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttrib4Nbv");
+  Internal("error_glVertexAttrib4Nbv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11145,7 +11145,7 @@ static void REGAL_CALL error_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL error_glVertexAttrib4Niv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttrib4Niv");
+  Internal("error_glVertexAttrib4Niv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11166,7 +11166,7 @@ static void REGAL_CALL error_glVertexAttrib4Niv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib4Nsv");
+  Internal("error_glVertexAttrib4Nsv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11187,7 +11187,7 @@ static void REGAL_CALL error_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
-  ITrace("error_glVertexAttrib4Nub");
+  Internal("error_glVertexAttrib4Nub","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11208,7 +11208,7 @@ static void REGAL_CALL error_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte
 
 static void REGAL_CALL error_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttrib4Nubv");
+  Internal("error_glVertexAttrib4Nubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11229,7 +11229,7 @@ static void REGAL_CALL error_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
 
 static void REGAL_CALL error_glVertexAttrib4Nuiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttrib4Nuiv");
+  Internal("error_glVertexAttrib4Nuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11250,7 +11250,7 @@ static void REGAL_CALL error_glVertexAttrib4Nuiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttrib4Nusv(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttrib4Nusv");
+  Internal("error_glVertexAttrib4Nusv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11271,7 +11271,7 @@ static void REGAL_CALL error_glVertexAttrib4Nusv(GLuint index, const GLushort *v
 
 static void REGAL_CALL error_glVertexAttrib4bv(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttrib4bv");
+  Internal("error_glVertexAttrib4bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11292,7 +11292,7 @@ static void REGAL_CALL error_glVertexAttrib4bv(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL error_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexAttrib4d");
+  Internal("error_glVertexAttrib4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11313,7 +11313,7 @@ static void REGAL_CALL error_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble
 
 static void REGAL_CALL error_glVertexAttrib4dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib4dv");
+  Internal("error_glVertexAttrib4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11334,7 +11334,7 @@ static void REGAL_CALL error_glVertexAttrib4dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glVertexAttrib4f");
+  Internal("error_glVertexAttrib4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11355,7 +11355,7 @@ static void REGAL_CALL error_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y
 
 static void REGAL_CALL error_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib4fv");
+  Internal("error_glVertexAttrib4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11376,7 +11376,7 @@ static void REGAL_CALL error_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib4iv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttrib4iv");
+  Internal("error_glVertexAttrib4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11397,7 +11397,7 @@ static void REGAL_CALL error_glVertexAttrib4iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glVertexAttrib4s");
+  Internal("error_glVertexAttrib4s","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11418,7 +11418,7 @@ static void REGAL_CALL error_glVertexAttrib4s(GLuint index, GLshort x, GLshort y
 
 static void REGAL_CALL error_glVertexAttrib4sv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib4sv");
+  Internal("error_glVertexAttrib4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11439,7 +11439,7 @@ static void REGAL_CALL error_glVertexAttrib4sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttrib4ubv");
+  Internal("error_glVertexAttrib4ubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11460,7 +11460,7 @@ static void REGAL_CALL error_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
 
 static void REGAL_CALL error_glVertexAttrib4uiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttrib4uiv");
+  Internal("error_glVertexAttrib4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11481,7 +11481,7 @@ static void REGAL_CALL error_glVertexAttrib4uiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttrib4usv(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttrib4usv");
+  Internal("error_glVertexAttrib4usv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11502,7 +11502,7 @@ static void REGAL_CALL error_glVertexAttrib4usv(GLuint index, const GLushort *v)
 
 static void REGAL_CALL error_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribPointer");
+  Internal("error_glVertexAttribPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11525,7 +11525,7 @@ static void REGAL_CALL error_glVertexAttribPointer(GLuint index, GLint size, GLe
 
 static void REGAL_CALL error_glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix2x3fv");
+  Internal("error_glUniformMatrix2x3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11546,7 +11546,7 @@ static void REGAL_CALL error_glUniformMatrix2x3fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix2x4fv");
+  Internal("error_glUniformMatrix2x4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11567,7 +11567,7 @@ static void REGAL_CALL error_glUniformMatrix2x4fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix3x2fv");
+  Internal("error_glUniformMatrix3x2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11588,7 +11588,7 @@ static void REGAL_CALL error_glUniformMatrix3x2fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix3x4fv");
+  Internal("error_glUniformMatrix3x4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11609,7 +11609,7 @@ static void REGAL_CALL error_glUniformMatrix3x4fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix4x2fv");
+  Internal("error_glUniformMatrix4x2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11630,7 +11630,7 @@ static void REGAL_CALL error_glUniformMatrix4x2fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix4x3fv");
+  Internal("error_glUniformMatrix4x3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11653,7 +11653,7 @@ static void REGAL_CALL error_glUniformMatrix4x3fv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glBeginConditionalRender(GLuint id, GLenum mode)
 {
-  ITrace("error_glBeginConditionalRender");
+  Internal("error_glBeginConditionalRender","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11674,7 +11674,7 @@ static void REGAL_CALL error_glBeginConditionalRender(GLuint id, GLenum mode)
 
 static void REGAL_CALL error_glBeginTransformFeedback(GLenum primitiveMode)
 {
-  ITrace("error_glBeginTransformFeedback");
+  Internal("error_glBeginTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11695,7 +11695,7 @@ static void REGAL_CALL error_glBeginTransformFeedback(GLenum primitiveMode)
 
 static void REGAL_CALL error_glBindFragDataLocation(GLuint program, GLuint color, const GLchar *name)
 {
-  ITrace("error_glBindFragDataLocation");
+  Internal("error_glBindFragDataLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11716,7 +11716,7 @@ static void REGAL_CALL error_glBindFragDataLocation(GLuint program, GLuint color
 
 static void REGAL_CALL error_glClampColor(GLenum target, GLenum clamp)
 {
-  ITrace("error_glClampColor");
+  Internal("error_glClampColor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11737,7 +11737,7 @@ static void REGAL_CALL error_glClampColor(GLenum target, GLenum clamp)
 
 static void REGAL_CALL error_glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
 {
-  ITrace("error_glClearBufferfi");
+  Internal("error_glClearBufferfi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11758,7 +11758,7 @@ static void REGAL_CALL error_glClearBufferfi(GLenum buffer, GLint drawbuffer, GL
 
 static void REGAL_CALL error_glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat *value)
 {
-  ITrace("error_glClearBufferfv");
+  Internal("error_glClearBufferfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11779,7 +11779,7 @@ static void REGAL_CALL error_glClearBufferfv(GLenum buffer, GLint drawbuffer, co
 
 static void REGAL_CALL error_glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint *value)
 {
-  ITrace("error_glClearBufferiv");
+  Internal("error_glClearBufferiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11800,7 +11800,7 @@ static void REGAL_CALL error_glClearBufferiv(GLenum buffer, GLint drawbuffer, co
 
 static void REGAL_CALL error_glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint *value)
 {
-  ITrace("error_glClearBufferuiv");
+  Internal("error_glClearBufferuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11821,7 +11821,7 @@ static void REGAL_CALL error_glClearBufferuiv(GLenum buffer, GLint drawbuffer, c
 
 static void REGAL_CALL error_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
-  ITrace("error_glColorMaski");
+  Internal("error_glColorMaski","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11842,7 +11842,7 @@ static void REGAL_CALL error_glColorMaski(GLuint index, GLboolean r, GLboolean g
 
 static void REGAL_CALL error_glDisablei(GLenum cap, GLuint index)
 {
-  ITrace("error_glDisablei");
+  Internal("error_glDisablei","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11863,7 +11863,7 @@ static void REGAL_CALL error_glDisablei(GLenum cap, GLuint index)
 
 static void REGAL_CALL error_glEnablei(GLenum cap, GLuint index)
 {
-  ITrace("error_glEnablei");
+  Internal("error_glEnablei","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11884,7 +11884,7 @@ static void REGAL_CALL error_glEnablei(GLenum cap, GLuint index)
 
 static void REGAL_CALL error_glEndConditionalRender(void)
 {
-  ITrace("error_glEndConditionalRender");
+  Internal("error_glEndConditionalRender","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11905,7 +11905,7 @@ static void REGAL_CALL error_glEndConditionalRender(void)
 
 static void REGAL_CALL error_glEndTransformFeedback(void)
 {
-  ITrace("error_glEndTransformFeedback");
+  Internal("error_glEndTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11926,7 +11926,7 @@ static void REGAL_CALL error_glEndTransformFeedback(void)
 
 static void REGAL_CALL error_glGetBooleani_v(GLenum target, GLuint index, GLboolean *data)
 {
-  ITrace("error_glGetBooleani_v");
+  Internal("error_glGetBooleani_v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11947,7 +11947,7 @@ static void REGAL_CALL error_glGetBooleani_v(GLenum target, GLuint index, GLbool
 
 static GLint REGAL_CALL error_glGetFragDataLocation(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetFragDataLocation");
+  Internal("error_glGetFragDataLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11969,7 +11969,7 @@ return ret;
 
 static const GLubyte *REGAL_CALL error_glGetStringi(GLenum name, GLuint index)
 {
-  ITrace("error_glGetStringi");
+  Internal("error_glGetStringi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -11991,7 +11991,7 @@ return ret;
 
 static void REGAL_CALL error_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexParameterIiv");
+  Internal("error_glGetTexParameterIiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12012,7 +12012,7 @@ static void REGAL_CALL error_glGetTexParameterIiv(GLenum target, GLenum pname, G
 
 static void REGAL_CALL error_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetTexParameterIuiv");
+  Internal("error_glGetTexParameterIuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12033,7 +12033,7 @@ static void REGAL_CALL error_glGetTexParameterIuiv(GLenum target, GLenum pname, 
 
 static void REGAL_CALL error_glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name)
 {
-  ITrace("error_glGetTransformFeedbackVarying");
+  Internal("error_glGetTransformFeedbackVarying","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12054,7 +12054,7 @@ static void REGAL_CALL error_glGetTransformFeedbackVarying(GLuint program, GLuin
 
 static void REGAL_CALL error_glGetUniformuiv(GLuint program, GLint location, GLuint *params)
 {
-  ITrace("error_glGetUniformuiv");
+  Internal("error_glGetUniformuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12075,7 +12075,7 @@ static void REGAL_CALL error_glGetUniformuiv(GLuint program, GLint location, GLu
 
 static void REGAL_CALL error_glGetVertexAttribIiv(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribIiv");
+  Internal("error_glGetVertexAttribIiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12096,7 +12096,7 @@ static void REGAL_CALL error_glGetVertexAttribIiv(GLuint index, GLenum pname, GL
 
 static void REGAL_CALL error_glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetVertexAttribIuiv");
+  Internal("error_glGetVertexAttribIuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12117,7 +12117,7 @@ static void REGAL_CALL error_glGetVertexAttribIuiv(GLuint index, GLenum pname, G
 
 static GLboolean REGAL_CALL error_glIsEnabledi(GLenum target, GLuint index)
 {
-  ITrace("error_glIsEnabledi");
+  Internal("error_glIsEnabledi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12139,7 +12139,7 @@ return ret;
 
 static void REGAL_CALL error_glTexParameterIiv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTexParameterIiv");
+  Internal("error_glTexParameterIiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12160,7 +12160,7 @@ static void REGAL_CALL error_glTexParameterIiv(GLenum target, GLenum pname, cons
 
 static void REGAL_CALL error_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params)
 {
-  ITrace("error_glTexParameterIuiv");
+  Internal("error_glTexParameterIuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12181,7 +12181,7 @@ static void REGAL_CALL error_glTexParameterIuiv(GLenum target, GLenum pname, con
 
 static void REGAL_CALL error_glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar **varyings, GLenum bufferMode)
 {
-  ITrace("error_glTransformFeedbackVaryings");
+  Internal("error_glTransformFeedbackVaryings","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12202,7 +12202,7 @@ static void REGAL_CALL error_glTransformFeedbackVaryings(GLuint program, GLsizei
 
 static void REGAL_CALL error_glUniform1ui(GLint location, GLuint v0)
 {
-  ITrace("error_glUniform1ui");
+  Internal("error_glUniform1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12223,7 +12223,7 @@ static void REGAL_CALL error_glUniform1ui(GLint location, GLuint v0)
 
 static void REGAL_CALL error_glUniform1uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform1uiv");
+  Internal("error_glUniform1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12244,7 +12244,7 @@ static void REGAL_CALL error_glUniform1uiv(GLint location, GLsizei count, const 
 
 static void REGAL_CALL error_glUniform2ui(GLint location, GLuint v0, GLuint v1)
 {
-  ITrace("error_glUniform2ui");
+  Internal("error_glUniform2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12265,7 +12265,7 @@ static void REGAL_CALL error_glUniform2ui(GLint location, GLuint v0, GLuint v1)
 
 static void REGAL_CALL error_glUniform2uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform2uiv");
+  Internal("error_glUniform2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12286,7 +12286,7 @@ static void REGAL_CALL error_glUniform2uiv(GLint location, GLsizei count, const 
 
 static void REGAL_CALL error_glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  ITrace("error_glUniform3ui");
+  Internal("error_glUniform3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12307,7 +12307,7 @@ static void REGAL_CALL error_glUniform3ui(GLint location, GLuint v0, GLuint v1, 
 
 static void REGAL_CALL error_glUniform3uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform3uiv");
+  Internal("error_glUniform3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12328,7 +12328,7 @@ static void REGAL_CALL error_glUniform3uiv(GLint location, GLsizei count, const 
 
 static void REGAL_CALL error_glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  ITrace("error_glUniform4ui");
+  Internal("error_glUniform4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12349,7 +12349,7 @@ static void REGAL_CALL error_glUniform4ui(GLint location, GLuint v0, GLuint v1, 
 
 static void REGAL_CALL error_glUniform4uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform4uiv");
+  Internal("error_glUniform4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12370,7 +12370,7 @@ static void REGAL_CALL error_glUniform4uiv(GLint location, GLsizei count, const 
 
 static void REGAL_CALL error_glVertexAttribI1i(GLuint index, GLint x)
 {
-  ITrace("error_glVertexAttribI1i");
+  Internal("error_glVertexAttribI1i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12391,7 +12391,7 @@ static void REGAL_CALL error_glVertexAttribI1i(GLuint index, GLint x)
 
 static void REGAL_CALL error_glVertexAttribI1iv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI1iv");
+  Internal("error_glVertexAttribI1iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12412,7 +12412,7 @@ static void REGAL_CALL error_glVertexAttribI1iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI1ui(GLuint index, GLuint x)
 {
-  ITrace("error_glVertexAttribI1ui");
+  Internal("error_glVertexAttribI1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12433,7 +12433,7 @@ static void REGAL_CALL error_glVertexAttribI1ui(GLuint index, GLuint x)
 
 static void REGAL_CALL error_glVertexAttribI1uiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI1uiv");
+  Internal("error_glVertexAttribI1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12454,7 +12454,7 @@ static void REGAL_CALL error_glVertexAttribI1uiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttribI2i(GLuint index, GLint x, GLint y)
 {
-  ITrace("error_glVertexAttribI2i");
+  Internal("error_glVertexAttribI2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12475,7 +12475,7 @@ static void REGAL_CALL error_glVertexAttribI2i(GLuint index, GLint x, GLint y)
 
 static void REGAL_CALL error_glVertexAttribI2iv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI2iv");
+  Internal("error_glVertexAttribI2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12496,7 +12496,7 @@ static void REGAL_CALL error_glVertexAttribI2iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI2ui(GLuint index, GLuint x, GLuint y)
 {
-  ITrace("error_glVertexAttribI2ui");
+  Internal("error_glVertexAttribI2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12517,7 +12517,7 @@ static void REGAL_CALL error_glVertexAttribI2ui(GLuint index, GLuint x, GLuint y
 
 static void REGAL_CALL error_glVertexAttribI2uiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI2uiv");
+  Internal("error_glVertexAttribI2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12538,7 +12538,7 @@ static void REGAL_CALL error_glVertexAttribI2uiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttribI3i(GLuint index, GLint x, GLint y, GLint z)
 {
-  ITrace("error_glVertexAttribI3i");
+  Internal("error_glVertexAttribI3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12559,7 +12559,7 @@ static void REGAL_CALL error_glVertexAttribI3i(GLuint index, GLint x, GLint y, G
 
 static void REGAL_CALL error_glVertexAttribI3iv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI3iv");
+  Internal("error_glVertexAttribI3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12580,7 +12580,7 @@ static void REGAL_CALL error_glVertexAttribI3iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI3ui(GLuint index, GLuint x, GLuint y, GLuint z)
 {
-  ITrace("error_glVertexAttribI3ui");
+  Internal("error_glVertexAttribI3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12601,7 +12601,7 @@ static void REGAL_CALL error_glVertexAttribI3ui(GLuint index, GLuint x, GLuint y
 
 static void REGAL_CALL error_glVertexAttribI3uiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI3uiv");
+  Internal("error_glVertexAttribI3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12622,7 +12622,7 @@ static void REGAL_CALL error_glVertexAttribI3uiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttribI4bv(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttribI4bv");
+  Internal("error_glVertexAttribI4bv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12643,7 +12643,7 @@ static void REGAL_CALL error_glVertexAttribI4bv(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL error_glVertexAttribI4i(GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glVertexAttribI4i");
+  Internal("error_glVertexAttribI4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12664,7 +12664,7 @@ static void REGAL_CALL error_glVertexAttribI4i(GLuint index, GLint x, GLint y, G
 
 static void REGAL_CALL error_glVertexAttribI4iv(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI4iv");
+  Internal("error_glVertexAttribI4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12685,7 +12685,7 @@ static void REGAL_CALL error_glVertexAttribI4iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI4sv(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttribI4sv");
+  Internal("error_glVertexAttribI4sv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12706,7 +12706,7 @@ static void REGAL_CALL error_glVertexAttribI4sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttribI4ubv(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttribI4ubv");
+  Internal("error_glVertexAttribI4ubv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12727,7 +12727,7 @@ static void REGAL_CALL error_glVertexAttribI4ubv(GLuint index, const GLubyte *v)
 
 static void REGAL_CALL error_glVertexAttribI4ui(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glVertexAttribI4ui");
+  Internal("error_glVertexAttribI4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12748,7 +12748,7 @@ static void REGAL_CALL error_glVertexAttribI4ui(GLuint index, GLuint x, GLuint y
 
 static void REGAL_CALL error_glVertexAttribI4uiv(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI4uiv");
+  Internal("error_glVertexAttribI4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12769,7 +12769,7 @@ static void REGAL_CALL error_glVertexAttribI4uiv(GLuint index, const GLuint *v)
 
 static void REGAL_CALL error_glVertexAttribI4usv(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttribI4usv");
+  Internal("error_glVertexAttribI4usv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12790,7 +12790,7 @@ static void REGAL_CALL error_glVertexAttribI4usv(GLuint index, const GLushort *v
 
 static void REGAL_CALL error_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribIPointer");
+  Internal("error_glVertexAttribIPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12813,7 +12813,7 @@ static void REGAL_CALL error_glVertexAttribIPointer(GLuint index, GLint size, GL
 
 static void REGAL_CALL error_glDrawArraysInstanced(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  ITrace("error_glDrawArraysInstanced");
+  Internal("error_glDrawArraysInstanced","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12834,7 +12834,7 @@ static void REGAL_CALL error_glDrawArraysInstanced(GLenum mode, GLint start, GLs
 
 static void REGAL_CALL error_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  ITrace("error_glDrawElementsInstanced");
+  Internal("error_glDrawElementsInstanced","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12855,7 +12855,7 @@ static void REGAL_CALL error_glDrawElementsInstanced(GLenum mode, GLsizei count,
 
 static void REGAL_CALL error_glPrimitiveRestartIndex(GLuint index)
 {
-  ITrace("error_glPrimitiveRestartIndex");
+  Internal("error_glPrimitiveRestartIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12876,7 +12876,7 @@ static void REGAL_CALL error_glPrimitiveRestartIndex(GLuint index)
 
 static void REGAL_CALL error_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
 {
-  ITrace("error_glTexBuffer");
+  Internal("error_glTexBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12899,7 +12899,7 @@ static void REGAL_CALL error_glTexBuffer(GLenum target, GLenum internalformat, G
 
 static void REGAL_CALL error_glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTexture");
+  Internal("error_glFramebufferTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12920,7 +12920,7 @@ static void REGAL_CALL error_glFramebufferTexture(GLenum target, GLenum attachme
 
 static void REGAL_CALL error_glFramebufferTextureFace(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  ITrace("error_glFramebufferTextureFace");
+  Internal("error_glFramebufferTextureFace","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12941,7 +12941,7 @@ static void REGAL_CALL error_glFramebufferTextureFace(GLenum target, GLenum atta
 
 static void REGAL_CALL error_glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 *params)
 {
-  ITrace("error_glGetBufferParameteri64v");
+  Internal("error_glGetBufferParameteri64v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12962,7 +12962,7 @@ static void REGAL_CALL error_glGetBufferParameteri64v(GLenum target, GLenum pnam
 
 static void REGAL_CALL error_glGetInteger64i_v(GLenum target, GLuint index, GLint64 *data)
 {
-  ITrace("error_glGetInteger64i_v");
+  Internal("error_glGetInteger64i_v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -12985,7 +12985,7 @@ static void REGAL_CALL error_glGetInteger64i_v(GLenum target, GLuint index, GLin
 
 static void REGAL_CALL error_glVertexAttribDivisor(GLuint index, GLuint divisor)
 {
-  ITrace("error_glVertexAttribDivisor");
+  Internal("error_glVertexAttribDivisor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13008,7 +13008,7 @@ static void REGAL_CALL error_glVertexAttribDivisor(GLuint index, GLuint divisor)
 
 static void REGAL_CALL error_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("error_glBlendEquationSeparatei");
+  Internal("error_glBlendEquationSeparatei","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13029,7 +13029,7 @@ static void REGAL_CALL error_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB
 
 static void REGAL_CALL error_glBlendEquationi(GLuint buf, GLenum mode)
 {
-  ITrace("error_glBlendEquationi");
+  Internal("error_glBlendEquationi","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13050,7 +13050,7 @@ static void REGAL_CALL error_glBlendEquationi(GLuint buf, GLenum mode)
 
 static void REGAL_CALL error_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
-  ITrace("error_glBlendFuncSeparatei");
+  Internal("error_glBlendFuncSeparatei","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13071,7 +13071,7 @@ static void REGAL_CALL error_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLe
 
 static void REGAL_CALL error_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
 {
-  ITrace("error_glBlendFunci");
+  Internal("error_glBlendFunci","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13094,7 +13094,7 @@ static void REGAL_CALL error_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
 
 static void REGAL_CALL error_glTbufferMask3DFX(GLuint mask)
 {
-  ITrace("error_glTbufferMask3DFX");
+  Internal("error_glTbufferMask3DFX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13117,7 +13117,7 @@ static void REGAL_CALL error_glTbufferMask3DFX(GLuint mask)
 
 static void REGAL_CALL error_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, GLvoid *userParam)
 {
-  ITrace("error_glDebugMessageCallbackAMD");
+  Internal("error_glDebugMessageCallbackAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13138,7 +13138,7 @@ static void REGAL_CALL error_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, 
 
 static void REGAL_CALL error_glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
 {
-  ITrace("error_glDebugMessageEnableAMD");
+  Internal("error_glDebugMessageEnableAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13159,7 +13159,7 @@ static void REGAL_CALL error_glDebugMessageEnableAMD(GLenum category, GLenum sev
 
 static void REGAL_CALL error_glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf)
 {
-  ITrace("error_glDebugMessageInsertAMD");
+  Internal("error_glDebugMessageInsertAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13180,7 +13180,7 @@ static void REGAL_CALL error_glDebugMessageInsertAMD(GLenum category, GLenum sev
 
 static GLuint REGAL_CALL error_glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message)
 {
-  ITrace("error_glGetDebugMessageLogAMD");
+  Internal("error_glGetDebugMessageLogAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13204,7 +13204,7 @@ return ret;
 
 static void REGAL_CALL error_glBlendEquationIndexedAMD(GLuint buf, GLenum mode)
 {
-  ITrace("error_glBlendEquationIndexedAMD");
+  Internal("error_glBlendEquationIndexedAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13225,7 +13225,7 @@ static void REGAL_CALL error_glBlendEquationIndexedAMD(GLuint buf, GLenum mode)
 
 static void REGAL_CALL error_glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("error_glBlendEquationSeparateIndexedAMD");
+  Internal("error_glBlendEquationSeparateIndexedAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13246,7 +13246,7 @@ static void REGAL_CALL error_glBlendEquationSeparateIndexedAMD(GLuint buf, GLenu
 
 static void REGAL_CALL error_glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenum dst)
 {
-  ITrace("error_glBlendFuncIndexedAMD");
+  Internal("error_glBlendFuncIndexedAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13267,7 +13267,7 @@ static void REGAL_CALL error_glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenu
 
 static void REGAL_CALL error_glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
-  ITrace("error_glBlendFuncSeparateIndexedAMD");
+  Internal("error_glBlendFuncSeparateIndexedAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13290,7 +13290,7 @@ static void REGAL_CALL error_glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum sr
 
 static void REGAL_CALL error_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  ITrace("error_glMultiDrawArraysIndirectAMD");
+  Internal("error_glMultiDrawArraysIndirectAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13311,7 +13311,7 @@ static void REGAL_CALL error_glMultiDrawArraysIndirectAMD(GLenum mode, const GLv
 
 static void REGAL_CALL error_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  ITrace("error_glMultiDrawElementsIndirectAMD");
+  Internal("error_glMultiDrawElementsIndirectAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13334,7 +13334,7 @@ static void REGAL_CALL error_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum 
 
 static void REGAL_CALL error_glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint *names)
 {
-  ITrace("error_glDeleteNamesAMD");
+  Internal("error_glDeleteNamesAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13355,7 +13355,7 @@ static void REGAL_CALL error_glDeleteNamesAMD(GLenum identifier, GLuint num, con
 
 static void REGAL_CALL error_glGenNamesAMD(GLenum identifier, GLuint num, GLuint *names)
 {
-  ITrace("error_glGenNamesAMD");
+  Internal("error_glGenNamesAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13376,7 +13376,7 @@ static void REGAL_CALL error_glGenNamesAMD(GLenum identifier, GLuint num, GLuint
 
 static GLboolean REGAL_CALL error_glIsNameAMD(GLenum identifier, GLuint name)
 {
-  ITrace("error_glIsNameAMD");
+  Internal("error_glIsNameAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13400,7 +13400,7 @@ return ret;
 
 static void REGAL_CALL error_glBeginPerfMonitorAMD(GLuint monitor)
 {
-  ITrace("error_glBeginPerfMonitorAMD");
+  Internal("error_glBeginPerfMonitorAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13421,7 +13421,7 @@ static void REGAL_CALL error_glBeginPerfMonitorAMD(GLuint monitor)
 
 static void REGAL_CALL error_glDeletePerfMonitorsAMD(GLsizei n, GLuint *monitors)
 {
-  ITrace("error_glDeletePerfMonitorsAMD");
+  Internal("error_glDeletePerfMonitorsAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13442,7 +13442,7 @@ static void REGAL_CALL error_glDeletePerfMonitorsAMD(GLsizei n, GLuint *monitors
 
 static void REGAL_CALL error_glEndPerfMonitorAMD(GLuint monitor)
 {
-  ITrace("error_glEndPerfMonitorAMD");
+  Internal("error_glEndPerfMonitorAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13463,7 +13463,7 @@ static void REGAL_CALL error_glEndPerfMonitorAMD(GLuint monitor)
 
 static void REGAL_CALL error_glGenPerfMonitorsAMD(GLsizei n, GLuint *monitors)
 {
-  ITrace("error_glGenPerfMonitorsAMD");
+  Internal("error_glGenPerfMonitorsAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13484,7 +13484,7 @@ static void REGAL_CALL error_glGenPerfMonitorsAMD(GLsizei n, GLuint *monitors)
 
 static void REGAL_CALL error_glGetPerfMonitorCounterDataAMD(GLuint monitor, GLenum pname, GLsizei dataSize, GLuint *data, GLint *bytesWritten)
 {
-  ITrace("error_glGetPerfMonitorCounterDataAMD");
+  Internal("error_glGetPerfMonitorCounterDataAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13505,7 +13505,7 @@ static void REGAL_CALL error_glGetPerfMonitorCounterDataAMD(GLuint monitor, GLen
 
 static void REGAL_CALL error_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint counter, GLenum pname, GLvoid *data)
 {
-  ITrace("error_glGetPerfMonitorCounterInfoAMD");
+  Internal("error_glGetPerfMonitorCounterInfoAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13526,7 +13526,7 @@ static void REGAL_CALL error_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint
 
 static void REGAL_CALL error_glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei *length, GLchar *counterString)
 {
-  ITrace("error_glGetPerfMonitorCounterStringAMD");
+  Internal("error_glGetPerfMonitorCounterStringAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13547,7 +13547,7 @@ static void REGAL_CALL error_glGetPerfMonitorCounterStringAMD(GLuint group, GLui
 
 static void REGAL_CALL error_glGetPerfMonitorCountersAMD(GLuint group, GLint *numCounters, GLint *maxActiveCounters, GLsizei countersSize, GLuint *counters)
 {
-  ITrace("error_glGetPerfMonitorCountersAMD");
+  Internal("error_glGetPerfMonitorCountersAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13568,7 +13568,7 @@ static void REGAL_CALL error_glGetPerfMonitorCountersAMD(GLuint group, GLint *nu
 
 static void REGAL_CALL error_glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei *length, GLchar *groupString)
 {
-  ITrace("error_glGetPerfMonitorGroupStringAMD");
+  Internal("error_glGetPerfMonitorGroupStringAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13589,7 +13589,7 @@ static void REGAL_CALL error_glGetPerfMonitorGroupStringAMD(GLuint group, GLsize
 
 static void REGAL_CALL error_glGetPerfMonitorGroupsAMD(GLint *numGroups, GLsizei groupsSize, GLuint *groups)
 {
-  ITrace("error_glGetPerfMonitorGroupsAMD");
+  Internal("error_glGetPerfMonitorGroupsAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13610,7 +13610,7 @@ static void REGAL_CALL error_glGetPerfMonitorGroupsAMD(GLint *numGroups, GLsizei
 
 static void REGAL_CALL error_glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint *counterList)
 {
-  ITrace("error_glSelectPerfMonitorCountersAMD");
+  Internal("error_glSelectPerfMonitorCountersAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13633,7 +13633,7 @@ static void REGAL_CALL error_glSelectPerfMonitorCountersAMD(GLuint monitor, GLbo
 
 static void REGAL_CALL error_glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat *val)
 {
-  ITrace("error_glSetMultisamplefvAMD");
+  Internal("error_glSetMultisamplefvAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13656,7 +13656,7 @@ static void REGAL_CALL error_glSetMultisamplefvAMD(GLenum pname, GLuint index, c
 
 static void REGAL_CALL error_glStencilOpValueAMD(GLenum face, GLuint value)
 {
-  ITrace("error_glStencilOpValueAMD");
+  Internal("error_glStencilOpValueAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13679,7 +13679,7 @@ static void REGAL_CALL error_glStencilOpValueAMD(GLenum face, GLuint value)
 
 static void REGAL_CALL error_glTessellationFactorAMD(GLfloat factor)
 {
-  ITrace("error_glTessellationFactorAMD");
+  Internal("error_glTessellationFactorAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13700,7 +13700,7 @@ static void REGAL_CALL error_glTessellationFactorAMD(GLfloat factor)
 
 static void REGAL_CALL error_glTessellationModeAMD(GLenum mode)
 {
-  ITrace("error_glTessellationModeAMD");
+  Internal("error_glTessellationModeAMD","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13723,7 +13723,7 @@ static void REGAL_CALL error_glTessellationModeAMD(GLenum mode)
 
 static void REGAL_CALL error_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
 {
-  ITrace("error_glDrawElementArrayAPPLE");
+  Internal("error_glDrawElementArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13744,7 +13744,7 @@ static void REGAL_CALL error_glDrawElementArrayAPPLE(GLenum mode, GLint first, G
 
 static void REGAL_CALL error_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
 {
-  ITrace("error_glDrawRangeElementArrayAPPLE");
+  Internal("error_glDrawRangeElementArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13765,7 +13765,7 @@ static void REGAL_CALL error_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint st
 
 static void REGAL_CALL error_glElementPointerAPPLE(GLenum type, const GLvoid *pointer)
 {
-  ITrace("error_glElementPointerAPPLE");
+  Internal("error_glElementPointerAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13786,7 +13786,7 @@ static void REGAL_CALL error_glElementPointerAPPLE(GLenum type, const GLvoid *po
 
 static void REGAL_CALL error_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawElementArrayAPPLE");
+  Internal("error_glMultiDrawElementArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13807,7 +13807,7 @@ static void REGAL_CALL error_glMultiDrawElementArrayAPPLE(GLenum mode, const GLi
 
 static void REGAL_CALL error_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawRangeElementArrayAPPLE");
+  Internal("error_glMultiDrawRangeElementArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13830,7 +13830,7 @@ static void REGAL_CALL error_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLui
 
 static void REGAL_CALL error_glDeleteFencesAPPLE(GLsizei n, const GLuint *fences)
 {
-  ITrace("error_glDeleteFencesAPPLE");
+  Internal("error_glDeleteFencesAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13851,7 +13851,7 @@ static void REGAL_CALL error_glDeleteFencesAPPLE(GLsizei n, const GLuint *fences
 
 static void REGAL_CALL error_glFinishFenceAPPLE(GLuint fence)
 {
-  ITrace("error_glFinishFenceAPPLE");
+  Internal("error_glFinishFenceAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13872,7 +13872,7 @@ static void REGAL_CALL error_glFinishFenceAPPLE(GLuint fence)
 
 static void REGAL_CALL error_glFinishObjectAPPLE(GLenum object, GLint name)
 {
-  ITrace("error_glFinishObjectAPPLE");
+  Internal("error_glFinishObjectAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13893,7 +13893,7 @@ static void REGAL_CALL error_glFinishObjectAPPLE(GLenum object, GLint name)
 
 static void REGAL_CALL error_glGenFencesAPPLE(GLsizei n, GLuint *fences)
 {
-  ITrace("error_glGenFencesAPPLE");
+  Internal("error_glGenFencesAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13914,7 +13914,7 @@ static void REGAL_CALL error_glGenFencesAPPLE(GLsizei n, GLuint *fences)
 
 static GLboolean REGAL_CALL error_glIsFenceAPPLE(GLuint fence)
 {
-  ITrace("error_glIsFenceAPPLE");
+  Internal("error_glIsFenceAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13936,7 +13936,7 @@ return ret;
 
 static void REGAL_CALL error_glSetFenceAPPLE(GLuint fence)
 {
-  ITrace("error_glSetFenceAPPLE");
+  Internal("error_glSetFenceAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13957,7 +13957,7 @@ static void REGAL_CALL error_glSetFenceAPPLE(GLuint fence)
 
 static GLboolean REGAL_CALL error_glTestFenceAPPLE(GLuint fence)
 {
-  ITrace("error_glTestFenceAPPLE");
+  Internal("error_glTestFenceAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -13979,7 +13979,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glTestObjectAPPLE(GLenum object, GLuint name)
 {
-  ITrace("error_glTestObjectAPPLE");
+  Internal("error_glTestObjectAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14003,7 +14003,7 @@ return ret;
 
 static void REGAL_CALL error_glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glBufferParameteriAPPLE");
+  Internal("error_glBufferParameteriAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14024,7 +14024,7 @@ static void REGAL_CALL error_glBufferParameteriAPPLE(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glFlushMappedBufferRangeAPPLE");
+  Internal("error_glFlushMappedBufferRangeAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14047,7 +14047,7 @@ static void REGAL_CALL error_glFlushMappedBufferRangeAPPLE(GLenum target, GLintp
 
 static void REGAL_CALL error_glFinishRenderAPPLE(void)
 {
-  ITrace("error_glFinishRenderAPPLE");
+  Internal("error_glFinishRenderAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14068,7 +14068,7 @@ static void REGAL_CALL error_glFinishRenderAPPLE(void)
 
 static void REGAL_CALL error_glFlushRenderAPPLE(void)
 {
-  ITrace("error_glFlushRenderAPPLE");
+  Internal("error_glFlushRenderAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14089,7 +14089,7 @@ static void REGAL_CALL error_glFlushRenderAPPLE(void)
 
 static void REGAL_CALL error_glSwapAPPLE(void)
 {
-  ITrace("error_glSwapAPPLE");
+  Internal("error_glSwapAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14112,7 +14112,7 @@ static void REGAL_CALL error_glSwapAPPLE(void)
 
 static void REGAL_CALL error_glGetObjectParameterivAPPLE(GLenum objectType, GLuint name, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetObjectParameterivAPPLE");
+  Internal("error_glGetObjectParameterivAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14133,7 +14133,7 @@ static void REGAL_CALL error_glGetObjectParameterivAPPLE(GLenum objectType, GLui
 
 static GLenum REGAL_CALL error_glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option)
 {
-  ITrace("error_glObjectPurgeableAPPLE");
+  Internal("error_glObjectPurgeableAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14155,7 +14155,7 @@ return ret;
 
 static GLenum REGAL_CALL error_glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option)
 {
-  ITrace("error_glObjectUnpurgeableAPPLE");
+  Internal("error_glObjectUnpurgeableAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14179,7 +14179,7 @@ return ret;
 
 static void REGAL_CALL error_glGetTexParameterPointervAPPLE(GLenum target, GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetTexParameterPointervAPPLE");
+  Internal("error_glGetTexParameterPointervAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14200,7 +14200,7 @@ static void REGAL_CALL error_glGetTexParameterPointervAPPLE(GLenum target, GLenu
 
 static void REGAL_CALL error_glTextureRangeAPPLE(GLenum target, GLsizei length, GLvoid *pointer)
 {
-  ITrace("error_glTextureRangeAPPLE");
+  Internal("error_glTextureRangeAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14223,7 +14223,7 @@ static void REGAL_CALL error_glTextureRangeAPPLE(GLenum target, GLsizei length, 
 
 static void REGAL_CALL error_glBindVertexArrayAPPLE(GLuint array)
 {
-  ITrace("error_glBindVertexArrayAPPLE");
+  Internal("error_glBindVertexArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14244,7 +14244,7 @@ static void REGAL_CALL error_glBindVertexArrayAPPLE(GLuint array)
 
 static void REGAL_CALL error_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint *arrays)
 {
-  ITrace("error_glDeleteVertexArraysAPPLE");
+  Internal("error_glDeleteVertexArraysAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14265,7 +14265,7 @@ static void REGAL_CALL error_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint *
 
 static void REGAL_CALL error_glGenVertexArraysAPPLE(GLsizei n, const GLuint *arrays)
 {
-  ITrace("error_glGenVertexArraysAPPLE");
+  Internal("error_glGenVertexArraysAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14286,7 +14286,7 @@ static void REGAL_CALL error_glGenVertexArraysAPPLE(GLsizei n, const GLuint *arr
 
 static GLboolean REGAL_CALL error_glIsVertexArrayAPPLE(GLuint array)
 {
-  ITrace("error_glIsVertexArrayAPPLE");
+  Internal("error_glIsVertexArrayAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14310,7 +14310,7 @@ return ret;
 
 static void REGAL_CALL error_glFlushVertexArrayRangeAPPLE(GLsizei length, GLvoid *pointer)
 {
-  ITrace("error_glFlushVertexArrayRangeAPPLE");
+  Internal("error_glFlushVertexArrayRangeAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14331,7 +14331,7 @@ static void REGAL_CALL error_glFlushVertexArrayRangeAPPLE(GLsizei length, GLvoid
 
 static void REGAL_CALL error_glVertexArrayParameteriAPPLE(GLenum pname, GLint param)
 {
-  ITrace("error_glVertexArrayParameteriAPPLE");
+  Internal("error_glVertexArrayParameteriAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14352,7 +14352,7 @@ static void REGAL_CALL error_glVertexArrayParameteriAPPLE(GLenum pname, GLint pa
 
 static void REGAL_CALL error_glVertexArrayRangeAPPLE(GLsizei length, GLvoid *pointer)
 {
-  ITrace("error_glVertexArrayRangeAPPLE");
+  Internal("error_glVertexArrayRangeAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14375,7 +14375,7 @@ static void REGAL_CALL error_glVertexArrayRangeAPPLE(GLsizei length, GLvoid *poi
 
 static void REGAL_CALL error_glDisableVertexAttribAPPLE(GLuint index, GLenum pname)
 {
-  ITrace("error_glDisableVertexAttribAPPLE");
+  Internal("error_glDisableVertexAttribAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14396,7 +14396,7 @@ static void REGAL_CALL error_glDisableVertexAttribAPPLE(GLuint index, GLenum pna
 
 static void REGAL_CALL error_glEnableVertexAttribAPPLE(GLuint index, GLenum pname)
 {
-  ITrace("error_glEnableVertexAttribAPPLE");
+  Internal("error_glEnableVertexAttribAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14417,7 +14417,7 @@ static void REGAL_CALL error_glEnableVertexAttribAPPLE(GLuint index, GLenum pnam
 
 static GLboolean REGAL_CALL error_glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname)
 {
-  ITrace("error_glIsVertexAttribEnabledAPPLE");
+  Internal("error_glIsVertexAttribEnabledAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14439,7 +14439,7 @@ return ret;
 
 static void REGAL_CALL error_glMapVertexAttrib1dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 {
-  ITrace("error_glMapVertexAttrib1dAPPLE");
+  Internal("error_glMapVertexAttrib1dAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14460,7 +14460,7 @@ static void REGAL_CALL error_glMapVertexAttrib1dAPPLE(GLuint index, GLuint size,
 
 static void REGAL_CALL error_glMapVertexAttrib1fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 {
-  ITrace("error_glMapVertexAttrib1fAPPLE");
+  Internal("error_glMapVertexAttrib1fAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14481,7 +14481,7 @@ static void REGAL_CALL error_glMapVertexAttrib1fAPPLE(GLuint index, GLuint size,
 
 static void REGAL_CALL error_glMapVertexAttrib2dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 {
-  ITrace("error_glMapVertexAttrib2dAPPLE");
+  Internal("error_glMapVertexAttrib2dAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14502,7 +14502,7 @@ static void REGAL_CALL error_glMapVertexAttrib2dAPPLE(GLuint index, GLuint size,
 
 static void REGAL_CALL error_glMapVertexAttrib2fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 {
-  ITrace("error_glMapVertexAttrib2fAPPLE");
+  Internal("error_glMapVertexAttrib2fAPPLE","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14525,7 +14525,7 @@ static void REGAL_CALL error_glMapVertexAttrib2fAPPLE(GLuint index, GLuint size,
 
 static void REGAL_CALL error_glClearDepthf(GLclampf d)
 {
-  ITrace("error_glClearDepthf");
+  Internal("error_glClearDepthf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14546,7 +14546,7 @@ static void REGAL_CALL error_glClearDepthf(GLclampf d)
 
 static void REGAL_CALL error_glDepthRangef(GLclampf n, GLclampf f)
 {
-  ITrace("error_glDepthRangef");
+  Internal("error_glDepthRangef","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14567,7 +14567,7 @@ static void REGAL_CALL error_glDepthRangef(GLclampf n, GLclampf f)
 
 static void REGAL_CALL error_glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision)
 {
-  ITrace("error_glGetShaderPrecisionFormat");
+  Internal("error_glGetShaderPrecisionFormat","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14588,7 +14588,7 @@ static void REGAL_CALL error_glGetShaderPrecisionFormat(GLenum shadertype, GLenu
 
 static void REGAL_CALL error_glReleaseShaderCompiler(void)
 {
-  ITrace("error_glReleaseShaderCompiler");
+  Internal("error_glReleaseShaderCompiler","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14609,7 +14609,7 @@ static void REGAL_CALL error_glReleaseShaderCompiler(void)
 
 static void REGAL_CALL error_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
 {
-  ITrace("error_glShaderBinary");
+  Internal("error_glShaderBinary","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14632,7 +14632,7 @@ static void REGAL_CALL error_glShaderBinary(GLsizei count, const GLuint *shaders
 
 static void REGAL_CALL error_glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance)
 {
-  ITrace("error_glDrawArraysInstancedBaseInstance");
+  Internal("error_glDrawArraysInstancedBaseInstance","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14653,7 +14653,7 @@ static void REGAL_CALL error_glDrawArraysInstancedBaseInstance(GLenum mode, GLin
 
 static void REGAL_CALL error_glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance)
 {
-  ITrace("error_glDrawElementsInstancedBaseInstance");
+  Internal("error_glDrawElementsInstancedBaseInstance","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14674,7 +14674,7 @@ static void REGAL_CALL error_glDrawElementsInstancedBaseInstance(GLenum mode, GL
 
 static void REGAL_CALL error_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
 {
-  ITrace("error_glDrawElementsInstancedBaseVertexBaseInstance");
+  Internal("error_glDrawElementsInstancedBaseVertexBaseInstance","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14697,7 +14697,7 @@ static void REGAL_CALL error_glDrawElementsInstancedBaseVertexBaseInstance(GLenu
 
 static void REGAL_CALL error_glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar *name)
 {
-  ITrace("error_glBindFragDataLocationIndexed");
+  Internal("error_glBindFragDataLocationIndexed","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14718,7 +14718,7 @@ static void REGAL_CALL error_glBindFragDataLocationIndexed(GLuint program, GLuin
 
 static GLint REGAL_CALL error_glGetFragDataIndex(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetFragDataIndex");
+  Internal("error_glGetFragDataIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14742,7 +14742,7 @@ return ret;
 
 static GLsync REGAL_CALL error_glCreateSyncFromCLeventARB(cl_context context, cl_event event, GLbitfield flags)
 {
-  ITrace("error_glCreateSyncFromCLeventARB");
+  Internal("error_glCreateSyncFromCLeventARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14766,7 +14766,7 @@ return ret;
 
 static void REGAL_CALL error_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
 {
-  ITrace("error_glClearBufferData");
+  Internal("error_glClearBufferData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14787,7 +14787,7 @@ static void REGAL_CALL error_glClearBufferData(GLenum target, GLenum internalfor
 
 static void REGAL_CALL error_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
 {
-  ITrace("error_glClearBufferSubData");
+  Internal("error_glClearBufferSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14808,7 +14808,7 @@ static void REGAL_CALL error_glClearBufferSubData(GLenum target, GLenum internal
 
 static void REGAL_CALL error_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
 {
-  ITrace("error_glClearNamedBufferDataEXT");
+  Internal("error_glClearNamedBufferDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14829,7 +14829,7 @@ static void REGAL_CALL error_glClearNamedBufferDataEXT(GLuint buffer, GLenum int
 
 static void REGAL_CALL error_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
 {
-  ITrace("error_glClearNamedBufferSubDataEXT");
+  Internal("error_glClearNamedBufferSubDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14852,7 +14852,7 @@ static void REGAL_CALL error_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum 
 
 static void REGAL_CALL error_glClampColorARB(GLenum target, GLenum clamp)
 {
-  ITrace("error_glClampColorARB");
+  Internal("error_glClampColorARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14875,7 +14875,7 @@ static void REGAL_CALL error_glClampColorARB(GLenum target, GLenum clamp)
 
 static void REGAL_CALL error_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
 {
-  ITrace("error_glDispatchCompute");
+  Internal("error_glDispatchCompute","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14896,7 +14896,7 @@ static void REGAL_CALL error_glDispatchCompute(GLuint num_groups_x, GLuint num_g
 
 static void REGAL_CALL error_glDispatchComputeIndirect(GLintptr indirect)
 {
-  ITrace("error_glDispatchComputeIndirect");
+  Internal("error_glDispatchComputeIndirect","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14919,7 +14919,7 @@ static void REGAL_CALL error_glDispatchComputeIndirect(GLintptr indirect)
 
 static void REGAL_CALL error_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
 {
-  ITrace("error_glCopyBufferSubData");
+  Internal("error_glCopyBufferSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14942,7 +14942,7 @@ static void REGAL_CALL error_glCopyBufferSubData(GLenum readtarget, GLenum write
 
 static void REGAL_CALL error_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
 {
-  ITrace("error_glCopyImageSubData");
+  Internal("error_glCopyImageSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14965,7 +14965,7 @@ static void REGAL_CALL error_glCopyImageSubData(GLuint srcName, GLenum srcTarget
 
 static void REGAL_CALL error_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, GLvoid *userParam)
 {
-  ITrace("error_glDebugMessageCallbackARB");
+  Internal("error_glDebugMessageCallbackARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -14986,7 +14986,7 @@ static void REGAL_CALL error_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, 
 
 static void REGAL_CALL error_glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
 {
-  ITrace("error_glDebugMessageControlARB");
+  Internal("error_glDebugMessageControlARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15007,7 +15007,7 @@ static void REGAL_CALL error_glDebugMessageControlARB(GLenum source, GLenum type
 
 static void REGAL_CALL error_glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
 {
-  ITrace("error_glDebugMessageInsertARB");
+  Internal("error_glDebugMessageInsertARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15028,7 +15028,7 @@ static void REGAL_CALL error_glDebugMessageInsertARB(GLenum source, GLenum type,
 
 static GLuint REGAL_CALL error_glGetDebugMessageLogARB(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
 {
-  ITrace("error_glGetDebugMessageLogARB");
+  Internal("error_glGetDebugMessageLogARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15052,7 +15052,7 @@ return ret;
 
 static void REGAL_CALL error_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
 {
-  ITrace("error_glDrawBuffersARB");
+  Internal("error_glDrawBuffersARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15075,7 +15075,7 @@ static void REGAL_CALL error_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
 
 static void REGAL_CALL error_glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("error_glBlendEquationSeparateiARB");
+  Internal("error_glBlendEquationSeparateiARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15096,7 +15096,7 @@ static void REGAL_CALL error_glBlendEquationSeparateiARB(GLuint buf, GLenum mode
 
 static void REGAL_CALL error_glBlendEquationiARB(GLuint buf, GLenum mode)
 {
-  ITrace("error_glBlendEquationiARB");
+  Internal("error_glBlendEquationiARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15117,7 +15117,7 @@ static void REGAL_CALL error_glBlendEquationiARB(GLuint buf, GLenum mode)
 
 static void REGAL_CALL error_glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
-  ITrace("error_glBlendFuncSeparateiARB");
+  Internal("error_glBlendFuncSeparateiARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15138,7 +15138,7 @@ static void REGAL_CALL error_glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, 
 
 static void REGAL_CALL error_glBlendFunciARB(GLuint buf, GLenum src, GLenum dst)
 {
-  ITrace("error_glBlendFunciARB");
+  Internal("error_glBlendFunciARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15161,7 +15161,7 @@ static void REGAL_CALL error_glBlendFunciARB(GLuint buf, GLenum src, GLenum dst)
 
 static void REGAL_CALL error_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
 {
-  ITrace("error_glDrawElementsBaseVertex");
+  Internal("error_glDrawElementsBaseVertex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15182,7 +15182,7 @@ static void REGAL_CALL error_glDrawElementsBaseVertex(GLenum mode, GLsizei count
 
 static void REGAL_CALL error_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
-  ITrace("error_glDrawElementsInstancedBaseVertex");
+  Internal("error_glDrawElementsInstancedBaseVertex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15203,7 +15203,7 @@ static void REGAL_CALL error_glDrawElementsInstancedBaseVertex(GLenum mode, GLsi
 
 static void REGAL_CALL error_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
 {
-  ITrace("error_glDrawRangeElementsBaseVertex");
+  Internal("error_glDrawRangeElementsBaseVertex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15224,7 +15224,7 @@ static void REGAL_CALL error_glDrawRangeElementsBaseVertex(GLenum mode, GLuint s
 
 static void REGAL_CALL error_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *count, GLenum type, GLvoid **indices, GLsizei primcount, GLint *basevertex)
 {
-  ITrace("error_glMultiDrawElementsBaseVertex");
+  Internal("error_glMultiDrawElementsBaseVertex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15247,7 +15247,7 @@ static void REGAL_CALL error_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei 
 
 static void REGAL_CALL error_glDrawArraysIndirect(GLenum mode, const GLvoid *indirect)
 {
-  ITrace("error_glDrawArraysIndirect");
+  Internal("error_glDrawArraysIndirect","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15268,7 +15268,7 @@ static void REGAL_CALL error_glDrawArraysIndirect(GLenum mode, const GLvoid *ind
 
 static void REGAL_CALL error_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
 {
-  ITrace("error_glDrawElementsIndirect");
+  Internal("error_glDrawElementsIndirect","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15291,7 +15291,7 @@ static void REGAL_CALL error_glDrawElementsIndirect(GLenum mode, GLenum type, co
 
 static void REGAL_CALL error_glDrawArraysInstancedARB(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  ITrace("error_glDrawArraysInstancedARB");
+  Internal("error_glDrawArraysInstancedARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15312,7 +15312,7 @@ static void REGAL_CALL error_glDrawArraysInstancedARB(GLenum mode, GLint start, 
 
 static void REGAL_CALL error_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  ITrace("error_glDrawElementsInstancedARB");
+  Internal("error_glDrawElementsInstancedARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15335,7 +15335,7 @@ static void REGAL_CALL error_glDrawElementsInstancedARB(GLenum mode, GLsizei cou
 
 static void REGAL_CALL error_glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glFramebufferParameteri");
+  Internal("error_glFramebufferParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15356,7 +15356,7 @@ static void REGAL_CALL error_glFramebufferParameteri(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFramebufferParameteriv");
+  Internal("error_glGetFramebufferParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15377,7 +15377,7 @@ static void REGAL_CALL error_glGetFramebufferParameteriv(GLenum target, GLenum p
 
 static void REGAL_CALL error_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedFramebufferParameterivEXT");
+  Internal("error_glGetNamedFramebufferParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15398,7 +15398,7 @@ static void REGAL_CALL error_glGetNamedFramebufferParameterivEXT(GLuint framebuf
 
 static void REGAL_CALL error_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
 {
-  ITrace("error_glNamedFramebufferParameteriEXT");
+  Internal("error_glNamedFramebufferParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15421,7 +15421,7 @@ static void REGAL_CALL error_glNamedFramebufferParameteriEXT(GLuint framebuffer,
 
 static void REGAL_CALL error_glBindFramebuffer(GLenum target, GLuint framebuffer)
 {
-  ITrace("error_glBindFramebuffer");
+  Internal("error_glBindFramebuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15442,7 +15442,7 @@ static void REGAL_CALL error_glBindFramebuffer(GLenum target, GLuint framebuffer
 
 static void REGAL_CALL error_glBindRenderbuffer(GLenum target, GLuint renderbuffer)
 {
-  ITrace("error_glBindRenderbuffer");
+  Internal("error_glBindRenderbuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15463,7 +15463,7 @@ static void REGAL_CALL error_glBindRenderbuffer(GLenum target, GLuint renderbuff
 
 static void REGAL_CALL error_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-  ITrace("error_glBlitFramebuffer");
+  Internal("error_glBlitFramebuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15484,7 +15484,7 @@ static void REGAL_CALL error_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint s
 
 static GLenum REGAL_CALL error_glCheckFramebufferStatus(GLenum target)
 {
-  ITrace("error_glCheckFramebufferStatus");
+  Internal("error_glCheckFramebufferStatus","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15506,7 +15506,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers)
 {
-  ITrace("error_glDeleteFramebuffers");
+  Internal("error_glDeleteFramebuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15527,7 +15527,7 @@ static void REGAL_CALL error_glDeleteFramebuffers(GLsizei n, const GLuint *frame
 
 static void REGAL_CALL error_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers)
 {
-  ITrace("error_glDeleteRenderbuffers");
+  Internal("error_glDeleteRenderbuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15548,7 +15548,7 @@ static void REGAL_CALL error_glDeleteRenderbuffers(GLsizei n, const GLuint *rend
 
 static void REGAL_CALL error_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  ITrace("error_glFramebufferRenderbuffer");
+  Internal("error_glFramebufferRenderbuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15569,7 +15569,7 @@ static void REGAL_CALL error_glFramebufferRenderbuffer(GLenum target, GLenum att
 
 static void REGAL_CALL error_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTexture1D");
+  Internal("error_glFramebufferTexture1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15590,7 +15590,7 @@ static void REGAL_CALL error_glFramebufferTexture1D(GLenum target, GLenum attach
 
 static void REGAL_CALL error_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTexture2D");
+  Internal("error_glFramebufferTexture2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15611,7 +15611,7 @@ static void REGAL_CALL error_glFramebufferTexture2D(GLenum target, GLenum attach
 
 static void REGAL_CALL error_glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
-  ITrace("error_glFramebufferTexture3D");
+  Internal("error_glFramebufferTexture3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15632,7 +15632,7 @@ static void REGAL_CALL error_glFramebufferTexture3D(GLenum target, GLenum attach
 
 static void REGAL_CALL error_glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  ITrace("error_glFramebufferTextureLayer");
+  Internal("error_glFramebufferTextureLayer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15653,7 +15653,7 @@ static void REGAL_CALL error_glFramebufferTextureLayer(GLenum target, GLenum att
 
 static void REGAL_CALL error_glGenFramebuffers(GLsizei n, GLuint *framebuffers)
 {
-  ITrace("error_glGenFramebuffers");
+  Internal("error_glGenFramebuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15674,7 +15674,7 @@ static void REGAL_CALL error_glGenFramebuffers(GLsizei n, GLuint *framebuffers)
 
 static void REGAL_CALL error_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers)
 {
-  ITrace("error_glGenRenderbuffers");
+  Internal("error_glGenRenderbuffers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15695,7 +15695,7 @@ static void REGAL_CALL error_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers
 
 static void REGAL_CALL error_glGenerateMipmap(GLenum target)
 {
-  ITrace("error_glGenerateMipmap");
+  Internal("error_glGenerateMipmap","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15716,7 +15716,7 @@ static void REGAL_CALL error_glGenerateMipmap(GLenum target)
 
 static void REGAL_CALL error_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFramebufferAttachmentParameteriv");
+  Internal("error_glGetFramebufferAttachmentParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15737,7 +15737,7 @@ static void REGAL_CALL error_glGetFramebufferAttachmentParameteriv(GLenum target
 
 static void REGAL_CALL error_glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetRenderbufferParameteriv");
+  Internal("error_glGetRenderbufferParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15758,7 +15758,7 @@ static void REGAL_CALL error_glGetRenderbufferParameteriv(GLenum target, GLenum 
 
 static GLboolean REGAL_CALL error_glIsFramebuffer(GLuint framebuffer)
 {
-  ITrace("error_glIsFramebuffer");
+  Internal("error_glIsFramebuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15780,7 +15780,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsRenderbuffer(GLuint renderbuffer)
 {
-  ITrace("error_glIsRenderbuffer");
+  Internal("error_glIsRenderbuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15802,7 +15802,7 @@ return ret;
 
 static void REGAL_CALL error_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glRenderbufferStorage");
+  Internal("error_glRenderbufferStorage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15823,7 +15823,7 @@ static void REGAL_CALL error_glRenderbufferStorage(GLenum target, GLenum interna
 
 static void REGAL_CALL error_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glRenderbufferStorageMultisample");
+  Internal("error_glRenderbufferStorageMultisample","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15846,7 +15846,7 @@ static void REGAL_CALL error_glRenderbufferStorageMultisample(GLenum target, GLs
 
 static void REGAL_CALL error_glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTextureARB");
+  Internal("error_glFramebufferTextureARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15867,7 +15867,7 @@ static void REGAL_CALL error_glFramebufferTextureARB(GLenum target, GLenum attac
 
 static void REGAL_CALL error_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  ITrace("error_glFramebufferTextureFaceARB");
+  Internal("error_glFramebufferTextureFaceARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15888,7 +15888,7 @@ static void REGAL_CALL error_glFramebufferTextureFaceARB(GLenum target, GLenum a
 
 static void REGAL_CALL error_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  ITrace("error_glFramebufferTextureLayerARB");
+  Internal("error_glFramebufferTextureLayerARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15909,7 +15909,7 @@ static void REGAL_CALL error_glFramebufferTextureLayerARB(GLenum target, GLenum 
 
 static void REGAL_CALL error_glProgramParameteriARB(GLuint program, GLenum pname, GLint value)
 {
-  ITrace("error_glProgramParameteriARB");
+  Internal("error_glProgramParameteriARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15932,7 +15932,7 @@ static void REGAL_CALL error_glProgramParameteriARB(GLuint program, GLenum pname
 
 static void REGAL_CALL error_glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary)
 {
-  ITrace("error_glGetProgramBinary");
+  Internal("error_glGetProgramBinary","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15953,7 +15953,7 @@ static void REGAL_CALL error_glGetProgramBinary(GLuint program, GLsizei bufSize,
 
 static void REGAL_CALL error_glProgramBinary(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length)
 {
-  ITrace("error_glProgramBinary");
+  Internal("error_glProgramBinary","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15974,7 +15974,7 @@ static void REGAL_CALL error_glProgramBinary(GLuint program, GLenum binaryFormat
 
 static void REGAL_CALL error_glProgramParameteri(GLuint program, GLenum pname, GLint value)
 {
-  ITrace("error_glProgramParameteri");
+  Internal("error_glProgramParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -15997,7 +15997,7 @@ static void REGAL_CALL error_glProgramParameteri(GLuint program, GLenum pname, G
 
 static void REGAL_CALL error_glGetUniformdv(GLuint program, GLint location, GLdouble *params)
 {
-  ITrace("error_glGetUniformdv");
+  Internal("error_glGetUniformdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16018,7 +16018,7 @@ static void REGAL_CALL error_glGetUniformdv(GLuint program, GLint location, GLdo
 
 static void REGAL_CALL error_glUniform1d(GLint location, GLdouble x)
 {
-  ITrace("error_glUniform1d");
+  Internal("error_glUniform1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16039,7 +16039,7 @@ static void REGAL_CALL error_glUniform1d(GLint location, GLdouble x)
 
 static void REGAL_CALL error_glUniform1dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glUniform1dv");
+  Internal("error_glUniform1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16060,7 +16060,7 @@ static void REGAL_CALL error_glUniform1dv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform2d(GLint location, GLdouble x, GLdouble y)
 {
-  ITrace("error_glUniform2d");
+  Internal("error_glUniform2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16081,7 +16081,7 @@ static void REGAL_CALL error_glUniform2d(GLint location, GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glUniform2dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glUniform2dv");
+  Internal("error_glUniform2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16102,7 +16102,7 @@ static void REGAL_CALL error_glUniform2dv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glUniform3d");
+  Internal("error_glUniform3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16123,7 +16123,7 @@ static void REGAL_CALL error_glUniform3d(GLint location, GLdouble x, GLdouble y,
 
 static void REGAL_CALL error_glUniform3dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glUniform3dv");
+  Internal("error_glUniform3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16144,7 +16144,7 @@ static void REGAL_CALL error_glUniform3dv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glUniform4d");
+  Internal("error_glUniform4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16165,7 +16165,7 @@ static void REGAL_CALL error_glUniform4d(GLint location, GLdouble x, GLdouble y,
 
 static void REGAL_CALL error_glUniform4dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glUniform4dv");
+  Internal("error_glUniform4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16186,7 +16186,7 @@ static void REGAL_CALL error_glUniform4dv(GLint location, GLsizei count, const G
 
 static void REGAL_CALL error_glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix2dv");
+  Internal("error_glUniformMatrix2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16207,7 +16207,7 @@ static void REGAL_CALL error_glUniformMatrix2dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix2x3dv");
+  Internal("error_glUniformMatrix2x3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16228,7 +16228,7 @@ static void REGAL_CALL error_glUniformMatrix2x3dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix2x4dv");
+  Internal("error_glUniformMatrix2x4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16249,7 +16249,7 @@ static void REGAL_CALL error_glUniformMatrix2x4dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix3dv");
+  Internal("error_glUniformMatrix3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16270,7 +16270,7 @@ static void REGAL_CALL error_glUniformMatrix3dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix3x2dv");
+  Internal("error_glUniformMatrix3x2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16291,7 +16291,7 @@ static void REGAL_CALL error_glUniformMatrix3x2dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix3x4dv");
+  Internal("error_glUniformMatrix3x4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16312,7 +16312,7 @@ static void REGAL_CALL error_glUniformMatrix3x4dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix4dv");
+  Internal("error_glUniformMatrix4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16333,7 +16333,7 @@ static void REGAL_CALL error_glUniformMatrix4dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL error_glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix4x2dv");
+  Internal("error_glUniformMatrix4x2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16354,7 +16354,7 @@ static void REGAL_CALL error_glUniformMatrix4x2dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glUniformMatrix4x3dv");
+  Internal("error_glUniformMatrix4x3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16377,7 +16377,7 @@ static void REGAL_CALL error_glUniformMatrix4x3dv(GLint location, GLsizei count,
 
 static void REGAL_CALL error_glColorSubTable(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data)
 {
-  ITrace("error_glColorSubTable");
+  Internal("error_glColorSubTable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16398,7 +16398,7 @@ static void REGAL_CALL error_glColorSubTable(GLenum target, GLsizei start, GLsiz
 
 static void REGAL_CALL error_glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
 {
-  ITrace("error_glColorTable");
+  Internal("error_glColorTable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16419,7 +16419,7 @@ static void REGAL_CALL error_glColorTable(GLenum target, GLenum internalformat, 
 
 static void REGAL_CALL error_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glColorTableParameterfv");
+  Internal("error_glColorTableParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16440,7 +16440,7 @@ static void REGAL_CALL error_glColorTableParameterfv(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glColorTableParameteriv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glColorTableParameteriv");
+  Internal("error_glColorTableParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16461,7 +16461,7 @@ static void REGAL_CALL error_glColorTableParameteriv(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image)
 {
-  ITrace("error_glConvolutionFilter1D");
+  Internal("error_glConvolutionFilter1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16482,7 +16482,7 @@ static void REGAL_CALL error_glConvolutionFilter1D(GLenum target, GLenum interna
 
 static void REGAL_CALL error_glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
 {
-  ITrace("error_glConvolutionFilter2D");
+  Internal("error_glConvolutionFilter2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16503,7 +16503,7 @@ static void REGAL_CALL error_glConvolutionFilter2D(GLenum target, GLenum interna
 
 static void REGAL_CALL error_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params)
 {
-  ITrace("error_glConvolutionParameterf");
+  Internal("error_glConvolutionParameterf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16524,7 +16524,7 @@ static void REGAL_CALL error_glConvolutionParameterf(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glConvolutionParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glConvolutionParameterfv");
+  Internal("error_glConvolutionParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16545,7 +16545,7 @@ static void REGAL_CALL error_glConvolutionParameterfv(GLenum target, GLenum pnam
 
 static void REGAL_CALL error_glConvolutionParameteri(GLenum target, GLenum pname, GLint params)
 {
-  ITrace("error_glConvolutionParameteri");
+  Internal("error_glConvolutionParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16566,7 +16566,7 @@ static void REGAL_CALL error_glConvolutionParameteri(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glConvolutionParameteriv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glConvolutionParameteriv");
+  Internal("error_glConvolutionParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16587,7 +16587,7 @@ static void REGAL_CALL error_glConvolutionParameteriv(GLenum target, GLenum pnam
 
 static void REGAL_CALL error_glCopyColorSubTable(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyColorSubTable");
+  Internal("error_glCopyColorSubTable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16608,7 +16608,7 @@ static void REGAL_CALL error_glCopyColorSubTable(GLenum target, GLsizei start, G
 
 static void REGAL_CALL error_glCopyColorTable(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyColorTable");
+  Internal("error_glCopyColorTable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16629,7 +16629,7 @@ static void REGAL_CALL error_glCopyColorTable(GLenum target, GLenum internalform
 
 static void REGAL_CALL error_glCopyConvolutionFilter1D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyConvolutionFilter1D");
+  Internal("error_glCopyConvolutionFilter1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16650,7 +16650,7 @@ static void REGAL_CALL error_glCopyConvolutionFilter1D(GLenum target, GLenum int
 
 static void REGAL_CALL error_glCopyConvolutionFilter2D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyConvolutionFilter2D");
+  Internal("error_glCopyConvolutionFilter2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16671,7 +16671,7 @@ static void REGAL_CALL error_glCopyConvolutionFilter2D(GLenum target, GLenum int
 
 static void REGAL_CALL error_glGetColorTable(GLenum target, GLenum format, GLenum type, GLvoid *table)
 {
-  ITrace("error_glGetColorTable");
+  Internal("error_glGetColorTable","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16692,7 +16692,7 @@ static void REGAL_CALL error_glGetColorTable(GLenum target, GLenum format, GLenu
 
 static void REGAL_CALL error_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetColorTableParameterfv");
+  Internal("error_glGetColorTableParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16713,7 +16713,7 @@ static void REGAL_CALL error_glGetColorTableParameterfv(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glGetColorTableParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetColorTableParameteriv");
+  Internal("error_glGetColorTableParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16734,7 +16734,7 @@ static void REGAL_CALL error_glGetColorTableParameteriv(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glGetConvolutionFilter(GLenum target, GLenum format, GLenum type, GLvoid *image)
 {
-  ITrace("error_glGetConvolutionFilter");
+  Internal("error_glGetConvolutionFilter","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16755,7 +16755,7 @@ static void REGAL_CALL error_glGetConvolutionFilter(GLenum target, GLenum format
 
 static void REGAL_CALL error_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetConvolutionParameterfv");
+  Internal("error_glGetConvolutionParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16776,7 +16776,7 @@ static void REGAL_CALL error_glGetConvolutionParameterfv(GLenum target, GLenum p
 
 static void REGAL_CALL error_glGetConvolutionParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetConvolutionParameteriv");
+  Internal("error_glGetConvolutionParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16797,7 +16797,7 @@ static void REGAL_CALL error_glGetConvolutionParameteriv(GLenum target, GLenum p
 
 static void REGAL_CALL error_glGetHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values)
 {
-  ITrace("error_glGetHistogram");
+  Internal("error_glGetHistogram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16818,7 +16818,7 @@ static void REGAL_CALL error_glGetHistogram(GLenum target, GLboolean reset, GLen
 
 static void REGAL_CALL error_glGetHistogramParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetHistogramParameterfv");
+  Internal("error_glGetHistogramParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16839,7 +16839,7 @@ static void REGAL_CALL error_glGetHistogramParameterfv(GLenum target, GLenum pna
 
 static void REGAL_CALL error_glGetHistogramParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetHistogramParameteriv");
+  Internal("error_glGetHistogramParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16860,7 +16860,7 @@ static void REGAL_CALL error_glGetHistogramParameteriv(GLenum target, GLenum pna
 
 static void REGAL_CALL error_glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum types, GLvoid *values)
 {
-  ITrace("error_glGetMinmax");
+  Internal("error_glGetMinmax","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16881,7 +16881,7 @@ static void REGAL_CALL error_glGetMinmax(GLenum target, GLboolean reset, GLenum 
 
 static void REGAL_CALL error_glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMinmaxParameterfv");
+  Internal("error_glGetMinmaxParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16902,7 +16902,7 @@ static void REGAL_CALL error_glGetMinmaxParameterfv(GLenum target, GLenum pname,
 
 static void REGAL_CALL error_glGetMinmaxParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMinmaxParameteriv");
+  Internal("error_glGetMinmaxParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16923,7 +16923,7 @@ static void REGAL_CALL error_glGetMinmaxParameteriv(GLenum target, GLenum pname,
 
 static void REGAL_CALL error_glGetSeparableFilter(GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span)
 {
-  ITrace("error_glGetSeparableFilter");
+  Internal("error_glGetSeparableFilter","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16944,7 +16944,7 @@ static void REGAL_CALL error_glGetSeparableFilter(GLenum target, GLenum format, 
 
 static void REGAL_CALL error_glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink)
 {
-  ITrace("error_glHistogram");
+  Internal("error_glHistogram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16965,7 +16965,7 @@ static void REGAL_CALL error_glHistogram(GLenum target, GLsizei width, GLenum in
 
 static void REGAL_CALL error_glMinmax(GLenum target, GLenum internalformat, GLboolean sink)
 {
-  ITrace("error_glMinmax");
+  Internal("error_glMinmax","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -16986,7 +16986,7 @@ static void REGAL_CALL error_glMinmax(GLenum target, GLenum internalformat, GLbo
 
 static void REGAL_CALL error_glResetHistogram(GLenum target)
 {
-  ITrace("error_glResetHistogram");
+  Internal("error_glResetHistogram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17007,7 +17007,7 @@ static void REGAL_CALL error_glResetHistogram(GLenum target)
 
 static void REGAL_CALL error_glResetMinmax(GLenum target)
 {
-  ITrace("error_glResetMinmax");
+  Internal("error_glResetMinmax","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17028,7 +17028,7 @@ static void REGAL_CALL error_glResetMinmax(GLenum target)
 
 static void REGAL_CALL error_glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
 {
-  ITrace("error_glSeparableFilter2D");
+  Internal("error_glSeparableFilter2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17051,7 +17051,7 @@ static void REGAL_CALL error_glSeparableFilter2D(GLenum target, GLenum internalf
 
 static void REGAL_CALL error_glVertexAttribDivisorARB(GLuint index, GLuint divisor)
 {
-  ITrace("error_glVertexAttribDivisorARB");
+  Internal("error_glVertexAttribDivisorARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17074,7 +17074,7 @@ static void REGAL_CALL error_glVertexAttribDivisorARB(GLuint index, GLuint divis
 
 static void REGAL_CALL error_glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params)
 {
-  ITrace("error_glGetInternalformativ");
+  Internal("error_glGetInternalformativ","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17097,7 +17097,7 @@ static void REGAL_CALL error_glGetInternalformativ(GLenum target, GLenum interna
 
 static void REGAL_CALL error_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params)
 {
-  ITrace("error_glGetInternalformati64v");
+  Internal("error_glGetInternalformati64v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17120,7 +17120,7 @@ static void REGAL_CALL error_glGetInternalformati64v(GLenum target, GLenum inter
 
 static void REGAL_CALL error_glInvalidateBufferData(GLuint buffer)
 {
-  ITrace("error_glInvalidateBufferData");
+  Internal("error_glInvalidateBufferData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17141,7 +17141,7 @@ static void REGAL_CALL error_glInvalidateBufferData(GLuint buffer)
 
 static void REGAL_CALL error_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
-  ITrace("error_glInvalidateBufferSubData");
+  Internal("error_glInvalidateBufferSubData","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17162,7 +17162,7 @@ static void REGAL_CALL error_glInvalidateBufferSubData(GLuint buffer, GLintptr o
 
 static void REGAL_CALL error_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments)
 {
-  ITrace("error_glInvalidateFramebuffer");
+  Internal("error_glInvalidateFramebuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17183,7 +17183,7 @@ static void REGAL_CALL error_glInvalidateFramebuffer(GLenum target, GLsizei numA
 
 static void REGAL_CALL error_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glInvalidateSubFramebuffer");
+  Internal("error_glInvalidateSubFramebuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17204,7 +17204,7 @@ static void REGAL_CALL error_glInvalidateSubFramebuffer(GLenum target, GLsizei n
 
 static void REGAL_CALL error_glInvalidateTexImage(GLuint texture, GLint level)
 {
-  ITrace("error_glInvalidateTexImage");
+  Internal("error_glInvalidateTexImage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17225,7 +17225,7 @@ static void REGAL_CALL error_glInvalidateTexImage(GLuint texture, GLint level)
 
 static void REGAL_CALL error_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth)
 {
-  ITrace("error_glInvalidateTexSubImage");
+  Internal("error_glInvalidateTexSubImage","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17248,7 +17248,7 @@ static void REGAL_CALL error_glInvalidateTexSubImage(GLuint texture, GLint level
 
 static void REGAL_CALL error_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
 {
-  ITrace("error_glFlushMappedBufferRange");
+  Internal("error_glFlushMappedBufferRange","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17269,7 +17269,7 @@ static void REGAL_CALL error_glFlushMappedBufferRange(GLenum target, GLintptr of
 
 static GLvoid *REGAL_CALL error_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  ITrace("error_glMapBufferRange");
+  Internal("error_glMapBufferRange","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17293,7 +17293,7 @@ return ret;
 
 static void REGAL_CALL error_glCurrentPaletteMatrixARB(GLint index)
 {
-  ITrace("error_glCurrentPaletteMatrixARB");
+  Internal("error_glCurrentPaletteMatrixARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17314,7 +17314,7 @@ static void REGAL_CALL error_glCurrentPaletteMatrixARB(GLint index)
 
 static void REGAL_CALL error_glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
 {
-  ITrace("error_glMatrixIndexPointerARB");
+  Internal("error_glMatrixIndexPointerARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17335,7 +17335,7 @@ static void REGAL_CALL error_glMatrixIndexPointerARB(GLint size, GLenum type, GL
 
 static void REGAL_CALL error_glMatrixIndexubvARB(GLint size, GLubyte *indices)
 {
-  ITrace("error_glMatrixIndexubvARB");
+  Internal("error_glMatrixIndexubvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17356,7 +17356,7 @@ static void REGAL_CALL error_glMatrixIndexubvARB(GLint size, GLubyte *indices)
 
 static void REGAL_CALL error_glMatrixIndexuivARB(GLint size, GLuint *indices)
 {
-  ITrace("error_glMatrixIndexuivARB");
+  Internal("error_glMatrixIndexuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17377,7 +17377,7 @@ static void REGAL_CALL error_glMatrixIndexuivARB(GLint size, GLuint *indices)
 
 static void REGAL_CALL error_glMatrixIndexusvARB(GLint size, GLushort *indices)
 {
-  ITrace("error_glMatrixIndexusvARB");
+  Internal("error_glMatrixIndexusvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17400,7 +17400,7 @@ static void REGAL_CALL error_glMatrixIndexusvARB(GLint size, GLushort *indices)
 
 static void REGAL_CALL error_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  ITrace("error_glMultiDrawArraysIndirect");
+  Internal("error_glMultiDrawArraysIndirect","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17421,7 +17421,7 @@ static void REGAL_CALL error_glMultiDrawArraysIndirect(GLenum mode, const GLvoid
 
 static void REGAL_CALL error_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  ITrace("error_glMultiDrawElementsIndirect");
+  Internal("error_glMultiDrawElementsIndirect","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17444,7 +17444,7 @@ static void REGAL_CALL error_glMultiDrawElementsIndirect(GLenum mode, GLenum typ
 
 static void REGAL_CALL error_glSampleCoverageARB(GLclampf value, GLboolean invert)
 {
-  ITrace("error_glSampleCoverageARB");
+  Internal("error_glSampleCoverageARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17467,7 +17467,7 @@ static void REGAL_CALL error_glSampleCoverageARB(GLclampf value, GLboolean inver
 
 static void REGAL_CALL error_glActiveTextureARB(GLenum texture)
 {
-  ITrace("error_glActiveTextureARB");
+  Internal("error_glActiveTextureARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17488,7 +17488,7 @@ static void REGAL_CALL error_glActiveTextureARB(GLenum texture)
 
 static void REGAL_CALL error_glClientActiveTextureARB(GLenum texture)
 {
-  ITrace("error_glClientActiveTextureARB");
+  Internal("error_glClientActiveTextureARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17509,7 +17509,7 @@ static void REGAL_CALL error_glClientActiveTextureARB(GLenum texture)
 
 static void REGAL_CALL error_glMultiTexCoord1dARB(GLenum target, GLdouble s)
 {
-  ITrace("error_glMultiTexCoord1dARB");
+  Internal("error_glMultiTexCoord1dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17530,7 +17530,7 @@ static void REGAL_CALL error_glMultiTexCoord1dARB(GLenum target, GLdouble s)
 
 static void REGAL_CALL error_glMultiTexCoord1dvARB(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord1dvARB");
+  Internal("error_glMultiTexCoord1dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17551,7 +17551,7 @@ static void REGAL_CALL error_glMultiTexCoord1dvARB(GLenum target, const GLdouble
 
 static void REGAL_CALL error_glMultiTexCoord1fARB(GLenum target, GLfloat s)
 {
-  ITrace("error_glMultiTexCoord1fARB");
+  Internal("error_glMultiTexCoord1fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17572,7 +17572,7 @@ static void REGAL_CALL error_glMultiTexCoord1fARB(GLenum target, GLfloat s)
 
 static void REGAL_CALL error_glMultiTexCoord1fvARB(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord1fvARB");
+  Internal("error_glMultiTexCoord1fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17593,7 +17593,7 @@ static void REGAL_CALL error_glMultiTexCoord1fvARB(GLenum target, const GLfloat 
 
 static void REGAL_CALL error_glMultiTexCoord1iARB(GLenum target, GLint s)
 {
-  ITrace("error_glMultiTexCoord1iARB");
+  Internal("error_glMultiTexCoord1iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17614,7 +17614,7 @@ static void REGAL_CALL error_glMultiTexCoord1iARB(GLenum target, GLint s)
 
 static void REGAL_CALL error_glMultiTexCoord1ivARB(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord1ivARB");
+  Internal("error_glMultiTexCoord1ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17635,7 +17635,7 @@ static void REGAL_CALL error_glMultiTexCoord1ivARB(GLenum target, const GLint *v
 
 static void REGAL_CALL error_glMultiTexCoord1sARB(GLenum target, GLshort s)
 {
-  ITrace("error_glMultiTexCoord1sARB");
+  Internal("error_glMultiTexCoord1sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17656,7 +17656,7 @@ static void REGAL_CALL error_glMultiTexCoord1sARB(GLenum target, GLshort s)
 
 static void REGAL_CALL error_glMultiTexCoord1svARB(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord1svARB");
+  Internal("error_glMultiTexCoord1svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17677,7 +17677,7 @@ static void REGAL_CALL error_glMultiTexCoord1svARB(GLenum target, const GLshort 
 
 static void REGAL_CALL error_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t)
 {
-  ITrace("error_glMultiTexCoord2dARB");
+  Internal("error_glMultiTexCoord2dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17698,7 +17698,7 @@ static void REGAL_CALL error_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLd
 
 static void REGAL_CALL error_glMultiTexCoord2dvARB(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord2dvARB");
+  Internal("error_glMultiTexCoord2dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17719,7 +17719,7 @@ static void REGAL_CALL error_glMultiTexCoord2dvARB(GLenum target, const GLdouble
 
 static void REGAL_CALL error_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t)
 {
-  ITrace("error_glMultiTexCoord2fARB");
+  Internal("error_glMultiTexCoord2fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17740,7 +17740,7 @@ static void REGAL_CALL error_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfl
 
 static void REGAL_CALL error_glMultiTexCoord2fvARB(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord2fvARB");
+  Internal("error_glMultiTexCoord2fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17761,7 +17761,7 @@ static void REGAL_CALL error_glMultiTexCoord2fvARB(GLenum target, const GLfloat 
 
 static void REGAL_CALL error_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t)
 {
-  ITrace("error_glMultiTexCoord2iARB");
+  Internal("error_glMultiTexCoord2iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17782,7 +17782,7 @@ static void REGAL_CALL error_glMultiTexCoord2iARB(GLenum target, GLint s, GLint 
 
 static void REGAL_CALL error_glMultiTexCoord2ivARB(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord2ivARB");
+  Internal("error_glMultiTexCoord2ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17803,7 +17803,7 @@ static void REGAL_CALL error_glMultiTexCoord2ivARB(GLenum target, const GLint *v
 
 static void REGAL_CALL error_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t)
 {
-  ITrace("error_glMultiTexCoord2sARB");
+  Internal("error_glMultiTexCoord2sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17824,7 +17824,7 @@ static void REGAL_CALL error_glMultiTexCoord2sARB(GLenum target, GLshort s, GLsh
 
 static void REGAL_CALL error_glMultiTexCoord2svARB(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord2svARB");
+  Internal("error_glMultiTexCoord2svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17845,7 +17845,7 @@ static void REGAL_CALL error_glMultiTexCoord2svARB(GLenum target, const GLshort 
 
 static void REGAL_CALL error_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r)
 {
-  ITrace("error_glMultiTexCoord3dARB");
+  Internal("error_glMultiTexCoord3dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17866,7 +17866,7 @@ static void REGAL_CALL error_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLd
 
 static void REGAL_CALL error_glMultiTexCoord3dvARB(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord3dvARB");
+  Internal("error_glMultiTexCoord3dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17887,7 +17887,7 @@ static void REGAL_CALL error_glMultiTexCoord3dvARB(GLenum target, const GLdouble
 
 static void REGAL_CALL error_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r)
 {
-  ITrace("error_glMultiTexCoord3fARB");
+  Internal("error_glMultiTexCoord3fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17908,7 +17908,7 @@ static void REGAL_CALL error_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfl
 
 static void REGAL_CALL error_glMultiTexCoord3fvARB(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord3fvARB");
+  Internal("error_glMultiTexCoord3fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17929,7 +17929,7 @@ static void REGAL_CALL error_glMultiTexCoord3fvARB(GLenum target, const GLfloat 
 
 static void REGAL_CALL error_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r)
 {
-  ITrace("error_glMultiTexCoord3iARB");
+  Internal("error_glMultiTexCoord3iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17950,7 +17950,7 @@ static void REGAL_CALL error_glMultiTexCoord3iARB(GLenum target, GLint s, GLint 
 
 static void REGAL_CALL error_glMultiTexCoord3ivARB(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord3ivARB");
+  Internal("error_glMultiTexCoord3ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17971,7 +17971,7 @@ static void REGAL_CALL error_glMultiTexCoord3ivARB(GLenum target, const GLint *v
 
 static void REGAL_CALL error_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r)
 {
-  ITrace("error_glMultiTexCoord3sARB");
+  Internal("error_glMultiTexCoord3sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -17992,7 +17992,7 @@ static void REGAL_CALL error_glMultiTexCoord3sARB(GLenum target, GLshort s, GLsh
 
 static void REGAL_CALL error_glMultiTexCoord3svARB(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord3svARB");
+  Internal("error_glMultiTexCoord3svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18013,7 +18013,7 @@ static void REGAL_CALL error_glMultiTexCoord3svARB(GLenum target, const GLshort 
 
 static void REGAL_CALL error_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-  ITrace("error_glMultiTexCoord4dARB");
+  Internal("error_glMultiTexCoord4dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18034,7 +18034,7 @@ static void REGAL_CALL error_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLd
 
 static void REGAL_CALL error_glMultiTexCoord4dvARB(GLenum target, const GLdouble *v)
 {
-  ITrace("error_glMultiTexCoord4dvARB");
+  Internal("error_glMultiTexCoord4dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18055,7 +18055,7 @@ static void REGAL_CALL error_glMultiTexCoord4dvARB(GLenum target, const GLdouble
 
 static void REGAL_CALL error_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-  ITrace("error_glMultiTexCoord4fARB");
+  Internal("error_glMultiTexCoord4fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18076,7 +18076,7 @@ static void REGAL_CALL error_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfl
 
 static void REGAL_CALL error_glMultiTexCoord4fvARB(GLenum target, const GLfloat *v)
 {
-  ITrace("error_glMultiTexCoord4fvARB");
+  Internal("error_glMultiTexCoord4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18097,7 +18097,7 @@ static void REGAL_CALL error_glMultiTexCoord4fvARB(GLenum target, const GLfloat 
 
 static void REGAL_CALL error_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q)
 {
-  ITrace("error_glMultiTexCoord4iARB");
+  Internal("error_glMultiTexCoord4iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18118,7 +18118,7 @@ static void REGAL_CALL error_glMultiTexCoord4iARB(GLenum target, GLint s, GLint 
 
 static void REGAL_CALL error_glMultiTexCoord4ivARB(GLenum target, const GLint *v)
 {
-  ITrace("error_glMultiTexCoord4ivARB");
+  Internal("error_glMultiTexCoord4ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18139,7 +18139,7 @@ static void REGAL_CALL error_glMultiTexCoord4ivARB(GLenum target, const GLint *v
 
 static void REGAL_CALL error_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 {
-  ITrace("error_glMultiTexCoord4sARB");
+  Internal("error_glMultiTexCoord4sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18160,7 +18160,7 @@ static void REGAL_CALL error_glMultiTexCoord4sARB(GLenum target, GLshort s, GLsh
 
 static void REGAL_CALL error_glMultiTexCoord4svARB(GLenum target, const GLshort *v)
 {
-  ITrace("error_glMultiTexCoord4svARB");
+  Internal("error_glMultiTexCoord4svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18183,7 +18183,7 @@ static void REGAL_CALL error_glMultiTexCoord4svARB(GLenum target, const GLshort 
 
 static void REGAL_CALL error_glBeginQueryARB(GLenum target, GLuint id)
 {
-  ITrace("error_glBeginQueryARB");
+  Internal("error_glBeginQueryARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18204,7 +18204,7 @@ static void REGAL_CALL error_glBeginQueryARB(GLenum target, GLuint id)
 
 static void REGAL_CALL error_glDeleteQueriesARB(GLsizei n, const GLuint *ids)
 {
-  ITrace("error_glDeleteQueriesARB");
+  Internal("error_glDeleteQueriesARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18225,7 +18225,7 @@ static void REGAL_CALL error_glDeleteQueriesARB(GLsizei n, const GLuint *ids)
 
 static void REGAL_CALL error_glEndQueryARB(GLenum target)
 {
-  ITrace("error_glEndQueryARB");
+  Internal("error_glEndQueryARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18246,7 +18246,7 @@ static void REGAL_CALL error_glEndQueryARB(GLenum target)
 
 static void REGAL_CALL error_glGenQueriesARB(GLsizei n, GLuint *ids)
 {
-  ITrace("error_glGenQueriesARB");
+  Internal("error_glGenQueriesARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18267,7 +18267,7 @@ static void REGAL_CALL error_glGenQueriesARB(GLsizei n, GLuint *ids)
 
 static void REGAL_CALL error_glGetQueryObjectivARB(GLuint id, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetQueryObjectivARB");
+  Internal("error_glGetQueryObjectivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18288,7 +18288,7 @@ static void REGAL_CALL error_glGetQueryObjectivARB(GLuint id, GLenum pname, GLin
 
 static void REGAL_CALL error_glGetQueryObjectuivARB(GLuint id, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetQueryObjectuivARB");
+  Internal("error_glGetQueryObjectuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18309,7 +18309,7 @@ static void REGAL_CALL error_glGetQueryObjectuivARB(GLuint id, GLenum pname, GLu
 
 static void REGAL_CALL error_glGetQueryivARB(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetQueryivARB");
+  Internal("error_glGetQueryivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18330,7 +18330,7 @@ static void REGAL_CALL error_glGetQueryivARB(GLenum target, GLenum pname, GLint 
 
 static GLboolean REGAL_CALL error_glIsQueryARB(GLuint id)
 {
-  ITrace("error_glIsQueryARB");
+  Internal("error_glIsQueryARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18354,7 +18354,7 @@ return ret;
 
 static void REGAL_CALL error_glPointParameterfARB(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPointParameterfARB");
+  Internal("error_glPointParameterfARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18375,7 +18375,7 @@ static void REGAL_CALL error_glPointParameterfARB(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPointParameterfvARB(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glPointParameterfvARB");
+  Internal("error_glPointParameterfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18398,7 +18398,7 @@ static void REGAL_CALL error_glPointParameterfvARB(GLenum pname, const GLfloat *
 
 static void REGAL_CALL error_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetProgramInterfaceiv");
+  Internal("error_glGetProgramInterfaceiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18419,7 +18419,7 @@ static void REGAL_CALL error_glGetProgramInterfaceiv(GLuint program, GLenum prog
 
 static GLuint REGAL_CALL error_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name)
 {
-  ITrace("error_glGetProgramResourceIndex");
+  Internal("error_glGetProgramResourceIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18441,7 +18441,7 @@ return ret;
 
 static GLint REGAL_CALL error_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name)
 {
-  ITrace("error_glGetProgramResourceLocation");
+  Internal("error_glGetProgramResourceLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18463,7 +18463,7 @@ return ret;
 
 static GLint REGAL_CALL error_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name)
 {
-  ITrace("error_glGetProgramResourceLocationIndex");
+  Internal("error_glGetProgramResourceLocationIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18485,7 +18485,7 @@ return ret;
 
 static void REGAL_CALL error_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
 {
-  ITrace("error_glGetProgramResourceName");
+  Internal("error_glGetProgramResourceName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18506,7 +18506,7 @@ static void REGAL_CALL error_glGetProgramResourceName(GLuint program, GLenum pro
 
 static void REGAL_CALL error_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params)
 {
-  ITrace("error_glGetProgramResourceiv");
+  Internal("error_glGetProgramResourceiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18529,7 +18529,7 @@ static void REGAL_CALL error_glGetProgramResourceiv(GLuint program, GLenum progr
 
 static void REGAL_CALL error_glProvokingVertex(GLenum mode)
 {
-  ITrace("error_glProvokingVertex");
+  Internal("error_glProvokingVertex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18552,7 +18552,7 @@ static void REGAL_CALL error_glProvokingVertex(GLenum mode)
 
 static GLenum REGAL_CALL error_glGetGraphicsResetStatusARB(void)
 {
-  ITrace("error_glGetGraphicsResetStatusARB");
+  Internal("error_glGetGraphicsResetStatusARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18574,7 +18574,7 @@ return ret;
 
 static void REGAL_CALL error_glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *table)
 {
-  ITrace("error_glGetnColorTableARB");
+  Internal("error_glGetnColorTableARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18595,7 +18595,7 @@ static void REGAL_CALL error_glGetnColorTableARB(GLenum target, GLenum format, G
 
 static void REGAL_CALL error_glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, GLvoid *img)
 {
-  ITrace("error_glGetnCompressedTexImageARB");
+  Internal("error_glGetnCompressedTexImageARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18616,7 +18616,7 @@ static void REGAL_CALL error_glGetnCompressedTexImageARB(GLenum target, GLint lo
 
 static void REGAL_CALL error_glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *image)
 {
-  ITrace("error_glGetnConvolutionFilterARB");
+  Internal("error_glGetnConvolutionFilterARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18637,7 +18637,7 @@ static void REGAL_CALL error_glGetnConvolutionFilterARB(GLenum target, GLenum fo
 
 static void REGAL_CALL error_glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values)
 {
-  ITrace("error_glGetnHistogramARB");
+  Internal("error_glGetnHistogramARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18658,7 +18658,7 @@ static void REGAL_CALL error_glGetnHistogramARB(GLenum target, GLboolean reset, 
 
 static void REGAL_CALL error_glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble *v)
 {
-  ITrace("error_glGetnMapdvARB");
+  Internal("error_glGetnMapdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18679,7 +18679,7 @@ static void REGAL_CALL error_glGetnMapdvARB(GLenum target, GLenum query, GLsizei
 
 static void REGAL_CALL error_glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat *v)
 {
-  ITrace("error_glGetnMapfvARB");
+  Internal("error_glGetnMapfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18700,7 +18700,7 @@ static void REGAL_CALL error_glGetnMapfvARB(GLenum target, GLenum query, GLsizei
 
 static void REGAL_CALL error_glGetnMapivARB(GLenum target, GLenum query, GLsizei bufSize, GLint *v)
 {
-  ITrace("error_glGetnMapivARB");
+  Internal("error_glGetnMapivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18721,7 +18721,7 @@ static void REGAL_CALL error_glGetnMapivARB(GLenum target, GLenum query, GLsizei
 
 static void REGAL_CALL error_glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values)
 {
-  ITrace("error_glGetnMinmaxARB");
+  Internal("error_glGetnMinmaxARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18742,7 +18742,7 @@ static void REGAL_CALL error_glGetnMinmaxARB(GLenum target, GLboolean reset, GLe
 
 static void REGAL_CALL error_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat *values)
 {
-  ITrace("error_glGetnPixelMapfvARB");
+  Internal("error_glGetnPixelMapfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18763,7 +18763,7 @@ static void REGAL_CALL error_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GL
 
 static void REGAL_CALL error_glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint *values)
 {
-  ITrace("error_glGetnPixelMapuivARB");
+  Internal("error_glGetnPixelMapuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18784,7 +18784,7 @@ static void REGAL_CALL error_glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, G
 
 static void REGAL_CALL error_glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, GLushort *values)
 {
-  ITrace("error_glGetnPixelMapusvARB");
+  Internal("error_glGetnPixelMapusvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18805,7 +18805,7 @@ static void REGAL_CALL error_glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, G
 
 static void REGAL_CALL error_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte *pattern)
 {
-  ITrace("error_glGetnPolygonStippleARB");
+  Internal("error_glGetnPolygonStippleARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18826,7 +18826,7 @@ static void REGAL_CALL error_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte *p
 
 static void REGAL_CALL error_glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span)
 {
-  ITrace("error_glGetnSeparableFilterARB");
+  Internal("error_glGetnSeparableFilterARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18847,7 +18847,7 @@ static void REGAL_CALL error_glGetnSeparableFilterARB(GLenum target, GLenum form
 
 static void REGAL_CALL error_glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, GLvoid *img)
 {
-  ITrace("error_glGetnTexImageARB");
+  Internal("error_glGetnTexImageARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18868,7 +18868,7 @@ static void REGAL_CALL error_glGetnTexImageARB(GLenum target, GLint level, GLenu
 
 static void REGAL_CALL error_glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble *params)
 {
-  ITrace("error_glGetnUniformdvARB");
+  Internal("error_glGetnUniformdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18889,7 +18889,7 @@ static void REGAL_CALL error_glGetnUniformdvARB(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat *params)
 {
-  ITrace("error_glGetnUniformfvARB");
+  Internal("error_glGetnUniformfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18910,7 +18910,7 @@ static void REGAL_CALL error_glGetnUniformfvARB(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint *params)
 {
-  ITrace("error_glGetnUniformivARB");
+  Internal("error_glGetnUniformivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18931,7 +18931,7 @@ static void REGAL_CALL error_glGetnUniformivARB(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint *params)
 {
-  ITrace("error_glGetnUniformuivARB");
+  Internal("error_glGetnUniformuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18952,7 +18952,7 @@ static void REGAL_CALL error_glGetnUniformuivARB(GLuint program, GLint location,
 
 static void REGAL_CALL error_glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data)
 {
-  ITrace("error_glReadnPixelsARB");
+  Internal("error_glReadnPixelsARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18975,7 +18975,7 @@ static void REGAL_CALL error_glReadnPixelsARB(GLint x, GLint y, GLsizei width, G
 
 static void REGAL_CALL error_glMinSampleShading(GLclampf value)
 {
-  ITrace("error_glMinSampleShading");
+  Internal("error_glMinSampleShading","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -18996,7 +18996,7 @@ static void REGAL_CALL error_glMinSampleShading(GLclampf value)
 
 static void REGAL_CALL error_glMinSampleShadingARB(GLclampf value)
 {
-  ITrace("error_glMinSampleShadingARB");
+  Internal("error_glMinSampleShadingARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19019,7 +19019,7 @@ static void REGAL_CALL error_glMinSampleShadingARB(GLclampf value)
 
 static void REGAL_CALL error_glBindSampler(GLuint unit, GLuint sampler)
 {
-  ITrace("error_glBindSampler");
+  Internal("error_glBindSampler","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19040,7 +19040,7 @@ static void REGAL_CALL error_glBindSampler(GLuint unit, GLuint sampler)
 
 static void REGAL_CALL error_glDeleteSamplers(GLsizei count, const GLuint *samplers)
 {
-  ITrace("error_glDeleteSamplers");
+  Internal("error_glDeleteSamplers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19061,7 +19061,7 @@ static void REGAL_CALL error_glDeleteSamplers(GLsizei count, const GLuint *sampl
 
 static void REGAL_CALL error_glGenSamplers(GLsizei count, GLuint *samplers)
 {
-  ITrace("error_glGenSamplers");
+  Internal("error_glGenSamplers","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19082,7 +19082,7 @@ static void REGAL_CALL error_glGenSamplers(GLsizei count, GLuint *samplers)
 
 static void REGAL_CALL error_glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetSamplerParameterIiv");
+  Internal("error_glGetSamplerParameterIiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19103,7 +19103,7 @@ static void REGAL_CALL error_glGetSamplerParameterIiv(GLuint sampler, GLenum pna
 
 static void REGAL_CALL error_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetSamplerParameterIuiv");
+  Internal("error_glGetSamplerParameterIuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19124,7 +19124,7 @@ static void REGAL_CALL error_glGetSamplerParameterIuiv(GLuint sampler, GLenum pn
 
 static void REGAL_CALL error_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetSamplerParameterfv");
+  Internal("error_glGetSamplerParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19145,7 +19145,7 @@ static void REGAL_CALL error_glGetSamplerParameterfv(GLuint sampler, GLenum pnam
 
 static void REGAL_CALL error_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetSamplerParameteriv");
+  Internal("error_glGetSamplerParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19166,7 +19166,7 @@ static void REGAL_CALL error_glGetSamplerParameteriv(GLuint sampler, GLenum pnam
 
 static GLboolean REGAL_CALL error_glIsSampler(GLuint sampler)
 {
-  ITrace("error_glIsSampler");
+  Internal("error_glIsSampler","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19188,7 +19188,7 @@ return ret;
 
 static void REGAL_CALL error_glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint *params)
 {
-  ITrace("error_glSamplerParameterIiv");
+  Internal("error_glSamplerParameterIiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19209,7 +19209,7 @@ static void REGAL_CALL error_glSamplerParameterIiv(GLuint sampler, GLenum pname,
 
 static void REGAL_CALL error_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint *params)
 {
-  ITrace("error_glSamplerParameterIuiv");
+  Internal("error_glSamplerParameterIuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19230,7 +19230,7 @@ static void REGAL_CALL error_glSamplerParameterIuiv(GLuint sampler, GLenum pname
 
 static void REGAL_CALL error_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
 {
-  ITrace("error_glSamplerParameterf");
+  Internal("error_glSamplerParameterf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19251,7 +19251,7 @@ static void REGAL_CALL error_glSamplerParameterf(GLuint sampler, GLenum pname, G
 
 static void REGAL_CALL error_glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glSamplerParameterfv");
+  Internal("error_glSamplerParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19272,7 +19272,7 @@ static void REGAL_CALL error_glSamplerParameterfv(GLuint sampler, GLenum pname, 
 
 static void REGAL_CALL error_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param)
 {
-  ITrace("error_glSamplerParameteri");
+  Internal("error_glSamplerParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19293,7 +19293,7 @@ static void REGAL_CALL error_glSamplerParameteri(GLuint sampler, GLenum pname, G
 
 static void REGAL_CALL error_glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint *params)
 {
-  ITrace("error_glSamplerParameteriv");
+  Internal("error_glSamplerParameteriv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19316,7 +19316,7 @@ static void REGAL_CALL error_glSamplerParameteriv(GLuint sampler, GLenum pname, 
 
 static void REGAL_CALL error_glActiveShaderProgram(GLuint pipeline, GLuint program)
 {
-  ITrace("error_glActiveShaderProgram");
+  Internal("error_glActiveShaderProgram","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19337,7 +19337,7 @@ static void REGAL_CALL error_glActiveShaderProgram(GLuint pipeline, GLuint progr
 
 static void REGAL_CALL error_glBindProgramPipeline(GLuint pipeline)
 {
-  ITrace("error_glBindProgramPipeline");
+  Internal("error_glBindProgramPipeline","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19358,7 +19358,7 @@ static void REGAL_CALL error_glBindProgramPipeline(GLuint pipeline)
 
 static GLuint REGAL_CALL error_glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar **strings)
 {
-  ITrace("error_glCreateShaderProgramv");
+  Internal("error_glCreateShaderProgramv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19380,7 +19380,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteProgramPipelines(GLsizei n, const GLuint *pipelines)
 {
-  ITrace("error_glDeleteProgramPipelines");
+  Internal("error_glDeleteProgramPipelines","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19401,7 +19401,7 @@ static void REGAL_CALL error_glDeleteProgramPipelines(GLsizei n, const GLuint *p
 
 static void REGAL_CALL error_glGenProgramPipelines(GLsizei n, GLuint *pipelines)
 {
-  ITrace("error_glGenProgramPipelines");
+  Internal("error_glGenProgramPipelines","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19422,7 +19422,7 @@ static void REGAL_CALL error_glGenProgramPipelines(GLsizei n, GLuint *pipelines)
 
 static void REGAL_CALL error_glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 {
-  ITrace("error_glGetProgramPipelineInfoLog");
+  Internal("error_glGetProgramPipelineInfoLog","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19443,7 +19443,7 @@ static void REGAL_CALL error_glGetProgramPipelineInfoLog(GLuint pipeline, GLsize
 
 static void REGAL_CALL error_glGetProgramPipelineiv(GLuint pipeline, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetProgramPipelineiv");
+  Internal("error_glGetProgramPipelineiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19464,7 +19464,7 @@ static void REGAL_CALL error_glGetProgramPipelineiv(GLuint pipeline, GLenum pnam
 
 static GLboolean REGAL_CALL error_glIsProgramPipeline(GLuint pipeline)
 {
-  ITrace("error_glIsProgramPipeline");
+  Internal("error_glIsProgramPipeline","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19486,7 +19486,7 @@ return ret;
 
 static void REGAL_CALL error_glProgramUniform1d(GLuint program, GLint location, GLdouble x)
 {
-  ITrace("error_glProgramUniform1d");
+  Internal("error_glProgramUniform1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19507,7 +19507,7 @@ static void REGAL_CALL error_glProgramUniform1d(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform1dv(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform1dv");
+  Internal("error_glProgramUniform1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19528,7 +19528,7 @@ static void REGAL_CALL error_glProgramUniform1dv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform1f(GLuint program, GLint location, GLfloat x)
 {
-  ITrace("error_glProgramUniform1f");
+  Internal("error_glProgramUniform1f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19549,7 +19549,7 @@ static void REGAL_CALL error_glProgramUniform1f(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform1fv");
+  Internal("error_glProgramUniform1fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19570,7 +19570,7 @@ static void REGAL_CALL error_glProgramUniform1fv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform1i(GLuint program, GLint location, GLint x)
 {
-  ITrace("error_glProgramUniform1i");
+  Internal("error_glProgramUniform1i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19591,7 +19591,7 @@ static void REGAL_CALL error_glProgramUniform1i(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform1iv");
+  Internal("error_glProgramUniform1iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19612,7 +19612,7 @@ static void REGAL_CALL error_glProgramUniform1iv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform1ui(GLuint program, GLint location, GLuint v0)
 {
-  ITrace("error_glProgramUniform1ui");
+  Internal("error_glProgramUniform1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19633,7 +19633,7 @@ static void REGAL_CALL error_glProgramUniform1ui(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform1uiv(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform1uiv");
+  Internal("error_glProgramUniform1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19654,7 +19654,7 @@ static void REGAL_CALL error_glProgramUniform1uiv(GLuint program, GLint location
 
 static void REGAL_CALL error_glProgramUniform2d(GLuint program, GLint location, GLdouble x, GLdouble y)
 {
-  ITrace("error_glProgramUniform2d");
+  Internal("error_glProgramUniform2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19675,7 +19675,7 @@ static void REGAL_CALL error_glProgramUniform2d(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform2dv(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform2dv");
+  Internal("error_glProgramUniform2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19696,7 +19696,7 @@ static void REGAL_CALL error_glProgramUniform2dv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform2f(GLuint program, GLint location, GLfloat x, GLfloat y)
 {
-  ITrace("error_glProgramUniform2f");
+  Internal("error_glProgramUniform2f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19717,7 +19717,7 @@ static void REGAL_CALL error_glProgramUniform2f(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform2fv");
+  Internal("error_glProgramUniform2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19738,7 +19738,7 @@ static void REGAL_CALL error_glProgramUniform2fv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform2i(GLuint program, GLint location, GLint x, GLint y)
 {
-  ITrace("error_glProgramUniform2i");
+  Internal("error_glProgramUniform2i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19759,7 +19759,7 @@ static void REGAL_CALL error_glProgramUniform2i(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform2iv");
+  Internal("error_glProgramUniform2iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19780,7 +19780,7 @@ static void REGAL_CALL error_glProgramUniform2iv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform2ui(GLuint program, GLint location, GLuint x, GLuint y)
 {
-  ITrace("error_glProgramUniform2ui");
+  Internal("error_glProgramUniform2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19801,7 +19801,7 @@ static void REGAL_CALL error_glProgramUniform2ui(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform2uiv(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform2uiv");
+  Internal("error_glProgramUniform2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19822,7 +19822,7 @@ static void REGAL_CALL error_glProgramUniform2uiv(GLuint program, GLint location
 
 static void REGAL_CALL error_glProgramUniform3d(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glProgramUniform3d");
+  Internal("error_glProgramUniform3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19843,7 +19843,7 @@ static void REGAL_CALL error_glProgramUniform3d(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform3dv(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform3dv");
+  Internal("error_glProgramUniform3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19864,7 +19864,7 @@ static void REGAL_CALL error_glProgramUniform3dv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform3f(GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glProgramUniform3f");
+  Internal("error_glProgramUniform3f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19885,7 +19885,7 @@ static void REGAL_CALL error_glProgramUniform3f(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform3fv");
+  Internal("error_glProgramUniform3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19906,7 +19906,7 @@ static void REGAL_CALL error_glProgramUniform3fv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform3i(GLuint program, GLint location, GLint x, GLint y, GLint z)
 {
-  ITrace("error_glProgramUniform3i");
+  Internal("error_glProgramUniform3i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19927,7 +19927,7 @@ static void REGAL_CALL error_glProgramUniform3i(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform3iv");
+  Internal("error_glProgramUniform3iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19948,7 +19948,7 @@ static void REGAL_CALL error_glProgramUniform3iv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform3ui(GLuint program, GLint location, GLuint x, GLuint y, GLuint z)
 {
-  ITrace("error_glProgramUniform3ui");
+  Internal("error_glProgramUniform3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19969,7 +19969,7 @@ static void REGAL_CALL error_glProgramUniform3ui(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform3uiv(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform3uiv");
+  Internal("error_glProgramUniform3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -19990,7 +19990,7 @@ static void REGAL_CALL error_glProgramUniform3uiv(GLuint program, GLint location
 
 static void REGAL_CALL error_glProgramUniform4d(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramUniform4d");
+  Internal("error_glProgramUniform4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20011,7 +20011,7 @@ static void REGAL_CALL error_glProgramUniform4d(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform4dv(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform4dv");
+  Internal("error_glProgramUniform4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20032,7 +20032,7 @@ static void REGAL_CALL error_glProgramUniform4dv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform4f(GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glProgramUniform4f");
+  Internal("error_glProgramUniform4f","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20053,7 +20053,7 @@ static void REGAL_CALL error_glProgramUniform4f(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform4fv");
+  Internal("error_glProgramUniform4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20074,7 +20074,7 @@ static void REGAL_CALL error_glProgramUniform4fv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform4i(GLuint program, GLint location, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glProgramUniform4i");
+  Internal("error_glProgramUniform4i","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20095,7 +20095,7 @@ static void REGAL_CALL error_glProgramUniform4i(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform4iv");
+  Internal("error_glProgramUniform4iv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20116,7 +20116,7 @@ static void REGAL_CALL error_glProgramUniform4iv(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform4ui(GLuint program, GLint location, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glProgramUniform4ui");
+  Internal("error_glProgramUniform4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20137,7 +20137,7 @@ static void REGAL_CALL error_glProgramUniform4ui(GLuint program, GLint location,
 
 static void REGAL_CALL error_glProgramUniform4uiv(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform4uiv");
+  Internal("error_glProgramUniform4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20158,7 +20158,7 @@ static void REGAL_CALL error_glProgramUniform4uiv(GLuint program, GLint location
 
 static void REGAL_CALL error_glProgramUniformMatrix2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2dv");
+  Internal("error_glProgramUniformMatrix2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20179,7 +20179,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2dv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2fv");
+  Internal("error_glProgramUniformMatrix2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20200,7 +20200,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2fv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix2x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2x3dv");
+  Internal("error_glProgramUniformMatrix2x3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20221,7 +20221,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x3dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix2x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2x3fv");
+  Internal("error_glProgramUniformMatrix2x3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20242,7 +20242,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x3fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix2x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2x4dv");
+  Internal("error_glProgramUniformMatrix2x4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20263,7 +20263,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x4dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix2x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2x4fv");
+  Internal("error_glProgramUniformMatrix2x4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20284,7 +20284,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x4fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3dv");
+  Internal("error_glProgramUniformMatrix3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20305,7 +20305,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3dv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3fv");
+  Internal("error_glProgramUniformMatrix3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20326,7 +20326,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3fv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix3x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3x2dv");
+  Internal("error_glProgramUniformMatrix3x2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20347,7 +20347,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x2dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix3x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3x2fv");
+  Internal("error_glProgramUniformMatrix3x2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20368,7 +20368,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x2fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix3x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3x4dv");
+  Internal("error_glProgramUniformMatrix3x4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20389,7 +20389,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x4dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix3x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3x4fv");
+  Internal("error_glProgramUniformMatrix3x4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20410,7 +20410,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x4fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4dv");
+  Internal("error_glProgramUniformMatrix4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20431,7 +20431,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4dv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4fv");
+  Internal("error_glProgramUniformMatrix4fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20452,7 +20452,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4fv(GLuint program, GLint loc
 
 static void REGAL_CALL error_glProgramUniformMatrix4x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4x2dv");
+  Internal("error_glProgramUniformMatrix4x2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20473,7 +20473,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x2dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix4x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4x2fv");
+  Internal("error_glProgramUniformMatrix4x2fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20494,7 +20494,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x2fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix4x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4x3dv");
+  Internal("error_glProgramUniformMatrix4x3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20515,7 +20515,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x3dv(GLuint program, GLint l
 
 static void REGAL_CALL error_glProgramUniformMatrix4x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4x3fv");
+  Internal("error_glProgramUniformMatrix4x3fv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20536,7 +20536,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x3fv(GLuint program, GLint l
 
 static void REGAL_CALL error_glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program)
 {
-  ITrace("error_glUseProgramStages");
+  Internal("error_glUseProgramStages","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20557,7 +20557,7 @@ static void REGAL_CALL error_glUseProgramStages(GLuint pipeline, GLbitfield stag
 
 static void REGAL_CALL error_glValidateProgramPipeline(GLuint pipeline)
 {
-  ITrace("error_glValidateProgramPipeline");
+  Internal("error_glValidateProgramPipeline","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20580,7 +20580,7 @@ static void REGAL_CALL error_glValidateProgramPipeline(GLuint pipeline)
 
 static void REGAL_CALL error_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetActiveAtomicCounterBufferiv");
+  Internal("error_glGetActiveAtomicCounterBufferiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20603,7 +20603,7 @@ static void REGAL_CALL error_glGetActiveAtomicCounterBufferiv(GLuint program, GL
 
 static void REGAL_CALL error_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
 {
-  ITrace("error_glBindImageTexture");
+  Internal("error_glBindImageTexture","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20624,7 +20624,7 @@ static void REGAL_CALL error_glBindImageTexture(GLuint unit, GLuint texture, GLi
 
 static void REGAL_CALL error_glMemoryBarrier(GLbitfield barriers)
 {
-  ITrace("error_glMemoryBarrier");
+  Internal("error_glMemoryBarrier","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20647,7 +20647,7 @@ static void REGAL_CALL error_glMemoryBarrier(GLbitfield barriers)
 
 static void REGAL_CALL error_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
 {
-  ITrace("error_glAttachObjectARB");
+  Internal("error_glAttachObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20668,7 +20668,7 @@ static void REGAL_CALL error_glAttachObjectARB(GLhandleARB containerObj, GLhandl
 
 static void REGAL_CALL error_glCompileShaderARB(GLhandleARB shaderObj)
 {
-  ITrace("error_glCompileShaderARB");
+  Internal("error_glCompileShaderARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20689,7 +20689,7 @@ static void REGAL_CALL error_glCompileShaderARB(GLhandleARB shaderObj)
 
 static GLhandleARB REGAL_CALL error_glCreateProgramObjectARB(void)
 {
-  ITrace("error_glCreateProgramObjectARB");
+  Internal("error_glCreateProgramObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20711,7 +20711,7 @@ return ret;
 
 static GLhandleARB REGAL_CALL error_glCreateShaderObjectARB(GLenum shaderType)
 {
-  ITrace("error_glCreateShaderObjectARB");
+  Internal("error_glCreateShaderObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20733,7 +20733,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteObjectARB(GLhandleARB obj)
 {
-  ITrace("error_glDeleteObjectARB");
+  Internal("error_glDeleteObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20754,7 +20754,7 @@ static void REGAL_CALL error_glDeleteObjectARB(GLhandleARB obj)
 
 static void REGAL_CALL error_glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj)
 {
-  ITrace("error_glDetachObjectARB");
+  Internal("error_glDetachObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20775,7 +20775,7 @@ static void REGAL_CALL error_glDetachObjectARB(GLhandleARB containerObj, GLhandl
 
 static void REGAL_CALL error_glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name)
 {
-  ITrace("error_glGetActiveUniformARB");
+  Internal("error_glGetActiveUniformARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20796,7 +20796,7 @@ static void REGAL_CALL error_glGetActiveUniformARB(GLhandleARB programObj, GLuin
 
 static void REGAL_CALL error_glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj)
 {
-  ITrace("error_glGetAttachedObjectsARB");
+  Internal("error_glGetAttachedObjectsARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20817,7 +20817,7 @@ static void REGAL_CALL error_glGetAttachedObjectsARB(GLhandleARB containerObj, G
 
 static GLhandleARB REGAL_CALL error_glGetHandleARB(GLenum pname)
 {
-  ITrace("error_glGetHandleARB");
+  Internal("error_glGetHandleARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20839,7 +20839,7 @@ return ret;
 
 static void REGAL_CALL error_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
 {
-  ITrace("error_glGetInfoLogARB");
+  Internal("error_glGetInfoLogARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20860,7 +20860,7 @@ static void REGAL_CALL error_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength,
 
 static void REGAL_CALL error_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetObjectParameterfvARB");
+  Internal("error_glGetObjectParameterfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20881,7 +20881,7 @@ static void REGAL_CALL error_glGetObjectParameterfvARB(GLhandleARB obj, GLenum p
 
 static void REGAL_CALL error_glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetObjectParameterivARB");
+  Internal("error_glGetObjectParameterivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20902,7 +20902,7 @@ static void REGAL_CALL error_glGetObjectParameterivARB(GLhandleARB obj, GLenum p
 
 static void REGAL_CALL error_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source)
 {
-  ITrace("error_glGetShaderSourceARB");
+  Internal("error_glGetShaderSourceARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20923,7 +20923,7 @@ static void REGAL_CALL error_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLe
 
 static GLint REGAL_CALL error_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name)
 {
-  ITrace("error_glGetUniformLocationARB");
+  Internal("error_glGetUniformLocationARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20945,7 +20945,7 @@ return ret;
 
 static void REGAL_CALL error_glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat *params)
 {
-  ITrace("error_glGetUniformfvARB");
+  Internal("error_glGetUniformfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20966,7 +20966,7 @@ static void REGAL_CALL error_glGetUniformfvARB(GLhandleARB programObj, GLint loc
 
 static void REGAL_CALL error_glGetUniformivARB(GLhandleARB programObj, GLint location, GLint *params)
 {
-  ITrace("error_glGetUniformivARB");
+  Internal("error_glGetUniformivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -20987,7 +20987,7 @@ static void REGAL_CALL error_glGetUniformivARB(GLhandleARB programObj, GLint loc
 
 static void REGAL_CALL error_glLinkProgramARB(GLhandleARB programObj)
 {
-  ITrace("error_glLinkProgramARB");
+  Internal("error_glLinkProgramARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21008,7 +21008,7 @@ static void REGAL_CALL error_glLinkProgramARB(GLhandleARB programObj)
 
 static void REGAL_CALL error_glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB **string, const GLint *length)
 {
-  ITrace("error_glShaderSourceARB");
+  Internal("error_glShaderSourceARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21029,7 +21029,7 @@ static void REGAL_CALL error_glShaderSourceARB(GLhandleARB shaderObj, GLsizei co
 
 static void REGAL_CALL error_glUniform1fARB(GLint location, GLfloat v0)
 {
-  ITrace("error_glUniform1fARB");
+  Internal("error_glUniform1fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21050,7 +21050,7 @@ static void REGAL_CALL error_glUniform1fARB(GLint location, GLfloat v0)
 
 static void REGAL_CALL error_glUniform1fvARB(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform1fvARB");
+  Internal("error_glUniform1fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21071,7 +21071,7 @@ static void REGAL_CALL error_glUniform1fvARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform1iARB(GLint location, GLint v0)
 {
-  ITrace("error_glUniform1iARB");
+  Internal("error_glUniform1iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21092,7 +21092,7 @@ static void REGAL_CALL error_glUniform1iARB(GLint location, GLint v0)
 
 static void REGAL_CALL error_glUniform1ivARB(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform1ivARB");
+  Internal("error_glUniform1ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21113,7 +21113,7 @@ static void REGAL_CALL error_glUniform1ivARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform2fARB(GLint location, GLfloat v0, GLfloat v1)
 {
-  ITrace("error_glUniform2fARB");
+  Internal("error_glUniform2fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21134,7 +21134,7 @@ static void REGAL_CALL error_glUniform2fARB(GLint location, GLfloat v0, GLfloat 
 
 static void REGAL_CALL error_glUniform2fvARB(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform2fvARB");
+  Internal("error_glUniform2fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21155,7 +21155,7 @@ static void REGAL_CALL error_glUniform2fvARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform2iARB(GLint location, GLint v0, GLint v1)
 {
-  ITrace("error_glUniform2iARB");
+  Internal("error_glUniform2iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21176,7 +21176,7 @@ static void REGAL_CALL error_glUniform2iARB(GLint location, GLint v0, GLint v1)
 
 static void REGAL_CALL error_glUniform2ivARB(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform2ivARB");
+  Internal("error_glUniform2ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21197,7 +21197,7 @@ static void REGAL_CALL error_glUniform2ivARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  ITrace("error_glUniform3fARB");
+  Internal("error_glUniform3fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21218,7 +21218,7 @@ static void REGAL_CALL error_glUniform3fARB(GLint location, GLfloat v0, GLfloat 
 
 static void REGAL_CALL error_glUniform3fvARB(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform3fvARB");
+  Internal("error_glUniform3fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21239,7 +21239,7 @@ static void REGAL_CALL error_glUniform3fvARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2)
 {
-  ITrace("error_glUniform3iARB");
+  Internal("error_glUniform3iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21260,7 +21260,7 @@ static void REGAL_CALL error_glUniform3iARB(GLint location, GLint v0, GLint v1, 
 
 static void REGAL_CALL error_glUniform3ivARB(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform3ivARB");
+  Internal("error_glUniform3ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21281,7 +21281,7 @@ static void REGAL_CALL error_glUniform3ivARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  ITrace("error_glUniform4fARB");
+  Internal("error_glUniform4fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21302,7 +21302,7 @@ static void REGAL_CALL error_glUniform4fARB(GLint location, GLfloat v0, GLfloat 
 
 static void REGAL_CALL error_glUniform4fvARB(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glUniform4fvARB");
+  Internal("error_glUniform4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21323,7 +21323,7 @@ static void REGAL_CALL error_glUniform4fvARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  ITrace("error_glUniform4iARB");
+  Internal("error_glUniform4iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21344,7 +21344,7 @@ static void REGAL_CALL error_glUniform4iARB(GLint location, GLint v0, GLint v1, 
 
 static void REGAL_CALL error_glUniform4ivARB(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glUniform4ivARB");
+  Internal("error_glUniform4ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21365,7 +21365,7 @@ static void REGAL_CALL error_glUniform4ivARB(GLint location, GLsizei count, cons
 
 static void REGAL_CALL error_glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix2fvARB");
+  Internal("error_glUniformMatrix2fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21386,7 +21386,7 @@ static void REGAL_CALL error_glUniformMatrix2fvARB(GLint location, GLsizei count
 
 static void REGAL_CALL error_glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix3fvARB");
+  Internal("error_glUniformMatrix3fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21407,7 +21407,7 @@ static void REGAL_CALL error_glUniformMatrix3fvARB(GLint location, GLsizei count
 
 static void REGAL_CALL error_glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glUniformMatrix4fvARB");
+  Internal("error_glUniformMatrix4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21428,7 +21428,7 @@ static void REGAL_CALL error_glUniformMatrix4fvARB(GLint location, GLsizei count
 
 static void REGAL_CALL error_glUseProgramObjectARB(GLhandleARB programObj)
 {
-  ITrace("error_glUseProgramObjectARB");
+  Internal("error_glUseProgramObjectARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21449,7 +21449,7 @@ static void REGAL_CALL error_glUseProgramObjectARB(GLhandleARB programObj)
 
 static void REGAL_CALL error_glValidateProgramARB(GLhandleARB programObj)
 {
-  ITrace("error_glValidateProgramARB");
+  Internal("error_glValidateProgramARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21472,7 +21472,7 @@ static void REGAL_CALL error_glValidateProgramARB(GLhandleARB programObj)
 
 static void REGAL_CALL error_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
 {
-  ITrace("error_glShaderStorageBlockBinding");
+  Internal("error_glShaderStorageBlockBinding","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21495,7 +21495,7 @@ static void REGAL_CALL error_glShaderStorageBlockBinding(GLuint program, GLuint 
 
 static void REGAL_CALL error_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
 {
-  ITrace("error_glGetActiveSubroutineName");
+  Internal("error_glGetActiveSubroutineName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21516,7 +21516,7 @@ static void REGAL_CALL error_glGetActiveSubroutineName(GLuint program, GLenum sh
 
 static void REGAL_CALL error_glGetActiveSubroutineUniformName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name)
 {
-  ITrace("error_glGetActiveSubroutineUniformName");
+  Internal("error_glGetActiveSubroutineUniformName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21537,7 +21537,7 @@ static void REGAL_CALL error_glGetActiveSubroutineUniformName(GLuint program, GL
 
 static void REGAL_CALL error_glGetActiveSubroutineUniformiv(GLuint program, GLenum shaderType, GLuint index, GLenum pname, GLint *values)
 {
-  ITrace("error_glGetActiveSubroutineUniformiv");
+  Internal("error_glGetActiveSubroutineUniformiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21558,7 +21558,7 @@ static void REGAL_CALL error_glGetActiveSubroutineUniformiv(GLuint program, GLen
 
 static void REGAL_CALL error_glGetProgramStageiv(GLuint program, GLenum shaderType, GLenum pname, GLint *values)
 {
-  ITrace("error_glGetProgramStageiv");
+  Internal("error_glGetProgramStageiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21579,7 +21579,7 @@ static void REGAL_CALL error_glGetProgramStageiv(GLuint program, GLenum shaderTy
 
 static GLuint REGAL_CALL error_glGetSubroutineIndex(GLuint program, GLenum shaderType, const GLchar *name)
 {
-  ITrace("error_glGetSubroutineIndex");
+  Internal("error_glGetSubroutineIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21601,7 +21601,7 @@ return ret;
 
 static GLint REGAL_CALL error_glGetSubroutineUniformLocation(GLuint program, GLenum shaderType, const GLchar *name)
 {
-  ITrace("error_glGetSubroutineUniformLocation");
+  Internal("error_glGetSubroutineUniformLocation","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21623,7 +21623,7 @@ return ret;
 
 static void REGAL_CALL error_glGetUniformSubroutineuiv(GLenum shaderType, GLint location, GLuint *params)
 {
-  ITrace("error_glGetUniformSubroutineuiv");
+  Internal("error_glGetUniformSubroutineuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21644,7 +21644,7 @@ static void REGAL_CALL error_glGetUniformSubroutineuiv(GLenum shaderType, GLint 
 
 static void REGAL_CALL error_glUniformSubroutinesuiv(GLenum shaderType, GLsizei count, const GLuint *indices)
 {
-  ITrace("error_glUniformSubroutinesuiv");
+  Internal("error_glUniformSubroutinesuiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21667,7 +21667,7 @@ static void REGAL_CALL error_glUniformSubroutinesuiv(GLenum shaderType, GLsizei 
 
 static void REGAL_CALL error_glCompileShaderIncludeARB(GLuint shader, GLsizei count, const GLchar **path, const GLint *length)
 {
-  ITrace("error_glCompileShaderIncludeARB");
+  Internal("error_glCompileShaderIncludeARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21688,7 +21688,7 @@ static void REGAL_CALL error_glCompileShaderIncludeARB(GLuint shader, GLsizei co
 
 static void REGAL_CALL error_glDeleteNamedStringARB(GLint namelen, const GLchar *name)
 {
-  ITrace("error_glDeleteNamedStringARB");
+  Internal("error_glDeleteNamedStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21709,7 +21709,7 @@ static void REGAL_CALL error_glDeleteNamedStringARB(GLint namelen, const GLchar 
 
 static void REGAL_CALL error_glGetNamedStringARB(GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string)
 {
-  ITrace("error_glGetNamedStringARB");
+  Internal("error_glGetNamedStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21730,7 +21730,7 @@ static void REGAL_CALL error_glGetNamedStringARB(GLint namelen, const GLchar *na
 
 static void REGAL_CALL error_glGetNamedStringivARB(GLint namelen, const GLchar *name, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedStringivARB");
+  Internal("error_glGetNamedStringivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21751,7 +21751,7 @@ static void REGAL_CALL error_glGetNamedStringivARB(GLint namelen, const GLchar *
 
 static GLboolean REGAL_CALL error_glIsNamedStringARB(GLint namelen, const GLchar *name)
 {
-  ITrace("error_glIsNamedStringARB");
+  Internal("error_glIsNamedStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21773,7 +21773,7 @@ return ret;
 
 static void REGAL_CALL error_glNamedStringARB(GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string)
 {
-  ITrace("error_glNamedStringARB");
+  Internal("error_glNamedStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21796,7 +21796,7 @@ static void REGAL_CALL error_glNamedStringARB(GLenum type, GLint namelen, const 
 
 static GLenum REGAL_CALL error_glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
 {
-  ITrace("error_glClientWaitSync");
+  Internal("error_glClientWaitSync","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21818,7 +21818,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteSync(GLsync sync)
 {
-  ITrace("error_glDeleteSync");
+  Internal("error_glDeleteSync","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21839,7 +21839,7 @@ static void REGAL_CALL error_glDeleteSync(GLsync sync)
 
 static GLsync REGAL_CALL error_glFenceSync(GLenum condition, GLbitfield flags)
 {
-  ITrace("error_glFenceSync");
+  Internal("error_glFenceSync","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21861,7 +21861,7 @@ return ret;
 
 static void REGAL_CALL error_glGetInteger64v(GLenum pname, GLint64 *params)
 {
-  ITrace("error_glGetInteger64v");
+  Internal("error_glGetInteger64v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21882,7 +21882,7 @@ static void REGAL_CALL error_glGetInteger64v(GLenum pname, GLint64 *params)
 
 static void REGAL_CALL error_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values)
 {
-  ITrace("error_glGetSynciv");
+  Internal("error_glGetSynciv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21903,7 +21903,7 @@ static void REGAL_CALL error_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufS
 
 static GLboolean REGAL_CALL error_glIsSync(GLsync sync)
 {
-  ITrace("error_glIsSync");
+  Internal("error_glIsSync","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21925,7 +21925,7 @@ return ret;
 
 static void REGAL_CALL error_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
 {
-  ITrace("error_glWaitSync");
+  Internal("error_glWaitSync","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21948,7 +21948,7 @@ static void REGAL_CALL error_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 
 
 static void REGAL_CALL error_glPatchParameterfv(GLenum pname, const GLfloat *values)
 {
-  ITrace("error_glPatchParameterfv");
+  Internal("error_glPatchParameterfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21969,7 +21969,7 @@ static void REGAL_CALL error_glPatchParameterfv(GLenum pname, const GLfloat *val
 
 static void REGAL_CALL error_glPatchParameteri(GLenum pname, GLint value)
 {
-  ITrace("error_glPatchParameteri");
+  Internal("error_glPatchParameteri","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -21992,7 +21992,7 @@ static void REGAL_CALL error_glPatchParameteri(GLenum pname, GLint value)
 
 static void REGAL_CALL error_glTexBufferARB(GLenum target, GLenum internalformat, GLuint buffer)
 {
-  ITrace("error_glTexBufferARB");
+  Internal("error_glTexBufferARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22015,7 +22015,7 @@ static void REGAL_CALL error_glTexBufferARB(GLenum target, GLenum internalformat
 
 static void REGAL_CALL error_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glTexBufferRange");
+  Internal("error_glTexBufferRange","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22036,7 +22036,7 @@ static void REGAL_CALL error_glTexBufferRange(GLenum target, GLenum internalform
 
 static void REGAL_CALL error_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glTextureBufferRangeEXT");
+  Internal("error_glTextureBufferRangeEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22059,7 +22059,7 @@ static void REGAL_CALL error_glTextureBufferRangeEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL error_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage1DARB");
+  Internal("error_glCompressedTexImage1DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22080,7 +22080,7 @@ static void REGAL_CALL error_glCompressedTexImage1DARB(GLenum target, GLint leve
 
 static void REGAL_CALL error_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage2DARB");
+  Internal("error_glCompressedTexImage2DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22101,7 +22101,7 @@ static void REGAL_CALL error_glCompressedTexImage2DARB(GLenum target, GLint leve
 
 static void REGAL_CALL error_glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexImage3DARB");
+  Internal("error_glCompressedTexImage3DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22122,7 +22122,7 @@ static void REGAL_CALL error_glCompressedTexImage3DARB(GLenum target, GLint leve
 
 static void REGAL_CALL error_glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage1DARB");
+  Internal("error_glCompressedTexSubImage1DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22143,7 +22143,7 @@ static void REGAL_CALL error_glCompressedTexSubImage1DARB(GLenum target, GLint l
 
 static void REGAL_CALL error_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage2DARB");
+  Internal("error_glCompressedTexSubImage2DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22164,7 +22164,7 @@ static void REGAL_CALL error_glCompressedTexSubImage2DARB(GLenum target, GLint l
 
 static void REGAL_CALL error_glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedTexSubImage3DARB");
+  Internal("error_glCompressedTexSubImage3DARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22185,7 +22185,7 @@ static void REGAL_CALL error_glCompressedTexSubImage3DARB(GLenum target, GLint l
 
 static void REGAL_CALL error_glGetCompressedTexImageARB(GLenum target, GLint lod, GLvoid *img)
 {
-  ITrace("error_glGetCompressedTexImageARB");
+  Internal("error_glGetCompressedTexImageARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22208,7 +22208,7 @@ static void REGAL_CALL error_glGetCompressedTexImageARB(GLenum target, GLint lod
 
 static void REGAL_CALL error_glGetMultisamplefv(GLenum pname, GLuint index, GLfloat *val)
 {
-  ITrace("error_glGetMultisamplefv");
+  Internal("error_glGetMultisamplefv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22229,7 +22229,7 @@ static void REGAL_CALL error_glGetMultisamplefv(GLenum pname, GLuint index, GLfl
 
 static void REGAL_CALL error_glSampleMaski(GLuint index, GLbitfield mask)
 {
-  ITrace("error_glSampleMaski");
+  Internal("error_glSampleMaski","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22250,7 +22250,7 @@ static void REGAL_CALL error_glSampleMaski(GLuint index, GLbitfield mask)
 
 static void REGAL_CALL error_glTexImage2DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTexImage2DMultisample");
+  Internal("error_glTexImage2DMultisample","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22271,7 +22271,7 @@ static void REGAL_CALL error_glTexImage2DMultisample(GLenum target, GLsizei samp
 
 static void REGAL_CALL error_glTexImage3DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTexImage3DMultisample");
+  Internal("error_glTexImage3DMultisample","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22294,7 +22294,7 @@ static void REGAL_CALL error_glTexImage3DMultisample(GLenum target, GLsizei samp
 
 static void REGAL_CALL error_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
-  ITrace("error_glTexStorage1D");
+  Internal("error_glTexStorage1D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22315,7 +22315,7 @@ static void REGAL_CALL error_glTexStorage1D(GLenum target, GLsizei levels, GLenu
 
 static void REGAL_CALL error_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glTexStorage2D");
+  Internal("error_glTexStorage2D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22336,7 +22336,7 @@ static void REGAL_CALL error_glTexStorage2D(GLenum target, GLsizei levels, GLenu
 
 static void REGAL_CALL error_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
-  ITrace("error_glTexStorage3D");
+  Internal("error_glTexStorage3D","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22357,7 +22357,7 @@ static void REGAL_CALL error_glTexStorage3D(GLenum target, GLsizei levels, GLenu
 
 static void REGAL_CALL error_glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
-  ITrace("error_glTextureStorage1DEXT");
+  Internal("error_glTextureStorage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22378,7 +22378,7 @@ static void REGAL_CALL error_glTextureStorage1DEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL error_glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glTextureStorage2DEXT");
+  Internal("error_glTextureStorage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22399,7 +22399,7 @@ static void REGAL_CALL error_glTextureStorage2DEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL error_glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
-  ITrace("error_glTextureStorage3DEXT");
+  Internal("error_glTextureStorage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22422,7 +22422,7 @@ static void REGAL_CALL error_glTextureStorage3DEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL error_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTexStorage2DMultisample");
+  Internal("error_glTexStorage2DMultisample","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22443,7 +22443,7 @@ static void REGAL_CALL error_glTexStorage2DMultisample(GLenum target, GLsizei sa
 
 static void REGAL_CALL error_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTexStorage3DMultisample");
+  Internal("error_glTexStorage3DMultisample","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22464,7 +22464,7 @@ static void REGAL_CALL error_glTexStorage3DMultisample(GLenum target, GLsizei sa
 
 static void REGAL_CALL error_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTextureStorage2DMultisampleEXT");
+  Internal("error_glTextureStorage2DMultisampleEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22485,7 +22485,7 @@ static void REGAL_CALL error_glTextureStorage2DMultisampleEXT(GLuint texture, GL
 
 static void REGAL_CALL error_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-  ITrace("error_glTextureStorage3DMultisampleEXT");
+  Internal("error_glTextureStorage3DMultisampleEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22508,7 +22508,7 @@ static void REGAL_CALL error_glTextureStorage3DMultisampleEXT(GLuint texture, GL
 
 static void REGAL_CALL error_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
 {
-  ITrace("error_glTextureView");
+  Internal("error_glTextureView","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22531,7 +22531,7 @@ static void REGAL_CALL error_glTextureView(GLuint texture, GLenum target, GLuint
 
 static void REGAL_CALL error_glGetQueryObjecti64v(GLuint id, GLenum pname, GLint64 *params)
 {
-  ITrace("error_glGetQueryObjecti64v");
+  Internal("error_glGetQueryObjecti64v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22552,7 +22552,7 @@ static void REGAL_CALL error_glGetQueryObjecti64v(GLuint id, GLenum pname, GLint
 
 static void REGAL_CALL error_glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 *params)
 {
-  ITrace("error_glGetQueryObjectui64v");
+  Internal("error_glGetQueryObjectui64v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22573,7 +22573,7 @@ static void REGAL_CALL error_glGetQueryObjectui64v(GLuint id, GLenum pname, GLui
 
 static void REGAL_CALL error_glQueryCounter(GLuint id, GLenum target)
 {
-  ITrace("error_glQueryCounter");
+  Internal("error_glQueryCounter","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22596,7 +22596,7 @@ static void REGAL_CALL error_glQueryCounter(GLuint id, GLenum target)
 
 static void REGAL_CALL error_glBindTransformFeedback(GLenum target, GLuint id)
 {
-  ITrace("error_glBindTransformFeedback");
+  Internal("error_glBindTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22617,7 +22617,7 @@ static void REGAL_CALL error_glBindTransformFeedback(GLenum target, GLuint id)
 
 static void REGAL_CALL error_glDeleteTransformFeedbacks(GLsizei n, const GLuint *ids)
 {
-  ITrace("error_glDeleteTransformFeedbacks");
+  Internal("error_glDeleteTransformFeedbacks","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22638,7 +22638,7 @@ static void REGAL_CALL error_glDeleteTransformFeedbacks(GLsizei n, const GLuint 
 
 static void REGAL_CALL error_glDrawTransformFeedback(GLenum mode, GLuint name)
 {
-  ITrace("error_glDrawTransformFeedback");
+  Internal("error_glDrawTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22659,7 +22659,7 @@ static void REGAL_CALL error_glDrawTransformFeedback(GLenum mode, GLuint name)
 
 static void REGAL_CALL error_glGenTransformFeedbacks(GLsizei n, GLuint *ids)
 {
-  ITrace("error_glGenTransformFeedbacks");
+  Internal("error_glGenTransformFeedbacks","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22680,7 +22680,7 @@ static void REGAL_CALL error_glGenTransformFeedbacks(GLsizei n, GLuint *ids)
 
 static GLboolean REGAL_CALL error_glIsTransformFeedback(GLuint id)
 {
-  ITrace("error_glIsTransformFeedback");
+  Internal("error_glIsTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22702,7 +22702,7 @@ return ret;
 
 static void REGAL_CALL error_glPauseTransformFeedback(void)
 {
-  ITrace("error_glPauseTransformFeedback");
+  Internal("error_glPauseTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22723,7 +22723,7 @@ static void REGAL_CALL error_glPauseTransformFeedback(void)
 
 static void REGAL_CALL error_glResumeTransformFeedback(void)
 {
-  ITrace("error_glResumeTransformFeedback");
+  Internal("error_glResumeTransformFeedback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22746,7 +22746,7 @@ static void REGAL_CALL error_glResumeTransformFeedback(void)
 
 static void REGAL_CALL error_glBeginQueryIndexed(GLenum target, GLuint index, GLuint id)
 {
-  ITrace("error_glBeginQueryIndexed");
+  Internal("error_glBeginQueryIndexed","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22767,7 +22767,7 @@ static void REGAL_CALL error_glBeginQueryIndexed(GLenum target, GLuint index, GL
 
 static void REGAL_CALL error_glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream)
 {
-  ITrace("error_glDrawTransformFeedbackStream");
+  Internal("error_glDrawTransformFeedbackStream","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22788,7 +22788,7 @@ static void REGAL_CALL error_glDrawTransformFeedbackStream(GLenum mode, GLuint i
 
 static void REGAL_CALL error_glEndQueryIndexed(GLenum target, GLuint index)
 {
-  ITrace("error_glEndQueryIndexed");
+  Internal("error_glEndQueryIndexed","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22809,7 +22809,7 @@ static void REGAL_CALL error_glEndQueryIndexed(GLenum target, GLuint index)
 
 static void REGAL_CALL error_glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetQueryIndexediv");
+  Internal("error_glGetQueryIndexediv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22832,7 +22832,7 @@ static void REGAL_CALL error_glGetQueryIndexediv(GLenum target, GLuint index, GL
 
 static void REGAL_CALL error_glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei primcount)
 {
-  ITrace("error_glDrawTransformFeedbackInstanced");
+  Internal("error_glDrawTransformFeedbackInstanced","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22853,7 +22853,7 @@ static void REGAL_CALL error_glDrawTransformFeedbackInstanced(GLenum mode, GLuin
 
 static void REGAL_CALL error_glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei primcount)
 {
-  ITrace("error_glDrawTransformFeedbackStreamInstanced");
+  Internal("error_glDrawTransformFeedbackStreamInstanced","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22876,7 +22876,7 @@ static void REGAL_CALL error_glDrawTransformFeedbackStreamInstanced(GLenum mode,
 
 static void REGAL_CALL error_glLoadTransposeMatrixdARB(const GLdouble *m)
 {
-  ITrace("error_glLoadTransposeMatrixdARB");
+  Internal("error_glLoadTransposeMatrixdARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22897,7 +22897,7 @@ static void REGAL_CALL error_glLoadTransposeMatrixdARB(const GLdouble *m)
 
 static void REGAL_CALL error_glLoadTransposeMatrixfARB(const GLfloat *m)
 {
-  ITrace("error_glLoadTransposeMatrixfARB");
+  Internal("error_glLoadTransposeMatrixfARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22918,7 +22918,7 @@ static void REGAL_CALL error_glLoadTransposeMatrixfARB(const GLfloat *m)
 
 static void REGAL_CALL error_glMultTransposeMatrixdARB(const GLdouble *m)
 {
-  ITrace("error_glMultTransposeMatrixdARB");
+  Internal("error_glMultTransposeMatrixdARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22939,7 +22939,7 @@ static void REGAL_CALL error_glMultTransposeMatrixdARB(const GLdouble *m)
 
 static void REGAL_CALL error_glMultTransposeMatrixfARB(const GLfloat *m)
 {
-  ITrace("error_glMultTransposeMatrixfARB");
+  Internal("error_glMultTransposeMatrixfARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22962,7 +22962,7 @@ static void REGAL_CALL error_glMultTransposeMatrixfARB(const GLfloat *m)
 
 static void REGAL_CALL error_glBindBufferBase(GLenum target, GLuint index, GLuint buffer)
 {
-  ITrace("error_glBindBufferBase");
+  Internal("error_glBindBufferBase","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -22983,7 +22983,7 @@ static void REGAL_CALL error_glBindBufferBase(GLenum target, GLuint index, GLuin
 
 static void REGAL_CALL error_glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glBindBufferRange");
+  Internal("error_glBindBufferRange","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23004,7 +23004,7 @@ static void REGAL_CALL error_glBindBufferRange(GLenum target, GLuint index, GLui
 
 static void REGAL_CALL error_glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName)
 {
-  ITrace("error_glGetActiveUniformBlockName");
+  Internal("error_glGetActiveUniformBlockName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23025,7 +23025,7 @@ static void REGAL_CALL error_glGetActiveUniformBlockName(GLuint program, GLuint 
 
 static void REGAL_CALL error_glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetActiveUniformBlockiv");
+  Internal("error_glGetActiveUniformBlockiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23046,7 +23046,7 @@ static void REGAL_CALL error_glGetActiveUniformBlockiv(GLuint program, GLuint un
 
 static void REGAL_CALL error_glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName)
 {
-  ITrace("error_glGetActiveUniformName");
+  Internal("error_glGetActiveUniformName","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23067,7 +23067,7 @@ static void REGAL_CALL error_glGetActiveUniformName(GLuint program, GLuint unifo
 
 static void REGAL_CALL error_glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetActiveUniformsiv");
+  Internal("error_glGetActiveUniformsiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23088,7 +23088,7 @@ static void REGAL_CALL error_glGetActiveUniformsiv(GLuint program, GLsizei unifo
 
 static void REGAL_CALL error_glGetIntegeri_v(GLenum target, GLuint index, GLint *data)
 {
-  ITrace("error_glGetIntegeri_v");
+  Internal("error_glGetIntegeri_v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23109,7 +23109,7 @@ static void REGAL_CALL error_glGetIntegeri_v(GLenum target, GLuint index, GLint 
 
 static GLuint REGAL_CALL error_glGetUniformBlockIndex(GLuint program, const GLchar *uniformBlockName)
 {
-  ITrace("error_glGetUniformBlockIndex");
+  Internal("error_glGetUniformBlockIndex","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23131,7 +23131,7 @@ return ret;
 
 static void REGAL_CALL error_glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar **uniformNames, GLuint *uniformIndices)
 {
-  ITrace("error_glGetUniformIndices");
+  Internal("error_glGetUniformIndices","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23152,7 +23152,7 @@ static void REGAL_CALL error_glGetUniformIndices(GLuint program, GLsizei uniform
 
 static void REGAL_CALL error_glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding)
 {
-  ITrace("error_glUniformBlockBinding");
+  Internal("error_glUniformBlockBinding","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23175,7 +23175,7 @@ static void REGAL_CALL error_glUniformBlockBinding(GLuint program, GLuint unifor
 
 static void REGAL_CALL error_glBindVertexArray(GLuint array)
 {
-  ITrace("error_glBindVertexArray");
+  Internal("error_glBindVertexArray","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23196,7 +23196,7 @@ static void REGAL_CALL error_glBindVertexArray(GLuint array)
 
 static void REGAL_CALL error_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
 {
-  ITrace("error_glDeleteVertexArrays");
+  Internal("error_glDeleteVertexArrays","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23217,7 +23217,7 @@ static void REGAL_CALL error_glDeleteVertexArrays(GLsizei n, const GLuint *array
 
 static void REGAL_CALL error_glGenVertexArrays(GLsizei n, GLuint *arrays)
 {
-  ITrace("error_glGenVertexArrays");
+  Internal("error_glGenVertexArrays","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23238,7 +23238,7 @@ static void REGAL_CALL error_glGenVertexArrays(GLsizei n, GLuint *arrays)
 
 static GLboolean REGAL_CALL error_glIsVertexArray(GLuint array)
 {
-  ITrace("error_glIsVertexArray");
+  Internal("error_glIsVertexArray","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23262,7 +23262,7 @@ return ret;
 
 static void REGAL_CALL error_glGetVertexAttribLdv(GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVertexAttribLdv");
+  Internal("error_glGetVertexAttribLdv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23283,7 +23283,7 @@ static void REGAL_CALL error_glGetVertexAttribLdv(GLuint index, GLenum pname, GL
 
 static void REGAL_CALL error_glVertexAttribL1d(GLuint index, GLdouble x)
 {
-  ITrace("error_glVertexAttribL1d");
+  Internal("error_glVertexAttribL1d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23304,7 +23304,7 @@ static void REGAL_CALL error_glVertexAttribL1d(GLuint index, GLdouble x)
 
 static void REGAL_CALL error_glVertexAttribL1dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL1dv");
+  Internal("error_glVertexAttribL1dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23325,7 +23325,7 @@ static void REGAL_CALL error_glVertexAttribL1dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttribL2d(GLuint index, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexAttribL2d");
+  Internal("error_glVertexAttribL2d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23346,7 +23346,7 @@ static void REGAL_CALL error_glVertexAttribL2d(GLuint index, GLdouble x, GLdoubl
 
 static void REGAL_CALL error_glVertexAttribL2dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL2dv");
+  Internal("error_glVertexAttribL2dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23367,7 +23367,7 @@ static void REGAL_CALL error_glVertexAttribL2dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttribL3d(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexAttribL3d");
+  Internal("error_glVertexAttribL3d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23388,7 +23388,7 @@ static void REGAL_CALL error_glVertexAttribL3d(GLuint index, GLdouble x, GLdoubl
 
 static void REGAL_CALL error_glVertexAttribL3dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL3dv");
+  Internal("error_glVertexAttribL3dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23409,7 +23409,7 @@ static void REGAL_CALL error_glVertexAttribL3dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttribL4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexAttribL4d");
+  Internal("error_glVertexAttribL4d","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23430,7 +23430,7 @@ static void REGAL_CALL error_glVertexAttribL4d(GLuint index, GLdouble x, GLdoubl
 
 static void REGAL_CALL error_glVertexAttribL4dv(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL4dv");
+  Internal("error_glVertexAttribL4dv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23451,7 +23451,7 @@ static void REGAL_CALL error_glVertexAttribL4dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL error_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribLPointer");
+  Internal("error_glVertexAttribLPointer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23474,7 +23474,7 @@ static void REGAL_CALL error_glVertexAttribLPointer(GLuint index, GLint size, GL
 
 static void REGAL_CALL error_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
 {
-  ITrace("error_glBindVertexBuffer");
+  Internal("error_glBindVertexBuffer","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23495,7 +23495,7 @@ static void REGAL_CALL error_glBindVertexBuffer(GLuint bindingindex, GLuint buff
 
 static void REGAL_CALL error_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
 {
-  ITrace("error_glVertexAttribBinding");
+  Internal("error_glVertexAttribBinding","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23516,7 +23516,7 @@ static void REGAL_CALL error_glVertexAttribBinding(GLuint attribindex, GLuint bi
 
 static void REGAL_CALL error_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
 {
-  ITrace("error_glVertexAttribFormat");
+  Internal("error_glVertexAttribFormat","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23537,7 +23537,7 @@ static void REGAL_CALL error_glVertexAttribFormat(GLuint attribindex, GLint size
 
 static void REGAL_CALL error_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
 {
-  ITrace("error_glVertexAttribIFormat");
+  Internal("error_glVertexAttribIFormat","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23558,7 +23558,7 @@ static void REGAL_CALL error_glVertexAttribIFormat(GLuint attribindex, GLint siz
 
 static void REGAL_CALL error_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
 {
-  ITrace("error_glVertexAttribLFormat");
+  Internal("error_glVertexAttribLFormat","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23579,7 +23579,7 @@ static void REGAL_CALL error_glVertexAttribLFormat(GLuint attribindex, GLint siz
 
 static void REGAL_CALL error_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
 {
-  ITrace("error_glVertexBindingDivisor");
+  Internal("error_glVertexBindingDivisor","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23602,7 +23602,7 @@ static void REGAL_CALL error_glVertexBindingDivisor(GLuint bindingindex, GLuint 
 
 static void REGAL_CALL error_glVertexBlendARB(GLint count)
 {
-  ITrace("error_glVertexBlendARB");
+  Internal("error_glVertexBlendARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23623,7 +23623,7 @@ static void REGAL_CALL error_glVertexBlendARB(GLint count)
 
 static void REGAL_CALL error_glWeightPointerARB(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
 {
-  ITrace("error_glWeightPointerARB");
+  Internal("error_glWeightPointerARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23644,7 +23644,7 @@ static void REGAL_CALL error_glWeightPointerARB(GLint size, GLenum type, GLsizei
 
 static void REGAL_CALL error_glWeightbvARB(GLint size, GLbyte *weights)
 {
-  ITrace("error_glWeightbvARB");
+  Internal("error_glWeightbvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23665,7 +23665,7 @@ static void REGAL_CALL error_glWeightbvARB(GLint size, GLbyte *weights)
 
 static void REGAL_CALL error_glWeightdvARB(GLint size, GLdouble *weights)
 {
-  ITrace("error_glWeightdvARB");
+  Internal("error_glWeightdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23686,7 +23686,7 @@ static void REGAL_CALL error_glWeightdvARB(GLint size, GLdouble *weights)
 
 static void REGAL_CALL error_glWeightfvARB(GLint size, GLfloat *weights)
 {
-  ITrace("error_glWeightfvARB");
+  Internal("error_glWeightfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23707,7 +23707,7 @@ static void REGAL_CALL error_glWeightfvARB(GLint size, GLfloat *weights)
 
 static void REGAL_CALL error_glWeightivARB(GLint size, GLint *weights)
 {
-  ITrace("error_glWeightivARB");
+  Internal("error_glWeightivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23728,7 +23728,7 @@ static void REGAL_CALL error_glWeightivARB(GLint size, GLint *weights)
 
 static void REGAL_CALL error_glWeightsvARB(GLint size, GLshort *weights)
 {
-  ITrace("error_glWeightsvARB");
+  Internal("error_glWeightsvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23749,7 +23749,7 @@ static void REGAL_CALL error_glWeightsvARB(GLint size, GLshort *weights)
 
 static void REGAL_CALL error_glWeightubvARB(GLint size, GLubyte *weights)
 {
-  ITrace("error_glWeightubvARB");
+  Internal("error_glWeightubvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23770,7 +23770,7 @@ static void REGAL_CALL error_glWeightubvARB(GLint size, GLubyte *weights)
 
 static void REGAL_CALL error_glWeightuivARB(GLint size, GLuint *weights)
 {
-  ITrace("error_glWeightuivARB");
+  Internal("error_glWeightuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23791,7 +23791,7 @@ static void REGAL_CALL error_glWeightuivARB(GLint size, GLuint *weights)
 
 static void REGAL_CALL error_glWeightusvARB(GLint size, GLushort *weights)
 {
-  ITrace("error_glWeightusvARB");
+  Internal("error_glWeightusvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23814,7 +23814,7 @@ static void REGAL_CALL error_glWeightusvARB(GLint size, GLushort *weights)
 
 static void REGAL_CALL error_glBindBufferARB(GLenum target, GLuint buffer)
 {
-  ITrace("error_glBindBufferARB");
+  Internal("error_glBindBufferARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23835,7 +23835,7 @@ static void REGAL_CALL error_glBindBufferARB(GLenum target, GLuint buffer)
 
 static void REGAL_CALL error_glBufferDataARB(GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
 {
-  ITrace("error_glBufferDataARB");
+  Internal("error_glBufferDataARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23856,7 +23856,7 @@ static void REGAL_CALL error_glBufferDataARB(GLenum target, GLsizeiptrARB size, 
 
 static void REGAL_CALL error_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
 {
-  ITrace("error_glBufferSubDataARB");
+  Internal("error_glBufferSubDataARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23877,7 +23877,7 @@ static void REGAL_CALL error_glBufferSubDataARB(GLenum target, GLintptrARB offse
 
 static void REGAL_CALL error_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
 {
-  ITrace("error_glDeleteBuffersARB");
+  Internal("error_glDeleteBuffersARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23898,7 +23898,7 @@ static void REGAL_CALL error_glDeleteBuffersARB(GLsizei n, const GLuint *buffers
 
 static void REGAL_CALL error_glGenBuffersARB(GLsizei n, GLuint *buffers)
 {
-  ITrace("error_glGenBuffersARB");
+  Internal("error_glGenBuffersARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23919,7 +23919,7 @@ static void REGAL_CALL error_glGenBuffersARB(GLsizei n, GLuint *buffers)
 
 static void REGAL_CALL error_glGetBufferParameterivARB(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetBufferParameterivARB");
+  Internal("error_glGetBufferParameterivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23940,7 +23940,7 @@ static void REGAL_CALL error_glGetBufferParameterivARB(GLenum target, GLenum pna
 
 static void REGAL_CALL error_glGetBufferPointervARB(GLenum target, GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetBufferPointervARB");
+  Internal("error_glGetBufferPointervARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23961,7 +23961,7 @@ static void REGAL_CALL error_glGetBufferPointervARB(GLenum target, GLenum pname,
 
 static void REGAL_CALL error_glGetBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, GLvoid *data)
 {
-  ITrace("error_glGetBufferSubDataARB");
+  Internal("error_glGetBufferSubDataARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -23982,7 +23982,7 @@ static void REGAL_CALL error_glGetBufferSubDataARB(GLenum target, GLintptrARB of
 
 static GLboolean REGAL_CALL error_glIsBufferARB(GLuint buffer)
 {
-  ITrace("error_glIsBufferARB");
+  Internal("error_glIsBufferARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24004,7 +24004,7 @@ return ret;
 
 static GLvoid *REGAL_CALL error_glMapBufferARB(GLenum target, GLenum access)
 {
-  ITrace("error_glMapBufferARB");
+  Internal("error_glMapBufferARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24026,7 +24026,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glUnmapBufferARB(GLenum target)
 {
-  ITrace("error_glUnmapBufferARB");
+  Internal("error_glUnmapBufferARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24050,7 +24050,7 @@ return ret;
 
 static void REGAL_CALL error_glBindProgramARB(GLenum target, GLuint program)
 {
-  ITrace("error_glBindProgramARB");
+  Internal("error_glBindProgramARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24071,7 +24071,7 @@ static void REGAL_CALL error_glBindProgramARB(GLenum target, GLuint program)
 
 static void REGAL_CALL error_glDeleteProgramsARB(GLsizei n, const GLuint *programs)
 {
-  ITrace("error_glDeleteProgramsARB");
+  Internal("error_glDeleteProgramsARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24092,7 +24092,7 @@ static void REGAL_CALL error_glDeleteProgramsARB(GLsizei n, const GLuint *progra
 
 static void REGAL_CALL error_glDisableVertexAttribArrayARB(GLuint index)
 {
-  ITrace("error_glDisableVertexAttribArrayARB");
+  Internal("error_glDisableVertexAttribArrayARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24113,7 +24113,7 @@ static void REGAL_CALL error_glDisableVertexAttribArrayARB(GLuint index)
 
 static void REGAL_CALL error_glEnableVertexAttribArrayARB(GLuint index)
 {
-  ITrace("error_glEnableVertexAttribArrayARB");
+  Internal("error_glEnableVertexAttribArrayARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24134,7 +24134,7 @@ static void REGAL_CALL error_glEnableVertexAttribArrayARB(GLuint index)
 
 static void REGAL_CALL error_glGenProgramsARB(GLsizei n, GLuint *programs)
 {
-  ITrace("error_glGenProgramsARB");
+  Internal("error_glGenProgramsARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24155,7 +24155,7 @@ static void REGAL_CALL error_glGenProgramsARB(GLsizei n, GLuint *programs)
 
 static void REGAL_CALL error_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble *params)
 {
-  ITrace("error_glGetProgramEnvParameterdvARB");
+  Internal("error_glGetProgramEnvParameterdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24176,7 +24176,7 @@ static void REGAL_CALL error_glGetProgramEnvParameterdvARB(GLenum target, GLuint
 
 static void REGAL_CALL error_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat *params)
 {
-  ITrace("error_glGetProgramEnvParameterfvARB");
+  Internal("error_glGetProgramEnvParameterfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24197,7 +24197,7 @@ static void REGAL_CALL error_glGetProgramEnvParameterfvARB(GLenum target, GLuint
 
 static void REGAL_CALL error_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble *params)
 {
-  ITrace("error_glGetProgramLocalParameterdvARB");
+  Internal("error_glGetProgramLocalParameterdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24218,7 +24218,7 @@ static void REGAL_CALL error_glGetProgramLocalParameterdvARB(GLenum target, GLui
 
 static void REGAL_CALL error_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat *params)
 {
-  ITrace("error_glGetProgramLocalParameterfvARB");
+  Internal("error_glGetProgramLocalParameterfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24239,7 +24239,7 @@ static void REGAL_CALL error_glGetProgramLocalParameterfvARB(GLenum target, GLui
 
 static void REGAL_CALL error_glGetProgramStringARB(GLenum target, GLenum pname, GLvoid *string)
 {
-  ITrace("error_glGetProgramStringARB");
+  Internal("error_glGetProgramStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24260,7 +24260,7 @@ static void REGAL_CALL error_glGetProgramStringARB(GLenum target, GLenum pname, 
 
 static void REGAL_CALL error_glGetProgramivARB(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetProgramivARB");
+  Internal("error_glGetProgramivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24281,7 +24281,7 @@ static void REGAL_CALL error_glGetProgramivARB(GLenum target, GLenum pname, GLin
 
 static void REGAL_CALL error_glGetVertexAttribPointervARB(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  ITrace("error_glGetVertexAttribPointervARB");
+  Internal("error_glGetVertexAttribPointervARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24302,7 +24302,7 @@ static void REGAL_CALL error_glGetVertexAttribPointervARB(GLuint index, GLenum p
 
 static void REGAL_CALL error_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVertexAttribdvARB");
+  Internal("error_glGetVertexAttribdvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24323,7 +24323,7 @@ static void REGAL_CALL error_glGetVertexAttribdvARB(GLuint index, GLenum pname, 
 
 static void REGAL_CALL error_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVertexAttribfvARB");
+  Internal("error_glGetVertexAttribfvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24344,7 +24344,7 @@ static void REGAL_CALL error_glGetVertexAttribfvARB(GLuint index, GLenum pname, 
 
 static void REGAL_CALL error_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribivARB");
+  Internal("error_glGetVertexAttribivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24365,7 +24365,7 @@ static void REGAL_CALL error_glGetVertexAttribivARB(GLuint index, GLenum pname, 
 
 static GLboolean REGAL_CALL error_glIsProgramARB(GLuint program)
 {
-  ITrace("error_glIsProgramARB");
+  Internal("error_glIsProgramARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24387,7 +24387,7 @@ return ret;
 
 static void REGAL_CALL error_glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramEnvParameter4dARB");
+  Internal("error_glProgramEnvParameter4dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24408,7 +24408,7 @@ static void REGAL_CALL error_glProgramEnvParameter4dARB(GLenum target, GLuint in
 
 static void REGAL_CALL error_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
 {
-  ITrace("error_glProgramEnvParameter4dvARB");
+  Internal("error_glProgramEnvParameter4dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24429,7 +24429,7 @@ static void REGAL_CALL error_glProgramEnvParameter4dvARB(GLenum target, GLuint i
 
 static void REGAL_CALL error_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glProgramEnvParameter4fARB");
+  Internal("error_glProgramEnvParameter4fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24450,7 +24450,7 @@ static void REGAL_CALL error_glProgramEnvParameter4fARB(GLenum target, GLuint in
 
 static void REGAL_CALL error_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
 {
-  ITrace("error_glProgramEnvParameter4fvARB");
+  Internal("error_glProgramEnvParameter4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24471,7 +24471,7 @@ static void REGAL_CALL error_glProgramEnvParameter4fvARB(GLenum target, GLuint i
 
 static void REGAL_CALL error_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramLocalParameter4dARB");
+  Internal("error_glProgramLocalParameter4dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24492,7 +24492,7 @@ static void REGAL_CALL error_glProgramLocalParameter4dARB(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
 {
-  ITrace("error_glProgramLocalParameter4dvARB");
+  Internal("error_glProgramLocalParameter4dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24513,7 +24513,7 @@ static void REGAL_CALL error_glProgramLocalParameter4dvARB(GLenum target, GLuint
 
 static void REGAL_CALL error_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glProgramLocalParameter4fARB");
+  Internal("error_glProgramLocalParameter4fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24534,7 +24534,7 @@ static void REGAL_CALL error_glProgramLocalParameter4fARB(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
 {
-  ITrace("error_glProgramLocalParameter4fvARB");
+  Internal("error_glProgramLocalParameter4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24555,7 +24555,7 @@ static void REGAL_CALL error_glProgramLocalParameter4fvARB(GLenum target, GLuint
 
 static void REGAL_CALL error_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
-  ITrace("error_glProgramStringARB");
+  Internal("error_glProgramStringARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24576,7 +24576,7 @@ static void REGAL_CALL error_glProgramStringARB(GLenum target, GLenum format, GL
 
 static void REGAL_CALL error_glVertexAttrib1dARB(GLuint index, GLdouble x)
 {
-  ITrace("error_glVertexAttrib1dARB");
+  Internal("error_glVertexAttrib1dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24597,7 +24597,7 @@ static void REGAL_CALL error_glVertexAttrib1dARB(GLuint index, GLdouble x)
 
 static void REGAL_CALL error_glVertexAttrib1dvARB(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib1dvARB");
+  Internal("error_glVertexAttrib1dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24618,7 +24618,7 @@ static void REGAL_CALL error_glVertexAttrib1dvARB(GLuint index, const GLdouble *
 
 static void REGAL_CALL error_glVertexAttrib1fARB(GLuint index, GLfloat x)
 {
-  ITrace("error_glVertexAttrib1fARB");
+  Internal("error_glVertexAttrib1fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24639,7 +24639,7 @@ static void REGAL_CALL error_glVertexAttrib1fARB(GLuint index, GLfloat x)
 
 static void REGAL_CALL error_glVertexAttrib1fvARB(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib1fvARB");
+  Internal("error_glVertexAttrib1fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24660,7 +24660,7 @@ static void REGAL_CALL error_glVertexAttrib1fvARB(GLuint index, const GLfloat *v
 
 static void REGAL_CALL error_glVertexAttrib1sARB(GLuint index, GLshort x)
 {
-  ITrace("error_glVertexAttrib1sARB");
+  Internal("error_glVertexAttrib1sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24681,7 +24681,7 @@ static void REGAL_CALL error_glVertexAttrib1sARB(GLuint index, GLshort x)
 
 static void REGAL_CALL error_glVertexAttrib1svARB(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib1svARB");
+  Internal("error_glVertexAttrib1svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24702,7 +24702,7 @@ static void REGAL_CALL error_glVertexAttrib1svARB(GLuint index, const GLshort *v
 
 static void REGAL_CALL error_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexAttrib2dARB");
+  Internal("error_glVertexAttrib2dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24723,7 +24723,7 @@ static void REGAL_CALL error_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdou
 
 static void REGAL_CALL error_glVertexAttrib2dvARB(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib2dvARB");
+  Internal("error_glVertexAttrib2dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24744,7 +24744,7 @@ static void REGAL_CALL error_glVertexAttrib2dvARB(GLuint index, const GLdouble *
 
 static void REGAL_CALL error_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y)
 {
-  ITrace("error_glVertexAttrib2fARB");
+  Internal("error_glVertexAttrib2fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24765,7 +24765,7 @@ static void REGAL_CALL error_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloa
 
 static void REGAL_CALL error_glVertexAttrib2fvARB(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib2fvARB");
+  Internal("error_glVertexAttrib2fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24786,7 +24786,7 @@ static void REGAL_CALL error_glVertexAttrib2fvARB(GLuint index, const GLfloat *v
 
 static void REGAL_CALL error_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y)
 {
-  ITrace("error_glVertexAttrib2sARB");
+  Internal("error_glVertexAttrib2sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24807,7 +24807,7 @@ static void REGAL_CALL error_glVertexAttrib2sARB(GLuint index, GLshort x, GLshor
 
 static void REGAL_CALL error_glVertexAttrib2svARB(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib2svARB");
+  Internal("error_glVertexAttrib2svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24828,7 +24828,7 @@ static void REGAL_CALL error_glVertexAttrib2svARB(GLuint index, const GLshort *v
 
 static void REGAL_CALL error_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexAttrib3dARB");
+  Internal("error_glVertexAttrib3dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24849,7 +24849,7 @@ static void REGAL_CALL error_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdou
 
 static void REGAL_CALL error_glVertexAttrib3dvARB(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib3dvARB");
+  Internal("error_glVertexAttrib3dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24870,7 +24870,7 @@ static void REGAL_CALL error_glVertexAttrib3dvARB(GLuint index, const GLdouble *
 
 static void REGAL_CALL error_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glVertexAttrib3fARB");
+  Internal("error_glVertexAttrib3fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24891,7 +24891,7 @@ static void REGAL_CALL error_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloa
 
 static void REGAL_CALL error_glVertexAttrib3fvARB(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib3fvARB");
+  Internal("error_glVertexAttrib3fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24912,7 +24912,7 @@ static void REGAL_CALL error_glVertexAttrib3fvARB(GLuint index, const GLfloat *v
 
 static void REGAL_CALL error_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glVertexAttrib3sARB");
+  Internal("error_glVertexAttrib3sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24933,7 +24933,7 @@ static void REGAL_CALL error_glVertexAttrib3sARB(GLuint index, GLshort x, GLshor
 
 static void REGAL_CALL error_glVertexAttrib3svARB(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib3svARB");
+  Internal("error_glVertexAttrib3svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24954,7 +24954,7 @@ static void REGAL_CALL error_glVertexAttrib3svARB(GLuint index, const GLshort *v
 
 static void REGAL_CALL error_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttrib4NbvARB");
+  Internal("error_glVertexAttrib4NbvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24975,7 +24975,7 @@ static void REGAL_CALL error_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v
 
 static void REGAL_CALL error_glVertexAttrib4NivARB(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttrib4NivARB");
+  Internal("error_glVertexAttrib4NivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -24996,7 +24996,7 @@ static void REGAL_CALL error_glVertexAttrib4NivARB(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttrib4NsvARB(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib4NsvARB");
+  Internal("error_glVertexAttrib4NsvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25017,7 +25017,7 @@ static void REGAL_CALL error_glVertexAttrib4NsvARB(GLuint index, const GLshort *
 
 static void REGAL_CALL error_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
-  ITrace("error_glVertexAttrib4NubARB");
+  Internal("error_glVertexAttrib4NubARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25038,7 +25038,7 @@ static void REGAL_CALL error_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLub
 
 static void REGAL_CALL error_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttrib4NubvARB");
+  Internal("error_glVertexAttrib4NubvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25059,7 +25059,7 @@ static void REGAL_CALL error_glVertexAttrib4NubvARB(GLuint index, const GLubyte 
 
 static void REGAL_CALL error_glVertexAttrib4NuivARB(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttrib4NuivARB");
+  Internal("error_glVertexAttrib4NuivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25080,7 +25080,7 @@ static void REGAL_CALL error_glVertexAttrib4NuivARB(GLuint index, const GLuint *
 
 static void REGAL_CALL error_glVertexAttrib4NusvARB(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttrib4NusvARB");
+  Internal("error_glVertexAttrib4NusvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25101,7 +25101,7 @@ static void REGAL_CALL error_glVertexAttrib4NusvARB(GLuint index, const GLushort
 
 static void REGAL_CALL error_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttrib4bvARB");
+  Internal("error_glVertexAttrib4bvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25122,7 +25122,7 @@ static void REGAL_CALL error_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL error_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexAttrib4dARB");
+  Internal("error_glVertexAttrib4dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25143,7 +25143,7 @@ static void REGAL_CALL error_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdou
 
 static void REGAL_CALL error_glVertexAttrib4dvARB(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib4dvARB");
+  Internal("error_glVertexAttrib4dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25164,7 +25164,7 @@ static void REGAL_CALL error_glVertexAttrib4dvARB(GLuint index, const GLdouble *
 
 static void REGAL_CALL error_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glVertexAttrib4fARB");
+  Internal("error_glVertexAttrib4fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25185,7 +25185,7 @@ static void REGAL_CALL error_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloa
 
 static void REGAL_CALL error_glVertexAttrib4fvARB(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib4fvARB");
+  Internal("error_glVertexAttrib4fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25206,7 +25206,7 @@ static void REGAL_CALL error_glVertexAttrib4fvARB(GLuint index, const GLfloat *v
 
 static void REGAL_CALL error_glVertexAttrib4ivARB(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttrib4ivARB");
+  Internal("error_glVertexAttrib4ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25227,7 +25227,7 @@ static void REGAL_CALL error_glVertexAttrib4ivARB(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glVertexAttrib4sARB");
+  Internal("error_glVertexAttrib4sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25248,7 +25248,7 @@ static void REGAL_CALL error_glVertexAttrib4sARB(GLuint index, GLshort x, GLshor
 
 static void REGAL_CALL error_glVertexAttrib4svARB(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib4svARB");
+  Internal("error_glVertexAttrib4svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25269,7 +25269,7 @@ static void REGAL_CALL error_glVertexAttrib4svARB(GLuint index, const GLshort *v
 
 static void REGAL_CALL error_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttrib4ubvARB");
+  Internal("error_glVertexAttrib4ubvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25290,7 +25290,7 @@ static void REGAL_CALL error_glVertexAttrib4ubvARB(GLuint index, const GLubyte *
 
 static void REGAL_CALL error_glVertexAttrib4uivARB(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttrib4uivARB");
+  Internal("error_glVertexAttrib4uivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25311,7 +25311,7 @@ static void REGAL_CALL error_glVertexAttrib4uivARB(GLuint index, const GLuint *v
 
 static void REGAL_CALL error_glVertexAttrib4usvARB(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttrib4usvARB");
+  Internal("error_glVertexAttrib4usvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25332,7 +25332,7 @@ static void REGAL_CALL error_glVertexAttrib4usvARB(GLuint index, const GLushort 
 
 static void REGAL_CALL error_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribPointerARB");
+  Internal("error_glVertexAttribPointerARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25355,7 +25355,7 @@ static void REGAL_CALL error_glVertexAttribPointerARB(GLuint index, GLint size, 
 
 static void REGAL_CALL error_glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name)
 {
-  ITrace("error_glBindAttribLocationARB");
+  Internal("error_glBindAttribLocationARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25376,7 +25376,7 @@ static void REGAL_CALL error_glBindAttribLocationARB(GLhandleARB programObj, GLu
 
 static void REGAL_CALL error_glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name)
 {
-  ITrace("error_glGetActiveAttribARB");
+  Internal("error_glGetActiveAttribARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25397,7 +25397,7 @@ static void REGAL_CALL error_glGetActiveAttribARB(GLhandleARB programObj, GLuint
 
 static GLint REGAL_CALL error_glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name)
 {
-  ITrace("error_glGetAttribLocationARB");
+  Internal("error_glGetAttribLocationARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25421,7 +25421,7 @@ return ret;
 
 static void REGAL_CALL error_glColorP3ui(GLenum type, GLuint color)
 {
-  ITrace("error_glColorP3ui");
+  Internal("error_glColorP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25442,7 +25442,7 @@ static void REGAL_CALL error_glColorP3ui(GLenum type, GLuint color)
 
 static void REGAL_CALL error_glColorP3uiv(GLenum type, const GLuint *color)
 {
-  ITrace("error_glColorP3uiv");
+  Internal("error_glColorP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25463,7 +25463,7 @@ static void REGAL_CALL error_glColorP3uiv(GLenum type, const GLuint *color)
 
 static void REGAL_CALL error_glColorP4ui(GLenum type, GLuint color)
 {
-  ITrace("error_glColorP4ui");
+  Internal("error_glColorP4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25484,7 +25484,7 @@ static void REGAL_CALL error_glColorP4ui(GLenum type, GLuint color)
 
 static void REGAL_CALL error_glColorP4uiv(GLenum type, const GLuint *color)
 {
-  ITrace("error_glColorP4uiv");
+  Internal("error_glColorP4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25505,7 +25505,7 @@ static void REGAL_CALL error_glColorP4uiv(GLenum type, const GLuint *color)
 
 static void REGAL_CALL error_glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords)
 {
-  ITrace("error_glMultiTexCoordP1ui");
+  Internal("error_glMultiTexCoordP1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25526,7 +25526,7 @@ static void REGAL_CALL error_glMultiTexCoordP1ui(GLenum texture, GLenum type, GL
 
 static void REGAL_CALL error_glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint *coords)
 {
-  ITrace("error_glMultiTexCoordP1uiv");
+  Internal("error_glMultiTexCoordP1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25547,7 +25547,7 @@ static void REGAL_CALL error_glMultiTexCoordP1uiv(GLenum texture, GLenum type, c
 
 static void REGAL_CALL error_glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords)
 {
-  ITrace("error_glMultiTexCoordP2ui");
+  Internal("error_glMultiTexCoordP2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25568,7 +25568,7 @@ static void REGAL_CALL error_glMultiTexCoordP2ui(GLenum texture, GLenum type, GL
 
 static void REGAL_CALL error_glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint *coords)
 {
-  ITrace("error_glMultiTexCoordP2uiv");
+  Internal("error_glMultiTexCoordP2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25589,7 +25589,7 @@ static void REGAL_CALL error_glMultiTexCoordP2uiv(GLenum texture, GLenum type, c
 
 static void REGAL_CALL error_glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords)
 {
-  ITrace("error_glMultiTexCoordP3ui");
+  Internal("error_glMultiTexCoordP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25610,7 +25610,7 @@ static void REGAL_CALL error_glMultiTexCoordP3ui(GLenum texture, GLenum type, GL
 
 static void REGAL_CALL error_glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint *coords)
 {
-  ITrace("error_glMultiTexCoordP3uiv");
+  Internal("error_glMultiTexCoordP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25631,7 +25631,7 @@ static void REGAL_CALL error_glMultiTexCoordP3uiv(GLenum texture, GLenum type, c
 
 static void REGAL_CALL error_glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords)
 {
-  ITrace("error_glMultiTexCoordP4ui");
+  Internal("error_glMultiTexCoordP4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25652,7 +25652,7 @@ static void REGAL_CALL error_glMultiTexCoordP4ui(GLenum texture, GLenum type, GL
 
 static void REGAL_CALL error_glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint *coords)
 {
-  ITrace("error_glMultiTexCoordP4uiv");
+  Internal("error_glMultiTexCoordP4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25673,7 +25673,7 @@ static void REGAL_CALL error_glMultiTexCoordP4uiv(GLenum texture, GLenum type, c
 
 static void REGAL_CALL error_glNormalP3ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glNormalP3ui");
+  Internal("error_glNormalP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25694,7 +25694,7 @@ static void REGAL_CALL error_glNormalP3ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glNormalP3uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glNormalP3uiv");
+  Internal("error_glNormalP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25715,7 +25715,7 @@ static void REGAL_CALL error_glNormalP3uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glSecondaryColorP3ui(GLenum type, GLuint color)
 {
-  ITrace("error_glSecondaryColorP3ui");
+  Internal("error_glSecondaryColorP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25736,7 +25736,7 @@ static void REGAL_CALL error_glSecondaryColorP3ui(GLenum type, GLuint color)
 
 static void REGAL_CALL error_glSecondaryColorP3uiv(GLenum type, const GLuint *color)
 {
-  ITrace("error_glSecondaryColorP3uiv");
+  Internal("error_glSecondaryColorP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25757,7 +25757,7 @@ static void REGAL_CALL error_glSecondaryColorP3uiv(GLenum type, const GLuint *co
 
 static void REGAL_CALL error_glTexCoordP1ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glTexCoordP1ui");
+  Internal("error_glTexCoordP1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25778,7 +25778,7 @@ static void REGAL_CALL error_glTexCoordP1ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glTexCoordP1uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glTexCoordP1uiv");
+  Internal("error_glTexCoordP1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25799,7 +25799,7 @@ static void REGAL_CALL error_glTexCoordP1uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glTexCoordP2ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glTexCoordP2ui");
+  Internal("error_glTexCoordP2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25820,7 +25820,7 @@ static void REGAL_CALL error_glTexCoordP2ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glTexCoordP2uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glTexCoordP2uiv");
+  Internal("error_glTexCoordP2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25841,7 +25841,7 @@ static void REGAL_CALL error_glTexCoordP2uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glTexCoordP3ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glTexCoordP3ui");
+  Internal("error_glTexCoordP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25862,7 +25862,7 @@ static void REGAL_CALL error_glTexCoordP3ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glTexCoordP3uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glTexCoordP3uiv");
+  Internal("error_glTexCoordP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25883,7 +25883,7 @@ static void REGAL_CALL error_glTexCoordP3uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glTexCoordP4ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glTexCoordP4ui");
+  Internal("error_glTexCoordP4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25904,7 +25904,7 @@ static void REGAL_CALL error_glTexCoordP4ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glTexCoordP4uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glTexCoordP4uiv");
+  Internal("error_glTexCoordP4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25925,7 +25925,7 @@ static void REGAL_CALL error_glTexCoordP4uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-  ITrace("error_glVertexAttribP1ui");
+  Internal("error_glVertexAttribP1ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25946,7 +25946,7 @@ static void REGAL_CALL error_glVertexAttribP1ui(GLuint index, GLenum type, GLboo
 
 static void REGAL_CALL error_glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 {
-  ITrace("error_glVertexAttribP1uiv");
+  Internal("error_glVertexAttribP1uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25967,7 +25967,7 @@ static void REGAL_CALL error_glVertexAttribP1uiv(GLuint index, GLenum type, GLbo
 
 static void REGAL_CALL error_glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-  ITrace("error_glVertexAttribP2ui");
+  Internal("error_glVertexAttribP2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -25988,7 +25988,7 @@ static void REGAL_CALL error_glVertexAttribP2ui(GLuint index, GLenum type, GLboo
 
 static void REGAL_CALL error_glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 {
-  ITrace("error_glVertexAttribP2uiv");
+  Internal("error_glVertexAttribP2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26009,7 +26009,7 @@ static void REGAL_CALL error_glVertexAttribP2uiv(GLuint index, GLenum type, GLbo
 
 static void REGAL_CALL error_glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-  ITrace("error_glVertexAttribP3ui");
+  Internal("error_glVertexAttribP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26030,7 +26030,7 @@ static void REGAL_CALL error_glVertexAttribP3ui(GLuint index, GLenum type, GLboo
 
 static void REGAL_CALL error_glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 {
-  ITrace("error_glVertexAttribP3uiv");
+  Internal("error_glVertexAttribP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26051,7 +26051,7 @@ static void REGAL_CALL error_glVertexAttribP3uiv(GLuint index, GLenum type, GLbo
 
 static void REGAL_CALL error_glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-  ITrace("error_glVertexAttribP4ui");
+  Internal("error_glVertexAttribP4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26072,7 +26072,7 @@ static void REGAL_CALL error_glVertexAttribP4ui(GLuint index, GLenum type, GLboo
 
 static void REGAL_CALL error_glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value)
 {
-  ITrace("error_glVertexAttribP4uiv");
+  Internal("error_glVertexAttribP4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26093,7 +26093,7 @@ static void REGAL_CALL error_glVertexAttribP4uiv(GLuint index, GLenum type, GLbo
 
 static void REGAL_CALL error_glVertexP2ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glVertexP2ui");
+  Internal("error_glVertexP2ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26114,7 +26114,7 @@ static void REGAL_CALL error_glVertexP2ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glVertexP2uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glVertexP2uiv");
+  Internal("error_glVertexP2uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26135,7 +26135,7 @@ static void REGAL_CALL error_glVertexP2uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glVertexP3ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glVertexP3ui");
+  Internal("error_glVertexP3ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26156,7 +26156,7 @@ static void REGAL_CALL error_glVertexP3ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glVertexP3uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glVertexP3uiv");
+  Internal("error_glVertexP3uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26177,7 +26177,7 @@ static void REGAL_CALL error_glVertexP3uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glVertexP4ui(GLenum type, GLuint coords)
 {
-  ITrace("error_glVertexP4ui");
+  Internal("error_glVertexP4ui","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26198,7 +26198,7 @@ static void REGAL_CALL error_glVertexP4ui(GLenum type, GLuint coords)
 
 static void REGAL_CALL error_glVertexP4uiv(GLenum type, const GLuint *coords)
 {
-  ITrace("error_glVertexP4uiv");
+  Internal("error_glVertexP4uiv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26221,7 +26221,7 @@ static void REGAL_CALL error_glVertexP4uiv(GLenum type, const GLuint *coords)
 
 static void REGAL_CALL error_glDepthRangeArrayv(GLuint first, GLsizei count, const GLclampd *v)
 {
-  ITrace("error_glDepthRangeArrayv");
+  Internal("error_glDepthRangeArrayv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26242,7 +26242,7 @@ static void REGAL_CALL error_glDepthRangeArrayv(GLuint first, GLsizei count, con
 
 static void REGAL_CALL error_glDepthRangeIndexed(GLuint index, GLclampd n, GLclampd f)
 {
-  ITrace("error_glDepthRangeIndexed");
+  Internal("error_glDepthRangeIndexed","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26263,7 +26263,7 @@ static void REGAL_CALL error_glDepthRangeIndexed(GLuint index, GLclampd n, GLcla
 
 static void REGAL_CALL error_glGetDoublei_v(GLenum target, GLuint index, GLdouble *v)
 {
-  ITrace("error_glGetDoublei_v");
+  Internal("error_glGetDoublei_v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26284,7 +26284,7 @@ static void REGAL_CALL error_glGetDoublei_v(GLenum target, GLuint index, GLdoubl
 
 static void REGAL_CALL error_glGetFloati_v(GLenum target, GLuint index, GLfloat *v)
 {
-  ITrace("error_glGetFloati_v");
+  Internal("error_glGetFloati_v","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26305,7 +26305,7 @@ static void REGAL_CALL error_glGetFloati_v(GLenum target, GLuint index, GLfloat 
 
 static void REGAL_CALL error_glScissorArrayv(GLuint first, GLsizei count, const GLint *v)
 {
-  ITrace("error_glScissorArrayv");
+  Internal("error_glScissorArrayv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26326,7 +26326,7 @@ static void REGAL_CALL error_glScissorArrayv(GLuint first, GLsizei count, const 
 
 static void REGAL_CALL error_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLint width, GLint height)
 {
-  ITrace("error_glScissorIndexed");
+  Internal("error_glScissorIndexed","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26347,7 +26347,7 @@ static void REGAL_CALL error_glScissorIndexed(GLuint index, GLint left, GLint bo
 
 static void REGAL_CALL error_glScissorIndexedv(GLuint index, const GLint *v)
 {
-  ITrace("error_glScissorIndexedv");
+  Internal("error_glScissorIndexedv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26368,7 +26368,7 @@ static void REGAL_CALL error_glScissorIndexedv(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glViewportArrayv(GLuint first, GLsizei count, const GLfloat *v)
 {
-  ITrace("error_glViewportArrayv");
+  Internal("error_glViewportArrayv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26389,7 +26389,7 @@ static void REGAL_CALL error_glViewportArrayv(GLuint first, GLsizei count, const
 
 static void REGAL_CALL error_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
 {
-  ITrace("error_glViewportIndexedf");
+  Internal("error_glViewportIndexedf","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26410,7 +26410,7 @@ static void REGAL_CALL error_glViewportIndexedf(GLuint index, GLfloat x, GLfloat
 
 static void REGAL_CALL error_glViewportIndexedfv(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glViewportIndexedfv");
+  Internal("error_glViewportIndexedfv","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26433,7 +26433,7 @@ static void REGAL_CALL error_glViewportIndexedfv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glWindowPos2dARB(GLdouble x, GLdouble y)
 {
-  ITrace("error_glWindowPos2dARB");
+  Internal("error_glWindowPos2dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26454,7 +26454,7 @@ static void REGAL_CALL error_glWindowPos2dARB(GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glWindowPos2dvARB(const GLdouble *p)
 {
-  ITrace("error_glWindowPos2dvARB");
+  Internal("error_glWindowPos2dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26475,7 +26475,7 @@ static void REGAL_CALL error_glWindowPos2dvARB(const GLdouble *p)
 
 static void REGAL_CALL error_glWindowPos2fARB(GLfloat x, GLfloat y)
 {
-  ITrace("error_glWindowPos2fARB");
+  Internal("error_glWindowPos2fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26496,7 +26496,7 @@ static void REGAL_CALL error_glWindowPos2fARB(GLfloat x, GLfloat y)
 
 static void REGAL_CALL error_glWindowPos2fvARB(const GLfloat *p)
 {
-  ITrace("error_glWindowPos2fvARB");
+  Internal("error_glWindowPos2fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26517,7 +26517,7 @@ static void REGAL_CALL error_glWindowPos2fvARB(const GLfloat *p)
 
 static void REGAL_CALL error_glWindowPos2iARB(GLint x, GLint y)
 {
-  ITrace("error_glWindowPos2iARB");
+  Internal("error_glWindowPos2iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26538,7 +26538,7 @@ static void REGAL_CALL error_glWindowPos2iARB(GLint x, GLint y)
 
 static void REGAL_CALL error_glWindowPos2ivARB(const GLint *p)
 {
-  ITrace("error_glWindowPos2ivARB");
+  Internal("error_glWindowPos2ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26559,7 +26559,7 @@ static void REGAL_CALL error_glWindowPos2ivARB(const GLint *p)
 
 static void REGAL_CALL error_glWindowPos2sARB(GLshort x, GLshort y)
 {
-  ITrace("error_glWindowPos2sARB");
+  Internal("error_glWindowPos2sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26580,7 +26580,7 @@ static void REGAL_CALL error_glWindowPos2sARB(GLshort x, GLshort y)
 
 static void REGAL_CALL error_glWindowPos2svARB(const GLshort *p)
 {
-  ITrace("error_glWindowPos2svARB");
+  Internal("error_glWindowPos2svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26601,7 +26601,7 @@ static void REGAL_CALL error_glWindowPos2svARB(const GLshort *p)
 
 static void REGAL_CALL error_glWindowPos3dARB(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glWindowPos3dARB");
+  Internal("error_glWindowPos3dARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26622,7 +26622,7 @@ static void REGAL_CALL error_glWindowPos3dARB(GLdouble x, GLdouble y, GLdouble z
 
 static void REGAL_CALL error_glWindowPos3dvARB(const GLdouble *p)
 {
-  ITrace("error_glWindowPos3dvARB");
+  Internal("error_glWindowPos3dvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26643,7 +26643,7 @@ static void REGAL_CALL error_glWindowPos3dvARB(const GLdouble *p)
 
 static void REGAL_CALL error_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glWindowPos3fARB");
+  Internal("error_glWindowPos3fARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26664,7 +26664,7 @@ static void REGAL_CALL error_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glWindowPos3fvARB(const GLfloat *p)
 {
-  ITrace("error_glWindowPos3fvARB");
+  Internal("error_glWindowPos3fvARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26685,7 +26685,7 @@ static void REGAL_CALL error_glWindowPos3fvARB(const GLfloat *p)
 
 static void REGAL_CALL error_glWindowPos3iARB(GLint x, GLint y, GLint z)
 {
-  ITrace("error_glWindowPos3iARB");
+  Internal("error_glWindowPos3iARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26706,7 +26706,7 @@ static void REGAL_CALL error_glWindowPos3iARB(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL error_glWindowPos3ivARB(const GLint *p)
 {
-  ITrace("error_glWindowPos3ivARB");
+  Internal("error_glWindowPos3ivARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26727,7 +26727,7 @@ static void REGAL_CALL error_glWindowPos3ivARB(const GLint *p)
 
 static void REGAL_CALL error_glWindowPos3sARB(GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glWindowPos3sARB");
+  Internal("error_glWindowPos3sARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26748,7 +26748,7 @@ static void REGAL_CALL error_glWindowPos3sARB(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL error_glWindowPos3svARB(const GLshort *p)
 {
-  ITrace("error_glWindowPos3svARB");
+  Internal("error_glWindowPos3svARB","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26771,7 +26771,7 @@ static void REGAL_CALL error_glWindowPos3svARB(const GLshort *p)
 
 static void REGAL_CALL error_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
 {
-  ITrace("error_glDrawBuffersATI");
+  Internal("error_glDrawBuffersATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26794,7 +26794,7 @@ static void REGAL_CALL error_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
 
 static void REGAL_CALL error_glDrawElementArrayATI(GLenum mode, GLsizei count)
 {
-  ITrace("error_glDrawElementArrayATI");
+  Internal("error_glDrawElementArrayATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26815,7 +26815,7 @@ static void REGAL_CALL error_glDrawElementArrayATI(GLenum mode, GLsizei count)
 
 static void REGAL_CALL error_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count)
 {
-  ITrace("error_glDrawRangeElementArrayATI");
+  Internal("error_glDrawRangeElementArrayATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26836,7 +26836,7 @@ static void REGAL_CALL error_glDrawRangeElementArrayATI(GLenum mode, GLuint star
 
 static void REGAL_CALL error_glElementPointerATI(GLenum type, const GLvoid *pointer)
 {
-  ITrace("error_glElementPointerATI");
+  Internal("error_glElementPointerATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26859,7 +26859,7 @@ static void REGAL_CALL error_glElementPointerATI(GLenum type, const GLvoid *poin
 
 static void REGAL_CALL error_glGetTexBumpParameterfvATI(GLenum pname, GLfloat *param)
 {
-  ITrace("error_glGetTexBumpParameterfvATI");
+  Internal("error_glGetTexBumpParameterfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26880,7 +26880,7 @@ static void REGAL_CALL error_glGetTexBumpParameterfvATI(GLenum pname, GLfloat *p
 
 static void REGAL_CALL error_glGetTexBumpParameterivATI(GLenum pname, GLint *param)
 {
-  ITrace("error_glGetTexBumpParameterivATI");
+  Internal("error_glGetTexBumpParameterivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26901,7 +26901,7 @@ static void REGAL_CALL error_glGetTexBumpParameterivATI(GLenum pname, GLint *par
 
 static void REGAL_CALL error_glTexBumpParameterfvATI(GLenum pname, GLfloat *param)
 {
-  ITrace("error_glTexBumpParameterfvATI");
+  Internal("error_glTexBumpParameterfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26922,7 +26922,7 @@ static void REGAL_CALL error_glTexBumpParameterfvATI(GLenum pname, GLfloat *para
 
 static void REGAL_CALL error_glTexBumpParameterivATI(GLenum pname, GLint *param)
 {
-  ITrace("error_glTexBumpParameterivATI");
+  Internal("error_glTexBumpParameterivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26945,7 +26945,7 @@ static void REGAL_CALL error_glTexBumpParameterivATI(GLenum pname, GLint *param)
 
 static void REGAL_CALL error_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod)
 {
-  ITrace("error_glAlphaFragmentOp1ATI");
+  Internal("error_glAlphaFragmentOp1ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26966,7 +26966,7 @@ static void REGAL_CALL error_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod)
 {
-  ITrace("error_glAlphaFragmentOp2ATI");
+  Internal("error_glAlphaFragmentOp2ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -26987,7 +26987,7 @@ static void REGAL_CALL error_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod)
 {
-  ITrace("error_glAlphaFragmentOp3ATI");
+  Internal("error_glAlphaFragmentOp3ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27008,7 +27008,7 @@ static void REGAL_CALL error_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glBeginFragmentShaderATI(void)
 {
-  ITrace("error_glBeginFragmentShaderATI");
+  Internal("error_glBeginFragmentShaderATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27029,7 +27029,7 @@ static void REGAL_CALL error_glBeginFragmentShaderATI(void)
 
 static void REGAL_CALL error_glBindFragmentShaderATI(GLuint id)
 {
-  ITrace("error_glBindFragmentShaderATI");
+  Internal("error_glBindFragmentShaderATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27050,7 +27050,7 @@ static void REGAL_CALL error_glBindFragmentShaderATI(GLuint id)
 
 static void REGAL_CALL error_glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod)
 {
-  ITrace("error_glColorFragmentOp1ATI");
+  Internal("error_glColorFragmentOp1ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27071,7 +27071,7 @@ static void REGAL_CALL error_glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod)
 {
-  ITrace("error_glColorFragmentOp2ATI");
+  Internal("error_glColorFragmentOp2ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27092,7 +27092,7 @@ static void REGAL_CALL error_glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod)
 {
-  ITrace("error_glColorFragmentOp3ATI");
+  Internal("error_glColorFragmentOp3ATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27113,7 +27113,7 @@ static void REGAL_CALL error_glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint
 
 static void REGAL_CALL error_glDeleteFragmentShaderATI(GLuint id)
 {
-  ITrace("error_glDeleteFragmentShaderATI");
+  Internal("error_glDeleteFragmentShaderATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27134,7 +27134,7 @@ static void REGAL_CALL error_glDeleteFragmentShaderATI(GLuint id)
 
 static void REGAL_CALL error_glEndFragmentShaderATI(void)
 {
-  ITrace("error_glEndFragmentShaderATI");
+  Internal("error_glEndFragmentShaderATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27155,7 +27155,7 @@ static void REGAL_CALL error_glEndFragmentShaderATI(void)
 
 static GLuint REGAL_CALL error_glGenFragmentShadersATI(GLuint range)
 {
-  ITrace("error_glGenFragmentShadersATI");
+  Internal("error_glGenFragmentShadersATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27177,7 +27177,7 @@ return ret;
 
 static void REGAL_CALL error_glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle)
 {
-  ITrace("error_glPassTexCoordATI");
+  Internal("error_glPassTexCoordATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27198,7 +27198,7 @@ static void REGAL_CALL error_glPassTexCoordATI(GLuint dst, GLuint coord, GLenum 
 
 static void REGAL_CALL error_glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle)
 {
-  ITrace("error_glSampleMapATI");
+  Internal("error_glSampleMapATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27219,7 +27219,7 @@ static void REGAL_CALL error_glSampleMapATI(GLuint dst, GLuint interp, GLenum sw
 
 static void REGAL_CALL error_glSetFragmentShaderConstantATI(GLuint dst, const GLfloat *value)
 {
-  ITrace("error_glSetFragmentShaderConstantATI");
+  Internal("error_glSetFragmentShaderConstantATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27242,7 +27242,7 @@ static void REGAL_CALL error_glSetFragmentShaderConstantATI(GLuint dst, const GL
 
 static GLvoid *REGAL_CALL error_glMapObjectBufferATI(GLuint buffer)
 {
-  ITrace("error_glMapObjectBufferATI");
+  Internal("error_glMapObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27264,7 +27264,7 @@ return ret;
 
 static void REGAL_CALL error_glUnmapObjectBufferATI(GLuint buffer)
 {
-  ITrace("error_glUnmapObjectBufferATI");
+  Internal("error_glUnmapObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27287,7 +27287,7 @@ static void REGAL_CALL error_glUnmapObjectBufferATI(GLuint buffer)
 
 static void REGAL_CALL error_glPNTrianglesfATI(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPNTrianglesfATI");
+  Internal("error_glPNTrianglesfATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27308,7 +27308,7 @@ static void REGAL_CALL error_glPNTrianglesfATI(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPNTrianglesiATI(GLenum pname, GLint param)
 {
-  ITrace("error_glPNTrianglesiATI");
+  Internal("error_glPNTrianglesiATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27331,7 +27331,7 @@ static void REGAL_CALL error_glPNTrianglesiATI(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glStencilFuncSeparateATI(GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask)
 {
-  ITrace("error_glStencilFuncSeparateATI");
+  Internal("error_glStencilFuncSeparateATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27352,7 +27352,7 @@ static void REGAL_CALL error_glStencilFuncSeparateATI(GLenum frontfunc, GLenum b
 
 static void REGAL_CALL error_glStencilOpSeparateATI(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass)
 {
-  ITrace("error_glStencilOpSeparateATI");
+  Internal("error_glStencilOpSeparateATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27375,7 +27375,7 @@ static void REGAL_CALL error_glStencilOpSeparateATI(GLenum face, GLenum sfail, G
 
 static void REGAL_CALL error_glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset)
 {
-  ITrace("error_glArrayObjectATI");
+  Internal("error_glArrayObjectATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27396,7 +27396,7 @@ static void REGAL_CALL error_glArrayObjectATI(GLenum array, GLint size, GLenum t
 
 static void REGAL_CALL error_glFreeObjectBufferATI(GLuint buffer)
 {
-  ITrace("error_glFreeObjectBufferATI");
+  Internal("error_glFreeObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27417,7 +27417,7 @@ static void REGAL_CALL error_glFreeObjectBufferATI(GLuint buffer)
 
 static void REGAL_CALL error_glGetArrayObjectfvATI(GLenum array, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetArrayObjectfvATI");
+  Internal("error_glGetArrayObjectfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27438,7 +27438,7 @@ static void REGAL_CALL error_glGetArrayObjectfvATI(GLenum array, GLenum pname, G
 
 static void REGAL_CALL error_glGetArrayObjectivATI(GLenum array, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetArrayObjectivATI");
+  Internal("error_glGetArrayObjectivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27459,7 +27459,7 @@ static void REGAL_CALL error_glGetArrayObjectivATI(GLenum array, GLenum pname, G
 
 static void REGAL_CALL error_glGetObjectBufferfvATI(GLuint buffer, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetObjectBufferfvATI");
+  Internal("error_glGetObjectBufferfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27480,7 +27480,7 @@ static void REGAL_CALL error_glGetObjectBufferfvATI(GLuint buffer, GLenum pname,
 
 static void REGAL_CALL error_glGetObjectBufferivATI(GLuint buffer, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetObjectBufferivATI");
+  Internal("error_glGetObjectBufferivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27501,7 +27501,7 @@ static void REGAL_CALL error_glGetObjectBufferivATI(GLuint buffer, GLenum pname,
 
 static void REGAL_CALL error_glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVariantArrayObjectfvATI");
+  Internal("error_glGetVariantArrayObjectfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27522,7 +27522,7 @@ static void REGAL_CALL error_glGetVariantArrayObjectfvATI(GLuint id, GLenum pnam
 
 static void REGAL_CALL error_glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVariantArrayObjectivATI");
+  Internal("error_glGetVariantArrayObjectivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27543,7 +27543,7 @@ static void REGAL_CALL error_glGetVariantArrayObjectivATI(GLuint id, GLenum pnam
 
 static GLboolean REGAL_CALL error_glIsObjectBufferATI(GLuint buffer)
 {
-  ITrace("error_glIsObjectBufferATI");
+  Internal("error_glIsObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27565,7 +27565,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glNewObjectBufferATI(GLsizei size, const GLvoid *pointer, GLenum usage)
 {
-  ITrace("error_glNewObjectBufferATI");
+  Internal("error_glNewObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27587,7 +27587,7 @@ return ret;
 
 static void REGAL_CALL error_glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const GLvoid *pointer, GLenum preserve)
 {
-  ITrace("error_glUpdateObjectBufferATI");
+  Internal("error_glUpdateObjectBufferATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27608,7 +27608,7 @@ static void REGAL_CALL error_glUpdateObjectBufferATI(GLuint buffer, GLuint offse
 
 static void REGAL_CALL error_glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset)
 {
-  ITrace("error_glVariantArrayObjectATI");
+  Internal("error_glVariantArrayObjectATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27631,7 +27631,7 @@ static void REGAL_CALL error_glVariantArrayObjectATI(GLuint id, GLenum type, GLs
 
 static void REGAL_CALL error_glGetVertexAttribArrayObjectfvATI(GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVertexAttribArrayObjectfvATI");
+  Internal("error_glGetVertexAttribArrayObjectfvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27652,7 +27652,7 @@ static void REGAL_CALL error_glGetVertexAttribArrayObjectfvATI(GLuint index, GLe
 
 static void REGAL_CALL error_glGetVertexAttribArrayObjectivATI(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribArrayObjectivATI");
+  Internal("error_glGetVertexAttribArrayObjectivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27673,7 +27673,7 @@ static void REGAL_CALL error_glGetVertexAttribArrayObjectivATI(GLuint index, GLe
 
 static void REGAL_CALL error_glVertexAttribArrayObjectATI(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset)
 {
-  ITrace("error_glVertexAttribArrayObjectATI");
+  Internal("error_glVertexAttribArrayObjectATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27696,7 +27696,7 @@ static void REGAL_CALL error_glVertexAttribArrayObjectATI(GLuint index, GLint si
 
 static void REGAL_CALL error_glClientActiveVertexStreamATI(GLenum stream)
 {
-  ITrace("error_glClientActiveVertexStreamATI");
+  Internal("error_glClientActiveVertexStreamATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27717,7 +27717,7 @@ static void REGAL_CALL error_glClientActiveVertexStreamATI(GLenum stream)
 
 static void REGAL_CALL error_glNormalStream3bATI(GLenum stream, GLbyte x, GLbyte y, GLbyte z)
 {
-  ITrace("error_glNormalStream3bATI");
+  Internal("error_glNormalStream3bATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27738,7 +27738,7 @@ static void REGAL_CALL error_glNormalStream3bATI(GLenum stream, GLbyte x, GLbyte
 
 static void REGAL_CALL error_glNormalStream3bvATI(GLenum stream, const GLbyte *coords)
 {
-  ITrace("error_glNormalStream3bvATI");
+  Internal("error_glNormalStream3bvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27759,7 +27759,7 @@ static void REGAL_CALL error_glNormalStream3bvATI(GLenum stream, const GLbyte *c
 
 static void REGAL_CALL error_glNormalStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glNormalStream3dATI");
+  Internal("error_glNormalStream3dATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27780,7 +27780,7 @@ static void REGAL_CALL error_glNormalStream3dATI(GLenum stream, GLdouble x, GLdo
 
 static void REGAL_CALL error_glNormalStream3dvATI(GLenum stream, const GLdouble *coords)
 {
-  ITrace("error_glNormalStream3dvATI");
+  Internal("error_glNormalStream3dvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27801,7 +27801,7 @@ static void REGAL_CALL error_glNormalStream3dvATI(GLenum stream, const GLdouble 
 
 static void REGAL_CALL error_glNormalStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glNormalStream3fATI");
+  Internal("error_glNormalStream3fATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27822,7 +27822,7 @@ static void REGAL_CALL error_glNormalStream3fATI(GLenum stream, GLfloat x, GLflo
 
 static void REGAL_CALL error_glNormalStream3fvATI(GLenum stream, const GLfloat *coords)
 {
-  ITrace("error_glNormalStream3fvATI");
+  Internal("error_glNormalStream3fvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27843,7 +27843,7 @@ static void REGAL_CALL error_glNormalStream3fvATI(GLenum stream, const GLfloat *
 
 static void REGAL_CALL error_glNormalStream3iATI(GLenum stream, GLint x, GLint y, GLint z)
 {
-  ITrace("error_glNormalStream3iATI");
+  Internal("error_glNormalStream3iATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27864,7 +27864,7 @@ static void REGAL_CALL error_glNormalStream3iATI(GLenum stream, GLint x, GLint y
 
 static void REGAL_CALL error_glNormalStream3ivATI(GLenum stream, const GLint *coords)
 {
-  ITrace("error_glNormalStream3ivATI");
+  Internal("error_glNormalStream3ivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27885,7 +27885,7 @@ static void REGAL_CALL error_glNormalStream3ivATI(GLenum stream, const GLint *co
 
 static void REGAL_CALL error_glNormalStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glNormalStream3sATI");
+  Internal("error_glNormalStream3sATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27906,7 +27906,7 @@ static void REGAL_CALL error_glNormalStream3sATI(GLenum stream, GLshort x, GLsho
 
 static void REGAL_CALL error_glNormalStream3svATI(GLenum stream, const GLshort *coords)
 {
-  ITrace("error_glNormalStream3svATI");
+  Internal("error_glNormalStream3svATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27927,7 +27927,7 @@ static void REGAL_CALL error_glNormalStream3svATI(GLenum stream, const GLshort *
 
 static void REGAL_CALL error_glVertexBlendEnvfATI(GLenum pname, GLfloat param)
 {
-  ITrace("error_glVertexBlendEnvfATI");
+  Internal("error_glVertexBlendEnvfATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27948,7 +27948,7 @@ static void REGAL_CALL error_glVertexBlendEnvfATI(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glVertexBlendEnviATI(GLenum pname, GLint param)
 {
-  ITrace("error_glVertexBlendEnviATI");
+  Internal("error_glVertexBlendEnviATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27969,7 +27969,7 @@ static void REGAL_CALL error_glVertexBlendEnviATI(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glVertexStream1dATI(GLenum stream, GLdouble x)
 {
-  ITrace("error_glVertexStream1dATI");
+  Internal("error_glVertexStream1dATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -27990,7 +27990,7 @@ static void REGAL_CALL error_glVertexStream1dATI(GLenum stream, GLdouble x)
 
 static void REGAL_CALL error_glVertexStream1dvATI(GLenum stream, const GLdouble *coords)
 {
-  ITrace("error_glVertexStream1dvATI");
+  Internal("error_glVertexStream1dvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28011,7 +28011,7 @@ static void REGAL_CALL error_glVertexStream1dvATI(GLenum stream, const GLdouble 
 
 static void REGAL_CALL error_glVertexStream1fATI(GLenum stream, GLfloat x)
 {
-  ITrace("error_glVertexStream1fATI");
+  Internal("error_glVertexStream1fATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28032,7 +28032,7 @@ static void REGAL_CALL error_glVertexStream1fATI(GLenum stream, GLfloat x)
 
 static void REGAL_CALL error_glVertexStream1fvATI(GLenum stream, const GLfloat *coords)
 {
-  ITrace("error_glVertexStream1fvATI");
+  Internal("error_glVertexStream1fvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28053,7 +28053,7 @@ static void REGAL_CALL error_glVertexStream1fvATI(GLenum stream, const GLfloat *
 
 static void REGAL_CALL error_glVertexStream1iATI(GLenum stream, GLint x)
 {
-  ITrace("error_glVertexStream1iATI");
+  Internal("error_glVertexStream1iATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28074,7 +28074,7 @@ static void REGAL_CALL error_glVertexStream1iATI(GLenum stream, GLint x)
 
 static void REGAL_CALL error_glVertexStream1ivATI(GLenum stream, const GLint *coords)
 {
-  ITrace("error_glVertexStream1ivATI");
+  Internal("error_glVertexStream1ivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28095,7 +28095,7 @@ static void REGAL_CALL error_glVertexStream1ivATI(GLenum stream, const GLint *co
 
 static void REGAL_CALL error_glVertexStream1sATI(GLenum stream, GLshort x)
 {
-  ITrace("error_glVertexStream1sATI");
+  Internal("error_glVertexStream1sATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28116,7 +28116,7 @@ static void REGAL_CALL error_glVertexStream1sATI(GLenum stream, GLshort x)
 
 static void REGAL_CALL error_glVertexStream1svATI(GLenum stream, const GLshort *coords)
 {
-  ITrace("error_glVertexStream1svATI");
+  Internal("error_glVertexStream1svATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28137,7 +28137,7 @@ static void REGAL_CALL error_glVertexStream1svATI(GLenum stream, const GLshort *
 
 static void REGAL_CALL error_glVertexStream2dATI(GLenum stream, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexStream2dATI");
+  Internal("error_glVertexStream2dATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28158,7 +28158,7 @@ static void REGAL_CALL error_glVertexStream2dATI(GLenum stream, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexStream2dvATI(GLenum stream, const GLdouble *coords)
 {
-  ITrace("error_glVertexStream2dvATI");
+  Internal("error_glVertexStream2dvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28179,7 +28179,7 @@ static void REGAL_CALL error_glVertexStream2dvATI(GLenum stream, const GLdouble 
 
 static void REGAL_CALL error_glVertexStream2fATI(GLenum stream, GLfloat x, GLfloat y)
 {
-  ITrace("error_glVertexStream2fATI");
+  Internal("error_glVertexStream2fATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28200,7 +28200,7 @@ static void REGAL_CALL error_glVertexStream2fATI(GLenum stream, GLfloat x, GLflo
 
 static void REGAL_CALL error_glVertexStream2fvATI(GLenum stream, const GLfloat *coords)
 {
-  ITrace("error_glVertexStream2fvATI");
+  Internal("error_glVertexStream2fvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28221,7 +28221,7 @@ static void REGAL_CALL error_glVertexStream2fvATI(GLenum stream, const GLfloat *
 
 static void REGAL_CALL error_glVertexStream2iATI(GLenum stream, GLint x, GLint y)
 {
-  ITrace("error_glVertexStream2iATI");
+  Internal("error_glVertexStream2iATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28242,7 +28242,7 @@ static void REGAL_CALL error_glVertexStream2iATI(GLenum stream, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexStream2ivATI(GLenum stream, const GLint *coords)
 {
-  ITrace("error_glVertexStream2ivATI");
+  Internal("error_glVertexStream2ivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28263,7 +28263,7 @@ static void REGAL_CALL error_glVertexStream2ivATI(GLenum stream, const GLint *co
 
 static void REGAL_CALL error_glVertexStream2sATI(GLenum stream, GLshort x, GLshort y)
 {
-  ITrace("error_glVertexStream2sATI");
+  Internal("error_glVertexStream2sATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28284,7 +28284,7 @@ static void REGAL_CALL error_glVertexStream2sATI(GLenum stream, GLshort x, GLsho
 
 static void REGAL_CALL error_glVertexStream2svATI(GLenum stream, const GLshort *coords)
 {
-  ITrace("error_glVertexStream2svATI");
+  Internal("error_glVertexStream2svATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28305,7 +28305,7 @@ static void REGAL_CALL error_glVertexStream2svATI(GLenum stream, const GLshort *
 
 static void REGAL_CALL error_glVertexStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexStream3dATI");
+  Internal("error_glVertexStream3dATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28326,7 +28326,7 @@ static void REGAL_CALL error_glVertexStream3dATI(GLenum stream, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexStream3dvATI(GLenum stream, const GLdouble *coords)
 {
-  ITrace("error_glVertexStream3dvATI");
+  Internal("error_glVertexStream3dvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28347,7 +28347,7 @@ static void REGAL_CALL error_glVertexStream3dvATI(GLenum stream, const GLdouble 
 
 static void REGAL_CALL error_glVertexStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glVertexStream3fATI");
+  Internal("error_glVertexStream3fATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28368,7 +28368,7 @@ static void REGAL_CALL error_glVertexStream3fATI(GLenum stream, GLfloat x, GLflo
 
 static void REGAL_CALL error_glVertexStream3fvATI(GLenum stream, const GLfloat *coords)
 {
-  ITrace("error_glVertexStream3fvATI");
+  Internal("error_glVertexStream3fvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28389,7 +28389,7 @@ static void REGAL_CALL error_glVertexStream3fvATI(GLenum stream, const GLfloat *
 
 static void REGAL_CALL error_glVertexStream3iATI(GLenum stream, GLint x, GLint y, GLint z)
 {
-  ITrace("error_glVertexStream3iATI");
+  Internal("error_glVertexStream3iATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28410,7 +28410,7 @@ static void REGAL_CALL error_glVertexStream3iATI(GLenum stream, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexStream3ivATI(GLenum stream, const GLint *coords)
 {
-  ITrace("error_glVertexStream3ivATI");
+  Internal("error_glVertexStream3ivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28431,7 +28431,7 @@ static void REGAL_CALL error_glVertexStream3ivATI(GLenum stream, const GLint *co
 
 static void REGAL_CALL error_glVertexStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glVertexStream3sATI");
+  Internal("error_glVertexStream3sATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28452,7 +28452,7 @@ static void REGAL_CALL error_glVertexStream3sATI(GLenum stream, GLshort x, GLsho
 
 static void REGAL_CALL error_glVertexStream3svATI(GLenum stream, const GLshort *coords)
 {
-  ITrace("error_glVertexStream3svATI");
+  Internal("error_glVertexStream3svATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28473,7 +28473,7 @@ static void REGAL_CALL error_glVertexStream3svATI(GLenum stream, const GLshort *
 
 static void REGAL_CALL error_glVertexStream4dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexStream4dATI");
+  Internal("error_glVertexStream4dATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28494,7 +28494,7 @@ static void REGAL_CALL error_glVertexStream4dATI(GLenum stream, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexStream4dvATI(GLenum stream, const GLdouble *coords)
 {
-  ITrace("error_glVertexStream4dvATI");
+  Internal("error_glVertexStream4dvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28515,7 +28515,7 @@ static void REGAL_CALL error_glVertexStream4dvATI(GLenum stream, const GLdouble 
 
 static void REGAL_CALL error_glVertexStream4fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glVertexStream4fATI");
+  Internal("error_glVertexStream4fATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28536,7 +28536,7 @@ static void REGAL_CALL error_glVertexStream4fATI(GLenum stream, GLfloat x, GLflo
 
 static void REGAL_CALL error_glVertexStream4fvATI(GLenum stream, const GLfloat *coords)
 {
-  ITrace("error_glVertexStream4fvATI");
+  Internal("error_glVertexStream4fvATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28557,7 +28557,7 @@ static void REGAL_CALL error_glVertexStream4fvATI(GLenum stream, const GLfloat *
 
 static void REGAL_CALL error_glVertexStream4iATI(GLenum stream, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glVertexStream4iATI");
+  Internal("error_glVertexStream4iATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28578,7 +28578,7 @@ static void REGAL_CALL error_glVertexStream4iATI(GLenum stream, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexStream4ivATI(GLenum stream, const GLint *coords)
 {
-  ITrace("error_glVertexStream4ivATI");
+  Internal("error_glVertexStream4ivATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28599,7 +28599,7 @@ static void REGAL_CALL error_glVertexStream4ivATI(GLenum stream, const GLint *co
 
 static void REGAL_CALL error_glVertexStream4sATI(GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glVertexStream4sATI");
+  Internal("error_glVertexStream4sATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28620,7 +28620,7 @@ static void REGAL_CALL error_glVertexStream4sATI(GLenum stream, GLshort x, GLsho
 
 static void REGAL_CALL error_glVertexStream4svATI(GLenum stream, const GLshort *coords)
 {
-  ITrace("error_glVertexStream4svATI");
+  Internal("error_glVertexStream4svATI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28643,7 +28643,7 @@ static void REGAL_CALL error_glVertexStream4svATI(GLenum stream, const GLshort *
 
 static GLint REGAL_CALL error_glGetUniformBufferSizeEXT(GLuint program, GLint location)
 {
-  ITrace("error_glGetUniformBufferSizeEXT");
+  Internal("error_glGetUniformBufferSizeEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28665,7 +28665,7 @@ return ret;
 
 static GLintptr REGAL_CALL error_glGetUniformOffsetEXT(GLuint program, GLint location)
 {
-  ITrace("error_glGetUniformOffsetEXT");
+  Internal("error_glGetUniformOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28687,7 +28687,7 @@ return ret;
 
 static void REGAL_CALL error_glUniformBufferEXT(GLuint program, GLint location, GLuint buffer)
 {
-  ITrace("error_glUniformBufferEXT");
+  Internal("error_glUniformBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28710,7 +28710,7 @@ static void REGAL_CALL error_glUniformBufferEXT(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glBlendColorEXT(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  ITrace("error_glBlendColorEXT");
+  Internal("error_glBlendColorEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28733,7 +28733,7 @@ static void REGAL_CALL error_glBlendColorEXT(GLclampf red, GLclampf green, GLcla
 
 static void REGAL_CALL error_glBlendEquationSeparateEXT(GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("error_glBlendEquationSeparateEXT");
+  Internal("error_glBlendEquationSeparateEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28756,7 +28756,7 @@ static void REGAL_CALL error_glBlendEquationSeparateEXT(GLenum modeRGB, GLenum m
 
 static void REGAL_CALL error_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
-  ITrace("error_glBlendFuncSeparateEXT");
+  Internal("error_glBlendFuncSeparateEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28779,7 +28779,7 @@ static void REGAL_CALL error_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum df
 
 static void REGAL_CALL error_glBlendEquationEXT(GLenum mode)
 {
-  ITrace("error_glBlendEquationEXT");
+  Internal("error_glBlendEquationEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28802,7 +28802,7 @@ static void REGAL_CALL error_glBlendEquationEXT(GLenum mode)
 
 static void REGAL_CALL error_glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *table)
 {
-  ITrace("error_glColorSubTableEXT");
+  Internal("error_glColorSubTableEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28823,7 +28823,7 @@ static void REGAL_CALL error_glColorSubTableEXT(GLenum target, GLsizei start, GL
 
 static void REGAL_CALL error_glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyColorSubTableEXT");
+  Internal("error_glCopyColorSubTableEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28846,7 +28846,7 @@ static void REGAL_CALL error_glCopyColorSubTableEXT(GLenum target, GLsizei start
 
 static void REGAL_CALL error_glLockArraysEXT(GLint first, GLsizei count)
 {
-  ITrace("error_glLockArraysEXT");
+  Internal("error_glLockArraysEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28867,7 +28867,7 @@ static void REGAL_CALL error_glLockArraysEXT(GLint first, GLsizei count)
 
 static void REGAL_CALL error_glUnlockArraysEXT(void)
 {
-  ITrace("error_glUnlockArraysEXT");
+  Internal("error_glUnlockArraysEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28890,7 +28890,7 @@ static void REGAL_CALL error_glUnlockArraysEXT(void)
 
 static void REGAL_CALL error_glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image)
 {
-  ITrace("error_glConvolutionFilter1DEXT");
+  Internal("error_glConvolutionFilter1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28911,7 +28911,7 @@ static void REGAL_CALL error_glConvolutionFilter1DEXT(GLenum target, GLenum inte
 
 static void REGAL_CALL error_glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
 {
-  ITrace("error_glConvolutionFilter2DEXT");
+  Internal("error_glConvolutionFilter2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28932,7 +28932,7 @@ static void REGAL_CALL error_glConvolutionFilter2DEXT(GLenum target, GLenum inte
 
 static void REGAL_CALL error_glConvolutionParameterfEXT(GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glConvolutionParameterfEXT");
+  Internal("error_glConvolutionParameterfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28953,7 +28953,7 @@ static void REGAL_CALL error_glConvolutionParameterfEXT(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glConvolutionParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glConvolutionParameterfvEXT");
+  Internal("error_glConvolutionParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28974,7 +28974,7 @@ static void REGAL_CALL error_glConvolutionParameterfvEXT(GLenum target, GLenum p
 
 static void REGAL_CALL error_glConvolutionParameteriEXT(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glConvolutionParameteriEXT");
+  Internal("error_glConvolutionParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -28995,7 +28995,7 @@ static void REGAL_CALL error_glConvolutionParameteriEXT(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glConvolutionParameterivEXT(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glConvolutionParameterivEXT");
+  Internal("error_glConvolutionParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29016,7 +29016,7 @@ static void REGAL_CALL error_glConvolutionParameterivEXT(GLenum target, GLenum p
 
 static void REGAL_CALL error_glCopyConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyConvolutionFilter1DEXT");
+  Internal("error_glCopyConvolutionFilter1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29037,7 +29037,7 @@ static void REGAL_CALL error_glCopyConvolutionFilter1DEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glCopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyConvolutionFilter2DEXT");
+  Internal("error_glCopyConvolutionFilter2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29058,7 +29058,7 @@ static void REGAL_CALL error_glCopyConvolutionFilter2DEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glGetConvolutionFilterEXT(GLenum target, GLenum format, GLenum type, GLvoid *image)
 {
-  ITrace("error_glGetConvolutionFilterEXT");
+  Internal("error_glGetConvolutionFilterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29079,7 +29079,7 @@ static void REGAL_CALL error_glGetConvolutionFilterEXT(GLenum target, GLenum for
 
 static void REGAL_CALL error_glGetConvolutionParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetConvolutionParameterfvEXT");
+  Internal("error_glGetConvolutionParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29100,7 +29100,7 @@ static void REGAL_CALL error_glGetConvolutionParameterfvEXT(GLenum target, GLenu
 
 static void REGAL_CALL error_glGetConvolutionParameterivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetConvolutionParameterivEXT");
+  Internal("error_glGetConvolutionParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29121,7 +29121,7 @@ static void REGAL_CALL error_glGetConvolutionParameterivEXT(GLenum target, GLenu
 
 static void REGAL_CALL error_glGetSeparableFilterEXT(GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span)
 {
-  ITrace("error_glGetSeparableFilterEXT");
+  Internal("error_glGetSeparableFilterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29142,7 +29142,7 @@ static void REGAL_CALL error_glGetSeparableFilterEXT(GLenum target, GLenum forma
 
 static void REGAL_CALL error_glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
 {
-  ITrace("error_glSeparableFilter2DEXT");
+  Internal("error_glSeparableFilter2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29165,7 +29165,7 @@ static void REGAL_CALL error_glSeparableFilter2DEXT(GLenum target, GLenum intern
 
 static void REGAL_CALL error_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz)
 {
-  ITrace("error_glBinormal3bEXT");
+  Internal("error_glBinormal3bEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29186,7 +29186,7 @@ static void REGAL_CALL error_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz)
 
 static void REGAL_CALL error_glBinormal3bvEXT(const GLbyte *v)
 {
-  ITrace("error_glBinormal3bvEXT");
+  Internal("error_glBinormal3bvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29207,7 +29207,7 @@ static void REGAL_CALL error_glBinormal3bvEXT(const GLbyte *v)
 
 static void REGAL_CALL error_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble bz)
 {
-  ITrace("error_glBinormal3dEXT");
+  Internal("error_glBinormal3dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29228,7 +29228,7 @@ static void REGAL_CALL error_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble 
 
 static void REGAL_CALL error_glBinormal3dvEXT(const GLdouble *v)
 {
-  ITrace("error_glBinormal3dvEXT");
+  Internal("error_glBinormal3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29249,7 +29249,7 @@ static void REGAL_CALL error_glBinormal3dvEXT(const GLdouble *v)
 
 static void REGAL_CALL error_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz)
 {
-  ITrace("error_glBinormal3fEXT");
+  Internal("error_glBinormal3fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29270,7 +29270,7 @@ static void REGAL_CALL error_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz)
 
 static void REGAL_CALL error_glBinormal3fvEXT(const GLfloat *v)
 {
-  ITrace("error_glBinormal3fvEXT");
+  Internal("error_glBinormal3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29291,7 +29291,7 @@ static void REGAL_CALL error_glBinormal3fvEXT(const GLfloat *v)
 
 static void REGAL_CALL error_glBinormal3iEXT(GLint bx, GLint by, GLint bz)
 {
-  ITrace("error_glBinormal3iEXT");
+  Internal("error_glBinormal3iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29312,7 +29312,7 @@ static void REGAL_CALL error_glBinormal3iEXT(GLint bx, GLint by, GLint bz)
 
 static void REGAL_CALL error_glBinormal3ivEXT(const GLint *v)
 {
-  ITrace("error_glBinormal3ivEXT");
+  Internal("error_glBinormal3ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29333,7 +29333,7 @@ static void REGAL_CALL error_glBinormal3ivEXT(const GLint *v)
 
 static void REGAL_CALL error_glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz)
 {
-  ITrace("error_glBinormal3sEXT");
+  Internal("error_glBinormal3sEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29354,7 +29354,7 @@ static void REGAL_CALL error_glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz)
 
 static void REGAL_CALL error_glBinormal3svEXT(const GLshort *v)
 {
-  ITrace("error_glBinormal3svEXT");
+  Internal("error_glBinormal3svEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29375,7 +29375,7 @@ static void REGAL_CALL error_glBinormal3svEXT(const GLshort *v)
 
 static void REGAL_CALL error_glBinormalPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glBinormalPointerEXT");
+  Internal("error_glBinormalPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29396,7 +29396,7 @@ static void REGAL_CALL error_glBinormalPointerEXT(GLenum type, GLsizei stride, c
 
 static void REGAL_CALL error_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz)
 {
-  ITrace("error_glTangent3bEXT");
+  Internal("error_glTangent3bEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29417,7 +29417,7 @@ static void REGAL_CALL error_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz)
 
 static void REGAL_CALL error_glTangent3bvEXT(const GLbyte *v)
 {
-  ITrace("error_glTangent3bvEXT");
+  Internal("error_glTangent3bvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29438,7 +29438,7 @@ static void REGAL_CALL error_glTangent3bvEXT(const GLbyte *v)
 
 static void REGAL_CALL error_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble tz)
 {
-  ITrace("error_glTangent3dEXT");
+  Internal("error_glTangent3dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29459,7 +29459,7 @@ static void REGAL_CALL error_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble t
 
 static void REGAL_CALL error_glTangent3dvEXT(const GLdouble *v)
 {
-  ITrace("error_glTangent3dvEXT");
+  Internal("error_glTangent3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29480,7 +29480,7 @@ static void REGAL_CALL error_glTangent3dvEXT(const GLdouble *v)
 
 static void REGAL_CALL error_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz)
 {
-  ITrace("error_glTangent3fEXT");
+  Internal("error_glTangent3fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29501,7 +29501,7 @@ static void REGAL_CALL error_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz)
 
 static void REGAL_CALL error_glTangent3fvEXT(const GLfloat *v)
 {
-  ITrace("error_glTangent3fvEXT");
+  Internal("error_glTangent3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29522,7 +29522,7 @@ static void REGAL_CALL error_glTangent3fvEXT(const GLfloat *v)
 
 static void REGAL_CALL error_glTangent3iEXT(GLint tx, GLint ty, GLint tz)
 {
-  ITrace("error_glTangent3iEXT");
+  Internal("error_glTangent3iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29543,7 +29543,7 @@ static void REGAL_CALL error_glTangent3iEXT(GLint tx, GLint ty, GLint tz)
 
 static void REGAL_CALL error_glTangent3ivEXT(const GLint *v)
 {
-  ITrace("error_glTangent3ivEXT");
+  Internal("error_glTangent3ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29564,7 +29564,7 @@ static void REGAL_CALL error_glTangent3ivEXT(const GLint *v)
 
 static void REGAL_CALL error_glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz)
 {
-  ITrace("error_glTangent3sEXT");
+  Internal("error_glTangent3sEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29585,7 +29585,7 @@ static void REGAL_CALL error_glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz)
 
 static void REGAL_CALL error_glTangent3svEXT(const GLshort *v)
 {
-  ITrace("error_glTangent3svEXT");
+  Internal("error_glTangent3svEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29606,7 +29606,7 @@ static void REGAL_CALL error_glTangent3svEXT(const GLshort *v)
 
 static void REGAL_CALL error_glTangentPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glTangentPointerEXT");
+  Internal("error_glTangentPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29629,7 +29629,7 @@ static void REGAL_CALL error_glTangentPointerEXT(GLenum type, GLsizei stride, co
 
 static void REGAL_CALL error_glCopyTexImage1DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  ITrace("error_glCopyTexImage1DEXT");
+  Internal("error_glCopyTexImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29650,7 +29650,7 @@ static void REGAL_CALL error_glCopyTexImage1DEXT(GLenum target, GLint level, GLe
 
 static void REGAL_CALL error_glCopyTexImage2DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  ITrace("error_glCopyTexImage2DEXT");
+  Internal("error_glCopyTexImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29671,7 +29671,7 @@ static void REGAL_CALL error_glCopyTexImage2DEXT(GLenum target, GLint level, GLe
 
 static void REGAL_CALL error_glCopyTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyTexSubImage1DEXT");
+  Internal("error_glCopyTexSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29692,7 +29692,7 @@ static void REGAL_CALL error_glCopyTexSubImage1DEXT(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCopyTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTexSubImage2DEXT");
+  Internal("error_glCopyTexSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29713,7 +29713,7 @@ static void REGAL_CALL error_glCopyTexSubImage2DEXT(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTexSubImage3DEXT");
+  Internal("error_glCopyTexSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29736,7 +29736,7 @@ static void REGAL_CALL error_glCopyTexSubImage3DEXT(GLenum target, GLint level, 
 
 static void REGAL_CALL error_glCullParameterdvEXT(GLenum pname, GLdouble *params)
 {
-  ITrace("error_glCullParameterdvEXT");
+  Internal("error_glCullParameterdvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29757,7 +29757,7 @@ static void REGAL_CALL error_glCullParameterdvEXT(GLenum pname, GLdouble *params
 
 static void REGAL_CALL error_glCullParameterfvEXT(GLenum pname, GLfloat *params)
 {
-  ITrace("error_glCullParameterfvEXT");
+  Internal("error_glCullParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29780,7 +29780,7 @@ static void REGAL_CALL error_glCullParameterfvEXT(GLenum pname, GLfloat *params)
 
 static void REGAL_CALL error_glInsertEventMarkerEXT(GLsizei length, const GLchar *marker)
 {
-  ITrace("error_glInsertEventMarkerEXT");
+  Internal("error_glInsertEventMarkerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29801,7 +29801,7 @@ static void REGAL_CALL error_glInsertEventMarkerEXT(GLsizei length, const GLchar
 
 static void REGAL_CALL error_glPopGroupMarkerEXT(void)
 {
-  ITrace("error_glPopGroupMarkerEXT");
+  Internal("error_glPopGroupMarkerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29822,7 +29822,7 @@ static void REGAL_CALL error_glPopGroupMarkerEXT(void)
 
 static void REGAL_CALL error_glPushGroupMarkerEXT(GLsizei length, const GLchar *marker)
 {
-  ITrace("error_glPushGroupMarkerEXT");
+  Internal("error_glPushGroupMarkerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29845,7 +29845,7 @@ static void REGAL_CALL error_glPushGroupMarkerEXT(GLsizei length, const GLchar *
 
 static void REGAL_CALL error_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax)
 {
-  ITrace("error_glDepthBoundsEXT");
+  Internal("error_glDepthBoundsEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29868,7 +29868,7 @@ static void REGAL_CALL error_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax)
 
 static void REGAL_CALL error_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture)
 {
-  ITrace("error_glBindMultiTextureEXT");
+  Internal("error_glBindMultiTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29889,7 +29889,7 @@ static void REGAL_CALL error_glBindMultiTextureEXT(GLenum texunit, GLenum target
 
 static GLenum REGAL_CALL error_glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
 {
-  ITrace("error_glCheckNamedFramebufferStatusEXT");
+  Internal("error_glCheckNamedFramebufferStatusEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29911,7 +29911,7 @@ return ret;
 
 static void REGAL_CALL error_glClientAttribDefaultEXT(GLbitfield mask)
 {
-  ITrace("error_glClientAttribDefaultEXT");
+  Internal("error_glClientAttribDefaultEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29932,7 +29932,7 @@ static void REGAL_CALL error_glClientAttribDefaultEXT(GLbitfield mask)
 
 static void REGAL_CALL error_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedMultiTexImage1DEXT");
+  Internal("error_glCompressedMultiTexImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29953,7 +29953,7 @@ static void REGAL_CALL error_glCompressedMultiTexImage1DEXT(GLenum texunit, GLen
 
 static void REGAL_CALL error_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedMultiTexImage2DEXT");
+  Internal("error_glCompressedMultiTexImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29974,7 +29974,7 @@ static void REGAL_CALL error_glCompressedMultiTexImage2DEXT(GLenum texunit, GLen
 
 static void REGAL_CALL error_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedMultiTexImage3DEXT");
+  Internal("error_glCompressedMultiTexImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -29995,7 +29995,7 @@ static void REGAL_CALL error_glCompressedMultiTexImage3DEXT(GLenum texunit, GLen
 
 static void REGAL_CALL error_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedMultiTexSubImage1DEXT");
+  Internal("error_glCompressedMultiTexSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30016,7 +30016,7 @@ static void REGAL_CALL error_glCompressedMultiTexSubImage1DEXT(GLenum texunit, G
 
 static void REGAL_CALL error_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedMultiTexSubImage2DEXT");
+  Internal("error_glCompressedMultiTexSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30037,7 +30037,7 @@ static void REGAL_CALL error_glCompressedMultiTexSubImage2DEXT(GLenum texunit, G
 
 static void REGAL_CALL error_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("error_glCompressedMultiTexSubImage3DEXT");
+  Internal("error_glCompressedMultiTexSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30058,7 +30058,7 @@ static void REGAL_CALL error_glCompressedMultiTexSubImage3DEXT(GLenum texunit, G
 
 static void REGAL_CALL error_glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureImage1DEXT");
+  Internal("error_glCompressedTextureImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30079,7 +30079,7 @@ static void REGAL_CALL error_glCompressedTextureImage1DEXT(GLuint texture, GLenu
 
 static void REGAL_CALL error_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureImage2DEXT");
+  Internal("error_glCompressedTextureImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30100,7 +30100,7 @@ static void REGAL_CALL error_glCompressedTextureImage2DEXT(GLuint texture, GLenu
 
 static void REGAL_CALL error_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureImage3DEXT");
+  Internal("error_glCompressedTextureImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30121,7 +30121,7 @@ static void REGAL_CALL error_glCompressedTextureImage3DEXT(GLuint texture, GLenu
 
 static void REGAL_CALL error_glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureSubImage1DEXT");
+  Internal("error_glCompressedTextureSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30142,7 +30142,7 @@ static void REGAL_CALL error_glCompressedTextureSubImage1DEXT(GLuint texture, GL
 
 static void REGAL_CALL error_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureSubImage2DEXT");
+  Internal("error_glCompressedTextureSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30163,7 +30163,7 @@ static void REGAL_CALL error_glCompressedTextureSubImage2DEXT(GLuint texture, GL
 
 static void REGAL_CALL error_glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  ITrace("error_glCompressedTextureSubImage3DEXT");
+  Internal("error_glCompressedTextureSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30184,7 +30184,7 @@ static void REGAL_CALL error_glCompressedTextureSubImage3DEXT(GLuint texture, GL
 
 static void REGAL_CALL error_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  ITrace("error_glCopyMultiTexImage1DEXT");
+  Internal("error_glCopyMultiTexImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30205,7 +30205,7 @@ static void REGAL_CALL error_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum tar
 
 static void REGAL_CALL error_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  ITrace("error_glCopyMultiTexImage2DEXT");
+  Internal("error_glCopyMultiTexImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30226,7 +30226,7 @@ static void REGAL_CALL error_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum tar
 
 static void REGAL_CALL error_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyMultiTexSubImage1DEXT");
+  Internal("error_glCopyMultiTexSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30247,7 +30247,7 @@ static void REGAL_CALL error_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyMultiTexSubImage2DEXT");
+  Internal("error_glCopyMultiTexSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30268,7 +30268,7 @@ static void REGAL_CALL error_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyMultiTexSubImage3DEXT");
+  Internal("error_glCopyMultiTexSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30289,7 +30289,7 @@ static void REGAL_CALL error_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  ITrace("error_glCopyTextureImage1DEXT");
+  Internal("error_glCopyTextureImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30310,7 +30310,7 @@ static void REGAL_CALL error_glCopyTextureImage1DEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL error_glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  ITrace("error_glCopyTextureImage2DEXT");
+  Internal("error_glCopyTextureImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30331,7 +30331,7 @@ static void REGAL_CALL error_glCopyTextureImage2DEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL error_glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyTextureSubImage1DEXT");
+  Internal("error_glCopyTextureSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30352,7 +30352,7 @@ static void REGAL_CALL error_glCopyTextureSubImage1DEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTextureSubImage2DEXT");
+  Internal("error_glCopyTextureSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30373,7 +30373,7 @@ static void REGAL_CALL error_glCopyTextureSubImage2DEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glCopyTextureSubImage3DEXT");
+  Internal("error_glCopyTextureSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30394,7 +30394,7 @@ static void REGAL_CALL error_glCopyTextureSubImage3DEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glDisableClientStateIndexedEXT(GLenum array, GLuint index)
 {
-  ITrace("error_glDisableClientStateIndexedEXT");
+  Internal("error_glDisableClientStateIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30415,7 +30415,7 @@ static void REGAL_CALL error_glDisableClientStateIndexedEXT(GLenum array, GLuint
 
 static void REGAL_CALL error_glDisableClientStateiEXT(GLenum array, GLuint index)
 {
-  ITrace("error_glDisableClientStateiEXT");
+  Internal("error_glDisableClientStateiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30436,7 +30436,7 @@ static void REGAL_CALL error_glDisableClientStateiEXT(GLenum array, GLuint index
 
 static void REGAL_CALL error_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
 {
-  ITrace("error_glDisableVertexArrayAttribEXT");
+  Internal("error_glDisableVertexArrayAttribEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30457,7 +30457,7 @@ static void REGAL_CALL error_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum 
 
 static void REGAL_CALL error_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
 {
-  ITrace("error_glDisableVertexArrayEXT");
+  Internal("error_glDisableVertexArrayEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30478,7 +30478,7 @@ static void REGAL_CALL error_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
 
 static void REGAL_CALL error_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
-  ITrace("error_glEnableClientStateIndexedEXT");
+  Internal("error_glEnableClientStateIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30499,7 +30499,7 @@ static void REGAL_CALL error_glEnableClientStateIndexedEXT(GLenum array, GLuint 
 
 static void REGAL_CALL error_glEnableClientStateiEXT(GLenum array, GLuint index)
 {
-  ITrace("error_glEnableClientStateiEXT");
+  Internal("error_glEnableClientStateiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30520,7 +30520,7 @@ static void REGAL_CALL error_glEnableClientStateiEXT(GLenum array, GLuint index)
 
 static void REGAL_CALL error_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
 {
-  ITrace("error_glEnableVertexArrayAttribEXT");
+  Internal("error_glEnableVertexArrayAttribEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30541,7 +30541,7 @@ static void REGAL_CALL error_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum a
 
 static void REGAL_CALL error_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
 {
-  ITrace("error_glEnableVertexArrayEXT");
+  Internal("error_glEnableVertexArrayEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30562,7 +30562,7 @@ static void REGAL_CALL error_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
 
 static void REGAL_CALL error_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
-  ITrace("error_glFlushMappedNamedBufferRangeEXT");
+  Internal("error_glFlushMappedNamedBufferRangeEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30583,7 +30583,7 @@ static void REGAL_CALL error_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLi
 
 static void REGAL_CALL error_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode)
 {
-  ITrace("error_glFramebufferDrawBufferEXT");
+  Internal("error_glFramebufferDrawBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30604,7 +30604,7 @@ static void REGAL_CALL error_glFramebufferDrawBufferEXT(GLuint framebuffer, GLen
 
 static void REGAL_CALL error_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum *bufs)
 {
-  ITrace("error_glFramebufferDrawBuffersEXT");
+  Internal("error_glFramebufferDrawBuffersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30625,7 +30625,7 @@ static void REGAL_CALL error_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLs
 
 static void REGAL_CALL error_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode)
 {
-  ITrace("error_glFramebufferReadBufferEXT");
+  Internal("error_glFramebufferReadBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30646,7 +30646,7 @@ static void REGAL_CALL error_glFramebufferReadBufferEXT(GLuint framebuffer, GLen
 
 static void REGAL_CALL error_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target)
 {
-  ITrace("error_glGenerateMultiTexMipmapEXT");
+  Internal("error_glGenerateMultiTexMipmapEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30667,7 +30667,7 @@ static void REGAL_CALL error_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glGenerateTextureMipmapEXT(GLuint texture, GLenum target)
 {
-  ITrace("error_glGenerateTextureMipmapEXT");
+  Internal("error_glGenerateTextureMipmapEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30688,7 +30688,7 @@ static void REGAL_CALL error_glGenerateTextureMipmapEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, GLvoid *img)
 {
-  ITrace("error_glGetCompressedMultiTexImageEXT");
+  Internal("error_glGetCompressedMultiTexImageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30709,7 +30709,7 @@ static void REGAL_CALL error_glGetCompressedMultiTexImageEXT(GLenum texunit, GLe
 
 static void REGAL_CALL error_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, GLvoid *img)
 {
-  ITrace("error_glGetCompressedTextureImageEXT");
+  Internal("error_glGetCompressedTextureImageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30730,7 +30730,7 @@ static void REGAL_CALL error_glGetCompressedTextureImageEXT(GLuint texture, GLen
 
 static void REGAL_CALL error_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble *data)
 {
-  ITrace("error_glGetDoubleIndexedvEXT");
+  Internal("error_glGetDoubleIndexedvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30751,7 +30751,7 @@ static void REGAL_CALL error_glGetDoubleIndexedvEXT(GLenum target, GLuint index,
 
 static void REGAL_CALL error_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
 {
-  ITrace("error_glGetDoublei_vEXT");
+  Internal("error_glGetDoublei_vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30772,7 +30772,7 @@ static void REGAL_CALL error_glGetDoublei_vEXT(GLenum target, GLuint index, GLdo
 
 static void REGAL_CALL error_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
-  ITrace("error_glGetFloatIndexedvEXT");
+  Internal("error_glGetFloatIndexedvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30793,7 +30793,7 @@ static void REGAL_CALL error_glGetFloatIndexedvEXT(GLenum target, GLuint index, 
 
 static void REGAL_CALL error_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
 {
-  ITrace("error_glGetFloati_vEXT");
+  Internal("error_glGetFloati_vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30814,7 +30814,7 @@ static void REGAL_CALL error_glGetFloati_vEXT(GLenum target, GLuint index, GLflo
 
 static void REGAL_CALL error_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFramebufferParameterivEXT");
+  Internal("error_glGetFramebufferParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30835,7 +30835,7 @@ static void REGAL_CALL error_glGetFramebufferParameterivEXT(GLuint framebuffer, 
 
 static void REGAL_CALL error_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMultiTexEnvfvEXT");
+  Internal("error_glGetMultiTexEnvfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30856,7 +30856,7 @@ static void REGAL_CALL error_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL error_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMultiTexEnvivEXT");
+  Internal("error_glGetMultiTexEnvivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30877,7 +30877,7 @@ static void REGAL_CALL error_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL error_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetMultiTexGendvEXT");
+  Internal("error_glGetMultiTexGendvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30898,7 +30898,7 @@ static void REGAL_CALL error_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord,
 
 static void REGAL_CALL error_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMultiTexGenfvEXT");
+  Internal("error_glGetMultiTexGenfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30919,7 +30919,7 @@ static void REGAL_CALL error_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord,
 
 static void REGAL_CALL error_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMultiTexGenivEXT");
+  Internal("error_glGetMultiTexGenivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30940,7 +30940,7 @@ static void REGAL_CALL error_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord,
 
 static void REGAL_CALL error_glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("error_glGetMultiTexImageEXT");
+  Internal("error_glGetMultiTexImageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30961,7 +30961,7 @@ static void REGAL_CALL error_glGetMultiTexImageEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL error_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMultiTexLevelParameterfvEXT");
+  Internal("error_glGetMultiTexLevelParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -30982,7 +30982,7 @@ static void REGAL_CALL error_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GL
 
 static void REGAL_CALL error_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMultiTexLevelParameterivEXT");
+  Internal("error_glGetMultiTexLevelParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31003,7 +31003,7 @@ static void REGAL_CALL error_glGetMultiTexLevelParameterivEXT(GLenum texunit, GL
 
 static void REGAL_CALL error_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMultiTexParameterIivEXT");
+  Internal("error_glGetMultiTexParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31024,7 +31024,7 @@ static void REGAL_CALL error_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum
 
 static void REGAL_CALL error_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetMultiTexParameterIuivEXT");
+  Internal("error_glGetMultiTexParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31045,7 +31045,7 @@ static void REGAL_CALL error_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenu
 
 static void REGAL_CALL error_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMultiTexParameterfvEXT");
+  Internal("error_glGetMultiTexParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31066,7 +31066,7 @@ static void REGAL_CALL error_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMultiTexParameterivEXT");
+  Internal("error_glGetMultiTexParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31087,7 +31087,7 @@ static void REGAL_CALL error_glGetMultiTexParameterivEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL error_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedBufferParameterivEXT");
+  Internal("error_glGetNamedBufferParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31108,7 +31108,7 @@ static void REGAL_CALL error_glGetNamedBufferParameterivEXT(GLuint buffer, GLenu
 
 static void REGAL_CALL error_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetNamedBufferPointervEXT");
+  Internal("error_glGetNamedBufferPointervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31129,7 +31129,7 @@ static void REGAL_CALL error_glGetNamedBufferPointervEXT(GLuint buffer, GLenum p
 
 static void REGAL_CALL error_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  ITrace("error_glGetNamedBufferSubDataEXT");
+  Internal("error_glGetNamedBufferSubDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31150,7 +31150,7 @@ static void REGAL_CALL error_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr 
 
 static void REGAL_CALL error_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedFramebufferAttachmentParameterivEXT");
+  Internal("error_glGetNamedFramebufferAttachmentParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31171,7 +31171,7 @@ static void REGAL_CALL error_glGetNamedFramebufferAttachmentParameterivEXT(GLuin
 
 static void REGAL_CALL error_glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint *params)
 {
-  ITrace("error_glGetNamedProgramLocalParameterIivEXT");
+  Internal("error_glGetNamedProgramLocalParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31192,7 +31192,7 @@ static void REGAL_CALL error_glGetNamedProgramLocalParameterIivEXT(GLuint progra
 
 static void REGAL_CALL error_glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint *params)
 {
-  ITrace("error_glGetNamedProgramLocalParameterIuivEXT");
+  Internal("error_glGetNamedProgramLocalParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31213,7 +31213,7 @@ static void REGAL_CALL error_glGetNamedProgramLocalParameterIuivEXT(GLuint progr
 
 static void REGAL_CALL error_glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble *params)
 {
-  ITrace("error_glGetNamedProgramLocalParameterdvEXT");
+  Internal("error_glGetNamedProgramLocalParameterdvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31234,7 +31234,7 @@ static void REGAL_CALL error_glGetNamedProgramLocalParameterdvEXT(GLuint program
 
 static void REGAL_CALL error_glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat *params)
 {
-  ITrace("error_glGetNamedProgramLocalParameterfvEXT");
+  Internal("error_glGetNamedProgramLocalParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31255,7 +31255,7 @@ static void REGAL_CALL error_glGetNamedProgramLocalParameterfvEXT(GLuint program
 
 static void REGAL_CALL error_glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, GLvoid *string)
 {
-  ITrace("error_glGetNamedProgramStringEXT");
+  Internal("error_glGetNamedProgramStringEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31276,7 +31276,7 @@ static void REGAL_CALL error_glGetNamedProgramStringEXT(GLuint program, GLenum t
 
 static void REGAL_CALL error_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedProgramivEXT");
+  Internal("error_glGetNamedProgramivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31297,7 +31297,7 @@ static void REGAL_CALL error_glGetNamedProgramivEXT(GLuint program, GLenum targe
 
 static void REGAL_CALL error_glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetNamedRenderbufferParameterivEXT");
+  Internal("error_glGetNamedRenderbufferParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31318,7 +31318,7 @@ static void REGAL_CALL error_glGetNamedRenderbufferParameterivEXT(GLuint renderb
 
 static void REGAL_CALL error_glGetPointerIndexedvEXT(GLenum target, GLuint index, GLvoid **data)
 {
-  ITrace("error_glGetPointerIndexedvEXT");
+  Internal("error_glGetPointerIndexedvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31339,7 +31339,7 @@ static void REGAL_CALL error_glGetPointerIndexedvEXT(GLenum target, GLuint index
 
 static void REGAL_CALL error_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("error_glGetTextureImageEXT");
+  Internal("error_glGetTextureImageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31360,7 +31360,7 @@ static void REGAL_CALL error_glGetTextureImageEXT(GLuint texture, GLenum target,
 
 static void REGAL_CALL error_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTextureLevelParameterfvEXT");
+  Internal("error_glGetTextureLevelParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31381,7 +31381,7 @@ static void REGAL_CALL error_glGetTextureLevelParameterfvEXT(GLuint texture, GLe
 
 static void REGAL_CALL error_glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTextureLevelParameterivEXT");
+  Internal("error_glGetTextureLevelParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31402,7 +31402,7 @@ static void REGAL_CALL error_glGetTextureLevelParameterivEXT(GLuint texture, GLe
 
 static void REGAL_CALL error_glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTextureParameterIivEXT");
+  Internal("error_glGetTextureParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31423,7 +31423,7 @@ static void REGAL_CALL error_glGetTextureParameterIivEXT(GLuint texture, GLenum 
 
 static void REGAL_CALL error_glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetTextureParameterIuivEXT");
+  Internal("error_glGetTextureParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31444,7 +31444,7 @@ static void REGAL_CALL error_glGetTextureParameterIuivEXT(GLuint texture, GLenum
 
 static void REGAL_CALL error_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetTextureParameterfvEXT");
+  Internal("error_glGetTextureParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31465,7 +31465,7 @@ static void REGAL_CALL error_glGetTextureParameterfvEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTextureParameterivEXT");
+  Internal("error_glGetTextureParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31486,7 +31486,7 @@ static void REGAL_CALL error_glGetTextureParameterivEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL error_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param)
 {
-  ITrace("error_glGetVertexArrayIntegeri_vEXT");
+  Internal("error_glGetVertexArrayIntegeri_vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31507,7 +31507,7 @@ static void REGAL_CALL error_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint 
 
 static void REGAL_CALL error_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param)
 {
-  ITrace("error_glGetVertexArrayIntegervEXT");
+  Internal("error_glGetVertexArrayIntegervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31528,7 +31528,7 @@ static void REGAL_CALL error_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pn
 
 static void REGAL_CALL error_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param)
 {
-  ITrace("error_glGetVertexArrayPointeri_vEXT");
+  Internal("error_glGetVertexArrayPointeri_vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31549,7 +31549,7 @@ static void REGAL_CALL error_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint 
 
 static void REGAL_CALL error_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param)
 {
-  ITrace("error_glGetVertexArrayPointervEXT");
+  Internal("error_glGetVertexArrayPointervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31570,7 +31570,7 @@ static void REGAL_CALL error_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pn
 
 static GLvoid *REGAL_CALL error_glMapNamedBufferEXT(GLuint buffer, GLenum access)
 {
-  ITrace("error_glMapNamedBufferEXT");
+  Internal("error_glMapNamedBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31592,7 +31592,7 @@ return ret;
 
 static GLvoid *REGAL_CALL error_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  ITrace("error_glMapNamedBufferRangeEXT");
+  Internal("error_glMapNamedBufferRangeEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31614,7 +31614,7 @@ return ret;
 
 static void REGAL_CALL error_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  ITrace("error_glMatrixFrustumEXT");
+  Internal("error_glMatrixFrustumEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31635,7 +31635,7 @@ static void REGAL_CALL error_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdo
 
 static void REGAL_CALL error_glMatrixLoadIdentityEXT(GLenum mode)
 {
-  ITrace("error_glMatrixLoadIdentityEXT");
+  Internal("error_glMatrixLoadIdentityEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31656,7 +31656,7 @@ static void REGAL_CALL error_glMatrixLoadIdentityEXT(GLenum mode)
 
 static void REGAL_CALL error_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble *m)
 {
-  ITrace("error_glMatrixLoadTransposedEXT");
+  Internal("error_glMatrixLoadTransposedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31677,7 +31677,7 @@ static void REGAL_CALL error_glMatrixLoadTransposedEXT(GLenum mode, const GLdoub
 
 static void REGAL_CALL error_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat *m)
 {
-  ITrace("error_glMatrixLoadTransposefEXT");
+  Internal("error_glMatrixLoadTransposefEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31698,7 +31698,7 @@ static void REGAL_CALL error_glMatrixLoadTransposefEXT(GLenum mode, const GLfloa
 
 static void REGAL_CALL error_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
 {
-  ITrace("error_glMatrixLoaddEXT");
+  Internal("error_glMatrixLoaddEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31719,7 +31719,7 @@ static void REGAL_CALL error_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
 
 static void REGAL_CALL error_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
 {
-  ITrace("error_glMatrixLoadfEXT");
+  Internal("error_glMatrixLoadfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31740,7 +31740,7 @@ static void REGAL_CALL error_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
 
 static void REGAL_CALL error_glMatrixMultTransposedEXT(GLenum mode, const GLdouble *m)
 {
-  ITrace("error_glMatrixMultTransposedEXT");
+  Internal("error_glMatrixMultTransposedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31761,7 +31761,7 @@ static void REGAL_CALL error_glMatrixMultTransposedEXT(GLenum mode, const GLdoub
 
 static void REGAL_CALL error_glMatrixMultTransposefEXT(GLenum mode, const GLfloat *m)
 {
-  ITrace("error_glMatrixMultTransposefEXT");
+  Internal("error_glMatrixMultTransposefEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31782,7 +31782,7 @@ static void REGAL_CALL error_glMatrixMultTransposefEXT(GLenum mode, const GLfloa
 
 static void REGAL_CALL error_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
 {
-  ITrace("error_glMatrixMultdEXT");
+  Internal("error_glMatrixMultdEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31803,7 +31803,7 @@ static void REGAL_CALL error_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
 
 static void REGAL_CALL error_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
 {
-  ITrace("error_glMatrixMultfEXT");
+  Internal("error_glMatrixMultfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31824,7 +31824,7 @@ static void REGAL_CALL error_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
 
 static void REGAL_CALL error_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  ITrace("error_glMatrixOrthoEXT");
+  Internal("error_glMatrixOrthoEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31845,7 +31845,7 @@ static void REGAL_CALL error_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdoub
 
 static void REGAL_CALL error_glMatrixPopEXT(GLenum mode)
 {
-  ITrace("error_glMatrixPopEXT");
+  Internal("error_glMatrixPopEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31866,7 +31866,7 @@ static void REGAL_CALL error_glMatrixPopEXT(GLenum mode)
 
 static void REGAL_CALL error_glMatrixPushEXT(GLenum mode)
 {
-  ITrace("error_glMatrixPushEXT");
+  Internal("error_glMatrixPushEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31887,7 +31887,7 @@ static void REGAL_CALL error_glMatrixPushEXT(GLenum mode)
 
 static void REGAL_CALL error_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glMatrixRotatedEXT");
+  Internal("error_glMatrixRotatedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31908,7 +31908,7 @@ static void REGAL_CALL error_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLd
 
 static void REGAL_CALL error_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glMatrixRotatefEXT");
+  Internal("error_glMatrixRotatefEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31929,7 +31929,7 @@ static void REGAL_CALL error_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfl
 
 static void REGAL_CALL error_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glMatrixScaledEXT");
+  Internal("error_glMatrixScaledEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31950,7 +31950,7 @@ static void REGAL_CALL error_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble
 
 static void REGAL_CALL error_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glMatrixScalefEXT");
+  Internal("error_glMatrixScalefEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31971,7 +31971,7 @@ static void REGAL_CALL error_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y
 
 static void REGAL_CALL error_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glMatrixTranslatedEXT");
+  Internal("error_glMatrixTranslatedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -31992,7 +31992,7 @@ static void REGAL_CALL error_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdo
 
 static void REGAL_CALL error_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glMatrixTranslatefEXT");
+  Internal("error_glMatrixTranslatefEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32013,7 +32013,7 @@ static void REGAL_CALL error_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLflo
 
 static void REGAL_CALL error_glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  ITrace("error_glMultiTexBufferEXT");
+  Internal("error_glMultiTexBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32034,7 +32034,7 @@ static void REGAL_CALL error_glMultiTexBufferEXT(GLenum texunit, GLenum target, 
 
 static void REGAL_CALL error_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glMultiTexCoordPointerEXT");
+  Internal("error_glMultiTexCoordPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32055,7 +32055,7 @@ static void REGAL_CALL error_glMultiTexCoordPointerEXT(GLenum texunit, GLint siz
 
 static void REGAL_CALL error_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glMultiTexEnvfEXT");
+  Internal("error_glMultiTexEnvfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32076,7 +32076,7 @@ static void REGAL_CALL error_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GL
 
 static void REGAL_CALL error_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glMultiTexEnvfvEXT");
+  Internal("error_glMultiTexEnvfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32097,7 +32097,7 @@ static void REGAL_CALL error_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, G
 
 static void REGAL_CALL error_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glMultiTexEnviEXT");
+  Internal("error_glMultiTexEnviEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32118,7 +32118,7 @@ static void REGAL_CALL error_glMultiTexEnviEXT(GLenum texunit, GLenum target, GL
 
 static void REGAL_CALL error_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glMultiTexEnvivEXT");
+  Internal("error_glMultiTexEnvivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32139,7 +32139,7 @@ static void REGAL_CALL error_glMultiTexEnvivEXT(GLenum texunit, GLenum target, G
 
 static void REGAL_CALL error_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
 {
-  ITrace("error_glMultiTexGendEXT");
+  Internal("error_glMultiTexGendEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32160,7 +32160,7 @@ static void REGAL_CALL error_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLe
 
 static void REGAL_CALL error_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
 {
-  ITrace("error_glMultiTexGendvEXT");
+  Internal("error_glMultiTexGendvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32181,7 +32181,7 @@ static void REGAL_CALL error_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GL
 
 static void REGAL_CALL error_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
 {
-  ITrace("error_glMultiTexGenfEXT");
+  Internal("error_glMultiTexGenfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32202,7 +32202,7 @@ static void REGAL_CALL error_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLe
 
 static void REGAL_CALL error_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glMultiTexGenfvEXT");
+  Internal("error_glMultiTexGenfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32223,7 +32223,7 @@ static void REGAL_CALL error_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GL
 
 static void REGAL_CALL error_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param)
 {
-  ITrace("error_glMultiTexGeniEXT");
+  Internal("error_glMultiTexGeniEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32244,7 +32244,7 @@ static void REGAL_CALL error_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLe
 
 static void REGAL_CALL error_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
 {
-  ITrace("error_glMultiTexGenivEXT");
+  Internal("error_glMultiTexGenivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32265,7 +32265,7 @@ static void REGAL_CALL error_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GL
 
 static void REGAL_CALL error_glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexImage1DEXT");
+  Internal("error_glMultiTexImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32286,7 +32286,7 @@ static void REGAL_CALL error_glMultiTexImage1DEXT(GLenum texunit, GLenum target,
 
 static void REGAL_CALL error_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexImage2DEXT");
+  Internal("error_glMultiTexImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32307,7 +32307,7 @@ static void REGAL_CALL error_glMultiTexImage2DEXT(GLenum texunit, GLenum target,
 
 static void REGAL_CALL error_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexImage3DEXT");
+  Internal("error_glMultiTexImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32328,7 +32328,7 @@ static void REGAL_CALL error_glMultiTexImage3DEXT(GLenum texunit, GLenum target,
 
 static void REGAL_CALL error_glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glMultiTexParameterIivEXT");
+  Internal("error_glMultiTexParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32349,7 +32349,7 @@ static void REGAL_CALL error_glMultiTexParameterIivEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL error_glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
 {
-  ITrace("error_glMultiTexParameterIuivEXT");
+  Internal("error_glMultiTexParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32370,7 +32370,7 @@ static void REGAL_CALL error_glMultiTexParameterIuivEXT(GLenum texunit, GLenum t
 
 static void REGAL_CALL error_glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glMultiTexParameterfEXT");
+  Internal("error_glMultiTexParameterfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32391,7 +32391,7 @@ static void REGAL_CALL error_glMultiTexParameterfEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL error_glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
 {
-  ITrace("error_glMultiTexParameterfvEXT");
+  Internal("error_glMultiTexParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32412,7 +32412,7 @@ static void REGAL_CALL error_glMultiTexParameterfvEXT(GLenum texunit, GLenum tar
 
 static void REGAL_CALL error_glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glMultiTexParameteriEXT");
+  Internal("error_glMultiTexParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32433,7 +32433,7 @@ static void REGAL_CALL error_glMultiTexParameteriEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL error_glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *param)
 {
-  ITrace("error_glMultiTexParameterivEXT");
+  Internal("error_glMultiTexParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32454,7 +32454,7 @@ static void REGAL_CALL error_glMultiTexParameterivEXT(GLenum texunit, GLenum tar
 
 static void REGAL_CALL error_glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer)
 {
-  ITrace("error_glMultiTexRenderbufferEXT");
+  Internal("error_glMultiTexRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32475,7 +32475,7 @@ static void REGAL_CALL error_glMultiTexRenderbufferEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL error_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexSubImage1DEXT");
+  Internal("error_glMultiTexSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32496,7 +32496,7 @@ static void REGAL_CALL error_glMultiTexSubImage1DEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL error_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexSubImage2DEXT");
+  Internal("error_glMultiTexSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32517,7 +32517,7 @@ static void REGAL_CALL error_glMultiTexSubImage2DEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL error_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glMultiTexSubImage3DEXT");
+  Internal("error_glMultiTexSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32538,7 +32538,7 @@ static void REGAL_CALL error_glMultiTexSubImage3DEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL error_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  ITrace("error_glNamedBufferDataEXT");
+  Internal("error_glNamedBufferDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32559,7 +32559,7 @@ static void REGAL_CALL error_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size
 
 static void REGAL_CALL error_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  ITrace("error_glNamedBufferSubDataEXT");
+  Internal("error_glNamedBufferSubDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32580,7 +32580,7 @@ static void REGAL_CALL error_glNamedBufferSubDataEXT(GLuint buffer, GLintptr off
 
 static void REGAL_CALL error_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
-  ITrace("error_glNamedCopyBufferSubDataEXT");
+  Internal("error_glNamedCopyBufferSubDataEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32601,7 +32601,7 @@ static void REGAL_CALL error_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLui
 
 static void REGAL_CALL error_glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  ITrace("error_glNamedFramebufferRenderbufferEXT");
+  Internal("error_glNamedFramebufferRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32622,7 +32622,7 @@ static void REGAL_CALL error_glNamedFramebufferRenderbufferEXT(GLuint framebuffe
 
 static void REGAL_CALL error_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glNamedFramebufferTexture1DEXT");
+  Internal("error_glNamedFramebufferTexture1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32643,7 +32643,7 @@ static void REGAL_CALL error_glNamedFramebufferTexture1DEXT(GLuint framebuffer, 
 
 static void REGAL_CALL error_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glNamedFramebufferTexture2DEXT");
+  Internal("error_glNamedFramebufferTexture2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32664,7 +32664,7 @@ static void REGAL_CALL error_glNamedFramebufferTexture2DEXT(GLuint framebuffer, 
 
 static void REGAL_CALL error_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  ITrace("error_glNamedFramebufferTexture3DEXT");
+  Internal("error_glNamedFramebufferTexture3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32685,7 +32685,7 @@ static void REGAL_CALL error_glNamedFramebufferTexture3DEXT(GLuint framebuffer, 
 
 static void REGAL_CALL error_glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
-  ITrace("error_glNamedFramebufferTextureEXT");
+  Internal("error_glNamedFramebufferTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32706,7 +32706,7 @@ static void REGAL_CALL error_glNamedFramebufferTextureEXT(GLuint framebuffer, GL
 
 static void REGAL_CALL error_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  ITrace("error_glNamedFramebufferTextureFaceEXT");
+  Internal("error_glNamedFramebufferTextureFaceEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32727,7 +32727,7 @@ static void REGAL_CALL error_glNamedFramebufferTextureFaceEXT(GLuint framebuffer
 
 static void REGAL_CALL error_glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  ITrace("error_glNamedFramebufferTextureLayerEXT");
+  Internal("error_glNamedFramebufferTextureLayerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32748,7 +32748,7 @@ static void REGAL_CALL error_glNamedFramebufferTextureLayerEXT(GLuint framebuffe
 
 static void REGAL_CALL error_glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glNamedProgramLocalParameter4dEXT");
+  Internal("error_glNamedProgramLocalParameter4dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32769,7 +32769,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameter4dEXT(GLuint program, G
 
 static void REGAL_CALL error_glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble *params)
 {
-  ITrace("error_glNamedProgramLocalParameter4dvEXT");
+  Internal("error_glNamedProgramLocalParameter4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32790,7 +32790,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameter4dvEXT(GLuint program, 
 
 static void REGAL_CALL error_glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glNamedProgramLocalParameter4fEXT");
+  Internal("error_glNamedProgramLocalParameter4fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32811,7 +32811,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameter4fEXT(GLuint program, G
 
 static void REGAL_CALL error_glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat *params)
 {
-  ITrace("error_glNamedProgramLocalParameter4fvEXT");
+  Internal("error_glNamedProgramLocalParameter4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32832,7 +32832,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameter4fvEXT(GLuint program, 
 
 static void REGAL_CALL error_glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glNamedProgramLocalParameterI4iEXT");
+  Internal("error_glNamedProgramLocalParameterI4iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32853,7 +32853,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameterI4iEXT(GLuint program, 
 
 static void REGAL_CALL error_glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint *params)
 {
-  ITrace("error_glNamedProgramLocalParameterI4ivEXT");
+  Internal("error_glNamedProgramLocalParameterI4ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32874,7 +32874,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameterI4ivEXT(GLuint program,
 
 static void REGAL_CALL error_glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glNamedProgramLocalParameterI4uiEXT");
+  Internal("error_glNamedProgramLocalParameterI4uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32895,7 +32895,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameterI4uiEXT(GLuint program,
 
 static void REGAL_CALL error_glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint *params)
 {
-  ITrace("error_glNamedProgramLocalParameterI4uivEXT");
+  Internal("error_glNamedProgramLocalParameterI4uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32916,7 +32916,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameterI4uivEXT(GLuint program
 
 static void REGAL_CALL error_glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
-  ITrace("error_glNamedProgramLocalParameters4fvEXT");
+  Internal("error_glNamedProgramLocalParameters4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32937,7 +32937,7 @@ static void REGAL_CALL error_glNamedProgramLocalParameters4fvEXT(GLuint program,
 
 static void REGAL_CALL error_glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  ITrace("error_glNamedProgramLocalParametersI4ivEXT");
+  Internal("error_glNamedProgramLocalParametersI4ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32958,7 +32958,7 @@ static void REGAL_CALL error_glNamedProgramLocalParametersI4ivEXT(GLuint program
 
 static void REGAL_CALL error_glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  ITrace("error_glNamedProgramLocalParametersI4uivEXT");
+  Internal("error_glNamedProgramLocalParametersI4uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -32979,7 +32979,7 @@ static void REGAL_CALL error_glNamedProgramLocalParametersI4uivEXT(GLuint progra
 
 static void REGAL_CALL error_glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
-  ITrace("error_glNamedProgramStringEXT");
+  Internal("error_glNamedProgramStringEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33000,7 +33000,7 @@ static void REGAL_CALL error_glNamedProgramStringEXT(GLuint program, GLenum targ
 
 static void REGAL_CALL error_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glNamedRenderbufferStorageEXT");
+  Internal("error_glNamedRenderbufferStorageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33021,7 +33021,7 @@ static void REGAL_CALL error_glNamedRenderbufferStorageEXT(GLuint renderbuffer, 
 
 static void REGAL_CALL error_glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glNamedRenderbufferStorageMultisampleCoverageEXT");
+  Internal("error_glNamedRenderbufferStorageMultisampleCoverageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33042,7 +33042,7 @@ static void REGAL_CALL error_glNamedRenderbufferStorageMultisampleCoverageEXT(GL
 
 static void REGAL_CALL error_glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glNamedRenderbufferStorageMultisampleEXT");
+  Internal("error_glNamedRenderbufferStorageMultisampleEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33063,7 +33063,7 @@ static void REGAL_CALL error_glNamedRenderbufferStorageMultisampleEXT(GLuint ren
 
 static void REGAL_CALL error_glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x)
 {
-  ITrace("error_glProgramUniform1dEXT");
+  Internal("error_glProgramUniform1dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33084,7 +33084,7 @@ static void REGAL_CALL error_glProgramUniform1dEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform1dvEXT");
+  Internal("error_glProgramUniform1dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33105,7 +33105,7 @@ static void REGAL_CALL error_glProgramUniform1dvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0)
 {
-  ITrace("error_glProgramUniform1fEXT");
+  Internal("error_glProgramUniform1fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33126,7 +33126,7 @@ static void REGAL_CALL error_glProgramUniform1fEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform1fvEXT");
+  Internal("error_glProgramUniform1fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33147,7 +33147,7 @@ static void REGAL_CALL error_glProgramUniform1fvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform1iEXT(GLuint program, GLint location, GLint v0)
 {
-  ITrace("error_glProgramUniform1iEXT");
+  Internal("error_glProgramUniform1iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33168,7 +33168,7 @@ static void REGAL_CALL error_glProgramUniform1iEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform1ivEXT");
+  Internal("error_glProgramUniform1ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33189,7 +33189,7 @@ static void REGAL_CALL error_glProgramUniform1ivEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0)
 {
-  ITrace("error_glProgramUniform1uiEXT");
+  Internal("error_glProgramUniform1uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33210,7 +33210,7 @@ static void REGAL_CALL error_glProgramUniform1uiEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform1uivEXT");
+  Internal("error_glProgramUniform1uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33231,7 +33231,7 @@ static void REGAL_CALL error_glProgramUniform1uivEXT(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y)
 {
-  ITrace("error_glProgramUniform2dEXT");
+  Internal("error_glProgramUniform2dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33252,7 +33252,7 @@ static void REGAL_CALL error_glProgramUniform2dEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform2dvEXT");
+  Internal("error_glProgramUniform2dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33273,7 +33273,7 @@ static void REGAL_CALL error_glProgramUniform2dvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1)
 {
-  ITrace("error_glProgramUniform2fEXT");
+  Internal("error_glProgramUniform2fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33294,7 +33294,7 @@ static void REGAL_CALL error_glProgramUniform2fEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform2fvEXT");
+  Internal("error_glProgramUniform2fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33315,7 +33315,7 @@ static void REGAL_CALL error_glProgramUniform2fvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1)
 {
-  ITrace("error_glProgramUniform2iEXT");
+  Internal("error_glProgramUniform2iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33336,7 +33336,7 @@ static void REGAL_CALL error_glProgramUniform2iEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform2ivEXT");
+  Internal("error_glProgramUniform2ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33357,7 +33357,7 @@ static void REGAL_CALL error_glProgramUniform2ivEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1)
 {
-  ITrace("error_glProgramUniform2uiEXT");
+  Internal("error_glProgramUniform2uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33378,7 +33378,7 @@ static void REGAL_CALL error_glProgramUniform2uiEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform2uivEXT");
+  Internal("error_glProgramUniform2uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33399,7 +33399,7 @@ static void REGAL_CALL error_glProgramUniform2uivEXT(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glProgramUniform3dEXT");
+  Internal("error_glProgramUniform3dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33420,7 +33420,7 @@ static void REGAL_CALL error_glProgramUniform3dEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform3dvEXT");
+  Internal("error_glProgramUniform3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33441,7 +33441,7 @@ static void REGAL_CALL error_glProgramUniform3dvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  ITrace("error_glProgramUniform3fEXT");
+  Internal("error_glProgramUniform3fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33462,7 +33462,7 @@ static void REGAL_CALL error_glProgramUniform3fEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform3fvEXT");
+  Internal("error_glProgramUniform3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33483,7 +33483,7 @@ static void REGAL_CALL error_glProgramUniform3fvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
 {
-  ITrace("error_glProgramUniform3iEXT");
+  Internal("error_glProgramUniform3iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33504,7 +33504,7 @@ static void REGAL_CALL error_glProgramUniform3iEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform3ivEXT");
+  Internal("error_glProgramUniform3ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33525,7 +33525,7 @@ static void REGAL_CALL error_glProgramUniform3ivEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  ITrace("error_glProgramUniform3uiEXT");
+  Internal("error_glProgramUniform3uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33546,7 +33546,7 @@ static void REGAL_CALL error_glProgramUniform3uiEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform3uivEXT");
+  Internal("error_glProgramUniform3uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33567,7 +33567,7 @@ static void REGAL_CALL error_glProgramUniform3uivEXT(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramUniform4dEXT");
+  Internal("error_glProgramUniform4dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33588,7 +33588,7 @@ static void REGAL_CALL error_glProgramUniform4dEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  ITrace("error_glProgramUniform4dvEXT");
+  Internal("error_glProgramUniform4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33609,7 +33609,7 @@ static void REGAL_CALL error_glProgramUniform4dvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  ITrace("error_glProgramUniform4fEXT");
+  Internal("error_glProgramUniform4fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33630,7 +33630,7 @@ static void REGAL_CALL error_glProgramUniform4fEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("error_glProgramUniform4fvEXT");
+  Internal("error_glProgramUniform4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33651,7 +33651,7 @@ static void REGAL_CALL error_glProgramUniform4fvEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  ITrace("error_glProgramUniform4iEXT");
+  Internal("error_glProgramUniform4iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33672,7 +33672,7 @@ static void REGAL_CALL error_glProgramUniform4iEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL error_glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("error_glProgramUniform4ivEXT");
+  Internal("error_glProgramUniform4ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33693,7 +33693,7 @@ static void REGAL_CALL error_glProgramUniform4ivEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  ITrace("error_glProgramUniform4uiEXT");
+  Internal("error_glProgramUniform4uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33714,7 +33714,7 @@ static void REGAL_CALL error_glProgramUniform4uiEXT(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glProgramUniform4uivEXT");
+  Internal("error_glProgramUniform4uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33735,7 +33735,7 @@ static void REGAL_CALL error_glProgramUniform4uivEXT(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2dvEXT");
+  Internal("error_glProgramUniformMatrix2dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33756,7 +33756,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2fvEXT");
+  Internal("error_glProgramUniformMatrix2fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33777,7 +33777,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2x3dvEXT");
+  Internal("error_glProgramUniformMatrix2x3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33798,7 +33798,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x3dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2x3fvEXT");
+  Internal("error_glProgramUniformMatrix2x3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33819,7 +33819,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x3fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix2x4dvEXT");
+  Internal("error_glProgramUniformMatrix2x4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33840,7 +33840,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x4dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix2x4fvEXT");
+  Internal("error_glProgramUniformMatrix2x4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33861,7 +33861,7 @@ static void REGAL_CALL error_glProgramUniformMatrix2x4fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3dvEXT");
+  Internal("error_glProgramUniformMatrix3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33882,7 +33882,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3fvEXT");
+  Internal("error_glProgramUniformMatrix3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33903,7 +33903,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3x2dvEXT");
+  Internal("error_glProgramUniformMatrix3x2dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33924,7 +33924,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x2dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3x2fvEXT");
+  Internal("error_glProgramUniformMatrix3x2fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33945,7 +33945,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x2fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix3x4dvEXT");
+  Internal("error_glProgramUniformMatrix3x4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33966,7 +33966,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x4dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix3x4fvEXT");
+  Internal("error_glProgramUniformMatrix3x4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -33987,7 +33987,7 @@ static void REGAL_CALL error_glProgramUniformMatrix3x4fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4dvEXT");
+  Internal("error_glProgramUniformMatrix4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34008,7 +34008,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4fvEXT");
+  Internal("error_glProgramUniformMatrix4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34029,7 +34029,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4x2dvEXT");
+  Internal("error_glProgramUniformMatrix4x2dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34050,7 +34050,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x2dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4x2fvEXT");
+  Internal("error_glProgramUniformMatrix4x2fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34071,7 +34071,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x2fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  ITrace("error_glProgramUniformMatrix4x3dvEXT");
+  Internal("error_glProgramUniformMatrix4x3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34092,7 +34092,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x3dvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("error_glProgramUniformMatrix4x3fvEXT");
+  Internal("error_glProgramUniformMatrix4x3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34113,7 +34113,7 @@ static void REGAL_CALL error_glProgramUniformMatrix4x3fvEXT(GLuint program, GLin
 
 static void REGAL_CALL error_glPushClientAttribDefaultEXT(GLbitfield mask)
 {
-  ITrace("error_glPushClientAttribDefaultEXT");
+  Internal("error_glPushClientAttribDefaultEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34134,7 +34134,7 @@ static void REGAL_CALL error_glPushClientAttribDefaultEXT(GLbitfield mask)
 
 static void REGAL_CALL error_glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  ITrace("error_glTextureBufferEXT");
+  Internal("error_glTextureBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34155,7 +34155,7 @@ static void REGAL_CALL error_glTextureBufferEXT(GLuint texture, GLenum target, G
 
 static void REGAL_CALL error_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureImage1DEXT");
+  Internal("error_glTextureImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34176,7 +34176,7 @@ static void REGAL_CALL error_glTextureImage1DEXT(GLuint texture, GLenum target, 
 
 static void REGAL_CALL error_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureImage2DEXT");
+  Internal("error_glTextureImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34197,7 +34197,7 @@ static void REGAL_CALL error_glTextureImage2DEXT(GLuint texture, GLenum target, 
 
 static void REGAL_CALL error_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureImage3DEXT");
+  Internal("error_glTextureImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34218,7 +34218,7 @@ static void REGAL_CALL error_glTextureImage3DEXT(GLuint texture, GLenum target, 
 
 static void REGAL_CALL error_glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTextureParameterIivEXT");
+  Internal("error_glTextureParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34239,7 +34239,7 @@ static void REGAL_CALL error_glTextureParameterIivEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL error_glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint *params)
 {
-  ITrace("error_glTextureParameterIuivEXT");
+  Internal("error_glTextureParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34260,7 +34260,7 @@ static void REGAL_CALL error_glTextureParameterIuivEXT(GLuint texture, GLenum ta
 
 static void REGAL_CALL error_glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glTextureParameterfEXT");
+  Internal("error_glTextureParameterfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34281,7 +34281,7 @@ static void REGAL_CALL error_glTextureParameterfEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL error_glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
 {
-  ITrace("error_glTextureParameterfvEXT");
+  Internal("error_glTextureParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34302,7 +34302,7 @@ static void REGAL_CALL error_glTextureParameterfvEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL error_glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glTextureParameteriEXT");
+  Internal("error_glTextureParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34323,7 +34323,7 @@ static void REGAL_CALL error_glTextureParameteriEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL error_glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *param)
 {
-  ITrace("error_glTextureParameterivEXT");
+  Internal("error_glTextureParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34344,7 +34344,7 @@ static void REGAL_CALL error_glTextureParameterivEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL error_glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer)
 {
-  ITrace("error_glTextureRenderbufferEXT");
+  Internal("error_glTextureRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34365,7 +34365,7 @@ static void REGAL_CALL error_glTextureRenderbufferEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL error_glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureSubImage1DEXT");
+  Internal("error_glTextureSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34386,7 +34386,7 @@ static void REGAL_CALL error_glTextureSubImage1DEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL error_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureSubImage2DEXT");
+  Internal("error_glTextureSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34407,7 +34407,7 @@ static void REGAL_CALL error_glTextureSubImage2DEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL error_glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTextureSubImage3DEXT");
+  Internal("error_glTextureSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34428,7 +34428,7 @@ static void REGAL_CALL error_glTextureSubImage3DEXT(GLuint texture, GLenum targe
 
 static GLboolean REGAL_CALL error_glUnmapNamedBufferEXT(GLuint buffer)
 {
-  ITrace("error_glUnmapNamedBufferEXT");
+  Internal("error_glUnmapNamedBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34450,7 +34450,7 @@ return ret;
 
 static void REGAL_CALL error_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayColorOffsetEXT");
+  Internal("error_glVertexArrayColorOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34471,7 +34471,7 @@ static void REGAL_CALL error_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint bu
 
 static void REGAL_CALL error_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayEdgeFlagOffsetEXT");
+  Internal("error_glVertexArrayEdgeFlagOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34492,7 +34492,7 @@ static void REGAL_CALL error_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint
 
 static void REGAL_CALL error_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayFogCoordOffsetEXT");
+  Internal("error_glVertexArrayFogCoordOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34513,7 +34513,7 @@ static void REGAL_CALL error_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint
 
 static void REGAL_CALL error_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayIndexOffsetEXT");
+  Internal("error_glVertexArrayIndexOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34534,7 +34534,7 @@ static void REGAL_CALL error_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint bu
 
 static void REGAL_CALL error_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayMultiTexCoordOffsetEXT");
+  Internal("error_glVertexArrayMultiTexCoordOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34555,7 +34555,7 @@ static void REGAL_CALL error_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, G
 
 static void REGAL_CALL error_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayNormalOffsetEXT");
+  Internal("error_glVertexArrayNormalOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34576,7 +34576,7 @@ static void REGAL_CALL error_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint b
 
 static void REGAL_CALL error_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArraySecondaryColorOffsetEXT");
+  Internal("error_glVertexArraySecondaryColorOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34597,7 +34597,7 @@ static void REGAL_CALL error_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, 
 
 static void REGAL_CALL error_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayTexCoordOffsetEXT");
+  Internal("error_glVertexArrayTexCoordOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34618,7 +34618,7 @@ static void REGAL_CALL error_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint
 
 static void REGAL_CALL error_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayVertexAttribIOffsetEXT");
+  Internal("error_glVertexArrayVertexAttribIOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34639,7 +34639,7 @@ static void REGAL_CALL error_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, G
 
 static void REGAL_CALL error_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayVertexAttribOffsetEXT");
+  Internal("error_glVertexArrayVertexAttribOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34660,7 +34660,7 @@ static void REGAL_CALL error_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GL
 
 static void REGAL_CALL error_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  ITrace("error_glVertexArrayVertexOffsetEXT");
+  Internal("error_glVertexArrayVertexOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34683,7 +34683,7 @@ static void REGAL_CALL error_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint b
 
 static void REGAL_CALL error_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
-  ITrace("error_glColorMaskIndexedEXT");
+  Internal("error_glColorMaskIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34704,7 +34704,7 @@ static void REGAL_CALL error_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbo
 
 static void REGAL_CALL error_glDisableIndexedEXT(GLenum target, GLuint index)
 {
-  ITrace("error_glDisableIndexedEXT");
+  Internal("error_glDisableIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34725,7 +34725,7 @@ static void REGAL_CALL error_glDisableIndexedEXT(GLenum target, GLuint index)
 
 static void REGAL_CALL error_glEnableIndexedEXT(GLenum target, GLuint index)
 {
-  ITrace("error_glEnableIndexedEXT");
+  Internal("error_glEnableIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34746,7 +34746,7 @@ static void REGAL_CALL error_glEnableIndexedEXT(GLenum target, GLuint index)
 
 static void REGAL_CALL error_glGetBooleanIndexedvEXT(GLenum value, GLuint index, GLboolean *data)
 {
-  ITrace("error_glGetBooleanIndexedvEXT");
+  Internal("error_glGetBooleanIndexedvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34767,7 +34767,7 @@ static void REGAL_CALL error_glGetBooleanIndexedvEXT(GLenum value, GLuint index,
 
 static void REGAL_CALL error_glGetIntegerIndexedvEXT(GLenum value, GLuint index, GLint *data)
 {
-  ITrace("error_glGetIntegerIndexedvEXT");
+  Internal("error_glGetIntegerIndexedvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34788,7 +34788,7 @@ static void REGAL_CALL error_glGetIntegerIndexedvEXT(GLenum value, GLuint index,
 
 static GLboolean REGAL_CALL error_glIsEnabledIndexedEXT(GLenum target, GLuint index)
 {
-  ITrace("error_glIsEnabledIndexedEXT");
+  Internal("error_glIsEnabledIndexedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34812,7 +34812,7 @@ return ret;
 
 static void REGAL_CALL error_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  ITrace("error_glDrawArraysInstancedEXT");
+  Internal("error_glDrawArraysInstancedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34833,7 +34833,7 @@ static void REGAL_CALL error_glDrawArraysInstancedEXT(GLenum mode, GLint start, 
 
 static void REGAL_CALL error_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  ITrace("error_glDrawElementsInstancedEXT");
+  Internal("error_glDrawElementsInstancedEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34856,7 +34856,7 @@ static void REGAL_CALL error_glDrawElementsInstancedEXT(GLenum mode, GLsizei cou
 
 static void REGAL_CALL error_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  ITrace("error_glDrawRangeElementsEXT");
+  Internal("error_glDrawRangeElementsEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34879,7 +34879,7 @@ static void REGAL_CALL error_glDrawRangeElementsEXT(GLenum mode, GLuint start, G
 
 static void REGAL_CALL error_glFogCoordPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glFogCoordPointerEXT");
+  Internal("error_glFogCoordPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34900,7 +34900,7 @@ static void REGAL_CALL error_glFogCoordPointerEXT(GLenum type, GLsizei stride, c
 
 static void REGAL_CALL error_glFogCoorddEXT(GLdouble coord)
 {
-  ITrace("error_glFogCoorddEXT");
+  Internal("error_glFogCoorddEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34921,7 +34921,7 @@ static void REGAL_CALL error_glFogCoorddEXT(GLdouble coord)
 
 static void REGAL_CALL error_glFogCoorddvEXT(const GLdouble *coord)
 {
-  ITrace("error_glFogCoorddvEXT");
+  Internal("error_glFogCoorddvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34942,7 +34942,7 @@ static void REGAL_CALL error_glFogCoorddvEXT(const GLdouble *coord)
 
 static void REGAL_CALL error_glFogCoordfEXT(GLfloat coord)
 {
-  ITrace("error_glFogCoordfEXT");
+  Internal("error_glFogCoordfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34963,7 +34963,7 @@ static void REGAL_CALL error_glFogCoordfEXT(GLfloat coord)
 
 static void REGAL_CALL error_glFogCoordfvEXT(const GLfloat *coord)
 {
-  ITrace("error_glFogCoordfvEXT");
+  Internal("error_glFogCoordfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -34986,7 +34986,7 @@ static void REGAL_CALL error_glFogCoordfvEXT(const GLfloat *coord)
 
 static void REGAL_CALL error_glFragmentColorMaterialEXT(GLenum face, GLenum mode)
 {
-  ITrace("error_glFragmentColorMaterialEXT");
+  Internal("error_glFragmentColorMaterialEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35007,7 +35007,7 @@ static void REGAL_CALL error_glFragmentColorMaterialEXT(GLenum face, GLenum mode
 
 static void REGAL_CALL error_glFragmentLightModelfEXT(GLenum pname, GLfloat param)
 {
-  ITrace("error_glFragmentLightModelfEXT");
+  Internal("error_glFragmentLightModelfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35028,7 +35028,7 @@ static void REGAL_CALL error_glFragmentLightModelfEXT(GLenum pname, GLfloat para
 
 static void REGAL_CALL error_glFragmentLightModelfvEXT(GLenum pname, GLfloat *params)
 {
-  ITrace("error_glFragmentLightModelfvEXT");
+  Internal("error_glFragmentLightModelfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35049,7 +35049,7 @@ static void REGAL_CALL error_glFragmentLightModelfvEXT(GLenum pname, GLfloat *pa
 
 static void REGAL_CALL error_glFragmentLightModeliEXT(GLenum pname, GLint param)
 {
-  ITrace("error_glFragmentLightModeliEXT");
+  Internal("error_glFragmentLightModeliEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35070,7 +35070,7 @@ static void REGAL_CALL error_glFragmentLightModeliEXT(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glFragmentLightModelivEXT(GLenum pname, GLint *params)
 {
-  ITrace("error_glFragmentLightModelivEXT");
+  Internal("error_glFragmentLightModelivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35091,7 +35091,7 @@ static void REGAL_CALL error_glFragmentLightModelivEXT(GLenum pname, GLint *para
 
 static void REGAL_CALL error_glFragmentLightfEXT(GLenum light, GLenum pname, GLfloat param)
 {
-  ITrace("error_glFragmentLightfEXT");
+  Internal("error_glFragmentLightfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35112,7 +35112,7 @@ static void REGAL_CALL error_glFragmentLightfEXT(GLenum light, GLenum pname, GLf
 
 static void REGAL_CALL error_glFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glFragmentLightfvEXT");
+  Internal("error_glFragmentLightfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35133,7 +35133,7 @@ static void REGAL_CALL error_glFragmentLightfvEXT(GLenum light, GLenum pname, GL
 
 static void REGAL_CALL error_glFragmentLightiEXT(GLenum light, GLenum pname, GLint param)
 {
-  ITrace("error_glFragmentLightiEXT");
+  Internal("error_glFragmentLightiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35154,7 +35154,7 @@ static void REGAL_CALL error_glFragmentLightiEXT(GLenum light, GLenum pname, GLi
 
 static void REGAL_CALL error_glFragmentLightivEXT(GLenum light, GLenum pname, GLint *params)
 {
-  ITrace("error_glFragmentLightivEXT");
+  Internal("error_glFragmentLightivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35175,7 +35175,7 @@ static void REGAL_CALL error_glFragmentLightivEXT(GLenum light, GLenum pname, GL
 
 static void REGAL_CALL error_glFragmentMaterialfEXT(GLenum face, GLenum pname, const GLfloat param)
 {
-  ITrace("error_glFragmentMaterialfEXT");
+  Internal("error_glFragmentMaterialfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35196,7 +35196,7 @@ static void REGAL_CALL error_glFragmentMaterialfEXT(GLenum face, GLenum pname, c
 
 static void REGAL_CALL error_glFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glFragmentMaterialfvEXT");
+  Internal("error_glFragmentMaterialfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35217,7 +35217,7 @@ static void REGAL_CALL error_glFragmentMaterialfvEXT(GLenum face, GLenum pname, 
 
 static void REGAL_CALL error_glFragmentMaterialiEXT(GLenum face, GLenum pname, const GLint param)
 {
-  ITrace("error_glFragmentMaterialiEXT");
+  Internal("error_glFragmentMaterialiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35238,7 +35238,7 @@ static void REGAL_CALL error_glFragmentMaterialiEXT(GLenum face, GLenum pname, c
 
 static void REGAL_CALL error_glFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params)
 {
-  ITrace("error_glFragmentMaterialivEXT");
+  Internal("error_glFragmentMaterialivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35259,7 +35259,7 @@ static void REGAL_CALL error_glFragmentMaterialivEXT(GLenum face, GLenum pname, 
 
 static void REGAL_CALL error_glGetFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetFragmentLightfvEXT");
+  Internal("error_glGetFragmentLightfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35280,7 +35280,7 @@ static void REGAL_CALL error_glGetFragmentLightfvEXT(GLenum light, GLenum pname,
 
 static void REGAL_CALL error_glGetFragmentLightivEXT(GLenum light, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFragmentLightivEXT");
+  Internal("error_glGetFragmentLightivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35301,7 +35301,7 @@ static void REGAL_CALL error_glGetFragmentLightivEXT(GLenum light, GLenum pname,
 
 static void REGAL_CALL error_glGetFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glGetFragmentMaterialfvEXT");
+  Internal("error_glGetFragmentMaterialfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35322,7 +35322,7 @@ static void REGAL_CALL error_glGetFragmentMaterialfvEXT(GLenum face, GLenum pnam
 
 static void REGAL_CALL error_glGetFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params)
 {
-  ITrace("error_glGetFragmentMaterialivEXT");
+  Internal("error_glGetFragmentMaterialivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35343,7 +35343,7 @@ static void REGAL_CALL error_glGetFragmentMaterialivEXT(GLenum face, GLenum pnam
 
 static void REGAL_CALL error_glLightEnviEXT(GLenum pname, GLint param)
 {
-  ITrace("error_glLightEnviEXT");
+  Internal("error_glLightEnviEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35366,7 +35366,7 @@ static void REGAL_CALL error_glLightEnviEXT(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-  ITrace("error_glBlitFramebufferEXT");
+  Internal("error_glBlitFramebufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35389,7 +35389,7 @@ static void REGAL_CALL error_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLin
 
 static void REGAL_CALL error_glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glRenderbufferStorageMultisampleEXT");
+  Internal("error_glRenderbufferStorageMultisampleEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35412,7 +35412,7 @@ static void REGAL_CALL error_glRenderbufferStorageMultisampleEXT(GLenum target, 
 
 static void REGAL_CALL error_glBindFramebufferEXT(GLenum target, GLuint framebuffer)
 {
-  ITrace("error_glBindFramebufferEXT");
+  Internal("error_glBindFramebufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35433,7 +35433,7 @@ static void REGAL_CALL error_glBindFramebufferEXT(GLenum target, GLuint framebuf
 
 static void REGAL_CALL error_glBindRenderbufferEXT(GLenum target, GLuint renderbuffer)
 {
-  ITrace("error_glBindRenderbufferEXT");
+  Internal("error_glBindRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35454,7 +35454,7 @@ static void REGAL_CALL error_glBindRenderbufferEXT(GLenum target, GLuint renderb
 
 static GLenum REGAL_CALL error_glCheckFramebufferStatusEXT(GLenum target)
 {
-  ITrace("error_glCheckFramebufferStatusEXT");
+  Internal("error_glCheckFramebufferStatusEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35476,7 +35476,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteFramebuffersEXT(GLsizei n, const GLuint *framebuffers)
 {
-  ITrace("error_glDeleteFramebuffersEXT");
+  Internal("error_glDeleteFramebuffersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35497,7 +35497,7 @@ static void REGAL_CALL error_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fr
 
 static void REGAL_CALL error_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *renderbuffers)
 {
-  ITrace("error_glDeleteRenderbuffersEXT");
+  Internal("error_glDeleteRenderbuffersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35518,7 +35518,7 @@ static void REGAL_CALL error_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *r
 
 static void REGAL_CALL error_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  ITrace("error_glFramebufferRenderbufferEXT");
+  Internal("error_glFramebufferRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35539,7 +35539,7 @@ static void REGAL_CALL error_glFramebufferRenderbufferEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTexture1DEXT");
+  Internal("error_glFramebufferTexture1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35560,7 +35560,7 @@ static void REGAL_CALL error_glFramebufferTexture1DEXT(GLenum target, GLenum att
 
 static void REGAL_CALL error_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTexture2DEXT");
+  Internal("error_glFramebufferTexture2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35581,7 +35581,7 @@ static void REGAL_CALL error_glFramebufferTexture2DEXT(GLenum target, GLenum att
 
 static void REGAL_CALL error_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  ITrace("error_glFramebufferTexture3DEXT");
+  Internal("error_glFramebufferTexture3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35602,7 +35602,7 @@ static void REGAL_CALL error_glFramebufferTexture3DEXT(GLenum target, GLenum att
 
 static void REGAL_CALL error_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
 {
-  ITrace("error_glGenFramebuffersEXT");
+  Internal("error_glGenFramebuffersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35623,7 +35623,7 @@ static void REGAL_CALL error_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffer
 
 static void REGAL_CALL error_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffers)
 {
-  ITrace("error_glGenRenderbuffersEXT");
+  Internal("error_glGenRenderbuffersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35644,7 +35644,7 @@ static void REGAL_CALL error_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuff
 
 static void REGAL_CALL error_glGenerateMipmapEXT(GLenum target)
 {
-  ITrace("error_glGenerateMipmapEXT");
+  Internal("error_glGenerateMipmapEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35665,7 +35665,7 @@ static void REGAL_CALL error_glGenerateMipmapEXT(GLenum target)
 
 static void REGAL_CALL error_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFramebufferAttachmentParameterivEXT");
+  Internal("error_glGetFramebufferAttachmentParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35686,7 +35686,7 @@ static void REGAL_CALL error_glGetFramebufferAttachmentParameterivEXT(GLenum tar
 
 static void REGAL_CALL error_glGetRenderbufferParameterivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetRenderbufferParameterivEXT");
+  Internal("error_glGetRenderbufferParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35707,7 +35707,7 @@ static void REGAL_CALL error_glGetRenderbufferParameterivEXT(GLenum target, GLen
 
 static GLboolean REGAL_CALL error_glIsFramebufferEXT(GLuint framebuffer)
 {
-  ITrace("error_glIsFramebufferEXT");
+  Internal("error_glIsFramebufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35729,7 +35729,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsRenderbufferEXT(GLuint renderbuffer)
 {
-  ITrace("error_glIsRenderbufferEXT");
+  Internal("error_glIsRenderbufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35751,7 +35751,7 @@ return ret;
 
 static void REGAL_CALL error_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glRenderbufferStorageEXT");
+  Internal("error_glRenderbufferStorageEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35774,7 +35774,7 @@ static void REGAL_CALL error_glRenderbufferStorageEXT(GLenum target, GLenum inte
 
 static void REGAL_CALL error_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  ITrace("error_glFramebufferTextureEXT");
+  Internal("error_glFramebufferTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35795,7 +35795,7 @@ static void REGAL_CALL error_glFramebufferTextureEXT(GLenum target, GLenum attac
 
 static void REGAL_CALL error_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  ITrace("error_glFramebufferTextureFaceEXT");
+  Internal("error_glFramebufferTextureFaceEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35816,7 +35816,7 @@ static void REGAL_CALL error_glFramebufferTextureFaceEXT(GLenum target, GLenum a
 
 static void REGAL_CALL error_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value)
 {
-  ITrace("error_glProgramParameteriEXT");
+  Internal("error_glProgramParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35839,7 +35839,7 @@ static void REGAL_CALL error_glProgramParameteriEXT(GLuint program, GLenum pname
 
 static void REGAL_CALL error_glProgramEnvParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
-  ITrace("error_glProgramEnvParameters4fvEXT");
+  Internal("error_glProgramEnvParameters4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35860,7 +35860,7 @@ static void REGAL_CALL error_glProgramEnvParameters4fvEXT(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramLocalParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
-  ITrace("error_glProgramLocalParameters4fvEXT");
+  Internal("error_glProgramLocalParameters4fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35883,7 +35883,7 @@ static void REGAL_CALL error_glProgramLocalParameters4fvEXT(GLenum target, GLuin
 
 static void REGAL_CALL error_glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar *name)
 {
-  ITrace("error_glBindFragDataLocationEXT");
+  Internal("error_glBindFragDataLocationEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35904,7 +35904,7 @@ static void REGAL_CALL error_glBindFragDataLocationEXT(GLuint program, GLuint co
 
 static GLint REGAL_CALL error_glGetFragDataLocationEXT(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetFragDataLocationEXT");
+  Internal("error_glGetFragDataLocationEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35926,7 +35926,7 @@ return ret;
 
 static void REGAL_CALL error_glGetUniformuivEXT(GLuint program, GLint location, GLuint *params)
 {
-  ITrace("error_glGetUniformuivEXT");
+  Internal("error_glGetUniformuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35947,7 +35947,7 @@ static void REGAL_CALL error_glGetUniformuivEXT(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribIivEXT");
+  Internal("error_glGetVertexAttribIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35968,7 +35968,7 @@ static void REGAL_CALL error_glGetVertexAttribIivEXT(GLuint index, GLenum pname,
 
 static void REGAL_CALL error_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetVertexAttribIuivEXT");
+  Internal("error_glGetVertexAttribIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -35989,7 +35989,7 @@ static void REGAL_CALL error_glGetVertexAttribIuivEXT(GLuint index, GLenum pname
 
 static void REGAL_CALL error_glUniform1uiEXT(GLint location, GLuint v0)
 {
-  ITrace("error_glUniform1uiEXT");
+  Internal("error_glUniform1uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36010,7 +36010,7 @@ static void REGAL_CALL error_glUniform1uiEXT(GLint location, GLuint v0)
 
 static void REGAL_CALL error_glUniform1uivEXT(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform1uivEXT");
+  Internal("error_glUniform1uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36031,7 +36031,7 @@ static void REGAL_CALL error_glUniform1uivEXT(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform2uiEXT(GLint location, GLuint v0, GLuint v1)
 {
-  ITrace("error_glUniform2uiEXT");
+  Internal("error_glUniform2uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36052,7 +36052,7 @@ static void REGAL_CALL error_glUniform2uiEXT(GLint location, GLuint v0, GLuint v
 
 static void REGAL_CALL error_glUniform2uivEXT(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform2uivEXT");
+  Internal("error_glUniform2uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36073,7 +36073,7 @@ static void REGAL_CALL error_glUniform2uivEXT(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform3uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  ITrace("error_glUniform3uiEXT");
+  Internal("error_glUniform3uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36094,7 +36094,7 @@ static void REGAL_CALL error_glUniform3uiEXT(GLint location, GLuint v0, GLuint v
 
 static void REGAL_CALL error_glUniform3uivEXT(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform3uivEXT");
+  Internal("error_glUniform3uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36115,7 +36115,7 @@ static void REGAL_CALL error_glUniform3uivEXT(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform4uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  ITrace("error_glUniform4uiEXT");
+  Internal("error_glUniform4uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36136,7 +36136,7 @@ static void REGAL_CALL error_glUniform4uiEXT(GLint location, GLuint v0, GLuint v
 
 static void REGAL_CALL error_glUniform4uivEXT(GLint location, GLsizei count, const GLuint *value)
 {
-  ITrace("error_glUniform4uivEXT");
+  Internal("error_glUniform4uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36157,7 +36157,7 @@ static void REGAL_CALL error_glUniform4uivEXT(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glVertexAttribI1iEXT(GLuint index, GLint x)
 {
-  ITrace("error_glVertexAttribI1iEXT");
+  Internal("error_glVertexAttribI1iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36178,7 +36178,7 @@ static void REGAL_CALL error_glVertexAttribI1iEXT(GLuint index, GLint x)
 
 static void REGAL_CALL error_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI1ivEXT");
+  Internal("error_glVertexAttribI1ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36199,7 +36199,7 @@ static void REGAL_CALL error_glVertexAttribI1ivEXT(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI1uiEXT(GLuint index, GLuint x)
 {
-  ITrace("error_glVertexAttribI1uiEXT");
+  Internal("error_glVertexAttribI1uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36220,7 +36220,7 @@ static void REGAL_CALL error_glVertexAttribI1uiEXT(GLuint index, GLuint x)
 
 static void REGAL_CALL error_glVertexAttribI1uivEXT(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI1uivEXT");
+  Internal("error_glVertexAttribI1uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36241,7 +36241,7 @@ static void REGAL_CALL error_glVertexAttribI1uivEXT(GLuint index, const GLuint *
 
 static void REGAL_CALL error_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y)
 {
-  ITrace("error_glVertexAttribI2iEXT");
+  Internal("error_glVertexAttribI2iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36262,7 +36262,7 @@ static void REGAL_CALL error_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI2ivEXT");
+  Internal("error_glVertexAttribI2ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36283,7 +36283,7 @@ static void REGAL_CALL error_glVertexAttribI2ivEXT(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y)
 {
-  ITrace("error_glVertexAttribI2uiEXT");
+  Internal("error_glVertexAttribI2uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36304,7 +36304,7 @@ static void REGAL_CALL error_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuin
 
 static void REGAL_CALL error_glVertexAttribI2uivEXT(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI2uivEXT");
+  Internal("error_glVertexAttribI2uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36325,7 +36325,7 @@ static void REGAL_CALL error_glVertexAttribI2uivEXT(GLuint index, const GLuint *
 
 static void REGAL_CALL error_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z)
 {
-  ITrace("error_glVertexAttribI3iEXT");
+  Internal("error_glVertexAttribI3iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36346,7 +36346,7 @@ static void REGAL_CALL error_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI3ivEXT");
+  Internal("error_glVertexAttribI3ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36367,7 +36367,7 @@ static void REGAL_CALL error_glVertexAttribI3ivEXT(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z)
 {
-  ITrace("error_glVertexAttribI3uiEXT");
+  Internal("error_glVertexAttribI3uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36388,7 +36388,7 @@ static void REGAL_CALL error_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuin
 
 static void REGAL_CALL error_glVertexAttribI3uivEXT(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI3uivEXT");
+  Internal("error_glVertexAttribI3uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36409,7 +36409,7 @@ static void REGAL_CALL error_glVertexAttribI3uivEXT(GLuint index, const GLuint *
 
 static void REGAL_CALL error_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v)
 {
-  ITrace("error_glVertexAttribI4bvEXT");
+  Internal("error_glVertexAttribI4bvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36430,7 +36430,7 @@ static void REGAL_CALL error_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v
 
 static void REGAL_CALL error_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glVertexAttribI4iEXT");
+  Internal("error_glVertexAttribI4iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36451,7 +36451,7 @@ static void REGAL_CALL error_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y
 
 static void REGAL_CALL error_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
 {
-  ITrace("error_glVertexAttribI4ivEXT");
+  Internal("error_glVertexAttribI4ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36472,7 +36472,7 @@ static void REGAL_CALL error_glVertexAttribI4ivEXT(GLuint index, const GLint *v)
 
 static void REGAL_CALL error_glVertexAttribI4svEXT(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttribI4svEXT");
+  Internal("error_glVertexAttribI4svEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36493,7 +36493,7 @@ static void REGAL_CALL error_glVertexAttribI4svEXT(GLuint index, const GLshort *
 
 static void REGAL_CALL error_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttribI4ubvEXT");
+  Internal("error_glVertexAttribI4ubvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36514,7 +36514,7 @@ static void REGAL_CALL error_glVertexAttribI4ubvEXT(GLuint index, const GLubyte 
 
 static void REGAL_CALL error_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glVertexAttribI4uiEXT");
+  Internal("error_glVertexAttribI4uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36535,7 +36535,7 @@ static void REGAL_CALL error_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuin
 
 static void REGAL_CALL error_glVertexAttribI4uivEXT(GLuint index, const GLuint *v)
 {
-  ITrace("error_glVertexAttribI4uivEXT");
+  Internal("error_glVertexAttribI4uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36556,7 +36556,7 @@ static void REGAL_CALL error_glVertexAttribI4uivEXT(GLuint index, const GLuint *
 
 static void REGAL_CALL error_glVertexAttribI4usvEXT(GLuint index, const GLushort *v)
 {
-  ITrace("error_glVertexAttribI4usvEXT");
+  Internal("error_glVertexAttribI4usvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36577,7 +36577,7 @@ static void REGAL_CALL error_glVertexAttribI4usvEXT(GLuint index, const GLushort
 
 static void REGAL_CALL error_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribIPointerEXT");
+  Internal("error_glVertexAttribIPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36600,7 +36600,7 @@ static void REGAL_CALL error_glVertexAttribIPointerEXT(GLuint index, GLint size,
 
 static void REGAL_CALL error_glGetHistogramEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values)
 {
-  ITrace("error_glGetHistogramEXT");
+  Internal("error_glGetHistogramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36621,7 +36621,7 @@ static void REGAL_CALL error_glGetHistogramEXT(GLenum target, GLboolean reset, G
 
 static void REGAL_CALL error_glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetHistogramParameterfvEXT");
+  Internal("error_glGetHistogramParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36642,7 +36642,7 @@ static void REGAL_CALL error_glGetHistogramParameterfvEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glGetHistogramParameterivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetHistogramParameterivEXT");
+  Internal("error_glGetHistogramParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36663,7 +36663,7 @@ static void REGAL_CALL error_glGetHistogramParameterivEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values)
 {
-  ITrace("error_glGetMinmaxEXT");
+  Internal("error_glGetMinmaxEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36684,7 +36684,7 @@ static void REGAL_CALL error_glGetMinmaxEXT(GLenum target, GLboolean reset, GLen
 
 static void REGAL_CALL error_glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMinmaxParameterfvEXT");
+  Internal("error_glGetMinmaxParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36705,7 +36705,7 @@ static void REGAL_CALL error_glGetMinmaxParameterfvEXT(GLenum target, GLenum pna
 
 static void REGAL_CALL error_glGetMinmaxParameterivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMinmaxParameterivEXT");
+  Internal("error_glGetMinmaxParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36726,7 +36726,7 @@ static void REGAL_CALL error_glGetMinmaxParameterivEXT(GLenum target, GLenum pna
 
 static void REGAL_CALL error_glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink)
 {
-  ITrace("error_glHistogramEXT");
+  Internal("error_glHistogramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36747,7 +36747,7 @@ static void REGAL_CALL error_glHistogramEXT(GLenum target, GLsizei width, GLenum
 
 static void REGAL_CALL error_glMinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink)
 {
-  ITrace("error_glMinmaxEXT");
+  Internal("error_glMinmaxEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36768,7 +36768,7 @@ static void REGAL_CALL error_glMinmaxEXT(GLenum target, GLenum internalformat, G
 
 static void REGAL_CALL error_glResetHistogramEXT(GLenum target)
 {
-  ITrace("error_glResetHistogramEXT");
+  Internal("error_glResetHistogramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36789,7 +36789,7 @@ static void REGAL_CALL error_glResetHistogramEXT(GLenum target)
 
 static void REGAL_CALL error_glResetMinmaxEXT(GLenum target)
 {
-  ITrace("error_glResetMinmaxEXT");
+  Internal("error_glResetMinmaxEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36812,7 +36812,7 @@ static void REGAL_CALL error_glResetMinmaxEXT(GLenum target)
 
 static void REGAL_CALL error_glIndexFuncEXT(GLenum func, GLfloat ref)
 {
-  ITrace("error_glIndexFuncEXT");
+  Internal("error_glIndexFuncEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36835,7 +36835,7 @@ static void REGAL_CALL error_glIndexFuncEXT(GLenum func, GLfloat ref)
 
 static void REGAL_CALL error_glIndexMaterialEXT(GLenum face, GLenum mode)
 {
-  ITrace("error_glIndexMaterialEXT");
+  Internal("error_glIndexMaterialEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36858,7 +36858,7 @@ static void REGAL_CALL error_glIndexMaterialEXT(GLenum face, GLenum mode)
 
 static void REGAL_CALL error_glApplyTextureEXT(GLenum mode)
 {
-  ITrace("error_glApplyTextureEXT");
+  Internal("error_glApplyTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36879,7 +36879,7 @@ static void REGAL_CALL error_glApplyTextureEXT(GLenum mode)
 
 static void REGAL_CALL error_glTextureLightEXT(GLenum pname)
 {
-  ITrace("error_glTextureLightEXT");
+  Internal("error_glTextureLightEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36900,7 +36900,7 @@ static void REGAL_CALL error_glTextureLightEXT(GLenum pname)
 
 static void REGAL_CALL error_glTextureMaterialEXT(GLenum face, GLenum mode)
 {
-  ITrace("error_glTextureMaterialEXT");
+  Internal("error_glTextureMaterialEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36923,7 +36923,7 @@ static void REGAL_CALL error_glTextureMaterialEXT(GLenum face, GLenum mode)
 
 static void REGAL_CALL error_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawArraysEXT");
+  Internal("error_glMultiDrawArraysEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36944,7 +36944,7 @@ static void REGAL_CALL error_glMultiDrawArraysEXT(GLenum mode, const GLint *firs
 
 static void REGAL_CALL error_glMultiDrawElementsEXT(GLenum mode, GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
-  ITrace("error_glMultiDrawElementsEXT");
+  Internal("error_glMultiDrawElementsEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36967,7 +36967,7 @@ static void REGAL_CALL error_glMultiDrawElementsEXT(GLenum mode, GLsizei *count,
 
 static void REGAL_CALL error_glSampleMaskEXT(GLclampf value, GLboolean invert)
 {
-  ITrace("error_glSampleMaskEXT");
+  Internal("error_glSampleMaskEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -36988,7 +36988,7 @@ static void REGAL_CALL error_glSampleMaskEXT(GLclampf value, GLboolean invert)
 
 static void REGAL_CALL error_glSamplePatternEXT(GLenum pattern)
 {
-  ITrace("error_glSamplePatternEXT");
+  Internal("error_glSamplePatternEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37011,7 +37011,7 @@ static void REGAL_CALL error_glSamplePatternEXT(GLenum pattern)
 
 static void REGAL_CALL error_glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
 {
-  ITrace("error_glColorTableEXT");
+  Internal("error_glColorTableEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37032,7 +37032,7 @@ static void REGAL_CALL error_glColorTableEXT(GLenum target, GLenum internalForma
 
 static void REGAL_CALL error_glGetColorTableEXT(GLenum target, GLenum format, GLenum type, GLvoid *data)
 {
-  ITrace("error_glGetColorTableEXT");
+  Internal("error_glGetColorTableEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37053,7 +37053,7 @@ static void REGAL_CALL error_glGetColorTableEXT(GLenum target, GLenum format, GL
 
 static void REGAL_CALL error_glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetColorTableParameterfvEXT");
+  Internal("error_glGetColorTableParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37074,7 +37074,7 @@ static void REGAL_CALL error_glGetColorTableParameterfvEXT(GLenum target, GLenum
 
 static void REGAL_CALL error_glGetColorTableParameterivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetColorTableParameterivEXT");
+  Internal("error_glGetColorTableParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37097,7 +37097,7 @@ static void REGAL_CALL error_glGetColorTableParameterivEXT(GLenum target, GLenum
 
 static void REGAL_CALL error_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glGetPixelTransformParameterfvEXT");
+  Internal("error_glGetPixelTransformParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37118,7 +37118,7 @@ static void REGAL_CALL error_glGetPixelTransformParameterfvEXT(GLenum target, GL
 
 static void REGAL_CALL error_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glGetPixelTransformParameterivEXT");
+  Internal("error_glGetPixelTransformParameterivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37139,7 +37139,7 @@ static void REGAL_CALL error_glGetPixelTransformParameterivEXT(GLenum target, GL
 
 static void REGAL_CALL error_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param)
 {
-  ITrace("error_glPixelTransformParameterfEXT");
+  Internal("error_glPixelTransformParameterfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37160,7 +37160,7 @@ static void REGAL_CALL error_glPixelTransformParameterfEXT(GLenum target, GLenum
 
 static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
-  ITrace("error_glPixelTransformParameteriEXT");
+  Internal("error_glPixelTransformParameteriEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37183,7 +37183,7 @@ static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum
 
 static void REGAL_CALL error_glPointParameterfEXT(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPointParameterfEXT");
+  Internal("error_glPointParameterfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37204,7 +37204,7 @@ static void REGAL_CALL error_glPointParameterfEXT(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPointParameterfvEXT(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glPointParameterfvEXT");
+  Internal("error_glPointParameterfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37227,7 +37227,7 @@ static void REGAL_CALL error_glPointParameterfvEXT(GLenum pname, const GLfloat *
 
 static void REGAL_CALL error_glPolygonOffsetEXT(GLfloat factor, GLfloat bias)
 {
-  ITrace("error_glPolygonOffsetEXT");
+  Internal("error_glPolygonOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37250,7 +37250,7 @@ static void REGAL_CALL error_glPolygonOffsetEXT(GLfloat factor, GLfloat bias)
 
 static void REGAL_CALL error_glProvokingVertexEXT(GLenum mode)
 {
-  ITrace("error_glProvokingVertexEXT");
+  Internal("error_glProvokingVertexEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37273,7 +37273,7 @@ static void REGAL_CALL error_glProvokingVertexEXT(GLenum mode)
 
 static void REGAL_CALL error_glBeginSceneEXT(void)
 {
-  ITrace("error_glBeginSceneEXT");
+  Internal("error_glBeginSceneEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37294,7 +37294,7 @@ static void REGAL_CALL error_glBeginSceneEXT(void)
 
 static void REGAL_CALL error_glEndSceneEXT(void)
 {
-  ITrace("error_glEndSceneEXT");
+  Internal("error_glEndSceneEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37317,7 +37317,7 @@ static void REGAL_CALL error_glEndSceneEXT(void)
 
 static void REGAL_CALL error_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue)
 {
-  ITrace("error_glSecondaryColor3bEXT");
+  Internal("error_glSecondaryColor3bEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37338,7 +37338,7 @@ static void REGAL_CALL error_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLb
 
 static void REGAL_CALL error_glSecondaryColor3bvEXT(const GLbyte *v)
 {
-  ITrace("error_glSecondaryColor3bvEXT");
+  Internal("error_glSecondaryColor3bvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37359,7 +37359,7 @@ static void REGAL_CALL error_glSecondaryColor3bvEXT(const GLbyte *v)
 
 static void REGAL_CALL error_glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue)
 {
-  ITrace("error_glSecondaryColor3dEXT");
+  Internal("error_glSecondaryColor3dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37380,7 +37380,7 @@ static void REGAL_CALL error_glSecondaryColor3dEXT(GLdouble red, GLdouble green,
 
 static void REGAL_CALL error_glSecondaryColor3dvEXT(const GLdouble *v)
 {
-  ITrace("error_glSecondaryColor3dvEXT");
+  Internal("error_glSecondaryColor3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37401,7 +37401,7 @@ static void REGAL_CALL error_glSecondaryColor3dvEXT(const GLdouble *v)
 
 static void REGAL_CALL error_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue)
 {
-  ITrace("error_glSecondaryColor3fEXT");
+  Internal("error_glSecondaryColor3fEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37422,7 +37422,7 @@ static void REGAL_CALL error_glSecondaryColor3fEXT(GLfloat red, GLfloat green, G
 
 static void REGAL_CALL error_glSecondaryColor3fvEXT(const GLfloat *v)
 {
-  ITrace("error_glSecondaryColor3fvEXT");
+  Internal("error_glSecondaryColor3fvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37443,7 +37443,7 @@ static void REGAL_CALL error_glSecondaryColor3fvEXT(const GLfloat *v)
 
 static void REGAL_CALL error_glSecondaryColor3iEXT(GLint red, GLint green, GLint blue)
 {
-  ITrace("error_glSecondaryColor3iEXT");
+  Internal("error_glSecondaryColor3iEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37464,7 +37464,7 @@ static void REGAL_CALL error_glSecondaryColor3iEXT(GLint red, GLint green, GLint
 
 static void REGAL_CALL error_glSecondaryColor3ivEXT(const GLint *v)
 {
-  ITrace("error_glSecondaryColor3ivEXT");
+  Internal("error_glSecondaryColor3ivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37485,7 +37485,7 @@ static void REGAL_CALL error_glSecondaryColor3ivEXT(const GLint *v)
 
 static void REGAL_CALL error_glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue)
 {
-  ITrace("error_glSecondaryColor3sEXT");
+  Internal("error_glSecondaryColor3sEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37506,7 +37506,7 @@ static void REGAL_CALL error_glSecondaryColor3sEXT(GLshort red, GLshort green, G
 
 static void REGAL_CALL error_glSecondaryColor3svEXT(const GLshort *v)
 {
-  ITrace("error_glSecondaryColor3svEXT");
+  Internal("error_glSecondaryColor3svEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37527,7 +37527,7 @@ static void REGAL_CALL error_glSecondaryColor3svEXT(const GLshort *v)
 
 static void REGAL_CALL error_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue)
 {
-  ITrace("error_glSecondaryColor3ubEXT");
+  Internal("error_glSecondaryColor3ubEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37548,7 +37548,7 @@ static void REGAL_CALL error_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, 
 
 static void REGAL_CALL error_glSecondaryColor3ubvEXT(const GLubyte *v)
 {
-  ITrace("error_glSecondaryColor3ubvEXT");
+  Internal("error_glSecondaryColor3ubvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37569,7 +37569,7 @@ static void REGAL_CALL error_glSecondaryColor3ubvEXT(const GLubyte *v)
 
 static void REGAL_CALL error_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue)
 {
-  ITrace("error_glSecondaryColor3uiEXT");
+  Internal("error_glSecondaryColor3uiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37590,7 +37590,7 @@ static void REGAL_CALL error_glSecondaryColor3uiEXT(GLuint red, GLuint green, GL
 
 static void REGAL_CALL error_glSecondaryColor3uivEXT(const GLuint *v)
 {
-  ITrace("error_glSecondaryColor3uivEXT");
+  Internal("error_glSecondaryColor3uivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37611,7 +37611,7 @@ static void REGAL_CALL error_glSecondaryColor3uivEXT(const GLuint *v)
 
 static void REGAL_CALL error_glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue)
 {
-  ITrace("error_glSecondaryColor3usEXT");
+  Internal("error_glSecondaryColor3usEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37632,7 +37632,7 @@ static void REGAL_CALL error_glSecondaryColor3usEXT(GLushort red, GLushort green
 
 static void REGAL_CALL error_glSecondaryColor3usvEXT(const GLushort *v)
 {
-  ITrace("error_glSecondaryColor3usvEXT");
+  Internal("error_glSecondaryColor3usvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37653,7 +37653,7 @@ static void REGAL_CALL error_glSecondaryColor3usvEXT(const GLushort *v)
 
 static void REGAL_CALL error_glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glSecondaryColorPointerEXT");
+  Internal("error_glSecondaryColorPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37676,7 +37676,7 @@ static void REGAL_CALL error_glSecondaryColorPointerEXT(GLint size, GLenum type,
 
 static void REGAL_CALL error_glActiveProgramEXT(GLuint program)
 {
-  ITrace("error_glActiveProgramEXT");
+  Internal("error_glActiveProgramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37697,7 +37697,7 @@ static void REGAL_CALL error_glActiveProgramEXT(GLuint program)
 
 static GLuint REGAL_CALL error_glCreateShaderProgramEXT(GLenum type, const GLchar *string)
 {
-  ITrace("error_glCreateShaderProgramEXT");
+  Internal("error_glCreateShaderProgramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37719,7 +37719,7 @@ return ret;
 
 static void REGAL_CALL error_glUseShaderProgramEXT(GLenum type, GLuint program)
 {
-  ITrace("error_glUseShaderProgramEXT");
+  Internal("error_glUseShaderProgramEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37742,7 +37742,7 @@ static void REGAL_CALL error_glUseShaderProgramEXT(GLenum type, GLuint program)
 
 static void REGAL_CALL error_glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format)
 {
-  ITrace("error_glBindImageTextureEXT");
+  Internal("error_glBindImageTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37763,7 +37763,7 @@ static void REGAL_CALL error_glBindImageTextureEXT(GLuint index, GLuint texture,
 
 static void REGAL_CALL error_glMemoryBarrierEXT(GLbitfield barriers)
 {
-  ITrace("error_glMemoryBarrierEXT");
+  Internal("error_glMemoryBarrierEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37786,7 +37786,7 @@ static void REGAL_CALL error_glMemoryBarrierEXT(GLbitfield barriers)
 
 static void REGAL_CALL error_glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag)
 {
-  ITrace("error_glStencilClearTagEXT");
+  Internal("error_glStencilClearTagEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37809,7 +37809,7 @@ static void REGAL_CALL error_glStencilClearTagEXT(GLsizei stencilTagBits, GLuint
 
 static void REGAL_CALL error_glActiveStencilFaceEXT(GLenum face)
 {
-  ITrace("error_glActiveStencilFaceEXT");
+  Internal("error_glActiveStencilFaceEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37832,7 +37832,7 @@ static void REGAL_CALL error_glActiveStencilFaceEXT(GLenum face)
 
 static void REGAL_CALL error_glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage1DEXT");
+  Internal("error_glTexSubImage1DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37853,7 +37853,7 @@ static void REGAL_CALL error_glTexSubImage1DEXT(GLenum target, GLint level, GLin
 
 static void REGAL_CALL error_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage2DEXT");
+  Internal("error_glTexSubImage2DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37874,7 +37874,7 @@ static void REGAL_CALL error_glTexSubImage2DEXT(GLenum target, GLint level, GLin
 
 static void REGAL_CALL error_glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage3DEXT");
+  Internal("error_glTexSubImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37897,7 +37897,7 @@ static void REGAL_CALL error_glTexSubImage3DEXT(GLenum target, GLint level, GLin
 
 static void REGAL_CALL error_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexImage3DEXT");
+  Internal("error_glTexImage3DEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37920,7 +37920,7 @@ static void REGAL_CALL error_glTexImage3DEXT(GLenum target, GLint level, GLenum 
 
 static void REGAL_CALL error_glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  ITrace("error_glFramebufferTextureLayerEXT");
+  Internal("error_glFramebufferTextureLayerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37943,7 +37943,7 @@ static void REGAL_CALL error_glFramebufferTextureLayerEXT(GLenum target, GLenum 
 
 static void REGAL_CALL error_glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer)
 {
-  ITrace("error_glTexBufferEXT");
+  Internal("error_glTexBufferEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37966,7 +37966,7 @@ static void REGAL_CALL error_glTexBufferEXT(GLenum target, GLenum internalformat
 
 static void REGAL_CALL error_glClearColorIiEXT(GLint red, GLint green, GLint blue, GLint alpha)
 {
-  ITrace("error_glClearColorIiEXT");
+  Internal("error_glClearColorIiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -37987,7 +37987,7 @@ static void REGAL_CALL error_glClearColorIiEXT(GLint red, GLint green, GLint blu
 
 static void REGAL_CALL error_glClearColorIuiEXT(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
-  ITrace("error_glClearColorIuiEXT");
+  Internal("error_glClearColorIuiEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38008,7 +38008,7 @@ static void REGAL_CALL error_glClearColorIuiEXT(GLuint red, GLuint green, GLuint
 
 static void REGAL_CALL error_glGetTexParameterIivEXT(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTexParameterIivEXT");
+  Internal("error_glGetTexParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38029,7 +38029,7 @@ static void REGAL_CALL error_glGetTexParameterIivEXT(GLenum target, GLenum pname
 
 static void REGAL_CALL error_glGetTexParameterIuivEXT(GLenum target, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetTexParameterIuivEXT");
+  Internal("error_glGetTexParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38050,7 +38050,7 @@ static void REGAL_CALL error_glGetTexParameterIuivEXT(GLenum target, GLenum pnam
 
 static void REGAL_CALL error_glTexParameterIivEXT(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glTexParameterIivEXT");
+  Internal("error_glTexParameterIivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38071,7 +38071,7 @@ static void REGAL_CALL error_glTexParameterIivEXT(GLenum target, GLenum pname, c
 
 static void REGAL_CALL error_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params)
 {
-  ITrace("error_glTexParameterIuivEXT");
+  Internal("error_glTexParameterIuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38094,7 +38094,7 @@ static void REGAL_CALL error_glTexParameterIuivEXT(GLenum target, GLenum pname, 
 
 static GLboolean REGAL_CALL error_glAreTexturesResidentEXT(GLsizei n, const GLuint *textures, GLboolean *residences)
 {
-  ITrace("error_glAreTexturesResidentEXT");
+  Internal("error_glAreTexturesResidentEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38116,7 +38116,7 @@ return ret;
 
 static void REGAL_CALL error_glBindTextureEXT(GLenum target, GLuint texture)
 {
-  ITrace("error_glBindTextureEXT");
+  Internal("error_glBindTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38137,7 +38137,7 @@ static void REGAL_CALL error_glBindTextureEXT(GLenum target, GLuint texture)
 
 static void REGAL_CALL error_glDeleteTexturesEXT(GLsizei n, const GLuint *textures)
 {
-  ITrace("error_glDeleteTexturesEXT");
+  Internal("error_glDeleteTexturesEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38158,7 +38158,7 @@ static void REGAL_CALL error_glDeleteTexturesEXT(GLsizei n, const GLuint *textur
 
 static void REGAL_CALL error_glGenTexturesEXT(GLsizei n, GLuint *textures)
 {
-  ITrace("error_glGenTexturesEXT");
+  Internal("error_glGenTexturesEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38179,7 +38179,7 @@ static void REGAL_CALL error_glGenTexturesEXT(GLsizei n, GLuint *textures)
 
 static GLboolean REGAL_CALL error_glIsTextureEXT(GLuint texture)
 {
-  ITrace("error_glIsTextureEXT");
+  Internal("error_glIsTextureEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38201,7 +38201,7 @@ return ret;
 
 static void REGAL_CALL error_glPrioritizeTexturesEXT(GLsizei n, const GLuint *textures, const GLclampf *priorities)
 {
-  ITrace("error_glPrioritizeTexturesEXT");
+  Internal("error_glPrioritizeTexturesEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38224,7 +38224,7 @@ static void REGAL_CALL error_glPrioritizeTexturesEXT(GLsizei n, const GLuint *te
 
 static void REGAL_CALL error_glTextureNormalEXT(GLenum mode)
 {
-  ITrace("error_glTextureNormalEXT");
+  Internal("error_glTextureNormalEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38247,7 +38247,7 @@ static void REGAL_CALL error_glTextureNormalEXT(GLenum mode)
 
 static void REGAL_CALL error_glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GLint64EXT *params)
 {
-  ITrace("error_glGetQueryObjecti64vEXT");
+  Internal("error_glGetQueryObjecti64vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38268,7 +38268,7 @@ static void REGAL_CALL error_glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GL
 
 static void REGAL_CALL error_glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLuint64EXT *params)
 {
-  ITrace("error_glGetQueryObjectui64vEXT");
+  Internal("error_glGetQueryObjectui64vEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38291,7 +38291,7 @@ static void REGAL_CALL error_glGetQueryObjectui64vEXT(GLuint id, GLenum pname, G
 
 static void REGAL_CALL error_glBeginTransformFeedbackEXT(GLenum primitiveMode)
 {
-  ITrace("error_glBeginTransformFeedbackEXT");
+  Internal("error_glBeginTransformFeedbackEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38312,7 +38312,7 @@ static void REGAL_CALL error_glBeginTransformFeedbackEXT(GLenum primitiveMode)
 
 static void REGAL_CALL error_glBindBufferBaseEXT(GLenum target, GLuint index, GLuint buffer)
 {
-  ITrace("error_glBindBufferBaseEXT");
+  Internal("error_glBindBufferBaseEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38333,7 +38333,7 @@ static void REGAL_CALL error_glBindBufferBaseEXT(GLenum target, GLuint index, GL
 
 static void REGAL_CALL error_glBindBufferOffsetEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset)
 {
-  ITrace("error_glBindBufferOffsetEXT");
+  Internal("error_glBindBufferOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38354,7 +38354,7 @@ static void REGAL_CALL error_glBindBufferOffsetEXT(GLenum target, GLuint index, 
 
 static void REGAL_CALL error_glBindBufferRangeEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glBindBufferRangeEXT");
+  Internal("error_glBindBufferRangeEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38375,7 +38375,7 @@ static void REGAL_CALL error_glBindBufferRangeEXT(GLenum target, GLuint index, G
 
 static void REGAL_CALL error_glEndTransformFeedbackEXT(void)
 {
-  ITrace("error_glEndTransformFeedbackEXT");
+  Internal("error_glEndTransformFeedbackEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38396,7 +38396,7 @@ static void REGAL_CALL error_glEndTransformFeedbackEXT(void)
 
 static void REGAL_CALL error_glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name)
 {
-  ITrace("error_glGetTransformFeedbackVaryingEXT");
+  Internal("error_glGetTransformFeedbackVaryingEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38417,7 +38417,7 @@ static void REGAL_CALL error_glGetTransformFeedbackVaryingEXT(GLuint program, GL
 
 static void REGAL_CALL error_glTransformFeedbackVaryingsEXT(GLuint program, GLsizei count, const GLchar **varyings, GLenum bufferMode)
 {
-  ITrace("error_glTransformFeedbackVaryingsEXT");
+  Internal("error_glTransformFeedbackVaryingsEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38440,7 +38440,7 @@ static void REGAL_CALL error_glTransformFeedbackVaryingsEXT(GLuint program, GLsi
 
 static void REGAL_CALL error_glArrayElementEXT(GLint i)
 {
-  ITrace("error_glArrayElementEXT");
+  Internal("error_glArrayElementEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38461,7 +38461,7 @@ static void REGAL_CALL error_glArrayElementEXT(GLint i)
 
 static void REGAL_CALL error_glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
-  ITrace("error_glColorPointerEXT");
+  Internal("error_glColorPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38482,7 +38482,7 @@ static void REGAL_CALL error_glColorPointerEXT(GLint size, GLenum type, GLsizei 
 
 static void REGAL_CALL error_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
 {
-  ITrace("error_glDrawArraysEXT");
+  Internal("error_glDrawArraysEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38503,7 +38503,7 @@ static void REGAL_CALL error_glDrawArraysEXT(GLenum mode, GLint first, GLsizei c
 
 static void REGAL_CALL error_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean *pointer)
 {
-  ITrace("error_glEdgeFlagPointerEXT");
+  Internal("error_glEdgeFlagPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38524,7 +38524,7 @@ static void REGAL_CALL error_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count,
 
 static void REGAL_CALL error_glGetPointervEXT(GLenum pname, GLvoid **params)
 {
-  ITrace("error_glGetPointervEXT");
+  Internal("error_glGetPointervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38545,7 +38545,7 @@ static void REGAL_CALL error_glGetPointervEXT(GLenum pname, GLvoid **params)
 
 static void REGAL_CALL error_glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
-  ITrace("error_glIndexPointerEXT");
+  Internal("error_glIndexPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38566,7 +38566,7 @@ static void REGAL_CALL error_glIndexPointerEXT(GLenum type, GLsizei stride, GLsi
 
 static void REGAL_CALL error_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
-  ITrace("error_glNormalPointerEXT");
+  Internal("error_glNormalPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38587,7 +38587,7 @@ static void REGAL_CALL error_glNormalPointerEXT(GLenum type, GLsizei stride, GLs
 
 static void REGAL_CALL error_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
-  ITrace("error_glTexCoordPointerEXT");
+  Internal("error_glTexCoordPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38608,7 +38608,7 @@ static void REGAL_CALL error_glTexCoordPointerEXT(GLint size, GLenum type, GLsiz
 
 static void REGAL_CALL error_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
-  ITrace("error_glVertexPointerEXT");
+  Internal("error_glVertexPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38631,7 +38631,7 @@ static void REGAL_CALL error_glVertexPointerEXT(GLint size, GLenum type, GLsizei
 
 static void REGAL_CALL error_glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVertexAttribLdvEXT");
+  Internal("error_glGetVertexAttribLdvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38652,7 +38652,7 @@ static void REGAL_CALL error_glGetVertexAttribLdvEXT(GLuint index, GLenum pname,
 
 static void REGAL_CALL error_glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset)
 {
-  ITrace("error_glVertexArrayVertexAttribLOffsetEXT");
+  Internal("error_glVertexArrayVertexAttribLOffsetEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38673,7 +38673,7 @@ static void REGAL_CALL error_glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, G
 
 static void REGAL_CALL error_glVertexAttribL1dEXT(GLuint index, GLdouble x)
 {
-  ITrace("error_glVertexAttribL1dEXT");
+  Internal("error_glVertexAttribL1dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38694,7 +38694,7 @@ static void REGAL_CALL error_glVertexAttribL1dEXT(GLuint index, GLdouble x)
 
 static void REGAL_CALL error_glVertexAttribL1dvEXT(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL1dvEXT");
+  Internal("error_glVertexAttribL1dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38715,7 +38715,7 @@ static void REGAL_CALL error_glVertexAttribL1dvEXT(GLuint index, const GLdouble 
 
 static void REGAL_CALL error_glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexAttribL2dEXT");
+  Internal("error_glVertexAttribL2dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38736,7 +38736,7 @@ static void REGAL_CALL error_glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexAttribL2dvEXT(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL2dvEXT");
+  Internal("error_glVertexAttribL2dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38757,7 +38757,7 @@ static void REGAL_CALL error_glVertexAttribL2dvEXT(GLuint index, const GLdouble 
 
 static void REGAL_CALL error_glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexAttribL3dEXT");
+  Internal("error_glVertexAttribL3dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38778,7 +38778,7 @@ static void REGAL_CALL error_glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexAttribL3dvEXT(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL3dvEXT");
+  Internal("error_glVertexAttribL3dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38799,7 +38799,7 @@ static void REGAL_CALL error_glVertexAttribL3dvEXT(GLuint index, const GLdouble 
 
 static void REGAL_CALL error_glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexAttribL4dEXT");
+  Internal("error_glVertexAttribL4dEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38820,7 +38820,7 @@ static void REGAL_CALL error_glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdo
 
 static void REGAL_CALL error_glVertexAttribL4dvEXT(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribL4dvEXT");
+  Internal("error_glVertexAttribL4dvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38841,7 +38841,7 @@ static void REGAL_CALL error_glVertexAttribL4dvEXT(GLuint index, const GLdouble 
 
 static void REGAL_CALL error_glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribLPointerEXT");
+  Internal("error_glVertexAttribLPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38864,7 +38864,7 @@ static void REGAL_CALL error_glVertexAttribLPointerEXT(GLuint index, GLint size,
 
 static void REGAL_CALL error_glBeginVertexShaderEXT(void)
 {
-  ITrace("error_glBeginVertexShaderEXT");
+  Internal("error_glBeginVertexShaderEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38885,7 +38885,7 @@ static void REGAL_CALL error_glBeginVertexShaderEXT(void)
 
 static GLuint REGAL_CALL error_glBindLightParameterEXT(GLenum light, GLenum value)
 {
-  ITrace("error_glBindLightParameterEXT");
+  Internal("error_glBindLightParameterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38907,7 +38907,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glBindMaterialParameterEXT(GLenum face, GLenum value)
 {
-  ITrace("error_glBindMaterialParameterEXT");
+  Internal("error_glBindMaterialParameterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38929,7 +38929,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glBindParameterEXT(GLenum value)
 {
-  ITrace("error_glBindParameterEXT");
+  Internal("error_glBindParameterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38951,7 +38951,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value)
 {
-  ITrace("error_glBindTexGenParameterEXT");
+  Internal("error_glBindTexGenParameterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38973,7 +38973,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glBindTextureUnitParameterEXT(GLenum unit, GLenum value)
 {
-  ITrace("error_glBindTextureUnitParameterEXT");
+  Internal("error_glBindTextureUnitParameterEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -38995,7 +38995,7 @@ return ret;
 
 static void REGAL_CALL error_glBindVertexShaderEXT(GLuint id)
 {
-  ITrace("error_glBindVertexShaderEXT");
+  Internal("error_glBindVertexShaderEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39016,7 +39016,7 @@ static void REGAL_CALL error_glBindVertexShaderEXT(GLuint id)
 
 static void REGAL_CALL error_glDeleteVertexShaderEXT(GLuint id)
 {
-  ITrace("error_glDeleteVertexShaderEXT");
+  Internal("error_glDeleteVertexShaderEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39037,7 +39037,7 @@ static void REGAL_CALL error_glDeleteVertexShaderEXT(GLuint id)
 
 static void REGAL_CALL error_glDisableVariantClientStateEXT(GLuint id)
 {
-  ITrace("error_glDisableVariantClientStateEXT");
+  Internal("error_glDisableVariantClientStateEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39058,7 +39058,7 @@ static void REGAL_CALL error_glDisableVariantClientStateEXT(GLuint id)
 
 static void REGAL_CALL error_glEnableVariantClientStateEXT(GLuint id)
 {
-  ITrace("error_glEnableVariantClientStateEXT");
+  Internal("error_glEnableVariantClientStateEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39079,7 +39079,7 @@ static void REGAL_CALL error_glEnableVariantClientStateEXT(GLuint id)
 
 static void REGAL_CALL error_glEndVertexShaderEXT(void)
 {
-  ITrace("error_glEndVertexShaderEXT");
+  Internal("error_glEndVertexShaderEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39100,7 +39100,7 @@ static void REGAL_CALL error_glEndVertexShaderEXT(void)
 
 static void REGAL_CALL error_glExtractComponentEXT(GLuint res, GLuint src, GLuint num)
 {
-  ITrace("error_glExtractComponentEXT");
+  Internal("error_glExtractComponentEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39121,7 +39121,7 @@ static void REGAL_CALL error_glExtractComponentEXT(GLuint res, GLuint src, GLuin
 
 static GLuint REGAL_CALL error_glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components)
 {
-  ITrace("error_glGenSymbolsEXT");
+  Internal("error_glGenSymbolsEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39143,7 +39143,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glGenVertexShadersEXT(GLuint range)
 {
-  ITrace("error_glGenVertexShadersEXT");
+  Internal("error_glGenVertexShadersEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39165,7 +39165,7 @@ return ret;
 
 static void REGAL_CALL error_glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean *data)
 {
-  ITrace("error_glGetInvariantBooleanvEXT");
+  Internal("error_glGetInvariantBooleanvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39186,7 +39186,7 @@ static void REGAL_CALL error_glGetInvariantBooleanvEXT(GLuint id, GLenum value, 
 
 static void REGAL_CALL error_glGetInvariantFloatvEXT(GLuint id, GLenum value, GLfloat *data)
 {
-  ITrace("error_glGetInvariantFloatvEXT");
+  Internal("error_glGetInvariantFloatvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39207,7 +39207,7 @@ static void REGAL_CALL error_glGetInvariantFloatvEXT(GLuint id, GLenum value, GL
 
 static void REGAL_CALL error_glGetInvariantIntegervEXT(GLuint id, GLenum value, GLint *data)
 {
-  ITrace("error_glGetInvariantIntegervEXT");
+  Internal("error_glGetInvariantIntegervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39228,7 +39228,7 @@ static void REGAL_CALL error_glGetInvariantIntegervEXT(GLuint id, GLenum value, 
 
 static void REGAL_CALL error_glGetLocalConstantBooleanvEXT(GLuint id, GLenum value, GLboolean *data)
 {
-  ITrace("error_glGetLocalConstantBooleanvEXT");
+  Internal("error_glGetLocalConstantBooleanvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39249,7 +39249,7 @@ static void REGAL_CALL error_glGetLocalConstantBooleanvEXT(GLuint id, GLenum val
 
 static void REGAL_CALL error_glGetLocalConstantFloatvEXT(GLuint id, GLenum value, GLfloat *data)
 {
-  ITrace("error_glGetLocalConstantFloatvEXT");
+  Internal("error_glGetLocalConstantFloatvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39270,7 +39270,7 @@ static void REGAL_CALL error_glGetLocalConstantFloatvEXT(GLuint id, GLenum value
 
 static void REGAL_CALL error_glGetLocalConstantIntegervEXT(GLuint id, GLenum value, GLint *data)
 {
-  ITrace("error_glGetLocalConstantIntegervEXT");
+  Internal("error_glGetLocalConstantIntegervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39291,7 +39291,7 @@ static void REGAL_CALL error_glGetLocalConstantIntegervEXT(GLuint id, GLenum val
 
 static void REGAL_CALL error_glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean *data)
 {
-  ITrace("error_glGetVariantBooleanvEXT");
+  Internal("error_glGetVariantBooleanvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39312,7 +39312,7 @@ static void REGAL_CALL error_glGetVariantBooleanvEXT(GLuint id, GLenum value, GL
 
 static void REGAL_CALL error_glGetVariantFloatvEXT(GLuint id, GLenum value, GLfloat *data)
 {
-  ITrace("error_glGetVariantFloatvEXT");
+  Internal("error_glGetVariantFloatvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39333,7 +39333,7 @@ static void REGAL_CALL error_glGetVariantFloatvEXT(GLuint id, GLenum value, GLfl
 
 static void REGAL_CALL error_glGetVariantIntegervEXT(GLuint id, GLenum value, GLint *data)
 {
-  ITrace("error_glGetVariantIntegervEXT");
+  Internal("error_glGetVariantIntegervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39354,7 +39354,7 @@ static void REGAL_CALL error_glGetVariantIntegervEXT(GLuint id, GLenum value, GL
 
 static void REGAL_CALL error_glGetVariantPointervEXT(GLuint id, GLenum value, GLvoid **data)
 {
-  ITrace("error_glGetVariantPointervEXT");
+  Internal("error_glGetVariantPointervEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39375,7 +39375,7 @@ static void REGAL_CALL error_glGetVariantPointervEXT(GLuint id, GLenum value, GL
 
 static void REGAL_CALL error_glInsertComponentEXT(GLuint res, GLuint src, GLuint num)
 {
-  ITrace("error_glInsertComponentEXT");
+  Internal("error_glInsertComponentEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39396,7 +39396,7 @@ static void REGAL_CALL error_glInsertComponentEXT(GLuint res, GLuint src, GLuint
 
 static GLboolean REGAL_CALL error_glIsVariantEnabledEXT(GLuint id, GLenum cap)
 {
-  ITrace("error_glIsVariantEnabledEXT");
+  Internal("error_glIsVariantEnabledEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39418,7 +39418,7 @@ return ret;
 
 static void REGAL_CALL error_glSetInvariantEXT(GLuint id, GLenum type, const GLvoid *addr)
 {
-  ITrace("error_glSetInvariantEXT");
+  Internal("error_glSetInvariantEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39439,7 +39439,7 @@ static void REGAL_CALL error_glSetInvariantEXT(GLuint id, GLenum type, const GLv
 
 static void REGAL_CALL error_glSetLocalConstantEXT(GLuint id, GLenum type, const GLvoid *addr)
 {
-  ITrace("error_glSetLocalConstantEXT");
+  Internal("error_glSetLocalConstantEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39460,7 +39460,7 @@ static void REGAL_CALL error_glSetLocalConstantEXT(GLuint id, GLenum type, const
 
 static void REGAL_CALL error_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1)
 {
-  ITrace("error_glShaderOp1EXT");
+  Internal("error_glShaderOp1EXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39481,7 +39481,7 @@ static void REGAL_CALL error_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1)
 
 static void REGAL_CALL error_glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2)
 {
-  ITrace("error_glShaderOp2EXT");
+  Internal("error_glShaderOp2EXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39502,7 +39502,7 @@ static void REGAL_CALL error_glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, 
 
 static void REGAL_CALL error_glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3)
 {
-  ITrace("error_glShaderOp3EXT");
+  Internal("error_glShaderOp3EXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39523,7 +39523,7 @@ static void REGAL_CALL error_glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, 
 
 static void REGAL_CALL error_glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW)
 {
-  ITrace("error_glSwizzleEXT");
+  Internal("error_glSwizzleEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39544,7 +39544,7 @@ static void REGAL_CALL error_glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GL
 
 static void REGAL_CALL error_glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const GLvoid *addr)
 {
-  ITrace("error_glVariantPointerEXT");
+  Internal("error_glVariantPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39565,7 +39565,7 @@ static void REGAL_CALL error_glVariantPointerEXT(GLuint id, GLenum type, GLuint 
 
 static void REGAL_CALL error_glVariantbvEXT(GLuint id, const GLbyte *addr)
 {
-  ITrace("error_glVariantbvEXT");
+  Internal("error_glVariantbvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39586,7 +39586,7 @@ static void REGAL_CALL error_glVariantbvEXT(GLuint id, const GLbyte *addr)
 
 static void REGAL_CALL error_glVariantdvEXT(GLuint id, const GLdouble *addr)
 {
-  ITrace("error_glVariantdvEXT");
+  Internal("error_glVariantdvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39607,7 +39607,7 @@ static void REGAL_CALL error_glVariantdvEXT(GLuint id, const GLdouble *addr)
 
 static void REGAL_CALL error_glVariantfvEXT(GLuint id, const GLfloat *addr)
 {
-  ITrace("error_glVariantfvEXT");
+  Internal("error_glVariantfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39628,7 +39628,7 @@ static void REGAL_CALL error_glVariantfvEXT(GLuint id, const GLfloat *addr)
 
 static void REGAL_CALL error_glVariantivEXT(GLuint id, const GLint *addr)
 {
-  ITrace("error_glVariantivEXT");
+  Internal("error_glVariantivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39649,7 +39649,7 @@ static void REGAL_CALL error_glVariantivEXT(GLuint id, const GLint *addr)
 
 static void REGAL_CALL error_glVariantsvEXT(GLuint id, const GLshort *addr)
 {
-  ITrace("error_glVariantsvEXT");
+  Internal("error_glVariantsvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39670,7 +39670,7 @@ static void REGAL_CALL error_glVariantsvEXT(GLuint id, const GLshort *addr)
 
 static void REGAL_CALL error_glVariantubvEXT(GLuint id, const GLubyte *addr)
 {
-  ITrace("error_glVariantubvEXT");
+  Internal("error_glVariantubvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39691,7 +39691,7 @@ static void REGAL_CALL error_glVariantubvEXT(GLuint id, const GLubyte *addr)
 
 static void REGAL_CALL error_glVariantuivEXT(GLuint id, const GLuint *addr)
 {
-  ITrace("error_glVariantuivEXT");
+  Internal("error_glVariantuivEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39712,7 +39712,7 @@ static void REGAL_CALL error_glVariantuivEXT(GLuint id, const GLuint *addr)
 
 static void REGAL_CALL error_glVariantusvEXT(GLuint id, const GLushort *addr)
 {
-  ITrace("error_glVariantusvEXT");
+  Internal("error_glVariantusvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39733,7 +39733,7 @@ static void REGAL_CALL error_glVariantusvEXT(GLuint id, const GLushort *addr)
 
 static void REGAL_CALL error_glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW)
 {
-  ITrace("error_glWriteMaskEXT");
+  Internal("error_glWriteMaskEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39756,7 +39756,7 @@ static void REGAL_CALL error_glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, 
 
 static void REGAL_CALL error_glVertexWeightPointerEXT(GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexWeightPointerEXT");
+  Internal("error_glVertexWeightPointerEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39777,7 +39777,7 @@ static void REGAL_CALL error_glVertexWeightPointerEXT(GLsizei size, GLenum type,
 
 static void REGAL_CALL error_glVertexWeightfEXT(GLfloat weight)
 {
-  ITrace("error_glVertexWeightfEXT");
+  Internal("error_glVertexWeightfEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39798,7 +39798,7 @@ static void REGAL_CALL error_glVertexWeightfEXT(GLfloat weight)
 
 static void REGAL_CALL error_glVertexWeightfvEXT(const GLfloat *weight)
 {
-  ITrace("error_glVertexWeightfvEXT");
+  Internal("error_glVertexWeightfvEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39821,7 +39821,7 @@ static void REGAL_CALL error_glVertexWeightfvEXT(const GLfloat *weight)
 
 static GLsync REGAL_CALL error_glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags)
 {
-  ITrace("error_glImportSyncEXT");
+  Internal("error_glImportSyncEXT","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39845,7 +39845,7 @@ return ret;
 
 static void REGAL_CALL error_glFrameTerminatorGREMEDY(void)
 {
-  ITrace("error_glFrameTerminatorGREMEDY");
+  Internal("error_glFrameTerminatorGREMEDY","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39868,7 +39868,7 @@ static void REGAL_CALL error_glFrameTerminatorGREMEDY(void)
 
 static void REGAL_CALL error_glStringMarkerGREMEDY(GLsizei len, const GLvoid *string)
 {
-  ITrace("error_glStringMarkerGREMEDY");
+  Internal("error_glStringMarkerGREMEDY","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39891,7 +39891,7 @@ static void REGAL_CALL error_glStringMarkerGREMEDY(GLsizei len, const GLvoid *st
 
 static void REGAL_CALL error_glGetImageTransformParameterfvHP(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetImageTransformParameterfvHP");
+  Internal("error_glGetImageTransformParameterfvHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39912,7 +39912,7 @@ static void REGAL_CALL error_glGetImageTransformParameterfvHP(GLenum target, GLe
 
 static void REGAL_CALL error_glGetImageTransformParameterivHP(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetImageTransformParameterivHP");
+  Internal("error_glGetImageTransformParameterivHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39933,7 +39933,7 @@ static void REGAL_CALL error_glGetImageTransformParameterivHP(GLenum target, GLe
 
 static void REGAL_CALL error_glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("error_glImageTransformParameterfHP");
+  Internal("error_glImageTransformParameterfHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39954,7 +39954,7 @@ static void REGAL_CALL error_glImageTransformParameterfHP(GLenum target, GLenum 
 
 static void REGAL_CALL error_glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glImageTransformParameterfvHP");
+  Internal("error_glImageTransformParameterfvHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39975,7 +39975,7 @@ static void REGAL_CALL error_glImageTransformParameterfvHP(GLenum target, GLenum
 
 static void REGAL_CALL error_glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("error_glImageTransformParameteriHP");
+  Internal("error_glImageTransformParameteriHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -39996,7 +39996,7 @@ static void REGAL_CALL error_glImageTransformParameteriHP(GLenum target, GLenum 
 
 static void REGAL_CALL error_glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glImageTransformParameterivHP");
+  Internal("error_glImageTransformParameterivHP","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40019,7 +40019,7 @@ static void REGAL_CALL error_glImageTransformParameterivHP(GLenum target, GLenum
 
 static void REGAL_CALL error_glMultiModeDrawArraysIBM(const GLenum *mode, const GLint *first, const GLsizei *count, GLsizei primcount, GLint modestride)
 {
-  ITrace("error_glMultiModeDrawArraysIBM");
+  Internal("error_glMultiModeDrawArraysIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40040,7 +40040,7 @@ static void REGAL_CALL error_glMultiModeDrawArraysIBM(const GLenum *mode, const 
 
 static void REGAL_CALL error_glMultiModeDrawElementsIBM(const GLenum *mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, GLint modestride)
 {
-  ITrace("error_glMultiModeDrawElementsIBM");
+  Internal("error_glMultiModeDrawElementsIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40063,7 +40063,7 @@ static void REGAL_CALL error_glMultiModeDrawElementsIBM(const GLenum *mode, cons
 
 static void REGAL_CALL error_glColorPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glColorPointerListIBM");
+  Internal("error_glColorPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40084,7 +40084,7 @@ static void REGAL_CALL error_glColorPointerListIBM(GLint size, GLenum type, GLin
 
 static void REGAL_CALL error_glEdgeFlagPointerListIBM(GLint stride, const GLboolean **pointer, GLint ptrstride)
 {
-  ITrace("error_glEdgeFlagPointerListIBM");
+  Internal("error_glEdgeFlagPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40105,7 +40105,7 @@ static void REGAL_CALL error_glEdgeFlagPointerListIBM(GLint stride, const GLbool
 
 static void REGAL_CALL error_glFogCoordPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glFogCoordPointerListIBM");
+  Internal("error_glFogCoordPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40126,7 +40126,7 @@ static void REGAL_CALL error_glFogCoordPointerListIBM(GLenum type, GLint stride,
 
 static void REGAL_CALL error_glIndexPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glIndexPointerListIBM");
+  Internal("error_glIndexPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40147,7 +40147,7 @@ static void REGAL_CALL error_glIndexPointerListIBM(GLenum type, GLint stride, co
 
 static void REGAL_CALL error_glNormalPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glNormalPointerListIBM");
+  Internal("error_glNormalPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40168,7 +40168,7 @@ static void REGAL_CALL error_glNormalPointerListIBM(GLenum type, GLint stride, c
 
 static void REGAL_CALL error_glSecondaryColorPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glSecondaryColorPointerListIBM");
+  Internal("error_glSecondaryColorPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40189,7 +40189,7 @@ static void REGAL_CALL error_glSecondaryColorPointerListIBM(GLint size, GLenum t
 
 static void REGAL_CALL error_glTexCoordPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glTexCoordPointerListIBM");
+  Internal("error_glTexCoordPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40210,7 +40210,7 @@ static void REGAL_CALL error_glTexCoordPointerListIBM(GLint size, GLenum type, G
 
 static void REGAL_CALL error_glVertexPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride)
 {
-  ITrace("error_glVertexPointerListIBM");
+  Internal("error_glVertexPointerListIBM","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40233,7 +40233,7 @@ static void REGAL_CALL error_glVertexPointerListIBM(GLint size, GLenum type, GLi
 
 static void REGAL_CALL error_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
-  ITrace("error_glBlendFuncSeparateINGR");
+  Internal("error_glBlendFuncSeparateINGR","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40256,7 +40256,7 @@ static void REGAL_CALL error_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum d
 
 static void REGAL_CALL error_glColorPointervINTEL(GLint size, GLenum type, const GLvoid **pointer)
 {
-  ITrace("error_glColorPointervINTEL");
+  Internal("error_glColorPointervINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40277,7 +40277,7 @@ static void REGAL_CALL error_glColorPointervINTEL(GLint size, GLenum type, const
 
 static void REGAL_CALL error_glNormalPointervINTEL(GLenum type, const GLvoid **pointer)
 {
-  ITrace("error_glNormalPointervINTEL");
+  Internal("error_glNormalPointervINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40298,7 +40298,7 @@ static void REGAL_CALL error_glNormalPointervINTEL(GLenum type, const GLvoid **p
 
 static void REGAL_CALL error_glTexCoordPointervINTEL(GLint size, GLenum type, const GLvoid **pointer)
 {
-  ITrace("error_glTexCoordPointervINTEL");
+  Internal("error_glTexCoordPointervINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40319,7 +40319,7 @@ static void REGAL_CALL error_glTexCoordPointervINTEL(GLint size, GLenum type, co
 
 static void REGAL_CALL error_glVertexPointervINTEL(GLint size, GLenum type, const GLvoid **pointer)
 {
-  ITrace("error_glVertexPointervINTEL");
+  Internal("error_glVertexPointervINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40342,7 +40342,7 @@ static void REGAL_CALL error_glVertexPointervINTEL(GLint size, GLenum type, cons
 
 static void REGAL_CALL error_glTexScissorFuncINTEL(GLenum target, GLenum lfunc, GLenum hfunc)
 {
-  ITrace("error_glTexScissorFuncINTEL");
+  Internal("error_glTexScissorFuncINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40363,7 +40363,7 @@ static void REGAL_CALL error_glTexScissorFuncINTEL(GLenum target, GLenum lfunc, 
 
 static void REGAL_CALL error_glTexScissorINTEL(GLenum target, GLclampf tlow, GLclampf thigh)
 {
-  ITrace("error_glTexScissorINTEL");
+  Internal("error_glTexScissorINTEL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40386,7 +40386,7 @@ static void REGAL_CALL error_glTexScissorINTEL(GLenum target, GLclampf tlow, GLc
 
 static void REGAL_CALL error_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
 {
-  ITrace("error_glDebugMessageCallback");
+  Internal("error_glDebugMessageCallback","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40407,7 +40407,7 @@ static void REGAL_CALL error_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid
 
 static void REGAL_CALL error_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
 {
-  ITrace("error_glDebugMessageControl");
+  Internal("error_glDebugMessageControl","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40428,7 +40428,7 @@ static void REGAL_CALL error_glDebugMessageControl(GLenum source, GLenum type, G
 
 static void REGAL_CALL error_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf)
 {
-  ITrace("error_glDebugMessageInsert");
+  Internal("error_glDebugMessageInsert","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40449,7 +40449,7 @@ static void REGAL_CALL error_glDebugMessageInsert(GLenum source, GLenum type, GL
 
 static GLuint REGAL_CALL error_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog)
 {
-  ITrace("error_glGetDebugMessageLog");
+  Internal("error_glGetDebugMessageLog","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40471,7 +40471,7 @@ return ret;
 
 static void REGAL_CALL error_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label)
 {
-  ITrace("error_glGetObjectLabel");
+  Internal("error_glGetObjectLabel","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40492,7 +40492,7 @@ static void REGAL_CALL error_glGetObjectLabel(GLenum identifier, GLuint name, GL
 
 static void REGAL_CALL error_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
 {
-  ITrace("error_glGetObjectPtrLabel");
+  Internal("error_glGetObjectPtrLabel","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40513,7 +40513,7 @@ static void REGAL_CALL error_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, G
 
 static void REGAL_CALL error_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
 {
-  ITrace("error_glObjectLabel");
+  Internal("error_glObjectLabel","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40534,7 +40534,7 @@ static void REGAL_CALL error_glObjectLabel(GLenum identifier, GLuint name, GLsiz
 
 static void REGAL_CALL error_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
 {
-  ITrace("error_glObjectPtrLabel");
+  Internal("error_glObjectPtrLabel","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40555,7 +40555,7 @@ static void REGAL_CALL error_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const
 
 static void REGAL_CALL error_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
-  ITrace("error_glPushDebugGroup");
+  Internal("error_glPushDebugGroup","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40578,7 +40578,7 @@ static void REGAL_CALL error_glPushDebugGroup(GLenum source, GLuint id, GLsizei 
 
 static GLuint REGAL_CALL error_glBufferRegionEnabled(void)
 {
-  ITrace("error_glBufferRegionEnabled");
+  Internal("error_glBufferRegionEnabled","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40600,7 +40600,7 @@ return ret;
 
 static void REGAL_CALL error_glDeleteBufferRegion(GLenum region)
 {
-  ITrace("error_glDeleteBufferRegion");
+  Internal("error_glDeleteBufferRegion","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40621,7 +40621,7 @@ static void REGAL_CALL error_glDeleteBufferRegion(GLenum region)
 
 static void REGAL_CALL error_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest)
 {
-  ITrace("error_glDrawBufferRegion");
+  Internal("error_glDrawBufferRegion","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40642,7 +40642,7 @@ static void REGAL_CALL error_glDrawBufferRegion(GLuint region, GLint x, GLint y,
 
 static GLuint REGAL_CALL error_glNewBufferRegion(GLenum region)
 {
-  ITrace("error_glNewBufferRegion");
+  Internal("error_glNewBufferRegion","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40664,7 +40664,7 @@ return ret;
 
 static void REGAL_CALL error_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glReadBufferRegion");
+  Internal("error_glReadBufferRegion","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40687,7 +40687,7 @@ static void REGAL_CALL error_glReadBufferRegion(GLuint region, GLint x, GLint y,
 
 static void REGAL_CALL error_glResizeBuffersMESA(void)
 {
-  ITrace("error_glResizeBuffersMESA");
+  Internal("error_glResizeBuffersMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40710,7 +40710,7 @@ static void REGAL_CALL error_glResizeBuffersMESA(void)
 
 static void REGAL_CALL error_glWindowPos2dMESA(GLdouble x, GLdouble y)
 {
-  ITrace("error_glWindowPos2dMESA");
+  Internal("error_glWindowPos2dMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40731,7 +40731,7 @@ static void REGAL_CALL error_glWindowPos2dMESA(GLdouble x, GLdouble y)
 
 static void REGAL_CALL error_glWindowPos2dvMESA(const GLdouble *v)
 {
-  ITrace("error_glWindowPos2dvMESA");
+  Internal("error_glWindowPos2dvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40752,7 +40752,7 @@ static void REGAL_CALL error_glWindowPos2dvMESA(const GLdouble *v)
 
 static void REGAL_CALL error_glWindowPos2fMESA(GLfloat x, GLfloat y)
 {
-  ITrace("error_glWindowPos2fMESA");
+  Internal("error_glWindowPos2fMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40773,7 +40773,7 @@ static void REGAL_CALL error_glWindowPos2fMESA(GLfloat x, GLfloat y)
 
 static void REGAL_CALL error_glWindowPos2fvMESA(const GLfloat *v)
 {
-  ITrace("error_glWindowPos2fvMESA");
+  Internal("error_glWindowPos2fvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40794,7 +40794,7 @@ static void REGAL_CALL error_glWindowPos2fvMESA(const GLfloat *v)
 
 static void REGAL_CALL error_glWindowPos2iMESA(GLint x, GLint y)
 {
-  ITrace("error_glWindowPos2iMESA");
+  Internal("error_glWindowPos2iMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40815,7 +40815,7 @@ static void REGAL_CALL error_glWindowPos2iMESA(GLint x, GLint y)
 
 static void REGAL_CALL error_glWindowPos2ivMESA(const GLint *v)
 {
-  ITrace("error_glWindowPos2ivMESA");
+  Internal("error_glWindowPos2ivMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40836,7 +40836,7 @@ static void REGAL_CALL error_glWindowPos2ivMESA(const GLint *v)
 
 static void REGAL_CALL error_glWindowPos2sMESA(GLshort x, GLshort y)
 {
-  ITrace("error_glWindowPos2sMESA");
+  Internal("error_glWindowPos2sMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40857,7 +40857,7 @@ static void REGAL_CALL error_glWindowPos2sMESA(GLshort x, GLshort y)
 
 static void REGAL_CALL error_glWindowPos2svMESA(const GLshort *v)
 {
-  ITrace("error_glWindowPos2svMESA");
+  Internal("error_glWindowPos2svMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40878,7 +40878,7 @@ static void REGAL_CALL error_glWindowPos2svMESA(const GLshort *v)
 
 static void REGAL_CALL error_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glWindowPos3dMESA");
+  Internal("error_glWindowPos3dMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40899,7 +40899,7 @@ static void REGAL_CALL error_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdouble 
 
 static void REGAL_CALL error_glWindowPos3dvMESA(const GLdouble *v)
 {
-  ITrace("error_glWindowPos3dvMESA");
+  Internal("error_glWindowPos3dvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40920,7 +40920,7 @@ static void REGAL_CALL error_glWindowPos3dvMESA(const GLdouble *v)
 
 static void REGAL_CALL error_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glWindowPos3fMESA");
+  Internal("error_glWindowPos3fMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40941,7 +40941,7 @@ static void REGAL_CALL error_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL error_glWindowPos3fvMESA(const GLfloat *v)
 {
-  ITrace("error_glWindowPos3fvMESA");
+  Internal("error_glWindowPos3fvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40962,7 +40962,7 @@ static void REGAL_CALL error_glWindowPos3fvMESA(const GLfloat *v)
 
 static void REGAL_CALL error_glWindowPos3iMESA(GLint x, GLint y, GLint z)
 {
-  ITrace("error_glWindowPos3iMESA");
+  Internal("error_glWindowPos3iMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -40983,7 +40983,7 @@ static void REGAL_CALL error_glWindowPos3iMESA(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL error_glWindowPos3ivMESA(const GLint *v)
 {
-  ITrace("error_glWindowPos3ivMESA");
+  Internal("error_glWindowPos3ivMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41004,7 +41004,7 @@ static void REGAL_CALL error_glWindowPos3ivMESA(const GLint *v)
 
 static void REGAL_CALL error_glWindowPos3sMESA(GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glWindowPos3sMESA");
+  Internal("error_glWindowPos3sMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41025,7 +41025,7 @@ static void REGAL_CALL error_glWindowPos3sMESA(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL error_glWindowPos3svMESA(const GLshort *v)
 {
-  ITrace("error_glWindowPos3svMESA");
+  Internal("error_glWindowPos3svMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41046,7 +41046,7 @@ static void REGAL_CALL error_glWindowPos3svMESA(const GLshort *v)
 
 static void REGAL_CALL error_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glWindowPos4dMESA");
+  Internal("error_glWindowPos4dMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41067,7 +41067,7 @@ static void REGAL_CALL error_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdouble 
 
 static void REGAL_CALL error_glWindowPos4dvMESA(const GLdouble *v)
 {
-  ITrace("error_glWindowPos4dvMESA");
+  Internal("error_glWindowPos4dvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41088,7 +41088,7 @@ static void REGAL_CALL error_glWindowPos4dvMESA(const GLdouble *v)
 
 static void REGAL_CALL error_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glWindowPos4fMESA");
+  Internal("error_glWindowPos4fMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41109,7 +41109,7 @@ static void REGAL_CALL error_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloat z, 
 
 static void REGAL_CALL error_glWindowPos4fvMESA(const GLfloat *v)
 {
-  ITrace("error_glWindowPos4fvMESA");
+  Internal("error_glWindowPos4fvMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41130,7 +41130,7 @@ static void REGAL_CALL error_glWindowPos4fvMESA(const GLfloat *v)
 
 static void REGAL_CALL error_glWindowPos4iMESA(GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glWindowPos4iMESA");
+  Internal("error_glWindowPos4iMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41151,7 +41151,7 @@ static void REGAL_CALL error_glWindowPos4iMESA(GLint x, GLint y, GLint z, GLint 
 
 static void REGAL_CALL error_glWindowPos4ivMESA(const GLint *v)
 {
-  ITrace("error_glWindowPos4ivMESA");
+  Internal("error_glWindowPos4ivMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41172,7 +41172,7 @@ static void REGAL_CALL error_glWindowPos4ivMESA(const GLint *v)
 
 static void REGAL_CALL error_glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glWindowPos4sMESA");
+  Internal("error_glWindowPos4sMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41193,7 +41193,7 @@ static void REGAL_CALL error_glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, 
 
 static void REGAL_CALL error_glWindowPos4svMESA(const GLshort *v)
 {
-  ITrace("error_glWindowPos4svMESA");
+  Internal("error_glWindowPos4svMESA","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41216,7 +41216,7 @@ static void REGAL_CALL error_glWindowPos4svMESA(const GLshort *v)
 
 static GLuint64 REGAL_CALL error_glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format)
 {
-  ITrace("error_glGetImageHandleNV");
+  Internal("error_glGetImageHandleNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41238,7 +41238,7 @@ return ret;
 
 static GLuint64 REGAL_CALL error_glGetTextureHandleNV(GLuint texture)
 {
-  ITrace("error_glGetTextureHandleNV");
+  Internal("error_glGetTextureHandleNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41260,7 +41260,7 @@ return ret;
 
 static GLuint64 REGAL_CALL error_glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler)
 {
-  ITrace("error_glGetTextureSamplerHandleNV");
+  Internal("error_glGetTextureSamplerHandleNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41282,7 +41282,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsImageHandleResidentNV(GLuint64 handle)
 {
-  ITrace("error_glIsImageHandleResidentNV");
+  Internal("error_glIsImageHandleResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41304,7 +41304,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsTextureHandleResidentNV(GLuint64 handle)
 {
-  ITrace("error_glIsTextureHandleResidentNV");
+  Internal("error_glIsTextureHandleResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41326,7 +41326,7 @@ return ret;
 
 static void REGAL_CALL error_glMakeImageHandleNonResidentNV(GLuint64 handle)
 {
-  ITrace("error_glMakeImageHandleNonResidentNV");
+  Internal("error_glMakeImageHandleNonResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41347,7 +41347,7 @@ static void REGAL_CALL error_glMakeImageHandleNonResidentNV(GLuint64 handle)
 
 static void REGAL_CALL error_glMakeImageHandleResidentNV(GLuint64 handle, GLenum access)
 {
-  ITrace("error_glMakeImageHandleResidentNV");
+  Internal("error_glMakeImageHandleResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41368,7 +41368,7 @@ static void REGAL_CALL error_glMakeImageHandleResidentNV(GLuint64 handle, GLenum
 
 static void REGAL_CALL error_glMakeTextureHandleNonResidentNV(GLuint64 handle)
 {
-  ITrace("error_glMakeTextureHandleNonResidentNV");
+  Internal("error_glMakeTextureHandleNonResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41389,7 +41389,7 @@ static void REGAL_CALL error_glMakeTextureHandleNonResidentNV(GLuint64 handle)
 
 static void REGAL_CALL error_glMakeTextureHandleResidentNV(GLuint64 handle)
 {
-  ITrace("error_glMakeTextureHandleResidentNV");
+  Internal("error_glMakeTextureHandleResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41410,7 +41410,7 @@ static void REGAL_CALL error_glMakeTextureHandleResidentNV(GLuint64 handle)
 
 static void REGAL_CALL error_glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value)
 {
-  ITrace("error_glProgramUniformHandleui64NV");
+  Internal("error_glProgramUniformHandleui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41431,7 +41431,7 @@ static void REGAL_CALL error_glProgramUniformHandleui64NV(GLuint program, GLint 
 
 static void REGAL_CALL error_glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 *values)
 {
-  ITrace("error_glProgramUniformHandleui64vNV");
+  Internal("error_glProgramUniformHandleui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41452,7 +41452,7 @@ static void REGAL_CALL error_glProgramUniformHandleui64vNV(GLuint program, GLint
 
 static void REGAL_CALL error_glUniformHandleui64NV(GLint location, GLuint64 value)
 {
-  ITrace("error_glUniformHandleui64NV");
+  Internal("error_glUniformHandleui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41473,7 +41473,7 @@ static void REGAL_CALL error_glUniformHandleui64NV(GLint location, GLuint64 valu
 
 static void REGAL_CALL error_glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 *value)
 {
-  ITrace("error_glUniformHandleui64vNV");
+  Internal("error_glUniformHandleui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41496,7 +41496,7 @@ static void REGAL_CALL error_glUniformHandleui64vNV(GLint location, GLsizei coun
 
 static void REGAL_CALL error_glBeginConditionalRenderNV(GLuint id, GLenum mode)
 {
-  ITrace("error_glBeginConditionalRenderNV");
+  Internal("error_glBeginConditionalRenderNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41517,7 +41517,7 @@ static void REGAL_CALL error_glBeginConditionalRenderNV(GLuint id, GLenum mode)
 
 static void REGAL_CALL error_glEndConditionalRenderNV(void)
 {
-  ITrace("error_glEndConditionalRenderNV");
+  Internal("error_glEndConditionalRenderNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41540,7 +41540,7 @@ static void REGAL_CALL error_glEndConditionalRenderNV(void)
 
 static void REGAL_CALL error_glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
 {
-  ITrace("error_glCopyImageSubDataNV");
+  Internal("error_glCopyImageSubDataNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41563,7 +41563,7 @@ static void REGAL_CALL error_glCopyImageSubDataNV(GLuint srcName, GLenum srcTarg
 
 static void REGAL_CALL error_glClearDepthdNV(GLdouble depth)
 {
-  ITrace("error_glClearDepthdNV");
+  Internal("error_glClearDepthdNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41584,7 +41584,7 @@ static void REGAL_CALL error_glClearDepthdNV(GLdouble depth)
 
 static void REGAL_CALL error_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax)
 {
-  ITrace("error_glDepthBoundsdNV");
+  Internal("error_glDepthBoundsdNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41605,7 +41605,7 @@ static void REGAL_CALL error_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax)
 
 static void REGAL_CALL error_glDepthRangedNV(GLdouble zNear, GLdouble zFar)
 {
-  ITrace("error_glDepthRangedNV");
+  Internal("error_glDepthRangedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41628,7 +41628,7 @@ static void REGAL_CALL error_glDepthRangedNV(GLdouble zNear, GLdouble zFar)
 
 static void REGAL_CALL error_glEvalMapsNV(GLenum target, GLenum mode)
 {
-  ITrace("error_glEvalMapsNV");
+  Internal("error_glEvalMapsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41649,7 +41649,7 @@ static void REGAL_CALL error_glEvalMapsNV(GLenum target, GLenum mode)
 
 static void REGAL_CALL error_glGetMapAttribParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMapAttribParameterfvNV");
+  Internal("error_glGetMapAttribParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41670,7 +41670,7 @@ static void REGAL_CALL error_glGetMapAttribParameterfvNV(GLenum target, GLuint i
 
 static void REGAL_CALL error_glGetMapAttribParameterivNV(GLenum target, GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMapAttribParameterivNV");
+  Internal("error_glGetMapAttribParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41691,7 +41691,7 @@ static void REGAL_CALL error_glGetMapAttribParameterivNV(GLenum target, GLuint i
 
 static void REGAL_CALL error_glGetMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, GLvoid *points)
 {
-  ITrace("error_glGetMapControlPointsNV");
+  Internal("error_glGetMapControlPointsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41712,7 +41712,7 @@ static void REGAL_CALL error_glGetMapControlPointsNV(GLenum target, GLuint index
 
 static void REGAL_CALL error_glGetMapParameterfvNV(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetMapParameterfvNV");
+  Internal("error_glGetMapParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41733,7 +41733,7 @@ static void REGAL_CALL error_glGetMapParameterfvNV(GLenum target, GLenum pname, 
 
 static void REGAL_CALL error_glGetMapParameterivNV(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetMapParameterivNV");
+  Internal("error_glGetMapParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41754,7 +41754,7 @@ static void REGAL_CALL error_glGetMapParameterivNV(GLenum target, GLenum pname, 
 
 static void REGAL_CALL error_glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const GLvoid *points)
 {
-  ITrace("error_glMapControlPointsNV");
+  Internal("error_glMapControlPointsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41775,7 +41775,7 @@ static void REGAL_CALL error_glMapControlPointsNV(GLenum target, GLuint index, G
 
 static void REGAL_CALL error_glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glMapParameterfvNV");
+  Internal("error_glMapParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41796,7 +41796,7 @@ static void REGAL_CALL error_glMapParameterfvNV(GLenum target, GLenum pname, con
 
 static void REGAL_CALL error_glMapParameterivNV(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glMapParameterivNV");
+  Internal("error_glMapParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41819,7 +41819,7 @@ static void REGAL_CALL error_glMapParameterivNV(GLenum target, GLenum pname, con
 
 static void REGAL_CALL error_glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat *val)
 {
-  ITrace("error_glGetMultisamplefvNV");
+  Internal("error_glGetMultisamplefvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41840,7 +41840,7 @@ static void REGAL_CALL error_glGetMultisamplefvNV(GLenum pname, GLuint index, GL
 
 static void REGAL_CALL error_glSampleMaskIndexedNV(GLuint index, GLbitfield mask)
 {
-  ITrace("error_glSampleMaskIndexedNV");
+  Internal("error_glSampleMaskIndexedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41861,7 +41861,7 @@ static void REGAL_CALL error_glSampleMaskIndexedNV(GLuint index, GLbitfield mask
 
 static void REGAL_CALL error_glTexRenderbufferNV(GLenum target, GLuint renderbuffer)
 {
-  ITrace("error_glTexRenderbufferNV");
+  Internal("error_glTexRenderbufferNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41884,7 +41884,7 @@ static void REGAL_CALL error_glTexRenderbufferNV(GLenum target, GLuint renderbuf
 
 static void REGAL_CALL error_glDeleteFencesNV(GLsizei n, const GLuint *fences)
 {
-  ITrace("error_glDeleteFencesNV");
+  Internal("error_glDeleteFencesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41905,7 +41905,7 @@ static void REGAL_CALL error_glDeleteFencesNV(GLsizei n, const GLuint *fences)
 
 static void REGAL_CALL error_glFinishFenceNV(GLuint fence)
 {
-  ITrace("error_glFinishFenceNV");
+  Internal("error_glFinishFenceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41926,7 +41926,7 @@ static void REGAL_CALL error_glFinishFenceNV(GLuint fence)
 
 static void REGAL_CALL error_glGenFencesNV(GLsizei n, GLuint *fences)
 {
-  ITrace("error_glGenFencesNV");
+  Internal("error_glGenFencesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41947,7 +41947,7 @@ static void REGAL_CALL error_glGenFencesNV(GLsizei n, GLuint *fences)
 
 static void REGAL_CALL error_glGetFenceivNV(GLuint fence, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFenceivNV");
+  Internal("error_glGetFenceivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41968,7 +41968,7 @@ static void REGAL_CALL error_glGetFenceivNV(GLuint fence, GLenum pname, GLint *p
 
 static GLboolean REGAL_CALL error_glIsFenceNV(GLuint fence)
 {
-  ITrace("error_glIsFenceNV");
+  Internal("error_glIsFenceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -41990,7 +41990,7 @@ return ret;
 
 static void REGAL_CALL error_glSetFenceNV(GLuint fence, GLenum condition)
 {
-  ITrace("error_glSetFenceNV");
+  Internal("error_glSetFenceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42011,7 +42011,7 @@ static void REGAL_CALL error_glSetFenceNV(GLuint fence, GLenum condition)
 
 static GLboolean REGAL_CALL error_glTestFenceNV(GLuint fence)
 {
-  ITrace("error_glTestFenceNV");
+  Internal("error_glTestFenceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42035,7 +42035,7 @@ return ret;
 
 static void REGAL_CALL error_glGetProgramNamedParameterdvNV(GLuint id, GLsizei len, const GLubyte *name, GLdouble *params)
 {
-  ITrace("error_glGetProgramNamedParameterdvNV");
+  Internal("error_glGetProgramNamedParameterdvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42056,7 +42056,7 @@ static void REGAL_CALL error_glGetProgramNamedParameterdvNV(GLuint id, GLsizei l
 
 static void REGAL_CALL error_glGetProgramNamedParameterfvNV(GLuint id, GLsizei len, const GLubyte *name, GLfloat *params)
 {
-  ITrace("error_glGetProgramNamedParameterfvNV");
+  Internal("error_glGetProgramNamedParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42077,7 +42077,7 @@ static void REGAL_CALL error_glGetProgramNamedParameterfvNV(GLuint id, GLsizei l
 
 static void REGAL_CALL error_glProgramNamedParameter4dNV(GLuint id, GLsizei len, const GLubyte *name, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramNamedParameter4dNV");
+  Internal("error_glProgramNamedParameter4dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42098,7 +42098,7 @@ static void REGAL_CALL error_glProgramNamedParameter4dNV(GLuint id, GLsizei len,
 
 static void REGAL_CALL error_glProgramNamedParameter4dvNV(GLuint id, GLsizei len, const GLubyte *name, const GLdouble *v)
 {
-  ITrace("error_glProgramNamedParameter4dvNV");
+  Internal("error_glProgramNamedParameter4dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42119,7 +42119,7 @@ static void REGAL_CALL error_glProgramNamedParameter4dvNV(GLuint id, GLsizei len
 
 static void REGAL_CALL error_glProgramNamedParameter4fNV(GLuint id, GLsizei len, const GLubyte *name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glProgramNamedParameter4fNV");
+  Internal("error_glProgramNamedParameter4fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42140,7 +42140,7 @@ static void REGAL_CALL error_glProgramNamedParameter4fNV(GLuint id, GLsizei len,
 
 static void REGAL_CALL error_glProgramNamedParameter4fvNV(GLuint id, GLsizei len, const GLubyte *name, const GLfloat *v)
 {
-  ITrace("error_glProgramNamedParameter4fvNV");
+  Internal("error_glProgramNamedParameter4fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42163,7 +42163,7 @@ static void REGAL_CALL error_glProgramNamedParameter4fvNV(GLuint id, GLsizei len
 
 static void REGAL_CALL error_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("error_glRenderbufferStorageMultisampleCoverageNV");
+  Internal("error_glRenderbufferStorageMultisampleCoverageNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42186,7 +42186,7 @@ static void REGAL_CALL error_glRenderbufferStorageMultisampleCoverageNV(GLenum t
 
 static void REGAL_CALL error_glProgramVertexLimitNV(GLenum target, GLint limit)
 {
-  ITrace("error_glProgramVertexLimitNV");
+  Internal("error_glProgramVertexLimitNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42209,7 +42209,7 @@ static void REGAL_CALL error_glProgramVertexLimitNV(GLenum target, GLint limit)
 
 static void REGAL_CALL error_glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint *params)
 {
-  ITrace("error_glGetProgramEnvParameterIivNV");
+  Internal("error_glGetProgramEnvParameterIivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42230,7 +42230,7 @@ static void REGAL_CALL error_glGetProgramEnvParameterIivNV(GLenum target, GLuint
 
 static void REGAL_CALL error_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint *params)
 {
-  ITrace("error_glGetProgramEnvParameterIuivNV");
+  Internal("error_glGetProgramEnvParameterIuivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42251,7 +42251,7 @@ static void REGAL_CALL error_glGetProgramEnvParameterIuivNV(GLenum target, GLuin
 
 static void REGAL_CALL error_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint *params)
 {
-  ITrace("error_glGetProgramLocalParameterIivNV");
+  Internal("error_glGetProgramLocalParameterIivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42272,7 +42272,7 @@ static void REGAL_CALL error_glGetProgramLocalParameterIivNV(GLenum target, GLui
 
 static void REGAL_CALL error_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint *params)
 {
-  ITrace("error_glGetProgramLocalParameterIuivNV");
+  Internal("error_glGetProgramLocalParameterIuivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42293,7 +42293,7 @@ static void REGAL_CALL error_glGetProgramLocalParameterIuivNV(GLenum target, GLu
 
 static void REGAL_CALL error_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glProgramEnvParameterI4iNV");
+  Internal("error_glProgramEnvParameterI4iNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42314,7 +42314,7 @@ static void REGAL_CALL error_glProgramEnvParameterI4iNV(GLenum target, GLuint in
 
 static void REGAL_CALL error_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
 {
-  ITrace("error_glProgramEnvParameterI4ivNV");
+  Internal("error_glProgramEnvParameterI4ivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42335,7 +42335,7 @@ static void REGAL_CALL error_glProgramEnvParameterI4ivNV(GLenum target, GLuint i
 
 static void REGAL_CALL error_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glProgramEnvParameterI4uiNV");
+  Internal("error_glProgramEnvParameterI4uiNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42356,7 +42356,7 @@ static void REGAL_CALL error_glProgramEnvParameterI4uiNV(GLenum target, GLuint i
 
 static void REGAL_CALL error_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
 {
-  ITrace("error_glProgramEnvParameterI4uivNV");
+  Internal("error_glProgramEnvParameterI4uivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42377,7 +42377,7 @@ static void REGAL_CALL error_glProgramEnvParameterI4uivNV(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  ITrace("error_glProgramEnvParametersI4ivNV");
+  Internal("error_glProgramEnvParametersI4ivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42398,7 +42398,7 @@ static void REGAL_CALL error_glProgramEnvParametersI4ivNV(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  ITrace("error_glProgramEnvParametersI4uivNV");
+  Internal("error_glProgramEnvParametersI4uivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42419,7 +42419,7 @@ static void REGAL_CALL error_glProgramEnvParametersI4uivNV(GLenum target, GLuint
 
 static void REGAL_CALL error_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  ITrace("error_glProgramLocalParameterI4iNV");
+  Internal("error_glProgramLocalParameterI4iNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42440,7 +42440,7 @@ static void REGAL_CALL error_glProgramLocalParameterI4iNV(GLenum target, GLuint 
 
 static void REGAL_CALL error_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
 {
-  ITrace("error_glProgramLocalParameterI4ivNV");
+  Internal("error_glProgramLocalParameterI4ivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42461,7 +42461,7 @@ static void REGAL_CALL error_glProgramLocalParameterI4ivNV(GLenum target, GLuint
 
 static void REGAL_CALL error_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  ITrace("error_glProgramLocalParameterI4uiNV");
+  Internal("error_glProgramLocalParameterI4uiNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42482,7 +42482,7 @@ static void REGAL_CALL error_glProgramLocalParameterI4uiNV(GLenum target, GLuint
 
 static void REGAL_CALL error_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
 {
-  ITrace("error_glProgramLocalParameterI4uivNV");
+  Internal("error_glProgramLocalParameterI4uivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42503,7 +42503,7 @@ static void REGAL_CALL error_glProgramLocalParameterI4uivNV(GLenum target, GLuin
 
 static void REGAL_CALL error_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  ITrace("error_glProgramLocalParametersI4ivNV");
+  Internal("error_glProgramLocalParametersI4ivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42524,7 +42524,7 @@ static void REGAL_CALL error_glProgramLocalParametersI4ivNV(GLenum target, GLuin
 
 static void REGAL_CALL error_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  ITrace("error_glProgramLocalParametersI4uivNV");
+  Internal("error_glProgramLocalParametersI4uivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42547,7 +42547,7 @@ static void REGAL_CALL error_glProgramLocalParametersI4uivNV(GLenum target, GLui
 
 static void REGAL_CALL error_glGetUniformi64vNV(GLuint program, GLint location, GLint64EXT *params)
 {
-  ITrace("error_glGetUniformi64vNV");
+  Internal("error_glGetUniformi64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42568,7 +42568,7 @@ static void REGAL_CALL error_glGetUniformi64vNV(GLuint program, GLint location, 
 
 static void REGAL_CALL error_glProgramUniform1i64NV(GLuint program, GLint location, GLint64EXT x)
 {
-  ITrace("error_glProgramUniform1i64NV");
+  Internal("error_glProgramUniform1i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42589,7 +42589,7 @@ static void REGAL_CALL error_glProgramUniform1i64NV(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform1i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glProgramUniform1i64vNV");
+  Internal("error_glProgramUniform1i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42610,7 +42610,7 @@ static void REGAL_CALL error_glProgramUniform1i64vNV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform1ui64NV(GLuint program, GLint location, GLuint64EXT x)
 {
-  ITrace("error_glProgramUniform1ui64NV");
+  Internal("error_glProgramUniform1ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42631,7 +42631,7 @@ static void REGAL_CALL error_glProgramUniform1ui64NV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform1ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glProgramUniform1ui64vNV");
+  Internal("error_glProgramUniform1ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42652,7 +42652,7 @@ static void REGAL_CALL error_glProgramUniform1ui64vNV(GLuint program, GLint loca
 
 static void REGAL_CALL error_glProgramUniform2i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y)
 {
-  ITrace("error_glProgramUniform2i64NV");
+  Internal("error_glProgramUniform2i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42673,7 +42673,7 @@ static void REGAL_CALL error_glProgramUniform2i64NV(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform2i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glProgramUniform2i64vNV");
+  Internal("error_glProgramUniform2i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42694,7 +42694,7 @@ static void REGAL_CALL error_glProgramUniform2i64vNV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform2ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y)
 {
-  ITrace("error_glProgramUniform2ui64NV");
+  Internal("error_glProgramUniform2ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42715,7 +42715,7 @@ static void REGAL_CALL error_glProgramUniform2ui64NV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform2ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glProgramUniform2ui64vNV");
+  Internal("error_glProgramUniform2ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42736,7 +42736,7 @@ static void REGAL_CALL error_glProgramUniform2ui64vNV(GLuint program, GLint loca
 
 static void REGAL_CALL error_glProgramUniform3i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z)
 {
-  ITrace("error_glProgramUniform3i64NV");
+  Internal("error_glProgramUniform3i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42757,7 +42757,7 @@ static void REGAL_CALL error_glProgramUniform3i64NV(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform3i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glProgramUniform3i64vNV");
+  Internal("error_glProgramUniform3i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42778,7 +42778,7 @@ static void REGAL_CALL error_glProgramUniform3i64vNV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform3ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z)
 {
-  ITrace("error_glProgramUniform3ui64NV");
+  Internal("error_glProgramUniform3ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42799,7 +42799,7 @@ static void REGAL_CALL error_glProgramUniform3ui64NV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform3ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glProgramUniform3ui64vNV");
+  Internal("error_glProgramUniform3ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42820,7 +42820,7 @@ static void REGAL_CALL error_glProgramUniform3ui64vNV(GLuint program, GLint loca
 
 static void REGAL_CALL error_glProgramUniform4i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w)
 {
-  ITrace("error_glProgramUniform4i64NV");
+  Internal("error_glProgramUniform4i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42841,7 +42841,7 @@ static void REGAL_CALL error_glProgramUniform4i64NV(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniform4i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glProgramUniform4i64vNV");
+  Internal("error_glProgramUniform4i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42862,7 +42862,7 @@ static void REGAL_CALL error_glProgramUniform4i64vNV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform4ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w)
 {
-  ITrace("error_glProgramUniform4ui64NV");
+  Internal("error_glProgramUniform4ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42883,7 +42883,7 @@ static void REGAL_CALL error_glProgramUniform4ui64NV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glProgramUniform4ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glProgramUniform4ui64vNV");
+  Internal("error_glProgramUniform4ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42904,7 +42904,7 @@ static void REGAL_CALL error_glProgramUniform4ui64vNV(GLuint program, GLint loca
 
 static void REGAL_CALL error_glUniform1i64NV(GLint location, GLint64EXT x)
 {
-  ITrace("error_glUniform1i64NV");
+  Internal("error_glUniform1i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42925,7 +42925,7 @@ static void REGAL_CALL error_glUniform1i64NV(GLint location, GLint64EXT x)
 
 static void REGAL_CALL error_glUniform1i64vNV(GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glUniform1i64vNV");
+  Internal("error_glUniform1i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42946,7 +42946,7 @@ static void REGAL_CALL error_glUniform1i64vNV(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform1ui64NV(GLint location, GLuint64EXT x)
 {
-  ITrace("error_glUniform1ui64NV");
+  Internal("error_glUniform1ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42967,7 +42967,7 @@ static void REGAL_CALL error_glUniform1ui64NV(GLint location, GLuint64EXT x)
 
 static void REGAL_CALL error_glUniform1ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glUniform1ui64vNV");
+  Internal("error_glUniform1ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -42988,7 +42988,7 @@ static void REGAL_CALL error_glUniform1ui64vNV(GLint location, GLsizei count, co
 
 static void REGAL_CALL error_glUniform2i64NV(GLint location, GLint64EXT x, GLint64EXT y)
 {
-  ITrace("error_glUniform2i64NV");
+  Internal("error_glUniform2i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43009,7 +43009,7 @@ static void REGAL_CALL error_glUniform2i64NV(GLint location, GLint64EXT x, GLint
 
 static void REGAL_CALL error_glUniform2i64vNV(GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glUniform2i64vNV");
+  Internal("error_glUniform2i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43030,7 +43030,7 @@ static void REGAL_CALL error_glUniform2i64vNV(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform2ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y)
 {
-  ITrace("error_glUniform2ui64NV");
+  Internal("error_glUniform2ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43051,7 +43051,7 @@ static void REGAL_CALL error_glUniform2ui64NV(GLint location, GLuint64EXT x, GLu
 
 static void REGAL_CALL error_glUniform2ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glUniform2ui64vNV");
+  Internal("error_glUniform2ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43072,7 +43072,7 @@ static void REGAL_CALL error_glUniform2ui64vNV(GLint location, GLsizei count, co
 
 static void REGAL_CALL error_glUniform3i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z)
 {
-  ITrace("error_glUniform3i64NV");
+  Internal("error_glUniform3i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43093,7 +43093,7 @@ static void REGAL_CALL error_glUniform3i64NV(GLint location, GLint64EXT x, GLint
 
 static void REGAL_CALL error_glUniform3i64vNV(GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glUniform3i64vNV");
+  Internal("error_glUniform3i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43114,7 +43114,7 @@ static void REGAL_CALL error_glUniform3i64vNV(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform3ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z)
 {
-  ITrace("error_glUniform3ui64NV");
+  Internal("error_glUniform3ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43135,7 +43135,7 @@ static void REGAL_CALL error_glUniform3ui64NV(GLint location, GLuint64EXT x, GLu
 
 static void REGAL_CALL error_glUniform3ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glUniform3ui64vNV");
+  Internal("error_glUniform3ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43156,7 +43156,7 @@ static void REGAL_CALL error_glUniform3ui64vNV(GLint location, GLsizei count, co
 
 static void REGAL_CALL error_glUniform4i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w)
 {
-  ITrace("error_glUniform4i64NV");
+  Internal("error_glUniform4i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43177,7 +43177,7 @@ static void REGAL_CALL error_glUniform4i64NV(GLint location, GLint64EXT x, GLint
 
 static void REGAL_CALL error_glUniform4i64vNV(GLint location, GLsizei count, const GLint64EXT *value)
 {
-  ITrace("error_glUniform4i64vNV");
+  Internal("error_glUniform4i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43198,7 +43198,7 @@ static void REGAL_CALL error_glUniform4i64vNV(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glUniform4ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w)
 {
-  ITrace("error_glUniform4ui64NV");
+  Internal("error_glUniform4ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43219,7 +43219,7 @@ static void REGAL_CALL error_glUniform4ui64NV(GLint location, GLuint64EXT x, GLu
 
 static void REGAL_CALL error_glUniform4ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glUniform4ui64vNV");
+  Internal("error_glUniform4ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43242,7 +43242,7 @@ static void REGAL_CALL error_glUniform4ui64vNV(GLint location, GLsizei count, co
 
 static void REGAL_CALL error_glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue)
 {
-  ITrace("error_glColor3hNV");
+  Internal("error_glColor3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43263,7 +43263,7 @@ static void REGAL_CALL error_glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV 
 
 static void REGAL_CALL error_glColor3hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glColor3hvNV");
+  Internal("error_glColor3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43284,7 +43284,7 @@ static void REGAL_CALL error_glColor3hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha)
 {
-  ITrace("error_glColor4hNV");
+  Internal("error_glColor4hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43305,7 +43305,7 @@ static void REGAL_CALL error_glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV 
 
 static void REGAL_CALL error_glColor4hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glColor4hvNV");
+  Internal("error_glColor4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43326,7 +43326,7 @@ static void REGAL_CALL error_glColor4hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glFogCoordhNV(GLhalfNV coord)
 {
-  ITrace("error_glFogCoordhNV");
+  Internal("error_glFogCoordhNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43347,7 +43347,7 @@ static void REGAL_CALL error_glFogCoordhNV(GLhalfNV coord)
 
 static void REGAL_CALL error_glFogCoordhvNV(const GLhalfNV *coord)
 {
-  ITrace("error_glFogCoordhvNV");
+  Internal("error_glFogCoordhvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43368,7 +43368,7 @@ static void REGAL_CALL error_glFogCoordhvNV(const GLhalfNV *coord)
 
 static void REGAL_CALL error_glMultiTexCoord1hNV(GLenum target, GLhalfNV s)
 {
-  ITrace("error_glMultiTexCoord1hNV");
+  Internal("error_glMultiTexCoord1hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43389,7 +43389,7 @@ static void REGAL_CALL error_glMultiTexCoord1hNV(GLenum target, GLhalfNV s)
 
 static void REGAL_CALL error_glMultiTexCoord1hvNV(GLenum target, const GLhalfNV *v)
 {
-  ITrace("error_glMultiTexCoord1hvNV");
+  Internal("error_glMultiTexCoord1hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43410,7 +43410,7 @@ static void REGAL_CALL error_glMultiTexCoord1hvNV(GLenum target, const GLhalfNV 
 
 static void REGAL_CALL error_glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLhalfNV t)
 {
-  ITrace("error_glMultiTexCoord2hNV");
+  Internal("error_glMultiTexCoord2hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43431,7 +43431,7 @@ static void REGAL_CALL error_glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLha
 
 static void REGAL_CALL error_glMultiTexCoord2hvNV(GLenum target, const GLhalfNV *v)
 {
-  ITrace("error_glMultiTexCoord2hvNV");
+  Internal("error_glMultiTexCoord2hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43452,7 +43452,7 @@ static void REGAL_CALL error_glMultiTexCoord2hvNV(GLenum target, const GLhalfNV 
 
 static void REGAL_CALL error_glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r)
 {
-  ITrace("error_glMultiTexCoord3hNV");
+  Internal("error_glMultiTexCoord3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43473,7 +43473,7 @@ static void REGAL_CALL error_glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLha
 
 static void REGAL_CALL error_glMultiTexCoord3hvNV(GLenum target, const GLhalfNV *v)
 {
-  ITrace("error_glMultiTexCoord3hvNV");
+  Internal("error_glMultiTexCoord3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43494,7 +43494,7 @@ static void REGAL_CALL error_glMultiTexCoord3hvNV(GLenum target, const GLhalfNV 
 
 static void REGAL_CALL error_glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q)
 {
-  ITrace("error_glMultiTexCoord4hNV");
+  Internal("error_glMultiTexCoord4hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43515,7 +43515,7 @@ static void REGAL_CALL error_glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLha
 
 static void REGAL_CALL error_glMultiTexCoord4hvNV(GLenum target, const GLhalfNV *v)
 {
-  ITrace("error_glMultiTexCoord4hvNV");
+  Internal("error_glMultiTexCoord4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43536,7 +43536,7 @@ static void REGAL_CALL error_glMultiTexCoord4hvNV(GLenum target, const GLhalfNV 
 
 static void REGAL_CALL error_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz)
 {
-  ITrace("error_glNormal3hNV");
+  Internal("error_glNormal3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43557,7 +43557,7 @@ static void REGAL_CALL error_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz)
 
 static void REGAL_CALL error_glNormal3hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glNormal3hvNV");
+  Internal("error_glNormal3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43578,7 +43578,7 @@ static void REGAL_CALL error_glNormal3hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue)
 {
-  ITrace("error_glSecondaryColor3hNV");
+  Internal("error_glSecondaryColor3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43599,7 +43599,7 @@ static void REGAL_CALL error_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, 
 
 static void REGAL_CALL error_glSecondaryColor3hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glSecondaryColor3hvNV");
+  Internal("error_glSecondaryColor3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43620,7 +43620,7 @@ static void REGAL_CALL error_glSecondaryColor3hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glTexCoord1hNV(GLhalfNV s)
 {
-  ITrace("error_glTexCoord1hNV");
+  Internal("error_glTexCoord1hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43641,7 +43641,7 @@ static void REGAL_CALL error_glTexCoord1hNV(GLhalfNV s)
 
 static void REGAL_CALL error_glTexCoord1hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glTexCoord1hvNV");
+  Internal("error_glTexCoord1hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43662,7 +43662,7 @@ static void REGAL_CALL error_glTexCoord1hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glTexCoord2hNV(GLhalfNV s, GLhalfNV t)
 {
-  ITrace("error_glTexCoord2hNV");
+  Internal("error_glTexCoord2hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43683,7 +43683,7 @@ static void REGAL_CALL error_glTexCoord2hNV(GLhalfNV s, GLhalfNV t)
 
 static void REGAL_CALL error_glTexCoord2hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glTexCoord2hvNV");
+  Internal("error_glTexCoord2hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43704,7 +43704,7 @@ static void REGAL_CALL error_glTexCoord2hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r)
 {
-  ITrace("error_glTexCoord3hNV");
+  Internal("error_glTexCoord3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43725,7 +43725,7 @@ static void REGAL_CALL error_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r)
 
 static void REGAL_CALL error_glTexCoord3hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glTexCoord3hvNV");
+  Internal("error_glTexCoord3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43746,7 +43746,7 @@ static void REGAL_CALL error_glTexCoord3hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q)
 {
-  ITrace("error_glTexCoord4hNV");
+  Internal("error_glTexCoord4hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43767,7 +43767,7 @@ static void REGAL_CALL error_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, 
 
 static void REGAL_CALL error_glTexCoord4hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glTexCoord4hvNV");
+  Internal("error_glTexCoord4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43788,7 +43788,7 @@ static void REGAL_CALL error_glTexCoord4hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glVertex2hNV(GLhalfNV x, GLhalfNV y)
 {
-  ITrace("error_glVertex2hNV");
+  Internal("error_glVertex2hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43809,7 +43809,7 @@ static void REGAL_CALL error_glVertex2hNV(GLhalfNV x, GLhalfNV y)
 
 static void REGAL_CALL error_glVertex2hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glVertex2hvNV");
+  Internal("error_glVertex2hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43830,7 +43830,7 @@ static void REGAL_CALL error_glVertex2hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z)
 {
-  ITrace("error_glVertex3hNV");
+  Internal("error_glVertex3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43851,7 +43851,7 @@ static void REGAL_CALL error_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z)
 
 static void REGAL_CALL error_glVertex3hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glVertex3hvNV");
+  Internal("error_glVertex3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43872,7 +43872,7 @@ static void REGAL_CALL error_glVertex3hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w)
 {
-  ITrace("error_glVertex4hNV");
+  Internal("error_glVertex4hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43893,7 +43893,7 @@ static void REGAL_CALL error_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GL
 
 static void REGAL_CALL error_glVertex4hvNV(const GLhalfNV *v)
 {
-  ITrace("error_glVertex4hvNV");
+  Internal("error_glVertex4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43914,7 +43914,7 @@ static void REGAL_CALL error_glVertex4hvNV(const GLhalfNV *v)
 
 static void REGAL_CALL error_glVertexAttrib1hNV(GLuint index, GLhalfNV x)
 {
-  ITrace("error_glVertexAttrib1hNV");
+  Internal("error_glVertexAttrib1hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43935,7 +43935,7 @@ static void REGAL_CALL error_glVertexAttrib1hNV(GLuint index, GLhalfNV x)
 
 static void REGAL_CALL error_glVertexAttrib1hvNV(GLuint index, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttrib1hvNV");
+  Internal("error_glVertexAttrib1hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43956,7 +43956,7 @@ static void REGAL_CALL error_glVertexAttrib1hvNV(GLuint index, const GLhalfNV *v
 
 static void REGAL_CALL error_glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalfNV y)
 {
-  ITrace("error_glVertexAttrib2hNV");
+  Internal("error_glVertexAttrib2hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43977,7 +43977,7 @@ static void REGAL_CALL error_glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalf
 
 static void REGAL_CALL error_glVertexAttrib2hvNV(GLuint index, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttrib2hvNV");
+  Internal("error_glVertexAttrib2hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -43998,7 +43998,7 @@ static void REGAL_CALL error_glVertexAttrib2hvNV(GLuint index, const GLhalfNV *v
 
 static void REGAL_CALL error_glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z)
 {
-  ITrace("error_glVertexAttrib3hNV");
+  Internal("error_glVertexAttrib3hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44019,7 +44019,7 @@ static void REGAL_CALL error_glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalf
 
 static void REGAL_CALL error_glVertexAttrib3hvNV(GLuint index, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttrib3hvNV");
+  Internal("error_glVertexAttrib3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44040,7 +44040,7 @@ static void REGAL_CALL error_glVertexAttrib3hvNV(GLuint index, const GLhalfNV *v
 
 static void REGAL_CALL error_glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w)
 {
-  ITrace("error_glVertexAttrib4hNV");
+  Internal("error_glVertexAttrib4hNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44061,7 +44061,7 @@ static void REGAL_CALL error_glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalf
 
 static void REGAL_CALL error_glVertexAttrib4hvNV(GLuint index, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttrib4hvNV");
+  Internal("error_glVertexAttrib4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44082,7 +44082,7 @@ static void REGAL_CALL error_glVertexAttrib4hvNV(GLuint index, const GLhalfNV *v
 
 static void REGAL_CALL error_glVertexAttribs1hvNV(GLuint index, GLsizei count, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttribs1hvNV");
+  Internal("error_glVertexAttribs1hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44103,7 +44103,7 @@ static void REGAL_CALL error_glVertexAttribs1hvNV(GLuint index, GLsizei count, c
 
 static void REGAL_CALL error_glVertexAttribs2hvNV(GLuint index, GLsizei count, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttribs2hvNV");
+  Internal("error_glVertexAttribs2hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44124,7 +44124,7 @@ static void REGAL_CALL error_glVertexAttribs2hvNV(GLuint index, GLsizei count, c
 
 static void REGAL_CALL error_glVertexAttribs3hvNV(GLuint index, GLsizei count, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttribs3hvNV");
+  Internal("error_glVertexAttribs3hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44145,7 +44145,7 @@ static void REGAL_CALL error_glVertexAttribs3hvNV(GLuint index, GLsizei count, c
 
 static void REGAL_CALL error_glVertexAttribs4hvNV(GLuint index, GLsizei count, const GLhalfNV *v)
 {
-  ITrace("error_glVertexAttribs4hvNV");
+  Internal("error_glVertexAttribs4hvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44166,7 +44166,7 @@ static void REGAL_CALL error_glVertexAttribs4hvNV(GLuint index, GLsizei count, c
 
 static void REGAL_CALL error_glVertexWeighthNV(GLhalfNV weight)
 {
-  ITrace("error_glVertexWeighthNV");
+  Internal("error_glVertexWeighthNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44187,7 +44187,7 @@ static void REGAL_CALL error_glVertexWeighthNV(GLhalfNV weight)
 
 static void REGAL_CALL error_glVertexWeighthvNV(const GLhalfNV *weight)
 {
-  ITrace("error_glVertexWeighthvNV");
+  Internal("error_glVertexWeighthvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44210,7 +44210,7 @@ static void REGAL_CALL error_glVertexWeighthvNV(const GLhalfNV *weight)
 
 static void REGAL_CALL error_glBeginOcclusionQueryNV(GLuint id)
 {
-  ITrace("error_glBeginOcclusionQueryNV");
+  Internal("error_glBeginOcclusionQueryNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44231,7 +44231,7 @@ static void REGAL_CALL error_glBeginOcclusionQueryNV(GLuint id)
 
 static void REGAL_CALL error_glDeleteOcclusionQueriesNV(GLsizei n, const GLuint *ids)
 {
-  ITrace("error_glDeleteOcclusionQueriesNV");
+  Internal("error_glDeleteOcclusionQueriesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44252,7 +44252,7 @@ static void REGAL_CALL error_glDeleteOcclusionQueriesNV(GLsizei n, const GLuint 
 
 static void REGAL_CALL error_glEndOcclusionQueryNV(void)
 {
-  ITrace("error_glEndOcclusionQueryNV");
+  Internal("error_glEndOcclusionQueryNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44273,7 +44273,7 @@ static void REGAL_CALL error_glEndOcclusionQueryNV(void)
 
 static void REGAL_CALL error_glGenOcclusionQueriesNV(GLsizei n, GLuint *ids)
 {
-  ITrace("error_glGenOcclusionQueriesNV");
+  Internal("error_glGenOcclusionQueriesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44294,7 +44294,7 @@ static void REGAL_CALL error_glGenOcclusionQueriesNV(GLsizei n, GLuint *ids)
 
 static void REGAL_CALL error_glGetOcclusionQueryivNV(GLuint id, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetOcclusionQueryivNV");
+  Internal("error_glGetOcclusionQueryivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44315,7 +44315,7 @@ static void REGAL_CALL error_glGetOcclusionQueryivNV(GLuint id, GLenum pname, GL
 
 static void REGAL_CALL error_glGetOcclusionQueryuivNV(GLuint id, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetOcclusionQueryuivNV");
+  Internal("error_glGetOcclusionQueryuivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44336,7 +44336,7 @@ static void REGAL_CALL error_glGetOcclusionQueryuivNV(GLuint id, GLenum pname, G
 
 static GLboolean REGAL_CALL error_glIsOcclusionQueryNV(GLuint id)
 {
-  ITrace("error_glIsOcclusionQueryNV");
+  Internal("error_glIsOcclusionQueryNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44360,7 +44360,7 @@ return ret;
 
 static void REGAL_CALL error_glProgramBufferParametersIivNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLint *params)
 {
-  ITrace("error_glProgramBufferParametersIivNV");
+  Internal("error_glProgramBufferParametersIivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44381,7 +44381,7 @@ static void REGAL_CALL error_glProgramBufferParametersIivNV(GLenum target, GLuin
 
 static void REGAL_CALL error_glProgramBufferParametersIuivNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLuint *params)
 {
-  ITrace("error_glProgramBufferParametersIuivNV");
+  Internal("error_glProgramBufferParametersIuivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44402,7 +44402,7 @@ static void REGAL_CALL error_glProgramBufferParametersIuivNV(GLenum target, GLui
 
 static void REGAL_CALL error_glProgramBufferParametersfvNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLfloat *params)
 {
-  ITrace("error_glProgramBufferParametersfvNV");
+  Internal("error_glProgramBufferParametersfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44425,7 +44425,7 @@ static void REGAL_CALL error_glProgramBufferParametersfvNV(GLenum target, GLuint
 
 static void REGAL_CALL error_glCopyPathNV(GLuint resultPath, GLuint srcPath)
 {
-  ITrace("error_glCopyPathNV");
+  Internal("error_glCopyPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44446,7 +44446,7 @@ static void REGAL_CALL error_glCopyPathNV(GLuint resultPath, GLuint srcPath)
 
 static void REGAL_CALL error_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues)
 {
-  ITrace("error_glCoverFillPathInstancedNV");
+  Internal("error_glCoverFillPathInstancedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44467,7 +44467,7 @@ static void REGAL_CALL error_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum
 
 static void REGAL_CALL error_glCoverFillPathNV(GLuint path, GLenum coverMode)
 {
-  ITrace("error_glCoverFillPathNV");
+  Internal("error_glCoverFillPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44488,7 +44488,7 @@ static void REGAL_CALL error_glCoverFillPathNV(GLuint path, GLenum coverMode)
 
 static void REGAL_CALL error_glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues)
 {
-  ITrace("error_glCoverStrokePathInstancedNV");
+  Internal("error_glCoverStrokePathInstancedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44509,7 +44509,7 @@ static void REGAL_CALL error_glCoverStrokePathInstancedNV(GLsizei numPaths, GLen
 
 static void REGAL_CALL error_glCoverStrokePathNV(GLuint name, GLenum coverMode)
 {
-  ITrace("error_glCoverStrokePathNV");
+  Internal("error_glCoverStrokePathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44530,7 +44530,7 @@ static void REGAL_CALL error_glCoverStrokePathNV(GLuint name, GLenum coverMode)
 
 static void REGAL_CALL error_glDeletePathsNV(GLuint path, GLsizei range)
 {
-  ITrace("error_glDeletePathsNV");
+  Internal("error_glDeletePathsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44551,7 +44551,7 @@ static void REGAL_CALL error_glDeletePathsNV(GLuint path, GLsizei range)
 
 static GLuint REGAL_CALL error_glGenPathsNV(GLsizei range)
 {
-  ITrace("error_glGenPathsNV");
+  Internal("error_glGenPathsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44573,7 +44573,7 @@ return ret;
 
 static void REGAL_CALL error_glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat *value)
 {
-  ITrace("error_glGetPathColorGenfvNV");
+  Internal("error_glGetPathColorGenfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44594,7 +44594,7 @@ static void REGAL_CALL error_glGetPathColorGenfvNV(GLenum color, GLenum pname, G
 
 static void REGAL_CALL error_glGetPathColorGenivNV(GLenum color, GLenum pname, GLint *value)
 {
-  ITrace("error_glGetPathColorGenivNV");
+  Internal("error_glGetPathColorGenivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44615,7 +44615,7 @@ static void REGAL_CALL error_glGetPathColorGenivNV(GLenum color, GLenum pname, G
 
 static void REGAL_CALL error_glGetPathCommandsNV(GLuint name, GLubyte *commands)
 {
-  ITrace("error_glGetPathCommandsNV");
+  Internal("error_glGetPathCommandsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44636,7 +44636,7 @@ static void REGAL_CALL error_glGetPathCommandsNV(GLuint name, GLubyte *commands)
 
 static void REGAL_CALL error_glGetPathCoordsNV(GLuint name, GLfloat *coords)
 {
-  ITrace("error_glGetPathCoordsNV");
+  Internal("error_glGetPathCoordsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44657,7 +44657,7 @@ static void REGAL_CALL error_glGetPathCoordsNV(GLuint name, GLfloat *coords)
 
 static void REGAL_CALL error_glGetPathDashArrayNV(GLuint name, GLfloat *dashArray)
 {
-  ITrace("error_glGetPathDashArrayNV");
+  Internal("error_glGetPathDashArrayNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44678,7 +44678,7 @@ static void REGAL_CALL error_glGetPathDashArrayNV(GLuint name, GLfloat *dashArra
 
 static GLfloat REGAL_CALL error_glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments)
 {
-  ITrace("error_glGetPathLengthNV");
+  Internal("error_glGetPathLengthNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44700,7 +44700,7 @@ return ret;
 
 static void REGAL_CALL error_glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint fistPathName, GLsizei numPaths, GLsizei stride, GLfloat *metrics)
 {
-  ITrace("error_glGetPathMetricRangeNV");
+  Internal("error_glGetPathMetricRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44721,7 +44721,7 @@ static void REGAL_CALL error_glGetPathMetricRangeNV(GLbitfield metricQueryMask, 
 
 static void REGAL_CALL error_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics)
 {
-  ITrace("error_glGetPathMetricsNV");
+  Internal("error_glGetPathMetricsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44742,7 +44742,7 @@ static void REGAL_CALL error_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsi
 
 static void REGAL_CALL error_glGetPathParameterfvNV(GLuint name, GLenum param, GLfloat *value)
 {
-  ITrace("error_glGetPathParameterfvNV");
+  Internal("error_glGetPathParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44763,7 +44763,7 @@ static void REGAL_CALL error_glGetPathParameterfvNV(GLuint name, GLenum param, G
 
 static void REGAL_CALL error_glGetPathParameterivNV(GLuint name, GLenum param, GLint *value)
 {
-  ITrace("error_glGetPathParameterivNV");
+  Internal("error_glGetPathParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44784,7 +44784,7 @@ static void REGAL_CALL error_glGetPathParameterivNV(GLuint name, GLenum param, G
 
 static void REGAL_CALL error_glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing)
 {
-  ITrace("error_glGetPathSpacingNV");
+  Internal("error_glGetPathSpacingNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44805,7 +44805,7 @@ static void REGAL_CALL error_glGetPathSpacingNV(GLenum pathListMode, GLsizei num
 
 static void REGAL_CALL error_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat *value)
 {
-  ITrace("error_glGetPathTexGenfvNV");
+  Internal("error_glGetPathTexGenfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44826,7 +44826,7 @@ static void REGAL_CALL error_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pnam
 
 static void REGAL_CALL error_glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint *value)
 {
-  ITrace("error_glGetPathTexGenivNV");
+  Internal("error_glGetPathTexGenivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44847,7 +44847,7 @@ static void REGAL_CALL error_glGetPathTexGenivNV(GLenum texCoordSet, GLenum pnam
 
 static void REGAL_CALL error_glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight)
 {
-  ITrace("error_glInterpolatePathsNV");
+  Internal("error_glInterpolatePathsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44868,7 +44868,7 @@ static void REGAL_CALL error_glInterpolatePathsNV(GLuint resultPath, GLuint path
 
 static GLboolean REGAL_CALL error_glIsPathNV(GLuint path)
 {
-  ITrace("error_glIsPathNV");
+  Internal("error_glIsPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44890,7 +44890,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y)
 {
-  ITrace("error_glIsPointInFillPathNV");
+  Internal("error_glIsPointInFillPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44912,7 +44912,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y)
 {
-  ITrace("error_glIsPointInStrokePathNV");
+  Internal("error_glIsPointInStrokePathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44934,7 +44934,7 @@ return ret;
 
 static void REGAL_CALL error_glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat *coeffs)
 {
-  ITrace("error_glPathColorGenNV");
+  Internal("error_glPathColorGenNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44955,7 +44955,7 @@ static void REGAL_CALL error_glPathColorGenNV(GLenum color, GLenum genMode, GLen
 
 static void REGAL_CALL error_glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
 {
-  ITrace("error_glPathCommandsNV");
+  Internal("error_glPathCommandsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44976,7 +44976,7 @@ static void REGAL_CALL error_glPathCommandsNV(GLuint path, GLsizei numCommands, 
 
 static void REGAL_CALL error_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
 {
-  ITrace("error_glPathCoordsNV");
+  Internal("error_glPathCoordsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -44997,7 +44997,7 @@ static void REGAL_CALL error_glPathCoordsNV(GLuint path, GLsizei numCoords, GLen
 
 static void REGAL_CALL error_glPathCoverDepthFuncNV(GLenum zfunc)
 {
-  ITrace("error_glPathCoverDepthFuncNV");
+  Internal("error_glPathCoverDepthFuncNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45018,7 +45018,7 @@ static void REGAL_CALL error_glPathCoverDepthFuncNV(GLenum zfunc)
 
 static void REGAL_CALL error_glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat *dashArray)
 {
-  ITrace("error_glPathDashArrayNV");
+  Internal("error_glPathDashArrayNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45039,7 +45039,7 @@ static void REGAL_CALL error_glPathDashArrayNV(GLuint path, GLsizei dashCount, c
 
 static void REGAL_CALL error_glPathFogGenNV(GLenum genMode)
 {
-  ITrace("error_glPathFogGenNV");
+  Internal("error_glPathFogGenNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45060,7 +45060,7 @@ static void REGAL_CALL error_glPathFogGenNV(GLenum genMode)
 
 static void REGAL_CALL error_glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
-  ITrace("error_glPathGlyphRangeNV");
+  Internal("error_glPathGlyphRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45081,7 +45081,7 @@ static void REGAL_CALL error_glPathGlyphRangeNV(GLuint firstPathName, GLenum fon
 
 static void REGAL_CALL error_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
-  ITrace("error_glPathGlyphsNV");
+  Internal("error_glPathGlyphsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45102,7 +45102,7 @@ static void REGAL_CALL error_glPathGlyphsNV(GLuint firstPathName, GLenum fontTar
 
 static void REGAL_CALL error_glPathParameterfNV(GLuint path, GLenum pname, GLfloat value)
 {
-  ITrace("error_glPathParameterfNV");
+  Internal("error_glPathParameterfNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45123,7 +45123,7 @@ static void REGAL_CALL error_glPathParameterfNV(GLuint path, GLenum pname, GLflo
 
 static void REGAL_CALL error_glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat *value)
 {
-  ITrace("error_glPathParameterfvNV");
+  Internal("error_glPathParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45144,7 +45144,7 @@ static void REGAL_CALL error_glPathParameterfvNV(GLuint path, GLenum pname, cons
 
 static void REGAL_CALL error_glPathParameteriNV(GLuint path, GLenum pname, GLint value)
 {
-  ITrace("error_glPathParameteriNV");
+  Internal("error_glPathParameteriNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45165,7 +45165,7 @@ static void REGAL_CALL error_glPathParameteriNV(GLuint path, GLenum pname, GLint
 
 static void REGAL_CALL error_glPathParameterivNV(GLuint path, GLenum pname, const GLint *value)
 {
-  ITrace("error_glPathParameterivNV");
+  Internal("error_glPathParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45186,7 +45186,7 @@ static void REGAL_CALL error_glPathParameterivNV(GLuint path, GLenum pname, cons
 
 static void REGAL_CALL error_glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units)
 {
-  ITrace("error_glPathStencilDepthOffsetNV");
+  Internal("error_glPathStencilDepthOffsetNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45207,7 +45207,7 @@ static void REGAL_CALL error_glPathStencilDepthOffsetNV(GLfloat factor, GLfloat 
 
 static void REGAL_CALL error_glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask)
 {
-  ITrace("error_glPathStencilFuncNV");
+  Internal("error_glPathStencilFuncNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45228,7 +45228,7 @@ static void REGAL_CALL error_glPathStencilFuncNV(GLenum func, GLint ref, GLuint 
 
 static void REGAL_CALL error_glPathStringNV(GLuint path, GLenum format, GLsizei length, const GLvoid *pathString)
 {
-  ITrace("error_glPathStringNV");
+  Internal("error_glPathStringNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45249,7 +45249,7 @@ static void REGAL_CALL error_glPathStringNV(GLuint path, GLenum format, GLsizei 
 
 static void REGAL_CALL error_glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
 {
-  ITrace("error_glPathSubCommandsNV");
+  Internal("error_glPathSubCommandsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45270,7 +45270,7 @@ static void REGAL_CALL error_glPathSubCommandsNV(GLuint path, GLsizei commandSta
 
 static void REGAL_CALL error_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
 {
-  ITrace("error_glPathSubCoordsNV");
+  Internal("error_glPathSubCoordsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45291,7 +45291,7 @@ static void REGAL_CALL error_glPathSubCoordsNV(GLuint path, GLsizei coordStart, 
 
 static void REGAL_CALL error_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs)
 {
-  ITrace("error_glPathTexGenNV");
+  Internal("error_glPathTexGenNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45312,7 +45312,7 @@ static void REGAL_CALL error_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, 
 
 static GLboolean REGAL_CALL error_glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat *x, GLfloat *y, GLfloat *tangentX, GLfloat *tangentY)
 {
-  ITrace("error_glPointAlongPathNV");
+  Internal("error_glPointAlongPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45334,7 +45334,7 @@ return ret;
 
 static void REGAL_CALL error_glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues)
 {
-  ITrace("error_glStencilFillPathInstancedNV");
+  Internal("error_glStencilFillPathInstancedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45355,7 +45355,7 @@ static void REGAL_CALL error_glStencilFillPathInstancedNV(GLsizei numPaths, GLen
 
 static void REGAL_CALL error_glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask)
 {
-  ITrace("error_glStencilFillPathNV");
+  Internal("error_glStencilFillPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45376,7 +45376,7 @@ static void REGAL_CALL error_glStencilFillPathNV(GLuint path, GLenum fillMode, G
 
 static void REGAL_CALL error_glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues)
 {
-  ITrace("error_glStencilStrokePathInstancedNV");
+  Internal("error_glStencilStrokePathInstancedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45397,7 +45397,7 @@ static void REGAL_CALL error_glStencilStrokePathInstancedNV(GLsizei numPaths, GL
 
 static void REGAL_CALL error_glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask)
 {
-  ITrace("error_glStencilStrokePathNV");
+  Internal("error_glStencilStrokePathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45418,7 +45418,7 @@ static void REGAL_CALL error_glStencilStrokePathNV(GLuint path, GLint reference,
 
 static void REGAL_CALL error_glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat *transformValues)
 {
-  ITrace("error_glTransformPathNV");
+  Internal("error_glTransformPathNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45439,7 +45439,7 @@ static void REGAL_CALL error_glTransformPathNV(GLuint resultPath, GLuint srcPath
 
 static void REGAL_CALL error_glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint *paths, const GLfloat *weights)
 {
-  ITrace("error_glWeightPathsNV");
+  Internal("error_glWeightPathsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45462,7 +45462,7 @@ static void REGAL_CALL error_glWeightPathsNV(GLuint resultPath, GLsizei numPaths
 
 static void REGAL_CALL error_glFlushPixelDataRangeNV(GLenum target)
 {
-  ITrace("error_glFlushPixelDataRangeNV");
+  Internal("error_glFlushPixelDataRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45483,7 +45483,7 @@ static void REGAL_CALL error_glFlushPixelDataRangeNV(GLenum target)
 
 static void REGAL_CALL error_glPixelDataRangeNV(GLenum target, GLsizei size, const GLvoid *pointer)
 {
-  ITrace("error_glPixelDataRangeNV");
+  Internal("error_glPixelDataRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45506,7 +45506,7 @@ static void REGAL_CALL error_glPixelDataRangeNV(GLenum target, GLsizei size, con
 
 static void REGAL_CALL error_glPointParameteriNV(GLenum pname, GLint param)
 {
-  ITrace("error_glPointParameteriNV");
+  Internal("error_glPointParameteriNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45527,7 +45527,7 @@ static void REGAL_CALL error_glPointParameteriNV(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glPointParameterivNV(GLenum pname, const GLint *params)
 {
-  ITrace("error_glPointParameterivNV");
+  Internal("error_glPointParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45550,7 +45550,7 @@ static void REGAL_CALL error_glPointParameterivNV(GLenum pname, const GLint *par
 
 static void REGAL_CALL error_glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT *params)
 {
-  ITrace("error_glGetVideoi64vNV");
+  Internal("error_glGetVideoi64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45571,7 +45571,7 @@ static void REGAL_CALL error_glGetVideoi64vNV(GLuint video_slot, GLenum pname, G
 
 static void REGAL_CALL error_glGetVideoivNV(GLuint video_slot, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVideoivNV");
+  Internal("error_glGetVideoivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45592,7 +45592,7 @@ static void REGAL_CALL error_glGetVideoivNV(GLuint video_slot, GLenum pname, GLi
 
 static void REGAL_CALL error_glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT *params)
 {
-  ITrace("error_glGetVideoui64vNV");
+  Internal("error_glGetVideoui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45613,7 +45613,7 @@ static void REGAL_CALL error_glGetVideoui64vNV(GLuint video_slot, GLenum pname, 
 
 static void REGAL_CALL error_glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint *params)
 {
-  ITrace("error_glGetVideouivNV");
+  Internal("error_glGetVideouivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45634,7 +45634,7 @@ static void REGAL_CALL error_glGetVideouivNV(GLuint video_slot, GLenum pname, GL
 
 static void REGAL_CALL error_glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3)
 {
-  ITrace("error_glPresentFrameDualFillNV");
+  Internal("error_glPresentFrameDualFillNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45655,7 +45655,7 @@ static void REGAL_CALL error_glPresentFrameDualFillNV(GLuint video_slot, GLuint6
 
 static void REGAL_CALL error_glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1)
 {
-  ITrace("error_glPresentFrameKeyedNV");
+  Internal("error_glPresentFrameKeyedNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45678,7 +45678,7 @@ static void REGAL_CALL error_glPresentFrameKeyedNV(GLuint video_slot, GLuint64EX
 
 static void REGAL_CALL error_glPrimitiveRestartIndexNV(GLuint index)
 {
-  ITrace("error_glPrimitiveRestartIndexNV");
+  Internal("error_glPrimitiveRestartIndexNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45699,7 +45699,7 @@ static void REGAL_CALL error_glPrimitiveRestartIndexNV(GLuint index)
 
 static void REGAL_CALL error_glPrimitiveRestartNV(void)
 {
-  ITrace("error_glPrimitiveRestartNV");
+  Internal("error_glPrimitiveRestartNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45722,7 +45722,7 @@ static void REGAL_CALL error_glPrimitiveRestartNV(void)
 
 static void REGAL_CALL error_glCombinerInputNV(GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage)
 {
-  ITrace("error_glCombinerInputNV");
+  Internal("error_glCombinerInputNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45743,7 +45743,7 @@ static void REGAL_CALL error_glCombinerInputNV(GLenum stage, GLenum portion, GLe
 
 static void REGAL_CALL error_glCombinerOutputNV(GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum)
 {
-  ITrace("error_glCombinerOutputNV");
+  Internal("error_glCombinerOutputNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45764,7 +45764,7 @@ static void REGAL_CALL error_glCombinerOutputNV(GLenum stage, GLenum portion, GL
 
 static void REGAL_CALL error_glCombinerParameterfNV(GLenum pname, GLfloat param)
 {
-  ITrace("error_glCombinerParameterfNV");
+  Internal("error_glCombinerParameterfNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45785,7 +45785,7 @@ static void REGAL_CALL error_glCombinerParameterfNV(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glCombinerParameterfvNV(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glCombinerParameterfvNV");
+  Internal("error_glCombinerParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45806,7 +45806,7 @@ static void REGAL_CALL error_glCombinerParameterfvNV(GLenum pname, const GLfloat
 
 static void REGAL_CALL error_glCombinerParameteriNV(GLenum pname, GLint param)
 {
-  ITrace("error_glCombinerParameteriNV");
+  Internal("error_glCombinerParameteriNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45827,7 +45827,7 @@ static void REGAL_CALL error_glCombinerParameteriNV(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glCombinerParameterivNV(GLenum pname, const GLint *params)
 {
-  ITrace("error_glCombinerParameterivNV");
+  Internal("error_glCombinerParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45848,7 +45848,7 @@ static void REGAL_CALL error_glCombinerParameterivNV(GLenum pname, const GLint *
 
 static void REGAL_CALL error_glFinalCombinerInputNV(GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage)
 {
-  ITrace("error_glFinalCombinerInputNV");
+  Internal("error_glFinalCombinerInputNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45869,7 +45869,7 @@ static void REGAL_CALL error_glFinalCombinerInputNV(GLenum variable, GLenum inpu
 
 static void REGAL_CALL error_glGetCombinerInputParameterfvNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetCombinerInputParameterfvNV");
+  Internal("error_glGetCombinerInputParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45890,7 +45890,7 @@ static void REGAL_CALL error_glGetCombinerInputParameterfvNV(GLenum stage, GLenu
 
 static void REGAL_CALL error_glGetCombinerInputParameterivNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetCombinerInputParameterivNV");
+  Internal("error_glGetCombinerInputParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45911,7 +45911,7 @@ static void REGAL_CALL error_glGetCombinerInputParameterivNV(GLenum stage, GLenu
 
 static void REGAL_CALL error_glGetCombinerOutputParameterfvNV(GLenum stage, GLenum portion, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetCombinerOutputParameterfvNV");
+  Internal("error_glGetCombinerOutputParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45932,7 +45932,7 @@ static void REGAL_CALL error_glGetCombinerOutputParameterfvNV(GLenum stage, GLen
 
 static void REGAL_CALL error_glGetCombinerOutputParameterivNV(GLenum stage, GLenum portion, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetCombinerOutputParameterivNV");
+  Internal("error_glGetCombinerOutputParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45953,7 +45953,7 @@ static void REGAL_CALL error_glGetCombinerOutputParameterivNV(GLenum stage, GLen
 
 static void REGAL_CALL error_glGetFinalCombinerInputParameterfvNV(GLenum variable, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetFinalCombinerInputParameterfvNV");
+  Internal("error_glGetFinalCombinerInputParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45974,7 +45974,7 @@ static void REGAL_CALL error_glGetFinalCombinerInputParameterfvNV(GLenum variabl
 
 static void REGAL_CALL error_glGetFinalCombinerInputParameterivNV(GLenum variable, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFinalCombinerInputParameterivNV");
+  Internal("error_glGetFinalCombinerInputParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -45997,7 +45997,7 @@ static void REGAL_CALL error_glGetFinalCombinerInputParameterivNV(GLenum variabl
 
 static void REGAL_CALL error_glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glCombinerStageParameterfvNV");
+  Internal("error_glCombinerStageParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46018,7 +46018,7 @@ static void REGAL_CALL error_glCombinerStageParameterfvNV(GLenum stage, GLenum p
 
 static void REGAL_CALL error_glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetCombinerStageParameterfvNV");
+  Internal("error_glGetCombinerStageParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46041,7 +46041,7 @@ static void REGAL_CALL error_glGetCombinerStageParameterfvNV(GLenum stage, GLenu
 
 static void REGAL_CALL error_glGetBufferParameterui64vNV(GLenum target, GLenum pname, GLuint64EXT *params)
 {
-  ITrace("error_glGetBufferParameterui64vNV");
+  Internal("error_glGetBufferParameterui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46062,7 +46062,7 @@ static void REGAL_CALL error_glGetBufferParameterui64vNV(GLenum target, GLenum p
 
 static void REGAL_CALL error_glGetIntegerui64vNV(GLenum target, GLuint64EXT *data)
 {
-  ITrace("error_glGetIntegerui64vNV");
+  Internal("error_glGetIntegerui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46083,7 +46083,7 @@ static void REGAL_CALL error_glGetIntegerui64vNV(GLenum target, GLuint64EXT *dat
 
 static void REGAL_CALL error_glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint64EXT *params)
 {
-  ITrace("error_glGetNamedBufferParameterui64vNV");
+  Internal("error_glGetNamedBufferParameterui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46104,7 +46104,7 @@ static void REGAL_CALL error_glGetNamedBufferParameterui64vNV(GLuint buffer, GLe
 
 static void REGAL_CALL error_glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT *params)
 {
-  ITrace("error_glGetUniformui64vNV");
+  Internal("error_glGetUniformui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46125,7 +46125,7 @@ static void REGAL_CALL error_glGetUniformui64vNV(GLuint program, GLint location,
 
 static GLboolean REGAL_CALL error_glIsBufferResidentNV(GLenum target)
 {
-  ITrace("error_glIsBufferResidentNV");
+  Internal("error_glIsBufferResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46147,7 +46147,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsNamedBufferResidentNV(GLuint buffer)
 {
-  ITrace("error_glIsNamedBufferResidentNV");
+  Internal("error_glIsNamedBufferResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46169,7 +46169,7 @@ return ret;
 
 static void REGAL_CALL error_glMakeBufferNonResidentNV(GLenum target)
 {
-  ITrace("error_glMakeBufferNonResidentNV");
+  Internal("error_glMakeBufferNonResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46190,7 +46190,7 @@ static void REGAL_CALL error_glMakeBufferNonResidentNV(GLenum target)
 
 static void REGAL_CALL error_glMakeBufferResidentNV(GLenum target, GLenum access)
 {
-  ITrace("error_glMakeBufferResidentNV");
+  Internal("error_glMakeBufferResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46211,7 +46211,7 @@ static void REGAL_CALL error_glMakeBufferResidentNV(GLenum target, GLenum access
 
 static void REGAL_CALL error_glMakeNamedBufferNonResidentNV(GLuint buffer)
 {
-  ITrace("error_glMakeNamedBufferNonResidentNV");
+  Internal("error_glMakeNamedBufferNonResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46232,7 +46232,7 @@ static void REGAL_CALL error_glMakeNamedBufferNonResidentNV(GLuint buffer)
 
 static void REGAL_CALL error_glMakeNamedBufferResidentNV(GLuint buffer, GLenum access)
 {
-  ITrace("error_glMakeNamedBufferResidentNV");
+  Internal("error_glMakeNamedBufferResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46253,7 +46253,7 @@ static void REGAL_CALL error_glMakeNamedBufferResidentNV(GLuint buffer, GLenum a
 
 static void REGAL_CALL error_glProgramUniformui64NV(GLuint program, GLint location, GLuint64EXT v0)
 {
-  ITrace("error_glProgramUniformui64NV");
+  Internal("error_glProgramUniformui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46274,7 +46274,7 @@ static void REGAL_CALL error_glProgramUniformui64NV(GLuint program, GLint locati
 
 static void REGAL_CALL error_glProgramUniformui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glProgramUniformui64vNV");
+  Internal("error_glProgramUniformui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46295,7 +46295,7 @@ static void REGAL_CALL error_glProgramUniformui64vNV(GLuint program, GLint locat
 
 static void REGAL_CALL error_glUniformui64NV(GLint location, GLuint64EXT v0)
 {
-  ITrace("error_glUniformui64NV");
+  Internal("error_glUniformui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46316,7 +46316,7 @@ static void REGAL_CALL error_glUniformui64NV(GLint location, GLuint64EXT v0)
 
 static void REGAL_CALL error_glUniformui64vNV(GLint location, GLsizei count, const GLuint64EXT *value)
 {
-  ITrace("error_glUniformui64vNV");
+  Internal("error_glUniformui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46339,7 +46339,7 @@ static void REGAL_CALL error_glUniformui64vNV(GLint location, GLsizei count, con
 
 static void REGAL_CALL error_glTextureBarrierNV(void)
 {
-  ITrace("error_glTextureBarrierNV");
+  Internal("error_glTextureBarrierNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46362,7 +46362,7 @@ static void REGAL_CALL error_glTextureBarrierNV(void)
 
 static void REGAL_CALL error_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTexImage2DMultisampleCoverageNV");
+  Internal("error_glTexImage2DMultisampleCoverageNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46383,7 +46383,7 @@ static void REGAL_CALL error_glTexImage2DMultisampleCoverageNV(GLenum target, GL
 
 static void REGAL_CALL error_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTexImage3DMultisampleCoverageNV");
+  Internal("error_glTexImage3DMultisampleCoverageNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46404,7 +46404,7 @@ static void REGAL_CALL error_glTexImage3DMultisampleCoverageNV(GLenum target, GL
 
 static void REGAL_CALL error_glTextureImage2DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTextureImage2DMultisampleCoverageNV");
+  Internal("error_glTextureImage2DMultisampleCoverageNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46425,7 +46425,7 @@ static void REGAL_CALL error_glTextureImage2DMultisampleCoverageNV(GLuint textur
 
 static void REGAL_CALL error_glTextureImage2DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTextureImage2DMultisampleNV");
+  Internal("error_glTextureImage2DMultisampleNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46446,7 +46446,7 @@ static void REGAL_CALL error_glTextureImage2DMultisampleNV(GLuint texture, GLenu
 
 static void REGAL_CALL error_glTextureImage3DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTextureImage3DMultisampleCoverageNV");
+  Internal("error_glTextureImage3DMultisampleCoverageNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46467,7 +46467,7 @@ static void REGAL_CALL error_glTextureImage3DMultisampleCoverageNV(GLuint textur
 
 static void REGAL_CALL error_glTextureImage3DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
 {
-  ITrace("error_glTextureImage3DMultisampleNV");
+  Internal("error_glTextureImage3DMultisampleNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46490,7 +46490,7 @@ static void REGAL_CALL error_glTextureImage3DMultisampleNV(GLuint texture, GLenu
 
 static void REGAL_CALL error_glActiveVaryingNV(GLuint program, const GLchar *name)
 {
-  ITrace("error_glActiveVaryingNV");
+  Internal("error_glActiveVaryingNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46511,7 +46511,7 @@ static void REGAL_CALL error_glActiveVaryingNV(GLuint program, const GLchar *nam
 
 static void REGAL_CALL error_glBeginTransformFeedbackNV(GLenum primitiveMode)
 {
-  ITrace("error_glBeginTransformFeedbackNV");
+  Internal("error_glBeginTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46532,7 +46532,7 @@ static void REGAL_CALL error_glBeginTransformFeedbackNV(GLenum primitiveMode)
 
 static void REGAL_CALL error_glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer)
 {
-  ITrace("error_glBindBufferBaseNV");
+  Internal("error_glBindBufferBaseNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46553,7 +46553,7 @@ static void REGAL_CALL error_glBindBufferBaseNV(GLenum target, GLuint index, GLu
 
 static void REGAL_CALL error_glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset)
 {
-  ITrace("error_glBindBufferOffsetNV");
+  Internal("error_glBindBufferOffsetNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46574,7 +46574,7 @@ static void REGAL_CALL error_glBindBufferOffsetNV(GLenum target, GLuint index, G
 
 static void REGAL_CALL error_glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-  ITrace("error_glBindBufferRangeNV");
+  Internal("error_glBindBufferRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46595,7 +46595,7 @@ static void REGAL_CALL error_glBindBufferRangeNV(GLenum target, GLuint index, GL
 
 static void REGAL_CALL error_glEndTransformFeedbackNV(void)
 {
-  ITrace("error_glEndTransformFeedbackNV");
+  Internal("error_glEndTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46616,7 +46616,7 @@ static void REGAL_CALL error_glEndTransformFeedbackNV(void)
 
 static void REGAL_CALL error_glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name)
 {
-  ITrace("error_glGetActiveVaryingNV");
+  Internal("error_glGetActiveVaryingNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46637,7 +46637,7 @@ static void REGAL_CALL error_glGetActiveVaryingNV(GLuint program, GLuint index, 
 
 static void REGAL_CALL error_glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint *location)
 {
-  ITrace("error_glGetTransformFeedbackVaryingNV");
+  Internal("error_glGetTransformFeedbackVaryingNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46658,7 +46658,7 @@ static void REGAL_CALL error_glGetTransformFeedbackVaryingNV(GLuint program, GLu
 
 static GLint REGAL_CALL error_glGetVaryingLocationNV(GLuint program, const GLchar *name)
 {
-  ITrace("error_glGetVaryingLocationNV");
+  Internal("error_glGetVaryingLocationNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46680,7 +46680,7 @@ return ret;
 
 static void REGAL_CALL error_glTransformFeedbackAttribsNV(GLuint count, const GLint *attribs, GLenum bufferMode)
 {
-  ITrace("error_glTransformFeedbackAttribsNV");
+  Internal("error_glTransformFeedbackAttribsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46701,7 +46701,7 @@ static void REGAL_CALL error_glTransformFeedbackAttribsNV(GLuint count, const GL
 
 static void REGAL_CALL error_glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint *locations, GLenum bufferMode)
 {
-  ITrace("error_glTransformFeedbackVaryingsNV");
+  Internal("error_glTransformFeedbackVaryingsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46724,7 +46724,7 @@ static void REGAL_CALL error_glTransformFeedbackVaryingsNV(GLuint program, GLsiz
 
 static void REGAL_CALL error_glBindTransformFeedbackNV(GLenum target, GLuint id)
 {
-  ITrace("error_glBindTransformFeedbackNV");
+  Internal("error_glBindTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46745,7 +46745,7 @@ static void REGAL_CALL error_glBindTransformFeedbackNV(GLenum target, GLuint id)
 
 static void REGAL_CALL error_glDeleteTransformFeedbacksNV(GLsizei n, const GLuint *ids)
 {
-  ITrace("error_glDeleteTransformFeedbacksNV");
+  Internal("error_glDeleteTransformFeedbacksNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46766,7 +46766,7 @@ static void REGAL_CALL error_glDeleteTransformFeedbacksNV(GLsizei n, const GLuin
 
 static void REGAL_CALL error_glDrawTransformFeedbackNV(GLenum mode, GLuint name)
 {
-  ITrace("error_glDrawTransformFeedbackNV");
+  Internal("error_glDrawTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46787,7 +46787,7 @@ static void REGAL_CALL error_glDrawTransformFeedbackNV(GLenum mode, GLuint name)
 
 static void REGAL_CALL error_glGenTransformFeedbacksNV(GLsizei n, GLuint *ids)
 {
-  ITrace("error_glGenTransformFeedbacksNV");
+  Internal("error_glGenTransformFeedbacksNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46808,7 +46808,7 @@ static void REGAL_CALL error_glGenTransformFeedbacksNV(GLsizei n, GLuint *ids)
 
 static GLboolean REGAL_CALL error_glIsTransformFeedbackNV(GLuint id)
 {
-  ITrace("error_glIsTransformFeedbackNV");
+  Internal("error_glIsTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46830,7 +46830,7 @@ return ret;
 
 static void REGAL_CALL error_glPauseTransformFeedbackNV(void)
 {
-  ITrace("error_glPauseTransformFeedbackNV");
+  Internal("error_glPauseTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46851,7 +46851,7 @@ static void REGAL_CALL error_glPauseTransformFeedbackNV(void)
 
 static void REGAL_CALL error_glResumeTransformFeedbackNV(void)
 {
-  ITrace("error_glResumeTransformFeedbackNV");
+  Internal("error_glResumeTransformFeedbackNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46874,7 +46874,7 @@ static void REGAL_CALL error_glResumeTransformFeedbackNV(void)
 
 static void REGAL_CALL error_glVDPAUFiniNV(void)
 {
-  ITrace("error_glVDPAUFiniNV");
+  Internal("error_glVDPAUFiniNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46895,7 +46895,7 @@ static void REGAL_CALL error_glVDPAUFiniNV(void)
 
 static void REGAL_CALL error_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values)
 {
-  ITrace("error_glVDPAUGetSurfaceivNV");
+  Internal("error_glVDPAUGetSurfaceivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46916,7 +46916,7 @@ static void REGAL_CALL error_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLe
 
 static void REGAL_CALL error_glVDPAUInitNV(const GLvoid *vdpDevice, const GLvoid *getProcAddress)
 {
-  ITrace("error_glVDPAUInitNV");
+  Internal("error_glVDPAUInitNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46937,7 +46937,7 @@ static void REGAL_CALL error_glVDPAUInitNV(const GLvoid *vdpDevice, const GLvoid
 
 static GLboolean REGAL_CALL error_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface)
 {
-  ITrace("error_glVDPAUIsSurfaceNV");
+  Internal("error_glVDPAUIsSurfaceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46959,7 +46959,7 @@ return ret;
 
 static void REGAL_CALL error_glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces)
 {
-  ITrace("error_glVDPAUMapSurfacesNV");
+  Internal("error_glVDPAUMapSurfacesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -46980,7 +46980,7 @@ static void REGAL_CALL error_glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLv
 
 static GLvdpauSurfaceNV REGAL_CALL error_glVDPAURegisterOutputSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
 {
-  ITrace("error_glVDPAURegisterOutputSurfaceNV");
+  Internal("error_glVDPAURegisterOutputSurfaceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47002,7 +47002,7 @@ return ret;
 
 static GLvdpauSurfaceNV REGAL_CALL error_glVDPAURegisterVideoSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
 {
-  ITrace("error_glVDPAURegisterVideoSurfaceNV");
+  Internal("error_glVDPAURegisterVideoSurfaceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47024,7 +47024,7 @@ return ret;
 
 static void REGAL_CALL error_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access)
 {
-  ITrace("error_glVDPAUSurfaceAccessNV");
+  Internal("error_glVDPAUSurfaceAccessNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47045,7 +47045,7 @@ static void REGAL_CALL error_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GL
 
 static void REGAL_CALL error_glVDPAUUnmapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces)
 {
-  ITrace("error_glVDPAUUnmapSurfacesNV");
+  Internal("error_glVDPAUUnmapSurfacesNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47066,7 +47066,7 @@ static void REGAL_CALL error_glVDPAUUnmapSurfacesNV(GLsizei numSurfaces, const G
 
 static void REGAL_CALL error_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface)
 {
-  ITrace("error_glVDPAUUnregisterSurfaceNV");
+  Internal("error_glVDPAUUnregisterSurfaceNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47089,7 +47089,7 @@ static void REGAL_CALL error_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface
 
 static void REGAL_CALL error_glFlushVertexArrayRangeNV(void)
 {
-  ITrace("error_glFlushVertexArrayRangeNV");
+  Internal("error_glFlushVertexArrayRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47110,7 +47110,7 @@ static void REGAL_CALL error_glFlushVertexArrayRangeNV(void)
 
 static void REGAL_CALL error_glVertexArrayRangeNV(GLsizei size, const GLvoid *pointer)
 {
-  ITrace("error_glVertexArrayRangeNV");
+  Internal("error_glVertexArrayRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47133,7 +47133,7 @@ static void REGAL_CALL error_glVertexArrayRangeNV(GLsizei size, const GLvoid *po
 
 static void REGAL_CALL error_glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT *params)
 {
-  ITrace("error_glGetVertexAttribLi64vNV");
+  Internal("error_glGetVertexAttribLi64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47154,7 +47154,7 @@ static void REGAL_CALL error_glGetVertexAttribLi64vNV(GLuint index, GLenum pname
 
 static void REGAL_CALL error_glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT *params)
 {
-  ITrace("error_glGetVertexAttribLui64vNV");
+  Internal("error_glGetVertexAttribLui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47175,7 +47175,7 @@ static void REGAL_CALL error_glGetVertexAttribLui64vNV(GLuint index, GLenum pnam
 
 static void REGAL_CALL error_glVertexAttribL1i64NV(GLuint index, GLint64EXT x)
 {
-  ITrace("error_glVertexAttribL1i64NV");
+  Internal("error_glVertexAttribL1i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47196,7 +47196,7 @@ static void REGAL_CALL error_glVertexAttribL1i64NV(GLuint index, GLint64EXT x)
 
 static void REGAL_CALL error_glVertexAttribL1i64vNV(GLuint index, const GLint64EXT *v)
 {
-  ITrace("error_glVertexAttribL1i64vNV");
+  Internal("error_glVertexAttribL1i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47217,7 +47217,7 @@ static void REGAL_CALL error_glVertexAttribL1i64vNV(GLuint index, const GLint64E
 
 static void REGAL_CALL error_glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x)
 {
-  ITrace("error_glVertexAttribL1ui64NV");
+  Internal("error_glVertexAttribL1ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47238,7 +47238,7 @@ static void REGAL_CALL error_glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x)
 
 static void REGAL_CALL error_glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT *v)
 {
-  ITrace("error_glVertexAttribL1ui64vNV");
+  Internal("error_glVertexAttribL1ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47259,7 +47259,7 @@ static void REGAL_CALL error_glVertexAttribL1ui64vNV(GLuint index, const GLuint6
 
 static void REGAL_CALL error_glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y)
 {
-  ITrace("error_glVertexAttribL2i64NV");
+  Internal("error_glVertexAttribL2i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47280,7 +47280,7 @@ static void REGAL_CALL error_glVertexAttribL2i64NV(GLuint index, GLint64EXT x, G
 
 static void REGAL_CALL error_glVertexAttribL2i64vNV(GLuint index, const GLint64EXT *v)
 {
-  ITrace("error_glVertexAttribL2i64vNV");
+  Internal("error_glVertexAttribL2i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47301,7 +47301,7 @@ static void REGAL_CALL error_glVertexAttribL2i64vNV(GLuint index, const GLint64E
 
 static void REGAL_CALL error_glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y)
 {
-  ITrace("error_glVertexAttribL2ui64NV");
+  Internal("error_glVertexAttribL2ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47322,7 +47322,7 @@ static void REGAL_CALL error_glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x,
 
 static void REGAL_CALL error_glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT *v)
 {
-  ITrace("error_glVertexAttribL2ui64vNV");
+  Internal("error_glVertexAttribL2ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47343,7 +47343,7 @@ static void REGAL_CALL error_glVertexAttribL2ui64vNV(GLuint index, const GLuint6
 
 static void REGAL_CALL error_glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z)
 {
-  ITrace("error_glVertexAttribL3i64NV");
+  Internal("error_glVertexAttribL3i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47364,7 +47364,7 @@ static void REGAL_CALL error_glVertexAttribL3i64NV(GLuint index, GLint64EXT x, G
 
 static void REGAL_CALL error_glVertexAttribL3i64vNV(GLuint index, const GLint64EXT *v)
 {
-  ITrace("error_glVertexAttribL3i64vNV");
+  Internal("error_glVertexAttribL3i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47385,7 +47385,7 @@ static void REGAL_CALL error_glVertexAttribL3i64vNV(GLuint index, const GLint64E
 
 static void REGAL_CALL error_glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z)
 {
-  ITrace("error_glVertexAttribL3ui64NV");
+  Internal("error_glVertexAttribL3ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47406,7 +47406,7 @@ static void REGAL_CALL error_glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x,
 
 static void REGAL_CALL error_glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT *v)
 {
-  ITrace("error_glVertexAttribL3ui64vNV");
+  Internal("error_glVertexAttribL3ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47427,7 +47427,7 @@ static void REGAL_CALL error_glVertexAttribL3ui64vNV(GLuint index, const GLuint6
 
 static void REGAL_CALL error_glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w)
 {
-  ITrace("error_glVertexAttribL4i64NV");
+  Internal("error_glVertexAttribL4i64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47448,7 +47448,7 @@ static void REGAL_CALL error_glVertexAttribL4i64NV(GLuint index, GLint64EXT x, G
 
 static void REGAL_CALL error_glVertexAttribL4i64vNV(GLuint index, const GLint64EXT *v)
 {
-  ITrace("error_glVertexAttribL4i64vNV");
+  Internal("error_glVertexAttribL4i64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47469,7 +47469,7 @@ static void REGAL_CALL error_glVertexAttribL4i64vNV(GLuint index, const GLint64E
 
 static void REGAL_CALL error_glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w)
 {
-  ITrace("error_glVertexAttribL4ui64NV");
+  Internal("error_glVertexAttribL4ui64NV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47490,7 +47490,7 @@ static void REGAL_CALL error_glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x,
 
 static void REGAL_CALL error_glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT *v)
 {
-  ITrace("error_glVertexAttribL4ui64vNV");
+  Internal("error_glVertexAttribL4ui64vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47511,7 +47511,7 @@ static void REGAL_CALL error_glVertexAttribL4ui64vNV(GLuint index, const GLuint6
 
 static void REGAL_CALL error_glVertexAttribLFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glVertexAttribLFormatNV");
+  Internal("error_glVertexAttribLFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47534,7 +47534,7 @@ static void REGAL_CALL error_glVertexAttribLFormatNV(GLuint index, GLint size, G
 
 static void REGAL_CALL error_glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length)
 {
-  ITrace("error_glBufferAddressRangeNV");
+  Internal("error_glBufferAddressRangeNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47555,7 +47555,7 @@ static void REGAL_CALL error_glBufferAddressRangeNV(GLenum pname, GLuint index, 
 
 static void REGAL_CALL error_glColorFormatNV(GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glColorFormatNV");
+  Internal("error_glColorFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47576,7 +47576,7 @@ static void REGAL_CALL error_glColorFormatNV(GLint size, GLenum type, GLsizei st
 
 static void REGAL_CALL error_glEdgeFlagFormatNV(GLsizei stride)
 {
-  ITrace("error_glEdgeFlagFormatNV");
+  Internal("error_glEdgeFlagFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47597,7 +47597,7 @@ static void REGAL_CALL error_glEdgeFlagFormatNV(GLsizei stride)
 
 static void REGAL_CALL error_glFogCoordFormatNV(GLenum type, GLsizei stride)
 {
-  ITrace("error_glFogCoordFormatNV");
+  Internal("error_glFogCoordFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47618,7 +47618,7 @@ static void REGAL_CALL error_glFogCoordFormatNV(GLenum type, GLsizei stride)
 
 static void REGAL_CALL error_glGetIntegerui64i_vNV(GLenum target, GLuint index, GLuint64EXT *data)
 {
-  ITrace("error_glGetIntegerui64i_vNV");
+  Internal("error_glGetIntegerui64i_vNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47639,7 +47639,7 @@ static void REGAL_CALL error_glGetIntegerui64i_vNV(GLenum target, GLuint index, 
 
 static void REGAL_CALL error_glIndexFormatNV(GLenum type, GLsizei stride)
 {
-  ITrace("error_glIndexFormatNV");
+  Internal("error_glIndexFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47660,7 +47660,7 @@ static void REGAL_CALL error_glIndexFormatNV(GLenum type, GLsizei stride)
 
 static void REGAL_CALL error_glNormalFormatNV(GLenum type, GLsizei stride)
 {
-  ITrace("error_glNormalFormatNV");
+  Internal("error_glNormalFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47681,7 +47681,7 @@ static void REGAL_CALL error_glNormalFormatNV(GLenum type, GLsizei stride)
 
 static void REGAL_CALL error_glSecondaryColorFormatNV(GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glSecondaryColorFormatNV");
+  Internal("error_glSecondaryColorFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47702,7 +47702,7 @@ static void REGAL_CALL error_glSecondaryColorFormatNV(GLint size, GLenum type, G
 
 static void REGAL_CALL error_glTexCoordFormatNV(GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glTexCoordFormatNV");
+  Internal("error_glTexCoordFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47723,7 +47723,7 @@ static void REGAL_CALL error_glTexCoordFormatNV(GLint size, GLenum type, GLsizei
 
 static void REGAL_CALL error_glVertexAttribFormatNV(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride)
 {
-  ITrace("error_glVertexAttribFormatNV");
+  Internal("error_glVertexAttribFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47744,7 +47744,7 @@ static void REGAL_CALL error_glVertexAttribFormatNV(GLuint index, GLint size, GL
 
 static void REGAL_CALL error_glVertexAttribIFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glVertexAttribIFormatNV");
+  Internal("error_glVertexAttribIFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47765,7 +47765,7 @@ static void REGAL_CALL error_glVertexAttribIFormatNV(GLuint index, GLint size, G
 
 static void REGAL_CALL error_glVertexFormatNV(GLint size, GLenum type, GLsizei stride)
 {
-  ITrace("error_glVertexFormatNV");
+  Internal("error_glVertexFormatNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47788,7 +47788,7 @@ static void REGAL_CALL error_glVertexFormatNV(GLint size, GLenum type, GLsizei s
 
 static GLboolean REGAL_CALL error_glAreProgramsResidentNV(GLsizei n, const GLuint *programs, GLboolean *residences)
 {
-  ITrace("error_glAreProgramsResidentNV");
+  Internal("error_glAreProgramsResidentNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47810,7 +47810,7 @@ return ret;
 
 static void REGAL_CALL error_glBindProgramNV(GLenum target, GLuint id)
 {
-  ITrace("error_glBindProgramNV");
+  Internal("error_glBindProgramNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47831,7 +47831,7 @@ static void REGAL_CALL error_glBindProgramNV(GLenum target, GLuint id)
 
 static void REGAL_CALL error_glDeleteProgramsNV(GLsizei n, const GLuint *programs)
 {
-  ITrace("error_glDeleteProgramsNV");
+  Internal("error_glDeleteProgramsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47852,7 +47852,7 @@ static void REGAL_CALL error_glDeleteProgramsNV(GLsizei n, const GLuint *program
 
 static void REGAL_CALL error_glExecuteProgramNV(GLenum target, GLuint id, const GLfloat *params)
 {
-  ITrace("error_glExecuteProgramNV");
+  Internal("error_glExecuteProgramNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47873,7 +47873,7 @@ static void REGAL_CALL error_glExecuteProgramNV(GLenum target, GLuint id, const 
 
 static void REGAL_CALL error_glGenProgramsNV(GLsizei n, GLuint *programs)
 {
-  ITrace("error_glGenProgramsNV");
+  Internal("error_glGenProgramsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47894,7 +47894,7 @@ static void REGAL_CALL error_glGenProgramsNV(GLsizei n, GLuint *programs)
 
 static void REGAL_CALL error_glGetProgramParameterdvNV(GLenum target, GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetProgramParameterdvNV");
+  Internal("error_glGetProgramParameterdvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47915,7 +47915,7 @@ static void REGAL_CALL error_glGetProgramParameterdvNV(GLenum target, GLuint ind
 
 static void REGAL_CALL error_glGetProgramParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetProgramParameterfvNV");
+  Internal("error_glGetProgramParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47936,7 +47936,7 @@ static void REGAL_CALL error_glGetProgramParameterfvNV(GLenum target, GLuint ind
 
 static void REGAL_CALL error_glGetProgramStringNV(GLuint id, GLenum pname, GLubyte *program)
 {
-  ITrace("error_glGetProgramStringNV");
+  Internal("error_glGetProgramStringNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47957,7 +47957,7 @@ static void REGAL_CALL error_glGetProgramStringNV(GLuint id, GLenum pname, GLuby
 
 static void REGAL_CALL error_glGetProgramivNV(GLuint id, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetProgramivNV");
+  Internal("error_glGetProgramivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47978,7 +47978,7 @@ static void REGAL_CALL error_glGetProgramivNV(GLuint id, GLenum pname, GLint *pa
 
 static void REGAL_CALL error_glGetTrackMatrixivNV(GLenum target, GLuint address, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetTrackMatrixivNV");
+  Internal("error_glGetTrackMatrixivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -47999,7 +47999,7 @@ static void REGAL_CALL error_glGetTrackMatrixivNV(GLenum target, GLuint address,
 
 static void REGAL_CALL error_glGetVertexAttribPointervNV(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  ITrace("error_glGetVertexAttribPointervNV");
+  Internal("error_glGetVertexAttribPointervNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48020,7 +48020,7 @@ static void REGAL_CALL error_glGetVertexAttribPointervNV(GLuint index, GLenum pn
 
 static void REGAL_CALL error_glGetVertexAttribdvNV(GLuint index, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVertexAttribdvNV");
+  Internal("error_glGetVertexAttribdvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48041,7 +48041,7 @@ static void REGAL_CALL error_glGetVertexAttribdvNV(GLuint index, GLenum pname, G
 
 static void REGAL_CALL error_glGetVertexAttribfvNV(GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVertexAttribfvNV");
+  Internal("error_glGetVertexAttribfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48062,7 +48062,7 @@ static void REGAL_CALL error_glGetVertexAttribfvNV(GLuint index, GLenum pname, G
 
 static void REGAL_CALL error_glGetVertexAttribivNV(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVertexAttribivNV");
+  Internal("error_glGetVertexAttribivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48083,7 +48083,7 @@ static void REGAL_CALL error_glGetVertexAttribivNV(GLuint index, GLenum pname, G
 
 static GLboolean REGAL_CALL error_glIsProgramNV(GLuint id)
 {
-  ITrace("error_glIsProgramNV");
+  Internal("error_glIsProgramNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48105,7 +48105,7 @@ return ret;
 
 static void REGAL_CALL error_glLoadProgramNV(GLenum target, GLuint id, GLsizei len, const GLubyte *program)
 {
-  ITrace("error_glLoadProgramNV");
+  Internal("error_glLoadProgramNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48126,7 +48126,7 @@ static void REGAL_CALL error_glLoadProgramNV(GLenum target, GLuint id, GLsizei l
 
 static void REGAL_CALL error_glProgramParameter4dNV(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glProgramParameter4dNV");
+  Internal("error_glProgramParameter4dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48147,7 +48147,7 @@ static void REGAL_CALL error_glProgramParameter4dNV(GLenum target, GLuint index,
 
 static void REGAL_CALL error_glProgramParameter4dvNV(GLenum target, GLuint index, const GLdouble *v)
 {
-  ITrace("error_glProgramParameter4dvNV");
+  Internal("error_glProgramParameter4dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48168,7 +48168,7 @@ static void REGAL_CALL error_glProgramParameter4dvNV(GLenum target, GLuint index
 
 static void REGAL_CALL error_glProgramParameter4fNV(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glProgramParameter4fNV");
+  Internal("error_glProgramParameter4fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48189,7 +48189,7 @@ static void REGAL_CALL error_glProgramParameter4fNV(GLenum target, GLuint index,
 
 static void REGAL_CALL error_glProgramParameter4fvNV(GLenum target, GLuint index, const GLfloat *v)
 {
-  ITrace("error_glProgramParameter4fvNV");
+  Internal("error_glProgramParameter4fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48210,7 +48210,7 @@ static void REGAL_CALL error_glProgramParameter4fvNV(GLenum target, GLuint index
 
 static void REGAL_CALL error_glProgramParameters4dvNV(GLenum target, GLuint index, GLuint count, const GLdouble *v)
 {
-  ITrace("error_glProgramParameters4dvNV");
+  Internal("error_glProgramParameters4dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48231,7 +48231,7 @@ static void REGAL_CALL error_glProgramParameters4dvNV(GLenum target, GLuint inde
 
 static void REGAL_CALL error_glProgramParameters4fvNV(GLenum target, GLuint index, GLuint count, const GLfloat *v)
 {
-  ITrace("error_glProgramParameters4fvNV");
+  Internal("error_glProgramParameters4fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48252,7 +48252,7 @@ static void REGAL_CALL error_glProgramParameters4fvNV(GLenum target, GLuint inde
 
 static void REGAL_CALL error_glRequestResidentProgramsNV(GLsizei n, const GLuint *programs)
 {
-  ITrace("error_glRequestResidentProgramsNV");
+  Internal("error_glRequestResidentProgramsNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48273,7 +48273,7 @@ static void REGAL_CALL error_glRequestResidentProgramsNV(GLsizei n, const GLuint
 
 static void REGAL_CALL error_glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform)
 {
-  ITrace("error_glTrackMatrixNV");
+  Internal("error_glTrackMatrixNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48294,7 +48294,7 @@ static void REGAL_CALL error_glTrackMatrixNV(GLenum target, GLuint address, GLen
 
 static void REGAL_CALL error_glVertexAttrib1dNV(GLuint index, GLdouble x)
 {
-  ITrace("error_glVertexAttrib1dNV");
+  Internal("error_glVertexAttrib1dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48315,7 +48315,7 @@ static void REGAL_CALL error_glVertexAttrib1dNV(GLuint index, GLdouble x)
 
 static void REGAL_CALL error_glVertexAttrib1dvNV(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib1dvNV");
+  Internal("error_glVertexAttrib1dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48336,7 +48336,7 @@ static void REGAL_CALL error_glVertexAttrib1dvNV(GLuint index, const GLdouble *v
 
 static void REGAL_CALL error_glVertexAttrib1fNV(GLuint index, GLfloat x)
 {
-  ITrace("error_glVertexAttrib1fNV");
+  Internal("error_glVertexAttrib1fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48357,7 +48357,7 @@ static void REGAL_CALL error_glVertexAttrib1fNV(GLuint index, GLfloat x)
 
 static void REGAL_CALL error_glVertexAttrib1fvNV(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib1fvNV");
+  Internal("error_glVertexAttrib1fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48378,7 +48378,7 @@ static void REGAL_CALL error_glVertexAttrib1fvNV(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib1sNV(GLuint index, GLshort x)
 {
-  ITrace("error_glVertexAttrib1sNV");
+  Internal("error_glVertexAttrib1sNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48399,7 +48399,7 @@ static void REGAL_CALL error_glVertexAttrib1sNV(GLuint index, GLshort x)
 
 static void REGAL_CALL error_glVertexAttrib1svNV(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib1svNV");
+  Internal("error_glVertexAttrib1svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48420,7 +48420,7 @@ static void REGAL_CALL error_glVertexAttrib1svNV(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib2dNV(GLuint index, GLdouble x, GLdouble y)
 {
-  ITrace("error_glVertexAttrib2dNV");
+  Internal("error_glVertexAttrib2dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48441,7 +48441,7 @@ static void REGAL_CALL error_glVertexAttrib2dNV(GLuint index, GLdouble x, GLdoub
 
 static void REGAL_CALL error_glVertexAttrib2dvNV(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib2dvNV");
+  Internal("error_glVertexAttrib2dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48462,7 +48462,7 @@ static void REGAL_CALL error_glVertexAttrib2dvNV(GLuint index, const GLdouble *v
 
 static void REGAL_CALL error_glVertexAttrib2fNV(GLuint index, GLfloat x, GLfloat y)
 {
-  ITrace("error_glVertexAttrib2fNV");
+  Internal("error_glVertexAttrib2fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48483,7 +48483,7 @@ static void REGAL_CALL error_glVertexAttrib2fNV(GLuint index, GLfloat x, GLfloat
 
 static void REGAL_CALL error_glVertexAttrib2fvNV(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib2fvNV");
+  Internal("error_glVertexAttrib2fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48504,7 +48504,7 @@ static void REGAL_CALL error_glVertexAttrib2fvNV(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib2sNV(GLuint index, GLshort x, GLshort y)
 {
-  ITrace("error_glVertexAttrib2sNV");
+  Internal("error_glVertexAttrib2sNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48525,7 +48525,7 @@ static void REGAL_CALL error_glVertexAttrib2sNV(GLuint index, GLshort x, GLshort
 
 static void REGAL_CALL error_glVertexAttrib2svNV(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib2svNV");
+  Internal("error_glVertexAttrib2svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48546,7 +48546,7 @@ static void REGAL_CALL error_glVertexAttrib2svNV(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib3dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  ITrace("error_glVertexAttrib3dNV");
+  Internal("error_glVertexAttrib3dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48567,7 +48567,7 @@ static void REGAL_CALL error_glVertexAttrib3dNV(GLuint index, GLdouble x, GLdoub
 
 static void REGAL_CALL error_glVertexAttrib3dvNV(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib3dvNV");
+  Internal("error_glVertexAttrib3dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48588,7 +48588,7 @@ static void REGAL_CALL error_glVertexAttrib3dvNV(GLuint index, const GLdouble *v
 
 static void REGAL_CALL error_glVertexAttrib3fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glVertexAttrib3fNV");
+  Internal("error_glVertexAttrib3fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48609,7 +48609,7 @@ static void REGAL_CALL error_glVertexAttrib3fNV(GLuint index, GLfloat x, GLfloat
 
 static void REGAL_CALL error_glVertexAttrib3fvNV(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib3fvNV");
+  Internal("error_glVertexAttrib3fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48630,7 +48630,7 @@ static void REGAL_CALL error_glVertexAttrib3fvNV(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib3sNV(GLuint index, GLshort x, GLshort y, GLshort z)
 {
-  ITrace("error_glVertexAttrib3sNV");
+  Internal("error_glVertexAttrib3sNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48651,7 +48651,7 @@ static void REGAL_CALL error_glVertexAttrib3sNV(GLuint index, GLshort x, GLshort
 
 static void REGAL_CALL error_glVertexAttrib3svNV(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib3svNV");
+  Internal("error_glVertexAttrib3svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48672,7 +48672,7 @@ static void REGAL_CALL error_glVertexAttrib3svNV(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib4dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  ITrace("error_glVertexAttrib4dNV");
+  Internal("error_glVertexAttrib4dNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48693,7 +48693,7 @@ static void REGAL_CALL error_glVertexAttrib4dNV(GLuint index, GLdouble x, GLdoub
 
 static void REGAL_CALL error_glVertexAttrib4dvNV(GLuint index, const GLdouble *v)
 {
-  ITrace("error_glVertexAttrib4dvNV");
+  Internal("error_glVertexAttrib4dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48714,7 +48714,7 @@ static void REGAL_CALL error_glVertexAttrib4dvNV(GLuint index, const GLdouble *v
 
 static void REGAL_CALL error_glVertexAttrib4fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glVertexAttrib4fNV");
+  Internal("error_glVertexAttrib4fNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48735,7 +48735,7 @@ static void REGAL_CALL error_glVertexAttrib4fNV(GLuint index, GLfloat x, GLfloat
 
 static void REGAL_CALL error_glVertexAttrib4fvNV(GLuint index, const GLfloat *v)
 {
-  ITrace("error_glVertexAttrib4fvNV");
+  Internal("error_glVertexAttrib4fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48756,7 +48756,7 @@ static void REGAL_CALL error_glVertexAttrib4fvNV(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL error_glVertexAttrib4sNV(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  ITrace("error_glVertexAttrib4sNV");
+  Internal("error_glVertexAttrib4sNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48777,7 +48777,7 @@ static void REGAL_CALL error_glVertexAttrib4sNV(GLuint index, GLshort x, GLshort
 
 static void REGAL_CALL error_glVertexAttrib4svNV(GLuint index, const GLshort *v)
 {
-  ITrace("error_glVertexAttrib4svNV");
+  Internal("error_glVertexAttrib4svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48798,7 +48798,7 @@ static void REGAL_CALL error_glVertexAttrib4svNV(GLuint index, const GLshort *v)
 
 static void REGAL_CALL error_glVertexAttrib4ubNV(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
-  ITrace("error_glVertexAttrib4ubNV");
+  Internal("error_glVertexAttrib4ubNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48819,7 +48819,7 @@ static void REGAL_CALL error_glVertexAttrib4ubNV(GLuint index, GLubyte x, GLubyt
 
 static void REGAL_CALL error_glVertexAttrib4ubvNV(GLuint index, const GLubyte *v)
 {
-  ITrace("error_glVertexAttrib4ubvNV");
+  Internal("error_glVertexAttrib4ubvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48840,7 +48840,7 @@ static void REGAL_CALL error_glVertexAttrib4ubvNV(GLuint index, const GLubyte *v
 
 static void REGAL_CALL error_glVertexAttribPointerNV(GLuint index, GLint fsize, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glVertexAttribPointerNV");
+  Internal("error_glVertexAttribPointerNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48861,7 +48861,7 @@ static void REGAL_CALL error_glVertexAttribPointerNV(GLuint index, GLint fsize, 
 
 static void REGAL_CALL error_glVertexAttribs1dvNV(GLuint index, GLsizei n, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribs1dvNV");
+  Internal("error_glVertexAttribs1dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48882,7 +48882,7 @@ static void REGAL_CALL error_glVertexAttribs1dvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs1fvNV(GLuint index, GLsizei n, const GLfloat *v)
 {
-  ITrace("error_glVertexAttribs1fvNV");
+  Internal("error_glVertexAttribs1fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48903,7 +48903,7 @@ static void REGAL_CALL error_glVertexAttribs1fvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs1svNV(GLuint index, GLsizei n, const GLshort *v)
 {
-  ITrace("error_glVertexAttribs1svNV");
+  Internal("error_glVertexAttribs1svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48924,7 +48924,7 @@ static void REGAL_CALL error_glVertexAttribs1svNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs2dvNV(GLuint index, GLsizei n, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribs2dvNV");
+  Internal("error_glVertexAttribs2dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48945,7 +48945,7 @@ static void REGAL_CALL error_glVertexAttribs2dvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs2fvNV(GLuint index, GLsizei n, const GLfloat *v)
 {
-  ITrace("error_glVertexAttribs2fvNV");
+  Internal("error_glVertexAttribs2fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48966,7 +48966,7 @@ static void REGAL_CALL error_glVertexAttribs2fvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs2svNV(GLuint index, GLsizei n, const GLshort *v)
 {
-  ITrace("error_glVertexAttribs2svNV");
+  Internal("error_glVertexAttribs2svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -48987,7 +48987,7 @@ static void REGAL_CALL error_glVertexAttribs2svNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs3dvNV(GLuint index, GLsizei n, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribs3dvNV");
+  Internal("error_glVertexAttribs3dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49008,7 +49008,7 @@ static void REGAL_CALL error_glVertexAttribs3dvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs3fvNV(GLuint index, GLsizei n, const GLfloat *v)
 {
-  ITrace("error_glVertexAttribs3fvNV");
+  Internal("error_glVertexAttribs3fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49029,7 +49029,7 @@ static void REGAL_CALL error_glVertexAttribs3fvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs3svNV(GLuint index, GLsizei n, const GLshort *v)
 {
-  ITrace("error_glVertexAttribs3svNV");
+  Internal("error_glVertexAttribs3svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49050,7 +49050,7 @@ static void REGAL_CALL error_glVertexAttribs3svNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs4dvNV(GLuint index, GLsizei n, const GLdouble *v)
 {
-  ITrace("error_glVertexAttribs4dvNV");
+  Internal("error_glVertexAttribs4dvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49071,7 +49071,7 @@ static void REGAL_CALL error_glVertexAttribs4dvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs4fvNV(GLuint index, GLsizei n, const GLfloat *v)
 {
-  ITrace("error_glVertexAttribs4fvNV");
+  Internal("error_glVertexAttribs4fvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49092,7 +49092,7 @@ static void REGAL_CALL error_glVertexAttribs4fvNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs4svNV(GLuint index, GLsizei n, const GLshort *v)
 {
-  ITrace("error_glVertexAttribs4svNV");
+  Internal("error_glVertexAttribs4svNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49113,7 +49113,7 @@ static void REGAL_CALL error_glVertexAttribs4svNV(GLuint index, GLsizei n, const
 
 static void REGAL_CALL error_glVertexAttribs4ubvNV(GLuint index, GLsizei n, const GLubyte *v)
 {
-  ITrace("error_glVertexAttribs4ubvNV");
+  Internal("error_glVertexAttribs4ubvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49136,7 +49136,7 @@ static void REGAL_CALL error_glVertexAttribs4ubvNV(GLuint index, GLsizei n, cons
 
 static void REGAL_CALL error_glBeginVideoCaptureNV(GLuint video_capture_slot)
 {
-  ITrace("error_glBeginVideoCaptureNV");
+  Internal("error_glBeginVideoCaptureNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49157,7 +49157,7 @@ static void REGAL_CALL error_glBeginVideoCaptureNV(GLuint video_capture_slot)
 
 static void REGAL_CALL error_glBindVideoCaptureStreamBufferNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptr offset)
 {
-  ITrace("error_glBindVideoCaptureStreamBufferNV");
+  Internal("error_glBindVideoCaptureStreamBufferNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49178,7 +49178,7 @@ static void REGAL_CALL error_glBindVideoCaptureStreamBufferNV(GLuint video_captu
 
 static void REGAL_CALL error_glBindVideoCaptureStreamTextureNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture)
 {
-  ITrace("error_glBindVideoCaptureStreamTextureNV");
+  Internal("error_glBindVideoCaptureStreamTextureNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49199,7 +49199,7 @@ static void REGAL_CALL error_glBindVideoCaptureStreamTextureNV(GLuint video_capt
 
 static void REGAL_CALL error_glEndVideoCaptureNV(GLuint video_capture_slot)
 {
-  ITrace("error_glEndVideoCaptureNV");
+  Internal("error_glEndVideoCaptureNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49220,7 +49220,7 @@ static void REGAL_CALL error_glEndVideoCaptureNV(GLuint video_capture_slot)
 
 static void REGAL_CALL error_glGetVideoCaptureStreamdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble *params)
 {
-  ITrace("error_glGetVideoCaptureStreamdvNV");
+  Internal("error_glGetVideoCaptureStreamdvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49241,7 +49241,7 @@ static void REGAL_CALL error_glGetVideoCaptureStreamdvNV(GLuint video_capture_sl
 
 static void REGAL_CALL error_glGetVideoCaptureStreamfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetVideoCaptureStreamfvNV");
+  Internal("error_glGetVideoCaptureStreamfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49262,7 +49262,7 @@ static void REGAL_CALL error_glGetVideoCaptureStreamfvNV(GLuint video_capture_sl
 
 static void REGAL_CALL error_glGetVideoCaptureStreamivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVideoCaptureStreamivNV");
+  Internal("error_glGetVideoCaptureStreamivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49283,7 +49283,7 @@ static void REGAL_CALL error_glGetVideoCaptureStreamivNV(GLuint video_capture_sl
 
 static void REGAL_CALL error_glGetVideoCaptureivNV(GLuint video_capture_slot, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetVideoCaptureivNV");
+  Internal("error_glGetVideoCaptureivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49304,7 +49304,7 @@ static void REGAL_CALL error_glGetVideoCaptureivNV(GLuint video_capture_slot, GL
 
 static GLenum REGAL_CALL error_glVideoCaptureNV(GLuint video_capture_slot, GLuint *sequence_num, GLuint64EXT *capture_time)
 {
-  ITrace("error_glVideoCaptureNV");
+  Internal("error_glVideoCaptureNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49326,7 +49326,7 @@ return ret;
 
 static void REGAL_CALL error_glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params)
 {
-  ITrace("error_glVideoCaptureStreamParameterdvNV");
+  Internal("error_glVideoCaptureStreamParameterdvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49347,7 +49347,7 @@ static void REGAL_CALL error_glVideoCaptureStreamParameterdvNV(GLuint video_capt
 
 static void REGAL_CALL error_glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glVideoCaptureStreamParameterfvNV");
+  Internal("error_glVideoCaptureStreamParameterfvNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49368,7 +49368,7 @@ static void REGAL_CALL error_glVideoCaptureStreamParameterfvNV(GLuint video_capt
 
 static void REGAL_CALL error_glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params)
 {
-  ITrace("error_glVideoCaptureStreamParameterivNV");
+  Internal("error_glVideoCaptureStreamParameterivNV","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49391,7 +49391,7 @@ static void REGAL_CALL error_glVideoCaptureStreamParameterivNV(GLuint video_capt
 
 static void REGAL_CALL error_glHintPGI(GLenum target, GLint mode)
 {
-  ITrace("error_glHintPGI");
+  Internal("error_glHintPGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49414,7 +49414,7 @@ static void REGAL_CALL error_glHintPGI(GLenum target, GLint mode)
 
 static void REGAL_CALL error_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("error_glPointSizePointerOES");
+  Internal("error_glPointSizePointerOES","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49437,7 +49437,7 @@ static void REGAL_CALL error_glPointSizePointerOES(GLenum type, GLsizei stride, 
 
 static void REGAL_CALL error_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
 {
-  ITrace("error_glLogMessageCallbackREGAL");
+  Internal("error_glLogMessageCallbackREGAL","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49460,7 +49460,7 @@ static void REGAL_CALL error_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback)
 
 static void REGAL_CALL error_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points)
 {
-  ITrace("error_glDetailTexFuncSGIS");
+  Internal("error_glDetailTexFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49481,7 +49481,7 @@ static void REGAL_CALL error_glDetailTexFuncSGIS(GLenum target, GLsizei n, const
 
 static void REGAL_CALL error_glGetDetailTexFuncSGIS(GLenum target, GLfloat *points)
 {
-  ITrace("error_glGetDetailTexFuncSGIS");
+  Internal("error_glGetDetailTexFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49504,7 +49504,7 @@ static void REGAL_CALL error_glGetDetailTexFuncSGIS(GLenum target, GLfloat *poin
 
 static void REGAL_CALL error_glFogFuncSGIS(GLsizei n, const GLfloat *points)
 {
-  ITrace("error_glFogFuncSGIS");
+  Internal("error_glFogFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49525,7 +49525,7 @@ static void REGAL_CALL error_glFogFuncSGIS(GLsizei n, const GLfloat *points)
 
 static void REGAL_CALL error_glGetFogFuncSGIS(GLfloat *points)
 {
-  ITrace("error_glGetFogFuncSGIS");
+  Internal("error_glGetFogFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49548,7 +49548,7 @@ static void REGAL_CALL error_glGetFogFuncSGIS(GLfloat *points)
 
 static void REGAL_CALL error_glSampleMaskSGIS(GLclampf value, GLboolean invert)
 {
-  ITrace("error_glSampleMaskSGIS");
+  Internal("error_glSampleMaskSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49569,7 +49569,7 @@ static void REGAL_CALL error_glSampleMaskSGIS(GLclampf value, GLboolean invert)
 
 static void REGAL_CALL error_glSamplePatternSGIS(GLenum pattern)
 {
-  ITrace("error_glSamplePatternSGIS");
+  Internal("error_glSamplePatternSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49592,7 +49592,7 @@ static void REGAL_CALL error_glSamplePatternSGIS(GLenum pattern)
 
 static void REGAL_CALL error_glGetPixelTexGenParameterfvSGIS(GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetPixelTexGenParameterfvSGIS");
+  Internal("error_glGetPixelTexGenParameterfvSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49613,7 +49613,7 @@ static void REGAL_CALL error_glGetPixelTexGenParameterfvSGIS(GLenum pname, GLflo
 
 static void REGAL_CALL error_glGetPixelTexGenParameterivSGIS(GLenum pname, GLint *params)
 {
-  ITrace("error_glGetPixelTexGenParameterivSGIS");
+  Internal("error_glGetPixelTexGenParameterivSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49634,7 +49634,7 @@ static void REGAL_CALL error_glGetPixelTexGenParameterivSGIS(GLenum pname, GLint
 
 static void REGAL_CALL error_glPixelTexGenParameterfSGIS(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPixelTexGenParameterfSGIS");
+  Internal("error_glPixelTexGenParameterfSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49655,7 +49655,7 @@ static void REGAL_CALL error_glPixelTexGenParameterfSGIS(GLenum pname, GLfloat p
 
 static void REGAL_CALL error_glPixelTexGenParameterfvSGIS(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glPixelTexGenParameterfvSGIS");
+  Internal("error_glPixelTexGenParameterfvSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49676,7 +49676,7 @@ static void REGAL_CALL error_glPixelTexGenParameterfvSGIS(GLenum pname, const GL
 
 static void REGAL_CALL error_glPixelTexGenParameteriSGIS(GLenum pname, GLint param)
 {
-  ITrace("error_glPixelTexGenParameteriSGIS");
+  Internal("error_glPixelTexGenParameteriSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49697,7 +49697,7 @@ static void REGAL_CALL error_glPixelTexGenParameteriSGIS(GLenum pname, GLint par
 
 static void REGAL_CALL error_glPixelTexGenParameterivSGIS(GLenum pname, const GLint *params)
 {
-  ITrace("error_glPixelTexGenParameterivSGIS");
+  Internal("error_glPixelTexGenParameterivSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49720,7 +49720,7 @@ static void REGAL_CALL error_glPixelTexGenParameterivSGIS(GLenum pname, const GL
 
 static void REGAL_CALL error_glPointParameterfSGIS(GLenum pname, GLfloat param)
 {
-  ITrace("error_glPointParameterfSGIS");
+  Internal("error_glPointParameterfSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49741,7 +49741,7 @@ static void REGAL_CALL error_glPointParameterfSGIS(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glPointParameterfvSGIS(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glPointParameterfvSGIS");
+  Internal("error_glPointParameterfvSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49764,7 +49764,7 @@ static void REGAL_CALL error_glPointParameterfvSGIS(GLenum pname, const GLfloat 
 
 static void REGAL_CALL error_glGetSharpenTexFuncSGIS(GLenum target, GLfloat *points)
 {
-  ITrace("error_glGetSharpenTexFuncSGIS");
+  Internal("error_glGetSharpenTexFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49785,7 +49785,7 @@ static void REGAL_CALL error_glGetSharpenTexFuncSGIS(GLenum target, GLfloat *poi
 
 static void REGAL_CALL error_glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points)
 {
-  ITrace("error_glSharpenTexFuncSGIS");
+  Internal("error_glSharpenTexFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49808,7 +49808,7 @@ static void REGAL_CALL error_glSharpenTexFuncSGIS(GLenum target, GLsizei n, cons
 
 static void REGAL_CALL error_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexImage4DSGIS");
+  Internal("error_glTexImage4DSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49829,7 +49829,7 @@ static void REGAL_CALL error_glTexImage4DSGIS(GLenum target, GLint level, GLenum
 
 static void REGAL_CALL error_glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("error_glTexSubImage4DSGIS");
+  Internal("error_glTexSubImage4DSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49852,7 +49852,7 @@ static void REGAL_CALL error_glTexSubImage4DSGIS(GLenum target, GLint level, GLi
 
 static void REGAL_CALL error_glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
-  ITrace("error_glTextureColorMaskSGIS");
+  Internal("error_glTextureColorMaskSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49875,7 +49875,7 @@ static void REGAL_CALL error_glTextureColorMaskSGIS(GLboolean red, GLboolean gre
 
 static void REGAL_CALL error_glGetTexFilterFuncSGIS(GLenum target, GLenum filter, GLfloat *weights)
 {
-  ITrace("error_glGetTexFilterFuncSGIS");
+  Internal("error_glGetTexFilterFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49896,7 +49896,7 @@ static void REGAL_CALL error_glGetTexFilterFuncSGIS(GLenum target, GLenum filter
 
 static void REGAL_CALL error_glTexFilterFuncSGIS(GLenum target, GLenum filter, GLsizei n, const GLfloat *weights)
 {
-  ITrace("error_glTexFilterFuncSGIS");
+  Internal("error_glTexFilterFuncSGIS","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49919,7 +49919,7 @@ static void REGAL_CALL error_glTexFilterFuncSGIS(GLenum target, GLenum filter, G
 
 static void REGAL_CALL error_glAsyncMarkerSGIX(GLuint marker)
 {
-  ITrace("error_glAsyncMarkerSGIX");
+  Internal("error_glAsyncMarkerSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49940,7 +49940,7 @@ static void REGAL_CALL error_glAsyncMarkerSGIX(GLuint marker)
 
 static void REGAL_CALL error_glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range)
 {
-  ITrace("error_glDeleteAsyncMarkersSGIX");
+  Internal("error_glDeleteAsyncMarkersSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49961,7 +49961,7 @@ static void REGAL_CALL error_glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei ran
 
 static GLint REGAL_CALL error_glFinishAsyncSGIX(GLuint *markerp)
 {
-  ITrace("error_glFinishAsyncSGIX");
+  Internal("error_glFinishAsyncSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -49983,7 +49983,7 @@ return ret;
 
 static GLuint REGAL_CALL error_glGenAsyncMarkersSGIX(GLsizei range)
 {
-  ITrace("error_glGenAsyncMarkersSGIX");
+  Internal("error_glGenAsyncMarkersSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50005,7 +50005,7 @@ return ret;
 
 static GLboolean REGAL_CALL error_glIsAsyncMarkerSGIX(GLuint marker)
 {
-  ITrace("error_glIsAsyncMarkerSGIX");
+  Internal("error_glIsAsyncMarkerSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50027,7 +50027,7 @@ return ret;
 
 static GLint REGAL_CALL error_glPollAsyncSGIX(GLuint *markerp)
 {
-  ITrace("error_glPollAsyncSGIX");
+  Internal("error_glPollAsyncSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50051,7 +50051,7 @@ return ret;
 
 static void REGAL_CALL error_glFlushRasterSGIX(void)
 {
-  ITrace("error_glFlushRasterSGIX");
+  Internal("error_glFlushRasterSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50074,7 +50074,7 @@ static void REGAL_CALL error_glFlushRasterSGIX(void)
 
 static void REGAL_CALL error_glTextureFogSGIX(GLenum pname)
 {
-  ITrace("error_glTextureFogSGIX");
+  Internal("error_glTextureFogSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50097,7 +50097,7 @@ static void REGAL_CALL error_glTextureFogSGIX(GLenum pname)
 
 static void REGAL_CALL error_glFragmentColorMaterialSGIX(GLenum face, GLenum mode)
 {
-  ITrace("error_glFragmentColorMaterialSGIX");
+  Internal("error_glFragmentColorMaterialSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50118,7 +50118,7 @@ static void REGAL_CALL error_glFragmentColorMaterialSGIX(GLenum face, GLenum mod
 
 static void REGAL_CALL error_glFragmentLightModelfSGIX(GLenum pname, GLfloat param)
 {
-  ITrace("error_glFragmentLightModelfSGIX");
+  Internal("error_glFragmentLightModelfSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50139,7 +50139,7 @@ static void REGAL_CALL error_glFragmentLightModelfSGIX(GLenum pname, GLfloat par
 
 static void REGAL_CALL error_glFragmentLightModelfvSGIX(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glFragmentLightModelfvSGIX");
+  Internal("error_glFragmentLightModelfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50160,7 +50160,7 @@ static void REGAL_CALL error_glFragmentLightModelfvSGIX(GLenum pname, const GLfl
 
 static void REGAL_CALL error_glFragmentLightModeliSGIX(GLenum pname, GLint param)
 {
-  ITrace("error_glFragmentLightModeliSGIX");
+  Internal("error_glFragmentLightModeliSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50181,7 +50181,7 @@ static void REGAL_CALL error_glFragmentLightModeliSGIX(GLenum pname, GLint param
 
 static void REGAL_CALL error_glFragmentLightModelivSGIX(GLenum pname, const GLint *params)
 {
-  ITrace("error_glFragmentLightModelivSGIX");
+  Internal("error_glFragmentLightModelivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50202,7 +50202,7 @@ static void REGAL_CALL error_glFragmentLightModelivSGIX(GLenum pname, const GLin
 
 static void REGAL_CALL error_glFragmentLightfSGIX(GLenum light, GLenum pname, GLfloat param)
 {
-  ITrace("error_glFragmentLightfSGIX");
+  Internal("error_glFragmentLightfSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50223,7 +50223,7 @@ static void REGAL_CALL error_glFragmentLightfSGIX(GLenum light, GLenum pname, GL
 
 static void REGAL_CALL error_glFragmentLightfvSGIX(GLenum light, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glFragmentLightfvSGIX");
+  Internal("error_glFragmentLightfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50244,7 +50244,7 @@ static void REGAL_CALL error_glFragmentLightfvSGIX(GLenum light, GLenum pname, c
 
 static void REGAL_CALL error_glFragmentLightiSGIX(GLenum light, GLenum pname, GLint param)
 {
-  ITrace("error_glFragmentLightiSGIX");
+  Internal("error_glFragmentLightiSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50265,7 +50265,7 @@ static void REGAL_CALL error_glFragmentLightiSGIX(GLenum light, GLenum pname, GL
 
 static void REGAL_CALL error_glFragmentLightivSGIX(GLenum light, GLenum pname, const GLint *params)
 {
-  ITrace("error_glFragmentLightivSGIX");
+  Internal("error_glFragmentLightivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50286,7 +50286,7 @@ static void REGAL_CALL error_glFragmentLightivSGIX(GLenum light, GLenum pname, c
 
 static void REGAL_CALL error_glFragmentMaterialfSGIX(GLenum face, GLenum pname, GLfloat param)
 {
-  ITrace("error_glFragmentMaterialfSGIX");
+  Internal("error_glFragmentMaterialfSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50307,7 +50307,7 @@ static void REGAL_CALL error_glFragmentMaterialfSGIX(GLenum face, GLenum pname, 
 
 static void REGAL_CALL error_glFragmentMaterialfvSGIX(GLenum face, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glFragmentMaterialfvSGIX");
+  Internal("error_glFragmentMaterialfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50328,7 +50328,7 @@ static void REGAL_CALL error_glFragmentMaterialfvSGIX(GLenum face, GLenum pname,
 
 static void REGAL_CALL error_glFragmentMaterialiSGIX(GLenum face, GLenum pname, GLint param)
 {
-  ITrace("error_glFragmentMaterialiSGIX");
+  Internal("error_glFragmentMaterialiSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50349,7 +50349,7 @@ static void REGAL_CALL error_glFragmentMaterialiSGIX(GLenum face, GLenum pname, 
 
 static void REGAL_CALL error_glFragmentMaterialivSGIX(GLenum face, GLenum pname, const GLint *params)
 {
-  ITrace("error_glFragmentMaterialivSGIX");
+  Internal("error_glFragmentMaterialivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50370,7 +50370,7 @@ static void REGAL_CALL error_glFragmentMaterialivSGIX(GLenum face, GLenum pname,
 
 static void REGAL_CALL error_glGetFragmentLightfvSGIX(GLenum light, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetFragmentLightfvSGIX");
+  Internal("error_glGetFragmentLightfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50391,7 +50391,7 @@ static void REGAL_CALL error_glGetFragmentLightfvSGIX(GLenum light, GLenum pname
 
 static void REGAL_CALL error_glGetFragmentLightivSGIX(GLenum light, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFragmentLightivSGIX");
+  Internal("error_glGetFragmentLightivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50412,7 +50412,7 @@ static void REGAL_CALL error_glGetFragmentLightivSGIX(GLenum light, GLenum pname
 
 static void REGAL_CALL error_glGetFragmentMaterialfvSGIX(GLenum face, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetFragmentMaterialfvSGIX");
+  Internal("error_glGetFragmentMaterialfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50433,7 +50433,7 @@ static void REGAL_CALL error_glGetFragmentMaterialfvSGIX(GLenum face, GLenum pna
 
 static void REGAL_CALL error_glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetFragmentMaterialivSGIX");
+  Internal("error_glGetFragmentMaterialivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50454,7 +50454,7 @@ static void REGAL_CALL error_glGetFragmentMaterialivSGIX(GLenum face, GLenum pna
 
 static void REGAL_CALL error_glLightEnviSGIX(GLenum pname, GLint param)
 {
-  ITrace("error_glLightEnviSGIX");
+  Internal("error_glLightEnviSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50477,7 +50477,7 @@ static void REGAL_CALL error_glLightEnviSGIX(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glFrameZoomSGIX(GLint factor)
 {
-  ITrace("error_glFrameZoomSGIX");
+  Internal("error_glFrameZoomSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50500,7 +50500,7 @@ static void REGAL_CALL error_glFrameZoomSGIX(GLint factor)
 
 static void REGAL_CALL error_glIglooInterfaceSGIX(GLenum pname, const GLvoid *params)
 {
-  ITrace("error_glIglooInterfaceSGIX");
+  Internal("error_glIglooInterfaceSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50523,7 +50523,7 @@ static void REGAL_CALL error_glIglooInterfaceSGIX(GLenum pname, const GLvoid *pa
 
 static GLint REGAL_CALL error_glGetInstrumentsSGIX(void)
 {
-  ITrace("error_glGetInstrumentsSGIX");
+  Internal("error_glGetInstrumentsSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50545,7 +50545,7 @@ return ret;
 
 static void REGAL_CALL error_glInstrumentsBufferSGIX(GLsizei size, GLint *buffer)
 {
-  ITrace("error_glInstrumentsBufferSGIX");
+  Internal("error_glInstrumentsBufferSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50566,7 +50566,7 @@ static void REGAL_CALL error_glInstrumentsBufferSGIX(GLsizei size, GLint *buffer
 
 static GLint REGAL_CALL error_glPollInstrumentsSGIX(GLint *marker_p)
 {
-  ITrace("error_glPollInstrumentsSGIX");
+  Internal("error_glPollInstrumentsSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50588,7 +50588,7 @@ return ret;
 
 static void REGAL_CALL error_glReadInstrumentsSGIX(GLint marker)
 {
-  ITrace("error_glReadInstrumentsSGIX");
+  Internal("error_glReadInstrumentsSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50609,7 +50609,7 @@ static void REGAL_CALL error_glReadInstrumentsSGIX(GLint marker)
 
 static void REGAL_CALL error_glStartInstrumentsSGIX(void)
 {
-  ITrace("error_glStartInstrumentsSGIX");
+  Internal("error_glStartInstrumentsSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50630,7 +50630,7 @@ static void REGAL_CALL error_glStartInstrumentsSGIX(void)
 
 static void REGAL_CALL error_glStopInstrumentsSGIX(GLint marker)
 {
-  ITrace("error_glStopInstrumentsSGIX");
+  Internal("error_glStopInstrumentsSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50653,7 +50653,7 @@ static void REGAL_CALL error_glStopInstrumentsSGIX(GLint marker)
 
 static void REGAL_CALL error_glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetListParameterfvSGIX");
+  Internal("error_glGetListParameterfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50674,7 +50674,7 @@ static void REGAL_CALL error_glGetListParameterfvSGIX(GLuint list, GLenum pname,
 
 static void REGAL_CALL error_glGetListParameterivSGIX(GLuint list, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetListParameterivSGIX");
+  Internal("error_glGetListParameterivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50695,7 +50695,7 @@ static void REGAL_CALL error_glGetListParameterivSGIX(GLuint list, GLenum pname,
 
 static void REGAL_CALL error_glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param)
 {
-  ITrace("error_glListParameterfSGIX");
+  Internal("error_glListParameterfSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50716,7 +50716,7 @@ static void REGAL_CALL error_glListParameterfSGIX(GLuint list, GLenum pname, GLf
 
 static void REGAL_CALL error_glListParameterfvSGIX(GLuint list, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glListParameterfvSGIX");
+  Internal("error_glListParameterfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50737,7 +50737,7 @@ static void REGAL_CALL error_glListParameterfvSGIX(GLuint list, GLenum pname, co
 
 static void REGAL_CALL error_glListParameteriSGIX(GLuint list, GLenum pname, GLint param)
 {
-  ITrace("error_glListParameteriSGIX");
+  Internal("error_glListParameteriSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50758,7 +50758,7 @@ static void REGAL_CALL error_glListParameteriSGIX(GLuint list, GLenum pname, GLi
 
 static void REGAL_CALL error_glListParameterivSGIX(GLuint list, GLenum pname, const GLint *params)
 {
-  ITrace("error_glListParameterivSGIX");
+  Internal("error_glListParameterivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50781,7 +50781,7 @@ static void REGAL_CALL error_glListParameterivSGIX(GLuint list, GLenum pname, co
 
 static void REGAL_CALL error_glPixelTexGenSGIX(GLenum mode)
 {
-  ITrace("error_glPixelTexGenSGIX");
+  Internal("error_glPixelTexGenSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50804,7 +50804,7 @@ static void REGAL_CALL error_glPixelTexGenSGIX(GLenum mode)
 
 static void REGAL_CALL error_glDeformSGIX(GLbitfield mask)
 {
-  ITrace("error_glDeformSGIX");
+  Internal("error_glDeformSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50825,7 +50825,7 @@ static void REGAL_CALL error_glDeformSGIX(GLbitfield mask)
 
 static void REGAL_CALL error_glDeformationMap3dSGIX(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble *points)
 {
-  ITrace("error_glDeformationMap3dSGIX");
+  Internal("error_glDeformationMap3dSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50846,7 +50846,7 @@ static void REGAL_CALL error_glDeformationMap3dSGIX(GLenum target, GLdouble u1, 
 
 static void REGAL_CALL error_glDeformationMap3fSGIX(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat *points)
 {
-  ITrace("error_glDeformationMap3fSGIX");
+  Internal("error_glDeformationMap3fSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50867,7 +50867,7 @@ static void REGAL_CALL error_glDeformationMap3fSGIX(GLenum target, GLfloat u1, G
 
 static void REGAL_CALL error_glLoadIdentityDeformationMapSGIX(GLbitfield mask)
 {
-  ITrace("error_glLoadIdentityDeformationMapSGIX");
+  Internal("error_glLoadIdentityDeformationMapSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50890,7 +50890,7 @@ static void REGAL_CALL error_glLoadIdentityDeformationMapSGIX(GLbitfield mask)
 
 static void REGAL_CALL error_glReferencePlaneSGIX(const GLdouble *equation)
 {
-  ITrace("error_glReferencePlaneSGIX");
+  Internal("error_glReferencePlaneSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50913,7 +50913,7 @@ static void REGAL_CALL error_glReferencePlaneSGIX(const GLdouble *equation)
 
 static void REGAL_CALL error_glSpriteParameterfSGIX(GLenum pname, GLfloat param)
 {
-  ITrace("error_glSpriteParameterfSGIX");
+  Internal("error_glSpriteParameterfSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50934,7 +50934,7 @@ static void REGAL_CALL error_glSpriteParameterfSGIX(GLenum pname, GLfloat param)
 
 static void REGAL_CALL error_glSpriteParameterfvSGIX(GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glSpriteParameterfvSGIX");
+  Internal("error_glSpriteParameterfvSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50955,7 +50955,7 @@ static void REGAL_CALL error_glSpriteParameterfvSGIX(GLenum pname, const GLfloat
 
 static void REGAL_CALL error_glSpriteParameteriSGIX(GLenum pname, GLint param)
 {
-  ITrace("error_glSpriteParameteriSGIX");
+  Internal("error_glSpriteParameteriSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50976,7 +50976,7 @@ static void REGAL_CALL error_glSpriteParameteriSGIX(GLenum pname, GLint param)
 
 static void REGAL_CALL error_glSpriteParameterivSGIX(GLenum pname, const GLint *params)
 {
-  ITrace("error_glSpriteParameterivSGIX");
+  Internal("error_glSpriteParameterivSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -50999,7 +50999,7 @@ static void REGAL_CALL error_glSpriteParameterivSGIX(GLenum pname, const GLint *
 
 static void REGAL_CALL error_glTagSampleBufferSGIX(void)
 {
-  ITrace("error_glTagSampleBufferSGIX");
+  Internal("error_glTagSampleBufferSGIX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51022,7 +51022,7 @@ static void REGAL_CALL error_glTagSampleBufferSGIX(void)
 
 static void REGAL_CALL error_glColorTableParameterfvSGI(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("error_glColorTableParameterfvSGI");
+  Internal("error_glColorTableParameterfvSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51043,7 +51043,7 @@ static void REGAL_CALL error_glColorTableParameterfvSGI(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glColorTableParameterivSGI(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("error_glColorTableParameterivSGI");
+  Internal("error_glColorTableParameterivSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51064,7 +51064,7 @@ static void REGAL_CALL error_glColorTableParameterivSGI(GLenum target, GLenum pn
 
 static void REGAL_CALL error_glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
 {
-  ITrace("error_glColorTableSGI");
+  Internal("error_glColorTableSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51085,7 +51085,7 @@ static void REGAL_CALL error_glColorTableSGI(GLenum target, GLenum internalforma
 
 static void REGAL_CALL error_glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
 {
-  ITrace("error_glCopyColorTableSGI");
+  Internal("error_glCopyColorTableSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51106,7 +51106,7 @@ static void REGAL_CALL error_glCopyColorTableSGI(GLenum target, GLenum internalf
 
 static void REGAL_CALL error_glGetColorTableParameterfvSGI(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("error_glGetColorTableParameterfvSGI");
+  Internal("error_glGetColorTableParameterfvSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51127,7 +51127,7 @@ static void REGAL_CALL error_glGetColorTableParameterfvSGI(GLenum target, GLenum
 
 static void REGAL_CALL error_glGetColorTableParameterivSGI(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("error_glGetColorTableParameterivSGI");
+  Internal("error_glGetColorTableParameterivSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51148,7 +51148,7 @@ static void REGAL_CALL error_glGetColorTableParameterivSGI(GLenum target, GLenum
 
 static void REGAL_CALL error_glGetColorTableSGI(GLenum target, GLenum format, GLenum type, GLvoid *table)
 {
-  ITrace("error_glGetColorTableSGI");
+  Internal("error_glGetColorTableSGI","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51171,7 +51171,7 @@ static void REGAL_CALL error_glGetColorTableSGI(GLenum target, GLenum format, GL
 
 static void REGAL_CALL error_glFinishTextureSUNX(void)
 {
-  ITrace("error_glFinishTextureSUNX");
+  Internal("error_glFinishTextureSUNX","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51194,7 +51194,7 @@ static void REGAL_CALL error_glFinishTextureSUNX(void)
 
 static void REGAL_CALL error_glGlobalAlphaFactorbSUN(GLbyte factor)
 {
-  ITrace("error_glGlobalAlphaFactorbSUN");
+  Internal("error_glGlobalAlphaFactorbSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51215,7 +51215,7 @@ static void REGAL_CALL error_glGlobalAlphaFactorbSUN(GLbyte factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactordSUN(GLdouble factor)
 {
-  ITrace("error_glGlobalAlphaFactordSUN");
+  Internal("error_glGlobalAlphaFactordSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51236,7 +51236,7 @@ static void REGAL_CALL error_glGlobalAlphaFactordSUN(GLdouble factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactorfSUN(GLfloat factor)
 {
-  ITrace("error_glGlobalAlphaFactorfSUN");
+  Internal("error_glGlobalAlphaFactorfSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51257,7 +51257,7 @@ static void REGAL_CALL error_glGlobalAlphaFactorfSUN(GLfloat factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactoriSUN(GLint factor)
 {
-  ITrace("error_glGlobalAlphaFactoriSUN");
+  Internal("error_glGlobalAlphaFactoriSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51278,7 +51278,7 @@ static void REGAL_CALL error_glGlobalAlphaFactoriSUN(GLint factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactorsSUN(GLshort factor)
 {
-  ITrace("error_glGlobalAlphaFactorsSUN");
+  Internal("error_glGlobalAlphaFactorsSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51299,7 +51299,7 @@ static void REGAL_CALL error_glGlobalAlphaFactorsSUN(GLshort factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactorubSUN(GLubyte factor)
 {
-  ITrace("error_glGlobalAlphaFactorubSUN");
+  Internal("error_glGlobalAlphaFactorubSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51320,7 +51320,7 @@ static void REGAL_CALL error_glGlobalAlphaFactorubSUN(GLubyte factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactoruiSUN(GLuint factor)
 {
-  ITrace("error_glGlobalAlphaFactoruiSUN");
+  Internal("error_glGlobalAlphaFactoruiSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51341,7 +51341,7 @@ static void REGAL_CALL error_glGlobalAlphaFactoruiSUN(GLuint factor)
 
 static void REGAL_CALL error_glGlobalAlphaFactorusSUN(GLushort factor)
 {
-  ITrace("error_glGlobalAlphaFactorusSUN");
+  Internal("error_glGlobalAlphaFactorusSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51364,7 +51364,7 @@ static void REGAL_CALL error_glGlobalAlphaFactorusSUN(GLushort factor)
 
 static void REGAL_CALL error_glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width)
 {
-  ITrace("error_glDrawMeshArraysSUN");
+  Internal("error_glDrawMeshArraysSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51387,7 +51387,7 @@ static void REGAL_CALL error_glDrawMeshArraysSUN(GLenum mode, GLint first, GLsiz
 
 static void REGAL_CALL error_glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("error_glReadVideoPixelsSUN");
+  Internal("error_glReadVideoPixelsSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51410,7 +51410,7 @@ static void REGAL_CALL error_glReadVideoPixelsSUN(GLint x, GLint y, GLsizei widt
 
 static void REGAL_CALL error_glReplacementCodePointerSUN(GLenum type, GLsizei stride, const GLvoid **pointer)
 {
-  ITrace("error_glReplacementCodePointerSUN");
+  Internal("error_glReplacementCodePointerSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51431,7 +51431,7 @@ static void REGAL_CALL error_glReplacementCodePointerSUN(GLenum type, GLsizei st
 
 static void REGAL_CALL error_glReplacementCodeubSUN(GLubyte code)
 {
-  ITrace("error_glReplacementCodeubSUN");
+  Internal("error_glReplacementCodeubSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51452,7 +51452,7 @@ static void REGAL_CALL error_glReplacementCodeubSUN(GLubyte code)
 
 static void REGAL_CALL error_glReplacementCodeubvSUN(const GLubyte *code)
 {
-  ITrace("error_glReplacementCodeubvSUN");
+  Internal("error_glReplacementCodeubvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51473,7 +51473,7 @@ static void REGAL_CALL error_glReplacementCodeubvSUN(const GLubyte *code)
 
 static void REGAL_CALL error_glReplacementCodeuiSUN(GLuint code)
 {
-  ITrace("error_glReplacementCodeuiSUN");
+  Internal("error_glReplacementCodeuiSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51494,7 +51494,7 @@ static void REGAL_CALL error_glReplacementCodeuiSUN(GLuint code)
 
 static void REGAL_CALL error_glReplacementCodeuivSUN(const GLuint *code)
 {
-  ITrace("error_glReplacementCodeuivSUN");
+  Internal("error_glReplacementCodeuivSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51515,7 +51515,7 @@ static void REGAL_CALL error_glReplacementCodeuivSUN(const GLuint *code)
 
 static void REGAL_CALL error_glReplacementCodeusSUN(GLushort code)
 {
-  ITrace("error_glReplacementCodeusSUN");
+  Internal("error_glReplacementCodeusSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51536,7 +51536,7 @@ static void REGAL_CALL error_glReplacementCodeusSUN(GLushort code)
 
 static void REGAL_CALL error_glReplacementCodeusvSUN(const GLushort *code)
 {
-  ITrace("error_glReplacementCodeusvSUN");
+  Internal("error_glReplacementCodeusvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51559,7 +51559,7 @@ static void REGAL_CALL error_glReplacementCodeusvSUN(const GLushort *code)
 
 static void REGAL_CALL error_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glColor3fVertex3fSUN");
+  Internal("error_glColor3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51580,7 +51580,7 @@ static void REGAL_CALL error_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat 
 
 static void REGAL_CALL error_glColor3fVertex3fvSUN(const GLfloat *c, const GLfloat *v)
 {
-  ITrace("error_glColor3fVertex3fvSUN");
+  Internal("error_glColor3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51601,7 +51601,7 @@ static void REGAL_CALL error_glColor3fVertex3fvSUN(const GLfloat *c, const GLflo
 
 static void REGAL_CALL error_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glColor4fNormal3fVertex3fSUN");
+  Internal("error_glColor4fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51622,7 +51622,7 @@ static void REGAL_CALL error_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, 
 
 static void REGAL_CALL error_glColor4fNormal3fVertex3fvSUN(const GLfloat *c, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glColor4fNormal3fVertex3fvSUN");
+  Internal("error_glColor4fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51643,7 +51643,7 @@ static void REGAL_CALL error_glColor4fNormal3fVertex3fvSUN(const GLfloat *c, con
 
 static void REGAL_CALL error_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y)
 {
-  ITrace("error_glColor4ubVertex2fSUN");
+  Internal("error_glColor4ubVertex2fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51664,7 +51664,7 @@ static void REGAL_CALL error_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte
 
 static void REGAL_CALL error_glColor4ubVertex2fvSUN(const GLubyte *c, const GLfloat *v)
 {
-  ITrace("error_glColor4ubVertex2fvSUN");
+  Internal("error_glColor4ubVertex2fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51685,7 +51685,7 @@ static void REGAL_CALL error_glColor4ubVertex2fvSUN(const GLubyte *c, const GLfl
 
 static void REGAL_CALL error_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glColor4ubVertex3fSUN");
+  Internal("error_glColor4ubVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51706,7 +51706,7 @@ static void REGAL_CALL error_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte
 
 static void REGAL_CALL error_glColor4ubVertex3fvSUN(const GLubyte *c, const GLfloat *v)
 {
-  ITrace("error_glColor4ubVertex3fvSUN");
+  Internal("error_glColor4ubVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51727,7 +51727,7 @@ static void REGAL_CALL error_glColor4ubVertex3fvSUN(const GLubyte *c, const GLfl
 
 static void REGAL_CALL error_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glNormal3fVertex3fSUN");
+  Internal("error_glNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51748,7 +51748,7 @@ static void REGAL_CALL error_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLflo
 
 static void REGAL_CALL error_glNormal3fVertex3fvSUN(const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glNormal3fVertex3fvSUN");
+  Internal("error_glNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51769,7 +51769,7 @@ static void REGAL_CALL error_glNormal3fVertex3fvSUN(const GLfloat *n, const GLfl
 
 static void REGAL_CALL error_glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiColor3fVertex3fSUN");
+  Internal("error_glReplacementCodeuiColor3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51790,7 +51790,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GL
 
 static void REGAL_CALL error_glReplacementCodeuiColor3fVertex3fvSUN(const GLuint *rc, const GLfloat *c, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiColor3fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiColor3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51811,7 +51811,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor3fVertex3fvSUN(const GLuint
 
 static void REGAL_CALL error_glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiColor4fNormal3fVertex3fSUN");
+  Internal("error_glReplacementCodeuiColor4fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51832,7 +51832,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuin
 
 static void REGAL_CALL error_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *c, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiColor4fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51853,7 +51853,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(cons
 
 static void REGAL_CALL error_glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiColor4ubVertex3fSUN");
+  Internal("error_glReplacementCodeuiColor4ubVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51874,7 +51874,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, G
 
 static void REGAL_CALL error_glReplacementCodeuiColor4ubVertex3fvSUN(const GLuint *rc, const GLubyte *c, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiColor4ubVertex3fvSUN");
+  Internal("error_glReplacementCodeuiColor4ubVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51895,7 +51895,7 @@ static void REGAL_CALL error_glReplacementCodeuiColor4ubVertex3fvSUN(const GLuin
 
 static void REGAL_CALL error_glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiNormal3fVertex3fSUN");
+  Internal("error_glReplacementCodeuiNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51916,7 +51916,7 @@ static void REGAL_CALL error_glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, G
 
 static void REGAL_CALL error_glReplacementCodeuiNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiNormal3fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51937,7 +51937,7 @@ static void REGAL_CALL error_glReplacementCodeuiNormal3fVertex3fvSUN(const GLuin
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51958,7 +51958,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -51979,7 +51979,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52000,7 +52000,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GL
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52021,7 +52021,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(c
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fVertex3fSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52042,7 +52042,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc,
 
 static void REGAL_CALL error_glReplacementCodeuiTexCoord2fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiTexCoord2fVertex3fvSUN");
+  Internal("error_glReplacementCodeuiTexCoord2fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52063,7 +52063,7 @@ static void REGAL_CALL error_glReplacementCodeuiTexCoord2fVertex3fvSUN(const GLu
 
 static void REGAL_CALL error_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glReplacementCodeuiVertex3fSUN");
+  Internal("error_glReplacementCodeuiVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52084,7 +52084,7 @@ static void REGAL_CALL error_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x
 
 static void REGAL_CALL error_glReplacementCodeuiVertex3fvSUN(const GLuint *rc, const GLfloat *v)
 {
-  ITrace("error_glReplacementCodeuiVertex3fvSUN");
+  Internal("error_glReplacementCodeuiVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52105,7 +52105,7 @@ static void REGAL_CALL error_glReplacementCodeuiVertex3fvSUN(const GLuint *rc, c
 
 static void REGAL_CALL error_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTexCoord2fColor3fVertex3fSUN");
+  Internal("error_glTexCoord2fColor3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52126,7 +52126,7 @@ static void REGAL_CALL error_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t
 
 static void REGAL_CALL error_glTexCoord2fColor3fVertex3fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fColor3fVertex3fvSUN");
+  Internal("error_glTexCoord2fColor3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52147,7 +52147,7 @@ static void REGAL_CALL error_glTexCoord2fColor3fVertex3fvSUN(const GLfloat *tc, 
 
 static void REGAL_CALL error_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTexCoord2fColor4fNormal3fVertex3fSUN");
+  Internal("error_glTexCoord2fColor4fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52168,7 +52168,7 @@ static void REGAL_CALL error_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, G
 
 static void REGAL_CALL error_glTexCoord2fColor4fNormal3fVertex3fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fColor4fNormal3fVertex3fvSUN");
+  Internal("error_glTexCoord2fColor4fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52189,7 +52189,7 @@ static void REGAL_CALL error_glTexCoord2fColor4fNormal3fVertex3fvSUN(const GLflo
 
 static void REGAL_CALL error_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTexCoord2fColor4ubVertex3fSUN");
+  Internal("error_glTexCoord2fColor4ubVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52210,7 +52210,7 @@ static void REGAL_CALL error_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat 
 
 static void REGAL_CALL error_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat *tc, const GLubyte *c, const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fColor4ubVertex3fvSUN");
+  Internal("error_glTexCoord2fColor4ubVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52231,7 +52231,7 @@ static void REGAL_CALL error_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat *tc,
 
 static void REGAL_CALL error_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTexCoord2fNormal3fVertex3fSUN");
+  Internal("error_glTexCoord2fNormal3fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52252,7 +52252,7 @@ static void REGAL_CALL error_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat 
 
 static void REGAL_CALL error_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat *tc, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fNormal3fVertex3fvSUN");
+  Internal("error_glTexCoord2fNormal3fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52273,7 +52273,7 @@ static void REGAL_CALL error_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat *tc,
 
 static void REGAL_CALL error_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("error_glTexCoord2fVertex3fSUN");
+  Internal("error_glTexCoord2fVertex3fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52294,7 +52294,7 @@ static void REGAL_CALL error_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLflo
 
 static void REGAL_CALL error_glTexCoord2fVertex3fvSUN(const GLfloat *tc, const GLfloat *v)
 {
-  ITrace("error_glTexCoord2fVertex3fvSUN");
+  Internal("error_glTexCoord2fVertex3fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52315,7 +52315,7 @@ static void REGAL_CALL error_glTexCoord2fVertex3fvSUN(const GLfloat *tc, const G
 
 static void REGAL_CALL error_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glTexCoord4fColor4fNormal3fVertex4fSUN");
+  Internal("error_glTexCoord4fColor4fNormal3fVertex4fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52336,7 +52336,7 @@ static void REGAL_CALL error_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, G
 
 static void REGAL_CALL error_glTexCoord4fColor4fNormal3fVertex4fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v)
 {
-  ITrace("error_glTexCoord4fColor4fNormal3fVertex4fvSUN");
+  Internal("error_glTexCoord4fColor4fNormal3fVertex4fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52357,7 +52357,7 @@ static void REGAL_CALL error_glTexCoord4fColor4fNormal3fVertex4fvSUN(const GLflo
 
 static void REGAL_CALL error_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("error_glTexCoord4fVertex4fSUN");
+  Internal("error_glTexCoord4fVertex4fSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52378,7 +52378,7 @@ static void REGAL_CALL error_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLflo
 
 static void REGAL_CALL error_glTexCoord4fVertex4fvSUN(const GLfloat *tc, const GLfloat *v)
 {
-  ITrace("error_glTexCoord4fVertex4fvSUN");
+  Internal("error_glTexCoord4fVertex4fvSUN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;
@@ -52401,7 +52401,7 @@ static void REGAL_CALL error_glTexCoord4fVertex4fvSUN(const GLfloat *tc, const G
 
 static void REGAL_CALL error_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("error_glAddSwapHintRectWIN");
+  Internal("error_glAddSwapHintRectWIN","()");
   RegalContext *_context = GET_REGAL_CONTEXT();
   RegalAssert(_context);
   GLenum _error = GL_NO_ERROR;

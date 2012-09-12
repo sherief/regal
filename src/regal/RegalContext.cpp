@@ -83,7 +83,7 @@ RegalContext::RegalContext()
   depthBeginEnd(0),
   depthPushAttrib(0)
 {
-  ITrace("RegalContext::RegalContext");
+  Internal("RegalContext::RegalContext","()");
   if (Config::enableDebug) {
     dbg = new DebugInfo();
     dbg->Init(this);
@@ -93,7 +93,7 @@ RegalContext::RegalContext()
 void
 RegalContext::Init()
 {
-  ITrace("RegalContext::Init");
+  Internal("RegalContext::Init","()");
 
   info = new ContextInfo();
   RegalAssert(this);
@@ -140,7 +140,7 @@ RegalContext::Init()
     #if REGAL_EMU_DSA
     if (Config::enableEmuDsa)
     {
-      ITrace("RegalContext::Init GL_EXT_direct_state_access");
+      Internal("RegalContext::Init","GL_EXT_direct_state_access");
       info->regal_ext_direct_state_access = true;
       info->regalExtensionsSet.insert("GL_EXT_direct_state_access");
       info->regalExtensions = ::boost::print::detail::join(info->regalExtensionsSet,std::string(" "));
@@ -180,7 +180,7 @@ RegalContext::Init()
 
 RegalContext::~RegalContext()
 {
-  ITrace("RegalContext::~RegalContext");
+  Internal("RegalContext::~RegalContext","()");
   delete info;
   delete marker;
 

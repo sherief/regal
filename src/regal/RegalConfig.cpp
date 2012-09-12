@@ -63,7 +63,7 @@ bool enableEmuVao     = REGAL_EMU_VAO;
 
 void Init()
 {
-  ITrace("Config::Init");
+  Internal("Config::Init","()");
 
 #ifndef REGAL_NO_GETENV
   const char *tmp;

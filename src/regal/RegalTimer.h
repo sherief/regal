@@ -28,24 +28,75 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef __REGAL_INIT_H__
-#define __REGAL_INIT_H__
+#ifndef __REGAL_TIMER_H__
+#define __REGAL_TIMER_H__
 
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
 
+#if REGAL_SYS_WGL
+  extern "C" { int __stdcall QueryPerformanceFrequency (signed long long *lpFrequency);        }
+  extern "C" { int __stdcall QueryPerformanceCounter   (signed long long *lpPerformanceCount); }
+#else
+#include <sys/time.h>
+#endif
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct Init
+struct Timer
 {
-  Init();
-  ~Init();
+  typedef unsigned long long Value;
 
-  static void atExit();
+  Timer();
+  ~Timer() {}
+
+  void restart()         { _start = now(); }
+
+  Timer::Value now();    /* Time in micro-seconds */
+  Timer::Value elapsed() { return now() - _start; }
+
+  Timer::Value _freq;
+  Timer::Value _start;    /* Zero by default */
 };
+
+#ifdef REGAL_SYS_WGL
+
+inline
+Timer::Timer()
+: _start(0)
+{
+  signed long long f;
+  ::QueryPerformanceFrequency(&f);
+  _freq = Timer::Value(f);
+}
+
+Timer::Value Timer::now()
+{
+  signed long long time;
+  QueryPerformanceCounter(&time);
+  return (Timer::Value) time * Timer::Value(1000000) / _freq;
+}
+
+#else
+
+inline
+Timer::Timer()
+: _freq(1),
+  _start(0)
+{
+}
+
+Timer::Value Timer::now()
+{
+  struct timeval val;
+  gettimeofday(&val, NULL);
+  return Timer::Value(val.tv_sec) * Timer::Value(1000000) + Timer::Value(val.tv_usec);
+}
+
+#endif
 
 REGAL_NAMESPACE_END
 

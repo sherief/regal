@@ -1,17 +1,18 @@
 /*
-Copyright (c) 2011 NVIDIA Corporation
-Copyright (c) 2011-2012 Cass Everitt
-Copyright (c) 2012 Scott Nations
-Copyright (c) 2012 Mathias Schott
-Copyright (c) 2012 Nigel Stewart
-All rights reserved.
+  Copyright (c) 2011-2012 NVIDIA Corporation
+  Copyright (c) 2011-2012 Cass Everitt
+  Copyright (c) 2012 Scott Nations
+  Copyright (c) 2012 Mathias Schott
+  Copyright (c) 2012 Nigel Stewart
+  All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
+  Redistribution and use in source and binary forms, with or without modification,
+  are permitted provided that the following conditions are met:
 
-  Redistributions of source code must retain the above copyright notice, this
+    Redistributions of source code must retain the above copyright notice, this
     list of conditions and the following disclaimer.
-  Redistributions in binary form must reproduce the above copyright notice,
+
+    Redistributions in binary form must reproduce the above copyright notice,
     this list of conditions and the following disclaimer in the documentation
     and/or other materials provided with the distribution.
 
@@ -132,9 +133,10 @@ string libraryLocation(const char *lib)
       };
 #else
       const char * const candidates[] = {
-        "/usr/lib32/nvidia-current/libGL.so.1",   // Ubuntu NVIDIA
-        "/usr/lib32/libGL.so.1",                  // Ubuntu
-        "/usr/lib/libGL.so.1",                    // RedHat & Solaris
+        "/usr/lib/nvidia-current-updates/libGL.so.1",   // Ubuntu 12.04 32-bit NVIDIA
+        "/usr/lib32/nvidia-current/libGL.so.1",         // Ubuntu NVIDIA
+        "/usr/lib32/libGL.so.1",                        // Ubuntu
+        "/usr/lib/libGL.so.1",                          // RedHat & Solaris
         NULL
       };
 #endif
@@ -145,7 +147,7 @@ string libraryLocation(const char *lib)
 #endif
     }
   }
-  return ret;
+  return ret ? ret : string();
 }
 
 #if REGAL_SYS_OSX
@@ -190,12 +192,12 @@ void *GetProcAddress( const char * entry )
     if (lib_OpenGL && lib_GL) {
         void * sym;
         sym = dlsym( lib_OpenGL, entry );
-        ITrace(lib_OpenGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+        Internal("Regal::GetProcAddress ",lib_OpenGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
         if (sym) {
             return sym;
         }
         sym = dlsym( lib_GL, entry );
-        ITrace(lib_GL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+        Internal("Regal::GetProcAddress ",lib_GL_filename," load of ",entry,sym ? " succeeded." : " failed.");
         return sym;
     }
     return NULL;
@@ -234,28 +236,45 @@ void *GetProcAddress( const char * entry )
 
 #include <dlfcn.h>
 
-void *GetProcAddress( const char * entry )
+void *GetProcAddress(const char *entry)
 {
-    static void * lib_GL = NULL;
-    static string lib_GL_filename;
-    if (!lib_GL_filename.length()) {
-        lib_GL_filename = libraryLocation("GL");
-    }
-    if (!lib_GL && lib_GL_filename.length()) {
-        Info("Loading OpenGL from ",lib_GL_filename);
-        lib_GL = dlopen( lib_GL_filename.c_str(), RTLD_LAZY );
-    }
+  static void  *lib_GL = NULL;
+  static string lib_GL_filename;
 
-    if (!entry)
-        return NULL;
+  // Search for OpenGL library (libGL.so.1 usually) as necessary
 
-    if (lib_GL) {
-        void * sym;
-        sym = dlsym( lib_GL, entry );
-        ITrace("Loading ",entry," from ",lib_GL_filename,sym ? " succeeded." : " failed.");
-        return sym;
-    }
+  if (!lib_GL_filename.length())
+  {
+    lib_GL_filename = libraryLocation("GL");
+    if (!lib_GL_filename.length())
+      Warning("OpenGL library not found.",lib_GL_filename);
+  }
+
+  // Load the OpenGL library as necessary
+
+  if (!lib_GL && lib_GL_filename.length())
+  {
+    Info("Loading OpenGL from ",lib_GL_filename);
+    lib_GL = dlopen( lib_GL_filename.c_str(), RTLD_LAZY );
+  }
+
+  // Early-out for NULL entry name
+
+  if (!entry)
     return NULL;
+
+  // Load the entry-point by name, if possible
+
+  if (lib_GL)
+  {
+    void *sym = dlsym(lib_GL,entry);
+    Internal("Regal::GetProcAddress ","loading ",entry," from ",lib_GL_filename,sym ? " succeeded." : " failed.");
+    return sym;
+  }
+
+  // Give up
+
+  return NULL;
 }
 
 #elif REGAL_SYS_ANDROID
@@ -287,11 +306,11 @@ void *GetProcAddress(const char *entry)
   if (lib_GLESv2 && lib_EGL)
   {
       void *sym = dlsym( lib_GLESv2, entry );
-      ITrace(lib_GLESv2_filename," load of ",entry,sym ? " succeeded." : " failed.");
+      Internal("Regal::GetProcAddress ",lib_GLESv2_filename," load of ",entry,sym ? " succeeded." : " failed.");
       if (!sym)
       {
         sym = dlsym( lib_EGL, entry );
-        ITrace(lib_EGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+        Internal("Regal::GetProcAddress ",lib_EGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
       }
       return sym;
   }

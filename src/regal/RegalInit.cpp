@@ -75,6 +75,8 @@ extern "C" { static void (__stdcall * myGetFocus   )(void  ) = GetFocus;    }
 
 Init::Init()
 {
+  atexit(atExit);
+
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
   // Check our phony advapi32.dll, gdi32.dll and user32.dll dependencies
   // to prevent them being optimized out of a release-mode binary.
@@ -94,6 +96,17 @@ Init::Init()
 Init::~Init()
 {
   Http::Stop();
+  Logging::Cleanup();
+}
+
+void
+Init::atExit()
+{
+  if (init)
+  {
+    delete init;
+    init = NULL;
+  }
 }
 
 #if REGAL_SYS_WGL
@@ -234,7 +247,7 @@ REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
     pthread_setspecific( regalPrivateCurrentContextKey, ctx );
 #endif
 #endif
-    ITrace("RegalMakeCurrent ",ctx," ",ctx->info->version);
+    Internal("RegalMakeCurrent ",ctx," ",ctx->info->version);
   }
   else
   {

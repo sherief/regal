@@ -58,7 +58,7 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
 static void REGAL_CALL nacl_glBlendFunc(GLenum sfactor, GLenum dfactor)
 {
-  ITrace("nacl_glBlendFunc");
+  Internal("nacl_glBlendFunc","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -69,7 +69,7 @@ static void REGAL_CALL nacl_glBlendFunc(GLenum sfactor, GLenum dfactor)
 
 static void REGAL_CALL nacl_glClear(GLbitfield mask)
 {
-  ITrace("nacl_glClear");
+  Internal("nacl_glClear","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -80,7 +80,7 @@ static void REGAL_CALL nacl_glClear(GLbitfield mask)
 
 static void REGAL_CALL nacl_glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  ITrace("nacl_glClearColor");
+  Internal("nacl_glClearColor","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -91,7 +91,7 @@ static void REGAL_CALL nacl_glClearColor(GLclampf red, GLclampf green, GLclampf 
 
 static void REGAL_CALL nacl_glClearStencil(GLint s)
 {
-  ITrace("nacl_glClearStencil");
+  Internal("nacl_glClearStencil","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -102,7 +102,7 @@ static void REGAL_CALL nacl_glClearStencil(GLint s)
 
 static void REGAL_CALL nacl_glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
-  ITrace("nacl_glColorMask");
+  Internal("nacl_glColorMask","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -113,7 +113,7 @@ static void REGAL_CALL nacl_glColorMask(GLboolean red, GLboolean green, GLboolea
 
 static void REGAL_CALL nacl_glCullFace(GLenum mode)
 {
-  ITrace("nacl_glCullFace");
+  Internal("nacl_glCullFace","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -124,7 +124,7 @@ static void REGAL_CALL nacl_glCullFace(GLenum mode)
 
 static void REGAL_CALL nacl_glDepthFunc(GLenum func)
 {
-  ITrace("nacl_glDepthFunc");
+  Internal("nacl_glDepthFunc","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -135,7 +135,7 @@ static void REGAL_CALL nacl_glDepthFunc(GLenum func)
 
 static void REGAL_CALL nacl_glDepthMask(GLboolean flag)
 {
-  ITrace("nacl_glDepthMask");
+  Internal("nacl_glDepthMask","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -146,7 +146,7 @@ static void REGAL_CALL nacl_glDepthMask(GLboolean flag)
 
 static void REGAL_CALL nacl_glDisable(GLenum cap)
 {
-  ITrace("nacl_glDisable");
+  Internal("nacl_glDisable","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -157,7 +157,7 @@ static void REGAL_CALL nacl_glDisable(GLenum cap)
 
 static void REGAL_CALL nacl_glEnable(GLenum cap)
 {
-  ITrace("nacl_glEnable");
+  Internal("nacl_glEnable","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -168,7 +168,7 @@ static void REGAL_CALL nacl_glEnable(GLenum cap)
 
 static void REGAL_CALL nacl_glFinish(void)
 {
-  ITrace("nacl_glFinish");
+  Internal("nacl_glFinish","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -179,7 +179,7 @@ static void REGAL_CALL nacl_glFinish(void)
 
 static void REGAL_CALL nacl_glFlush(void)
 {
-  ITrace("nacl_glFlush");
+  Internal("nacl_glFlush","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -190,7 +190,7 @@ static void REGAL_CALL nacl_glFlush(void)
 
 static void REGAL_CALL nacl_glFrontFace(GLenum mode)
 {
-  ITrace("nacl_glFrontFace");
+  Internal("nacl_glFrontFace","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -201,7 +201,7 @@ static void REGAL_CALL nacl_glFrontFace(GLenum mode)
 
 static void REGAL_CALL nacl_glGetBooleanv(GLenum pname, GLboolean *params)
 {
-  ITrace("nacl_glGetBooleanv");
+  Internal("nacl_glGetBooleanv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -212,7 +212,7 @@ static void REGAL_CALL nacl_glGetBooleanv(GLenum pname, GLboolean *params)
 
 static GLenum REGAL_CALL nacl_glGetError(void)
 {
-  ITrace("nacl_glGetError");
+  Internal("nacl_glGetError","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -224,7 +224,7 @@ static GLenum REGAL_CALL nacl_glGetError(void)
 
 static void REGAL_CALL nacl_glGetFloatv(GLenum pname, GLfloat *params)
 {
-  ITrace("nacl_glGetFloatv");
+  Internal("nacl_glGetFloatv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -235,7 +235,7 @@ static void REGAL_CALL nacl_glGetFloatv(GLenum pname, GLfloat *params)
 
 static void REGAL_CALL nacl_glGetIntegerv(GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetIntegerv");
+  Internal("nacl_glGetIntegerv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -246,7 +246,7 @@ static void REGAL_CALL nacl_glGetIntegerv(GLenum pname, GLint *params)
 
 static const GLubyte *REGAL_CALL nacl_glGetString(GLenum name)
 {
-  ITrace("nacl_glGetString");
+  Internal("nacl_glGetString","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -258,7 +258,7 @@ static const GLubyte *REGAL_CALL nacl_glGetString(GLenum name)
 
 static void REGAL_CALL nacl_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  ITrace("nacl_glGetTexParameterfv");
+  Internal("nacl_glGetTexParameterfv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -269,7 +269,7 @@ static void REGAL_CALL nacl_glGetTexParameterfv(GLenum target, GLenum pname, GLf
 
 static void REGAL_CALL nacl_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetTexParameteriv");
+  Internal("nacl_glGetTexParameteriv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -280,7 +280,7 @@ static void REGAL_CALL nacl_glGetTexParameteriv(GLenum target, GLenum pname, GLi
 
 static void REGAL_CALL nacl_glHint(GLenum target, GLenum mode)
 {
-  ITrace("nacl_glHint");
+  Internal("nacl_glHint","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -291,7 +291,7 @@ static void REGAL_CALL nacl_glHint(GLenum target, GLenum mode)
 
 static GLboolean REGAL_CALL nacl_glIsEnabled(GLenum cap)
 {
-  ITrace("nacl_glIsEnabled");
+  Internal("nacl_glIsEnabled","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -303,7 +303,7 @@ static GLboolean REGAL_CALL nacl_glIsEnabled(GLenum cap)
 
 static void REGAL_CALL nacl_glLineWidth(GLfloat width)
 {
-  ITrace("nacl_glLineWidth");
+  Internal("nacl_glLineWidth","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -314,7 +314,7 @@ static void REGAL_CALL nacl_glLineWidth(GLfloat width)
 
 static void REGAL_CALL nacl_glPixelStorei(GLenum pname, GLint param)
 {
-  ITrace("nacl_glPixelStorei");
+  Internal("nacl_glPixelStorei","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -325,7 +325,7 @@ static void REGAL_CALL nacl_glPixelStorei(GLenum pname, GLint param)
 
 static void REGAL_CALL nacl_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels)
 {
-  ITrace("nacl_glReadPixels");
+  Internal("nacl_glReadPixels","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -336,7 +336,7 @@ static void REGAL_CALL nacl_glReadPixels(GLint x, GLint y, GLsizei width, GLsize
 
 static void REGAL_CALL nacl_glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("nacl_glScissor");
+  Internal("nacl_glScissor","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -347,7 +347,7 @@ static void REGAL_CALL nacl_glScissor(GLint x, GLint y, GLsizei width, GLsizei h
 
 static void REGAL_CALL nacl_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
-  ITrace("nacl_glStencilFunc");
+  Internal("nacl_glStencilFunc","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -358,7 +358,7 @@ static void REGAL_CALL nacl_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 
 static void REGAL_CALL nacl_glStencilMask(GLuint mask)
 {
-  ITrace("nacl_glStencilMask");
+  Internal("nacl_glStencilMask","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -369,7 +369,7 @@ static void REGAL_CALL nacl_glStencilMask(GLuint mask)
 
 static void REGAL_CALL nacl_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
-  ITrace("nacl_glStencilOp");
+  Internal("nacl_glStencilOp","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -380,7 +380,7 @@ static void REGAL_CALL nacl_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 
 static void REGAL_CALL nacl_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("nacl_glTexImage2D");
+  Internal("nacl_glTexImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -391,7 +391,7 @@ static void REGAL_CALL nacl_glTexImage2D(GLenum target, GLint level, GLint inter
 
 static void REGAL_CALL nacl_glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
-  ITrace("nacl_glTexParameterf");
+  Internal("nacl_glTexParameterf","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -402,7 +402,7 @@ static void REGAL_CALL nacl_glTexParameterf(GLenum target, GLenum pname, GLfloat
 
 static void REGAL_CALL nacl_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  ITrace("nacl_glTexParameterfv");
+  Internal("nacl_glTexParameterfv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -413,7 +413,7 @@ static void REGAL_CALL nacl_glTexParameterfv(GLenum target, GLenum pname, const 
 
 static void REGAL_CALL nacl_glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
-  ITrace("nacl_glTexParameteri");
+  Internal("nacl_glTexParameteri","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -424,7 +424,7 @@ static void REGAL_CALL nacl_glTexParameteri(GLenum target, GLenum pname, GLint p
 
 static void REGAL_CALL nacl_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
 {
-  ITrace("nacl_glTexParameteriv");
+  Internal("nacl_glTexParameteriv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -435,7 +435,7 @@ static void REGAL_CALL nacl_glTexParameteriv(GLenum target, GLenum pname, const 
 
 static void REGAL_CALL nacl_glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("nacl_glViewport");
+  Internal("nacl_glViewport","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -446,7 +446,7 @@ static void REGAL_CALL nacl_glViewport(GLint x, GLint y, GLsizei width, GLsizei 
 
 static void REGAL_CALL nacl_glBindTexture(GLenum target, GLuint texture)
 {
-  ITrace("nacl_glBindTexture");
+  Internal("nacl_glBindTexture","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -457,7 +457,7 @@ static void REGAL_CALL nacl_glBindTexture(GLenum target, GLuint texture)
 
 static void REGAL_CALL nacl_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  ITrace("nacl_glCopyTexImage2D");
+  Internal("nacl_glCopyTexImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -468,7 +468,7 @@ static void REGAL_CALL nacl_glCopyTexImage2D(GLenum target, GLint level, GLenum 
 
 static void REGAL_CALL nacl_glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  ITrace("nacl_glCopyTexSubImage2D");
+  Internal("nacl_glCopyTexSubImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -479,7 +479,7 @@ static void REGAL_CALL nacl_glCopyTexSubImage2D(GLenum target, GLint level, GLin
 
 static void REGAL_CALL nacl_glDeleteTextures(GLsizei n, const GLuint *textures)
 {
-  ITrace("nacl_glDeleteTextures");
+  Internal("nacl_glDeleteTextures","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -490,7 +490,7 @@ static void REGAL_CALL nacl_glDeleteTextures(GLsizei n, const GLuint *textures)
 
 static void REGAL_CALL nacl_glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
-  ITrace("nacl_glDrawArrays");
+  Internal("nacl_glDrawArrays","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -501,7 +501,7 @@ static void REGAL_CALL nacl_glDrawArrays(GLenum mode, GLint first, GLsizei count
 
 static void REGAL_CALL nacl_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  ITrace("nacl_glDrawElements");
+  Internal("nacl_glDrawElements","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -512,7 +512,7 @@ static void REGAL_CALL nacl_glDrawElements(GLenum mode, GLsizei count, GLenum ty
 
 static void REGAL_CALL nacl_glGenTextures(GLsizei n, GLuint *textures)
 {
-  ITrace("nacl_glGenTextures");
+  Internal("nacl_glGenTextures","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -523,7 +523,7 @@ static void REGAL_CALL nacl_glGenTextures(GLsizei n, GLuint *textures)
 
 static GLboolean REGAL_CALL nacl_glIsTexture(GLuint texture)
 {
-  ITrace("nacl_glIsTexture");
+  Internal("nacl_glIsTexture","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -535,7 +535,7 @@ static GLboolean REGAL_CALL nacl_glIsTexture(GLuint texture)
 
 static void REGAL_CALL nacl_glPolygonOffset(GLfloat factor, GLfloat units)
 {
-  ITrace("nacl_glPolygonOffset");
+  Internal("nacl_glPolygonOffset","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -546,7 +546,7 @@ static void REGAL_CALL nacl_glPolygonOffset(GLfloat factor, GLfloat units)
 
 static void REGAL_CALL nacl_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  ITrace("nacl_glTexSubImage2D");
+  Internal("nacl_glTexSubImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -557,7 +557,7 @@ static void REGAL_CALL nacl_glTexSubImage2D(GLenum target, GLint level, GLint xo
 
 static void REGAL_CALL nacl_glBlendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  ITrace("nacl_glBlendColor");
+  Internal("nacl_glBlendColor","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -568,7 +568,7 @@ static void REGAL_CALL nacl_glBlendColor(GLclampf red, GLclampf green, GLclampf 
 
 static void REGAL_CALL nacl_glBlendEquation(GLenum mode)
 {
-  ITrace("nacl_glBlendEquation");
+  Internal("nacl_glBlendEquation","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -579,7 +579,7 @@ static void REGAL_CALL nacl_glBlendEquation(GLenum mode)
 
 static void REGAL_CALL nacl_glActiveTexture(GLenum texture)
 {
-  ITrace("nacl_glActiveTexture");
+  Internal("nacl_glActiveTexture","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -590,7 +590,7 @@ static void REGAL_CALL nacl_glActiveTexture(GLenum texture)
 
 static void REGAL_CALL nacl_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("nacl_glCompressedTexImage2D");
+  Internal("nacl_glCompressedTexImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -601,7 +601,7 @@ static void REGAL_CALL nacl_glCompressedTexImage2D(GLenum target, GLint level, G
 
 static void REGAL_CALL nacl_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  ITrace("nacl_glCompressedTexSubImage2D");
+  Internal("nacl_glCompressedTexSubImage2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -612,7 +612,7 @@ static void REGAL_CALL nacl_glCompressedTexSubImage2D(GLenum target, GLint level
 
 static void REGAL_CALL nacl_glSampleCoverage(GLclampf value, GLboolean invert)
 {
-  ITrace("nacl_glSampleCoverage");
+  Internal("nacl_glSampleCoverage","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -623,7 +623,7 @@ static void REGAL_CALL nacl_glSampleCoverage(GLclampf value, GLboolean invert)
 
 static void REGAL_CALL nacl_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
-  ITrace("nacl_glBlendFuncSeparate");
+  Internal("nacl_glBlendFuncSeparate","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -634,7 +634,7 @@ static void REGAL_CALL nacl_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfacto
 
 static void REGAL_CALL nacl_glBindBuffer(GLenum target, GLuint buffer)
 {
-  ITrace("nacl_glBindBuffer");
+  Internal("nacl_glBindBuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -645,7 +645,7 @@ static void REGAL_CALL nacl_glBindBuffer(GLenum target, GLuint buffer)
 
 static void REGAL_CALL nacl_glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  ITrace("nacl_glBufferData");
+  Internal("nacl_glBufferData","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -656,7 +656,7 @@ static void REGAL_CALL nacl_glBufferData(GLenum target, GLsizeiptr size, const G
 
 static void REGAL_CALL nacl_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  ITrace("nacl_glBufferSubData");
+  Internal("nacl_glBufferSubData","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -667,7 +667,7 @@ static void REGAL_CALL nacl_glBufferSubData(GLenum target, GLintptr offset, GLsi
 
 static void REGAL_CALL nacl_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 {
-  ITrace("nacl_glDeleteBuffers");
+  Internal("nacl_glDeleteBuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -678,7 +678,7 @@ static void REGAL_CALL nacl_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 
 static void REGAL_CALL nacl_glGenBuffers(GLsizei n, GLuint *buffers)
 {
-  ITrace("nacl_glGenBuffers");
+  Internal("nacl_glGenBuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -689,7 +689,7 @@ static void REGAL_CALL nacl_glGenBuffers(GLsizei n, GLuint *buffers)
 
 static void REGAL_CALL nacl_glGetBufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetBufferParameteriv");
+  Internal("nacl_glGetBufferParameteriv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -700,7 +700,7 @@ static void REGAL_CALL nacl_glGetBufferParameteriv(GLenum target, GLenum pname, 
 
 static GLboolean REGAL_CALL nacl_glIsBuffer(GLuint buffer)
 {
-  ITrace("nacl_glIsBuffer");
+  Internal("nacl_glIsBuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -712,7 +712,7 @@ static GLboolean REGAL_CALL nacl_glIsBuffer(GLuint buffer)
 
 static void REGAL_CALL nacl_glAttachShader(GLuint program, GLuint shader)
 {
-  ITrace("nacl_glAttachShader");
+  Internal("nacl_glAttachShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -723,7 +723,7 @@ static void REGAL_CALL nacl_glAttachShader(GLuint program, GLuint shader)
 
 static void REGAL_CALL nacl_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name)
 {
-  ITrace("nacl_glBindAttribLocation");
+  Internal("nacl_glBindAttribLocation","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -734,7 +734,7 @@ static void REGAL_CALL nacl_glBindAttribLocation(GLuint program, GLuint index, c
 
 static void REGAL_CALL nacl_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
 {
-  ITrace("nacl_glBlendEquationSeparate");
+  Internal("nacl_glBlendEquationSeparate","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -745,7 +745,7 @@ static void REGAL_CALL nacl_glBlendEquationSeparate(GLenum modeRGB, GLenum modeA
 
 static void REGAL_CALL nacl_glCompileShader(GLuint shader)
 {
-  ITrace("nacl_glCompileShader");
+  Internal("nacl_glCompileShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -756,7 +756,7 @@ static void REGAL_CALL nacl_glCompileShader(GLuint shader)
 
 static GLuint REGAL_CALL nacl_glCreateProgram(void)
 {
-  ITrace("nacl_glCreateProgram");
+  Internal("nacl_glCreateProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -768,7 +768,7 @@ static GLuint REGAL_CALL nacl_glCreateProgram(void)
 
 static GLuint REGAL_CALL nacl_glCreateShader(GLenum type)
 {
-  ITrace("nacl_glCreateShader");
+  Internal("nacl_glCreateShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -780,7 +780,7 @@ static GLuint REGAL_CALL nacl_glCreateShader(GLenum type)
 
 static void REGAL_CALL nacl_glDeleteProgram(GLuint program)
 {
-  ITrace("nacl_glDeleteProgram");
+  Internal("nacl_glDeleteProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -791,7 +791,7 @@ static void REGAL_CALL nacl_glDeleteProgram(GLuint program)
 
 static void REGAL_CALL nacl_glDeleteShader(GLuint shader)
 {
-  ITrace("nacl_glDeleteShader");
+  Internal("nacl_glDeleteShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -802,7 +802,7 @@ static void REGAL_CALL nacl_glDeleteShader(GLuint shader)
 
 static void REGAL_CALL nacl_glDetachShader(GLuint program, GLuint shader)
 {
-  ITrace("nacl_glDetachShader");
+  Internal("nacl_glDetachShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -813,7 +813,7 @@ static void REGAL_CALL nacl_glDetachShader(GLuint program, GLuint shader)
 
 static void REGAL_CALL nacl_glDisableVertexAttribArray(GLuint index)
 {
-  ITrace("nacl_glDisableVertexAttribArray");
+  Internal("nacl_glDisableVertexAttribArray","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -824,7 +824,7 @@ static void REGAL_CALL nacl_glDisableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL nacl_glEnableVertexAttribArray(GLuint index)
 {
-  ITrace("nacl_glEnableVertexAttribArray");
+  Internal("nacl_glEnableVertexAttribArray","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -835,7 +835,7 @@ static void REGAL_CALL nacl_glEnableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL nacl_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name)
 {
-  ITrace("nacl_glGetActiveAttrib");
+  Internal("nacl_glGetActiveAttrib","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -846,7 +846,7 @@ static void REGAL_CALL nacl_glGetActiveAttrib(GLuint program, GLuint index, GLsi
 
 static void REGAL_CALL nacl_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name)
 {
-  ITrace("nacl_glGetActiveUniform");
+  Internal("nacl_glGetActiveUniform","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -857,7 +857,7 @@ static void REGAL_CALL nacl_glGetActiveUniform(GLuint program, GLuint index, GLs
 
 static void REGAL_CALL nacl_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders)
 {
-  ITrace("nacl_glGetAttachedShaders");
+  Internal("nacl_glGetAttachedShaders","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -868,7 +868,7 @@ static void REGAL_CALL nacl_glGetAttachedShaders(GLuint program, GLsizei maxCoun
 
 static GLint REGAL_CALL nacl_glGetAttribLocation(GLuint program, const GLchar *name)
 {
-  ITrace("nacl_glGetAttribLocation");
+  Internal("nacl_glGetAttribLocation","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -880,7 +880,7 @@ static GLint REGAL_CALL nacl_glGetAttribLocation(GLuint program, const GLchar *n
 
 static void REGAL_CALL nacl_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 {
-  ITrace("nacl_glGetProgramInfoLog");
+  Internal("nacl_glGetProgramInfoLog","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -891,7 +891,7 @@ static void REGAL_CALL nacl_glGetProgramInfoLog(GLuint program, GLsizei bufSize,
 
 static void REGAL_CALL nacl_glGetProgramiv(GLuint program, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetProgramiv");
+  Internal("nacl_glGetProgramiv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -902,7 +902,7 @@ static void REGAL_CALL nacl_glGetProgramiv(GLuint program, GLenum pname, GLint *
 
 static void REGAL_CALL nacl_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
 {
-  ITrace("nacl_glGetShaderInfoLog");
+  Internal("nacl_glGetShaderInfoLog","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -913,7 +913,7 @@ static void REGAL_CALL nacl_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, G
 
 static void REGAL_CALL nacl_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source)
 {
-  ITrace("nacl_glGetShaderSource");
+  Internal("nacl_glGetShaderSource","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -924,7 +924,7 @@ static void REGAL_CALL nacl_glGetShaderSource(GLuint shader, GLsizei bufSize, GL
 
 static void REGAL_CALL nacl_glGetShaderiv(GLuint shader, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetShaderiv");
+  Internal("nacl_glGetShaderiv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -935,7 +935,7 @@ static void REGAL_CALL nacl_glGetShaderiv(GLuint shader, GLenum pname, GLint *pa
 
 static GLint REGAL_CALL nacl_glGetUniformLocation(GLuint program, const GLchar *name)
 {
-  ITrace("nacl_glGetUniformLocation");
+  Internal("nacl_glGetUniformLocation","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -947,7 +947,7 @@ static GLint REGAL_CALL nacl_glGetUniformLocation(GLuint program, const GLchar *
 
 static void REGAL_CALL nacl_glGetUniformfv(GLuint program, GLint location, GLfloat *params)
 {
-  ITrace("nacl_glGetUniformfv");
+  Internal("nacl_glGetUniformfv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -958,7 +958,7 @@ static void REGAL_CALL nacl_glGetUniformfv(GLuint program, GLint location, GLflo
 
 static void REGAL_CALL nacl_glGetUniformiv(GLuint program, GLint location, GLint *params)
 {
-  ITrace("nacl_glGetUniformiv");
+  Internal("nacl_glGetUniformiv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -969,7 +969,7 @@ static void REGAL_CALL nacl_glGetUniformiv(GLuint program, GLint location, GLint
 
 static void REGAL_CALL nacl_glGetVertexAttribPointerv(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  ITrace("nacl_glGetVertexAttribPointerv");
+  Internal("nacl_glGetVertexAttribPointerv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -980,7 +980,7 @@ static void REGAL_CALL nacl_glGetVertexAttribPointerv(GLuint index, GLenum pname
 
 static void REGAL_CALL nacl_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat *params)
 {
-  ITrace("nacl_glGetVertexAttribfv");
+  Internal("nacl_glGetVertexAttribfv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -991,7 +991,7 @@ static void REGAL_CALL nacl_glGetVertexAttribfv(GLuint index, GLenum pname, GLfl
 
 static void REGAL_CALL nacl_glGetVertexAttribiv(GLuint index, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetVertexAttribiv");
+  Internal("nacl_glGetVertexAttribiv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1002,7 +1002,7 @@ static void REGAL_CALL nacl_glGetVertexAttribiv(GLuint index, GLenum pname, GLin
 
 static GLboolean REGAL_CALL nacl_glIsProgram(GLuint program)
 {
-  ITrace("nacl_glIsProgram");
+  Internal("nacl_glIsProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1014,7 +1014,7 @@ static GLboolean REGAL_CALL nacl_glIsProgram(GLuint program)
 
 static GLboolean REGAL_CALL nacl_glIsShader(GLuint shader)
 {
-  ITrace("nacl_glIsShader");
+  Internal("nacl_glIsShader","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1026,7 +1026,7 @@ static GLboolean REGAL_CALL nacl_glIsShader(GLuint shader)
 
 static void REGAL_CALL nacl_glLinkProgram(GLuint program)
 {
-  ITrace("nacl_glLinkProgram");
+  Internal("nacl_glLinkProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1037,7 +1037,7 @@ static void REGAL_CALL nacl_glLinkProgram(GLuint program)
 
 static void REGAL_CALL nacl_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
 {
-  ITrace("nacl_glShaderSource");
+  Internal("nacl_glShaderSource","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1048,7 +1048,7 @@ static void REGAL_CALL nacl_glShaderSource(GLuint shader, GLsizei count, const G
 
 static void REGAL_CALL nacl_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
 {
-  ITrace("nacl_glStencilFuncSeparate");
+  Internal("nacl_glStencilFuncSeparate","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1059,7 +1059,7 @@ static void REGAL_CALL nacl_glStencilFuncSeparate(GLenum face, GLenum func, GLin
 
 static void REGAL_CALL nacl_glStencilMaskSeparate(GLenum face, GLuint mask)
 {
-  ITrace("nacl_glStencilMaskSeparate");
+  Internal("nacl_glStencilMaskSeparate","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1070,7 +1070,7 @@ static void REGAL_CALL nacl_glStencilMaskSeparate(GLenum face, GLuint mask)
 
 static void REGAL_CALL nacl_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
 {
-  ITrace("nacl_glStencilOpSeparate");
+  Internal("nacl_glStencilOpSeparate","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1081,7 +1081,7 @@ static void REGAL_CALL nacl_glStencilOpSeparate(GLenum face, GLenum fail, GLenum
 
 static void REGAL_CALL nacl_glUniform1f(GLint location, GLfloat v0)
 {
-  ITrace("nacl_glUniform1f");
+  Internal("nacl_glUniform1f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1092,7 +1092,7 @@ static void REGAL_CALL nacl_glUniform1f(GLint location, GLfloat v0)
 
 static void REGAL_CALL nacl_glUniform1fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("nacl_glUniform1fv");
+  Internal("nacl_glUniform1fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1103,7 +1103,7 @@ static void REGAL_CALL nacl_glUniform1fv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform1i(GLint location, GLint v0)
 {
-  ITrace("nacl_glUniform1i");
+  Internal("nacl_glUniform1i","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1114,7 +1114,7 @@ static void REGAL_CALL nacl_glUniform1i(GLint location, GLint v0)
 
 static void REGAL_CALL nacl_glUniform1iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("nacl_glUniform1iv");
+  Internal("nacl_glUniform1iv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1125,7 +1125,7 @@ static void REGAL_CALL nacl_glUniform1iv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 {
-  ITrace("nacl_glUniform2f");
+  Internal("nacl_glUniform2f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1136,7 +1136,7 @@ static void REGAL_CALL nacl_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 
 static void REGAL_CALL nacl_glUniform2fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("nacl_glUniform2fv");
+  Internal("nacl_glUniform2fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1147,7 +1147,7 @@ static void REGAL_CALL nacl_glUniform2fv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform2i(GLint location, GLint v0, GLint v1)
 {
-  ITrace("nacl_glUniform2i");
+  Internal("nacl_glUniform2i","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1158,7 +1158,7 @@ static void REGAL_CALL nacl_glUniform2i(GLint location, GLint v0, GLint v1)
 
 static void REGAL_CALL nacl_glUniform2iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("nacl_glUniform2iv");
+  Internal("nacl_glUniform2iv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1169,7 +1169,7 @@ static void REGAL_CALL nacl_glUniform2iv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  ITrace("nacl_glUniform3f");
+  Internal("nacl_glUniform3f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1180,7 +1180,7 @@ static void REGAL_CALL nacl_glUniform3f(GLint location, GLfloat v0, GLfloat v1, 
 
 static void REGAL_CALL nacl_glUniform3fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("nacl_glUniform3fv");
+  Internal("nacl_glUniform3fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1191,7 +1191,7 @@ static void REGAL_CALL nacl_glUniform3fv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2)
 {
-  ITrace("nacl_glUniform3i");
+  Internal("nacl_glUniform3i","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1202,7 +1202,7 @@ static void REGAL_CALL nacl_glUniform3i(GLint location, GLint v0, GLint v1, GLin
 
 static void REGAL_CALL nacl_glUniform3iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("nacl_glUniform3iv");
+  Internal("nacl_glUniform3iv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1213,7 +1213,7 @@ static void REGAL_CALL nacl_glUniform3iv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  ITrace("nacl_glUniform4f");
+  Internal("nacl_glUniform4f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1224,7 +1224,7 @@ static void REGAL_CALL nacl_glUniform4f(GLint location, GLfloat v0, GLfloat v1, 
 
 static void REGAL_CALL nacl_glUniform4fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  ITrace("nacl_glUniform4fv");
+  Internal("nacl_glUniform4fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1235,7 +1235,7 @@ static void REGAL_CALL nacl_glUniform4fv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  ITrace("nacl_glUniform4i");
+  Internal("nacl_glUniform4i","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1246,7 +1246,7 @@ static void REGAL_CALL nacl_glUniform4i(GLint location, GLint v0, GLint v1, GLin
 
 static void REGAL_CALL nacl_glUniform4iv(GLint location, GLsizei count, const GLint *value)
 {
-  ITrace("nacl_glUniform4iv");
+  Internal("nacl_glUniform4iv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1257,7 +1257,7 @@ static void REGAL_CALL nacl_glUniform4iv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL nacl_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("nacl_glUniformMatrix2fv");
+  Internal("nacl_glUniformMatrix2fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1268,7 +1268,7 @@ static void REGAL_CALL nacl_glUniformMatrix2fv(GLint location, GLsizei count, GL
 
 static void REGAL_CALL nacl_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("nacl_glUniformMatrix3fv");
+  Internal("nacl_glUniformMatrix3fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1279,7 +1279,7 @@ static void REGAL_CALL nacl_glUniformMatrix3fv(GLint location, GLsizei count, GL
 
 static void REGAL_CALL nacl_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  ITrace("nacl_glUniformMatrix4fv");
+  Internal("nacl_glUniformMatrix4fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1290,7 +1290,7 @@ static void REGAL_CALL nacl_glUniformMatrix4fv(GLint location, GLsizei count, GL
 
 static void REGAL_CALL nacl_glUseProgram(GLuint program)
 {
-  ITrace("nacl_glUseProgram");
+  Internal("nacl_glUseProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1301,7 +1301,7 @@ static void REGAL_CALL nacl_glUseProgram(GLuint program)
 
 static void REGAL_CALL nacl_glValidateProgram(GLuint program)
 {
-  ITrace("nacl_glValidateProgram");
+  Internal("nacl_glValidateProgram","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1312,7 +1312,7 @@ static void REGAL_CALL nacl_glValidateProgram(GLuint program)
 
 static void REGAL_CALL nacl_glVertexAttrib1f(GLuint index, GLfloat x)
 {
-  ITrace("nacl_glVertexAttrib1f");
+  Internal("nacl_glVertexAttrib1f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1323,7 +1323,7 @@ static void REGAL_CALL nacl_glVertexAttrib1f(GLuint index, GLfloat x)
 
 static void REGAL_CALL nacl_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 {
-  ITrace("nacl_glVertexAttrib1fv");
+  Internal("nacl_glVertexAttrib1fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1334,7 +1334,7 @@ static void REGAL_CALL nacl_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL nacl_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 {
-  ITrace("nacl_glVertexAttrib2f");
+  Internal("nacl_glVertexAttrib2f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1345,7 +1345,7 @@ static void REGAL_CALL nacl_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 
 static void REGAL_CALL nacl_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 {
-  ITrace("nacl_glVertexAttrib2fv");
+  Internal("nacl_glVertexAttrib2fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1356,7 +1356,7 @@ static void REGAL_CALL nacl_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL nacl_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-  ITrace("nacl_glVertexAttrib3f");
+  Internal("nacl_glVertexAttrib3f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1367,7 +1367,7 @@ static void REGAL_CALL nacl_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y,
 
 static void REGAL_CALL nacl_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 {
-  ITrace("nacl_glVertexAttrib3fv");
+  Internal("nacl_glVertexAttrib3fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1378,7 +1378,7 @@ static void REGAL_CALL nacl_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL nacl_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  ITrace("nacl_glVertexAttrib4f");
+  Internal("nacl_glVertexAttrib4f","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1389,7 +1389,7 @@ static void REGAL_CALL nacl_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y,
 
 static void REGAL_CALL nacl_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 {
-  ITrace("nacl_glVertexAttrib4fv");
+  Internal("nacl_glVertexAttrib4fv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1400,7 +1400,7 @@ static void REGAL_CALL nacl_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL nacl_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
-  ITrace("nacl_glVertexAttribPointer");
+  Internal("nacl_glVertexAttribPointer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1411,7 +1411,7 @@ static void REGAL_CALL nacl_glVertexAttribPointer(GLuint index, GLint size, GLen
 
 static void REGAL_CALL nacl_glClearDepthf(GLclampf d)
 {
-  ITrace("nacl_glClearDepthf");
+  Internal("nacl_glClearDepthf","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1422,7 +1422,7 @@ static void REGAL_CALL nacl_glClearDepthf(GLclampf d)
 
 static void REGAL_CALL nacl_glDepthRangef(GLclampf n, GLclampf f)
 {
-  ITrace("nacl_glDepthRangef");
+  Internal("nacl_glDepthRangef","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1433,7 +1433,7 @@ static void REGAL_CALL nacl_glDepthRangef(GLclampf n, GLclampf f)
 
 static void REGAL_CALL nacl_glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision)
 {
-  ITrace("nacl_glGetShaderPrecisionFormat");
+  Internal("nacl_glGetShaderPrecisionFormat","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1444,7 +1444,7 @@ static void REGAL_CALL nacl_glGetShaderPrecisionFormat(GLenum shadertype, GLenum
 
 static void REGAL_CALL nacl_glReleaseShaderCompiler(void)
 {
-  ITrace("nacl_glReleaseShaderCompiler");
+  Internal("nacl_glReleaseShaderCompiler","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1455,7 +1455,7 @@ static void REGAL_CALL nacl_glReleaseShaderCompiler(void)
 
 static void REGAL_CALL nacl_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
 {
-  ITrace("nacl_glShaderBinary");
+  Internal("nacl_glShaderBinary","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1466,7 +1466,7 @@ static void REGAL_CALL nacl_glShaderBinary(GLsizei count, const GLuint *shaders,
 
 static void REGAL_CALL nacl_glBindFramebuffer(GLenum target, GLuint framebuffer)
 {
-  ITrace("nacl_glBindFramebuffer");
+  Internal("nacl_glBindFramebuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1477,7 +1477,7 @@ static void REGAL_CALL nacl_glBindFramebuffer(GLenum target, GLuint framebuffer)
 
 static void REGAL_CALL nacl_glBindRenderbuffer(GLenum target, GLuint renderbuffer)
 {
-  ITrace("nacl_glBindRenderbuffer");
+  Internal("nacl_glBindRenderbuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1488,7 +1488,7 @@ static void REGAL_CALL nacl_glBindRenderbuffer(GLenum target, GLuint renderbuffe
 
 static GLenum REGAL_CALL nacl_glCheckFramebufferStatus(GLenum target)
 {
-  ITrace("nacl_glCheckFramebufferStatus");
+  Internal("nacl_glCheckFramebufferStatus","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1500,7 +1500,7 @@ static GLenum REGAL_CALL nacl_glCheckFramebufferStatus(GLenum target)
 
 static void REGAL_CALL nacl_glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers)
 {
-  ITrace("nacl_glDeleteFramebuffers");
+  Internal("nacl_glDeleteFramebuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1511,7 +1511,7 @@ static void REGAL_CALL nacl_glDeleteFramebuffers(GLsizei n, const GLuint *frameb
 
 static void REGAL_CALL nacl_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers)
 {
-  ITrace("nacl_glDeleteRenderbuffers");
+  Internal("nacl_glDeleteRenderbuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1522,7 +1522,7 @@ static void REGAL_CALL nacl_glDeleteRenderbuffers(GLsizei n, const GLuint *rende
 
 static void REGAL_CALL nacl_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  ITrace("nacl_glFramebufferRenderbuffer");
+  Internal("nacl_glFramebufferRenderbuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1533,7 +1533,7 @@ static void REGAL_CALL nacl_glFramebufferRenderbuffer(GLenum target, GLenum atta
 
 static void REGAL_CALL nacl_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  ITrace("nacl_glFramebufferTexture2D");
+  Internal("nacl_glFramebufferTexture2D","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1544,7 +1544,7 @@ static void REGAL_CALL nacl_glFramebufferTexture2D(GLenum target, GLenum attachm
 
 static void REGAL_CALL nacl_glGenFramebuffers(GLsizei n, GLuint *framebuffers)
 {
-  ITrace("nacl_glGenFramebuffers");
+  Internal("nacl_glGenFramebuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1555,7 +1555,7 @@ static void REGAL_CALL nacl_glGenFramebuffers(GLsizei n, GLuint *framebuffers)
 
 static void REGAL_CALL nacl_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers)
 {
-  ITrace("nacl_glGenRenderbuffers");
+  Internal("nacl_glGenRenderbuffers","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1566,7 +1566,7 @@ static void REGAL_CALL nacl_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers)
 
 static void REGAL_CALL nacl_glGenerateMipmap(GLenum target)
 {
-  ITrace("nacl_glGenerateMipmap");
+  Internal("nacl_glGenerateMipmap","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1577,7 +1577,7 @@ static void REGAL_CALL nacl_glGenerateMipmap(GLenum target)
 
 static void REGAL_CALL nacl_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetFramebufferAttachmentParameteriv");
+  Internal("nacl_glGetFramebufferAttachmentParameteriv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1588,7 +1588,7 @@ static void REGAL_CALL nacl_glGetFramebufferAttachmentParameteriv(GLenum target,
 
 static void REGAL_CALL nacl_glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  ITrace("nacl_glGetRenderbufferParameteriv");
+  Internal("nacl_glGetRenderbufferParameteriv","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1599,7 +1599,7 @@ static void REGAL_CALL nacl_glGetRenderbufferParameteriv(GLenum target, GLenum p
 
 static GLboolean REGAL_CALL nacl_glIsFramebuffer(GLuint framebuffer)
 {
-  ITrace("nacl_glIsFramebuffer");
+  Internal("nacl_glIsFramebuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1611,7 +1611,7 @@ static GLboolean REGAL_CALL nacl_glIsFramebuffer(GLuint framebuffer)
 
 static GLboolean REGAL_CALL nacl_glIsRenderbuffer(GLuint renderbuffer)
 {
-  ITrace("nacl_glIsRenderbuffer");
+  Internal("nacl_glIsRenderbuffer","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)
@@ -1623,7 +1623,7 @@ static GLboolean REGAL_CALL nacl_glIsRenderbuffer(GLuint renderbuffer)
 
 static void REGAL_CALL nacl_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  ITrace("nacl_glRenderbufferStorage");
+  Internal("nacl_glRenderbufferStorage","()");
   RegalContext * rCtx = GET_REGAL_CONTEXT();
   RegalAssert(rCtx)
   RegalAssert(rCtx->naclES2)

@@ -190,7 +190,7 @@ tmp/$(SYSTEM)/glewinfo/static/%.o: src/glew/src/%.c
 	$(CCACHE) $(CC) $(CFLAGS) $(GLEWINFO.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/glewinfo: $(GLEWINFO.OBJS) lib/$(LIB.SHARED) lib/$(GLEW.SHARED)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $^ $(LIB.LDFLAGS) $(GLEWINFO.LIBS)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(GLEWINFO.OBJS) $(LIB.LDFLAGS) $(GLEWINFO.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -463,7 +463,7 @@ tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/glut/code/%.cpp
 	$(CCACHE) $(CC) $(CFLAGS) $(DREAMTORUS.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/dreamtorus: $(DREAMTORUS.OBJS) lib/$(LIB.SHARED) 
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $^ $(LIB.LDFLAGS) $(DREAMTORUS.LIBS)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(DREAMTORUS.OBJS) $(LIB.LDFLAGS) $(DREAMTORUS.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -495,7 +495,7 @@ tmp/$(SYSTEM)/tiger/static/%.o: examples/tiger/%.c
 	$(CCACHE) $(CC) $(CFLAGS) $(TIGER.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/tiger: $(TIGER.OBJS) lib/$(GLEW.SHARED) lib/$(LIB.SHARED)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $^ $(TIGER.LIBS)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(TIGER.OBJS) $(TIGER.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif

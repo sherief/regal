@@ -77,7 +77,7 @@ Dispatcher::Dispatcher()
   #if REGAL_DRIVER
   #if REGAL_STATIC_ES2
   ::memset(&driver,0,sizeof(DispatchTable));
-  InitDispatchTableStaticES2(driver);           // ES 2.0 functions only  
+  InitDispatchTableStaticES2(driver);           // ES 2.0 functions only
   #elif defined(__native_client__)
   ::memset(&driver,0,sizeof(DispatchTable));
   InitDispatchTableNacl(driver);                // ES 2.0 functions only

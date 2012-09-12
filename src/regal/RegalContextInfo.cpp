@@ -395,17 +395,17 @@ ContextInfo::ContextInfo()
 
   maxVertexAttribs(0)
 {
-   ITrace("ContextInfo::ContextInfo");
+   Internal("ContextInfo::ContextInfo","()");
 }
 
 ContextInfo::~ContextInfo()
 {
-   ITrace("ContextInfo::~ContextInfo");
+   Internal("ContextInfo::~ContextInfo","()");
 }
 
 inline string getString(const RegalContext &context, const GLenum e)
 {
-  ITrace("getString ",toString(e));
+  Internal("getString ",toString(e));
   RegalAssert(context.dispatcher.driver.glGetString);
   const GLubyte *str = context.dispatcher.driver.glGetString(e);
   return str ? string(reinterpret_cast<const char *>(str)) : string();
@@ -891,7 +891,7 @@ ContextInfo::init(const RegalContext &context)
 bool
 ContextInfo::getExtension(const char *ext) const
 {
-  ITrace("ContextInfo::getExtension ",boost::print::quote(ext,'"'));
+  Internal("ContextInfo::getExtension ",boost::print::quote(ext,'"'));
 
   if (!strcmp(ext,"GL_3DFX_tbuffer")) return gl_3dfx_tbuffer;
   if (!strcmp(ext,"GL_AMD_debug_output")) return gl_amd_debug_output;
@@ -1202,7 +1202,7 @@ return false;
 bool
 ContextInfo::isSupported(const char *ext) const
 {
-  ITrace("ContextInfo::isSupported ",boost::print::quote(ext,'"'));
+  Internal("ContextInfo::isSupported ",boost::print::quote(ext,'"'));
 
   string_list<string> e;
   e.split(ext,' ');

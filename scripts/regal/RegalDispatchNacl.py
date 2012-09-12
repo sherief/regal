@@ -40,7 +40,7 @@ def apiNaclFuncDefineCode(apis, args):
           naclName = naclName[2:]
 
         code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'nacl_', name, params)
-        code += '  ITrace("nacl_%s");\n' % name
+        code += '  Internal("nacl_%s","()");\n' % name
         code += '  RegalContext * rCtx = GET_REGAL_CONTEXT();\n'
         code += '  RegalAssert(rCtx)\n'
         code += '  RegalAssert(rCtx->naclES2)\n'

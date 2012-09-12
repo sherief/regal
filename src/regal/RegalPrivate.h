@@ -39,7 +39,7 @@ REGAL_GLOBAL_BEGIN
 #include <cstdio>
 #include <cstring>
 
-#ifndef REGAL_SYS_WGL
+#if !REGAL_SYS_WGL
 #include <pthread.h>
 #endif
 
@@ -59,39 +59,39 @@ inline GLdouble floatToDouble(const GLfloat  v) { return GLdouble(v);           
 inline GLfixed  doubleToFixed(const GLdouble v) { return GLfixed(v * 65536.0);  }
 inline GLfloat  doubleToFloat(const GLdouble v) { return GLfloat(v);            }
 
-inline void fixedToFloat(GLfloat *dest, const GLfixed *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void fixedToFloat(GLfloat *dest, const GLfixed *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = fixedToFloat(src[i]);
 }
 
-inline void fixedToDouble(GLdouble *dest, const GLfixed *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void fixedToDouble(GLdouble *dest, const GLfixed *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = fixedToFloat(src[i]);
 }
 
-inline void floatToFixed(GLfixed *dest, const GLfloat *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void floatToFixed(GLfixed *dest, const GLfloat *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = floatToFixed(src[i]);
 }
 
-inline void floatToDouble(GLdouble *dest, const GLfloat *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void floatToDouble(GLdouble *dest, const GLfloat *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = floatToDouble(src[i]);
 }
 
-inline void doubleToFixed(GLfixed *dest, const GLdouble *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void doubleToFixed(GLfixed *dest, const GLdouble *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = doubleToFixed(src[i]);
 }
 
-inline void doubleToFloat(GLfloat *dest, const GLdouble *src, const size_t n)
-{ 
-  for (size_t i=0; i<n; ++i)
+inline void doubleToFloat(GLfloat *dest, const GLdouble *src, const std::size_t n)
+{
+  for (std::size_t i=0; i<n; ++i)
     dest[i] = doubleToFloat(src[i]);
 }
 
@@ -237,6 +237,41 @@ inline void *RegalPrivateGetCurrentContext()
 #endif // REGAL_SYS_OSX
 #endif // REGAL_SYS_WGL
 #endif // REGAL_NO_TLS
+
+#if REGAL_SYS_WGL
+extern "C" { DWORD __stdcall GetCurrentProcessId (void);          }
+extern "C" { DWORD __stdcall GetCurrentThreadId  (void);          }
+#endif
+
+// Current process ID
+
+inline std::size_t procId()
+{
+#if REGAL_SYS_WGL
+	return static_cast<std::size_t>(GetCurrentProcessId());
+#elif REGAL_SYS_OSX || REGAL_SYS_OSX || REGAL_SYS_IOS || REGAL_SYS_ANDROID || REGAL_SYS_GLX
+	return (std::size_t) getpid();
+#else
+  return 0;
+#endif
+}
+
+// Current thread ID
+
+inline std::size_t threadId()
+{
+#if REGAL_SYS_WGL
+	return static_cast<std::size_t>(GetCurrentThreadId());
+#elif REGAL_SYS_OSX || REGAL_SYS_OSX || REGAL_SYS_IOS || REGAL_SYS_ANDROID || REGAL_SYS_GLX
+
+  // Revisit - pthread_self returns an opaque handle which isn't truely
+  // a thread identified.
+
+	return (std::size_t) pthread_self();
+#else
+  return 0;
+#endif
+}
 
 REGAL_NAMESPACE_END
 

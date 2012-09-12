@@ -1265,7 +1265,7 @@ void State::GetMaterial( RFF * ffn, GLenum face, GLenum pname, GLfloat * params 
 
 void State::SetTexgen( RegalIff * ffn, int coord, GLenum space, const GLfloat * params )
 {
-    ITrace("State::SetTexgen ",ffn,coord,toString(space),boost::print::array(params,4));
+    Internal("State::SetTexgen ",ffn,coord,toString(space),boost::print::array(params,4));
 
     r3::Matrix4f ident;
     Texgen & tg = raw.tex[ ffn->activeTextureIndex ].texgen[ coord ];
@@ -1280,7 +1280,7 @@ void State::SetTexgen( RegalIff * ffn, int coord, GLenum space, const GLfloat * 
 
 void State::GetTexgen( RegalIff * ffn, int coord, GLenum space, GLfloat * params )
 {
-    ITrace("State::GetTexgen ",ffn,coord,toString(space));
+    Internal("State::GetTexgen ",ffn,coord,toString(space));
 
     Texgen & tg = raw.tex[ ffn->activeTextureIndex ].texgen[ coord ];
     switch( space ) {
@@ -1332,7 +1332,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSr
       ctx->dispatcher.call(&tbl.glGetProgramInfoLog)( pg, (1<<15) - 2, &dbgLogLen, dbgLog );
       dbgLog[ dbgLogLen ] = 0;
       if( dbgLogLen > 0 ) {
-          ITrace( dbgLog );
+          Internal( "Program::Init", dbgLog );
       }
     }
 
@@ -1367,7 +1367,7 @@ void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLui
       ctx->dispatcher.call(&tbl.glGetShaderInfoLog)( shader, (1<<15) - 2, &dbgLogLen, dbgLog );
       dbgLog[ dbgLogLen ] = 0;
       if( dbgLogLen > 0 ) {
-          ITrace( dbgLog );
+          Internal( "Program::Shader", dbgLog );
       }
     }
     ctx->dispatcher.call(&tbl.glAttachShader)( pg, shader );

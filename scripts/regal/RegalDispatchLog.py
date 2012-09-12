@@ -143,7 +143,7 @@ def generateDispatchLog(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'log_', name, params)
-      code += '    %s\n' % debugPrintFunction( function, 'GTrace' )
+      code += '    %s\n' % debugPrintFunction( function, 'Driver' )
       code += '    RegalContext *_context = GET_REGAL_CONTEXT();\n'
       code += '    RegalAssert(_context);\n'
       code += '    Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'

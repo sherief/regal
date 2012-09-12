@@ -155,7 +155,7 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   depthBeginEnd(0),
   depthPushAttrib(0)
 {
-  ITrace("RegalContext::RegalContext");
+  Internal("RegalContext::RegalContext");
   if (Config::enableDebug) {
     dbg = new DebugInfo();
     dbg->Init(this);
@@ -165,7 +165,7 @@ ${EMU_MEMBER_CONSTRUCT}#endif
 void
 RegalContext::Init()
 {
-  ITrace("RegalContext::Init");
+  Internal("RegalContext::Init");
 
   info = new ContextInfo();
   RegalAssert(this);
@@ -198,7 +198,7 @@ ${EMU_MEMBER_INIT}
 
 RegalContext::~RegalContext()
 {
-  ITrace("RegalContext::~RegalContext");
+  Internal("RegalContext::~RegalContext");
   delete info;
 ${MEMBER_CLEANUP}
 #if REGAL_EMULATION
@@ -283,7 +283,7 @@ def generateContextSource(apis, args):
         if emu[revi]['member']:
             init = ''
             if emu[revi]['member']=='dsa':
-              init += 'ITrace("RegalContext::Init GL_EXT_direct_state_access");\n'
+              init += 'Internal("RegalContext::Init GL_EXT_direct_state_access");\n'
               init += 'info->regal_ext_direct_state_access = true;\n'
 #              init += '#ifndef REGAL_GL_EXTENSIONS\n'
               init += 'info->regalExtensionsSet.insert("GL_EXT_direct_state_access");\n'

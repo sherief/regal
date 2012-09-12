@@ -81,7 +81,7 @@ namespace Http
 
   void Init()
   {
-    ITrace("Http::Init");
+    Internal("Http::Init","()");
 
     // Environment variable HTTP configuration
 
@@ -224,7 +224,7 @@ namespace Http
 
   void Start()
   {
-    ITrace("Http::Start");
+    Internal("Http::Start","()");
 
     if (!ctx)
     {
@@ -257,7 +257,7 @@ namespace Http
 
   void Stop()
   {
-    ITrace("Http::Stop");
+    Internal("Http::Stop","()");
 
     if (ctx)
     {

@@ -214,7 +214,7 @@ def apiFuncDefineCode(apis, args):
 
       if function.needsContext:
         c += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
-        c += '  %s\n' % debugPrintFunction( function, 'RTrace' )
+        c += '  %s\n' % debugPrintFunction( function, 'App' )
         c += '  if (!_context) return'
         if typeIsVoid(rType):
           c += ';\n'
@@ -241,7 +241,7 @@ def apiFuncDefineCode(apis, args):
               c += 'return '
             c += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
       else:
-        c += '  %s\n' % debugPrintFunction(function, 'RTrace' )
+        c += '  %s\n' % debugPrintFunction(function, 'App' )
 
         if api.name=='egl':
           c += '\n'
@@ -266,7 +266,7 @@ def apiFuncDefineCode(apis, args):
         c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
 
         c += '  if (dispatchTableGlobal.%s) {\n' % name
-        c += '    %s\n' % debugPrintFunction( function, 'GTrace' )
+        c += '    %s\n' % debugPrintFunction( function, 'Driver' )
         c += '    '
         if not typeIsVoid(rType):
           c += 'ret = '
@@ -350,11 +350,11 @@ def debugPrintFunction(function, trace = 'ITrace'):
 
   args = args[:9]
   if len(args):
-    c += '%s("%s(", ' % (trace, function.name)
+    c += '%s("%s","(", ' % (trace, function.name)
     c += ', ", ", '.join(args)
     c += ', ")");'
   else:
-    c += '%s("%s()");' % (trace, function.name)
+    c += '%s("%s","()");' % (trace, function.name)
   return c
 
 def apiTypedefCode( apis, args ):
