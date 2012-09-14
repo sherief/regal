@@ -57,21 +57,26 @@ struct Marker {
   void Init(RegalContext *ctx)
   {
     UNUSED_PARAMETER(ctx);
-    Internal("RegalMarker::Init","()");
+    Internal("Regal::Marker::Init","()");
   }
 
   void InsertEventMarker(RegalContext *ctx, GLsizei length, const char *marker)
   {
     UNUSED_PARAMETER(ctx);
-    Internal("RegalMarker::InsertEventMarker","()");
+    Internal("Regal::Marker::InsertEventMarker","()");
     std::string m = toString(length,marker);
     Info("/* ",m," */");
+  }
+
+  void InsertEventMarker(RegalContext *ctx, GLsizei length, const void *marker)
+  {
+    InsertEventMarker(ctx,length,static_cast<const char *>(marker));
   }
 
   void PushGroupMarker(RegalContext *ctx, GLsizei length, const char *marker)
   {
     UNUSED_PARAMETER(ctx);
-    Internal("RegalMarker::PushGroupMarker","()");
+    Internal("Regal::Marker::PushGroupMarker","()");
     std::string m = toString(length,marker);
     Info("/* ",m," ... */");
     markerStack.push_back(std::string());
@@ -81,7 +86,7 @@ struct Marker {
   void PopGroupMarker(RegalContext *ctx)
   {
     UNUSED_PARAMETER(ctx);
-    Internal("RegalMarker::PopGroupMarkerEXT","()");
+    Internal("Regal::Marker::PopGroupMarkerEXT","()");
     std::string m;
     m.swap(markerStack.back());
     markerStack.pop_back();

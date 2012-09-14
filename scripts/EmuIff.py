@@ -221,8 +221,8 @@ iffFormulae = {
         'impl' : [ 'return _context->iff->CreateShader( _context, ${arg0} );', ],
     },
     'Hint' : {
-        'entries' : [ 'glHint', ],
-        'impl' : [ 'return _context->iff->Hint( _context, ${arg0plus} );', ],
-    },
+        'entries' : [ 'glHint' ],
+        'impl' : [ ],
+    }
 }
 

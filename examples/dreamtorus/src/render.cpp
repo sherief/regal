@@ -48,6 +48,8 @@ struct Torus {
     Torus( float c, float t ) : circleRadius( c ), tubeRadius( t ) {}
     void Vertex( float u, float v )
     {
+        glPushGroupMarkerEXT(0, "Torus::Vertex");
+
         float theta = (float) (u * 2.0 * M_PI);
         float rho   = (float) (v * 2.0 * M_PI);
         float x     = (float) (cos( theta ) * ( circleRadius + cos( rho ) * tubeRadius ));
@@ -60,6 +62,8 @@ struct Torus {
         glNormal3f( nx, ny, nz );
         glMultiTexCoord2f( texunit, u, v );
         glVertex3f( x, y, z );
+
+        glPopGroupMarkerEXT();
     }
 };
 

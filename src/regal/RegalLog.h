@@ -87,6 +87,14 @@ REGAL_NAMESPACE_BEGIN
 # define REGAL_LOG_HTTP 1
 #endif
 
+#ifndef REGAL_LOG
+# ifdef NDEBUG
+#  define REGAL_LOG 0
+# else
+#  define REGAL_LOG 1
+# endif
+#endif
+
 #ifndef REGAL_LOG_MAX_LINES
 # define REGAL_LOG_MAX_LINES -1 // unlimited by default
 #endif
@@ -97,14 +105,6 @@ REGAL_NAMESPACE_BEGIN
 
 #ifndef REGAL_LOG_CALLBACK
 # define REGAL_LOG_CALLBACK 1
-#endif
-
-#ifndef REGAL_LOG_STDOUT
-# ifdef NDEBUG
-#  define REGAL_LOG_STDOUT 0
-# else
-#  define REGAL_LOG_STDOUT 1
-# endif
 #endif
 
 #ifdef REGAL_LOG_ALL
@@ -145,8 +145,17 @@ namespace Logging
 
   extern int  maxLines;
 
+  // Callback output
+
   extern bool callback;
-  extern bool stdOut;
+
+  // Logging output
+
+  extern bool         log;
+  extern std::string  logFilename;
+  extern FILE        *logOutput;
+
+  // JSON output
 
   extern bool         json;
   extern std::string  jsonFilename;

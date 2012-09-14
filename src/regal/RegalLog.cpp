@@ -88,7 +88,10 @@ namespace Logging {
   int maxLines = (REGAL_LOG_MAX_LINES);
 
   bool callback = (REGAL_LOG_CALLBACK);
-  bool stdOut   = (REGAL_LOG_STDOUT);
+
+  bool         log          = (REGAL_LOG);
+  std::string  logFilename  = "stdout";
+  FILE        *logOutput    = NULL;
 
   bool         json         = false;
   std::string  jsonFilename;
@@ -132,8 +135,14 @@ namespace Logging {
     const char *ml = GetEnv("REGAL_LOG_MAX_LINES");
     if (ml) maxLines = atoi(ml);
 
-    const char *bl = GetEnv("REGAL_HTTP_LOG_LIMIT");
-    if (bl) bufferLimit = atoi(bl);
+    const char *cb = GetEnv("REGAL_LOG_CALLBACK");
+    if (cb) callback = atoi(cb)!=0;
+
+    const char *rl = GetEnv("REGAL_LOG");
+    if (rl) log = atoi(rl)!=0;
+
+    const char *rlf = GetEnv("REGAL_LOG_FILE");
+    if (rlf) logFilename = rlf;
 
     const char *js = GetEnv("REGAL_LOG_JSON");
     if (js) json = atoi(js)!=0;
@@ -141,11 +150,8 @@ namespace Logging {
     const char *jf = GetEnv("REGAL_LOG_JSON_FILE");
     if (jf) jsonFilename = jf;
 
-    const char *cb = GetEnv("REGAL_LOG_CALLBACK");
-    if (cb) callback = atoi(cb)!=0;
-
-    const char *so = GetEnv("REGAL_LOG_STDOUT");
-    if (so) stdOut = atoi(so)!=0;
+    const char *bl = GetEnv("REGAL_HTTP_LOG_LIMIT");
+    if (bl) bufferLimit = atoi(bl);
 #endif
 
 #ifdef REGAL_HTTP_LOG_LIMIT
@@ -156,6 +162,19 @@ namespace Logging {
 
     if (bufferLimit)
       buffer = new list<string>();
+
+    if (logFilename.length())
+    {
+      if (logFilename=="stdout")
+        logOutput = stdout;
+      else
+      {
+        if (logFilename=="stderr")
+          logOutput = stderr;
+        else
+          logOutput = fopen(logFilename.c_str(),"wt");
+      }
+    }
 
     if (jsonFilename.length())
     {
@@ -201,6 +220,10 @@ namespace Logging {
 
 #if REGAL_LOG_HTTP
     Info("REGAL_LOG_HTTP     ", enableHttp     ? "enabled" : "disabled");
+#endif
+
+#if REGAL_LOG_JSON
+    Info("REGAL_LOG          ", log            ? "enabled" : "disabled");
 #endif
 
 #if REGAL_LOG_JSON
@@ -408,20 +431,20 @@ namespace Logging {
       }
 #endif
 
-#if REGAL_LOG_STDOUT
-      if (stdOut)
+#if REGAL_LOG
+      if (log && logOutput)
       {
 #if REGAL_SYS_WGL
         OutputDebugStringA(m.c_str());
-        fprintf(stdout, "%s", m.c_str());
-        fflush(stdout);
+        fprintf(logOutput, "%s", m.c_str());
+        fflush(logOutput);
 #elif REGAL_SYS_ANDROID
 #elif REGAL_SYS_NACL
-        fprintf(stdout, "%s", m.c_str());
-        fflush(stdout);
+        fprintf(logOutput, "%s", m.c_str());
+        fflush(logOutput);
 #else
-        fprintf(stdout, "%s", m.c_str());
-        fflush(stdout);
+        fprintf(logOutput, "%s", m.c_str());
+        fflush(logOutput);
 #endif
       }
 #endif

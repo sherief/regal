@@ -15584,6 +15584,11 @@ REGAL_DECL void REGAL_CALL glStringMarkerGREMEDY(GLsizei len, const GLvoid *stri
   RegalContext *_context = GET_REGAL_CONTEXT();
   App("glStringMarkerGREMEDY","(", len, ", ", string, ")");
   if (!_context) return;
+  if (_context->marker) {
+    _context->marker->InsertEventMarker( _context, len, string );
+    RegalAssert(_context->info);
+    if (!_context->info->gl_gremedy_string_marker) return;
+  }
   _context->dispatcher.call(&_context->dispatcher.table().glStringMarkerGREMEDY)(len, string);
 }
 

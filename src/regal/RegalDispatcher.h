@@ -54,7 +54,9 @@ public:
    DispatchTable error;
 #endif
 
+#if REGAL_EMULATION
    DispatchTable emulation;
+#endif
 
 #if REGAL_LOG
    DispatchTable logging;
@@ -67,23 +69,6 @@ public:
 public:
   Dispatcher();
   ~Dispatcher();
-
-  void StepDown()
-  {
-    ++current;
-    while (!enabled[current])
-      ++current;
-    RegalAssert(current<enabled.size());
-    RegalAssert(current<disabled.size());
-  }
-
-  void StepUp()
-  {
-    RegalAssert(current>0);
-    --current;
-    while (!enabled[current] && current>0)
-      --current;
-  }
 
   void push_back(DispatchTable &table, bool enable);
 
@@ -116,11 +101,10 @@ public:
 
     RegalAssert(current<enabled.size());
 
-    std::size_t i = current;
-    while (!enabled[i])
-      ++i;
+    while (!enabled[current])
+      ++current;
 
-    DispatchTable *t = enabled[i];
+    DispatchTable *t = enabled[current];
 
     RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(t));
     RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(t+1));
@@ -131,10 +115,10 @@ public:
 
     while (!f)
     {
-      for (++i; !enabled[i]; ++i) {}
-      RegalAssert(i<enabled.size());
-      RegalAssert(enabled[i]);
-      f = *reinterpret_cast<T *>(reinterpret_cast<char *>(enabled[i])+offset);
+      for (++current; !enabled[current]; ++current) {}
+      RegalAssert(current<enabled.size());
+      RegalAssert(enabled[current]);
+      f = *reinterpret_cast<T *>(reinterpret_cast<char *>(enabled[current])+offset);
     }
 
     return f;
@@ -144,25 +128,45 @@ public:
   {
   public:
     ScopedStep(Dispatcher &dispatcher)
-    : _dispatcher(dispatcher)
+    : _dispatcher(dispatcher),
+      _previous(dispatcher.current)
     {
-      _dispatcher.StepDown();
+      ++dispatcher.current;
+      
+      // Skip disabled layers
+
+      while (!dispatcher.enabled[dispatcher.current])
+        ++dispatcher.current;
+
+      RegalAssert(dispatcher.current<dispatcher.enabled.size());
+      RegalAssert(dispatcher.current<dispatcher.disabled.size());
     }
 
     ScopedStep(Dispatcher *dispatcher)
-    : _dispatcher(*dispatcher)
+    : _dispatcher(*dispatcher),
+      _previous(dispatcher->current)
     {
       RegalAssert(dispatcher);
-      _dispatcher.StepDown();
+
+      ++dispatcher->current;
+      
+      // Skip disabled layers
+
+      while (!dispatcher->enabled[dispatcher->current])
+        ++dispatcher->current;
+
+      RegalAssert(dispatcher->current<dispatcher->enabled.size());
+      RegalAssert(dispatcher->current<dispatcher->disabled.size());
     }
 
     ~ScopedStep()
     {
-      _dispatcher.StepUp();
+      _dispatcher.current = _previous;
     }
 
   private:
-    Dispatcher &_dispatcher;
+    Dispatcher  &_dispatcher;
+    std::size_t  _previous;    // Previous current
 
     // make these private, not needed
 
@@ -174,7 +178,7 @@ private:
   std::vector<DispatchTable *> enabled;
   std::vector<DispatchTable *> disabled;
 
-  std::size_t current;   // 0 is the top, enabled.size()-1 the bottom
+  std::size_t                  current;   // 0 is the top, enabled.size()-1 the bottom
 };
 
 REGAL_NAMESPACE_END

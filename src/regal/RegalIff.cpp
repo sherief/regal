@@ -53,8 +53,7 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-namespace {
-    static int progcount = -1;
+  static int progcount = -1;
 
     typedef RegalIff RFF;
     typedef RegalIff::State State;
@@ -146,20 +145,20 @@ namespace {
         }
         if( st.lighting ) {
             src << "\n";
-            src << "#define ME_AMBIENT " << ME_Ambient << "\n";
-            src << "#define ME_DIFFUSE " << ME_Diffuse << "\n";
-            src << "#define ME_SPECULAR " << ME_Specular << "\n";
-            src << "#define ME_EMISSION " << ME_Emission << "\n";
-            src << "#define ME_SHININESS " << ME_Shininess << "\n";
-            src << "#define ME_ELEMENTS " << ME_Elements << "\n";
+            src << "#define ME_AMBIENT "   << int(ME_Ambient) << "\n";
+            src << "#define ME_DIFFUSE "   << int(ME_Diffuse) << "\n";
+            src << "#define ME_SPECULAR "  << int(ME_Specular) << "\n";
+            src << "#define ME_EMISSION "  << int(ME_Emission) << "\n";
+            src << "#define ME_SHININESS " << int(ME_Shininess) << "\n";
+            src << "#define ME_ELEMENTS "  << int(ME_Elements) << "\n";
             src << "\n";
-            src << "#define LE_AMBIENT " << LE_Ambient << "\n";
-            src << "#define LE_DIFFUSE " << LE_Diffuse << "\n";
-            src << "#define LE_SPECULAR " << LE_Specular << "\n";
-            src << "#define LE_POSITION " << LE_Position << "\n";
-            src << "#define LE_SPOTDIR " << LE_SpotDir << "\n";
-            src << "#define LE_ATTEN " << LE_Atten << "\n";
-            src << "#define LE_ELEMENTS " << LE_Elements << "\n";
+            src << "#define LE_AMBIENT "  << int(LE_Ambient) << "\n";
+            src << "#define LE_DIFFUSE "  << int(LE_Diffuse) << "\n";
+            src << "#define LE_SPECULAR " << int(LE_Specular) << "\n";
+            src << "#define LE_POSITION " << int(LE_Position) << "\n";
+            src << "#define LE_SPOTDIR "  << int(LE_SpotDir) << "\n";
+            src << "#define LE_ATTEN "    << int(LE_Atten) << "\n";
+            src << "#define LE_ELEMENTS " << int(LE_Elements) << "\n";
             src << "\n";
         }
 
@@ -1101,10 +1100,9 @@ namespace {
         return r;
     }
 
-    // debug
-    GLchar dbgLog[1<<15];
-    GLsizei dbgLogLen;
-}
+// debug
+static GLchar dbgLog[1<<15];
+static GLsizei dbgLogLen;
 
 bool State::SetEnable( RFF * ffn, bool enable, GLenum cap ) {
     RFF::Version & ver = ffn->ver;

@@ -123,6 +123,7 @@ def foldImpossibleReturn(code):
 #
 # ->
 #
+# case c:
 # default:  { ... }
 #
 
@@ -134,7 +135,7 @@ def foldRedundantCase(code):
     while (j+1)<len(tmp) and tmp[j].strip().startswith('case ') and tmp[j].strip().endswith(':'):
       j = j + 1
     if (j+1)<len(tmp) and tmp[j].strip().startswith('default:'):
-      del tmp[i:j]
+      del tmp[i:j-1]
       i = j + 1
     else:
       i = i + 1

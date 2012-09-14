@@ -115,7 +115,7 @@ def apiEmuFuncDefineCode(apis, args):
                   code += '       case %d :\n' % l['level']
                   if l['ifdef']:
                       code += '         #if %s\n' % l['ifdef']
-                  if e != None and 'prefix' in e :
+                  if e != None and 'prefix' in e and len(e['prefix']):
                       if l['member'] :
                           code += '         if (_context->%s) {\n' % l['member']
                           code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
@@ -151,7 +151,7 @@ def apiEmuFuncDefineCode(apis, args):
                   code += '       case %d :\n' % l['level']
                   if l['ifdef']:
                       code += '         #if %s\n' % l['ifdef']
-                  if e != None and 'impl' in e :
+                  if e != None and 'impl' in e and len(e['impl']):
                       if l['member'] :
                         code += '         if (_context->%s) {\n' % l['member']
                         code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
@@ -164,9 +164,9 @@ def apiEmuFuncDefineCode(apis, args):
                   if l['ifdef']:
                       code += '         #endif\n'
               code += '       default: {\n'
-              # debug print
-              # code += '           %s\n' % debugPrintFunction( function, 'GTrace' )
-              # debug print
+
+              # glEnable/glDisable/glIsEnabled constraints for ES 2.0
+              # http://www.khronos.org/opengles/sdk/docs/man/xhtml/glEnable.xml
 
               if name=='glEnable' or name=='glDisable' or name=='glIsEnabled':
                 code += '         if (_context->info->gles)\n'
@@ -184,6 +184,28 @@ def apiEmuFuncDefineCode(apis, args):
                   code += '               return GL_FALSE;\n'
                 else:
                   code += '               return;\n'
+                code += '           }\n'
+
+              # glHint constraints for ES 2.0
+              # http://www.khronos.org/opengles/sdk/docs/man/xhtml/glHint.xml
+
+              if name=='glHint':
+                code += '         if (_context->info->gles)\n'
+                code += '           switch (target)\n'
+                code += '           {\n'
+                for i in api.enums:
+                  if i.name=='defines':
+                    for j in i.enumerants:
+                      if getattr(j,'esVersions',None)==None:
+                        continue
+                      if getattr(j,'hint',None)==None:
+                        continue
+                      if getattr(j,'esVersions',None) != None and getattr(j,'hint',None) != None and 2.0 in j.esVersions and j.hint == True:
+                        code += '             case %s:\n'%(j.name)
+                code += '               break;\n'
+                code += '             default:\n'
+                code += '               Warning("%s does not support ",GLenumToString(target)," for ES 2.0.");\n'%(name)
+                code += '               return;\n'
                 code += '           }\n'
 
               code += '         Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'

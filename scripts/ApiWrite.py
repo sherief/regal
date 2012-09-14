@@ -94,6 +94,8 @@ defines = Enum('defines')
         print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
       if getattr(j,'enableCap',None) != None:
         print >>file, '%s.enableCap = %s'%(j.name,j.enableCap)
+      if getattr(j,'hint',None) != None:
+        print >>file, '%s.hint = %s'%(j.name,j.hint)
       if getattr(j,'gluErrorString',None) != None:
         print >>file, '%s.gluErrorString = \'%s\''%(j.name,j.gluErrorString)
     print >>file, ''
