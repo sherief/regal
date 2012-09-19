@@ -101,7 +101,25 @@ namespace Logging {
   std::size_t             bufferSize  = 0;
   std::size_t             bufferLimit = 500;
 
+  bool initialized = false;
+
   Timer                   timer;
+
+  inline FILE *openFile(const std::string &filename)
+  {
+    if (filename.length())
+    {
+      if (filename=="stdout")
+        return stdout;
+
+      if (filename=="stderr")
+        return stderr;
+
+      return fopen(filename.c_str(),"wt");
+    }
+
+    return NULL;
+  }
 
   void Init()
   {
@@ -163,36 +181,15 @@ namespace Logging {
     if (bufferLimit)
       buffer = new list<string>();
 
-    if (logFilename.length())
-    {
-      if (logFilename=="stdout")
-        logOutput = stdout;
-      else
-      {
-        if (logFilename=="stderr")
-          logOutput = stderr;
-        else
-          logOutput = fopen(logFilename.c_str(),"wt");
-      }
-    }
+    logOutput = openFile(logFilename);
 
-    if (jsonFilename.length())
-    {
-      if (jsonFilename=="stdout")
-        jsonOutput = stdout;
-      else
-      {
-        if (jsonFilename=="stderr")
-          jsonOutput = stderr;
-        else
-          jsonOutput = fopen(jsonFilename.c_str(),"wt");
-      }
-
-      if (jsonOutput)
-        fprintf(jsonOutput,"%s","{ \"traceEvents\" : [\n");
-    }
+    jsonOutput = openFile(jsonFilename);
+    if (jsonOutput)
+      fprintf(jsonOutput,"%s","{ \"traceEvents\" : [\n");
 
     Internal("Logging::Init","()");
+
+    initialized = true;
 
 #if REGAL_LOG_ERROR
     Info("REGAL_LOG_ERROR    ", enableError    ? "enabled" : "disabled");
@@ -239,6 +236,22 @@ namespace Logging {
 #endif
   }
 
+  void Cleanup()
+  {
+    Internal("Logging::Cleanup","()");
+
+    initialized = false;
+
+    fclose(logOutput);
+    logOutput = NULL;
+
+    if (jsonOutput)
+      fprintf(jsonOutput,"%s","{} ] }\n");
+
+    fclose(jsonOutput);
+    jsonOutput = NULL;
+  }
+
   inline size_t indent()
   {
     // For OSX we need avoid GET_REGAL_CONTEXT implicitly
@@ -259,26 +272,6 @@ namespace Logging {
       indent += rCtx->marker ? rCtx->marker->indent() : 0;
     }
     return indent;
-  }
-
-  void Cleanup()
-  {
-    Internal("Logging::Cleanup","()");
-
-    if (jsonFilename.length())
-    {
-      if (jsonOutput)
-      {
-        if (jsonOutput)
-          fprintf(jsonOutput,"%s","{} ] }\n");
-
-        if (jsonFilename!="stdout" && jsonFilename!="stderr")
-        {
-          fclose(jsonOutput);
-          jsonOutput = stdout;
-        }
-      }
-    }
   }
 
   inline string message(const char *prefix, const char *delim, const char *name, const string &str)
@@ -396,7 +389,7 @@ namespace Logging {
 
   void Output(const char *prefix, const char *delim, const char *name, const string &str)
   {
-    if (str.length())
+    if (initialized && str.length())
     {
       string m = message(prefix,delim,name,str);
 

@@ -737,7 +737,7 @@ glutCreateWindow(const char *title)
   textprop.value = (unsigned char *) title;
   textprop.encoding = XA_STRING;
   textprop.format = 8;
-  textprop.nitems = strlen(title);
+  textprop.nitems = (unsigned long) strlen(title);
 #if defined(_WIN32)
   SetWindowText(win, title);
   if (__glutIconic) {

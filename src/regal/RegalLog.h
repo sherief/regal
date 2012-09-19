@@ -166,6 +166,10 @@ namespace Logging
   extern std::list<std::string> *buffer;
   extern std::size_t             bufferSize;
   extern std::size_t             bufferLimit;
+
+  // Internal housekeeping
+
+  extern bool initialized;
 }
 
 #if REGAL_LOG_ERROR

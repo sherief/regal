@@ -92,11 +92,11 @@ __glutFinishMenu(Window win, int x, int y)
 }
 
 static void
-mapMenu(GLUTmenu * menu, int x, int y)
+mapMenu(GLUTmenu * menu, GLUTwindow * window, int x, int y)
 {
   TrackPopupMenu((HMENU) menu->win, TPM_LEFTALIGN |
     ((__glutMenuButton == TPM_RIGHTBUTTON) ? TPM_RIGHTBUTTON : TPM_LEFTBUTTON),
-    x, y, 0, __glutCurrentWindow->win, NULL);
+    x, y, 0, window->win, NULL);
 }
 
 void
@@ -112,7 +112,7 @@ __glutStartMenu(GLUTmenu * menu, GLUTwindow * window,
     __glutSetWindow(window);
     __glutMenuStatusFunc(GLUT_MENU_IN_USE, x_win, y_win);
   }
-  mapMenu(menu, x, y);
+  mapMenu(menu, window, x, y);
 }
 
 GLUTmenuItem *

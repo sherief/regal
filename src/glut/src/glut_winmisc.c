@@ -33,7 +33,7 @@ glutSetWindowTitle(const char *title)
   textprop.value = (unsigned char *) title;
   textprop.encoding = XA_STRING;
   textprop.format = 8;
-  textprop.nitems = strlen(title);
+  textprop.nitems = (unsigned long) strlen(title);
   XSetWMName(__glutDisplay,
     __glutCurrentWindow->win, &textprop);
   XFlush(__glutDisplay);
@@ -49,7 +49,7 @@ glutSetIconTitle(const char *title)
   textprop.value = (unsigned char *) title;
   textprop.encoding = XA_STRING;
   textprop.format = 8;
-  textprop.nitems = strlen(title);
+  textprop.nitems = (unsigned long) strlen(title);
   XSetWMIconName(__glutDisplay,
     __glutCurrentWindow->win, &textprop);
   XFlush(__glutDisplay);

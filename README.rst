@@ -214,7 +214,6 @@ Regal OpenGL extensions
 In Progress
 ===========
 
-* Google Native Client (NaCL) 1st class support
 * glPushAttrib emulation
 
 Planned Features
@@ -247,6 +246,43 @@ Other Information
 .. raw:: html
 
     <iframe src="http://www.slideshare.net/slideshow/embed_code/13870512" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+
+Platform Notes
+==============
+
+Windows
+-------
+
+Linux
+-----
+
+* Use GNU make with Makefile
+
+ ``$ make -f Makefile CCACHE=ccache STRIP=``
+
+* Set **LD_LIBRARY_PATH**
+
+ ``$ export LD_LIBRARY_PATH=`pwd`/lib``
+
+* Run the dreamtorus example
+
+ ``$ REGAL_FORCE_EMULATION=1; bin/dreamtorus``
+
+ ``$ REGAL_FORCE_EMULATION=0; bin/dreamtorus``
+
+ ``$ REGAL_LOG_DRIVER=1; bin/dreamtorus``
+
+OS X
+----
+
+Android
+-------
+
+iOS
+---
+
+NaCL
+----
 
 License and Credits
 ===================

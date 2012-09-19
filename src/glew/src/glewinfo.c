@@ -4702,9 +4702,9 @@ static void _glewInfo_GL_KHR_debug (void)
   glewInfoFunc("glGetDebugMessageLog", glGetDebugMessageLog == NULL);
   glewInfoFunc("glGetObjectLabel", glGetObjectLabel == NULL);
   glewInfoFunc("glGetObjectPtrLabel", glGetObjectPtrLabel == NULL);
-  glewInfoFunc("glGetPointerv", glGetPointerv == NULL);
   glewInfoFunc("glObjectLabel", glObjectLabel == NULL);
   glewInfoFunc("glObjectPtrLabel", glObjectPtrLabel == NULL);
+  glewInfoFunc("glPopDebugGroup", glPopDebugGroup == NULL);
   glewInfoFunc("glPushDebugGroup", glPushDebugGroup == NULL);
 }
 
@@ -4806,6 +4806,18 @@ static void _glewInfo_GL_MESA_ycbcr_texture (void)
 
 #endif /* GL_MESA_ycbcr_texture */
 
+#ifdef GL_NVX_conditional_render
+
+static void _glewInfo_GL_NVX_conditional_render (void)
+{
+  glewPrintExt("GL_NVX_conditional_render", GLEW_NVX_conditional_render, glewIsSupported("GL_NVX_conditional_render"), glewGetExtension("GL_NVX_conditional_render"));
+
+  glewInfoFunc("glBeginConditionalRenderNVX", glBeginConditionalRenderNVX == NULL);
+  glewInfoFunc("glEndConditionalRenderNVX", glEndConditionalRenderNVX == NULL);
+}
+
+#endif /* GL_NVX_conditional_render */
+
 #ifdef GL_NVX_gpu_memory_info
 
 static void _glewInfo_GL_NVX_gpu_memory_info (void)
@@ -4847,6 +4859,15 @@ static void _glewInfo_GL_NV_blend_square (void)
 
 #endif /* GL_NV_blend_square */
 
+#ifdef GL_NV_compute_program5
+
+static void _glewInfo_GL_NV_compute_program5 (void)
+{
+  glewPrintExt("GL_NV_compute_program5", GLEW_NV_compute_program5, glewIsSupported("GL_NV_compute_program5"), glewGetExtension("GL_NV_compute_program5"));
+}
+
+#endif /* GL_NV_compute_program5 */
+
 #ifdef GL_NV_conditional_render
 
 static void _glewInfo_GL_NV_conditional_render (void)
@@ -4878,6 +4899,15 @@ static void _glewInfo_GL_NV_copy_image (void)
 }
 
 #endif /* GL_NV_copy_image */
+
+#ifdef GL_NV_deep_texture3D
+
+static void _glewInfo_GL_NV_deep_texture3D (void)
+{
+  glewPrintExt("GL_NV_deep_texture3D", GLEW_NV_deep_texture3D, glewIsSupported("GL_NV_deep_texture3D"), glewGetExtension("GL_NV_deep_texture3D"));
+}
+
+#endif /* GL_NV_deep_texture3D */
 
 #ifdef GL_NV_depth_buffer_float
 
@@ -5412,6 +5442,15 @@ static void _glewInfo_GL_NV_register_combiners2 (void)
 
 #endif /* GL_NV_register_combiners2 */
 
+#ifdef GL_NV_shader_atomic_counters
+
+static void _glewInfo_GL_NV_shader_atomic_counters (void)
+{
+  glewPrintExt("GL_NV_shader_atomic_counters", GLEW_NV_shader_atomic_counters, glewIsSupported("GL_NV_shader_atomic_counters"), glewGetExtension("GL_NV_shader_atomic_counters"));
+}
+
+#endif /* GL_NV_shader_atomic_counters */
+
 #ifdef GL_NV_shader_atomic_float
 
 static void _glewInfo_GL_NV_shader_atomic_float (void)
@@ -5443,6 +5482,15 @@ static void _glewInfo_GL_NV_shader_buffer_load (void)
 }
 
 #endif /* GL_NV_shader_buffer_load */
+
+#ifdef GL_NV_shader_storage_buffer_object
+
+static void _glewInfo_GL_NV_shader_storage_buffer_object (void)
+{
+  glewPrintExt("GL_NV_shader_storage_buffer_object", GLEW_NV_shader_storage_buffer_object, glewIsSupported("GL_NV_shader_storage_buffer_object"), glewGetExtension("GL_NV_shader_storage_buffer_object"));
+}
+
+#endif /* GL_NV_shader_storage_buffer_object */
 
 #ifdef GL_NV_tessellation_program5
 
@@ -7398,6 +7446,16 @@ static void _glewInfo_GLX_3DFX_multisample (void)
 static void _glewInfo_GLX_AMD_gpu_association (void)
 {
   glewPrintExt("GLX_AMD_gpu_association", GLXEW_AMD_gpu_association, glxewIsSupported("GLX_AMD_gpu_association"), glxewGetExtension("GLX_AMD_gpu_association"));
+
+  glewInfoFunc("glXBlitContextFramebufferAMD", glXBlitContextFramebufferAMD == NULL);
+  glewInfoFunc("glXCreateAssociatedContextAMD", glXCreateAssociatedContextAMD == NULL);
+  glewInfoFunc("glXCreateAssociatedContextAttribsAMD", glXCreateAssociatedContextAttribsAMD == NULL);
+  glewInfoFunc("glXDeleteAssociatedContextAMD", glXDeleteAssociatedContextAMD == NULL);
+  glewInfoFunc("glXGetContextGPUIDAMD", glXGetContextGPUIDAMD == NULL);
+  glewInfoFunc("glXGetCurrentAssociatedContextAMD", glXGetCurrentAssociatedContextAMD == NULL);
+  glewInfoFunc("glXGetGPUIDsAMD", glXGetGPUIDsAMD == NULL);
+  glewInfoFunc("glXGetGPUInfoAMD", glXGetGPUInfoAMD == NULL);
+  glewInfoFunc("glXMakeAssociatedContextCurrentAMD", glXMakeAssociatedContextCurrentAMD == NULL);
 }
 
 #endif /* GLX_AMD_gpu_association */
@@ -7785,11 +7843,11 @@ static void _glewInfo_GLX_NV_video_capture (void)
 
 #endif /* GLX_NV_video_capture */
 
-#ifdef GLX_NV_video_out
+#ifdef GLX_NV_video_output
 
-static void _glewInfo_GLX_NV_video_out (void)
+static void _glewInfo_GLX_NV_video_output (void)
 {
-  glewPrintExt("GLX_NV_video_out", GLXEW_NV_video_out, glxewIsSupported("GLX_NV_video_out"), glxewGetExtension("GLX_NV_video_out"));
+  glewPrintExt("GLX_NV_video_output", GLXEW_NV_video_output, glxewIsSupported("GLX_NV_video_output"), glxewGetExtension("GLX_NV_video_output"));
 
   glewInfoFunc("glXBindVideoImageNV", glXBindVideoImageNV == NULL);
   glewInfoFunc("glXGetVideoDeviceNV", glXGetVideoDeviceNV == NULL);
@@ -7799,7 +7857,7 @@ static void _glewInfo_GLX_NV_video_out (void)
   glewInfoFunc("glXSendPbufferToVideoNV", glXSendPbufferToVideoNV == NULL);
 }
 
-#endif /* GLX_NV_video_out */
+#endif /* GLX_NV_video_output */
 
 #ifdef GLX_OML_swap_method
 
@@ -9016,6 +9074,9 @@ static void glewInfo (void)
 #ifdef GL_MESA_ycbcr_texture
   _glewInfo_GL_MESA_ycbcr_texture();
 #endif /* GL_MESA_ycbcr_texture */
+#ifdef GL_NVX_conditional_render
+  _glewInfo_GL_NVX_conditional_render();
+#endif /* GL_NVX_conditional_render */
 #ifdef GL_NVX_gpu_memory_info
   _glewInfo_GL_NVX_gpu_memory_info();
 #endif /* GL_NVX_gpu_memory_info */
@@ -9025,6 +9086,9 @@ static void glewInfo (void)
 #ifdef GL_NV_blend_square
   _glewInfo_GL_NV_blend_square();
 #endif /* GL_NV_blend_square */
+#ifdef GL_NV_compute_program5
+  _glewInfo_GL_NV_compute_program5();
+#endif /* GL_NV_compute_program5 */
 #ifdef GL_NV_conditional_render
   _glewInfo_GL_NV_conditional_render();
 #endif /* GL_NV_conditional_render */
@@ -9034,6 +9098,9 @@ static void glewInfo (void)
 #ifdef GL_NV_copy_image
   _glewInfo_GL_NV_copy_image();
 #endif /* GL_NV_copy_image */
+#ifdef GL_NV_deep_texture3D
+  _glewInfo_GL_NV_deep_texture3D();
+#endif /* GL_NV_deep_texture3D */
 #ifdef GL_NV_depth_buffer_float
   _glewInfo_GL_NV_depth_buffer_float();
 #endif /* GL_NV_depth_buffer_float */
@@ -9136,12 +9203,18 @@ static void glewInfo (void)
 #ifdef GL_NV_register_combiners2
   _glewInfo_GL_NV_register_combiners2();
 #endif /* GL_NV_register_combiners2 */
+#ifdef GL_NV_shader_atomic_counters
+  _glewInfo_GL_NV_shader_atomic_counters();
+#endif /* GL_NV_shader_atomic_counters */
 #ifdef GL_NV_shader_atomic_float
   _glewInfo_GL_NV_shader_atomic_float();
 #endif /* GL_NV_shader_atomic_float */
 #ifdef GL_NV_shader_buffer_load
   _glewInfo_GL_NV_shader_buffer_load();
 #endif /* GL_NV_shader_buffer_load */
+#ifdef GL_NV_shader_storage_buffer_object
+  _glewInfo_GL_NV_shader_storage_buffer_object();
+#endif /* GL_NV_shader_storage_buffer_object */
 #ifdef GL_NV_tessellation_program5
   _glewInfo_GL_NV_tessellation_program5();
 #endif /* GL_NV_tessellation_program5 */
@@ -9747,9 +9820,9 @@ static void glxewInfo ()
 #ifdef GLX_NV_video_capture
   _glewInfo_GLX_NV_video_capture();
 #endif /* GLX_NV_video_capture */
-#ifdef GLX_NV_video_out
-  _glewInfo_GLX_NV_video_out();
-#endif /* GLX_NV_video_out */
+#ifdef GLX_NV_video_output
+  _glewInfo_GLX_NV_video_output();
+#endif /* GLX_NV_video_output */
 #ifdef GLX_OML_swap_method
   _glewInfo_GLX_OML_swap_method();
 #endif /* GLX_OML_swap_method */

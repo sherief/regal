@@ -83,6 +83,9 @@
 #if defined(__gl_h_) || defined(__GL_H__) || defined(__X_GL_H)
 #error gl.h included before glew.h
 #endif
+#if defined(__gl2_h_)
+#error gl2.h included before glew.h
+#endif
 #if defined(__REGAL_H__)
 #error Regal.h included before glew.h
 #endif
@@ -94,6 +97,7 @@
 #endif
 
 #define __gl_h_
+#define __gl2_h_
 #define __GL_H__
 #define __REGAL_H__
 #define __X_GL_H
@@ -10597,9 +10601,9 @@ typedef void (GLAPIENTRY * PFNGLDEBUGMESSAGEINSERTPROC) (GLenum source, GLenum t
 typedef GLuint (GLAPIENTRY * PFNGLGETDEBUGMESSAGELOGPROC) (GLuint count, GLsizei bufsize, GLenum* sources, GLenum* types, GLuint* ids, GLenum* severities, GLsizei* lengths, GLchar* messageLog);
 typedef void (GLAPIENTRY * PFNGLGETOBJECTLABELPROC) (GLenum identifier, GLuint name, GLsizei bufSize, GLsizei* length, GLchar *label);
 typedef void (GLAPIENTRY * PFNGLGETOBJECTPTRLABELPROC) (void* ptr, GLsizei bufSize, GLsizei* length, GLchar *label);
-typedef void (GLAPIENTRY * PFNGLGETPOINTERVPROC) (GLenum pname, void** params);
 typedef void (GLAPIENTRY * PFNGLOBJECTLABELPROC) (GLenum identifier, GLuint name, GLsizei length, const GLchar* label);
 typedef void (GLAPIENTRY * PFNGLOBJECTPTRLABELPROC) (void* ptr, GLsizei length, const GLchar* label);
+typedef void (GLAPIENTRY * PFNGLPOPDEBUGGROUPPROC) (void);
 typedef void (GLAPIENTRY * PFNGLPUSHDEBUGGROUPPROC) (GLenum source, GLuint id, GLsizei length, const GLchar * message);
 
 #define glDebugMessageCallback GLEW_GET_FUN(__glewDebugMessageCallback)
@@ -10608,9 +10612,9 @@ typedef void (GLAPIENTRY * PFNGLPUSHDEBUGGROUPPROC) (GLenum source, GLuint id, G
 #define glGetDebugMessageLog GLEW_GET_FUN(__glewGetDebugMessageLog)
 #define glGetObjectLabel GLEW_GET_FUN(__glewGetObjectLabel)
 #define glGetObjectPtrLabel GLEW_GET_FUN(__glewGetObjectPtrLabel)
-#define glGetPointerv GLEW_GET_FUN(__glewGetPointerv)
 #define glObjectLabel GLEW_GET_FUN(__glewObjectLabel)
 #define glObjectPtrLabel GLEW_GET_FUN(__glewObjectPtrLabel)
+#define glPopDebugGroup GLEW_GET_FUN(__glewPopDebugGroup)
 #define glPushDebugGroup GLEW_GET_FUN(__glewPushDebugGroup)
 
 #define GLEW_KHR_debug GLEW_GET_VAR(__GLEW_KHR_debug)
@@ -10793,6 +10797,21 @@ typedef void (GLAPIENTRY * PFNGLWINDOWPOS4SVMESAPROC) (const GLshort* p);
 
 #endif /* GL_MESA_ycbcr_texture */
 
+/* ----------------------- GL_NVX_conditional_render ----------------------- */
+
+#ifndef GL_NVX_conditional_render
+#define GL_NVX_conditional_render 1
+
+typedef void (GLAPIENTRY * PFNGLBEGINCONDITIONALRENDERNVXPROC) (GLuint id);
+typedef void (GLAPIENTRY * PFNGLENDCONDITIONALRENDERNVXPROC) (void);
+
+#define glBeginConditionalRenderNVX GLEW_GET_FUN(__glewBeginConditionalRenderNVX)
+#define glEndConditionalRenderNVX GLEW_GET_FUN(__glewEndConditionalRenderNVX)
+
+#define GLEW_NVX_conditional_render GLEW_GET_VAR(__GLEW_NVX_conditional_render)
+
+#endif /* GL_NVX_conditional_render */
+
 /* ------------------------- GL_NVX_gpu_memory_info ------------------------ */
 
 #ifndef GL_NVX_gpu_memory_info
@@ -10854,6 +10873,18 @@ typedef void (GLAPIENTRY * PFNGLUNIFORMHANDLEUI64VNVPROC) (GLint location, GLsiz
 
 #endif /* GL_NV_blend_square */
 
+/* ------------------------- GL_NV_compute_program5 ------------------------ */
+
+#ifndef GL_NV_compute_program5
+#define GL_NV_compute_program5 1
+
+#define GL_COMPUTE_PROGRAM_NV 0x90FB
+#define GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV 0x90FC
+
+#define GLEW_NV_compute_program5 GLEW_GET_VAR(__GLEW_NV_compute_program5)
+
+#endif /* GL_NV_compute_program5 */
+
 /* ------------------------ GL_NV_conditional_render ----------------------- */
 
 #ifndef GL_NV_conditional_render
@@ -10898,6 +10929,18 @@ typedef void (GLAPIENTRY * PFNGLCOPYIMAGESUBDATANVPROC) (GLuint srcName, GLenum 
 #define GLEW_NV_copy_image GLEW_GET_VAR(__GLEW_NV_copy_image)
 
 #endif /* GL_NV_copy_image */
+
+/* -------------------------- GL_NV_deep_texture3D ------------------------- */
+
+#ifndef GL_NV_deep_texture3D
+#define GL_NV_deep_texture3D 1
+
+#define GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV 0x90D0
+#define GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV 0x90D1
+
+#define GLEW_NV_deep_texture3D GLEW_GET_VAR(__GLEW_NV_deep_texture3D)
+
+#endif /* GL_NV_deep_texture3D */
 
 /* ------------------------ GL_NV_depth_buffer_float ----------------------- */
 
@@ -12031,6 +12074,15 @@ typedef void (GLAPIENTRY * PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC) (GLenum stage
 
 #endif /* GL_NV_register_combiners2 */
 
+/* ---------------------- GL_NV_shader_atomic_counters --------------------- */
+
+#ifndef GL_NV_shader_atomic_counters
+#define GL_NV_shader_atomic_counters 1
+
+#define GLEW_NV_shader_atomic_counters GLEW_GET_VAR(__GLEW_NV_shader_atomic_counters)
+
+#endif /* GL_NV_shader_atomic_counters */
+
 /* ----------------------- GL_NV_shader_atomic_float ----------------------- */
 
 #ifndef GL_NV_shader_atomic_float
@@ -12080,6 +12132,15 @@ typedef void (GLAPIENTRY * PFNGLUNIFORMUI64VNVPROC) (GLint location, GLsizei cou
 #define GLEW_NV_shader_buffer_load GLEW_GET_VAR(__GLEW_NV_shader_buffer_load)
 
 #endif /* GL_NV_shader_buffer_load */
+
+/* ------------------- GL_NV_shader_storage_buffer_object ------------------ */
+
+#ifndef GL_NV_shader_storage_buffer_object
+#define GL_NV_shader_storage_buffer_object 1
+
+#define GLEW_NV_shader_storage_buffer_object GLEW_GET_VAR(__GLEW_NV_shader_storage_buffer_object)
+
+#endif /* GL_NV_shader_storage_buffer_object */
 
 /* ---------------------- GL_NV_tessellation_program5 ---------------------- */
 
@@ -16087,9 +16148,9 @@ GLEW_FUN_EXPORT PFNGLDEBUGMESSAGEINSERTPROC __glewDebugMessageInsert;
 GLEW_FUN_EXPORT PFNGLGETDEBUGMESSAGELOGPROC __glewGetDebugMessageLog;
 GLEW_FUN_EXPORT PFNGLGETOBJECTLABELPROC __glewGetObjectLabel;
 GLEW_FUN_EXPORT PFNGLGETOBJECTPTRLABELPROC __glewGetObjectPtrLabel;
-GLEW_FUN_EXPORT PFNGLGETPOINTERVPROC __glewGetPointerv;
 GLEW_FUN_EXPORT PFNGLOBJECTLABELPROC __glewObjectLabel;
 GLEW_FUN_EXPORT PFNGLOBJECTPTRLABELPROC __glewObjectPtrLabel;
+GLEW_FUN_EXPORT PFNGLPOPDEBUGGROUPPROC __glewPopDebugGroup;
 GLEW_FUN_EXPORT PFNGLPUSHDEBUGGROUPPROC __glewPushDebugGroup;
 
 GLEW_FUN_EXPORT PFNGLBUFFERREGIONENABLEDPROC __glewBufferRegionEnabled;
@@ -16124,6 +16185,9 @@ GLEW_FUN_EXPORT PFNGLWINDOWPOS4IMESAPROC __glewWindowPos4iMESA;
 GLEW_FUN_EXPORT PFNGLWINDOWPOS4IVMESAPROC __glewWindowPos4ivMESA;
 GLEW_FUN_EXPORT PFNGLWINDOWPOS4SMESAPROC __glewWindowPos4sMESA;
 GLEW_FUN_EXPORT PFNGLWINDOWPOS4SVMESAPROC __glewWindowPos4svMESA;
+
+GLEW_FUN_EXPORT PFNGLBEGINCONDITIONALRENDERNVXPROC __glewBeginConditionalRenderNVX;
+GLEW_FUN_EXPORT PFNGLENDCONDITIONALRENDERNVXPROC __glewEndConditionalRenderNVX;
 
 GLEW_FUN_EXPORT PFNGLGETIMAGEHANDLENVPROC __glewGetImageHandleNV;
 GLEW_FUN_EXPORT PFNGLGETTEXTUREHANDLENVPROC __glewGetTextureHandleNV;
@@ -17064,12 +17128,15 @@ GLEW_VAR_EXPORT GLboolean __GLEW_MESA_pack_invert;
 GLEW_VAR_EXPORT GLboolean __GLEW_MESA_resize_buffers;
 GLEW_VAR_EXPORT GLboolean __GLEW_MESA_window_pos;
 GLEW_VAR_EXPORT GLboolean __GLEW_MESA_ycbcr_texture;
+GLEW_VAR_EXPORT GLboolean __GLEW_NVX_conditional_render;
 GLEW_VAR_EXPORT GLboolean __GLEW_NVX_gpu_memory_info;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_bindless_texture;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_blend_square;
+GLEW_VAR_EXPORT GLboolean __GLEW_NV_compute_program5;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_conditional_render;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_copy_depth_to_color;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_copy_image;
+GLEW_VAR_EXPORT GLboolean __GLEW_NV_deep_texture3D;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_depth_buffer_float;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_depth_clamp;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_depth_range_unclamped;
@@ -17104,8 +17171,10 @@ GLEW_VAR_EXPORT GLboolean __GLEW_NV_present_video;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_primitive_restart;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_register_combiners;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_register_combiners2;
+GLEW_VAR_EXPORT GLboolean __GLEW_NV_shader_atomic_counters;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_shader_atomic_float;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_shader_buffer_load;
+GLEW_VAR_EXPORT GLboolean __GLEW_NV_shader_storage_buffer_object;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_tessellation_program5;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_texgen_emboss;
 GLEW_VAR_EXPORT GLboolean __GLEW_NV_texgen_reflection;

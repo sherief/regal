@@ -82,7 +82,7 @@ Sorter::qs1( char *a,  char *l )
     unsigned int n;
 
 start:
-    if((n=l-a) <= (unsigned int)es)
+    if((n=(unsigned int) (l-a)) <= (unsigned int)es)
 	    return;
     n = es * (n / (2*es));
     hp = lp = a+n;

@@ -1995,9 +1995,9 @@ PFNGLDEBUGMESSAGEINSERTPROC __glewDebugMessageInsert = NULL;
 PFNGLGETDEBUGMESSAGELOGPROC __glewGetDebugMessageLog = NULL;
 PFNGLGETOBJECTLABELPROC __glewGetObjectLabel = NULL;
 PFNGLGETOBJECTPTRLABELPROC __glewGetObjectPtrLabel = NULL;
-PFNGLGETPOINTERVPROC __glewGetPointerv = NULL;
 PFNGLOBJECTLABELPROC __glewObjectLabel = NULL;
 PFNGLOBJECTPTRLABELPROC __glewObjectPtrLabel = NULL;
+PFNGLPOPDEBUGGROUPPROC __glewPopDebugGroup = NULL;
 PFNGLPUSHDEBUGGROUPPROC __glewPushDebugGroup = NULL;
 
 PFNGLBUFFERREGIONENABLEDPROC __glewBufferRegionEnabled = NULL;
@@ -2032,6 +2032,9 @@ PFNGLWINDOWPOS4IMESAPROC __glewWindowPos4iMESA = NULL;
 PFNGLWINDOWPOS4IVMESAPROC __glewWindowPos4ivMESA = NULL;
 PFNGLWINDOWPOS4SMESAPROC __glewWindowPos4sMESA = NULL;
 PFNGLWINDOWPOS4SVMESAPROC __glewWindowPos4svMESA = NULL;
+
+PFNGLBEGINCONDITIONALRENDERNVXPROC __glewBeginConditionalRenderNVX = NULL;
+PFNGLENDCONDITIONALRENDERNVXPROC __glewEndConditionalRenderNVX = NULL;
 
 PFNGLGETIMAGEHANDLENVPROC __glewGetImageHandleNV = NULL;
 PFNGLGETTEXTUREHANDLENVPROC __glewGetTextureHandleNV = NULL;
@@ -2971,12 +2974,15 @@ GLboolean __GLEW_MESA_pack_invert = GL_FALSE;
 GLboolean __GLEW_MESA_resize_buffers = GL_FALSE;
 GLboolean __GLEW_MESA_window_pos = GL_FALSE;
 GLboolean __GLEW_MESA_ycbcr_texture = GL_FALSE;
+GLboolean __GLEW_NVX_conditional_render = GL_FALSE;
 GLboolean __GLEW_NVX_gpu_memory_info = GL_FALSE;
 GLboolean __GLEW_NV_bindless_texture = GL_FALSE;
 GLboolean __GLEW_NV_blend_square = GL_FALSE;
+GLboolean __GLEW_NV_compute_program5 = GL_FALSE;
 GLboolean __GLEW_NV_conditional_render = GL_FALSE;
 GLboolean __GLEW_NV_copy_depth_to_color = GL_FALSE;
 GLboolean __GLEW_NV_copy_image = GL_FALSE;
+GLboolean __GLEW_NV_deep_texture3D = GL_FALSE;
 GLboolean __GLEW_NV_depth_buffer_float = GL_FALSE;
 GLboolean __GLEW_NV_depth_clamp = GL_FALSE;
 GLboolean __GLEW_NV_depth_range_unclamped = GL_FALSE;
@@ -3011,8 +3017,10 @@ GLboolean __GLEW_NV_present_video = GL_FALSE;
 GLboolean __GLEW_NV_primitive_restart = GL_FALSE;
 GLboolean __GLEW_NV_register_combiners = GL_FALSE;
 GLboolean __GLEW_NV_register_combiners2 = GL_FALSE;
+GLboolean __GLEW_NV_shader_atomic_counters = GL_FALSE;
 GLboolean __GLEW_NV_shader_atomic_float = GL_FALSE;
 GLboolean __GLEW_NV_shader_buffer_load = GL_FALSE;
+GLboolean __GLEW_NV_shader_storage_buffer_object = GL_FALSE;
 GLboolean __GLEW_NV_tessellation_program5 = GL_FALSE;
 GLboolean __GLEW_NV_texgen_emboss = GL_FALSE;
 GLboolean __GLEW_NV_texgen_reflection = GL_FALSE;
@@ -7292,9 +7300,9 @@ static GLboolean _glewInit_GL_KHR_debug (GLEW_CONTEXT_ARG_DEF_INIT)
   r = ((glGetDebugMessageLog = (PFNGLGETDEBUGMESSAGELOGPROC)glewGetProcAddress((const GLubyte*)"glGetDebugMessageLog")) == NULL) || r;
   r = ((glGetObjectLabel = (PFNGLGETOBJECTLABELPROC)glewGetProcAddress((const GLubyte*)"glGetObjectLabel")) == NULL) || r;
   r = ((glGetObjectPtrLabel = (PFNGLGETOBJECTPTRLABELPROC)glewGetProcAddress((const GLubyte*)"glGetObjectPtrLabel")) == NULL) || r;
-  r = ((glGetPointerv = (PFNGLGETPOINTERVPROC)glewGetProcAddress((const GLubyte*)"glGetPointerv")) == NULL) || r;
   r = ((glObjectLabel = (PFNGLOBJECTLABELPROC)glewGetProcAddress((const GLubyte*)"glObjectLabel")) == NULL) || r;
   r = ((glObjectPtrLabel = (PFNGLOBJECTPTRLABELPROC)glewGetProcAddress((const GLubyte*)"glObjectPtrLabel")) == NULL) || r;
+  r = ((glPopDebugGroup = (PFNGLPOPDEBUGGROUPPROC)glewGetProcAddress((const GLubyte*)"glPopDebugGroup")) == NULL) || r;
   r = ((glPushDebugGroup = (PFNGLPUSHDEBUGGROUPPROC)glewGetProcAddress((const GLubyte*)"glPushDebugGroup")) == NULL) || r;
 
   return r;
@@ -7384,6 +7392,20 @@ static GLboolean _glewInit_GL_MESA_window_pos (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GL_MESA_ycbcr_texture */
 
+#ifdef GL_NVX_conditional_render
+
+static GLboolean _glewInit_GL_NVX_conditional_render (GLEW_CONTEXT_ARG_DEF_INIT)
+{
+  GLboolean r = GL_FALSE;
+
+  r = ((glBeginConditionalRenderNVX = (PFNGLBEGINCONDITIONALRENDERNVXPROC)glewGetProcAddress((const GLubyte*)"glBeginConditionalRenderNVX")) == NULL) || r;
+  r = ((glEndConditionalRenderNVX = (PFNGLENDCONDITIONALRENDERNVXPROC)glewGetProcAddress((const GLubyte*)"glEndConditionalRenderNVX")) == NULL) || r;
+
+  return r;
+}
+
+#endif /* GL_NVX_conditional_render */
+
 #ifdef GL_NVX_gpu_memory_info
 
 #endif /* GL_NVX_gpu_memory_info */
@@ -7417,6 +7439,10 @@ static GLboolean _glewInit_GL_NV_bindless_texture (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GL_NV_blend_square */
 
+#ifdef GL_NV_compute_program5
+
+#endif /* GL_NV_compute_program5 */
+
 #ifdef GL_NV_conditional_render
 
 static GLboolean _glewInit_GL_NV_conditional_render (GLEW_CONTEXT_ARG_DEF_INIT)
@@ -7447,6 +7473,10 @@ static GLboolean _glewInit_GL_NV_copy_image (GLEW_CONTEXT_ARG_DEF_INIT)
 }
 
 #endif /* GL_NV_copy_image */
+
+#ifdef GL_NV_deep_texture3D
+
+#endif /* GL_NV_deep_texture3D */
 
 #ifdef GL_NV_depth_buffer_float
 
@@ -7944,6 +7974,10 @@ static GLboolean _glewInit_GL_NV_register_combiners2 (GLEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GL_NV_register_combiners2 */
 
+#ifdef GL_NV_shader_atomic_counters
+
+#endif /* GL_NV_shader_atomic_counters */
+
 #ifdef GL_NV_shader_atomic_float
 
 #endif /* GL_NV_shader_atomic_float */
@@ -7972,6 +8006,10 @@ static GLboolean _glewInit_GL_NV_shader_buffer_load (GLEW_CONTEXT_ARG_DEF_INIT)
 }
 
 #endif /* GL_NV_shader_buffer_load */
+
+#ifdef GL_NV_shader_storage_buffer_object
+
+#endif /* GL_NV_shader_storage_buffer_object */
 
 #ifdef GL_NV_tessellation_program5
 
@@ -10206,6 +10244,10 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
 #ifdef GL_MESA_ycbcr_texture
   CONST_CAST(GLEW_MESA_ycbcr_texture) = _glewSearchExtension("GL_MESA_ycbcr_texture", extStart, extEnd);
 #endif /* GL_MESA_ycbcr_texture */
+#ifdef GL_NVX_conditional_render
+  CONST_CAST(GLEW_NVX_conditional_render) = _glewSearchExtension("GL_NVX_conditional_render", extStart, extEnd);
+  if (glewExperimental || GLEW_NVX_conditional_render) CONST_CAST(GLEW_NVX_conditional_render) = !_glewInit_GL_NVX_conditional_render(GLEW_CONTEXT_ARG_VAR_INIT);
+#endif /* GL_NVX_conditional_render */
 #ifdef GL_NVX_gpu_memory_info
   CONST_CAST(GLEW_NVX_gpu_memory_info) = _glewSearchExtension("GL_NVX_gpu_memory_info", extStart, extEnd);
 #endif /* GL_NVX_gpu_memory_info */
@@ -10216,6 +10258,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
 #ifdef GL_NV_blend_square
   CONST_CAST(GLEW_NV_blend_square) = _glewSearchExtension("GL_NV_blend_square", extStart, extEnd);
 #endif /* GL_NV_blend_square */
+#ifdef GL_NV_compute_program5
+  CONST_CAST(GLEW_NV_compute_program5) = _glewSearchExtension("GL_NV_compute_program5", extStart, extEnd);
+#endif /* GL_NV_compute_program5 */
 #ifdef GL_NV_conditional_render
   CONST_CAST(GLEW_NV_conditional_render) = _glewSearchExtension("GL_NV_conditional_render", extStart, extEnd);
   if (glewExperimental || GLEW_NV_conditional_render) CONST_CAST(GLEW_NV_conditional_render) = !_glewInit_GL_NV_conditional_render(GLEW_CONTEXT_ARG_VAR_INIT);
@@ -10227,6 +10272,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
   CONST_CAST(GLEW_NV_copy_image) = _glewSearchExtension("GL_NV_copy_image", extStart, extEnd);
   if (glewExperimental || GLEW_NV_copy_image) CONST_CAST(GLEW_NV_copy_image) = !_glewInit_GL_NV_copy_image(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_NV_copy_image */
+#ifdef GL_NV_deep_texture3D
+  CONST_CAST(GLEW_NV_deep_texture3D) = _glewSearchExtension("GL_NV_deep_texture3D", extStart, extEnd);
+#endif /* GL_NV_deep_texture3D */
 #ifdef GL_NV_depth_buffer_float
   CONST_CAST(GLEW_NV_depth_buffer_float) = _glewSearchExtension("GL_NV_depth_buffer_float", extStart, extEnd);
   if (glewExperimental || GLEW_NV_depth_buffer_float) CONST_CAST(GLEW_NV_depth_buffer_float) = !_glewInit_GL_NV_depth_buffer_float(GLEW_CONTEXT_ARG_VAR_INIT);
@@ -10348,6 +10396,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
   CONST_CAST(GLEW_NV_register_combiners2) = _glewSearchExtension("GL_NV_register_combiners2", extStart, extEnd);
   if (glewExperimental || GLEW_NV_register_combiners2) CONST_CAST(GLEW_NV_register_combiners2) = !_glewInit_GL_NV_register_combiners2(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_NV_register_combiners2 */
+#ifdef GL_NV_shader_atomic_counters
+  CONST_CAST(GLEW_NV_shader_atomic_counters) = _glewSearchExtension("GL_NV_shader_atomic_counters", extStart, extEnd);
+#endif /* GL_NV_shader_atomic_counters */
 #ifdef GL_NV_shader_atomic_float
   CONST_CAST(GLEW_NV_shader_atomic_float) = _glewSearchExtension("GL_NV_shader_atomic_float", extStart, extEnd);
 #endif /* GL_NV_shader_atomic_float */
@@ -10355,6 +10406,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
   CONST_CAST(GLEW_NV_shader_buffer_load) = _glewSearchExtension("GL_NV_shader_buffer_load", extStart, extEnd);
   if (glewExperimental || GLEW_NV_shader_buffer_load) CONST_CAST(GLEW_NV_shader_buffer_load) = !_glewInit_GL_NV_shader_buffer_load(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_NV_shader_buffer_load */
+#ifdef GL_NV_shader_storage_buffer_object
+  CONST_CAST(GLEW_NV_shader_storage_buffer_object) = _glewSearchExtension("GL_NV_shader_storage_buffer_object", extStart, extEnd);
+#endif /* GL_NV_shader_storage_buffer_object */
 #ifdef GL_NV_tessellation_program5
   CONST_CAST(GLEW_NV_tessellation_program5) = _glewSearchExtension("GL_NV_gpu_program5", extStart, extEnd);
 #endif /* GL_NV_tessellation_program5 */
@@ -11732,6 +11786,16 @@ PFNGLXQUERYCONTEXTPROC __glewXQueryContext = NULL;
 PFNGLXQUERYDRAWABLEPROC __glewXQueryDrawable = NULL;
 PFNGLXSELECTEVENTPROC __glewXSelectEvent = NULL;
 
+PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC __glewXBlitContextFramebufferAMD = NULL;
+PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC __glewXCreateAssociatedContextAMD = NULL;
+PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC __glewXCreateAssociatedContextAttribsAMD = NULL;
+PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC __glewXDeleteAssociatedContextAMD = NULL;
+PFNGLXGETCONTEXTGPUIDAMDPROC __glewXGetContextGPUIDAMD = NULL;
+PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC __glewXGetCurrentAssociatedContextAMD = NULL;
+PFNGLXGETGPUIDSAMDPROC __glewXGetGPUIDsAMD = NULL;
+PFNGLXGETGPUINFOAMDPROC __glewXGetGPUInfoAMD = NULL;
+PFNGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC __glewXMakeAssociatedContextCurrentAMD = NULL;
+
 PFNGLXCREATECONTEXTATTRIBSARBPROC __glewXCreateContextAttribsARB = NULL;
 
 PFNGLXBINDTEXIMAGEATIPROC __glewXBindTexImageATI = NULL;
@@ -11889,7 +11953,7 @@ GLboolean __GLXEW_NV_present_video = GL_FALSE;
 GLboolean __GLXEW_NV_swap_group = GL_FALSE;
 GLboolean __GLXEW_NV_vertex_array_range = GL_FALSE;
 GLboolean __GLXEW_NV_video_capture = GL_FALSE;
-GLboolean __GLXEW_NV_video_out = GL_FALSE;
+GLboolean __GLXEW_NV_video_output = GL_FALSE;
 GLboolean __GLXEW_OML_swap_method = GL_FALSE;
 GLboolean __GLXEW_OML_sync_control = GL_FALSE;
 GLboolean __GLXEW_SGIS_blended_overlay = GL_FALSE;
@@ -11963,6 +12027,23 @@ static GLboolean _glewInit_GLX_VERSION_1_3 (GLXEW_CONTEXT_ARG_DEF_INIT)
 #endif /* GLX_3DFX_multisample */
 
 #ifdef GLX_AMD_gpu_association
+
+static GLboolean _glewInit_GLX_AMD_gpu_association (GLXEW_CONTEXT_ARG_DEF_INIT)
+{
+  GLboolean r = GL_FALSE;
+
+  r = ((glXBlitContextFramebufferAMD = (PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC)glewGetProcAddress((const GLubyte*)"glXBlitContextFramebufferAMD")) == NULL) || r;
+  r = ((glXCreateAssociatedContextAMD = (PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXCreateAssociatedContextAMD")) == NULL) || r;
+  r = ((glXCreateAssociatedContextAttribsAMD = (PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)glewGetProcAddress((const GLubyte*)"glXCreateAssociatedContextAttribsAMD")) == NULL) || r;
+  r = ((glXDeleteAssociatedContextAMD = (PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXDeleteAssociatedContextAMD")) == NULL) || r;
+  r = ((glXGetContextGPUIDAMD = (PFNGLXGETCONTEXTGPUIDAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetContextGPUIDAMD")) == NULL) || r;
+  r = ((glXGetCurrentAssociatedContextAMD = (PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetCurrentAssociatedContextAMD")) == NULL) || r;
+  r = ((glXGetGPUIDsAMD = (PFNGLXGETGPUIDSAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetGPUIDsAMD")) == NULL) || r;
+  r = ((glXGetGPUInfoAMD = (PFNGLXGETGPUINFOAMDPROC)glewGetProcAddress((const GLubyte*)"glXGetGPUInfoAMD")) == NULL) || r;
+  r = ((glXMakeAssociatedContextCurrentAMD = (PFNGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)glewGetProcAddress((const GLubyte*)"glXMakeAssociatedContextCurrentAMD")) == NULL) || r;
+
+  return r;
+}
 
 #endif /* GLX_AMD_gpu_association */
 
@@ -12276,9 +12357,9 @@ static GLboolean _glewInit_GLX_NV_video_capture (GLXEW_CONTEXT_ARG_DEF_INIT)
 
 #endif /* GLX_NV_video_capture */
 
-#ifdef GLX_NV_video_out
+#ifdef GLX_NV_video_output
 
-static GLboolean _glewInit_GLX_NV_video_out (GLXEW_CONTEXT_ARG_DEF_INIT)
+static GLboolean _glewInit_GLX_NV_video_output (GLXEW_CONTEXT_ARG_DEF_INIT)
 {
   GLboolean r = GL_FALSE;
 
@@ -12292,7 +12373,7 @@ static GLboolean _glewInit_GLX_NV_video_out (GLXEW_CONTEXT_ARG_DEF_INIT)
   return r;
 }
 
-#endif /* GLX_NV_video_out */
+#endif /* GLX_NV_video_output */
 
 #ifdef GLX_OML_swap_method
 
@@ -12576,6 +12657,7 @@ GLenum glxewContextInit (GLXEW_CONTEXT_ARG_DEF_LIST)
 #endif /* GLX_3DFX_multisample */
 #ifdef GLX_AMD_gpu_association
   CONST_CAST(GLXEW_AMD_gpu_association) = _glewSearchExtension("GLX_AMD_gpu_association", extStart, extEnd);
+  if (glewExperimental || GLXEW_AMD_gpu_association) CONST_CAST(GLXEW_AMD_gpu_association) = !_glewInit_GLX_AMD_gpu_association(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GLX_AMD_gpu_association */
 #ifdef GLX_ARB_create_context
   CONST_CAST(GLXEW_ARB_create_context) = _glewSearchExtension("GLX_ARB_create_context", extStart, extEnd);
@@ -12704,10 +12786,10 @@ GLenum glxewContextInit (GLXEW_CONTEXT_ARG_DEF_LIST)
   CONST_CAST(GLXEW_NV_video_capture) = _glewSearchExtension("GLX_NV_video_capture", extStart, extEnd);
   if (glewExperimental || GLXEW_NV_video_capture) CONST_CAST(GLXEW_NV_video_capture) = !_glewInit_GLX_NV_video_capture(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GLX_NV_video_capture */
-#ifdef GLX_NV_video_out
-  CONST_CAST(GLXEW_NV_video_out) = _glewSearchExtension("GLX_NV_video_out", extStart, extEnd);
-  if (glewExperimental || GLXEW_NV_video_out) CONST_CAST(GLXEW_NV_video_out) = !_glewInit_GLX_NV_video_out(GLEW_CONTEXT_ARG_VAR_INIT);
-#endif /* GLX_NV_video_out */
+#ifdef GLX_NV_video_output
+  CONST_CAST(GLXEW_NV_video_output) = _glewSearchExtension("GLX_NV_video_output", extStart, extEnd);
+  if (glewExperimental || GLXEW_NV_video_output) CONST_CAST(GLXEW_NV_video_output) = !_glewInit_GLX_NV_video_output(GLEW_CONTEXT_ARG_VAR_INIT);
+#endif /* GLX_NV_video_output */
 #ifdef GLX_OML_swap_method
   CONST_CAST(GLXEW_OML_swap_method) = _glewSearchExtension("GLX_OML_swap_method", extStart, extEnd);
 #endif /* GLX_OML_swap_method */
@@ -15196,6 +15278,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
       }
       if (_glewStrSame2(&pos, &len, (const GLubyte*)"NVX_", 4))
       {
+#ifdef GL_NVX_conditional_render
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"conditional_render", 18))
+        {
+          ret = GLEW_NVX_conditional_render;
+          continue;
+        }
+#endif
 #ifdef GL_NVX_gpu_memory_info
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"gpu_memory_info", 15))
         {
@@ -15220,6 +15309,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
           continue;
         }
 #endif
+#ifdef GL_NV_compute_program5
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"compute_program5", 16))
+        {
+          ret = GLEW_NV_compute_program5;
+          continue;
+        }
+#endif
 #ifdef GL_NV_conditional_render
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"conditional_render", 18))
         {
@@ -15238,6 +15334,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"copy_image", 10))
         {
           ret = GLEW_NV_copy_image;
+          continue;
+        }
+#endif
+#ifdef GL_NV_deep_texture3D
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"deep_texture3D", 14))
+        {
+          ret = GLEW_NV_deep_texture3D;
           continue;
         }
 #endif
@@ -15479,6 +15582,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
           continue;
         }
 #endif
+#ifdef GL_NV_shader_atomic_counters
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"shader_atomic_counters", 22))
+        {
+          ret = GLEW_NV_shader_atomic_counters;
+          continue;
+        }
+#endif
 #ifdef GL_NV_shader_atomic_float
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"shader_atomic_float", 19))
         {
@@ -15490,6 +15600,13 @@ GLboolean GLEWAPIENTRY glewIsSupported (const char* name)
         if (_glewStrSame3(&pos, &len, (const GLubyte*)"shader_buffer_load", 18))
         {
           ret = GLEW_NV_shader_buffer_load;
+          continue;
+        }
+#endif
+#ifdef GL_NV_shader_storage_buffer_object
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"shader_storage_buffer_object", 28))
+        {
+          ret = GLEW_NV_shader_storage_buffer_object;
           continue;
         }
 #endif
@@ -17004,10 +17121,10 @@ GLboolean glxewIsSupported (const char* name)
           continue;
         }
 #endif
-#ifdef GLX_NV_video_out
-        if (_glewStrSame3(&pos, &len, (const GLubyte*)"video_out", 9))
+#ifdef GLX_NV_video_output
+        if (_glewStrSame3(&pos, &len, (const GLubyte*)"video_output", 12))
         {
-          ret = GLXEW_NV_video_out;
+          ret = GLXEW_NV_video_output;
           continue;
         }
 #endif
