@@ -70,14 +70,6 @@ AssertFunction(const char *file, const size_t line, const char *expr)
 }
 #endif
 
-inline bool fileExists(const char *path)
-{
-  FILE *f = fopen(path,"r");
-  if (f)
-    fclose(f);
-  return f != NULL;
-}
-
 inline const char * getEnvironment(const char * const var)
 {
   const char *ret = NULL;
@@ -94,7 +86,7 @@ inline const char * getEnvironment(const char * const var)
 }
 
 static
-string libraryLocation(const char *lib)
+const char *libraryLocation(const char *lib)
 {
   const char *ret = NULL;
 
@@ -103,7 +95,8 @@ string libraryLocation(const char *lib)
 
     // Second, try default installation location
 
-    if (!ret) {
+    if (!ret)
+    {
 #if REGAL_SYS_OSX
       ret = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
 #endif
@@ -115,8 +108,21 @@ string libraryLocation(const char *lib)
       if (!ret)
         ret = getEnvironment("WINDIR");
 
-      if (ret) {
-        return string(ret) + "\\system32\\opengl32.dll";
+      if (ret)
+      {
+        // This string will be leaked, but needs to remain
+        // valid until we're completely shut down.
+        
+        char *tmp = (char *) calloc(strlen(ret)+23,1);
+        assert(tmp);
+        if (tmp)
+        {
+          strcpy(tmp,ret);
+          strcat(tmp,"\\system32\\opengl32.dll");
+          return tmp;
+        }
+        else
+          return NULL;
       }
 #endif
 
@@ -147,65 +153,67 @@ string libraryLocation(const char *lib)
 #endif
     }
   }
-  return ret ? ret : string();
+  return ret;
 }
 
 #if REGAL_SYS_OSX
 
 #include <dlfcn.h>
 
-void *GetProcAddress( const char * entry )
+void *GetProcAddress( const char *entry )
 {
-    static const string lib_OpenGL_filename = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
-    static void         *lib_OpenGL = NULL;
+  if (!entry)
+      return NULL;
 
-    static const string lib_GL_filename = "/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib";
-    static void         *lib_GL = NULL;
+  static const char *lib_OpenGL_filename = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
+  static void       *lib_OpenGL = NULL;
 
-    if( lib_OpenGL == NULL || lib_GL == NULL ) {
-        // this chdir business is a hacky solution to avoid recursion
-        // when using libRegal as libGL via symlink and DYLD_LIBRARY_PATH=.
+  static const char *lib_GL_filename = "/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib";
+  static void       *lib_GL = NULL;
 
-        char old_cwd[256];
-        getcwd( old_cwd, sizeof( old_cwd ) );
-        chdir( "/" );
-
-        // CGL entry points are in OpenGL framework
-
-        if (!lib_OpenGL) {
-            lib_OpenGL = dlopen(lib_OpenGL_filename.c_str() , RTLD_LAZY);
-            Info("Loading OpenGL from ",lib_OpenGL_filename,lib_OpenGL ? " succeeded." : " failed.");
-        }
-
-        // GL entry point are in libGL.dylib
-
-        if (!lib_GL) {
-            lib_GL = dlopen(lib_GL_filename.c_str(), RTLD_LAZY);
-            Info("Loading OpenGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
-        }
-        chdir( old_cwd );
+  if (!lib_OpenGL || !lib_GL)
+  {
+    // this chdir business is a hacky solution to avoid recursion
+    // when using libRegal as libGL via symlink and DYLD_LIBRARY_PATH=.
+  
+    char *oldCwd = getcwd(NULL,0);
+    chdir("/");
+  
+    // CGL entry points are in OpenGL framework
+  
+    if (!lib_OpenGL) {
+      lib_OpenGL = dlopen(lib_OpenGL_filename , RTLD_LAZY);
+      Info("Loading OpenGL from ",lib_OpenGL_filename,lib_OpenGL ? " succeeded." : " failed.");
     }
-
-    if (!entry)
-        return NULL;
-
-    if (lib_OpenGL && lib_GL) {
-        void * sym;
-        sym = dlsym( lib_OpenGL, entry );
-        Internal("Regal::GetProcAddress ",lib_OpenGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
-        if (sym) {
-            return sym;
-        }
-        sym = dlsym( lib_GL, entry );
-        Internal("Regal::GetProcAddress ",lib_GL_filename," load of ",entry,sym ? " succeeded." : " failed.");
-        return sym;
+  
+    // GL entry point are in libGL.dylib
+  
+    if (!lib_GL) {
+      lib_GL = dlopen(lib_GL_filename, RTLD_LAZY);
+      Info("Loading OpenGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
     }
-    return NULL;
+  
+    chdir(oldCwd);
+    free(oldCwd);
+  }
+
+  if (lib_OpenGL && lib_GL)
+  {
+    void *sym = dlsym( lib_OpenGL, entry );
+    Internal("Regal::GetProcAddress ",lib_OpenGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+    if (sym)
+      return sym;
+    sym = dlsym( lib_GL, entry );
+    Internal("Regal::GetProcAddress ",lib_GL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+    return sym;
+  }
+
+  return NULL;
 }
 
 #elif REGAL_SYS_NACL
 
-void *GetProcAddress(const char *lookupName)
+void *GetProcAddress( const char *entry )
 {
   return NULL;
 }
@@ -216,20 +224,19 @@ void *GetProcAddress(const char *lookupName)
 
 void *GetProcAddress( const char * entry )
 {
-    static void * lib_OpenGLES = NULL;
-    if (lib_OpenGLES == NULL) {
-        lib_OpenGLES = dlopen( "/System/Library/Frameworks/OpenGLES.framework/OpenGLES", RTLD_LAZY );
-    }
-
-    if (!entry)
-        return NULL;
-
-    if (lib_OpenGLES) {
-        void * sym;
-        sym = dlsym( lib_OpenGLES, entry );
-        return sym;
-    }
+  if (!entry)
     return NULL;
+
+  static void *lib_OpenGLES = NULL;
+  if (!lib_OpenGLES)
+    lib_OpenGLES = dlopen( "/System/Library/Frameworks/OpenGLES.framework/OpenGLES", RTLD_LAZY );
+
+  if (lib_OpenGLES) {
+      void *sym = dlsym( lib_OpenGLES, entry );
+      return sym;
+  }
+
+  return NULL;
 }
 
 #elif REGAL_SYS_GLX
@@ -238,30 +245,30 @@ void *GetProcAddress( const char * entry )
 
 void *GetProcAddress(const char *entry)
 {
-  static void  *lib_GL = NULL;
-  static string lib_GL_filename;
+  // Early-out for NULL entry name
+
+  if (!entry)
+    return NULL;
+
+  static void       *lib_GL = NULL;
+  static const char *lib_GL_filename = NULL;
 
   // Search for OpenGL library (libGL.so.1 usually) as necessary
 
-  if (!lib_GL_filename.length())
+  if (!lib_GL_filename)
   {
     lib_GL_filename = libraryLocation("GL");
-    if (!lib_GL_filename.length())
+    if (!lib_GL_filename)
       Warning("OpenGL library not found.",lib_GL_filename);
   }
 
   // Load the OpenGL library as necessary
 
-  if (!lib_GL && lib_GL_filename.length())
+  if (!lib_GL && lib_GL_filename)
   {
     Info("Loading OpenGL from ",lib_GL_filename);
-    lib_GL = dlopen( lib_GL_filename.c_str(), RTLD_LAZY );
+    lib_GL = dlopen( lib_GL_filename, RTLD_LAZY );
   }
-
-  // Early-out for NULL entry name
-
-  if (!entry)
-    return NULL;
 
   // Load the entry-point by name, if possible
 
@@ -272,8 +279,6 @@ void *GetProcAddress(const char *entry)
     return sym;
   }
 
-  // Give up
-
   return NULL;
 }
 
@@ -283,37 +288,39 @@ void *GetProcAddress(const char *entry)
 
 void *GetProcAddress(const char *entry)
 {
-  static const string lib_EGL_filename = "/system/lib/libEGL.so";
-  static void        *lib_EGL = NULL;
-  static const string lib_GLESv2_filename = "/system/lib/libGLESv2.so";
-  static void        *lib_GLESv2 = NULL;
+  if (!entry)
+    return NULL;
+
+  static const char *lib_GLESv2_filename = "/system/lib/libGLESv2.so";
+  static void       *lib_GLESv2 = NULL;
 
   if (!lib_GLESv2)
   {
-    lib_GLESv2 = dlopen( lib_GLESv2_filename.c_str(), RTLD_LAZY );
+    lib_GLESv2 = dlopen( lib_GLESv2_filename, RTLD_LAZY );
     Info("Loading GLES from ",lib_GLESv2_filename,lib_GLESv2 ? " succeeded." : " failed.");
   }
 
+  static const char *lib_EGL_filename = "/system/lib/libEGL.so";
+  static void       *lib_EGL = NULL;
+
   if (!lib_EGL)
   {
-    lib_EGL = dlopen( lib_EGL_filename.c_str(), RTLD_LAZY );
+    lib_EGL = dlopen( lib_EGL_filename, RTLD_LAZY );
     Info("Loading EGL from ",lib_EGL_filename,lib_EGL ? " succeeded." : " failed.");
   }
 
-  if (!entry)
-      return NULL;
-
   if (lib_GLESv2 && lib_EGL)
   {
-      void *sym = dlsym( lib_GLESv2, entry );
-      Internal("Regal::GetProcAddress ",lib_GLESv2_filename," load of ",entry,sym ? " succeeded." : " failed.");
-      if (!sym)
-      {
-        sym = dlsym( lib_EGL, entry );
-        Internal("Regal::GetProcAddress ",lib_EGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
-      }
-      return sym;
+    void *sym = dlsym( lib_GLESv2, entry );
+    Internal("Regal::GetProcAddress ",lib_GLESv2_filename," load of ",entry,sym ? " succeeded." : " failed.");
+    if (!sym)
+    {
+      sym = dlsym( lib_EGL, entry );
+      Internal("Regal::GetProcAddress ",lib_EGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
+    }
+    return sym;
   }
+
   return NULL;
 }
 
@@ -321,34 +328,78 @@ void *GetProcAddress(const char *entry)
 
 void *GetProcAddress( const char * entry )
 {
-    static HMODULE lib_GL = 0;
-    static PROC (__stdcall *wglGetProcAddress)(LPCSTR lpszProc);
-    static string lib_GL_filename;
-    if (!lib_GL_filename.length()) {
-        lib_GL_filename = libraryLocation("GL");
-    }
-    if (!lib_GL && lib_GL_filename.length()) {
-        Info("Loading OpenGL from ",lib_GL_filename);
-        lib_GL = LoadLibraryA(lib_GL_filename.c_str());
-    }
-
-    if (!entry)
-        return NULL;
-
-    if (lib_GL) {
-        void * sym;
-        sym = ::GetProcAddress( lib_GL, entry );
-        if (sym)
-          return sym;
-        if (!wglGetProcAddress)
-          wglGetProcAddress = (PROC (__stdcall *)(LPCSTR)) ::GetProcAddress( lib_GL, "wglGetProcAddress");
-        if (wglGetProcAddress)
-          return wglGetProcAddress(entry);
-    }
+  if (!entry)
     return NULL;
+
+  static const char *lib_GL_filename = NULL;
+  if (!lib_GL_filename)
+    lib_GL_filename = libraryLocation("GL");
+
+  static HMODULE lib_GL = 0;
+
+  if (!lib_GL && lib_GL_filename) {
+    Info("Loading OpenGL from ",lib_GL_filename);
+    lib_GL = LoadLibraryA(lib_GL_filename);
+  }
+
+  static PROC (__stdcall *wglGetProcAddress)(LPCSTR lpszProc);
+
+  if (lib_GL)
+  {
+    void *sym = ::GetProcAddress( lib_GL, entry );
+    if (sym)
+      return sym;
+
+    if (!wglGetProcAddress)
+      wglGetProcAddress = (PROC (__stdcall *)(LPCSTR)) ::GetProcAddress( lib_GL, "wglGetProcAddress");
+
+    if (wglGetProcAddress)
+      return wglGetProcAddress(entry);
+  }
+
+  return NULL;
 }
 
 #endif
+
+bool fileExists(const char *filename)
+{
+  FILE *f = fopen(filename,"r");
+  if (f)
+    fclose(f);
+  return f!=NULL;
+}
+
+FILE *fileOpen(const char *filename, const char *mode)
+{
+  if (filename && *filename)
+  {
+    if (!strcmp(filename,"stdout"))
+      return stdout;
+
+    if (!strcmp(filename,"stderr"))
+      return stderr;
+
+    return fopen(filename,mode);
+  }
+
+  return NULL;
+}
+
+void fileClose(FILE **file)
+{
+  if (!file || !*file)
+    return;
+
+  if (*file==stdout)
+    return;
+
+  if (*file==stderr)
+    return;
+
+  fclose(*file);
+  *file = NULL;
+}
 
 REGAL_NAMESPACE_END
 

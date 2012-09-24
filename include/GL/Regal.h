@@ -106,7 +106,7 @@
 
 /* Skip OpenGL API if another header was included first. */
 
-#if !defined(__gl_h_) && !defined(__GL_H__) && !defined(__X_GL_H) && !defined(__gl2_h_) && !defined(__glext_h_) && !defined(__GLEXT_H_) && !defined(__gl_ATI_h_)
+#if !defined(__gl_h_) && !defined(__GL_H__) && !defined(__X_GL_H) && !defined(__gl2_h_) && !defined(__glext_h_) && !defined(__GLEXT_H_) && !defined(__gl_ATI_h_) && !defined(_OPENGL_H)
 
 #define __gl_h_
 #define __gl2_h_
@@ -115,6 +115,7 @@
 #define __glext_h_
 #define __GLEXT_H_
 #define __gl_ATI_h_
+#define _OPENGL_H
 
 #if REGAL_SYS_GLX
 #include <X11/Xdefs.h>

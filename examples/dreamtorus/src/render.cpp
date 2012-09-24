@@ -284,5 +284,7 @@ void dreamTorusDisplay( bool clear )
 
     glPopGroupMarkerEXT();
 
+    glFrameTerminatorGREMEDY();
+
   //printf( "Draw with r=%f\n", r );
 }

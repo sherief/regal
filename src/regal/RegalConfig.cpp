@@ -54,12 +54,21 @@ bool enableDebug      = false;
 bool enableError      = false;
 bool enableLog        = REGAL_LOG;
 bool enableDriver     = REGAL_DRIVER;
+
 bool enableEmuPpa     = REGAL_EMU_PPA;
 bool enableEmuObj     = REGAL_EMU_OBJ;
 bool enableEmuBin     = REGAL_EMU_BIN;
 bool enableEmuDsa     = REGAL_EMU_DSA;
 bool enableEmuIff     = REGAL_EMU_IFF;
 bool enableEmuVao     = REGAL_EMU_VAO;
+
+bool frameMd5Color    = false;
+bool frameMd5Stencil  = false;
+bool frameMd5Depth    = false;
+  
+bool frameSaveColor   = false;
+bool frameSaveStencil = false;
+bool frameSaveDepth   = false;
 
 void Init()
 {
@@ -142,6 +151,24 @@ void Init()
   tmp = GetEnv( "REGAL_EMU_VAO" );
   if (tmp) enableEmuVao = atoi(tmp)!=0;
 #endif
+
+  tmp = GetEnv( "REGAL_MD5_COLOR" );
+  if (tmp) frameMd5Color = atoi(tmp)!=0;
+
+  tmp = GetEnv( "REGAL_MD5_STENCIL" );
+  if (tmp) frameMd5Stencil = atoi(tmp)!=0;
+
+  tmp = GetEnv( "REGAL_MD5_DEPTH" );
+  if (tmp) frameMd5Depth = atoi(tmp)!=0;
+
+  tmp = GetEnv( "REGAL_SAVE_COLOR" );
+  if (tmp) frameSaveColor = atoi(tmp)!=0;
+
+  tmp = GetEnv( "REGAL_SAVE_STENCIL" );
+  if (tmp) frameSaveStencil = atoi(tmp)!=0;
+
+  tmp = GetEnv( "REGAL_SAVE_DEPTH" );
+  if (tmp) frameSaveDepth = atoi(tmp)!=0;
 #endif
 
   // REGAL_NO_EMULATION is deprecated, use REGAL_EMULATION=0 instead.
@@ -166,6 +193,18 @@ void Init()
   Info("REGAL_EMU_DSA            ", enableEmuDsa     ? "enabled" : "disabled");
   Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
   Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
+
+  Info("REGAL_EMU_PPA            ", enableEmuPpa     ? "enabled" : "disabled");
+  Info("REGAL_EMU_OBJ            ", enableEmuObj     ? "enabled" : "disabled");
+  Info("REGAL_EMU_BIN            ", enableEmuBin     ? "enabled" : "disabled");
+
+  Info("REGAL_MD5_COLOR          ", frameMd5Color    ? "enabled" : "disabled");
+  Info("REGAL_MD5_STENCIL        ", frameMd5Stencil  ? "enabled" : "disabled");
+  Info("REGAL_MD5_DEPTH          ", frameMd5Depth    ? "enabled" : "disabled");
+
+  Info("REGAL_SAVE_COLOR         ", frameSaveColor   ? "enabled" : "disabled");
+  Info("REGAL_SAVE_STENCIL       ", frameSaveStencil ? "enabled" : "disabled");
+  Info("REGAL_SAVE_DEPTH         ", frameSaveDepth   ? "enabled" : "disabled");
 }
 
 }

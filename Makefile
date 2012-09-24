@@ -68,6 +68,7 @@ LIB.SRCS           += src/regal/RegalUtil.cpp
 LIB.SRCS           += src/regal/RegalConfig.cpp
 LIB.SRCS           += src/regal/RegalLookup.cpp
 LIB.SRCS           += src/regal/RegalHelper.cpp
+LIB.SRCS           += src/regal/RegalMarker.cpp
 LIB.SRCS           += src/regal/RegalContext.cpp
 LIB.SRCS           += src/regal/RegalContextInfo.cpp
 LIB.SRCS           += src/regal/RegalDispatchGlobal.cpp
@@ -88,7 +89,12 @@ ifeq ($(filter -DREGAL_NO_HTTP%,$(CFLAGS)),)
 LIB.SRCS           += src/mongoose/mongoose.c
 endif
 
+ifeq ($(filter -DREGAL_NO_MD5%,$(CFLAGS)),)
+LIB.SRCS           += src/md5/src/md5.c
+endif
+
 LIB.INCLUDE        += -Isrc/mongoose
+LIB.INCLUDE        += -Isrc/md5/include
 
 LIB.SRCS.NAMES     := $(notdir $(LIB.SRCS))
 
@@ -142,6 +148,14 @@ tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(LIB.DEPS)
 	$(CCACHE) $(CC) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/mongoose/%.c $(LIB.DEPS)
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+
+tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(LIB.DEPS)
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+
+tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 

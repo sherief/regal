@@ -61,7 +61,8 @@ def apiDebugFuncDefineCode(apis, args):
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'debug_', name, params)
       code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
-      code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+      code += '  DispatchTable *_next = _context->dispatcher.debug._next;\n'
+      code += '  RegalAssert(_next);\n'
       e = emuFindEntry( function, debugDispatchFormulae, '' )
       if e != None and 'prefix' in e :
         for l in e['prefix'] :
@@ -69,7 +70,7 @@ def apiDebugFuncDefineCode(apis, args):
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType
-      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+      code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '  return ret;\n'
       code += '}\n\n'

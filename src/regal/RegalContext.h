@@ -99,6 +99,10 @@ struct RegalContext
 
   GLLOGPROCREGAL      logCallback;
 
+  // Per-frame state and configuration
+
+  size_t              frame;
+
   // State tracked via EmuContextState.py / Regal.cpp
 
   size_t              depthBeginEnd;   // Normally zero or one

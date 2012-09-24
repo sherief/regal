@@ -509,7 +509,7 @@ ContextInfo::init(const RegalContext &context)
 #ifdef REGAL_GL_EXTENSIONS
   regalExtensions = REGAL_EQUOTE(REGAL_GL_EXTENSIONS);
 #else
-  static const char *ourExtensions[8] = {
+  static const char *ourExtensions[9] = {
     "GL_REGAL_log",
     "GL_REGAL_enable",
     "GL_REGAL_error_string",
@@ -517,10 +517,11 @@ ContextInfo::init(const RegalContext &context)
     "GL_REGAL_ES1_0_compatibility",
     "GL_REGAL_ES1_1_compatibility",
     "GL_EXT_debug_marker",
-    "GL_GREMEDY_string_marker"
+    "GL_GREMEDY_string_marker",
+    "GL_GREMEDY_frame_terminator"
   };
   regalExtensionsSet.insert(extList.begin(),extList.end());
-  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[8]);
+  regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[9]);
   regalExtensions = ::boost::print::detail::join(regalExtensionsSet,string(" "));
 #endif
 

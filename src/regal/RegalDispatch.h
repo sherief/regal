@@ -631,6 +631,46 @@ extern DispatchTableGlobal dispatchTableGlobal;
 
 struct DispatchTable {
 
+  bool           _enabled;
+  DispatchTable *_prev;
+  DispatchTable *_next;
+
+  // Lookup a function pointer from the table,
+  // or deeper in the stack as necessary.
+
+  template<typename T>
+  T call(T *func)
+  {
+    RegalAssert(func);
+    if (_enabled && *func)
+      return *func;
+
+    DispatchTable *i = this;
+    RegalAssert(i);
+
+    RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(i));
+    RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(i+1));
+
+    std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
+
+    T f = *func;
+
+    // Step down the stack for the first available function in an enabled table
+
+    while (!f || !i->_enabled)
+    {
+      // Find the next enabled dispatch table
+      for (i = i->_next; !i->_enabled; i = i->_next) { RegalAssert(i); }
+
+      // Get the function pointer
+      RegalAssert(i);
+      RegalAssert(i->_enabled);
+      f = *reinterpret_cast<T *>(reinterpret_cast<char *>(i)+offset);
+    }
+
+    return f;
+  }
+
     // GL_VERSION_1_0
 
     void (REGAL_CALL *glAccum)(GLenum op, GLfloat value);

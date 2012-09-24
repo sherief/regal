@@ -51,7 +51,6 @@ void InitDispatchTableStaticES2(DispatchTable &tbl);
 void InitDispatchTableMissing  (DispatchTable &tbl);
 
 Dispatcher::Dispatcher()
-: current(0)
 {
   #if REGAL_DEBUG
   InitDispatchTableDebug(debug);
@@ -96,56 +95,22 @@ Dispatcher::~Dispatcher()
 }
 
 void
-Dispatcher::push_back(DispatchTable &table, bool enable)
+Dispatcher::push_back(DispatchTable &table, bool enabled)
 {
   // Disabling the missing table would be bad!
-  RegalAssert(&table!=&missing || enable==true);
+  RegalAssert(&table!=&missing || enabled==true);
 
-  RegalAssert(enabled.size()==disabled.size());
-  if (enable)
+  table._enabled = enabled;
+  table._next = NULL;
+  table._prev = NULL;
+
+  if (size())
   {
-    enabled.push_back(&table);
-    disabled.push_back(NULL);
-  }
-  else
-  {
-    disabled.push_back(&table);
-    enabled.push_back(NULL);
-  }
-}
-
-void
-Dispatcher::enable(DispatchTable &table)
-{
-  RegalAssert(enabled.size()==disabled.size());
-  for (std::size_t i=0; i<disabled.size(); ++i)
-    if (disabled[i]==&table)
-      std::swap(enabled[i],disabled[i]);
-}
-
-void
-Dispatcher::disable(DispatchTable &table)
-{
-  // Disabling the missing table would be bad!
-  RegalAssert(&table!=&missing);
-
-  RegalAssert(enabled.size()==disabled.size());
-  for (std::size_t i=0; i<enabled.size(); ++i)
-    if (enabled[i]==&table)
-      std::swap(enabled[i],disabled[i]);
-}
-
-bool
-Dispatcher::isEnabled(DispatchTable &table) const
-{
-  RegalAssert(enabled.size()==disabled.size());
-  for (std::size_t i=0; i<enabled.size(); ++i)
-  {
-    if (enabled[i]==&table)  return true;
-    if (disabled[i]==&table) return false;
+    table._prev = &back();
+    back()._next = &table;
   }
 
-  return false;
+   _table.push_back(&table);
 }
 
 REGAL_NAMESPACE_END

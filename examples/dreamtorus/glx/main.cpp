@@ -126,8 +126,8 @@ int main (int argc, char ** argv)
     dreamTorusReshape( width, height );
     for(int i = 0; i < 1000000; i++ ) {
        dreamTorusDisplay( true );
-       usleep( 16000 );
        glXSwapBuffers( dpy, win );
+       usleep( 16000 );
     }
 
     ctx = glXGetCurrentContext();

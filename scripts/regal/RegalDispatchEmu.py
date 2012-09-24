@@ -28,6 +28,7 @@ ${IFDEF}REGAL_GLOBAL_BEGIN
 using namespace std;
 
 #include "RegalLog.h"
+#include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
@@ -208,7 +209,8 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '               return;\n'
                 code += '           }\n'
 
-              code += '         Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+              code += '         DispatchTable *_next = _context->dispatcher.emulation._next;\n'
+              code += '         RegalAssert(_next);\n'
 
               if es2Name != None:
                 code += '         '
@@ -216,19 +218,20 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '         '
                 if not typeIsVoid(rType):
                     code += '  return '
-                code += '  _context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( es2Name, es2Params )
+                code += '  _next->call(&_next->%s)(%s);\n' % ( es2Name, es2Params )
                 code += '         else\n  '
 
               code += '         '
               if not typeIsVoid(rType):
                   code += 'return '
-              code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+              code += ' _next->call(&_next->%s)(%s);\n' % ( name, callParams )
 
               code += '         break;\n'
               code += '       }\n\n'
               code += '   }\n\n'
             else:
-              code += '   Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+              code += '   DispatchTable *_next = _context->dispatcher.emulation._next;\n'
+              code += '   RegalAssert(_next);\n'
               code += '   '
 
               if es2Name != None:
@@ -236,12 +239,12 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '     '
                 if not typeIsVoid(rType):
                     code += 'return '
-                code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( es2Name, es2Params )
+                code += ' _next->call(& _next->%s)(%s);\n' % ( es2Name, es2Params )
                 code += '   else\n     '
 
               if not typeIsVoid(rType):
                   code += 'return '
-              code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+              code += ' _next->call(& _next->%s)(%s);\n' % ( name, callParams )
             code += '}\n\n'
 
         if api.name in cond:

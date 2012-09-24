@@ -58,18 +58,19 @@ def apiErrorFuncDefineCode(apis, args):
       code += '  Internal("error_%s","()");\n' % name
       code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
+      code += '  DispatchTable *_next = _context->dispatcher.error._next;\n'
+      code += '  RegalAssert(_next);\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
-        code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
         code += '  if (!_context->depthBeginEnd)\n'
-        code += '    _error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '    _error = _next->call(&_next->glGetError)();\n'
         code += '  RegalAssert(_error==GL_NO_ERROR);\n'
         code += '  '
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
-        code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+        code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
         code += '  if (!_context->depthBeginEnd) {\n'
-        code += '    _error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '    _error = _next->call(&_next->glGetError)();\n'
         code += '    if (_error!=GL_NO_ERROR) {\n'
         code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
         code += '      if (_context->err.callback)\n'
@@ -79,8 +80,7 @@ def apiErrorFuncDefineCode(apis, args):
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
-        code += '  GLenum error = _context->dispatcher.call(&_context->dispatcher.table().glGetError)();\n'
+        code += '  GLenum error = _next->call(&_next->glGetError)();\n'
         code += '  return error;\n'
       code += '}\n\n'
 

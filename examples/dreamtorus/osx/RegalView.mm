@@ -34,7 +34,6 @@ For more information, please refer to <http://unlicense.org/>
 #include "render.h"
 #include <stdio.h>
 
-
 @implementation GlesView
 
 bool resized = false;

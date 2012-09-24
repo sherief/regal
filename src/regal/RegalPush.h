@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2011-2012 NVIDIA Corporation
+  Copyright (c) 2011 NVIDIA Corporation
   Copyright (c) 2011-2012 Cass Everitt
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
@@ -28,51 +28,68 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef __REGAL_CONFIG_H__
-#define __REGAL_CONFIG_H__
+#ifndef __REGAL_PUSH_H__
+#define __REGAL_PUSH_H__
 
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
 
+#include <cstring>    // For memcpy
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace Config
+//
+// A utility class for temporarily pushing the memory of an object to
+// the stack.  When the Push object goes out of scope, the memory
+// is copied back again.
+//
+
+template<typename T>
+struct Push
 {
-  void Init();
+public:
+  Push(T &var)
+  : _var(&var)
+  {
+    std::memcpy(_buffer,_var,sizeof(T));
+  }
 
-  extern bool forceCoreProfile;
-  extern bool forceES2Profile;
+  Push(T *var)
+  : _var(var)
+  {
+    if (_var)
+      std::memcpy(_buffer,_var,sizeof(T));
+  }
 
-  // Initial dispatch enable/disable state
+  Push(T &var, T offset)
+  : _var(&var)
+  {
+    std::memcpy(_buffer,_var,sizeof(T));
+    (*_var) += offset;
+  }
 
-  extern bool forceEmulation;
-  extern bool enableEmulation;
-  extern bool enableDebug;
-  extern bool enableError;
-  extern bool enableLog;
-  extern bool enableDriver;
+  Push(T *var, T offset)
+  : _var(var)
+  {
+    if (_var)
+    {
+      std::memcpy(_buffer,_var,sizeof(T));
+      (*_var) += offset;
+    }
+  }
 
-  // Initial emulation layer enable/disable
+  ~Push()
+  {
+    if (_var)
+      std::memcpy(_var,&_buffer,sizeof(T));
+  }
 
-  extern bool enableEmuPpa;
-  extern bool enableEmuObj;
-  extern bool enableEmuBin;
-  extern bool enableEmuDsa;
-  extern bool enableEmuIff;
-  extern bool enableEmuVao;
-  
-  // Initial context configuration
-  
-  extern bool frameMd5Color;    // Log md5 hash of color buffer
-  extern bool frameMd5Stencil;
-  extern bool frameMd5Depth;
-  
-  extern bool frameSaveColor;   // Save color buffer to PNG file
-  extern bool frameSaveStencil;
-  extern bool frameSaveDepth;
+private:
+  T    *_var;
+  char  _buffer[sizeof(T)];
 };
 
 REGAL_NAMESPACE_END

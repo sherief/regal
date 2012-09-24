@@ -105,6 +105,10 @@ ${EMU_MEMBER_DECLARE}
 
   GLLOGPROCREGAL      logCallback;
 
+  // Per-frame state and configuration
+  
+  size_t              frame;
+
   // State tracked via EmuContextState.py / Regal.cpp
 
   size_t              depthBeginEnd;   // Normally zero or one
@@ -152,6 +156,7 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   sysCtx(NULL),
   thread(0),
   logCallback(NULL),
+  frame(0),
   depthBeginEnd(0),
   depthPushAttrib(0)
 {

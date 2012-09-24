@@ -76,6 +76,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
+#include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
@@ -146,11 +147,12 @@ def generateDispatchLog(apis, args):
       code += '    %s\n' % debugPrintFunction( function, 'Driver' )
       code += '    RegalContext *_context = GET_REGAL_CONTEXT();\n'
       code += '    RegalAssert(_context);\n'
-      code += '    Dispatcher::ScopedStep stepDown(_context->dispatcher);\n'
+      code += '    DispatchTable *_next = _context->dispatcher.logging._next;\n'
+      code += '    RegalAssert(_next);\n'
       code += '    '
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
-      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n' % ( name, callParams )
+      code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '    return ret;\n'
       code += '}\n\n'

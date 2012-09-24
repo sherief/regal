@@ -274,6 +274,12 @@ T *GetProcAddress(T *&f, const char *entry )
 inline bool starts_with(const std::string &input, const std::string &test) { return std::strncmp(input.c_str(),test.c_str(),test.length())==0; }
 inline bool starts_with(const std::string &input, const char * const test) { return std::strncmp(input.c_str(),test,        strlen(test) )==0; }
 
+//
+
+extern bool  fileExists(const char *filename);
+extern FILE *fileOpen  (const char *filename, const char *mode);
+extern void  fileClose (FILE **file);
+
 // ToFloat for integer -> float
 
 template <typename T> inline float ToFloat(const bool normalize, const T v ) {

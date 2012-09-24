@@ -80,6 +80,7 @@ RegalContext::RegalContext()
   sysCtx(NULL),
   thread(0),
   logCallback(NULL),
+  frame(0),
   depthBeginEnd(0),
   depthPushAttrib(0)
 {

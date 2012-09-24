@@ -105,22 +105,6 @@ namespace Logging {
 
   Timer                   timer;
 
-  inline FILE *openFile(const std::string &filename)
-  {
-    if (filename.length())
-    {
-      if (filename=="stdout")
-        return stdout;
-
-      if (filename=="stderr")
-        return stderr;
-
-      return fopen(filename.c_str(),"wt");
-    }
-
-    return NULL;
-  }
-
   void Init()
   {
 #ifndef REGAL_NO_GETENV
@@ -181,9 +165,15 @@ namespace Logging {
     if (bufferLimit)
       buffer = new list<string>();
 
-    logOutput = openFile(logFilename);
+    // Text logging
 
-    jsonOutput = openFile(jsonFilename);
+    if (logFilename.length())
+      logOutput = fileOpen(logFilename.c_str(),"wt");
+
+    // JSON logging
+
+    if (jsonFilename.length())
+      jsonOutput = fileOpen(jsonFilename.c_str(),"wt");
     if (jsonOutput)
       fprintf(jsonOutput,"%s","{ \"traceEvents\" : [\n");
 
@@ -242,14 +232,14 @@ namespace Logging {
 
     initialized = false;
 
-    fclose(logOutput);
-    logOutput = NULL;
+    if (logOutput)
+      fileClose(&logOutput);
 
     if (jsonOutput)
+    {
       fprintf(jsonOutput,"%s","{} ] }\n");
-
-    fclose(jsonOutput);
-    jsonOutput = NULL;
+      fileClose(&jsonOutput);
+    }
   }
 
   inline size_t indent()
@@ -276,9 +266,9 @@ namespace Logging {
 
   inline string message(const char *prefix, const char *delim, const char *name, const string &str)
   {
-    const static string trimSuffix(" ...");
+    static const char *trimSuffix = " ...";
     std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '), name ? name : "");
-    return print_string(trim(str,'\n',maxLines>0 ? maxLines : ~0,trimPrefix,trimSuffix), '\n');
+    return print_string(trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.c_str(),trimSuffix), '\n');
   }
 
   inline string jsonObject(const char *prefix, const char *name, const string &str)

@@ -66,10 +66,12 @@ def apiLoaderFuncDefineCode(apis, args):
       if typeIsVoid(rType):
         code += '    return;\n'
       code += '  }\n'
-      code += '  Dispatcher::ScopedStep stepDown(_context->dispatcher);\n  '
+      code += '  DispatchTable *_next = _driver._next;\n'
+      code += '  RegalAssert(_next);\n'
+      code += '  '
       if not typeIsVoid(rType):
         code += 'return '
-      code += '_context->dispatcher.call(&_context->dispatcher.table().%s)(%s);\n'%(name, callParams)
+      code += '_next->call(&_next->%s)(%s);\n'%(name, callParams)
       code += '}\n\n'
 
     if api.name in cond:

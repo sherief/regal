@@ -72,113 +72,48 @@ public:
 
   void push_back(DispatchTable &table, bool enable);
 
-  void enable(DispatchTable &table);
-  void disable(DispatchTable &table);
-
-  bool isEnabled(DispatchTable &table) const;
-
-  DispatchTable &
-  table()
+  inline void
+  enable(DispatchTable &table)
   {
-    std::size_t i = current;
-    while (!enabled[i])
-      ++i;
-    RegalAssert(i<enabled.size());
-    RegalAssert(enabled[i]);
-    return *enabled[i];
+    table._enabled = true;
+  }
+  
+  inline void
+  disable(DispatchTable &table)
+  {
+    table._enabled = false;
   }
 
-  // Lookup a function pointer from the current
-  // dispatch table, or deeper in the stack as
-  // necessary.
-
-  template<typename T>
-  T call(T *func)
+  inline bool isEnabled(DispatchTable &table) const
   {
-    RegalAssert(func);
-    if (*func)
-      return *func;
-
-    RegalAssert(current<enabled.size());
-
-    while (!enabled[current])
-      ++current;
-
-    DispatchTable *t = enabled[current];
-
-    RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(t));
-    RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(t+1));
-
-    std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(t);
-
-    T f = *func;
-
-    while (!f)
-    {
-      for (++current; !enabled[current]; ++current) {}
-      RegalAssert(current<enabled.size());
-      RegalAssert(enabled[current]);
-      f = *reinterpret_cast<T *>(reinterpret_cast<char *>(enabled[current])+offset);
-    }
-
-    return f;
+    return table._enabled;
   }
 
-  struct ScopedStep
+  inline std::size_t size() const
   {
-  public:
-    ScopedStep(Dispatcher &dispatcher)
-    : _dispatcher(dispatcher),
-      _previous(dispatcher.current)
-    {
-      ++dispatcher.current;
-      
-      // Skip disabled layers
+    return _table.size();
+  }
 
-      while (!dispatcher.enabled[dispatcher.current])
-        ++dispatcher.current;
+  inline DispatchTable &operator[](const std::size_t i)
+  {
+    RegalAssert(i<size());
+    return *_table[i];
+  }
 
-      RegalAssert(dispatcher.current<dispatcher.enabled.size());
-      RegalAssert(dispatcher.current<dispatcher.disabled.size());
-    }
+  inline DispatchTable &front()
+  {
+    RegalAssert(size());
+    return *_table.front();
+  }
 
-    ScopedStep(Dispatcher *dispatcher)
-    : _dispatcher(*dispatcher),
-      _previous(dispatcher->current)
-    {
-      RegalAssert(dispatcher);
-
-      ++dispatcher->current;
-      
-      // Skip disabled layers
-
-      while (!dispatcher->enabled[dispatcher->current])
-        ++dispatcher->current;
-
-      RegalAssert(dispatcher->current<dispatcher->enabled.size());
-      RegalAssert(dispatcher->current<dispatcher->disabled.size());
-    }
-
-    ~ScopedStep()
-    {
-      _dispatcher.current = _previous;
-    }
-
-  private:
-    Dispatcher  &_dispatcher;
-    std::size_t  _previous;    // Previous current
-
-    // make these private, not needed
-
-    ScopedStep(const ScopedStep &other);
-    ScopedStep &operator=(const ScopedStep &other);
-  };
+  inline DispatchTable &back()
+  {
+    RegalAssert(size());
+    return *_table.back();
+  }
 
 private:
-  std::vector<DispatchTable *> enabled;
-  std::vector<DispatchTable *> disabled;
-
-  std::size_t                  current;   // 0 is the top, enabled.size()-1 the bottom
+  std::vector<DispatchTable *> _table;
 };
 
 REGAL_NAMESPACE_END
