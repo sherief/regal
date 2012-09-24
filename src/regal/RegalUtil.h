@@ -173,6 +173,10 @@
 #define REGAL_EMU_VAO 1
 #endif
 
+#ifndef REGAL_EMU_FILTER
+#define REGAL_EMU_FILTER 1
+#endif
+
 //
 
 #ifndef REGAL_FORCE_CORE_PROFILE

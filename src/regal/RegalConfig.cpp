@@ -61,6 +61,7 @@ bool enableEmuBin     = REGAL_EMU_BIN;
 bool enableEmuDsa     = REGAL_EMU_DSA;
 bool enableEmuIff     = REGAL_EMU_IFF;
 bool enableEmuVao     = REGAL_EMU_VAO;
+bool enableEmuFilter  = REGAL_EMU_FILTER;
 
 bool frameMd5Color    = false;
 bool frameMd5Stencil  = false;
@@ -152,6 +153,9 @@ void Init()
   if (tmp) enableEmuVao = atoi(tmp)!=0;
 #endif
 
+  tmp = GetEnv( "REGAL_EMU_FILTER" );
+  if (tmp) enableEmuFilter = atoi(tmp)!=0;
+
   tmp = GetEnv( "REGAL_MD5_COLOR" );
   if (tmp) frameMd5Color = atoi(tmp)!=0;
 
@@ -193,10 +197,7 @@ void Init()
   Info("REGAL_EMU_DSA            ", enableEmuDsa     ? "enabled" : "disabled");
   Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
   Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
-
-  Info("REGAL_EMU_PPA            ", enableEmuPpa     ? "enabled" : "disabled");
-  Info("REGAL_EMU_OBJ            ", enableEmuObj     ? "enabled" : "disabled");
-  Info("REGAL_EMU_BIN            ", enableEmuBin     ? "enabled" : "disabled");
+  Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
 
   Info("REGAL_MD5_COLOR          ", frameMd5Color    ? "enabled" : "disabled");
   Info("REGAL_MD5_STENCIL        ", frameMd5Stencil  ? "enabled" : "disabled");

@@ -55,9 +55,9 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 #include <algorithm>
 
+#include "RegalEmu.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalEmu.h"
 #include "linear.h"
 
 REGAL_GLOBAL_END
@@ -1941,9 +1941,8 @@ struct RegalIff : public RegalEmu {
     }
 
     //
-    void Init( RegalContext * ctx ) {
-        RegalEmuScopedActivate activate( ctx, this );
-
+    void Init( RegalContext &ctx )
+    {
         shadowMatrixMode = 0;
         shadowActiveTextureIndex = 0;
         activeTextureIndex = 0;
@@ -1953,9 +1952,9 @@ struct RegalIff : public RegalEmu {
         es = false;
         legacy = false;
 
-        InitVertexArray( ctx );
-        InitFixedFunction( ctx );
-        InitImmediate( ctx );
+        InitVertexArray( &ctx );
+        InitFixedFunction( &ctx );
+        InitImmediate( &ctx );
     }
 };
 

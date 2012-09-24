@@ -19,8 +19,9 @@
    prototypes) to maintain the tradition that Netfone will compile
    with Sun's original "cc". */
 
-#include <memory.h>		 /* for memcpy() */
-#include <string.h>    /* for memcpy() */
+#include <memory.h>  /* for memcpy() */
+#include <string.h>  /* for memcpy() */
+
 #include "md5.h"
 
 #ifndef HIGHFIRST

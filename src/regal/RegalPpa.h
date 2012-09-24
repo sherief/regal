@@ -60,7 +60,7 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 {
-  void Init(RegalContext *ctx)
+  void Init(RegalContext &ctx)
   {
     UNUSED_PARAMETER(ctx);
   }

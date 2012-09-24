@@ -62,6 +62,8 @@
 		43FC5FA315C4619B00D0177C /* RegalUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FC5F7615C4619B00D0177C /* RegalUtil.h */; };
 		43FC5FA415C4619B00D0177C /* RegalVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 43FC5F7715C4619B00D0177C /* RegalVao.h */; };
 		43FC5FA715C461AC00D0177C /* mongoose.c in Sources */ = {isa = PBXBuildFile; fileRef = 43FC5FA615C461AC00D0177C /* mongoose.c */; };
+		BC020947160D1919003FAB99 /* RegalMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC020946160D1919003FAB99 /* RegalMarker.cpp */; };
+		BC020958160D1C73003FAB99 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = BC020957160D1C73003FAB99 /* md5.c */; };
 		BC6C912A15EE3DC60056E4F7 /* RegalDispatchGlobal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC6C912915EE3DC60056E4F7 /* RegalDispatchGlobal.cpp */; };
 		BC921A5E15D5624600E52C91 /* RegalDispatchMissing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC921A5C15D5624600E52C91 /* RegalDispatchMissing.cpp */; };
 		BC921A5F15D5624600E52C91 /* RegalDispatchNacl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC921A5D15D5624600E52C91 /* RegalDispatchNacl.cpp */; };
@@ -124,6 +126,8 @@
 		43FC5F7615C4619B00D0177C /* RegalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalUtil.h; path = ../../../src/regal/RegalUtil.h; sourceTree = "<group>"; };
 		43FC5F7715C4619B00D0177C /* RegalVao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalVao.h; path = ../../../src/regal/RegalVao.h; sourceTree = "<group>"; };
 		43FC5FA615C461AC00D0177C /* mongoose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mongoose.c; path = ../../../src/mongoose/mongoose.c; sourceTree = "<group>"; };
+		BC020946160D1919003FAB99 /* RegalMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalMarker.cpp; path = ../../../src/regal/RegalMarker.cpp; sourceTree = "<group>"; };
+		BC020957160D1C73003FAB99 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = md5.c; path = ../../../src/md5/src/md5.c; sourceTree = "<group>"; };
 		BC6C912915EE3DC60056E4F7 /* RegalDispatchGlobal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalDispatchGlobal.cpp; path = ../../../src/regal/RegalDispatchGlobal.cpp; sourceTree = "<group>"; };
 		BC921A5C15D5624600E52C91 /* RegalDispatchMissing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalDispatchMissing.cpp; path = ../../../src/regal/RegalDispatchMissing.cpp; sourceTree = "<group>"; };
 		BC921A5D15D5624600E52C91 /* RegalDispatchNacl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalDispatchNacl.cpp; path = ../../../src/regal/RegalDispatchNacl.cpp; sourceTree = "<group>"; };
@@ -169,12 +173,13 @@
 		43FC5F4A15C4617A00D0177C /* Regal */ = {
 			isa = PBXGroup;
 			children = (
+				BC020956160D1C65003FAB99 /* md5 */,
+				43FC5FA515C461A100D0177C /* mongoose */,
 				43EFD6F415EAADAC004080CE /* RegalDispatcher.cpp */,
 				43EFD6F515EAADAC004080CE /* RegalDispatcher.h */,
 				43EFD6F615EAADAC004080CE /* RegalDispatchStaticEGL.cpp */,
 				43EFD6F715EAADAC004080CE /* RegalDispatchStaticES2.cpp */,
 				43EFD6F815EAADAC004080CE /* RegalSystem.h */,
-				43FC5FA515C461A100D0177C /* mongoose */,
 				43FC5F4B15C4619B00D0177C /* linear.h */,
 				43FC5F4C15C4619B00D0177C /* Regal.cpp */,
 				43FC5F4D15C4619B00D0177C /* RegalBin.h */,
@@ -215,6 +220,7 @@
 				43FC5F6B15C4619B00D0177C /* RegalLookup.h */,
 				4366EEED15C9B54E00211205 /* RegalMac.cpp */,
 				43FC5F6C15C4619B00D0177C /* RegalMarker.h */,
+				BC020946160D1919003FAB99 /* RegalMarker.cpp */,
 				43FC5F6D15C4619B00D0177C /* RegalObj.h */,
 				43FC5F6E15C4619B00D0177C /* RegalPpa.h */,
 				43FC5F6F15C4619B00D0177C /* RegalPpc.h */,
@@ -236,6 +242,14 @@
 				43FC5FA615C461AC00D0177C /* mongoose.c */,
 			);
 			name = mongoose;
+			sourceTree = "<group>";
+		};
+		BC020956160D1C65003FAB99 /* md5 */ = {
+			isa = PBXGroup;
+			children = (
+				BC020957160D1C73003FAB99 /* md5.c */,
+			);
+			name = md5;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +370,8 @@
 				43EFD6FB15EAADAC004080CE /* RegalDispatchStaticEGL.cpp in Sources */,
 				43EFD6FC15EAADAC004080CE /* RegalDispatchStaticES2.cpp in Sources */,
 				BC6C912A15EE3DC60056E4F7 /* RegalDispatchGlobal.cpp in Sources */,
+				BC020947160D1919003FAB99 /* RegalMarker.cpp in Sources */,
+				BC020958160D1C73003FAB99 /* md5.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +381,7 @@
 		43FC5EE615C45EBB00D0177C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -383,14 +399,14 @@
 				HEADER_SEARCH_PATHS = ../../../include;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/boost";
+				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/boost ../../../src/md5/include";
 			};
 			name = Debug;
 		};
 		43FC5EE715C45EBB00D0177C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -401,7 +417,7 @@
 				HEADER_SEARCH_PATHS = ../../../include;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/boost";
+				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/boost ../../../src/md5/include";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

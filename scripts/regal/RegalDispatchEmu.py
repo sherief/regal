@@ -119,9 +119,10 @@ def apiEmuFuncDefineCode(apis, args):
                   if e != None and 'prefix' in e and len(e['prefix']):
                       if l['member'] :
                           code += '         if (_context->%s) {\n' % l['member']
-                          code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
+                          code += '           Push<int> pushLevel(_context->emuLevel);\n'
+                          code += '           _context->emuLevel = %d;\n' %( int(l['level']) - 1 )
                       for j in e['prefix'] :
-                          code += '             %s\n' % j
+                          code += '           %s\n' % j
                       if l['member'] :
                           code += '         }\n'
                   if e!= None and 'impl' in e and l['member']:
@@ -155,12 +156,13 @@ def apiEmuFuncDefineCode(apis, args):
                   if e != None and 'impl' in e and len(e['impl']):
                       if l['member'] :
                         code += '         if (_context->%s) {\n' % l['member']
-                        code += '             RegalEmuScopedActivate activate( _context, _context->%s );\n' % l['member']
+                        code += '           Push<int> pushLevel(_context->emuLevel);\n'
+                        code += '           _context->emuLevel = %d;\n' %( int(l['level']) - 1 )
                       for j in e['impl'] :
-                          code += '             %s\n' % j
+                          code += '           %s\n' % j
                       if l['member'] :
                           if typeIsVoid(rType):
-                              code += '             return;\n'
+                              code += '           return;\n'
                           code += '         }\n'
                   if l['ifdef']:
                       code += '         #endif\n'

@@ -63,6 +63,7 @@ namespace Config
   extern bool enableEmuDsa;
   extern bool enableEmuIff;
   extern bool enableEmuVao;
+  extern bool enableEmuFilter;
   
   // Initial context configuration
   
