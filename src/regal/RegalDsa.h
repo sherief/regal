@@ -77,6 +77,8 @@ struct RegalDsa : public RegalEmu {
 
     void Init( RegalContext &ctx )
     {
+        UNUSED_PARAMETER(ctx);
+
         callDepth = 0;
         drv.matrixMode = GL_MODELVIEW;
         drv.activeTexture = GL_TEXTURE0;

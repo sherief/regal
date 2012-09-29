@@ -37,9 +37,26 @@
 
 REGAL_GLOBAL_BEGIN
 
+#include "RegalSystem.h"
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
+
+#ifndef REGAL_NO_HTTP
+#define REGAL_NO_HTTP 0
+#endif
+
+// Http is disabled for NaCL, for now
+
+#ifdef REGAL_SYS_NACL
+#undef REGAL_NO_HTTP
+#define REGAL_NO_HTTP 0
+#endif
+
+#ifndef REGAL_HTTP_PORT
+#define REGAL_HTTP_PORT 8080
+#endif
 
 namespace Http
 {
@@ -48,7 +65,8 @@ namespace Http
   extern void Start();
   extern void Stop();
 
-  extern int port;
+  extern bool enabled;
+  extern int  port;
 }
 
 REGAL_NAMESPACE_END

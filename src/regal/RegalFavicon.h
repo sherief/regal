@@ -31,16 +31,20 @@
 #ifndef __REGAL_FAVICON_H__
 #define __REGAL_FAVICON_H__
 
-#ifndef REGAL_NO_HTTP
-
 #include "RegalUtil.h"
+
+REGAL_GLOBAL_BEGIN
+
+#include "RegalHttp.h"
+
+REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+#if !REGAL_NO_HTTP
 extern unsigned char favicon[2238];
+#endif
 
 REGAL_NAMESPACE_END
-
-#endif
 
 #endif

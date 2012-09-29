@@ -30995,6 +30995,8 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
 
 // GL_MESA_window_pos
 
+// GL_NVX_conditional_render
+
 // GL_NV_bindless_texture
 
 // GL_NV_conditional_render
@@ -31623,6 +31625,8 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 // GL_NV_vertex_program
 
 // GL_NV_video_capture
+
+// GL_OES_single_precision
 
 // GL_PGI_misc_hints
 

@@ -347,6 +347,18 @@ struct DispatchTableGlobal {
 
     void *(REGAL_CALL *glXGetProcAddress)(const GLubyte *procName);
 
+    // GLX_AMD_gpu_association
+
+    void (REGAL_CALL *glXBlitContextFramebufferAMD)(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+    GLXContext (REGAL_CALL *glXCreateAssociatedContextAMD)(unsigned int id, GLXContext share_list);
+    GLXContext (REGAL_CALL *glXCreateAssociatedContextAttribsAMD)(unsigned int id, GLXContext share_context, const int *attribList);
+    Bool (REGAL_CALL *glXDeleteAssociatedContextAMD)(GLXContext ctx);
+    unsigned int (REGAL_CALL *glXGetContextGPUIDAMD)(GLXContext ctx);
+    GLXContext (REGAL_CALL *glXGetCurrentAssociatedContextAMD)(void);
+    unsigned int (REGAL_CALL *glXGetGPUIDsAMD)(unsigned int maxCount, unsigned int *ids);
+    int (REGAL_CALL *glXGetGPUInfoAMD)(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
+    Bool (REGAL_CALL *glXMakeAssociatedContextCurrentAMD)(GLXContext ctx);
+
     // GLX_ARB_create_context
 
     GLXContext (REGAL_CALL *glXCreateContextAttribsARB)(Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
@@ -433,7 +445,7 @@ struct DispatchTableGlobal {
     int (REGAL_CALL *glXQueryVideoCaptureDeviceNV)(Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
     void (REGAL_CALL *glXReleaseVideoCaptureDeviceNV)(Display *dpy, GLXVideoCaptureDeviceNV device);
 
-    // GLX_NV_video_out
+    // GLX_NV_video_output
 
     int (REGAL_CALL *glXBindVideoImageNV)(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
     int (REGAL_CALL *glXGetVideoDeviceNV)(Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
@@ -2517,6 +2529,7 @@ struct DispatchTable {
     void (REGAL_CALL *glGetNamedProgramivEXT)(GLuint program, GLenum target, GLenum pname, GLint *params);
     void (REGAL_CALL *glGetNamedRenderbufferParameterivEXT)(GLuint renderbuffer, GLenum pname, GLint *params);
     void (REGAL_CALL *glGetPointerIndexedvEXT)(GLenum target, GLuint index, GLvoid **data);
+    void (REGAL_CALL *glGetPointeri_vEXT)(GLenum pname, GLuint index, GLvoid **params);
     void (REGAL_CALL *glGetTextureImageEXT)(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
     void (REGAL_CALL *glGetTextureLevelParameterfvEXT)(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
     void (REGAL_CALL *glGetTextureLevelParameterivEXT)(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
@@ -2849,7 +2862,9 @@ struct DispatchTable {
     void (REGAL_CALL *glGetPixelTransformParameterfvEXT)(GLenum target, GLenum pname, const GLfloat *params);
     void (REGAL_CALL *glGetPixelTransformParameterivEXT)(GLenum target, GLenum pname, const GLint *params);
     void (REGAL_CALL *glPixelTransformParameterfEXT)(GLenum target, GLenum pname, const GLfloat param);
+    void (REGAL_CALL *glPixelTransformParameterfvEXT)(GLenum target, GLenum pname, const GLfloat *params);
     void (REGAL_CALL *glPixelTransformParameteriEXT)(GLenum target, GLenum pname, const GLint param);
+    void (REGAL_CALL *glPixelTransformParameterivEXT)(GLenum target, GLenum pname, const GLint *params);
 
     // GL_EXT_point_parameters
 
@@ -3103,6 +3118,7 @@ struct DispatchTable {
     void (REGAL_CALL *glGetObjectPtrLabel)(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
     void (REGAL_CALL *glObjectLabel)(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
     void (REGAL_CALL *glObjectPtrLabel)(GLvoid *ptr, GLsizei length, const GLchar *label);
+    void (REGAL_CALL *glPopDebugGroup)(void);
     void (REGAL_CALL *glPushDebugGroup)(GLenum source, GLuint id, GLsizei length, const GLchar *message);
 
     // GL_KTX_buffer_region
@@ -3143,6 +3159,11 @@ struct DispatchTable {
     void (REGAL_CALL *glWindowPos4ivMESA)(const GLint *v);
     void (REGAL_CALL *glWindowPos4sMESA)(GLshort x, GLshort y, GLshort z, GLshort w);
     void (REGAL_CALL *glWindowPos4svMESA)(const GLshort *v);
+
+    // GL_NVX_conditional_render
+
+    void (REGAL_CALL *glBeginConditionalRenderNVX)(GLuint id);
+    void (REGAL_CALL *glEndConditionalRenderNVX)(void);
 
     // GL_NV_bindless_texture
 
@@ -3627,6 +3648,15 @@ struct DispatchTable {
     void (REGAL_CALL *glVideoCaptureStreamParameterdvNV)(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params);
     void (REGAL_CALL *glVideoCaptureStreamParameterfvNV)(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params);
     void (REGAL_CALL *glVideoCaptureStreamParameterivNV)(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params);
+
+    // GL_OES_single_precision
+
+    void (REGAL_CALL *glClearDepthfOES)(GLclampd depth);
+    void (REGAL_CALL *glClipPlanefOES)(GLenum plane, const GLfloat *equation);
+    void (REGAL_CALL *glDepthRangefOES)(GLclampf n, GLclampf f);
+    void (REGAL_CALL *glFrustumfOES)(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+    void (REGAL_CALL *glGetClipPlanefOES)(GLenum plane, GLfloat *equation);
+    void (REGAL_CALL *glOrthofOES)(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 
     // GL_PGI_misc_hints
 

@@ -267,7 +267,7 @@ namespace Logging {
   inline string message(const char *prefix, const char *delim, const char *name, const string &str)
   {
     static const char *trimSuffix = " ...";
-    std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '), name ? name : "");
+    std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '), name ? name : "", ' ');
     return print_string(trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.c_str(),trimSuffix), '\n');
   }
 

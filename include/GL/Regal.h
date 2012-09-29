@@ -4856,6 +4856,18 @@ REGAL_DECL void REGAL_CALL glSamplerParameteriv(GLuint sampler, GLenum pname, co
 #define GL_ARB_separate_shader_objects 1
 #endif
 
+#ifndef REGAL_NO_ENUM_GL_ARB_SEPARATE_SHADER_OBJECTS
+#define GL_VERTEX_SHADER_BIT          0x1
+#define GL_TESS_EVALUATION_SHADER_BIT 0x10           /* 16 */
+#define GL_FRAGMENT_SHADER_BIT        0x2
+#define GL_GEOMETRY_SHADER_BIT        0x4
+#define GL_TESS_CONTROL_SHADER_BIT    0x8
+#define GL_PROGRAM_SEPARABLE          0x8258         /* 33368 */
+#define GL_ACTIVE_PROGRAM             0x8259         /* 33369 */
+#define GL_PROGRAM_PIPELINE_BINDING   0x825a         /* 33370 */
+#define GL_ALL_SHADER_BITS            0xffffffff     /* 4294967295 */
+#endif
+
 #ifndef REGAL_NO_TYPEDEF_GL_ARB_SEPARATE_SHADER_OBJECTS
 typedef GLboolean (REGAL_CALL *PFNGLISPROGRAMPIPELINEPROC)(GLuint pipeline);
 typedef GLuint (REGAL_CALL *PFNGLCREATESHADERPROGRAMVPROC)(GLenum type, GLsizei count, const GLchar **strings);
@@ -6526,8 +6538,7 @@ REGAL_DECL void REGAL_CALL glTexImage3DMultisample(GLenum target, GLsizei sample
 #endif
 
 #ifndef REGAL_NO_ENUM_GL_ARB_TEXTURE_RGB10_A2UI
-#define GL_RGB10_A2UI 0x906f     /* 36975 */
-#define GL_RGB10_A2UI 0x906f     /* 36975 */
+#define GL_RGB10_A2UI 0x906f /* 36975 */
 #endif
 
 /**
@@ -10002,6 +10013,7 @@ typedef void (REGAL_CALL *PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC)(GLuint 
 typedef void (REGAL_CALL *PFNGLGETNAMEDPROGRAMSTRINGEXTPROC)(GLuint program, GLenum target, GLenum pname, GLvoid *string);
 typedef void (REGAL_CALL *PFNGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC)(GLuint renderbuffer, GLenum pname, GLint *params);
 typedef void (REGAL_CALL *PFNGLGETPOINTERINDEXEDVEXTPROC)(GLenum target, GLuint index, GLvoid **data);
+typedef void (REGAL_CALL *PFNGLGETPOINTERI_VEXTPROC)(GLenum pname, GLuint index, GLvoid **params);
 typedef void (REGAL_CALL *PFNGLGETTEXTUREIMAGEEXTPROC)(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
 typedef void (REGAL_CALL *PFNGLGETTEXTURELEVELPARAMETERFVEXTPROC)(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
 typedef void (REGAL_CALL *PFNGLGETTEXTURELEVELPARAMETERIVEXTPROC)(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
@@ -10231,6 +10243,7 @@ typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC)(GLuint vaobj, GLu
 #define glGetNamedProgramivEXT              rglGetNamedProgramivEXT
 #define glGetNamedRenderbufferParameterivEXT rglGetNamedRenderbufferParameterivEXT
 #define glGetPointerIndexedvEXT             rglGetPointerIndexedvEXT
+#define glGetPointeri_vEXT                  rglGetPointeri_vEXT
 #define glGetTextureImageEXT                rglGetTextureImageEXT
 #define glGetTextureLevelParameterfvEXT     rglGetTextureLevelParameterfvEXT
 #define glGetTextureLevelParameterivEXT     rglGetTextureLevelParameterivEXT
@@ -10466,6 +10479,7 @@ REGAL_DECL void REGAL_CALL glGetNamedProgramStringEXT(GLuint program, GLenum tar
 REGAL_DECL void REGAL_CALL glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint *params);
 REGAL_DECL void REGAL_CALL glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint *params);
 REGAL_DECL void REGAL_CALL glGetPointerIndexedvEXT(GLenum target, GLuint index, GLvoid **data);
+REGAL_DECL void REGAL_CALL glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params);
 REGAL_DECL void REGAL_CALL glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
 REGAL_DECL void REGAL_CALL glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
 REGAL_DECL void REGAL_CALL glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
@@ -11899,16 +11913,10 @@ REGAL_DECL void REGAL_CALL glSamplePatternEXT(GLenum pattern);
 #define GL_COLOR_TABLE_LUMINANCE_SIZE_EXT 0x80de     /* 32990 */
 #define GL_COLOR_TABLE_INTENSITY_SIZE_EXT 0x80df     /* 32991 */
 #define GL_COLOR_INDEX1_EXT               0x80e2     /* 32994 */
-#define GL_COLOR_INDEX1_EXT               0x80e2     /* 32994 */
-#define GL_COLOR_INDEX2_EXT               0x80e3     /* 32995 */
 #define GL_COLOR_INDEX2_EXT               0x80e3     /* 32995 */
 #define GL_COLOR_INDEX4_EXT               0x80e4     /* 32996 */
-#define GL_COLOR_INDEX4_EXT               0x80e4     /* 32996 */
-#define GL_COLOR_INDEX8_EXT               0x80e5     /* 32997 */
 #define GL_COLOR_INDEX8_EXT               0x80e5     /* 32997 */
 #define GL_COLOR_INDEX12_EXT              0x80e6     /* 32998 */
-#define GL_COLOR_INDEX12_EXT              0x80e6     /* 32998 */
-#define GL_COLOR_INDEX16_EXT              0x80e7     /* 32999 */
 #define GL_COLOR_INDEX16_EXT              0x80e7     /* 32999 */
 #define GL_TEXTURE_INDEX_SIZE_EXT         0x80ed     /* 33005 */
 #define GL_TEXTURE_CUBE_MAP_ARB           0x8513     /* 34067 */
@@ -12009,21 +12017,27 @@ REGAL_DECL void REGAL_CALL glGetColorTableParameterivEXT(GLenum target, GLenum p
 typedef void (REGAL_CALL *PFNGLGETPIXELTRANSFORMPARAMETERFVEXTPROC)(GLenum target, GLenum pname, const GLfloat *params);
 typedef void (REGAL_CALL *PFNGLGETPIXELTRANSFORMPARAMETERIVEXTPROC)(GLenum target, GLenum pname, const GLint *params);
 typedef void (REGAL_CALL *PFNGLPIXELTRANSFORMPARAMETERFEXTPROC)(GLenum target, GLenum pname, const GLfloat param);
+typedef void (REGAL_CALL *PFNGLPIXELTRANSFORMPARAMETERFVEXTPROC)(GLenum target, GLenum pname, const GLfloat *params);
 typedef void (REGAL_CALL *PFNGLPIXELTRANSFORMPARAMETERIEXTPROC)(GLenum target, GLenum pname, const GLint param);
+typedef void (REGAL_CALL *PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC)(GLenum target, GLenum pname, const GLint *params);
 #endif
 
 #ifndef REGAL_NO_NAMESPACE_GL_EXT_PIXEL_TRANSFORM
 #define glGetPixelTransformParameterfvEXT   rglGetPixelTransformParameterfvEXT
 #define glGetPixelTransformParameterivEXT   rglGetPixelTransformParameterivEXT
 #define glPixelTransformParameterfEXT       rglPixelTransformParameterfEXT
+#define glPixelTransformParameterfvEXT      rglPixelTransformParameterfvEXT
 #define glPixelTransformParameteriEXT       rglPixelTransformParameteriEXT
+#define glPixelTransformParameterivEXT      rglPixelTransformParameterivEXT
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_PIXEL_TRANSFORM
 REGAL_DECL void REGAL_CALL glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
 REGAL_DECL void REGAL_CALL glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
 REGAL_DECL void REGAL_CALL glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param);
+REGAL_DECL void REGAL_CALL glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
 REGAL_DECL void REGAL_CALL glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param);
+REGAL_DECL void REGAL_CALL glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -14947,6 +14961,7 @@ typedef void (REGAL_CALL *PFNGLGETOBJECTLABELPROC)(GLenum identifier, GLuint nam
 typedef void (REGAL_CALL *PFNGLGETOBJECTPTRLABELPROC)(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
 typedef void (REGAL_CALL *PFNGLOBJECTLABELPROC)(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
 typedef void (REGAL_CALL *PFNGLOBJECTPTRLABELPROC)(GLvoid *ptr, GLsizei length, const GLchar *label);
+typedef void (REGAL_CALL *PFNGLPOPDEBUGGROUPPROC)(void);
 typedef void (REGAL_CALL *PFNGLPUSHDEBUGGROUPPROC)(GLenum source, GLuint id, GLsizei length, const GLchar *message);
 #endif
 
@@ -14959,6 +14974,7 @@ typedef void (REGAL_CALL *PFNGLPUSHDEBUGGROUPPROC)(GLenum source, GLuint id, GLs
 #define glGetObjectPtrLabel                 rglGetObjectPtrLabel
 #define glObjectLabel                       rglObjectLabel
 #define glObjectPtrLabel                    rglObjectPtrLabel
+#define glPopDebugGroup                     rglPopDebugGroup
 #define glPushDebugGroup                    rglPushDebugGroup
 #endif
 
@@ -14971,6 +14987,7 @@ REGAL_DECL void REGAL_CALL glGetObjectLabel(GLenum identifier, GLuint name, GLsi
 REGAL_DECL void REGAL_CALL glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
 REGAL_DECL void REGAL_CALL glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
 REGAL_DECL void REGAL_CALL glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label);
+REGAL_DECL void REGAL_CALL glPopDebugGroup(void);
 REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message);
 #endif
 
@@ -15317,6 +15334,45 @@ REGAL_DECL void REGAL_CALL glWindowPos4svMESA(const GLshort *v);
 #endif
 
 /**
+ ** GL_NVX_conditional_render
+ **/
+
+#if (defined(GL_NVX_CONDITIONAL_RENDER) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NVX_CONDITIONAL_RENDER)) && !defined(REGAL_NO_ENUM_GL_NVX_CONDITIONAL_RENDER)
+#define REGAL_NO_ENUM_GL_NVX_CONDITIONAL_RENDER
+#endif
+
+#if (defined(GL_NVX_CONDITIONAL_RENDER) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NVX_CONDITIONAL_RENDER)) && !defined(REGAL_NO_TYPEDEF_GL_NVX_CONDITIONAL_RENDER)
+#define REGAL_NO_TYPEDEF_GL_NVX_CONDITIONAL_RENDER
+#endif
+
+#if (defined(GL_NVX_CONDITIONAL_RENDER) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NVX_CONDITIONAL_RENDER)) && !defined(REGAL_NO_NAMESPACE_GL_NVX_CONDITIONAL_RENDER)
+#define REGAL_NO_NAMESPACE_GL_NVX_CONDITIONAL_RENDER
+#endif
+
+#if (defined(GL_NVX_CONDITIONAL_RENDER) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NVX_CONDITIONAL_RENDER)) && !defined(REGAL_NO_DECLARATION_GL_NVX_CONDITIONAL_RENDER)
+#define REGAL_NO_DECLARATION_GL_NVX_CONDITIONAL_RENDER
+#endif
+
+#ifndef GL_NVX_conditional_render
+#define GL_NVX_conditional_render 1
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_NVX_CONDITIONAL_RENDER
+typedef void (REGAL_CALL *PFNGLBEGINCONDITIONALRENDERNVXPROC)(GLuint id);
+typedef void (REGAL_CALL *PFNGLENDCONDITIONALRENDERNVXPROC)(void);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_NVX_CONDITIONAL_RENDER
+#define glBeginConditionalRenderNVX         rglBeginConditionalRenderNVX
+#define glEndConditionalRenderNVX           rglEndConditionalRenderNVX
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_NVX_CONDITIONAL_RENDER
+REGAL_DECL void REGAL_CALL glBeginConditionalRenderNVX(GLuint id);
+REGAL_DECL void REGAL_CALL glEndConditionalRenderNVX(void);
+#endif
+
+/**
  ** GL_NVX_gpu_memory_info
  **/
 
@@ -15418,6 +15474,35 @@ REGAL_DECL void REGAL_CALL glProgramUniformHandleui64NV(GLuint program, GLint lo
 REGAL_DECL void REGAL_CALL glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
 REGAL_DECL void REGAL_CALL glUniformHandleui64NV(GLint location, GLuint64 value);
 REGAL_DECL void REGAL_CALL glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 *value);
+#endif
+
+/**
+ ** GL_NV_compute_program5
+ **/
+
+#if (defined(GL_NV_COMPUTE_PROGRAM5) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_COMPUTE_PROGRAM5)) && !defined(REGAL_NO_ENUM_GL_NV_COMPUTE_PROGRAM5)
+#define REGAL_NO_ENUM_GL_NV_COMPUTE_PROGRAM5
+#endif
+
+#if (defined(GL_NV_COMPUTE_PROGRAM5) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_COMPUTE_PROGRAM5)) && !defined(REGAL_NO_TYPEDEF_GL_NV_COMPUTE_PROGRAM5)
+#define REGAL_NO_TYPEDEF_GL_NV_COMPUTE_PROGRAM5
+#endif
+
+#if (defined(GL_NV_COMPUTE_PROGRAM5) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_COMPUTE_PROGRAM5)) && !defined(REGAL_NO_NAMESPACE_GL_NV_COMPUTE_PROGRAM5)
+#define REGAL_NO_NAMESPACE_GL_NV_COMPUTE_PROGRAM5
+#endif
+
+#if (defined(GL_NV_COMPUTE_PROGRAM5) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_COMPUTE_PROGRAM5)) && !defined(REGAL_NO_DECLARATION_GL_NV_COMPUTE_PROGRAM5)
+#define REGAL_NO_DECLARATION_GL_NV_COMPUTE_PROGRAM5
+#endif
+
+#ifndef GL_NV_compute_program5
+#define GL_NV_compute_program5 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_COMPUTE_PROGRAM5
+#define GL_COMPUTE_PROGRAM_NV                  0x90fb     /* 37115 */
+#define GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV 0x90fc     /* 37116 */
 #endif
 
 /**
@@ -15529,6 +15614,35 @@ typedef void (REGAL_CALL *PFNGLCOPYIMAGESUBDATANVPROC)(GLuint srcName, GLenum sr
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_COPY_IMAGE
 REGAL_DECL void REGAL_CALL glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+#endif
+
+/**
+ ** GL_NV_deep_texture3D
+ **/
+
+#if (defined(GL_NV_DEEP_TEXTURE3D) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_DEEP_TEXTURE3D)) && !defined(REGAL_NO_ENUM_GL_NV_DEEP_TEXTURE3D)
+#define REGAL_NO_ENUM_GL_NV_DEEP_TEXTURE3D
+#endif
+
+#if (defined(GL_NV_DEEP_TEXTURE3D) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_DEEP_TEXTURE3D)) && !defined(REGAL_NO_TYPEDEF_GL_NV_DEEP_TEXTURE3D)
+#define REGAL_NO_TYPEDEF_GL_NV_DEEP_TEXTURE3D
+#endif
+
+#if (defined(GL_NV_DEEP_TEXTURE3D) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_DEEP_TEXTURE3D)) && !defined(REGAL_NO_NAMESPACE_GL_NV_DEEP_TEXTURE3D)
+#define REGAL_NO_NAMESPACE_GL_NV_DEEP_TEXTURE3D
+#endif
+
+#if (defined(GL_NV_DEEP_TEXTURE3D) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_DEEP_TEXTURE3D)) && !defined(REGAL_NO_DECLARATION_GL_NV_DEEP_TEXTURE3D)
+#define REGAL_NO_DECLARATION_GL_NV_DEEP_TEXTURE3D
+#endif
+
+#ifndef GL_NV_deep_texture3D
+#define GL_NV_deep_texture3D 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_DEEP_TEXTURE3D
+#define GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV 0x90d0     /* 37072 */
+#define GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV        0x90d1     /* 37073 */
 #endif
 
 /**
@@ -18869,6 +18983,34 @@ REGAL_DECL void REGAL_CALL glVertexAttribs4ubvNV(GLuint index, GLsizei n, const 
 #endif
 
 /**
+ ** GL_NV_vertex_program4
+ **/
+
+#if (defined(GL_NV_VERTEX_PROGRAM4) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_VERTEX_PROGRAM4)) && !defined(REGAL_NO_ENUM_GL_NV_VERTEX_PROGRAM4)
+#define REGAL_NO_ENUM_GL_NV_VERTEX_PROGRAM4
+#endif
+
+#if (defined(GL_NV_VERTEX_PROGRAM4) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_VERTEX_PROGRAM4)) && !defined(REGAL_NO_TYPEDEF_GL_NV_VERTEX_PROGRAM4)
+#define REGAL_NO_TYPEDEF_GL_NV_VERTEX_PROGRAM4
+#endif
+
+#if (defined(GL_NV_VERTEX_PROGRAM4) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_VERTEX_PROGRAM4)) && !defined(REGAL_NO_NAMESPACE_GL_NV_VERTEX_PROGRAM4)
+#define REGAL_NO_NAMESPACE_GL_NV_VERTEX_PROGRAM4
+#endif
+
+#if (defined(GL_NV_VERTEX_PROGRAM4) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_VERTEX_PROGRAM4)) && !defined(REGAL_NO_DECLARATION_GL_NV_VERTEX_PROGRAM4)
+#define REGAL_NO_DECLARATION_GL_NV_VERTEX_PROGRAM4
+#endif
+
+#ifndef GL_NV_vertex_program4
+#define GL_NV_vertex_program4 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_VERTEX_PROGRAM4
+#define GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV 0x88fd /* 35069 */
+#endif
+
+/**
  ** GL_NV_video_capture
  **/
 
@@ -19033,6 +19175,57 @@ REGAL_DECL void REGAL_CALL glVideoCaptureStreamParameterivNV(GLuint video_captur
 #ifndef REGAL_NO_ENUM_GL_OES_READ_FORMAT
 #define GL_IMPLEMENTATION_COLOR_READ_TYPE_OES   0x8b9a     /* 35738 */
 #define GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES 0x8b9b     /* 35739 */
+#endif
+
+/**
+ ** GL_OES_single_precision
+ **/
+
+#if (defined(GL_OES_SINGLE_PRECISION) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_OES_SINGLE_PRECISION)) && !defined(REGAL_NO_ENUM_GL_OES_SINGLE_PRECISION)
+#define REGAL_NO_ENUM_GL_OES_SINGLE_PRECISION
+#endif
+
+#if (defined(GL_OES_SINGLE_PRECISION) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_OES_SINGLE_PRECISION)) && !defined(REGAL_NO_TYPEDEF_GL_OES_SINGLE_PRECISION)
+#define REGAL_NO_TYPEDEF_GL_OES_SINGLE_PRECISION
+#endif
+
+#if (defined(GL_OES_SINGLE_PRECISION) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_OES_SINGLE_PRECISION)) && !defined(REGAL_NO_NAMESPACE_GL_OES_SINGLE_PRECISION)
+#define REGAL_NO_NAMESPACE_GL_OES_SINGLE_PRECISION
+#endif
+
+#if (defined(GL_OES_SINGLE_PRECISION) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_OES_SINGLE_PRECISION)) && !defined(REGAL_NO_DECLARATION_GL_OES_SINGLE_PRECISION)
+#define REGAL_NO_DECLARATION_GL_OES_SINGLE_PRECISION
+#endif
+
+#ifndef GL_OES_single_precision
+#define GL_OES_single_precision 1
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_OES_SINGLE_PRECISION
+typedef void (REGAL_CALL *PFNGLCLEARDEPTHFOESPROC)(GLclampd depth);
+typedef void (REGAL_CALL *PFNGLCLIPPLANEFOESPROC)(GLenum plane, const GLfloat *equation);
+typedef void (REGAL_CALL *PFNGLDEPTHRANGEFOESPROC)(GLclampf n, GLclampf f);
+typedef void (REGAL_CALL *PFNGLFRUSTUMFOESPROC)(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+typedef void (REGAL_CALL *PFNGLGETCLIPPLANEFOESPROC)(GLenum plane, GLfloat *equation);
+typedef void (REGAL_CALL *PFNGLORTHOFOESPROC)(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_OES_SINGLE_PRECISION
+#define glClearDepthfOES                    rglClearDepthfOES
+#define glClipPlanefOES                     rglClipPlanefOES
+#define glDepthRangefOES                    rglDepthRangefOES
+#define glFrustumfOES                       rglFrustumfOES
+#define glGetClipPlanefOES                  rglGetClipPlanefOES
+#define glOrthofOES                         rglOrthofOES
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_OES_SINGLE_PRECISION
+REGAL_DECL void REGAL_CALL glClearDepthfOES(GLclampd depth);
+REGAL_DECL void REGAL_CALL glClipPlanefOES(GLenum plane, const GLfloat *equation);
+REGAL_DECL void REGAL_CALL glDepthRangefOES(GLclampf n, GLclampf f);
+REGAL_DECL void REGAL_CALL glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+REGAL_DECL void REGAL_CALL glGetClipPlanefOES(GLenum plane, GLfloat *equation);
+REGAL_DECL void REGAL_CALL glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 #endif
 
 /**
@@ -26049,6 +26242,34 @@ REGAL_DECL BOOL REGAL_CALL wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const in
 #endif
 
 /**
+ ** WGL_ARB_robustness_share_group_isolation
+ **/
+
+#if (defined(WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)) && !defined(REGAL_NO_ENUM_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)
+#define REGAL_NO_ENUM_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION
+#endif
+
+#if (defined(WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)) && !defined(REGAL_NO_TYPEDEF_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)
+#define REGAL_NO_TYPEDEF_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION
+#endif
+
+#if (defined(WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)) && !defined(REGAL_NO_NAMESPACE_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)
+#define REGAL_NO_NAMESPACE_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION
+#endif
+
+#if (defined(WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)) && !defined(REGAL_NO_DECLARATION_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION)
+#define REGAL_NO_DECLARATION_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION
+#endif
+
+#ifndef WGL_ARB_robustness_share_group_isolation
+#define WGL_ARB_robustness_share_group_isolation 1
+#endif
+
+#ifndef REGAL_NO_ENUM_WGL_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION
+#define WGL_CONTEXT_RESET_ISOLATION_BIT_ARB 0x8
+#endif
+
+/**
  ** WGL_ATI_pixel_format_float
  **/
 
@@ -27705,6 +27926,42 @@ REGAL_DECL int REGAL_CALL wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, in
 #define GLX_GPU_NUM_SPI_AMD               0x21a8     /* 8616 */
 #endif
 
+#ifndef REGAL_NO_TYPEDEF_GLX_AMD_GPU_ASSOCIATION
+typedef Bool (REGAL_CALL *PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC)(GLXContext ctx);
+typedef Bool (REGAL_CALL *PFNGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)(GLXContext ctx);
+typedef GLXContext (REGAL_CALL *PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC)(unsigned int id, GLXContext share_list);
+typedef GLXContext (REGAL_CALL *PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)(unsigned int id, GLXContext share_context, const int *attribList);
+typedef GLXContext (REGAL_CALL *PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC)(void);
+typedef int (REGAL_CALL *PFNGLXGETGPUINFOAMDPROC)(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
+typedef unsigned int (REGAL_CALL *PFNGLXGETCONTEXTGPUIDAMDPROC)(GLXContext ctx);
+typedef unsigned int (REGAL_CALL *PFNGLXGETGPUIDSAMDPROC)(unsigned int maxCount, unsigned int *ids);
+typedef void (REGAL_CALL *PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC)(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GLX_AMD_GPU_ASSOCIATION
+#define glXBlitContextFramebufferAMD        rglXBlitContextFramebufferAMD
+#define glXCreateAssociatedContextAMD       rglXCreateAssociatedContextAMD
+#define glXCreateAssociatedContextAttribsAMD rglXCreateAssociatedContextAttribsAMD
+#define glXDeleteAssociatedContextAMD       rglXDeleteAssociatedContextAMD
+#define glXGetContextGPUIDAMD               rglXGetContextGPUIDAMD
+#define glXGetCurrentAssociatedContextAMD   rglXGetCurrentAssociatedContextAMD
+#define glXGetGPUIDsAMD                     rglXGetGPUIDsAMD
+#define glXGetGPUInfoAMD                    rglXGetGPUInfoAMD
+#define glXMakeAssociatedContextCurrentAMD  rglXMakeAssociatedContextCurrentAMD
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GLX_AMD_GPU_ASSOCIATION
+REGAL_DECL Bool REGAL_CALL glXDeleteAssociatedContextAMD(GLXContext ctx);
+REGAL_DECL Bool REGAL_CALL glXMakeAssociatedContextCurrentAMD(GLXContext ctx);
+REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list);
+REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int *attribList);
+REGAL_DECL GLXContext REGAL_CALL glXGetCurrentAssociatedContextAMD(void);
+REGAL_DECL int REGAL_CALL glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
+REGAL_DECL unsigned int REGAL_CALL glXGetContextGPUIDAMD(GLXContext ctx);
+REGAL_DECL unsigned int REGAL_CALL glXGetGPUIDsAMD(unsigned int maxCount, unsigned int *ids);
+REGAL_DECL void REGAL_CALL glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
+
 /**
  ** GLX_ARB_create_context
  **/
@@ -29010,30 +29267,30 @@ REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideo
 #endif
 
 /**
- ** GLX_NV_video_out
+ ** GLX_NV_video_output
  **/
 
-#if (defined(GLX_NV_VIDEO_OUT) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GLX_NV_VIDEO_OUT)) && !defined(REGAL_NO_ENUM_GLX_NV_VIDEO_OUT)
-#define REGAL_NO_ENUM_GLX_NV_VIDEO_OUT
+#if (defined(GLX_NV_VIDEO_OUTPUT) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GLX_NV_VIDEO_OUTPUT)) && !defined(REGAL_NO_ENUM_GLX_NV_VIDEO_OUTPUT)
+#define REGAL_NO_ENUM_GLX_NV_VIDEO_OUTPUT
 #endif
 
-#if (defined(GLX_NV_VIDEO_OUT) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GLX_NV_VIDEO_OUT)) && !defined(REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUT)
-#define REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUT
+#if (defined(GLX_NV_VIDEO_OUTPUT) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GLX_NV_VIDEO_OUTPUT)) && !defined(REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUTPUT)
+#define REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUTPUT
 #endif
 
-#if (defined(GLX_NV_VIDEO_OUT) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GLX_NV_VIDEO_OUT)) && !defined(REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUT)
-#define REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUT
+#if (defined(GLX_NV_VIDEO_OUTPUT) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GLX_NV_VIDEO_OUTPUT)) && !defined(REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUTPUT)
+#define REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUTPUT
 #endif
 
-#if (defined(GLX_NV_VIDEO_OUT) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GLX_NV_VIDEO_OUT)) && !defined(REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUT)
-#define REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUT
+#if (defined(GLX_NV_VIDEO_OUTPUT) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GLX_NV_VIDEO_OUTPUT)) && !defined(REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUTPUT)
+#define REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUTPUT
 #endif
 
-#ifndef GLX_NV_video_out
-#define GLX_NV_video_out 1
+#ifndef GLX_NV_video_output
+#define GLX_NV_video_output 1
 #endif
 
-#ifndef REGAL_NO_ENUM_GLX_NV_VIDEO_OUT
+#ifndef REGAL_NO_ENUM_GLX_NV_VIDEO_OUTPUT
 #define GLX_VIDEO_OUT_COLOR_NV              0x20c3     /* 8387 */
 #define GLX_VIDEO_OUT_ALPHA_NV              0x20c4     /* 8388 */
 #define GLX_VIDEO_OUT_DEPTH_NV              0x20c5     /* 8389 */
@@ -29046,7 +29303,7 @@ REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideo
 #define GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV 0x20cc     /* 8396 */
 #endif
 
-#ifndef REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUT
+#ifndef REGAL_NO_TYPEDEF_GLX_NV_VIDEO_OUTPUT
 typedef int (REGAL_CALL *PFNGLXBINDVIDEOIMAGENVPROC)(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
 typedef int (REGAL_CALL *PFNGLXGETVIDEODEVICENVPROC)(Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
 typedef int (REGAL_CALL *PFNGLXGETVIDEOINFONVPROC)(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
@@ -29055,7 +29312,7 @@ typedef int (REGAL_CALL *PFNGLXRELEASEVIDEOIMAGENVPROC)(Display *dpy, GLXPbuffer
 typedef int (REGAL_CALL *PFNGLXSENDPBUFFERTOVIDEONVPROC)(Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
 #endif
 
-#ifndef REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUT
+#ifndef REGAL_NO_NAMESPACE_GLX_NV_VIDEO_OUTPUT
 #define glXBindVideoImageNV                 rglXBindVideoImageNV
 #define glXGetVideoDeviceNV                 rglXGetVideoDeviceNV
 #define glXGetVideoInfoNV                   rglXGetVideoInfoNV
@@ -29064,7 +29321,7 @@ typedef int (REGAL_CALL *PFNGLXSENDPBUFFERTOVIDEONVPROC)(Display *dpy, GLXPbuffe
 #define glXSendPbufferToVideoNV             rglXSendPbufferToVideoNV
 #endif
 
-#ifndef REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUT
+#ifndef REGAL_NO_DECLARATION_GLX_NV_VIDEO_OUTPUT
 REGAL_DECL int REGAL_CALL glXBindVideoImageNV(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
 REGAL_DECL int REGAL_CALL glXGetVideoDeviceNV(Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
 REGAL_DECL int REGAL_CALL glXGetVideoInfoNV(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);

@@ -101,8 +101,6 @@ LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
 
-CFLAGS += -DREGAL_NO_HTTP
-
 regal.lib: lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
 
 lib:

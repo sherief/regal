@@ -47,12 +47,6 @@ debug: regal.lib
 export:
 	scripts/Export.py --api gl 4.2 --api wgl 4.0 --api glx 4.0 --api cgl 1.4 --api egl 1.0 --outdir src/regal
 
-# Disable mongoose and Regal HTTP for NaCL build
-
-ifneq ($(filter nacl%,$(SYSTEM)),)
-CFLAGS += -DREGAL_NO_HTTP
-endif
-
 #
 
 LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
@@ -85,7 +79,9 @@ LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 
-ifeq ($(filter -DREGAL_NO_HTTP%,$(CFLAGS)),)
+# Disable mongoose and Regal HTTP for NaCL build
+
+ifeq ($(filter nacl%,$(SYSTEM)),)
 LIB.SRCS           += src/mongoose/mongoose.c
 endif
 

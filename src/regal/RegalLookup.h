@@ -53,21 +53,21 @@ inline int NameCmp(const void *a, const void *b)
   return std::strcmp(*(const char **) a, *(const char **) b);
 }
 
-extern const char * const gl_Name[2512];
-extern const void *gl_Value[2512];
-extern const size_t gl_Offset[2512];
+extern const char * const gl_Name[2524];
+extern const void *gl_Value[2524];
+extern const size_t gl_Offset[2524];
 
 template<typename T>
 T
 gl_Lookup(const char *name, T def = NULL)
 {
-  const char **res = (const char **) std::bsearch(&name, gl_Name, 2511, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, gl_Name, 2523, sizeof(const char *), NameCmp);
   return res ? reinterpret_cast<T>(const_cast<void *>(gl_Value[(size_t) (res - gl_Name)])) : def;
 }
 
 inline size_t gl_LookupOffset(const char *name)
 {
-  const char **res = (const char **) std::bsearch(&name, gl_Name, 2511, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, gl_Name, 2523, sizeof(const char *), NameCmp);
   return res ? gl_Offset[(size_t) (res - gl_Name)] : 0;
 }
 
@@ -95,21 +95,21 @@ inline size_t wgl_LookupOffset(const char *name)
 
 #if REGAL_SYS_GLX
 
-extern const char * const glx_Name[114];
-extern const void *glx_Value[114];
-extern const size_t glx_Offset[114];
+extern const char * const glx_Name[123];
+extern const void *glx_Value[123];
+extern const size_t glx_Offset[123];
 
 template<typename T>
 T
 glx_Lookup(const char *name, T def = NULL)
 {
-  const char **res = (const char **) std::bsearch(&name, glx_Name, 113, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, glx_Name, 122, sizeof(const char *), NameCmp);
   return res ? reinterpret_cast<T>(const_cast<void *>(glx_Value[(size_t) (res - glx_Name)])) : def;
 }
 
 inline size_t glx_LookupOffset(const char *name)
 {
-  const char **res = (const char **) std::bsearch(&name, glx_Name, 113, sizeof(const char *), NameCmp);
+  const char **res = (const char **) std::bsearch(&name, glx_Name, 122, sizeof(const char *), NameCmp);
   return res ? glx_Offset[(size_t) (res - glx_Name)] : 0;
 }
 

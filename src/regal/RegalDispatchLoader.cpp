@@ -22360,6 +22360,21 @@ static void REGAL_CALL loader_glGetPointerIndexedvEXT(GLenum target, GLuint inde
   _next->call(&_next->glGetPointerIndexedvEXT)(target, index, data);
 }
 
+static void REGAL_CALL loader_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glGetPointeri_vEXT, "glGetPointeri_vEXT");
+  if (_driver.glGetPointeri_vEXT) {
+    _driver.glGetPointeri_vEXT(pname, index, params);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glGetPointeri_vEXT)(pname, index, params);
+}
+
 static void REGAL_CALL loader_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   RegalContext * _context = GET_REGAL_CONTEXT();
@@ -26515,6 +26530,21 @@ static void REGAL_CALL loader_glPixelTransformParameterfEXT(GLenum target, GLenu
   _next->call(&_next->glPixelTransformParameterfEXT)(target, pname, param);
 }
 
+static void REGAL_CALL loader_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glPixelTransformParameterfvEXT, "glPixelTransformParameterfvEXT");
+  if (_driver.glPixelTransformParameterfvEXT) {
+    _driver.glPixelTransformParameterfvEXT(target, pname, params);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterfvEXT)(target, pname, params);
+}
+
 static void REGAL_CALL loader_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   RegalContext * _context = GET_REGAL_CONTEXT();
@@ -26528,6 +26558,21 @@ static void REGAL_CALL loader_glPixelTransformParameteriEXT(GLenum target, GLenu
   DispatchTable *_next = _driver._next;
   RegalAssert(_next);
   _next->call(&_next->glPixelTransformParameteriEXT)(target, pname, param);
+}
+
+static void REGAL_CALL loader_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glPixelTransformParameterivEXT, "glPixelTransformParameterivEXT");
+  if (_driver.glPixelTransformParameterivEXT) {
+    _driver.glPixelTransformParameterivEXT(target, pname, params);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterivEXT)(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -28936,6 +28981,21 @@ static void REGAL_CALL loader_glObjectPtrLabel(GLvoid *ptr, GLsizei length, cons
   _next->call(&_next->glObjectPtrLabel)(ptr, length, label);
 }
 
+static void REGAL_CALL loader_glPopDebugGroup(void)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glPopDebugGroup, "glPopDebugGroup");
+  if (_driver.glPopDebugGroup) {
+    _driver.glPopDebugGroup();
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPopDebugGroup)();
+}
+
 static void REGAL_CALL loader_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
   RegalContext * _context = GET_REGAL_CONTEXT();
@@ -29403,6 +29463,38 @@ static void REGAL_CALL loader_glWindowPos4svMESA(const GLshort *v)
   DispatchTable *_next = _driver._next;
   RegalAssert(_next);
   _next->call(&_next->glWindowPos4svMESA)(v);
+}
+
+// GL_NVX_conditional_render
+
+static void REGAL_CALL loader_glBeginConditionalRenderNVX(GLuint id)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glBeginConditionalRenderNVX, "glBeginConditionalRenderNVX");
+  if (_driver.glBeginConditionalRenderNVX) {
+    _driver.glBeginConditionalRenderNVX(id);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glBeginConditionalRenderNVX)(id);
+}
+
+static void REGAL_CALL loader_glEndConditionalRenderNVX(void)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glEndConditionalRenderNVX, "glEndConditionalRenderNVX");
+  if (_driver.glEndConditionalRenderNVX) {
+    _driver.glEndConditionalRenderNVX();
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glEndConditionalRenderNVX)();
 }
 
 // GL_NV_bindless_texture
@@ -35222,6 +35314,98 @@ static void REGAL_CALL loader_glVideoCaptureStreamParameterivNV(GLuint video_cap
   _next->call(&_next->glVideoCaptureStreamParameterivNV)(video_capture_slot, stream, pname, params);
 }
 
+// GL_OES_single_precision
+
+static void REGAL_CALL loader_glClearDepthfOES(GLclampd depth)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glClearDepthfOES, "glClearDepthfOES");
+  if (_driver.glClearDepthfOES) {
+    _driver.glClearDepthfOES(depth);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glClearDepthfOES)(depth);
+}
+
+static void REGAL_CALL loader_glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glClipPlanefOES, "glClipPlanefOES");
+  if (_driver.glClipPlanefOES) {
+    _driver.glClipPlanefOES(plane, equation);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL loader_glDepthRangefOES(GLclampf n, GLclampf f)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glDepthRangefOES, "glDepthRangefOES");
+  if (_driver.glDepthRangefOES) {
+    _driver.glDepthRangefOES(n, f);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glDepthRangefOES)(n, f);
+}
+
+static void REGAL_CALL loader_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glFrustumfOES, "glFrustumfOES");
+  if (_driver.glFrustumfOES) {
+    _driver.glFrustumfOES(l, r, b, t, n, f);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glFrustumfOES)(l, r, b, t, n, f);
+}
+
+static void REGAL_CALL loader_glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glGetClipPlanefOES, "glGetClipPlanefOES");
+  if (_driver.glGetClipPlanefOES) {
+    _driver.glGetClipPlanefOES(plane, equation);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glGetClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL loader_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext * _context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glOrthofOES, "glOrthofOES");
+  if (_driver.glOrthofOES) {
+    _driver.glOrthofOES(l, r, b, t, n, f);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glOrthofOES)(l, r, b, t, n, f);
+}
+
 // GL_PGI_misc_hints
 
 static void REGAL_CALL loader_glHintPGI(GLenum target, GLint mode)
@@ -39246,6 +39430,7 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glGetNamedProgramivEXT = loader_glGetNamedProgramivEXT;
   tbl.glGetNamedRenderbufferParameterivEXT = loader_glGetNamedRenderbufferParameterivEXT;
   tbl.glGetPointerIndexedvEXT = loader_glGetPointerIndexedvEXT;
+  tbl.glGetPointeri_vEXT = loader_glGetPointeri_vEXT;
   tbl.glGetTextureImageEXT = loader_glGetTextureImageEXT;
   tbl.glGetTextureLevelParameterfvEXT = loader_glGetTextureLevelParameterfvEXT;
   tbl.glGetTextureLevelParameterivEXT = loader_glGetTextureLevelParameterivEXT;
@@ -39578,7 +39763,9 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glGetPixelTransformParameterfvEXT = loader_glGetPixelTransformParameterfvEXT;
   tbl.glGetPixelTransformParameterivEXT = loader_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = loader_glPixelTransformParameterfEXT;
+  tbl.glPixelTransformParameterfvEXT = loader_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = loader_glPixelTransformParameteriEXT;
+  tbl.glPixelTransformParameterivEXT = loader_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -39832,6 +40019,7 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glGetObjectPtrLabel = loader_glGetObjectPtrLabel;
   tbl.glObjectLabel = loader_glObjectLabel;
   tbl.glObjectPtrLabel = loader_glObjectPtrLabel;
+  tbl.glPopDebugGroup = loader_glPopDebugGroup;
   tbl.glPushDebugGroup = loader_glPushDebugGroup;
 
   // GL_KTX_buffer_region
@@ -39872,6 +40060,11 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glWindowPos4ivMESA = loader_glWindowPos4ivMESA;
   tbl.glWindowPos4sMESA = loader_glWindowPos4sMESA;
   tbl.glWindowPos4svMESA = loader_glWindowPos4svMESA;
+
+  // GL_NVX_conditional_render
+
+  tbl.glBeginConditionalRenderNVX = loader_glBeginConditionalRenderNVX;
+  tbl.glEndConditionalRenderNVX = loader_glEndConditionalRenderNVX;
 
   // GL_NV_bindless_texture
 
@@ -40356,6 +40549,15 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glVideoCaptureStreamParameterdvNV = loader_glVideoCaptureStreamParameterdvNV;
   tbl.glVideoCaptureStreamParameterfvNV = loader_glVideoCaptureStreamParameterfvNV;
   tbl.glVideoCaptureStreamParameterivNV = loader_glVideoCaptureStreamParameterivNV;
+
+  // GL_OES_single_precision
+
+  tbl.glClearDepthfOES = loader_glClearDepthfOES;
+  tbl.glClipPlanefOES = loader_glClipPlanefOES;
+  tbl.glDepthRangefOES = loader_glDepthRangefOES;
+  tbl.glFrustumfOES = loader_glFrustumfOES;
+  tbl.glGetClipPlanefOES = loader_glGetClipPlanefOES;
+  tbl.glOrthofOES = loader_glOrthofOES;
 
   // GL_PGI_misc_hints
 

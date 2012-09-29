@@ -13655,6 +13655,15 @@ static void REGAL_CALL debug_glGetPointerIndexedvEXT(GLenum target, GLuint index
   _next->call(&_next->glGetPointerIndexedvEXT)(target, index, data);
 }
 
+static void REGAL_CALL debug_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glGetPointeri_vEXT)(pname, index, params);
+}
+
 static void REGAL_CALL debug_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -16176,6 +16185,15 @@ static void REGAL_CALL debug_glPixelTransformParameterfEXT(GLenum target, GLenum
   _next->call(&_next->glPixelTransformParameterfEXT)(target, pname, param);
 }
 
+static void REGAL_CALL debug_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterfvEXT)(target, pname, params);
+}
+
 static void REGAL_CALL debug_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -16183,6 +16201,15 @@ static void REGAL_CALL debug_glPixelTransformParameteriEXT(GLenum target, GLenum
   DispatchTable *_next = _context->dispatcher.debug._next;
   RegalAssert(_next);
   _next->call(&_next->glPixelTransformParameteriEXT)(target, pname, param);
+}
+
+static void REGAL_CALL debug_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterivEXT)(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -17675,6 +17702,15 @@ static void REGAL_CALL debug_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const
   _next->call(&_next->glObjectPtrLabel)(ptr, length, label);
 }
 
+static void REGAL_CALL debug_glPopDebugGroup(void)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glPopDebugGroup)();
+}
+
 static void REGAL_CALL debug_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -17960,6 +17996,26 @@ static void REGAL_CALL debug_glWindowPos4svMESA(const GLshort *v)
   DispatchTable *_next = _context->dispatcher.debug._next;
   RegalAssert(_next);
   _next->call(&_next->glWindowPos4svMESA)(v);
+}
+
+// GL_NVX_conditional_render
+
+static void REGAL_CALL debug_glBeginConditionalRenderNVX(GLuint id)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glBeginConditionalRenderNVX)(id);
+}
+
+static void REGAL_CALL debug_glEndConditionalRenderNVX(void)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glEndConditionalRenderNVX)();
 }
 
 // GL_NV_bindless_texture
@@ -21517,6 +21573,62 @@ static void REGAL_CALL debug_glVideoCaptureStreamParameterivNV(GLuint video_capt
   _next->call(&_next->glVideoCaptureStreamParameterivNV)(video_capture_slot, stream, pname, params);
 }
 
+// GL_OES_single_precision
+
+static void REGAL_CALL debug_glClearDepthfOES(GLclampd depth)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glClearDepthfOES)(depth);
+}
+
+static void REGAL_CALL debug_glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL debug_glDepthRangefOES(GLclampf n, GLclampf f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glDepthRangefOES)(n, f);
+}
+
+static void REGAL_CALL debug_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glFrustumfOES)(l, r, b, t, n, f);
+}
+
+static void REGAL_CALL debug_glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glGetClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL debug_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.debug._next;
+  RegalAssert(_next);
+  _next->call(&_next->glOrthofOES)(l, r, b, t, n, f);
+}
+
 // GL_PGI_misc_hints
 
 static void REGAL_CALL debug_glHintPGI(GLenum target, GLint mode)
@@ -24707,6 +24819,7 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glGetNamedProgramivEXT = debug_glGetNamedProgramivEXT;
   tbl.glGetNamedRenderbufferParameterivEXT = debug_glGetNamedRenderbufferParameterivEXT;
   tbl.glGetPointerIndexedvEXT = debug_glGetPointerIndexedvEXT;
+  tbl.glGetPointeri_vEXT = debug_glGetPointeri_vEXT;
   tbl.glGetTextureImageEXT = debug_glGetTextureImageEXT;
   tbl.glGetTextureLevelParameterfvEXT = debug_glGetTextureLevelParameterfvEXT;
   tbl.glGetTextureLevelParameterivEXT = debug_glGetTextureLevelParameterivEXT;
@@ -25039,7 +25152,9 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glGetPixelTransformParameterfvEXT = debug_glGetPixelTransformParameterfvEXT;
   tbl.glGetPixelTransformParameterivEXT = debug_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = debug_glPixelTransformParameterfEXT;
+  tbl.glPixelTransformParameterfvEXT = debug_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = debug_glPixelTransformParameteriEXT;
+  tbl.glPixelTransformParameterivEXT = debug_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -25293,6 +25408,7 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glGetObjectPtrLabel = debug_glGetObjectPtrLabel;
   tbl.glObjectLabel = debug_glObjectLabel;
   tbl.glObjectPtrLabel = debug_glObjectPtrLabel;
+  tbl.glPopDebugGroup = debug_glPopDebugGroup;
   tbl.glPushDebugGroup = debug_glPushDebugGroup;
 
   // GL_KTX_buffer_region
@@ -25333,6 +25449,11 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glWindowPos4ivMESA = debug_glWindowPos4ivMESA;
   tbl.glWindowPos4sMESA = debug_glWindowPos4sMESA;
   tbl.glWindowPos4svMESA = debug_glWindowPos4svMESA;
+
+  // GL_NVX_conditional_render
+
+  tbl.glBeginConditionalRenderNVX = debug_glBeginConditionalRenderNVX;
+  tbl.glEndConditionalRenderNVX = debug_glEndConditionalRenderNVX;
 
   // GL_NV_bindless_texture
 
@@ -25817,6 +25938,15 @@ void InitDispatchTableDebug(DispatchTable &tbl)
   tbl.glVideoCaptureStreamParameterdvNV = debug_glVideoCaptureStreamParameterdvNV;
   tbl.glVideoCaptureStreamParameterfvNV = debug_glVideoCaptureStreamParameterfvNV;
   tbl.glVideoCaptureStreamParameterivNV = debug_glVideoCaptureStreamParameterivNV;
+
+  // GL_OES_single_precision
+
+  tbl.glClearDepthfOES = debug_glClearDepthfOES;
+  tbl.glClipPlanefOES = debug_glClipPlanefOES;
+  tbl.glDepthRangefOES = debug_glDepthRangefOES;
+  tbl.glFrustumfOES = debug_glFrustumfOES;
+  tbl.glGetClipPlanefOES = debug_glGetClipPlanefOES;
+  tbl.glOrthofOES = debug_glOrthofOES;
 
   // GL_PGI_misc_hints
 

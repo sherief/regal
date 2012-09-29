@@ -12293,6 +12293,14 @@ void REGAL_CALL missing_glGetPointerIndexedvEXT(GLenum target, GLuint index, GLv
   Warning( "glGetPointerIndexedvEXT not available." );
 }
 
+void REGAL_CALL missing_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+  UNUSED_PARAMETER(pname);
+  UNUSED_PARAMETER(index);
+  UNUSED_PARAMETER(params);
+  Warning( "glGetPointeri_vEXT not available." );
+}
+
 void REGAL_CALL missing_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   UNUSED_PARAMETER(texture);
@@ -14813,12 +14821,28 @@ void REGAL_CALL missing_glPixelTransformParameterfEXT(GLenum target, GLenum pnam
   Warning( "glPixelTransformParameterfEXT not available." );
 }
 
+void REGAL_CALL missing_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  UNUSED_PARAMETER(target);
+  UNUSED_PARAMETER(pname);
+  UNUSED_PARAMETER(params);
+  Warning( "glPixelTransformParameterfvEXT not available." );
+}
+
 void REGAL_CALL missing_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   UNUSED_PARAMETER(target);
   UNUSED_PARAMETER(pname);
   UNUSED_PARAMETER(param);
   Warning( "glPixelTransformParameteriEXT not available." );
+}
+
+void REGAL_CALL missing_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  UNUSED_PARAMETER(target);
+  UNUSED_PARAMETER(pname);
+  UNUSED_PARAMETER(params);
+  Warning( "glPixelTransformParameterivEXT not available." );
 }
 
 // GL_EXT_point_parameters
@@ -16161,6 +16185,11 @@ void REGAL_CALL missing_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLch
   Warning( "glObjectPtrLabel not available." );
 }
 
+void REGAL_CALL missing_glPopDebugGroup(void)
+{
+  Warning( "glPopDebugGroup not available." );
+}
+
 void REGAL_CALL missing_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
   UNUSED_PARAMETER(source);
@@ -16388,6 +16417,19 @@ void REGAL_CALL missing_glWindowPos4svMESA(const GLshort *v)
 {
   UNUSED_PARAMETER(v);
   Warning( "glWindowPos4svMESA not available." );
+}
+
+// GL_NVX_conditional_render
+
+void REGAL_CALL missing_glBeginConditionalRenderNVX(GLuint id)
+{
+  UNUSED_PARAMETER(id);
+  Warning( "glBeginConditionalRenderNVX not available." );
+}
+
+void REGAL_CALL missing_glEndConditionalRenderNVX(void)
+{
+  Warning( "glEndConditionalRenderNVX not available." );
 }
 
 // GL_NV_bindless_texture
@@ -19638,6 +19680,57 @@ void REGAL_CALL missing_glVideoCaptureStreamParameterivNV(GLuint video_capture_s
   Warning( "glVideoCaptureStreamParameterivNV not available." );
 }
 
+// GL_OES_single_precision
+
+void REGAL_CALL missing_glClearDepthfOES(GLclampd depth)
+{
+  UNUSED_PARAMETER(depth);
+  Warning( "glClearDepthfOES not available." );
+}
+
+void REGAL_CALL missing_glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+  UNUSED_PARAMETER(plane);
+  UNUSED_PARAMETER(equation);
+  Warning( "glClipPlanefOES not available." );
+}
+
+void REGAL_CALL missing_glDepthRangefOES(GLclampf n, GLclampf f)
+{
+  UNUSED_PARAMETER(n);
+  UNUSED_PARAMETER(f);
+  Warning( "glDepthRangefOES not available." );
+}
+
+void REGAL_CALL missing_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  UNUSED_PARAMETER(l);
+  UNUSED_PARAMETER(r);
+  UNUSED_PARAMETER(b);
+  UNUSED_PARAMETER(t);
+  UNUSED_PARAMETER(n);
+  UNUSED_PARAMETER(f);
+  Warning( "glFrustumfOES not available." );
+}
+
+void REGAL_CALL missing_glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+  UNUSED_PARAMETER(plane);
+  UNUSED_PARAMETER(equation);
+  Warning( "glGetClipPlanefOES not available." );
+}
+
+void REGAL_CALL missing_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  UNUSED_PARAMETER(l);
+  UNUSED_PARAMETER(r);
+  UNUSED_PARAMETER(b);
+  UNUSED_PARAMETER(t);
+  UNUSED_PARAMETER(n);
+  UNUSED_PARAMETER(f);
+  Warning( "glOrthofOES not available." );
+}
+
 // GL_PGI_misc_hints
 
 void REGAL_CALL missing_glHintPGI(GLenum target, GLint mode)
@@ -22742,6 +22835,7 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glGetNamedProgramivEXT = missing_glGetNamedProgramivEXT;
   tbl.glGetNamedRenderbufferParameterivEXT = missing_glGetNamedRenderbufferParameterivEXT;
   tbl.glGetPointerIndexedvEXT = missing_glGetPointerIndexedvEXT;
+  tbl.glGetPointeri_vEXT = missing_glGetPointeri_vEXT;
   tbl.glGetTextureImageEXT = missing_glGetTextureImageEXT;
   tbl.glGetTextureLevelParameterfvEXT = missing_glGetTextureLevelParameterfvEXT;
   tbl.glGetTextureLevelParameterivEXT = missing_glGetTextureLevelParameterivEXT;
@@ -23074,7 +23168,9 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glGetPixelTransformParameterfvEXT = missing_glGetPixelTransformParameterfvEXT;
   tbl.glGetPixelTransformParameterivEXT = missing_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = missing_glPixelTransformParameterfEXT;
+  tbl.glPixelTransformParameterfvEXT = missing_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = missing_glPixelTransformParameteriEXT;
+  tbl.glPixelTransformParameterivEXT = missing_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -23328,6 +23424,7 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glGetObjectPtrLabel = missing_glGetObjectPtrLabel;
   tbl.glObjectLabel = missing_glObjectLabel;
   tbl.glObjectPtrLabel = missing_glObjectPtrLabel;
+  tbl.glPopDebugGroup = missing_glPopDebugGroup;
   tbl.glPushDebugGroup = missing_glPushDebugGroup;
 
   // GL_KTX_buffer_region
@@ -23368,6 +23465,11 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glWindowPos4ivMESA = missing_glWindowPos4ivMESA;
   tbl.glWindowPos4sMESA = missing_glWindowPos4sMESA;
   tbl.glWindowPos4svMESA = missing_glWindowPos4svMESA;
+
+  // GL_NVX_conditional_render
+
+  tbl.glBeginConditionalRenderNVX = missing_glBeginConditionalRenderNVX;
+  tbl.glEndConditionalRenderNVX = missing_glEndConditionalRenderNVX;
 
   // GL_NV_bindless_texture
 
@@ -23852,6 +23954,15 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glVideoCaptureStreamParameterdvNV = missing_glVideoCaptureStreamParameterdvNV;
   tbl.glVideoCaptureStreamParameterfvNV = missing_glVideoCaptureStreamParameterfvNV;
   tbl.glVideoCaptureStreamParameterivNV = missing_glVideoCaptureStreamParameterivNV;
+
+  // GL_OES_single_precision
+
+  tbl.glClearDepthfOES = missing_glClearDepthfOES;
+  tbl.glClipPlanefOES = missing_glClipPlanefOES;
+  tbl.glDepthRangefOES = missing_glDepthRangefOES;
+  tbl.glFrustumfOES = missing_glFrustumfOES;
+  tbl.glGetClipPlanefOES = missing_glGetClipPlanefOES;
+  tbl.glOrthofOES = missing_glOrthofOES;
 
   // GL_PGI_misc_hints
 

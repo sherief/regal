@@ -15121,6 +15121,16 @@ static void REGAL_CALL log_glGetPointerIndexedvEXT(GLenum target, GLuint index, 
     _next->call(&_next->glGetPointerIndexedvEXT)(target, index, data);
 }
 
+static void REGAL_CALL log_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+    Driver("glGetPointeri_vEXT","(", toString(pname), ", ", index, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetPointeri_vEXT)(pname, index, params);
+}
+
 static void REGAL_CALL log_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
     Driver("glGetTextureImageEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ")");
@@ -17917,6 +17927,16 @@ static void REGAL_CALL log_glPixelTransformParameterfEXT(GLenum target, GLenum p
     _next->call(&_next->glPixelTransformParameterfEXT)(target, pname, param);
 }
 
+static void REGAL_CALL log_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+    Driver("glPixelTransformParameterfvEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPixelTransformParameterfvEXT)(target, pname, params);
+}
+
 static void REGAL_CALL log_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
     Driver("glPixelTransformParameteriEXT","(", toString(target), ", ", toString(pname), ", ", param, ")");
@@ -17925,6 +17945,16 @@ static void REGAL_CALL log_glPixelTransformParameteriEXT(GLenum target, GLenum p
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPixelTransformParameteriEXT)(target, pname, param);
+}
+
+static void REGAL_CALL log_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+    Driver("glPixelTransformParameterivEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPixelTransformParameterivEXT)(target, pname, params);
 }
 
 // GL_EXT_point_parameters
@@ -19574,6 +19604,16 @@ static void REGAL_CALL log_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const G
     _next->call(&_next->glObjectPtrLabel)(ptr, length, label);
 }
 
+static void REGAL_CALL log_glPopDebugGroup(void)
+{
+    Driver("glPopDebugGroup","()");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPopDebugGroup)();
+}
+
 static void REGAL_CALL log_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
     Driver("glPushDebugGroup","(", toString(source), ", ", id, ", ", length, ", ", boost::print::quote(message,'"'), ")");
@@ -19890,6 +19930,28 @@ static void REGAL_CALL log_glWindowPos4svMESA(const GLshort *v)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glWindowPos4svMESA)(v);
+}
+
+// GL_NVX_conditional_render
+
+static void REGAL_CALL log_glBeginConditionalRenderNVX(GLuint id)
+{
+    Driver("glBeginConditionalRenderNVX","(", id, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glBeginConditionalRenderNVX)(id);
+}
+
+static void REGAL_CALL log_glEndConditionalRenderNVX(void)
+{
+    Driver("glEndConditionalRenderNVX","()");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glEndConditionalRenderNVX)();
 }
 
 // GL_NV_bindless_texture
@@ -23832,6 +23894,68 @@ static void REGAL_CALL log_glVideoCaptureStreamParameterivNV(GLuint video_captur
     _next->call(&_next->glVideoCaptureStreamParameterivNV)(video_capture_slot, stream, pname, params);
 }
 
+// GL_OES_single_precision
+
+static void REGAL_CALL log_glClearDepthfOES(GLclampd depth)
+{
+    Driver("glClearDepthfOES","(", depth, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClearDepthfOES)(depth);
+}
+
+static void REGAL_CALL log_glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+    Driver("glClipPlanefOES","(", toString(plane), ", ", equation, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL log_glDepthRangefOES(GLclampf n, GLclampf f)
+{
+    Driver("glDepthRangefOES","(", n, ", ", f, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glDepthRangefOES)(n, f);
+}
+
+static void REGAL_CALL log_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+    Driver("glFrustumfOES","(", l, ", ", r, ", ", b, ", ", t, ", ", n, ", ", f, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFrustumfOES)(l, r, b, t, n, f);
+}
+
+static void REGAL_CALL log_glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+    Driver("glGetClipPlanefOES","(", toString(plane), ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetClipPlanefOES)(plane, equation);
+}
+
+static void REGAL_CALL log_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+    Driver("glOrthofOES","(", l, ", ", r, ", ", b, ", ", t, ", ", n, ", ", f, ")");
+    RegalContext *_context = GET_REGAL_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glOrthofOES)(l, r, b, t, n, f);
+}
+
 // GL_PGI_misc_hints
 
 static void REGAL_CALL log_glHintPGI(GLenum target, GLint mode)
@@ -27163,6 +27287,7 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetNamedProgramivEXT = log_glGetNamedProgramivEXT;
   tbl.glGetNamedRenderbufferParameterivEXT = log_glGetNamedRenderbufferParameterivEXT;
   tbl.glGetPointerIndexedvEXT = log_glGetPointerIndexedvEXT;
+  tbl.glGetPointeri_vEXT = log_glGetPointeri_vEXT;
   tbl.glGetTextureImageEXT = log_glGetTextureImageEXT;
   tbl.glGetTextureLevelParameterfvEXT = log_glGetTextureLevelParameterfvEXT;
   tbl.glGetTextureLevelParameterivEXT = log_glGetTextureLevelParameterivEXT;
@@ -27495,7 +27620,9 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetPixelTransformParameterfvEXT = log_glGetPixelTransformParameterfvEXT;
   tbl.glGetPixelTransformParameterivEXT = log_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = log_glPixelTransformParameterfEXT;
+  tbl.glPixelTransformParameterfvEXT = log_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = log_glPixelTransformParameteriEXT;
+  tbl.glPixelTransformParameterivEXT = log_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -27749,6 +27876,7 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glGetObjectPtrLabel = log_glGetObjectPtrLabel;
   tbl.glObjectLabel = log_glObjectLabel;
   tbl.glObjectPtrLabel = log_glObjectPtrLabel;
+  tbl.glPopDebugGroup = log_glPopDebugGroup;
   tbl.glPushDebugGroup = log_glPushDebugGroup;
 
   // GL_KTX_buffer_region
@@ -27789,6 +27917,11 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glWindowPos4ivMESA = log_glWindowPos4ivMESA;
   tbl.glWindowPos4sMESA = log_glWindowPos4sMESA;
   tbl.glWindowPos4svMESA = log_glWindowPos4svMESA;
+
+  // GL_NVX_conditional_render
+
+  tbl.glBeginConditionalRenderNVX = log_glBeginConditionalRenderNVX;
+  tbl.glEndConditionalRenderNVX = log_glEndConditionalRenderNVX;
 
   // GL_NV_bindless_texture
 
@@ -28273,6 +28406,15 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glVideoCaptureStreamParameterdvNV = log_glVideoCaptureStreamParameterdvNV;
   tbl.glVideoCaptureStreamParameterfvNV = log_glVideoCaptureStreamParameterfvNV;
   tbl.glVideoCaptureStreamParameterivNV = log_glVideoCaptureStreamParameterivNV;
+
+  // GL_OES_single_precision
+
+  tbl.glClearDepthfOES = log_glClearDepthfOES;
+  tbl.glClipPlanefOES = log_glClipPlanefOES;
+  tbl.glDepthRangefOES = log_glDepthRangefOES;
+  tbl.glFrustumfOES = log_glFrustumfOES;
+  tbl.glGetClipPlanefOES = log_glGetClipPlanefOES;
+  tbl.glOrthofOES = log_glOrthofOES;
 
   // GL_PGI_misc_hints
 

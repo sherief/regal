@@ -31,8 +31,9 @@
 #include "pch.h" /* For MS precompiled header support */
 
 #include "RegalUtil.h"
+#include "RegalHttp.h"
 
-#ifdef REGAL_NO_HTTP
+#if REGAL_NO_HTTP
 
 REGAL_NAMESPACE_BEGIN
 
@@ -49,7 +50,6 @@ REGAL_NAMESPACE_END
 
 REGAL_GLOBAL_BEGIN
 
-#include "RegalHttp.h"
 #include "RegalPpa.h"
 #include "RegalLog.h"
 #include "RegalFavicon.h"
@@ -76,8 +76,9 @@ extern map<Thread, RegalContext *> th2rc;
 
 namespace Http
 {
-  int port = 8080;           // HTTP listening port
-  mg_context *ctx = NULL;    // Mongoose context
+  bool enabled = !REGAL_NO_HTTP;  // Enabled by default
+  int  port    = REGAL_HTTP_PORT; // HTTP listening port - 8080 by default
+  mg_context *ctx = NULL;         // Mongoose context
 
   void Init()
   {
@@ -86,6 +87,9 @@ namespace Http
     // Environment variable HTTP configuration
 
     #ifndef REGAL_NO_GETENV
+    const char *n = GetEnv("REGAL_NO_HTTP");
+    if (n) enabled = !atoi(n);
+
     const char *p = GetEnv("REGAL_HTTP_PORT");
     if (p) port = atoi(p);
     #endif
@@ -107,7 +111,7 @@ namespace Http
     {
       case MG_EVENT_LOG:
       {
-        HTrace(request_info->log_message);
+        HTrace(mg_get_log_message(conn));
         break;
       }
 
@@ -226,7 +230,7 @@ namespace Http
   {
     Internal("Http::Start","()");
 
-    if (!ctx)
+    if (enabled && !ctx)
     {
       // Try listening on the configured port number (8080 by default)
       // and advance foward until one is available
@@ -262,7 +266,14 @@ namespace Http
     if (ctx)
     {
       HTrace("Closing HTTP connections.");
+
+      // Currently there is a problem with shutting down mongoose
+      // on Windows - so just skip the cleanup for now.
+ 
+      #ifndef REGAL_SYS_WGL
       mg_stop(ctx);
+      #endif
+
       ctx = NULL;
     }
   }

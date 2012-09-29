@@ -482,18 +482,18 @@ defines.add(GLX_DEVICE_ID_NV)
 defines.add(GLX_NUM_VIDEO_CAPTURE_SLOTS_NV)
 defines.add(GLX_UNIQUE_ID_NV)
 
-# GLX_NV_video_out
+# GLX_NV_video_output
 
-GLX_VIDEO_OUT_ALPHA_NV = Enumerant('GLX_VIDEO_OUT_ALPHA_NV', 0x20c4, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV = Enumerant('GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV', 0x20c6, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_COLOR_AND_DEPTH_NV = Enumerant('GLX_VIDEO_OUT_COLOR_AND_DEPTH_NV', 0x20c7, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_COLOR_NV = Enumerant('GLX_VIDEO_OUT_COLOR_NV', 0x20c3, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_DEPTH_NV = Enumerant('GLX_VIDEO_OUT_DEPTH_NV', 0x20c5, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_FIELD_1_NV = Enumerant('GLX_VIDEO_OUT_FIELD_1_NV', 0x20c9, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_FIELD_2_NV = Enumerant('GLX_VIDEO_OUT_FIELD_2_NV', 0x20ca, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_FRAME_NV = Enumerant('GLX_VIDEO_OUT_FRAME_NV', 0x20c8, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_STACKED_FIELDS_1_2_NV = Enumerant('GLX_VIDEO_OUT_STACKED_FIELDS_1_2_NV', 0x20cb, 'GLX_NV_video_out')
-GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV = Enumerant('GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV', 0x20cc, 'GLX_NV_video_out')
+GLX_VIDEO_OUT_ALPHA_NV = Enumerant('GLX_VIDEO_OUT_ALPHA_NV', 0x20c4, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV = Enumerant('GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV', 0x20c6, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_COLOR_AND_DEPTH_NV = Enumerant('GLX_VIDEO_OUT_COLOR_AND_DEPTH_NV', 0x20c7, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_COLOR_NV = Enumerant('GLX_VIDEO_OUT_COLOR_NV', 0x20c3, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_DEPTH_NV = Enumerant('GLX_VIDEO_OUT_DEPTH_NV', 0x20c5, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_FIELD_1_NV = Enumerant('GLX_VIDEO_OUT_FIELD_1_NV', 0x20c9, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_FIELD_2_NV = Enumerant('GLX_VIDEO_OUT_FIELD_2_NV', 0x20ca, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_FRAME_NV = Enumerant('GLX_VIDEO_OUT_FRAME_NV', 0x20c8, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_STACKED_FIELDS_1_2_NV = Enumerant('GLX_VIDEO_OUT_STACKED_FIELDS_1_2_NV', 0x20cb, 'GLX_NV_video_output')
+GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV = Enumerant('GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV', 0x20cc, 'GLX_NV_video_output')
 
 defines.add(GLX_VIDEO_OUT_ALPHA_NV)
 defines.add(GLX_VIDEO_OUT_COLOR_AND_ALPHA_NV)
@@ -875,6 +875,106 @@ GLX_SAMPLE_BUFFERS = Enumerant('GLX_SAMPLE_BUFFERS', 0x186a0, 'GLX_VERSION_1_4')
 
 defines.add(GLX_SAMPLES)
 defines.add(GLX_SAMPLE_BUFFERS)
+
+# GLX_AMD_gpu_association
+
+glXBlitContextFramebufferAMD = Function('glXBlitContextFramebufferAMD')
+glXBlitContextFramebufferAMD.ret = Return('void')
+glXBlitContextFramebufferAMD.add( Input( 'dstCtx','GLXContext' ))
+glXBlitContextFramebufferAMD.add( Input( 'srcX0','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'srcY0','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'srcX1','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'srcY1','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'dstX0','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'dstY0','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'dstX1','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'dstY1','GLint' ))
+glXBlitContextFramebufferAMD.add( Input( 'mask','GLbitfield' ))
+glXBlitContextFramebufferAMD.add( Input( 'filter','GLenum' ))
+glXBlitContextFramebufferAMD.version = ''
+glXBlitContextFramebufferAMD.category = 'GLX_AMD_gpu_association'
+glXBlitContextFramebufferAMD.trace = True
+glXBlitContextFramebufferAMD.play = True
+glx.add(glXBlitContextFramebufferAMD)
+
+glXCreateAssociatedContextAMD = Function('glXCreateAssociatedContextAMD')
+glXCreateAssociatedContextAMD.ret = Return('GLXContext')
+glXCreateAssociatedContextAMD.add( Input( 'id','unsigned int' ))
+glXCreateAssociatedContextAMD.add( Input( 'share_list','GLXContext' ))
+glXCreateAssociatedContextAMD.version = ''
+glXCreateAssociatedContextAMD.category = 'GLX_AMD_gpu_association'
+glXCreateAssociatedContextAMD.trace = True
+glXCreateAssociatedContextAMD.play = True
+glx.add(glXCreateAssociatedContextAMD)
+
+glXCreateAssociatedContextAttribsAMD = Function('glXCreateAssociatedContextAttribsAMD')
+glXCreateAssociatedContextAttribsAMD.ret = Return('GLXContext')
+glXCreateAssociatedContextAttribsAMD.add( Input( 'id','unsigned int' ))
+glXCreateAssociatedContextAttribsAMD.add( Input( 'share_context','GLXContext' ))
+glXCreateAssociatedContextAttribsAMD.add( Input( 'attribList','const int *' ))
+glXCreateAssociatedContextAttribsAMD.version = ''
+glXCreateAssociatedContextAttribsAMD.category = 'GLX_AMD_gpu_association'
+glXCreateAssociatedContextAttribsAMD.trace = True
+glXCreateAssociatedContextAttribsAMD.play = True
+glx.add(glXCreateAssociatedContextAttribsAMD)
+
+glXDeleteAssociatedContextAMD = Function('glXDeleteAssociatedContextAMD')
+glXDeleteAssociatedContextAMD.ret = Return('Bool')
+glXDeleteAssociatedContextAMD.add( Input( 'ctx','GLXContext' ))
+glXDeleteAssociatedContextAMD.version = ''
+glXDeleteAssociatedContextAMD.category = 'GLX_AMD_gpu_association'
+glXDeleteAssociatedContextAMD.trace = True
+glXDeleteAssociatedContextAMD.play = True
+glx.add(glXDeleteAssociatedContextAMD)
+
+glXGetContextGPUIDAMD = Function('glXGetContextGPUIDAMD')
+glXGetContextGPUIDAMD.ret = Return('unsigned int')
+glXGetContextGPUIDAMD.add( Input( 'ctx','GLXContext' ))
+glXGetContextGPUIDAMD.version = ''
+glXGetContextGPUIDAMD.category = 'GLX_AMD_gpu_association'
+glXGetContextGPUIDAMD.trace = True
+glXGetContextGPUIDAMD.play = True
+glx.add(glXGetContextGPUIDAMD)
+
+glXGetCurrentAssociatedContextAMD = Function('glXGetCurrentAssociatedContextAMD')
+glXGetCurrentAssociatedContextAMD.ret = Return('GLXContext')
+glXGetCurrentAssociatedContextAMD.version = ''
+glXGetCurrentAssociatedContextAMD.category = 'GLX_AMD_gpu_association'
+glXGetCurrentAssociatedContextAMD.trace = True
+glXGetCurrentAssociatedContextAMD.play = True
+glx.add(glXGetCurrentAssociatedContextAMD)
+
+glXGetGPUIDsAMD = Function('glXGetGPUIDsAMD')
+glXGetGPUIDsAMD.ret = Return('unsigned int')
+glXGetGPUIDsAMD.add( Input( 'maxCount','unsigned int' ))
+glXGetGPUIDsAMD.add( Input( 'ids','unsigned int *' ))
+glXGetGPUIDsAMD.version = ''
+glXGetGPUIDsAMD.category = 'GLX_AMD_gpu_association'
+glXGetGPUIDsAMD.trace = True
+glXGetGPUIDsAMD.play = True
+glx.add(glXGetGPUIDsAMD)
+
+glXGetGPUInfoAMD = Function('glXGetGPUInfoAMD')
+glXGetGPUInfoAMD.ret = Return('int')
+glXGetGPUInfoAMD.add( Input( 'id','unsigned int' ))
+glXGetGPUInfoAMD.add( Input( 'property','int' ))
+glXGetGPUInfoAMD.add( Input( 'dataType','GLenum' ))
+glXGetGPUInfoAMD.add( Input( 'size','unsigned int' ))
+glXGetGPUInfoAMD.add( Input( 'data','GLvoid *' ))
+glXGetGPUInfoAMD.version = ''
+glXGetGPUInfoAMD.category = 'GLX_AMD_gpu_association'
+glXGetGPUInfoAMD.trace = True
+glXGetGPUInfoAMD.play = True
+glx.add(glXGetGPUInfoAMD)
+
+glXMakeAssociatedContextCurrentAMD = Function('glXMakeAssociatedContextCurrentAMD')
+glXMakeAssociatedContextCurrentAMD.ret = Return('Bool')
+glXMakeAssociatedContextCurrentAMD.add( Input( 'ctx','GLXContext' ))
+glXMakeAssociatedContextCurrentAMD.version = ''
+glXMakeAssociatedContextCurrentAMD.category = 'GLX_AMD_gpu_association'
+glXMakeAssociatedContextCurrentAMD.trace = True
+glXMakeAssociatedContextCurrentAMD.play = True
+glx.add(glXMakeAssociatedContextCurrentAMD)
 
 # GLX_ARB_create_context
 
@@ -1302,7 +1402,7 @@ glXReleaseVideoCaptureDeviceNV.trace = True
 glXReleaseVideoCaptureDeviceNV.play = True
 glx.add(glXReleaseVideoCaptureDeviceNV)
 
-# GLX_NV_video_out
+# GLX_NV_video_output
 
 glXBindVideoImageNV = Function('glXBindVideoImageNV')
 glXBindVideoImageNV.ret = Return('int')
@@ -1311,7 +1411,7 @@ glXBindVideoImageNV.add( Input( 'VideoDevice','GLXVideoDeviceNV' ))
 glXBindVideoImageNV.add( Input( 'pbuf','GLXPbuffer' ))
 glXBindVideoImageNV.add( Input( 'iVideoBuffer','int' ))
 glXBindVideoImageNV.version = ''
-glXBindVideoImageNV.category = 'GLX_NV_video_out'
+glXBindVideoImageNV.category = 'GLX_NV_video_output'
 glXBindVideoImageNV.trace = True
 glXBindVideoImageNV.play = True
 glx.add(glXBindVideoImageNV)
@@ -1323,7 +1423,7 @@ glXGetVideoDeviceNV.add( Input( 'screen','int' ))
 glXGetVideoDeviceNV.add( Input( 'numVideoDevices','int' ))
 glXGetVideoDeviceNV.add( Output( 'pVideoDevice','GLXVideoDeviceNV *' ,size = 'numVideoDevices' ))
 glXGetVideoDeviceNV.version = ''
-glXGetVideoDeviceNV.category = 'GLX_NV_video_out'
+glXGetVideoDeviceNV.category = 'GLX_NV_video_output'
 glXGetVideoDeviceNV.trace = True
 glXGetVideoDeviceNV.play = True
 glx.add(glXGetVideoDeviceNV)
@@ -1336,7 +1436,7 @@ glXGetVideoInfoNV.add( Input( 'VideoDevice','GLXVideoDeviceNV' ))
 glXGetVideoInfoNV.add( Output( 'pulCounterOutputPbuffer','unsigned long *' ,size = 1 ))
 glXGetVideoInfoNV.add( Output( 'pulCounterOutputVideo','unsigned long *' ,size = 1 ))
 glXGetVideoInfoNV.version = ''
-glXGetVideoInfoNV.category = 'GLX_NV_video_out'
+glXGetVideoInfoNV.category = 'GLX_NV_video_output'
 glXGetVideoInfoNV.trace = True
 glXGetVideoInfoNV.play = True
 glx.add(glXGetVideoInfoNV)
@@ -1347,7 +1447,7 @@ glXReleaseVideoDeviceNV.add( Input( 'dpy','Display *' ))
 glXReleaseVideoDeviceNV.add( Input( 'screen','int' ))
 glXReleaseVideoDeviceNV.add( Input( 'VideoDevice','GLXVideoDeviceNV' ))
 glXReleaseVideoDeviceNV.version = ''
-glXReleaseVideoDeviceNV.category = 'GLX_NV_video_out'
+glXReleaseVideoDeviceNV.category = 'GLX_NV_video_output'
 glXReleaseVideoDeviceNV.trace = True
 glXReleaseVideoDeviceNV.play = True
 glx.add(glXReleaseVideoDeviceNV)
@@ -1357,7 +1457,7 @@ glXReleaseVideoImageNV.ret = Return('int')
 glXReleaseVideoImageNV.add( Input( 'dpy','Display *' ))
 glXReleaseVideoImageNV.add( Input( 'pbuf','GLXPbuffer' ))
 glXReleaseVideoImageNV.version = ''
-glXReleaseVideoImageNV.category = 'GLX_NV_video_out'
+glXReleaseVideoImageNV.category = 'GLX_NV_video_output'
 glXReleaseVideoImageNV.trace = True
 glXReleaseVideoImageNV.play = True
 glx.add(glXReleaseVideoImageNV)
@@ -1370,7 +1470,7 @@ glXSendPbufferToVideoNV.add( Input( 'iBufferType','int' ))
 glXSendPbufferToVideoNV.add( Output( 'pulCounterPbuffer','unsigned long *' ,size = 1 ))
 glXSendPbufferToVideoNV.add( Input( 'bBlock','GLboolean' ))
 glXSendPbufferToVideoNV.version = ''
-glXSendPbufferToVideoNV.category = 'GLX_NV_video_out'
+glXSendPbufferToVideoNV.category = 'GLX_NV_video_output'
 glXSendPbufferToVideoNV.trace = True
 glXSendPbufferToVideoNV.play = True
 glx.add(glXSendPbufferToVideoNV)

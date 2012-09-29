@@ -15234,6 +15234,16 @@ REGAL_DECL void REGAL_CALL glGetPointerIndexedvEXT(GLenum target, GLuint index, 
   _next->call(&_next->glGetPointerIndexedvEXT)(target, index, data);
 }
 
+REGAL_DECL void REGAL_CALL glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glGetPointeri_vEXT","(", toString(pname), ", ", index, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glGetPointeri_vEXT)(pname, index, params);
+}
+
 REGAL_DECL void REGAL_CALL glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -18022,6 +18032,16 @@ REGAL_DECL void REGAL_CALL glPixelTransformParameterfEXT(GLenum target, GLenum p
   _next->call(&_next->glPixelTransformParameterfEXT)(target, pname, param);
 }
 
+REGAL_DECL void REGAL_CALL glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glPixelTransformParameterfvEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterfvEXT)(target, pname, params);
+}
+
 REGAL_DECL void REGAL_CALL glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -18030,6 +18050,16 @@ REGAL_DECL void REGAL_CALL glPixelTransformParameteriEXT(GLenum target, GLenum p
   DispatchTable *_next = &_context->dispatcher.front();
   RegalAssert(_next);
   _next->call(&_next->glPixelTransformParameteriEXT)(target, pname, param);
+}
+
+REGAL_DECL void REGAL_CALL glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glPixelTransformParameterivEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,1), ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glPixelTransformParameterivEXT)(target, pname, params);
 }
 
 /* GL_EXT_point_parameters */
@@ -19677,6 +19707,16 @@ REGAL_DECL void REGAL_CALL glObjectPtrLabel(GLvoid *ptr, GLsizei length, const G
   _next->call(&_next->glObjectPtrLabel)(ptr, length, label);
 }
 
+REGAL_DECL void REGAL_CALL glPopDebugGroup(void)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glPopDebugGroup","()");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glPopDebugGroup)();
+}
+
 REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
   RegalContext *_context = GET_REGAL_CONTEXT();
@@ -19991,6 +20031,28 @@ REGAL_DECL void REGAL_CALL glWindowPos4svMESA(const GLshort *v)
   DispatchTable *_next = &_context->dispatcher.front();
   RegalAssert(_next);
   _next->call(&_next->glWindowPos4svMESA)(v);
+}
+
+/* GL_NVX_conditional_render */
+
+REGAL_DECL void REGAL_CALL glBeginConditionalRenderNVX(GLuint id)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glBeginConditionalRenderNVX","(", id, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glBeginConditionalRenderNVX)(id);
+}
+
+REGAL_DECL void REGAL_CALL glEndConditionalRenderNVX(void)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glEndConditionalRenderNVX","()");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glEndConditionalRenderNVX)();
 }
 
 /* GL_NV_bindless_texture */
@@ -23907,6 +23969,68 @@ REGAL_DECL void REGAL_CALL glVideoCaptureStreamParameterivNV(GLuint video_captur
   DispatchTable *_next = &_context->dispatcher.front();
   RegalAssert(_next);
   _next->call(&_next->glVideoCaptureStreamParameterivNV)(video_capture_slot, stream, pname, params);
+}
+
+/* GL_OES_single_precision */
+
+REGAL_DECL void REGAL_CALL glClearDepthfOES(GLclampd depth)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glClearDepthfOES","(", depth, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glClearDepthfOES)(depth);
+}
+
+REGAL_DECL void REGAL_CALL glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glClipPlanefOES","(", toString(plane), ", ", equation, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glClipPlanefOES)(plane, equation);
+}
+
+REGAL_DECL void REGAL_CALL glDepthRangefOES(GLclampf n, GLclampf f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glDepthRangefOES","(", n, ", ", f, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glDepthRangefOES)(n, f);
+}
+
+REGAL_DECL void REGAL_CALL glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glFrustumfOES","(", l, ", ", r, ", ", b, ", ", t, ", ", n, ", ", f, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glFrustumfOES)(l, r, b, t, n, f);
+}
+
+REGAL_DECL void REGAL_CALL glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glGetClipPlanefOES","(", toString(plane), ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glGetClipPlanefOES)(plane, equation);
+}
+
+REGAL_DECL void REGAL_CALL glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  App("glOrthofOES","(", l, ", ", r, ", ", b, ", ", t, ", ", n, ", ", f, ")");
+  if (!_context) return;
+  DispatchTable *_next = &_context->dispatcher.front();
+  RegalAssert(_next);
+  _next->call(&_next->glOrthofOES)(l, r, b, t, n, f);
 }
 
 /* GL_PGI_misc_hints */
@@ -29325,6 +29449,177 @@ REGAL_DECL void *REGAL_CALL glXGetProcAddress(const GLubyte *procName)
   return ret;
 }
 
+/* GLX_AMD_gpu_association */
+
+REGAL_DECL void REGAL_CALL glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  App("glXBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+  if (dispatchTableGlobal.glXBlitContextFramebufferAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXBlitContextFramebufferAMD, "glXBlitContextFramebufferAMD" );
+    RegalAssert(dispatchTableGlobal.glXBlitContextFramebufferAMD!=glXBlitContextFramebufferAMD);
+    if (dispatchTableGlobal.glXBlitContextFramebufferAMD==glXBlitContextFramebufferAMD)
+      dispatchTableGlobal.glXBlitContextFramebufferAMD = NULL;
+  }
+  if (dispatchTableGlobal.glXBlitContextFramebufferAMD) {
+    Driver("glXBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+    dispatchTableGlobal.glXBlitContextFramebufferAMD(dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+  }
+  else
+    Warning( "glXBlitContextFramebufferAMD not available." );
+}
+
+REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list)
+{
+  App("glXCreateAssociatedContextAMD","(", id, ", ", share_list, ")");
+  if (dispatchTableGlobal.glXCreateAssociatedContextAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXCreateAssociatedContextAMD, "glXCreateAssociatedContextAMD" );
+    RegalAssert(dispatchTableGlobal.glXCreateAssociatedContextAMD!=glXCreateAssociatedContextAMD);
+    if (dispatchTableGlobal.glXCreateAssociatedContextAMD==glXCreateAssociatedContextAMD)
+      dispatchTableGlobal.glXCreateAssociatedContextAMD = NULL;
+  }
+  GLXContext  ret = (GLXContext )0;
+  if (dispatchTableGlobal.glXCreateAssociatedContextAMD) {
+    Driver("glXCreateAssociatedContextAMD","(", id, ", ", share_list, ")");
+    ret = dispatchTableGlobal.glXCreateAssociatedContextAMD(id, share_list);
+  }
+  else
+    Warning( "glXCreateAssociatedContextAMD not available." );
+  return ret;
+}
+
+REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int *attribList)
+{
+  App("glXCreateAssociatedContextAttribsAMD","(", id, ", ", share_context, ", ", attribList, ")");
+  if (dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD, "glXCreateAssociatedContextAttribsAMD" );
+    RegalAssert(dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD!=glXCreateAssociatedContextAttribsAMD);
+    if (dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD==glXCreateAssociatedContextAttribsAMD)
+      dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD = NULL;
+  }
+  GLXContext  ret = (GLXContext )0;
+  if (dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD) {
+    Driver("glXCreateAssociatedContextAttribsAMD","(", id, ", ", share_context, ", ", attribList, ")");
+    ret = dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD(id, share_context, attribList);
+  }
+  else
+    Warning( "glXCreateAssociatedContextAttribsAMD not available." );
+  return ret;
+}
+
+REGAL_DECL Bool REGAL_CALL glXDeleteAssociatedContextAMD(GLXContext ctx)
+{
+  App("glXDeleteAssociatedContextAMD","(", ctx, ")");
+  if (dispatchTableGlobal.glXDeleteAssociatedContextAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXDeleteAssociatedContextAMD, "glXDeleteAssociatedContextAMD" );
+    RegalAssert(dispatchTableGlobal.glXDeleteAssociatedContextAMD!=glXDeleteAssociatedContextAMD);
+    if (dispatchTableGlobal.glXDeleteAssociatedContextAMD==glXDeleteAssociatedContextAMD)
+      dispatchTableGlobal.glXDeleteAssociatedContextAMD = NULL;
+  }
+  Bool  ret = (Bool )0;
+  if (dispatchTableGlobal.glXDeleteAssociatedContextAMD) {
+    Driver("glXDeleteAssociatedContextAMD","(", ctx, ")");
+    ret = dispatchTableGlobal.glXDeleteAssociatedContextAMD(ctx);
+  }
+  else
+    Warning( "glXDeleteAssociatedContextAMD not available." );
+  return ret;
+}
+
+REGAL_DECL unsigned int REGAL_CALL glXGetContextGPUIDAMD(GLXContext ctx)
+{
+  App("glXGetContextGPUIDAMD","(", ctx, ")");
+  if (dispatchTableGlobal.glXGetContextGPUIDAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXGetContextGPUIDAMD, "glXGetContextGPUIDAMD" );
+    RegalAssert(dispatchTableGlobal.glXGetContextGPUIDAMD!=glXGetContextGPUIDAMD);
+    if (dispatchTableGlobal.glXGetContextGPUIDAMD==glXGetContextGPUIDAMD)
+      dispatchTableGlobal.glXGetContextGPUIDAMD = NULL;
+  }
+  unsigned int  ret = (unsigned int )0;
+  if (dispatchTableGlobal.glXGetContextGPUIDAMD) {
+    Driver("glXGetContextGPUIDAMD","(", ctx, ")");
+    ret = dispatchTableGlobal.glXGetContextGPUIDAMD(ctx);
+  }
+  else
+    Warning( "glXGetContextGPUIDAMD not available." );
+  return ret;
+}
+
+REGAL_DECL GLXContext REGAL_CALL glXGetCurrentAssociatedContextAMD(void)
+{
+  App("glXGetCurrentAssociatedContextAMD","()");
+  if (dispatchTableGlobal.glXGetCurrentAssociatedContextAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXGetCurrentAssociatedContextAMD, "glXGetCurrentAssociatedContextAMD" );
+    RegalAssert(dispatchTableGlobal.glXGetCurrentAssociatedContextAMD!=glXGetCurrentAssociatedContextAMD);
+    if (dispatchTableGlobal.glXGetCurrentAssociatedContextAMD==glXGetCurrentAssociatedContextAMD)
+      dispatchTableGlobal.glXGetCurrentAssociatedContextAMD = NULL;
+  }
+  GLXContext  ret = (GLXContext )0;
+  if (dispatchTableGlobal.glXGetCurrentAssociatedContextAMD) {
+    Driver("glXGetCurrentAssociatedContextAMD","()");
+    ret = dispatchTableGlobal.glXGetCurrentAssociatedContextAMD();
+  }
+  else
+    Warning( "glXGetCurrentAssociatedContextAMD not available." );
+  return ret;
+}
+
+REGAL_DECL unsigned int REGAL_CALL glXGetGPUIDsAMD(unsigned int maxCount, unsigned int *ids)
+{
+  App("glXGetGPUIDsAMD","(", maxCount, ", ", ids, ")");
+  if (dispatchTableGlobal.glXGetGPUIDsAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXGetGPUIDsAMD, "glXGetGPUIDsAMD" );
+    RegalAssert(dispatchTableGlobal.glXGetGPUIDsAMD!=glXGetGPUIDsAMD);
+    if (dispatchTableGlobal.glXGetGPUIDsAMD==glXGetGPUIDsAMD)
+      dispatchTableGlobal.glXGetGPUIDsAMD = NULL;
+  }
+  unsigned int  ret = (unsigned int )0;
+  if (dispatchTableGlobal.glXGetGPUIDsAMD) {
+    Driver("glXGetGPUIDsAMD","(", maxCount, ", ", ids, ")");
+    ret = dispatchTableGlobal.glXGetGPUIDsAMD(maxCount, ids);
+  }
+  else
+    Warning( "glXGetGPUIDsAMD not available." );
+  return ret;
+}
+
+REGAL_DECL int REGAL_CALL glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data)
+{
+  App("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", data, ")");
+  if (dispatchTableGlobal.glXGetGPUInfoAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXGetGPUInfoAMD, "glXGetGPUInfoAMD" );
+    RegalAssert(dispatchTableGlobal.glXGetGPUInfoAMD!=glXGetGPUInfoAMD);
+    if (dispatchTableGlobal.glXGetGPUInfoAMD==glXGetGPUInfoAMD)
+      dispatchTableGlobal.glXGetGPUInfoAMD = NULL;
+  }
+  int  ret = (int )0;
+  if (dispatchTableGlobal.glXGetGPUInfoAMD) {
+    Driver("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", data, ")");
+    ret = dispatchTableGlobal.glXGetGPUInfoAMD(id, property, dataType, size, data);
+  }
+  else
+    Warning( "glXGetGPUInfoAMD not available." );
+  return ret;
+}
+
+REGAL_DECL Bool REGAL_CALL glXMakeAssociatedContextCurrentAMD(GLXContext ctx)
+{
+  App("glXMakeAssociatedContextCurrentAMD","(", ctx, ")");
+  if (dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD == NULL) {
+    GetProcAddress( dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD, "glXMakeAssociatedContextCurrentAMD" );
+    RegalAssert(dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD!=glXMakeAssociatedContextCurrentAMD);
+    if (dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD==glXMakeAssociatedContextCurrentAMD)
+      dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD = NULL;
+  }
+  Bool  ret = (Bool )0;
+  if (dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD) {
+    Driver("glXMakeAssociatedContextCurrentAMD","(", ctx, ")");
+    ret = dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD(ctx);
+  }
+  else
+    Warning( "glXMakeAssociatedContextCurrentAMD not available." );
+  return ret;
+}
+
 /* GLX_ARB_create_context */
 
 REGAL_DECL GLXContext REGAL_CALL glXCreateContextAttribsARB(Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list)
@@ -30006,7 +30301,7 @@ REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideo
     Warning( "glXReleaseVideoCaptureDeviceNV not available." );
 }
 
-/* GLX_NV_video_out */
+/* GLX_NV_video_output */
 
 REGAL_DECL int REGAL_CALL glXBindVideoImageNV(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer)
 {

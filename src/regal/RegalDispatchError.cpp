@@ -32813,6 +32813,28 @@ static void REGAL_CALL error_glGetPointerIndexedvEXT(GLenum target, GLuint index
   }
 }
 
+static void REGAL_CALL error_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params)
+{
+  Internal("error_glGetPointeri_vEXT","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glGetPointeri_vEXT)(pname, index, params);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glGetPointeri_vEXT : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
 static void REGAL_CALL error_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   Internal("error_glGetTextureImageEXT","()");
@@ -38909,6 +38931,28 @@ static void REGAL_CALL error_glPixelTransformParameterfEXT(GLenum target, GLenum
   }
 }
 
+static void REGAL_CALL error_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params)
+{
+  Internal("error_glPixelTransformParameterfvEXT","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glPixelTransformParameterfvEXT)(target, pname, params);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glPixelTransformParameterfvEXT : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
 static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param)
 {
   Internal("error_glPixelTransformParameteriEXT","()");
@@ -38925,6 +38969,28 @@ static void REGAL_CALL error_glPixelTransformParameteriEXT(GLenum target, GLenum
     _error = _next->call(&_next->glGetError)();
     if (_error!=GL_NO_ERROR) {
       Error("glPixelTransformParameteriEXT : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  Internal("error_glPixelTransformParameterivEXT","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glPixelTransformParameterivEXT)(target, pname, params);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glPixelTransformParameterivEXT : ",Token::GLerrorToString(_error));
       if (_context->err.callback)
         _context->err.callback( _error );
     }
@@ -42462,6 +42528,28 @@ static void REGAL_CALL error_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const
   }
 }
 
+static void REGAL_CALL error_glPopDebugGroup(void)
+{
+  Internal("error_glPopDebugGroup","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glPopDebugGroup)();
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glPopDebugGroup : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
 static void REGAL_CALL error_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message)
 {
   Internal("error_glPushDebugGroup","()");
@@ -43146,6 +43234,52 @@ static void REGAL_CALL error_glWindowPos4svMESA(const GLshort *v)
     _error = _next->call(&_next->glGetError)();
     if (_error!=GL_NO_ERROR) {
       Error("glWindowPos4svMESA : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+// GL_NVX_conditional_render
+
+static void REGAL_CALL error_glBeginConditionalRenderNVX(GLuint id)
+{
+  Internal("error_glBeginConditionalRenderNVX","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glBeginConditionalRenderNVX)(id);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glBeginConditionalRenderNVX : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glEndConditionalRenderNVX(void)
+{
+  Internal("error_glEndConditionalRenderNVX","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glEndConditionalRenderNVX)();
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glEndConditionalRenderNVX : ",Token::GLerrorToString(_error));
       if (_context->err.callback)
         _context->err.callback( _error );
     }
@@ -51712,6 +51846,140 @@ static void REGAL_CALL error_glVideoCaptureStreamParameterivNV(GLuint video_capt
   }
 }
 
+// GL_OES_single_precision
+
+static void REGAL_CALL error_glClearDepthfOES(GLclampd depth)
+{
+  Internal("error_glClearDepthfOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glClearDepthfOES)(depth);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glClearDepthfOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glClipPlanefOES(GLenum plane, const GLfloat *equation)
+{
+  Internal("error_glClipPlanefOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glClipPlanefOES)(plane, equation);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glClipPlanefOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glDepthRangefOES(GLclampf n, GLclampf f)
+{
+  Internal("error_glDepthRangefOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glDepthRangefOES)(n, f);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glDepthRangefOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  Internal("error_glFrustumfOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glFrustumfOES)(l, r, b, t, n, f);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glFrustumfOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glGetClipPlanefOES(GLenum plane, GLfloat *equation)
+{
+  Internal("error_glGetClipPlanefOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glGetClipPlanefOES)(plane, equation);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glGetClipPlanefOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
+static void REGAL_CALL error_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
+{
+  Internal("error_glOrthofOES","()");
+  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->depthBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glOrthofOES)(l, r, b, t, n, f);
+  if (!_context->depthBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glOrthofOES : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
 // GL_PGI_misc_hints
 
 static void REGAL_CALL error_glHintPGI(GLenum target, GLint mode)
@@ -56735,6 +57003,7 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glGetNamedProgramivEXT = error_glGetNamedProgramivEXT;
   tbl.glGetNamedRenderbufferParameterivEXT = error_glGetNamedRenderbufferParameterivEXT;
   tbl.glGetPointerIndexedvEXT = error_glGetPointerIndexedvEXT;
+  tbl.glGetPointeri_vEXT = error_glGetPointeri_vEXT;
   tbl.glGetTextureImageEXT = error_glGetTextureImageEXT;
   tbl.glGetTextureLevelParameterfvEXT = error_glGetTextureLevelParameterfvEXT;
   tbl.glGetTextureLevelParameterivEXT = error_glGetTextureLevelParameterivEXT;
@@ -57067,7 +57336,9 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glGetPixelTransformParameterfvEXT = error_glGetPixelTransformParameterfvEXT;
   tbl.glGetPixelTransformParameterivEXT = error_glGetPixelTransformParameterivEXT;
   tbl.glPixelTransformParameterfEXT = error_glPixelTransformParameterfEXT;
+  tbl.glPixelTransformParameterfvEXT = error_glPixelTransformParameterfvEXT;
   tbl.glPixelTransformParameteriEXT = error_glPixelTransformParameteriEXT;
+  tbl.glPixelTransformParameterivEXT = error_glPixelTransformParameterivEXT;
 
   // GL_EXT_point_parameters
 
@@ -57321,6 +57592,7 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glGetObjectPtrLabel = error_glGetObjectPtrLabel;
   tbl.glObjectLabel = error_glObjectLabel;
   tbl.glObjectPtrLabel = error_glObjectPtrLabel;
+  tbl.glPopDebugGroup = error_glPopDebugGroup;
   tbl.glPushDebugGroup = error_glPushDebugGroup;
 
   // GL_KTX_buffer_region
@@ -57361,6 +57633,11 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glWindowPos4ivMESA = error_glWindowPos4ivMESA;
   tbl.glWindowPos4sMESA = error_glWindowPos4sMESA;
   tbl.glWindowPos4svMESA = error_glWindowPos4svMESA;
+
+  // GL_NVX_conditional_render
+
+  tbl.glBeginConditionalRenderNVX = error_glBeginConditionalRenderNVX;
+  tbl.glEndConditionalRenderNVX = error_glEndConditionalRenderNVX;
 
   // GL_NV_bindless_texture
 
@@ -57845,6 +58122,15 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glVideoCaptureStreamParameterdvNV = error_glVideoCaptureStreamParameterdvNV;
   tbl.glVideoCaptureStreamParameterfvNV = error_glVideoCaptureStreamParameterfvNV;
   tbl.glVideoCaptureStreamParameterivNV = error_glVideoCaptureStreamParameterivNV;
+
+  // GL_OES_single_precision
+
+  tbl.glClearDepthfOES = error_glClearDepthfOES;
+  tbl.glClipPlanefOES = error_glClipPlanefOES;
+  tbl.glDepthRangefOES = error_glDepthRangefOES;
+  tbl.glFrustumfOES = error_glFrustumfOES;
+  tbl.glGetClipPlanefOES = error_glGetClipPlanefOES;
+  tbl.glOrthofOES = error_glOrthofOES;
 
   // GL_PGI_misc_hints
 

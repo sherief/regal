@@ -26,6 +26,7 @@ EXPORTS
   glBegin
   glBeginConditionalRender
   glBeginConditionalRenderNV
+  glBeginConditionalRenderNVX
   glBeginFragmentShaderATI
   glBeginOcclusionQueryNV
   glBeginPerfMonitorAMD
@@ -145,6 +146,7 @@ EXPORTS
   glClearDepth
   glClearDepthdNV
   glClearDepthf
+  glClearDepthfOES
   glClearDepthx
   glClearIndex
   glClearNamedBufferDataEXT
@@ -157,6 +159,7 @@ EXPORTS
   glClientWaitSync
   glClipPlane
   glClipPlanef
+  glClipPlanefOES
   glClipPlanex
   glColor3b
   glColor3bv
@@ -377,6 +380,7 @@ EXPORTS
   glDepthRangeIndexed
   glDepthRangedNV
   glDepthRangef
+  glDepthRangefOES
   glDepthRangex
   glDetachObjectARB
   glDetachShader
@@ -453,6 +457,7 @@ EXPORTS
   glEnd
   glEndConditionalRender
   glEndConditionalRenderNV
+  glEndConditionalRenderNVX
   glEndFragmentShaderATI
   glEndList
   glEndOcclusionQueryNV
@@ -575,6 +580,7 @@ EXPORTS
   glFrontFace
   glFrustum
   glFrustumf
+  glFrustumfOES
   glFrustumx
   glGenAsyncMarkersSGIX
   glGenBuffers
@@ -641,6 +647,7 @@ EXPORTS
   glGetBufferSubDataARB
   glGetClipPlane
   glGetClipPlanef
+  glGetClipPlanefOES
   glGetClipPlanex
   glGetColorTable
   glGetColorTableEXT
@@ -815,6 +822,7 @@ EXPORTS
   glGetPixelTransformParameterfvEXT
   glGetPixelTransformParameterivEXT
   glGetPointerIndexedvEXT
+  glGetPointeri_vEXT
   glGetPointerv
   glGetPointervEXT
   glGetPolygonStipple
@@ -1370,6 +1378,7 @@ EXPORTS
   glObjectUnpurgeableAPPLE
   glOrtho
   glOrthof
+  glOrthofOES
   glOrthox
   glPNTrianglesfATI
   glPNTrianglesiATI
@@ -1411,7 +1420,9 @@ EXPORTS
   glPixelTransferf
   glPixelTransferi
   glPixelTransformParameterfEXT
+  glPixelTransformParameterfvEXT
   glPixelTransformParameteriEXT
+  glPixelTransformParameterivEXT
   glPixelZoom
   glPointAlongPathNV
   glPointParameterf
@@ -1440,6 +1451,7 @@ EXPORTS
   glPolygonStipple
   glPopAttrib
   glPopClientAttrib
+  glPopDebugGroup
   glPopGroupMarkerEXT
   glPopMatrix
   glPopName

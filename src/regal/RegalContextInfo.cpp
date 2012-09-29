@@ -258,6 +258,7 @@ ContextInfo::ContextInfo()
   gl_ktx_buffer_region(false),
   gl_mesa_resize_buffers(false),
   gl_mesa_window_pos(false),
+  gl_nvx_conditional_render(false),
   gl_nv_bindless_texture(false),
   gl_nv_conditional_render(false),
   gl_nv_copy_image(false),
@@ -291,6 +292,7 @@ ContextInfo::ContextInfo()
   gl_nv_vertex_buffer_unified_memory(false),
   gl_nv_vertex_program(false),
   gl_nv_video_capture(false),
+  gl_oes_single_precision(false),
   gl_pgi_misc_hints(false),
   gl_regal_es1_0_compatibility(false),
   gl_regal_es1_1_compatibility(false),
@@ -361,6 +363,7 @@ ContextInfo::ContextInfo()
   wgl_oml_sync_control(false),
 #endif
 #if REGAL_SYS_GLX
+  glx_amd_gpu_association(false),
   glx_arb_create_context(false),
   glx_arb_get_proc_address(false),
   glx_ati_render_texture(false),
@@ -378,7 +381,7 @@ ContextInfo::ContextInfo()
   glx_nv_swap_group(false),
   glx_nv_vertex_array_range(false),
   glx_nv_video_capture(false),
-  glx_nv_video_out(false),
+  glx_nv_video_output(false),
   glx_oml_sync_control(false),
   glx_sgix_fbconfig(false),
   glx_sgix_pbuffer(false),
@@ -742,6 +745,7 @@ ContextInfo::init(const RegalContext &context)
   gl_ktx_buffer_region = e.find("GL_KTX_buffer_region")!=e.end();
   gl_mesa_resize_buffers = e.find("GL_MESA_resize_buffers")!=e.end();
   gl_mesa_window_pos = e.find("GL_MESA_window_pos")!=e.end();
+  gl_nvx_conditional_render = e.find("GL_NVX_conditional_render")!=e.end();
   gl_nv_bindless_texture = e.find("GL_NV_bindless_texture")!=e.end();
   gl_nv_conditional_render = e.find("GL_NV_conditional_render")!=e.end();
   gl_nv_copy_image = e.find("GL_NV_copy_image")!=e.end();
@@ -775,6 +779,7 @@ ContextInfo::init(const RegalContext &context)
   gl_nv_vertex_buffer_unified_memory = e.find("GL_NV_vertex_buffer_unified_memory")!=e.end();
   gl_nv_vertex_program = e.find("GL_NV_vertex_program")!=e.end();
   gl_nv_video_capture = e.find("GL_NV_video_capture")!=e.end();
+  gl_oes_single_precision = e.find("GL_OES_single_precision")!=e.end();
   gl_pgi_misc_hints = e.find("GL_PGI_misc_hints")!=e.end();
   gl_regal_es1_0_compatibility = e.find("GL_REGAL_ES1_0_compatibility")!=e.end();
   gl_regal_es1_1_compatibility = e.find("GL_REGAL_ES1_1_compatibility")!=e.end();
@@ -847,6 +852,7 @@ ContextInfo::init(const RegalContext &context)
 #endif
 
 #if REGAL_SYS_GLX
+  glx_amd_gpu_association = e.find("GLX_AMD_gpu_association")!=e.end();
   glx_arb_create_context = e.find("GLX_ARB_create_context")!=e.end();
   glx_arb_get_proc_address = e.find("GLX_ARB_get_proc_address")!=e.end();
   glx_ati_render_texture = e.find("GLX_ATI_render_texture")!=e.end();
@@ -864,7 +870,7 @@ ContextInfo::init(const RegalContext &context)
   glx_nv_swap_group = e.find("GLX_NV_swap_group")!=e.end();
   glx_nv_vertex_array_range = e.find("GLX_NV_vertex_array_range")!=e.end();
   glx_nv_video_capture = e.find("GLX_NV_video_capture")!=e.end();
-  glx_nv_video_out = e.find("GLX_NV_video_out")!=e.end();
+  glx_nv_video_output = e.find("GLX_NV_video_output")!=e.end();
   glx_oml_sync_control = e.find("GLX_OML_sync_control")!=e.end();
   glx_sgix_fbconfig = e.find("GLX_SGIX_fbconfig")!=e.end();
   glx_sgix_pbuffer = e.find("GLX_SGIX_pbuffer")!=e.end();
@@ -1061,6 +1067,7 @@ ContextInfo::getExtension(const char *ext) const
   if (!strcmp(ext,"GL_KTX_buffer_region")) return gl_ktx_buffer_region;
   if (!strcmp(ext,"GL_MESA_resize_buffers")) return gl_mesa_resize_buffers;
   if (!strcmp(ext,"GL_MESA_window_pos")) return gl_mesa_window_pos;
+  if (!strcmp(ext,"GL_NVX_conditional_render")) return gl_nvx_conditional_render;
   if (!strcmp(ext,"GL_NV_bindless_texture")) return gl_nv_bindless_texture;
   if (!strcmp(ext,"GL_NV_conditional_render")) return gl_nv_conditional_render;
   if (!strcmp(ext,"GL_NV_copy_image")) return gl_nv_copy_image;
@@ -1094,6 +1101,7 @@ ContextInfo::getExtension(const char *ext) const
   if (!strcmp(ext,"GL_NV_vertex_buffer_unified_memory")) return gl_nv_vertex_buffer_unified_memory;
   if (!strcmp(ext,"GL_NV_vertex_program")) return gl_nv_vertex_program;
   if (!strcmp(ext,"GL_NV_video_capture")) return gl_nv_video_capture;
+  if (!strcmp(ext,"GL_OES_single_precision")) return gl_oes_single_precision;
   if (!strcmp(ext,"GL_PGI_misc_hints")) return gl_pgi_misc_hints;
   if (!strcmp(ext,"GL_REGAL_ES1_0_compatibility")) return true;
   if (!strcmp(ext,"GL_REGAL_ES1_1_compatibility")) return true;
@@ -1166,6 +1174,7 @@ ContextInfo::getExtension(const char *ext) const
 #endif
 
 #if REGAL_SYS_GLX
+  if (!strcmp(ext,"GLX_AMD_gpu_association")) return glx_amd_gpu_association;
   if (!strcmp(ext,"GLX_ARB_create_context")) return glx_arb_create_context;
   if (!strcmp(ext,"GLX_ARB_get_proc_address")) return glx_arb_get_proc_address;
   if (!strcmp(ext,"GLX_ATI_render_texture")) return glx_ati_render_texture;
@@ -1183,7 +1192,7 @@ ContextInfo::getExtension(const char *ext) const
   if (!strcmp(ext,"GLX_NV_swap_group")) return glx_nv_swap_group;
   if (!strcmp(ext,"GLX_NV_vertex_array_range")) return glx_nv_vertex_array_range;
   if (!strcmp(ext,"GLX_NV_video_capture")) return glx_nv_video_capture;
-  if (!strcmp(ext,"GLX_NV_video_out")) return glx_nv_video_out;
+  if (!strcmp(ext,"GLX_NV_video_output")) return glx_nv_video_output;
   if (!strcmp(ext,"GLX_OML_sync_control")) return glx_oml_sync_control;
   if (!strcmp(ext,"GLX_SGIX_fbconfig")) return glx_sgix_fbconfig;
   if (!strcmp(ext,"GLX_SGIX_pbuffer")) return glx_sgix_pbuffer;

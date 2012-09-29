@@ -31,8 +31,9 @@
 #include "pch.h" /* For MS precompiled header support */
 
 #include "RegalUtil.h"
+#include "RegalHttp.h"
 
-#ifndef REGAL_NO_HTTP
+#if !REGAL_NO_HTTP
 
 REGAL_NAMESPACE_BEGIN
 

@@ -286,6 +286,7 @@ struct ContextInfo
   GLboolean gl_ktx_buffer_region : 1;
   GLboolean gl_mesa_resize_buffers : 1;
   GLboolean gl_mesa_window_pos : 1;
+  GLboolean gl_nvx_conditional_render : 1;
   GLboolean gl_nv_bindless_texture : 1;
   GLboolean gl_nv_conditional_render : 1;
   GLboolean gl_nv_copy_image : 1;
@@ -319,6 +320,7 @@ struct ContextInfo
   GLboolean gl_nv_vertex_buffer_unified_memory : 1;
   GLboolean gl_nv_vertex_program : 1;
   GLboolean gl_nv_video_capture : 1;
+  GLboolean gl_oes_single_precision : 1;
   GLboolean gl_pgi_misc_hints : 1;
   GLboolean gl_regal_es1_0_compatibility : 1;
   GLboolean gl_regal_es1_1_compatibility : 1;
@@ -391,6 +393,7 @@ struct ContextInfo
 #endif
 
 #if REGAL_SYS_GLX
+  GLboolean glx_amd_gpu_association : 1;
   GLboolean glx_arb_create_context : 1;
   GLboolean glx_arb_get_proc_address : 1;
   GLboolean glx_ati_render_texture : 1;
@@ -408,7 +411,7 @@ struct ContextInfo
   GLboolean glx_nv_swap_group : 1;
   GLboolean glx_nv_vertex_array_range : 1;
   GLboolean glx_nv_video_capture : 1;
-  GLboolean glx_nv_video_out : 1;
+  GLboolean glx_nv_video_output : 1;
   GLboolean glx_oml_sync_control : 1;
   GLboolean glx_sgix_fbconfig : 1;
   GLboolean glx_sgix_pbuffer : 1;

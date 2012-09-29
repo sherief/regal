@@ -428,6 +428,12 @@ defines.add(WGL_TEXTURE_RGBA_ARB)
 defines.add(WGL_TEXTURE_RGB_ARB)
 defines.add(WGL_TEXTURE_TARGET_ARB)
 
+# WGL_ARB_robustness_share_group_isolation
+
+WGL_CONTEXT_RESET_ISOLATION_BIT_ARB = Enumerant('WGL_CONTEXT_RESET_ISOLATION_BIT_ARB', 0x0008, 'WGL_ARB_robustness_share_group_isolation')
+
+defines.add(WGL_CONTEXT_RESET_ISOLATION_BIT_ARB)
+
 # WGL_ATI_pixel_format_float
 
 GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI = Enumerant('GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI', 0x8835, 'WGL_ATI_pixel_format_float')

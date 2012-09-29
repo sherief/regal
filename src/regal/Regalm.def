@@ -26,6 +26,7 @@ EXPORTS
   rglBegin
   rglBeginConditionalRender
   rglBeginConditionalRenderNV
+  rglBeginConditionalRenderNVX
   rglBeginFragmentShaderATI
   rglBeginOcclusionQueryNV
   rglBeginPerfMonitorAMD
@@ -145,6 +146,7 @@ EXPORTS
   rglClearDepth
   rglClearDepthdNV
   rglClearDepthf
+  rglClearDepthfOES
   rglClearDepthx
   rglClearIndex
   rglClearNamedBufferDataEXT
@@ -157,6 +159,7 @@ EXPORTS
   rglClientWaitSync
   rglClipPlane
   rglClipPlanef
+  rglClipPlanefOES
   rglClipPlanex
   rglColor3b
   rglColor3bv
@@ -377,6 +380,7 @@ EXPORTS
   rglDepthRangeIndexed
   rglDepthRangedNV
   rglDepthRangef
+  rglDepthRangefOES
   rglDepthRangex
   rglDetachObjectARB
   rglDetachShader
@@ -453,6 +457,7 @@ EXPORTS
   rglEnd
   rglEndConditionalRender
   rglEndConditionalRenderNV
+  rglEndConditionalRenderNVX
   rglEndFragmentShaderATI
   rglEndList
   rglEndOcclusionQueryNV
@@ -575,6 +580,7 @@ EXPORTS
   rglFrontFace
   rglFrustum
   rglFrustumf
+  rglFrustumfOES
   rglFrustumx
   rglGenAsyncMarkersSGIX
   rglGenBuffers
@@ -641,6 +647,7 @@ EXPORTS
   rglGetBufferSubDataARB
   rglGetClipPlane
   rglGetClipPlanef
+  rglGetClipPlanefOES
   rglGetClipPlanex
   rglGetColorTable
   rglGetColorTableEXT
@@ -815,6 +822,7 @@ EXPORTS
   rglGetPixelTransformParameterfvEXT
   rglGetPixelTransformParameterivEXT
   rglGetPointerIndexedvEXT
+  rglGetPointeri_vEXT
   rglGetPointerv
   rglGetPointervEXT
   rglGetPolygonStipple
@@ -1370,6 +1378,7 @@ EXPORTS
   rglObjectUnpurgeableAPPLE
   rglOrtho
   rglOrthof
+  rglOrthofOES
   rglOrthox
   rglPNTrianglesfATI
   rglPNTrianglesiATI
@@ -1411,7 +1420,9 @@ EXPORTS
   rglPixelTransferf
   rglPixelTransferi
   rglPixelTransformParameterfEXT
+  rglPixelTransformParameterfvEXT
   rglPixelTransformParameteriEXT
+  rglPixelTransformParameterivEXT
   rglPixelZoom
   rglPointAlongPathNV
   rglPointParameterf
@@ -1440,6 +1451,7 @@ EXPORTS
   rglPolygonStipple
   rglPopAttrib
   rglPopClientAttrib
+  rglPopDebugGroup
   rglPopGroupMarkerEXT
   rglPopMatrix
   rglPopName

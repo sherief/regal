@@ -4324,6 +4324,28 @@ GL_TEXTURE_CUBE_MAP_SEAMLESS = Enumerant('GL_TEXTURE_CUBE_MAP_SEAMLESS', 0x884f,
 
 defines.add(GL_TEXTURE_CUBE_MAP_SEAMLESS)
 
+# GL_ARB_separate_shader_objects
+
+GL_ACTIVE_PROGRAM = Enumerant('GL_ACTIVE_PROGRAM', 0x8259, 'GL_ARB_separate_shader_objects')
+GL_ALL_SHADER_BITS = Enumerant('GL_ALL_SHADER_BITS', 0xffffffff, 'GL_ARB_separate_shader_objects')
+GL_FRAGMENT_SHADER_BIT = Enumerant('GL_FRAGMENT_SHADER_BIT', 0x0002, 'GL_ARB_separate_shader_objects')
+GL_GEOMETRY_SHADER_BIT = Enumerant('GL_GEOMETRY_SHADER_BIT', 0x0004, 'GL_ARB_separate_shader_objects')
+GL_PROGRAM_PIPELINE_BINDING = Enumerant('GL_PROGRAM_PIPELINE_BINDING', 0x825a, 'GL_ARB_separate_shader_objects')
+GL_PROGRAM_SEPARABLE = Enumerant('GL_PROGRAM_SEPARABLE', 0x8258, 'GL_ARB_separate_shader_objects')
+GL_TESS_CONTROL_SHADER_BIT = Enumerant('GL_TESS_CONTROL_SHADER_BIT', 0x0008, 'GL_ARB_separate_shader_objects')
+GL_TESS_EVALUATION_SHADER_BIT = Enumerant('GL_TESS_EVALUATION_SHADER_BIT', 0x0010, 'GL_ARB_separate_shader_objects')
+GL_VERTEX_SHADER_BIT = Enumerant('GL_VERTEX_SHADER_BIT', 0x0001, 'GL_ARB_separate_shader_objects')
+
+defines.add(GL_ACTIVE_PROGRAM)
+defines.add(GL_ALL_SHADER_BITS)
+defines.add(GL_FRAGMENT_SHADER_BIT)
+defines.add(GL_GEOMETRY_SHADER_BIT)
+defines.add(GL_PROGRAM_PIPELINE_BINDING)
+defines.add(GL_PROGRAM_SEPARABLE)
+defines.add(GL_TESS_CONTROL_SHADER_BIT)
+defines.add(GL_TESS_EVALUATION_SHADER_BIT)
+defines.add(GL_VERTEX_SHADER_BIT)
+
 # GL_ARB_shader_atomic_counters
 
 GL_ACTIVE_ATOMIC_COUNTER_BUFFERS = Enumerant('GL_ACTIVE_ATOMIC_COUNTER_BUFFERS', 0x92d9, 'GL_ARB_shader_atomic_counters')
@@ -5143,9 +5165,7 @@ defines.add(GL_RG_INTEGER)
 # GL_ARB_texture_rgb10_a2ui
 
 GL_RGB10_A2UI = Enumerant('GL_RGB10_A2UI', 0x906f, 'GL_ARB_texture_rgb10_a2ui')
-GL_RGB10_A2UI = Enumerant('GL_RGB10_A2UI', 0x906f, 'GL_ARB_texture_rgb10_a2ui')
 
-defines.add(GL_RGB10_A2UI)
 defines.add(GL_RGB10_A2UI)
 
 # GL_ARB_texture_storage
@@ -6660,16 +6680,10 @@ defines.add(GL_UNSIGNED_SHORT_5_5_5_1_EXT)
 # GL_EXT_paletted_texture
 
 GL_COLOR_INDEX12_EXT = Enumerant('GL_COLOR_INDEX12_EXT', 0x80e6, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX12_EXT = Enumerant('GL_COLOR_INDEX12_EXT', 0x80e6, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX16_EXT = Enumerant('GL_COLOR_INDEX16_EXT', 0x80e7, 'GL_EXT_paletted_texture')
 GL_COLOR_INDEX16_EXT = Enumerant('GL_COLOR_INDEX16_EXT', 0x80e7, 'GL_EXT_paletted_texture')
 GL_COLOR_INDEX1_EXT = Enumerant('GL_COLOR_INDEX1_EXT', 0x80e2, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX1_EXT = Enumerant('GL_COLOR_INDEX1_EXT', 0x80e2, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX2_EXT = Enumerant('GL_COLOR_INDEX2_EXT', 0x80e3, 'GL_EXT_paletted_texture')
 GL_COLOR_INDEX2_EXT = Enumerant('GL_COLOR_INDEX2_EXT', 0x80e3, 'GL_EXT_paletted_texture')
 GL_COLOR_INDEX4_EXT = Enumerant('GL_COLOR_INDEX4_EXT', 0x80e4, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX4_EXT = Enumerant('GL_COLOR_INDEX4_EXT', 0x80e4, 'GL_EXT_paletted_texture')
-GL_COLOR_INDEX8_EXT = Enumerant('GL_COLOR_INDEX8_EXT', 0x80e5, 'GL_EXT_paletted_texture')
 GL_COLOR_INDEX8_EXT = Enumerant('GL_COLOR_INDEX8_EXT', 0x80e5, 'GL_EXT_paletted_texture')
 GL_COLOR_TABLE_ALPHA_SIZE_EXT = Enumerant('GL_COLOR_TABLE_ALPHA_SIZE_EXT', 0x80dd, 'GL_EXT_paletted_texture')
 GL_COLOR_TABLE_BLUE_SIZE_EXT = Enumerant('GL_COLOR_TABLE_BLUE_SIZE_EXT', 0x80dc, 'GL_EXT_paletted_texture')
@@ -6686,16 +6700,10 @@ GL_TEXTURE_CUBE_MAP_ARB = Enumerant('GL_TEXTURE_CUBE_MAP_ARB', 0x8513, 'GL_EXT_p
 GL_TEXTURE_INDEX_SIZE_EXT = Enumerant('GL_TEXTURE_INDEX_SIZE_EXT', 0x80ed, 'GL_EXT_paletted_texture')
 
 defines.add(GL_COLOR_INDEX12_EXT)
-defines.add(GL_COLOR_INDEX12_EXT)
-defines.add(GL_COLOR_INDEX16_EXT)
 defines.add(GL_COLOR_INDEX16_EXT)
 defines.add(GL_COLOR_INDEX1_EXT)
-defines.add(GL_COLOR_INDEX1_EXT)
-defines.add(GL_COLOR_INDEX2_EXT)
 defines.add(GL_COLOR_INDEX2_EXT)
 defines.add(GL_COLOR_INDEX4_EXT)
-defines.add(GL_COLOR_INDEX4_EXT)
-defines.add(GL_COLOR_INDEX8_EXT)
 defines.add(GL_COLOR_INDEX8_EXT)
 defines.add(GL_COLOR_TABLE_ALPHA_SIZE_EXT)
 defines.add(GL_COLOR_TABLE_BLUE_SIZE_EXT)
@@ -8253,6 +8261,14 @@ defines.add(GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX)
 defines.add(GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX)
 defines.add(GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX)
 
+# GL_NV_compute_program5
+
+GL_COMPUTE_PROGRAM_NV = Enumerant('GL_COMPUTE_PROGRAM_NV', 0x90fb, 'GL_NV_compute_program5')
+GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV = Enumerant('GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV', 0x90fc, 'GL_NV_compute_program5')
+
+defines.add(GL_COMPUTE_PROGRAM_NV)
+defines.add(GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV)
+
 # GL_NV_conditional_render
 
 GL_QUERY_BY_REGION_NO_WAIT_NV = Enumerant('GL_QUERY_BY_REGION_NO_WAIT_NV', 0x8e16, 'GL_NV_conditional_render')
@@ -8272,6 +8288,14 @@ GL_DEPTH_STENCIL_TO_RGBA_NV = Enumerant('GL_DEPTH_STENCIL_TO_RGBA_NV', 0x886e, '
 
 defines.add(GL_DEPTH_STENCIL_TO_BGRA_NV)
 defines.add(GL_DEPTH_STENCIL_TO_RGBA_NV)
+
+# GL_NV_deep_texture3D
+
+GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV = Enumerant('GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV', 0x90d1, 'GL_NV_deep_texture3D')
+GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV = Enumerant('GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV', 0x90d0, 'GL_NV_deep_texture3D')
+
+defines.add(GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV)
+defines.add(GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV)
 
 # GL_NV_depth_buffer_float
 
@@ -9734,6 +9758,12 @@ defines.add(GL_MAX_PROGRAM_EXEC_INSTRUCTIONS_NV)
 MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB = Enumerant('MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB', 0x8b4c, 'GL_NV_vertex_program3')
 
 defines.add(MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB)
+
+# GL_NV_vertex_program4
+
+GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV = Enumerant('GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV', 0x88fd, 'GL_NV_vertex_program4')
+
+defines.add(GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV)
 
 # GL_NV_video_capture
 
@@ -27259,6 +27289,17 @@ glGetPointerIndexedvEXT.trace = True
 glGetPointerIndexedvEXT.play = True
 gl.add(glGetPointerIndexedvEXT)
 
+glGetPointeri_vEXT = Function('glGetPointeri_vEXT')
+glGetPointeri_vEXT.ret = Return('void')
+glGetPointeri_vEXT.add( Input( 'pname','GLenum' ))
+glGetPointeri_vEXT.add( Input( 'index','GLuint' ))
+glGetPointeri_vEXT.add( Output( 'params','GLvoid **' ))
+glGetPointeri_vEXT.version = '2.0'
+glGetPointeri_vEXT.category = 'GL_EXT_direct_state_access'
+glGetPointeri_vEXT.trace = True
+glGetPointeri_vEXT.play = True
+gl.add(glGetPointeri_vEXT)
+
 glGetTextureImageEXT = Function('glGetTextureImageEXT')
 glGetTextureImageEXT.ret = Return('void')
 glGetTextureImageEXT.add( Input( 'texture','GLuint' ))
@@ -30596,6 +30637,17 @@ glPixelTransformParameterfEXT.trace = True
 glPixelTransformParameterfEXT.play = True
 gl.add(glPixelTransformParameterfEXT)
 
+glPixelTransformParameterfvEXT = Function('glPixelTransformParameterfvEXT')
+glPixelTransformParameterfvEXT.ret = Return('void')
+glPixelTransformParameterfvEXT.add( Input( 'target','GLenum' ))
+glPixelTransformParameterfvEXT.add( Input( 'pname','GLenum' ))
+glPixelTransformParameterfvEXT.add( Input( 'params','const GLfloat *' ,size = 1 ))
+glPixelTransformParameterfvEXT.version = '1.1'
+glPixelTransformParameterfvEXT.category = 'GL_EXT_pixel_transform'
+glPixelTransformParameterfvEXT.trace = True
+glPixelTransformParameterfvEXT.play = True
+gl.add(glPixelTransformParameterfvEXT)
+
 glPixelTransformParameteriEXT = Function('glPixelTransformParameteriEXT')
 glPixelTransformParameteriEXT.ret = Return('void')
 glPixelTransformParameteriEXT.add( Input( 'target','GLenum' ))
@@ -30606,6 +30658,17 @@ glPixelTransformParameteriEXT.category = 'GL_EXT_pixel_transform'
 glPixelTransformParameteriEXT.trace = True
 glPixelTransformParameteriEXT.play = True
 gl.add(glPixelTransformParameteriEXT)
+
+glPixelTransformParameterivEXT = Function('glPixelTransformParameterivEXT')
+glPixelTransformParameterivEXT.ret = Return('void')
+glPixelTransformParameterivEXT.add( Input( 'target','GLenum' ))
+glPixelTransformParameterivEXT.add( Input( 'pname','GLenum' ))
+glPixelTransformParameterivEXT.add( Input( 'params','const GLint *' ,size = 1 ))
+glPixelTransformParameterivEXT.version = '1.1'
+glPixelTransformParameterivEXT.category = 'GL_EXT_pixel_transform'
+glPixelTransformParameterivEXT.trace = True
+glPixelTransformParameterivEXT.play = True
+gl.add(glPixelTransformParameterivEXT)
 
 # GL_EXT_point_parameters
 
@@ -32405,6 +32468,14 @@ glObjectPtrLabel.trace = True
 glObjectPtrLabel.play = True
 gl.add(glObjectPtrLabel)
 
+glPopDebugGroup = Function('glPopDebugGroup')
+glPopDebugGroup.ret = Return('void')
+glPopDebugGroup.version = ''
+glPopDebugGroup.category = 'GL_KHR_debug'
+glPopDebugGroup.trace = True
+glPopDebugGroup.play = True
+gl.add(glPopDebugGroup)
+
 glPushDebugGroup = Function('glPushDebugGroup')
 glPushDebugGroup.ret = Return('void')
 glPushDebugGroup.add( Input( 'source','GLenum' ))
@@ -32724,6 +32795,25 @@ glWindowPos4svMESA.category = 'GL_MESA_window_pos'
 glWindowPos4svMESA.trace = True
 glWindowPos4svMESA.play = True
 gl.add(glWindowPos4svMESA)
+
+# GL_NVX_conditional_render
+
+glBeginConditionalRenderNVX = Function('glBeginConditionalRenderNVX')
+glBeginConditionalRenderNVX.ret = Return('void')
+glBeginConditionalRenderNVX.add( Input( 'id','GLuint' ))
+glBeginConditionalRenderNVX.version = '1.5'
+glBeginConditionalRenderNVX.category = 'GL_NVX_conditional_render'
+glBeginConditionalRenderNVX.trace = True
+glBeginConditionalRenderNVX.play = True
+gl.add(glBeginConditionalRenderNVX)
+
+glEndConditionalRenderNVX = Function('glEndConditionalRenderNVX')
+glEndConditionalRenderNVX.ret = Return('void')
+glEndConditionalRenderNVX.version = '1.5'
+glEndConditionalRenderNVX.category = 'GL_NVX_conditional_render'
+glEndConditionalRenderNVX.trace = True
+glEndConditionalRenderNVX.play = True
+gl.add(glEndConditionalRenderNVX)
 
 # GL_NV_bindless_texture
 
@@ -37103,6 +37193,75 @@ glVideoCaptureStreamParameterivNV.category = 'GL_NV_video_capture'
 glVideoCaptureStreamParameterivNV.trace = True
 glVideoCaptureStreamParameterivNV.play = True
 gl.add(glVideoCaptureStreamParameterivNV)
+
+# GL_OES_single_precision
+
+glClearDepthfOES = Function('glClearDepthfOES')
+glClearDepthfOES.ret = Return('void')
+glClearDepthfOES.add( Input( 'depth','GLclampd' ))
+glClearDepthfOES.version = ''
+glClearDepthfOES.category = 'GL_OES_single_precision'
+glClearDepthfOES.trace = True
+glClearDepthfOES.play = True
+gl.add(glClearDepthfOES)
+
+glClipPlanefOES = Function('glClipPlanefOES')
+glClipPlanefOES.ret = Return('void')
+glClipPlanefOES.add( Input( 'plane','GLenum' ))
+glClipPlanefOES.add( Input( 'equation','const GLfloat *' ))
+glClipPlanefOES.version = ''
+glClipPlanefOES.category = 'GL_OES_single_precision'
+glClipPlanefOES.trace = True
+glClipPlanefOES.play = True
+gl.add(glClipPlanefOES)
+
+glDepthRangefOES = Function('glDepthRangefOES')
+glDepthRangefOES.ret = Return('void')
+glDepthRangefOES.add( Input( 'n','GLclampf' ))
+glDepthRangefOES.add( Input( 'f','GLclampf' ))
+glDepthRangefOES.version = ''
+glDepthRangefOES.category = 'GL_OES_single_precision'
+glDepthRangefOES.trace = True
+glDepthRangefOES.play = True
+gl.add(glDepthRangefOES)
+
+glFrustumfOES = Function('glFrustumfOES')
+glFrustumfOES.ret = Return('void')
+glFrustumfOES.add( Input( 'l','GLfloat' ))
+glFrustumfOES.add( Input( 'r','GLfloat' ))
+glFrustumfOES.add( Input( 'b','GLfloat' ))
+glFrustumfOES.add( Input( 't','GLfloat' ))
+glFrustumfOES.add( Input( 'n','GLfloat' ))
+glFrustumfOES.add( Input( 'f','GLfloat' ))
+glFrustumfOES.version = ''
+glFrustumfOES.category = 'GL_OES_single_precision'
+glFrustumfOES.trace = True
+glFrustumfOES.play = True
+gl.add(glFrustumfOES)
+
+glGetClipPlanefOES = Function('glGetClipPlanefOES')
+glGetClipPlanefOES.ret = Return('void')
+glGetClipPlanefOES.add( Input( 'plane','GLenum' ))
+glGetClipPlanefOES.add( Output( 'equation','GLfloat *' ))
+glGetClipPlanefOES.version = ''
+glGetClipPlanefOES.category = 'GL_OES_single_precision'
+glGetClipPlanefOES.trace = True
+glGetClipPlanefOES.play = True
+gl.add(glGetClipPlanefOES)
+
+glOrthofOES = Function('glOrthofOES')
+glOrthofOES.ret = Return('void')
+glOrthofOES.add( Input( 'l','GLfloat' ))
+glOrthofOES.add( Input( 'r','GLfloat' ))
+glOrthofOES.add( Input( 'b','GLfloat' ))
+glOrthofOES.add( Input( 't','GLfloat' ))
+glOrthofOES.add( Input( 'n','GLfloat' ))
+glOrthofOES.add( Input( 'f','GLfloat' ))
+glOrthofOES.version = ''
+glOrthofOES.category = 'GL_OES_single_precision'
+glOrthofOES.trace = True
+glOrthofOES.play = True
+gl.add(glOrthofOES)
 
 # GL_PGI_misc_hints
 
