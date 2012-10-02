@@ -81,6 +81,7 @@ RegalContext::RegalContext()
   thread(0),
   logCallback(NULL),
   frame(0),
+  frameSamples(0),
   depthBeginEnd(0),
   depthPushAttrib(0)
 {
@@ -89,6 +90,7 @@ RegalContext::RegalContext()
     dbg = new DebugInfo();
     dbg->Init(this);
   }
+  frameTimer.restart();
 }
 
 void

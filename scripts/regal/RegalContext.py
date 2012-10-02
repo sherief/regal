@@ -65,6 +65,7 @@ ${LICENSE}
 
 REGAL_GLOBAL_BEGIN
 
+#include "RegalTimer.h"
 #include "RegalPrivate.h"
 #include "RegalDispatcher.h"
 #include "RegalDispatchError.h"
@@ -110,6 +111,10 @@ ${EMU_MEMBER_DECLARE}
   // Per-frame state and configuration
   
   size_t              frame;
+  Timer               frameTimer;
+
+  size_t              frameSamples;
+  Timer               frameSimpleTimeout;
 
   // State tracked via EmuContextState.py / Regal.cpp
 
@@ -159,6 +164,7 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   thread(0),
   logCallback(NULL),
   frame(0),
+  frameSamples(0),
   depthBeginEnd(0),
   depthPushAttrib(0)
 {
@@ -167,6 +173,7 @@ ${EMU_MEMBER_CONSTRUCT}#endif
     dbg = new DebugInfo();
     dbg->Init(this);
   }
+  frameTimer.restart();
 }
 
 void

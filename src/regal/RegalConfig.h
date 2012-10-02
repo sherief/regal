@@ -64,13 +64,15 @@ namespace Config
   extern bool enableEmuIff;
   extern bool enableEmuVao;
   extern bool enableEmuFilter;
-  
+
   // Initial context configuration
-  
+
+  extern int  frameLimit;       // Maximum number of frames
+
   extern bool frameMd5Color;    // Log md5 hash of color buffer
   extern bool frameMd5Stencil;
   extern bool frameMd5Depth;
-  
+
   extern bool frameSaveColor;   // Save color buffer to PNG file
   extern bool frameSaveStencil;
   extern bool frameSaveDepth;

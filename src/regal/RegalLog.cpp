@@ -85,9 +85,9 @@ namespace Logging {
   bool enableInternal = false;
   bool enableHttp     = true;
 
-  int maxLines = (REGAL_LOG_MAX_LINES);
-
-  bool callback = (REGAL_LOG_CALLBACK);
+  int  maxLines  = (REGAL_LOG_MAX_LINES);
+  bool frameTime = false;
+  bool callback  = (REGAL_LOG_CALLBACK);
 
   bool         log          = (REGAL_LOG);
   std::string  logFilename  = "stdout";
@@ -136,6 +136,9 @@ namespace Logging {
 
     const char *ml = GetEnv("REGAL_LOG_MAX_LINES");
     if (ml) maxLines = atoi(ml);
+
+    const char *tmp = GetEnv("REGAL_FRAME_TIME");
+    if (tmp) frameTime = atoi(tmp)!=0;
 
     const char *cb = GetEnv("REGAL_LOG_CALLBACK");
     if (cb) callback = atoi(cb)!=0;

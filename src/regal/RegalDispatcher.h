@@ -77,7 +77,7 @@ public:
   {
     table._enabled = true;
   }
-  
+
   inline void
   disable(DispatchTable &table)
   {

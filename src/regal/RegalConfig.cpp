@@ -63,10 +63,12 @@ bool enableEmuIff     = REGAL_EMU_IFF;
 bool enableEmuVao     = REGAL_EMU_VAO;
 bool enableEmuFilter  = REGAL_EMU_FILTER;
 
+int  frameLimit       = 0;  // Unlimited
+
 bool frameMd5Color    = false;
 bool frameMd5Stencil  = false;
 bool frameMd5Depth    = false;
-  
+
 bool frameSaveColor   = false;
 bool frameSaveStencil = false;
 bool frameSaveDepth   = false;
@@ -156,6 +158,9 @@ void Init()
   tmp = GetEnv( "REGAL_EMU_FILTER" );
   if (tmp) enableEmuFilter = atoi(tmp)!=0;
 
+  tmp = GetEnv( "REGAL_FRAME_LIMIT" );
+  if (tmp) frameLimit = atoi(tmp);
+
   tmp = GetEnv( "REGAL_MD5_COLOR" );
   if (tmp) frameMd5Color = atoi(tmp)!=0;
 
@@ -198,6 +203,8 @@ void Init()
   Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
   Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
   Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
+
+  Info("REGAL_FRAME_LIMIT        ", frameLimit                               );
 
   Info("REGAL_MD5_COLOR          ", frameMd5Color    ? "enabled" : "disabled");
   Info("REGAL_MD5_STENCIL        ", frameMd5Stencil  ? "enabled" : "disabled");

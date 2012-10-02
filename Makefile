@@ -89,6 +89,8 @@ ifeq ($(filter -DREGAL_NO_MD5%,$(CFLAGS)),)
 LIB.SRCS           += src/md5/src/md5.c
 endif
 
+CFLAGS             += -DREGAL_NO_PNG
+
 LIB.INCLUDE        += -Isrc/mongoose
 LIB.INCLUDE        += -Isrc/md5/include
 
@@ -432,7 +434,7 @@ tmp/$(SYSTEM)/glut/shared/%.o: src/glut/src/%.c
 	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(GLUT.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 lib/$(GLUT.SHARED): $(GLUT.OBJS) lib/$(GLU.SHARED) lib/$(LIB.SHARED)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $^ $(GLUT.LIBS) 
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $(GLUT.OBJS) $(GLUT.LIBS) 
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif

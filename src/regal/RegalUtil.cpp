@@ -112,7 +112,7 @@ const char *libraryLocation(const char *lib)
       {
         // This string will be leaked, but needs to remain
         // valid until we're completely shut down.
-        
+
         char *tmp = (char *) calloc(strlen(ret)+23,1);
         assert(tmp);
         if (tmp)
@@ -175,24 +175,24 @@ void *GetProcAddress( const char *entry )
   {
     // this chdir business is a hacky solution to avoid recursion
     // when using libRegal as libGL via symlink and DYLD_LIBRARY_PATH=.
-  
+
     char *oldCwd = getcwd(NULL,0);
     chdir("/");
-  
+
     // CGL entry points are in OpenGL framework
-  
+
     if (!lib_OpenGL) {
       lib_OpenGL = dlopen(lib_OpenGL_filename , RTLD_LAZY);
       Info("Loading OpenGL from ",lib_OpenGL_filename,lib_OpenGL ? " succeeded." : " failed.");
     }
-  
+
     // GL entry point are in libGL.dylib
-  
+
     if (!lib_GL) {
       lib_GL = dlopen(lib_GL_filename, RTLD_LAZY);
       Info("Loading OpenGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
     }
-  
+
     chdir(oldCwd);
     free(oldCwd);
   }

@@ -39,6 +39,7 @@
 
 REGAL_GLOBAL_BEGIN
 
+#include "RegalTimer.h"
 #include "RegalPrivate.h"
 #include "RegalDispatcher.h"
 #include "RegalDispatchError.h"
@@ -102,6 +103,10 @@ struct RegalContext
   // Per-frame state and configuration
 
   size_t              frame;
+  Timer               frameTimer;
+
+  size_t              frameSamples;
+  Timer               frameSimpleTimeout;
 
   // State tracked via EmuContextState.py / Regal.cpp
 

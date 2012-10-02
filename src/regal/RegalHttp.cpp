@@ -269,7 +269,7 @@ namespace Http
 
       // Currently there is a problem with shutting down mongoose
       // on Windows - so just skip the cleanup for now.
- 
+
       #ifndef REGAL_SYS_WGL
       mg_stop(ctx);
       #endif

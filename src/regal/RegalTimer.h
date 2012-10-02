@@ -50,13 +50,13 @@ struct Timer
 {
   typedef unsigned long long Value;
 
-  Timer();
-  ~Timer() {}
+  inline Timer();
+  inline ~Timer() {}
 
-  void restart()         { _start = now(); }
+  inline Timer::Value restart() { Timer::Value end = _start; _start = now(); return _start - end; }
 
-  Timer::Value now();    /* Time in micro-seconds */
-  Timer::Value elapsed() { return now() - _start; }
+  inline Timer::Value now();    /* Time in micro-seconds */
+  inline Timer::Value elapsed() { return now() - _start; }
 
   Timer::Value _freq;
   Timer::Value _start;    /* Zero by default */
@@ -73,6 +73,7 @@ Timer::Timer()
   _freq = Timer::Value(f);
 }
 
+inline
 Timer::Value Timer::now()
 {
   signed long long time;
@@ -89,6 +90,7 @@ Timer::Timer()
 {
 }
 
+inline
 Timer::Value Timer::now()
 {
   struct timeval val;

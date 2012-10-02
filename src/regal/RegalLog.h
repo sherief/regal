@@ -145,6 +145,8 @@ namespace Logging
 
   extern int  maxLines;
 
+  extern bool frameTime;        // Per-frame elapsed time to info log
+
   // Callback output
 
   extern bool callback;
