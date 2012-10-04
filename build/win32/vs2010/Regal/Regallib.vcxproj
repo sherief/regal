@@ -19,27 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Regal</ProjectName>
-    <ProjectGuid>{6B2786AC-DF6B-8B13-DE42-875D8D9194D9}</ProjectGuid>
+    <ProjectName>Regallib</ProjectName>
+    <ProjectGuid>{863337BC-C6F9-E4E8-C27D-2D6BAFF72E18}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -63,12 +63,12 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\Win32\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\x64\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\Win32\Regal\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\x64\Regal\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\Win32\Regallib\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\x64\Regallib\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\Win32\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\x64\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\Win32\Regal\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\x64\Regal\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\Win32\Regallib\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\x64\Regallib\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -81,24 +81,24 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AssemblerListingLocation>Release\Win32\Regal\</AssemblerListingLocation>
-      <ObjectFileName>Release\Win32\Regal\</ObjectFileName>
-      <ProgramDataBaseFileName>Release\Win32\regal32.pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>Release\Win32\Regallib\</AssemblerListingLocation>
+      <ObjectFileName>Release\Win32\Regallib\</ObjectFileName>
+      <ProgramDataBaseFileName>Release\Win32\regallib.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Release\Win32\regal32.dll</OutputFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Release\Win32\regallib.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>Release\Win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
-      <ProgramDatabaseFile>Release\Win32\regal32.pdb</ProgramDatabaseFile>
+      <ModuleDefinitionFile></ModuleDefinitionFile>
+      <ProgramDatabaseFile>Release\Win32\regallib.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <ImportLibrary>Release\Win32\regal32.lib</ImportLibrary>
+      <ImportLibrary>Release\Win32\regallib.lib</ImportLibrary>
     </Link>
     <Midl>
       <HeaderFileName>
@@ -120,9 +120,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AssemblerListingLocation>Release\x64\Regal\</AssemblerListingLocation>
-      <ObjectFileName>Release\x64\Regal\</ObjectFileName>
-      <ProgramDataBaseFileName>Release\x64\regal32.pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>Release\x64\Regallib\</AssemblerListingLocation>
+      <ObjectFileName>Release\x64\Regallib\</ObjectFileName>
+      <ProgramDataBaseFileName>Release\x64\regallib.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
@@ -130,14 +130,14 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Release\x64\regal32.dll</OutputFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Release\x64\regallib.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>Release\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
-      <ProgramDatabaseFile>Release\x64\regal32.pdb</ProgramDatabaseFile>
+      <ModuleDefinitionFile></ModuleDefinitionFile>
+      <ProgramDatabaseFile>Release\x64\regallib.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
-      <ImportLibrary>Release\x64\regal32.lib</ImportLibrary>
+      <ImportLibrary>Release\x64\regallib.lib</ImportLibrary>
     </Link>
     <Midl>
       <HeaderFileName>
@@ -157,9 +157,9 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AssemblerListingLocation>Debug\Win32\Regal\</AssemblerListingLocation>
-      <ObjectFileName>Debug\Win32\Regal\</ObjectFileName>
-      <ProgramDataBaseFileName>Debug\Win32\regal32.pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>Debug\Win32\Regallib\</AssemblerListingLocation>
+      <ObjectFileName>Debug\Win32\Regallib\</ObjectFileName>
+      <ProgramDataBaseFileName>Debug\Win32\regallib.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -167,16 +167,16 @@
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Debug\Win32\regal32.dll</OutputFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Debug\Win32\regallib.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>Debug\Win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile></ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>Debug\Win32\regal32.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>Debug\Win32\regallib.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <ImportLibrary>Debug\Win32\regal32.lib</ImportLibrary>
+      <ImportLibrary>Debug\Win32\regallib.lib</ImportLibrary>
     </Link>
     <Midl>
       <HeaderFileName>
@@ -196,9 +196,9 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AssemblerListingLocation>Debug\x64\Regal\</AssemblerListingLocation>
-      <ObjectFileName>Debug\x64\Regal\</ObjectFileName>
-      <ProgramDataBaseFileName>Debug\x64\regal32.pdb</ProgramDataBaseFileName>
+      <AssemblerListingLocation>Debug\x64\Regallib\</AssemblerListingLocation>
+      <ObjectFileName>Debug\x64\Regallib\</ObjectFileName>
+      <ProgramDataBaseFileName>Debug\x64\regallib.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level4</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
@@ -206,15 +206,15 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>Debug\x64\regal32.dll</OutputFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>Debug\x64\regallib.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>Debug\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile></ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>Debug\x64\regal32.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>Debug\x64\regallib.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
-      <ImportLibrary>Debug\x64\regal32.lib</ImportLibrary>
+      <ImportLibrary>Debug\x64\regallib.lib</ImportLibrary>
     </Link>
     <Midl>
       <HeaderFileName>
@@ -286,9 +286,6 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalVao.h" />
     <ClInclude Include="..\..\..\..\src\regal\linear.h" />
     <ClInclude Include="..\..\..\..\src\regal\pch.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\src\regal\Regal.def" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
