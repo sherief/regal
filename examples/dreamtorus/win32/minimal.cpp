@@ -77,7 +77,7 @@ WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 }
 
 HWND
-CreateOpenGLWindow(char *title, int x, int y, int width, int height, BYTE type, DWORD flags)
+CreateOpenGLWindow(LPCTSTR title, int x, int y, int width, int height, BYTE type, DWORD flags)
 {
   int         pf;
   HDC         hDC;
@@ -99,24 +99,24 @@ CreateOpenGLWindow(char *title, int x, int y, int width, int height, BYTE type, 
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground = NULL;
     wc.lpszMenuName  = NULL;
-    wc.lpszClassName = "OpenGL";
+    wc.lpszClassName = TEXT("OpenGL");
 
     if (!RegisterClass(&wc))
     {
-      MessageBox(NULL, "RegisterClass() failed:  "
-        "Cannot register window class.", "Error", MB_OK);
+      MessageBox(NULL, TEXT("RegisterClass() failed: Cannot register window class."),
+        TEXT("Error"), MB_OK);
       return NULL;
     }
   }
 
-  hWnd = CreateWindow("OpenGL", title, WS_OVERLAPPEDWINDOW |
-    WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
+  hWnd = CreateWindow(TEXT("OpenGL"), title,
+    WS_OVERLAPPEDWINDOW | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
     x, y, width, height, NULL, NULL, hInstance, NULL);
 
   if (!hWnd)
   {
-    MessageBox(NULL, "CreateWindow() failed:  Cannot create a window.",
-         "Error", MB_OK);
+    MessageBox(NULL, TEXT("CreateWindow() failed:  Cannot create a window."),
+      TEXT("Error"), MB_OK);
     return NULL;
   }
 
@@ -134,14 +134,14 @@ CreateOpenGLWindow(char *title, int x, int y, int width, int height, BYTE type, 
   pf = ChoosePixelFormat(hDC, &pfd);
   if (!pf)
   {
-    MessageBox(NULL, "ChoosePixelFormat() failed:  "
-       "Cannot find a suitable pixel format.", "Error", MB_OK);
+    MessageBox(NULL, TEXT("ChoosePixelFormat() failed:  Cannot find a suitable pixel format."),
+      TEXT("Error"), MB_OK);
     return 0;
   }
 
   if (!SetPixelFormat(hDC, pf, &pfd)) {
-    MessageBox(NULL, "SetPixelFormat() failed:  "
-       "Cannot set format specified.", "Error", MB_OK);
+    MessageBox(NULL, TEXT("SetPixelFormat() failed:  Cannot set format specified."),
+      TEXT("Error"), MB_OK);
     return 0;
   }
 
@@ -160,7 +160,7 @@ WinMain(HINSTANCE hCurrentInst, HINSTANCE hPreviousInst, LPSTR lpszCmdLine, int 
   HWND  hWnd;     /* window         */
   MSG   msg;      /* message        */
 
-  hWnd = CreateOpenGLWindow("minimal", 0, 0, 256, 256, PFD_TYPE_RGBA, PFD_DOUBLEBUFFER);
+  hWnd = CreateOpenGLWindow(TEXT("dreamtorus_win32"), 0, 0, 256, 256, PFD_TYPE_RGBA, PFD_DOUBLEBUFFER);
   if (!hWnd)
     exit(1);
 
