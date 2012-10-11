@@ -613,6 +613,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
+#include "RegalInit.h"
 #include "RegalIff.h"
 #include "RegalPush.h"
 #include "RegalToken.h"

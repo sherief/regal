@@ -277,6 +277,9 @@
     <ClCompile Include="..\..\..\..\src\glut\src\win32_x11.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\include\GL\RegalGLUT.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\..\..\src\glut\src\glut.def" />
   </ItemGroup>
 

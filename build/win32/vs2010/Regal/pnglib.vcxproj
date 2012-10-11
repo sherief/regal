@@ -243,6 +243,11 @@
     <ClCompile Include="..\..\..\..\src\libpng\src\pngwtran.c" />
     <ClCompile Include="..\..\..\..\src\libpng\src\pngwutil.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\src\libpng\include\png.h" />
+    <None Include="..\..\..\..\src\libpng\include\pngconf.h" />
+    <None Include="..\..\..\..\src\libpng\include\pnglibconf.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

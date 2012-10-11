@@ -228,6 +228,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\glew\src\glew.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\include\GL\RegalGLEW.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

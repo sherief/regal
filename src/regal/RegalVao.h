@@ -95,7 +95,6 @@ struct RegalVao : public RegalEmu {
     GLuint enables;
     Vao * currVao;
 
-    bool core;
     GLuint coreVao;
     GLuint maxName;
 
@@ -145,7 +144,6 @@ struct RegalVao : public RegalEmu {
         }
         ffAttrNumTex = ffAttrTexEnd - ffAttrTexBegin;
 
-        core = true;
         if( ctx.info->core )
         {
             maxName = 1;

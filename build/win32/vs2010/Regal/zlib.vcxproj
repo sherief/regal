@@ -242,6 +242,10 @@
     <ClCompile Include="..\..\..\..\src\zlib\src\uncompr.c" />
     <ClCompile Include="..\..\..\..\src\zlib\src\zutil.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\src\zlib\include\zconf.h" />
+    <None Include="..\..\..\..\src\zlib\include\zlib.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

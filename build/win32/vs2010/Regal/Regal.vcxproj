@@ -288,6 +288,9 @@
     <ClInclude Include="..\..\..\..\src\regal\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\include\GL\Regal.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\..\..\src\regal\Regal.def" />
   </ItemGroup>
 

@@ -287,6 +287,9 @@
     <ClInclude Include="..\..\..\..\src\regal\linear.h" />
     <ClInclude Include="..\..\..\..\src\regal\pch.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\include\GL\Regal.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

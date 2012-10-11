@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2011 NVIDIA Corporation
+  Copyright (c) 2011-2012 NVIDIA Corporation
   Copyright (c) 2011-2012 Cass Everitt
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
@@ -59,7 +59,7 @@ REGAL_NAMESPACE_BEGIN
 
 using Token::toString;
 
-static ::REGAL_NAMESPACE_INTERNAL::Init *init = NULL;
+static ::REGAL_NAMESPACE_INTERNAL::Init *_init = NULL;
 
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
 // Phony advapi32.dll, gdi32.dll and user32.dll dependencies for
@@ -100,12 +100,19 @@ Init::~Init()
 }
 
 void
+Init::init()
+{
+  if (!_init)
+    _init = new ::REGAL_NAMESPACE_INTERNAL::Init();    
+}
+
+void
 Init::atExit()
 {
-  if (init)
+  if (_init)
   {
-    delete init;
-    init = NULL;
+    delete _init;
+    _init = NULL;
   }
 }
 
@@ -186,8 +193,7 @@ REGAL_DECL void RegalMakeCurrent( PP_Resource sysCtx, PPB_OpenGLES2 *interface )
 REGAL_DECL void RegalMakeCurrent( RegalSystemContext sysCtx )
 #endif
 {
-  if (!init)
-    init = new ::REGAL_NAMESPACE_INTERNAL::Init();
+    ::REGAL_NAMESPACE_INTERNAL::Init::init();
 
 //  Trace("RegalPrivateMakeCurrent ",sysCtx);
     Thread thread = RegalPrivateThreadSelf();

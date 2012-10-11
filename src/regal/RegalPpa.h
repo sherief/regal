@@ -1,38 +1,39 @@
 /*
- Copyright (c) 2011 NVIDIA Corporation
- Copyright (c) 2011-2012 Cass Everitt
- Copyright (c) 2012 Scott Nations
- Copyright (c) 2012 Mathias Schott
- Copyright (c) 2012 Nigel Stewart
- All rights reserved.
+  Copyright (c) 2011-2012 NVIDIA Corporation
+  Copyright (c) 2011-2012 Cass Everitt
+  Copyright (c) 2012 Scott Nations
+  Copyright (c) 2012 Mathias Schott
+  Copyright (c) 2012 Nigel Stewart
+  All rights reserved.
 
- Redistribution and use in source and binary forms, with or without modification,
- are permitted provided that the following conditions are met:
+  Redistribution and use in source and binary forms, with or without modification,
+  are permitted provided that the following conditions are met:
 
- Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer.
- Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
+    Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
 
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+    Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+  OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 /*
 
  Regal push / pop attrib
  Nigel Stewart
 
-*/
+ */
 
 #ifndef __REGAL_PPA_H__
 #define __REGAL_PPA_H__
@@ -47,6 +48,7 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
+#include "RegalContextInfo.h"
 #include "RegalState.h"
 #include "RegalEmu.h"
 #include "RegalLog.h"
@@ -67,8 +69,6 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 
   void PushAttrib(RegalContext *ctx, GLbitfield mask)
   {
-    UNUSED_PARAMETER(ctx);
-
     maskStack.push_back(mask);
 
     if (mask&GL_DEPTH_BUFFER_BIT)
@@ -93,6 +93,11 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
     }
 
     // Pass the rest through, for now
+
+    RegalAssert(ctx);
+
+    if (ctx->info->core || ctx->info->gles)
+      return;
 
     if (mask)
       ctx->dispatcher.emulation.glPushAttrib(mask);
@@ -158,43 +163,92 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon
 
       // Pass the rest through, for now
 
+      if (ctx->info->core || ctx->info->gles)
+        return;
+
       if (mask)
         ctx->dispatcher.emulation.glPopAttrib();
     }
   }
 
-  void Enable(GLenum cap)
+  template <typename T> bool Get(RegalContext *ctx, GLenum pname, T *params)
   {
-    Internal("RegalPpa::Enable ",Token::toString(cap));
-    switch (cap)
+    RegalAssert(ctx);
+
+    if (ctx->info->core || ctx->info->gles)
     {
-      case GL_DEPTH_TEST:           State::Depth::enable          = GL_TRUE; break;
-      case GL_STENCIL_TEST:         State::Stencil::enable        = GL_TRUE; break;
-      case GL_CULL_FACE:            State::Polygon::cullEnable    = GL_TRUE; break;
-      case GL_POLYGON_SMOOTH:       State::Polygon::smoothEnable  = GL_TRUE; break;
-      case GL_POLYGON_STIPPLE:      State::Polygon::stippleEnable = GL_TRUE; break;
-      case GL_POLYGON_OFFSET_FILL:  State::Polygon::offsetFill    = GL_TRUE; break;
-      case GL_POLYGON_OFFSET_LINE:  State::Polygon::offsetLine    = GL_TRUE; break;
-      case GL_POLYGON_OFFSET_POINT: State::Polygon::offsetPoint   = GL_TRUE; break;
-      default:                                                               break;
+      switch (pname)
+      {
+        case GL_ACCUM_RED_BITS:
+        case GL_ACCUM_GREEN_BITS:
+        case GL_ACCUM_BLUE_BITS:
+        case GL_ACCUM_ALPHA_BITS:
+        case GL_ALPHA_BITS:
+        case GL_AUX_BUFFERS:
+        case GL_BLUE_BITS:
+        case GL_DEPTH_BITS:
+        case GL_GREEN_BITS:
+        case GL_INDEX_BITS:
+        case GL_LINE_STIPPLE:
+        case GL_MAX_PIXEL_MAP_TABLE:
+        case GL_MAX_NAME_STACK_DEPTH:
+        case GL_MAX_LIST_NESTING:
+        case GL_MAX_EVAL_ORDER:
+        case GL_MAX_ATTRIB_STACK_DEPTH:
+        case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
+        case GL_RED_BITS:
+        case GL_STENCIL_BITS:
+          if (params)
+            params[0] = 0;
+          break;
+        default:
+          return false;
+      }
+      return true;
     }
+    return false;
   }
 
-  void Disable(GLenum cap)
+  bool SetEnable(RegalContext *ctx, GLenum cap, GLboolean enabled)
   {
-    Internal("RegalPpa::Disable ",Token::toString(cap));
     switch (cap)
     {
-      case GL_DEPTH_TEST:           State::Depth::enable          = GL_FALSE; break;
-      case GL_STENCIL_TEST:         State::Stencil::enable        = GL_FALSE; break;
-      case GL_CULL_FACE:            State::Polygon::cullEnable    = GL_FALSE; break;
-      case GL_POLYGON_SMOOTH:       State::Polygon::smoothEnable  = GL_FALSE; break;
-      case GL_POLYGON_STIPPLE:      State::Polygon::stippleEnable = GL_FALSE; break;
-      case GL_POLYGON_OFFSET_FILL:  State::Polygon::offsetFill    = GL_FALSE; break;
-      case GL_POLYGON_OFFSET_LINE:  State::Polygon::offsetLine    = GL_FALSE; break;
-      case GL_POLYGON_OFFSET_POINT: State::Polygon::offsetPoint   = GL_FALSE; break;
-      default:                                                                break;
+      case GL_DEPTH_TEST:           State::Depth::enable          = enabled; break;
+      case GL_STENCIL_TEST:         State::Stencil::enable        = enabled; break;
+      case GL_CULL_FACE:            State::Polygon::cullEnable    = enabled; break;
+      case GL_POLYGON_SMOOTH:       State::Polygon::smoothEnable  = enabled; break;
+      case GL_POLYGON_STIPPLE:      State::Polygon::stippleEnable = enabled; break;
+      case GL_POLYGON_OFFSET_FILL:  State::Polygon::offsetFill    = enabled; break;
+      case GL_POLYGON_OFFSET_LINE:  State::Polygon::offsetLine    = enabled; break;
+      case GL_POLYGON_OFFSET_POINT: State::Polygon::offsetPoint   = enabled; break;
+      default:                                                               break;
     }
+
+    if (ctx->info->core || ctx->info->gles)
+    {
+      switch( cap )
+      {
+        case GL_POINT_SMOOTH:
+        case GL_LINE_STIPPLE:
+          return true;
+        default:
+          break;
+      }
+    }
+
+    return false;
+  }
+
+  bool Enable(RegalContext *ctx, GLenum cap)
+  {
+    Internal("RegalPpa::Enable ",Token::toString(cap));
+    return SetEnable(ctx, cap, GL_TRUE);
+  }
+
+  bool Disable(RegalContext * ctx, GLenum cap)
+  {
+    Internal("RegalPpa::Disable ",Token::toString(cap));
+    return SetEnable(ctx, cap, GL_FALSE);
   }
 
   std::vector<GLbitfield>     maskStack;

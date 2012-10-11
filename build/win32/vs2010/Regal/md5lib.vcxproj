@@ -228,6 +228,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\md5\src\md5.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\src\md5\include\md5.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

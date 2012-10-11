@@ -39,6 +39,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
+#include "RegalInit.h"
 #include "RegalIff.h"
 #include "RegalPush.h"
 #include "RegalToken.h"
@@ -31069,6 +31070,7 @@ REGAL_DECL CGLError REGAL_CALL CGLChoosePixelFormat(const CGLPixelFormatAttribut
       dispatchTableGlobal.CGLChoosePixelFormat = NULL;
   }
   CGLError  ret = (CGLError )0;
+  Init::init();
   static const CGLPixelFormatAttribute nattribs[] = {
     kCGLPFAOpenGLProfile,
     (CGLPixelFormatAttribute)0x3200,

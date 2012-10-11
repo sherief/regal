@@ -276,6 +276,9 @@
     <ClCompile Include="..\..\..\..\src\glut\src\win32_winproc.c" />
     <ClCompile Include="..\..\..\..\src\glut\src\win32_x11.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\include\GL\RegalGLUT.h" />
+  </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

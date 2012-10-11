@@ -1923,11 +1923,7 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
        case 7 :
        case 6 :
          #if REGAL_EMU_PPA
-         if (_context->ppa) {
-           Push<int> pushLevel(_context->emuLevel);
-           _context->emuLevel = 5;
-           _context->ppa->Disable( cap );
-         }
+         if (_context->ppa) break;
          #endif
        case 5 :
        case 4 :
@@ -1951,6 +1947,16 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->ppa->Disable( _context, cap ) ) {
+             _context->dispatcher.emulation.glDisable( cap );
+           }
+           return;
+         }
+         #endif
        case 5 :
        case 4 :
        case 3 :
@@ -1994,6 +2000,49 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
 
 }
 
+static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
+{
+   RegalContext *_context = GET_REGAL_CONTEXT();
+   RegalAssert(_context);
+
+   // prefix
+   switch( _context->emuLevel ) {
+       case 7 :
+       case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) break;
+         #endif
+       case 1 :
+       default:
+           break;
+   }
+
+   // impl
+   switch( _context->emuLevel ) {
+       case 7 :
+       case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->info->core && !_context->info->gles ) {
+             _context->dispatcher.emulation.glDrawBuffer( mode );
+           }
+           return;
+         }
+         #endif
+       case 1 :
+       default: {
+         DispatchTable *_next = _context->dispatcher.emulation._next;
+         RegalAssert(_next);
+          _next->call(&_next->glDrawBuffer)(mode);
+         break;
+       }
+
+   }
+
+}
+
 static void REGAL_CALL emu_glEnable(GLenum cap)
 {
    RegalContext *_context = GET_REGAL_CONTEXT();
@@ -2004,11 +2053,7 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
        case 7 :
        case 6 :
          #if REGAL_EMU_PPA
-         if (_context->ppa) {
-           Push<int> pushLevel(_context->emuLevel);
-           _context->emuLevel = 5;
-           _context->ppa->Enable( cap );
-         }
+         if (_context->ppa) break;
          #endif
        case 5 :
        case 4 :
@@ -2032,6 +2077,16 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->ppa->Enable( _context, cap ) ) {
+             _context->dispatcher.emulation.glEnable( cap );
+           }
+           return;
+         }
+         #endif
        case 5 :
        case 4 :
        case 3 :
@@ -2392,6 +2447,9 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) break;
+         #endif
        case 5 :
        case 4 :
          #if REGAL_EMU_DSA
@@ -2415,6 +2473,16 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->ppa->Get( _context, pname, params ) ) {
+             _context->dispatcher.emulation.glGetBooleanv( pname, params );
+           }
+           return;
+         }
+         #endif
        case 5 :
        case 4 :
        case 3 :
@@ -2522,6 +2590,9 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) break;
+         #endif
        case 5 :
        case 4 :
          #if REGAL_EMU_DSA
@@ -2548,6 +2619,16 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->ppa->Get( _context, pname, params ) ) {
+             _context->dispatcher.emulation.glGetFloatv( pname, params );
+           }
+           return;
+         }
+         #endif
        case 5 :
        case 4 :
        case 3 :
@@ -2594,6 +2675,9 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) break;
+         #endif
        case 5 :
        case 4 :
          #if REGAL_EMU_DSA
@@ -2620,6 +2704,16 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
    switch( _context->emuLevel ) {
        case 7 :
        case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->ppa->Get( _context, pname, params ) ) {
+             _context->dispatcher.emulation.glGetIntegerv( pname, params );
+           }
+           return;
+         }
+         #endif
        case 5 :
        case 4 :
        case 3 :
@@ -12595,6 +12689,49 @@ static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
          DispatchTable *_next = _context->dispatcher.emulation._next;
          RegalAssert(_next);
           _next->call(&_next->glDisableVertexAttribArray)(index);
+         break;
+       }
+
+   }
+
+}
+
+static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
+{
+   RegalContext *_context = GET_REGAL_CONTEXT();
+   RegalAssert(_context);
+
+   // prefix
+   switch( _context->emuLevel ) {
+       case 7 :
+       case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) break;
+         #endif
+       case 1 :
+       default:
+           break;
+   }
+
+   // impl
+   switch( _context->emuLevel ) {
+       case 7 :
+       case 6 :
+         #if REGAL_EMU_PPA
+         if (_context->ppa) {
+           Push<int> pushLevel(_context->emuLevel);
+           _context->emuLevel = 5;
+           if( ! _context->info->core && !_context->info->gles ) {
+             _context->dispatcher.emulation.glDrawBuffers( n, bufs );
+           }
+           return;
+         }
+         #endif
+       case 1 :
+       default: {
+         DispatchTable *_next = _context->dispatcher.emulation._next;
+         RegalAssert(_next);
+          _next->call(&_next->glDrawBuffers)(n, bufs);
          break;
        }
 
@@ -31771,6 +31908,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glDepthMask = emu_glDepthMask;
    tbl.glDepthRange = emu_glDepthRange;
    tbl.glDisable = emu_glDisable;
+   tbl.glDrawBuffer = emu_glDrawBuffer;
    tbl.glEnable = emu_glEnable;
    tbl.glEnd = emu_glEnd;
    tbl.glFogf = emu_glFogf;
@@ -32012,6 +32150,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glCreateShader = emu_glCreateShader;
    tbl.glDisableVertexAttribArray = emu_glDisableVertexAttribArray;
+   tbl.glDrawBuffers = emu_glDrawBuffers;
    tbl.glEnableVertexAttribArray = emu_glEnableVertexAttribArray;
    tbl.glGetVertexAttribPointerv = emu_glGetVertexAttribPointerv;
    tbl.glGetVertexAttribdv = emu_glGetVertexAttribdv;

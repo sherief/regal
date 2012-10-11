@@ -317,6 +317,9 @@
     <ClCompile Include="..\..\..\..\src\glu\libutil\registry.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\include\GL\RegalGLU.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\..\..\src\glu\glu.def" />
   </ItemGroup>
 

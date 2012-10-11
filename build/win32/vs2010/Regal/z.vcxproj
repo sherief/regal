@@ -243,6 +243,10 @@
     <ClCompile Include="..\..\..\..\src\zlib\src\zutil.c" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\src\zlib\include\zconf.h" />
+    <None Include="..\..\..\..\src\zlib\include\zlib.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\..\..\src\zlib\src\zlib.def" />
   </ItemGroup>
 
