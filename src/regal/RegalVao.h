@@ -108,7 +108,7 @@ struct RegalVao : public RegalEmu {
 
     void Init( RegalContext &ctx )
     {
-
+        maxName = 0;
         clientActiveTexture = GL_TEXTURE0;
 
         maxVertexAttribs = ctx.info->maxVertexAttribs;

@@ -103,7 +103,7 @@ void
 Init::init()
 {
   if (!_init)
-    _init = new ::REGAL_NAMESPACE_INTERNAL::Init();    
+    _init = new ::REGAL_NAMESPACE_INTERNAL::Init();
 }
 
 void
