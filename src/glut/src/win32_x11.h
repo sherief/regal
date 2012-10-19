@@ -6,9 +6,9 @@
 /* This program is freely distributable without licensing fees 
    and is provided without guarantee or warrantee expressed or 
    implied. This program is -not- in the public domain. */
-#ifdef __MINGW32__
+
 #include <GL/Regal.h>
-#endif
+
 #include <stdlib.h>
 #include <windows.h>
 

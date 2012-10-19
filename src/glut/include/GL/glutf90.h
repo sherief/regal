@@ -15,7 +15,7 @@
    (mitchell@cam.nist.gov) in developing this friend interface
    for use by the f90gl package.  See ../../README.fortran */
 
-#include <GL/glut.h>
+#include <GL/RegalGLUT.h>
 
 /* Which callback enumerants for the __glutSetFCB/__glutGetFCB routines. */
 /* NOTE These values are part of a binary interface for the f90gl Fortran
