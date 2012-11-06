@@ -129,7 +129,7 @@ struct RegalObj : public RegalEmu {
 
   void Init( RegalContext &ctx )
   {
-    RegalContext *sharingWith = ctx.sharingWith();
+    RegalContext *sharingWith = ctx.groupInitializedContext();
     if (sharingWith)
     {
       bufferNames.app2drv = sharingWith->obj->bufferNames.app2drv;

@@ -114,7 +114,7 @@ struct RegalVao : public RegalEmu {
         maxVertexAttribs = ctx.info->maxVertexAttribs;
         RegalAssert( maxVertexAttribs <= REGAL_VAO_NUM_ARRAYS );
 
-        RegalContext *sharingWith = ctx.sharingWith();
+        RegalContext *sharingWith = ctx.groupInitializedContext();
         if (sharingWith)
           objects = sharingWith->vao->objects;
 

@@ -65,7 +65,9 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
 #include "RegalPrivate.h"
+#include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalSharedMap.h"
 #include "linear.h"
 
 REGAL_GLOBAL_END
@@ -1557,7 +1559,10 @@ struct RegalIff : public RegalEmu
 
   Program  ffprogs[ 1 << REGAL_FIXED_FUNCTION_PROGRAM_CACHE_SIZE_BITS ];
 
-  std::map<GLuint, GLint>   textureObjToFmt;
+  shared_map<GLuint, GLint> textureObjToFmt;
+
+  // Program uniforms are tied to context state, so we cannot share IFF
+  // programs, however we share user programs in general.
   std::map<GLenum, GLenum>  fmtmap;
   std::map<GLuint, GLenum>  shaderTypeMap;
   std::map<GLuint, Program> shprogmap;
@@ -2194,6 +2199,10 @@ struct RegalIff : public RegalEmu
     currVao = 0;
     gles = false;
     legacy = false;
+
+    RegalContext *sharingWith = ctx.groupInitializedContext();
+    if (sharingWith)
+      textureObjToFmt = sharingWith->iff->textureObjToFmt;
 
     InitVertexArray( &ctx );
     InitFixedFunction( &ctx );

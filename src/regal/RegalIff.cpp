@@ -897,29 +897,29 @@ string TextureFetchSwizzle( bool es, bool legacy, RFF::TextureTargetBitfield b )
   return "";
 }
 
-void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & state, string_list & src ) {
+void GenerateFragmentShaderSource( RFF * rff, string_list & src ) {
 
-  const Store & st = state.processed;
-  if( es ) {
+  const Store & st = rff->ffstate.processed;
+  if( rff->gles ) {
     src << "#version 100\n";
-  } else if( legacy ) {
+  } else if( rff->legacy ) {
     src << "#version 120\n";
   } else {
     src << "#version 140\n";
   }
   src << "// program number " << progcount << "\n";
-  if( es || legacy ) {
+  if( rff->gles || rff->legacy ) {
     src << "#define in varying\n";
     src << "#define rglFragColor gl_FragColor\n";
   } else {
     src << "out vec4 rglFragColor;\n";
   }
-  if( st.shadeModelFlat & ! legacy & ! es ) {
+  if( st.shadeModelFlat & ! rff->legacy & ! rff->gles ) {
     src << "#define FLAT flat\n";
   } else {
     src << "#define FLAT  \n";
   }
-  if( es ) {
+  if( rff->gles ) {
     src << "precision highp float;\n";
   }
   src << "FLAT in vec4 rglFrontColor;\n";
@@ -942,7 +942,7 @@ void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & stat
   }
   bool needsConstantColor = false;
   for( int i = 0; i < REGAL_FIXED_FUNCTION_MAX_TEXTURE_UNITS; i++ ) {
-    Texture t = state.processed.tex[i];
+    Texture t = rff->ffstate.processed.tex[i];
     if( t.enables == 0 ) {
       continue;
     }
@@ -963,7 +963,7 @@ void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & stat
     src << "uniform vec4 rglConstantColor;\n";
   }
   for( int i = 0; i < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES; i++ ) {
-    if( ( es || legacy ) && st.clip[i].enable ) {
+    if( ( rff->gles || rff->legacy ) && st.clip[i].enable ) {
       src << "in float rglClipDistance" << i << ";\n";
     }
   }
@@ -974,7 +974,7 @@ void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & stat
   }
   src << "void main() {\n";
 
-  if( es || legacy ) {
+  if( rff->gles || rff->legacy ) {
     for( int i = 0; i < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES; i++ ) {
       if( st.clip[i].enable ) {
         src << "    if( rglClipDistance" << i << " < 0.0 ) discard;\n";
@@ -988,8 +988,8 @@ void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & stat
   }
   bool s_declared = false;
   for( int i = 0; i < REGAL_FIXED_FUNCTION_MAX_TEXTURE_UNITS; i++ ) {
-    Texture t = state.processed.tex[ i ];
-    RFF::TextureTargetBitfield b = state.GetTextureEnable( i );
+    Texture t = rff->ffstate.processed.tex[ i ];
+    RFF::TextureTargetBitfield b = rff->ffstate.GetTextureEnable( i );
     if( b == 0 ) {
       continue;
     }
@@ -1001,12 +1001,16 @@ void GenerateFragmentShaderSource( bool es, bool legacy, const RFF::State & stat
       case RFF::TT_1D:
       case RFF::TT_2D:
       {
-        src << "    s = " << TextureFetch( es, legacy, b ) << "( rglSampler" << i << ", rglTEXCOORD" << i << TextureFetchSwizzle( es, legacy, b ) << " / rglTEXCOORD" << i << ".w );\n";
+        src << "    s = " << TextureFetch( rff->gles, rff->legacy, b )
+            << "( rglSampler" << i << ", rglTEXCOORD" << i
+            << TextureFetchSwizzle( rff->gles, rff->legacy, b ) << " / rglTEXCOORD" << i << ".w );\n";
         break;
       }
       case RFF::TT_CubeMap:
       {
-        src << "    s = " << TextureFetch( es, legacy, b ) << "( rglSampler" << i << ", rglTEXCOORD" << i << TextureFetchSwizzle( es, legacy, b ) << " );\n";
+        src << "    s = " << TextureFetch( rff->gles, rff->legacy, b )
+            << "( rglSampler" << i << ", rglTEXCOORD" << i
+            << TextureFetchSwizzle( rff->gles, rff->legacy, b ) << " );\n";
         break;
       }
       default:
@@ -2078,7 +2082,7 @@ void RFF::UseFixedFunctionProgram( RegalContext * ctx ) {
     string_list vsSrc;
     GenerateVertexShaderSource( this, ffstate, vsSrc );
     string_list fsSrc;
-    GenerateFragmentShaderSource( gles, legacy, ffstate, fsSrc );
+    GenerateFragmentShaderSource( this, fsSrc );
     p->Init( ctx, ffstate.processed, vsSrc.str().c_str(), fsSrc.str().c_str() );
     p->progcount = progcount;
   }

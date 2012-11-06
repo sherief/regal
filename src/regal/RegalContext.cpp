@@ -64,7 +64,7 @@ REGAL_NAMESPACE_BEGIN
 
 using namespace Logging;
 
-RegalContext::RegalContext(RegalContext *other)
+RegalContext::RegalContext()
 : initialized(false),
   dispatcher(),
   dbg(NULL),
@@ -99,9 +99,6 @@ RegalContext::RegalContext(RegalContext *other)
     dbg->Init(this);
   }
 
-  if (other)
-    shareGroup = other->shareGroup;
-
   shareGroup.push_back(this);
 
   frameTimer.restart();
@@ -113,7 +110,6 @@ RegalContext::Init()
   Internal("RegalContext::Init","()");
 
   RegalAssert(!initialized);
-  initialized = true;
 
   info = new ContextInfo();
   RegalAssert(this);
@@ -197,6 +193,8 @@ RegalContext::Init()
 
   }
 #endif
+
+  initialized = true;
 }
 
 RegalContext::~RegalContext()
@@ -221,22 +219,40 @@ RegalContext::~RegalContext()
 #endif
 }
 
-RegalContext *
-RegalContext::sharingWith()
+bool
+RegalContext::groupInitialized() const
 {
-  Internal("RegalContext::sharingWith","()");
+  Internal("RegalContext::groupInitialized","()");
 
-  // Look for the first non-NULL, not this, initialized
-  // context in the share group.  The only way this would
-  // be expected to fail is if none of the contexts have
-  // been made current, triggering initialization.
+  for (shared_list<RegalContext *>::const_iterator i = shareGroup.begin(); i!=shareGroup.end(); ++i)
+  {
+    RegalAssert(*i);
+    if ((*i)->initialized)
+      return true;
+  }
+
+  return false;
+}
+
+RegalContext *
+RegalContext::groupInitializedContext()
+{
+  Internal("RegalContext::groupInitializedContext","()");
+
+  // Look for any initialized context in the share group.
+  // The only way this would be expected to fail is if none
+  // of the contexts have been made current, triggering
+  // initialization.
   //
   // Note - linear search, but shouldn't need to look at too many
   // contexts in the share group.
 
   for (shared_list<RegalContext *>::iterator i = shareGroup.begin(); i!=shareGroup.end(); ++i)
-    if (*i && this!=*i && (*i)->initialized)
+  {
+    RegalAssert(*i);
+    if ((*i)->initialized)
       return *i;
+  }
 
   return NULL;
 }
