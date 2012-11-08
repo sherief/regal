@@ -287,6 +287,8 @@ Init::checkForGLErrors(RegalContext *context)
 RegalErrorCallback
 Init::setErrorCallback(RegalErrorCallback callback)
 {
+  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+
   // TODO - warning or error for context==NULL ?
 
   RegalContext *context = REGAL_GET_CONTEXT();
@@ -297,6 +299,8 @@ Init::setErrorCallback(RegalErrorCallback callback)
 void
 Init::shareContext(RegalSystemContext a, RegalSystemContext b)
 {
+  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+
   RegalContext *contextA = getContext(a);
   RegalContext *contextB = getContext(b);
 
@@ -333,6 +337,7 @@ Init::makeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *interface)
 Init::makeCurrent(RegalSystemContext sysCtx)
 #endif
 {
+  ::REGAL_NAMESPACE_INTERNAL::Init::init();
 
   if (sysCtx)
   {
@@ -377,6 +382,8 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 void
 Init::destroyContext(RegalSystemContext sysCtx)
 {
+  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+
   if (sysCtx)
   {
     RegalContext *context = getContext(sysCtx);
@@ -405,13 +412,11 @@ REGAL_GLOBAL_BEGIN
 
 RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
   return ::REGAL_NAMESPACE_INTERNAL::Init::setErrorCallback(callback);
 }
 
 REGAL_DECL void RegalShareContext(RegalSystemContext a, RegalSystemContext b)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
   ::REGAL_NAMESPACE_INTERNAL::Init::shareContext(a,b);
 }
 
@@ -421,7 +426,6 @@ REGAL_DECL void RegalMakeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *inter
 REGAL_DECL void RegalMakeCurrent(RegalSystemContext sysCtx)
 #endif
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
 #if REGAL_SYS_NACL
   ::REGAL_NAMESPACE_INTERNAL::Init::makeCurrent(sysCtx,interface);
 #else
@@ -431,7 +435,6 @@ REGAL_DECL void RegalMakeCurrent(RegalSystemContext sysCtx)
 
 REGAL_DECL void RegalDestroyContext(RegalSystemContext sysCtx)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
   ::REGAL_NAMESPACE_INTERNAL::Init::destroyContext(sysCtx);
 }
 

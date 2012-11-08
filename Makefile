@@ -81,6 +81,10 @@ ifneq ($(filter linux%,$(SYSTEM)),)
 ZLIB.CFLAGS     += -DHAVE_UNISTD_H
 endif
 
+ifneq ($(filter darwin%,$(SYSTEM)),)
+ZLIB.CFLAGS     += -DHAVE_UNISTD_H
+endif
+
 zlib.lib: lib lib/$(ZLIB.STATIC)
 
 tmp/$(SYSTEM)/zlib/static/%.o: src/zlib/src/%.c
@@ -120,6 +124,10 @@ LIBPNG.CFLAGS     := -Isrc/zlib/include -Isrc/libpng/include
 LIBPNG.STATIC     := libpng.a
 
 ifneq ($(filter linux%,$(SYSTEM)),)
+LIBPNG.CFLAGS     += -DHAVE_UNISTD_H
+endif
+
+ifneq ($(filter darwin%,$(SYSTEM)),)
 LIBPNG.CFLAGS     += -DHAVE_UNISTD_H
 endif
 
