@@ -211,6 +211,14 @@ Regal OpenGL extensions
   - GL_REGAL_log_ for Regal logging configuration.
   - GL_REGAL_enable_ for Regal feature configuration.
 
+Regal API
+=========
+
+  - **RegalSetErrorCallback**  --- Optionally set the per-context error callback function.
+  - **RegalShareContext**      --- OpenGL contexts are shared.
+  - **RegalMakeCurrent**       --- Set an OpenGL context as current for the thread.
+  - **RegalDestroyContext**    --- Cleanup Regal context resources.
+
 In Progress
 ===========
 
@@ -230,6 +238,7 @@ Limitations
 ===========
 
 * Incomplete implementation, so far.
+* Shared OpenGL contexts supported for single-threaded only.
 * Limited GLSL language support.
 * GL_QUADS only works in immediate mode or with DrawArrays for ES and core profiles.
 

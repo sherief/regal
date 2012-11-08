@@ -102,7 +102,7 @@ def apiEmuFuncDefineCode(apis, args):
                 continue
 
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
-            code += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
+            code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
             code += '  RegalAssert(_context);\n'
             code += '\n'
 

@@ -232,7 +232,7 @@ def apiFuncDefineCode(apis, args):
       emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emuRegal ]
 
       if function.needsContext:
-        c += '  RegalContext *_context = GET_REGAL_CONTEXT();\n'
+        c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += '  %s\n' % debugPrintFunction( function, 'App' )
         c += '  if (!_context) return'
         if typeIsVoid(rType):
@@ -295,13 +295,13 @@ def apiFuncDefineCode(apis, args):
           c += 'ret = '
         c += 'dispatchTableGlobal.%s(%s);\n' % ( name, callParams )
         if name == 'wglMakeCurrent':
-          c += '    RegalMakeCurrent(RegalSystemContext(hglrc));\n'
+          c += '    Init::makeCurrent(RegalSystemContext(hglrc));\n'
         elif name == 'CGLSetCurrentContext':
-          c += '    RegalMakeCurrent( ctx );\n'
+          c += '    Init::makeCurrent( ctx );\n'
         elif name == 'glXMakeCurrent':
-          c += '    RegalMakeCurrent( RegalSystemContext(ctx) );\n'
+          c += '    Init::makeCurrent( RegalSystemContext(ctx) );\n'
         elif name == 'eglMakeCurrent':
-          c += '    RegalMakeCurrent( ctx );\n'
+          c += '    Init::makeCurrent( ctx );\n'
         c += '  }\n'
         c += '  else\n'
         c += '    Warning( "%s not available." );\n' % name
@@ -699,7 +699,8 @@ def generateDefFile(apis, args, additional_exports):
   code1.insert( 0, '  SetPixelFormat' )
   code2.insert( 0, '  SetPixelFormat' )
 
-  # RegalMakeCurrent, RegalSetErrorCallback
+  # RegalMakeCurrent, RegalSetErrorCallback, etc
+
   code1 += ['  %s' % export for export in additional_exports]
   code2 += ['  %s' % export for export in additional_exports]
   code3 += ['_%s' % export for export in additional_exports]

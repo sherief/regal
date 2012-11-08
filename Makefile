@@ -47,6 +47,94 @@ debug: regal.lib
 export:
 	scripts/Export.py --api gl 4.2 --api wgl 4.0 --api glx 4.0 --api cgl 1.4 --api egl 1.0 --outdir src/regal
 
+lib:
+	mkdir lib
+
+
+#
+# zlib
+#
+
+ZLIB.SRCS += src/zlib/src/adler32.c
+ZLIB.SRCS += src/zlib/src/crc32.c
+ZLIB.SRCS += src/zlib/src/compress.c
+ZLIB.SRCS += src/zlib/src/deflate.c
+ZLIB.SRCS += src/zlib/src/infback.c
+ZLIB.SRCS += src/zlib/src/inffast.c
+ZLIB.SRCS += src/zlib/src/inflate.c
+ZLIB.SRCS += src/zlib/src/inftrees.c
+ZLIB.SRCS += src/zlib/src/trees.c
+ZLIB.SRCS += src/zlib/src/uncompr.c
+ZLIB.SRCS += src/zlib/src/zutil.c
+ZLIB.SRCS += src/zlib/src/gzlib.c
+ZLIB.SRCS += src/zlib/src/gzread.c
+ZLIB.SRCS += src/zlib/src/gzwrite.c
+ZLIB.SRCS += src/zlib/src/gzclose.c
+
+ZLIB.SRCS.NAMES := $(notdir $(ZLIB.SRCS))
+ZLIB.OBJS       := $(addprefix tmp/$(SYSTEM)/zlib/static/,$(ZLIB.SRCS.NAMES))
+ZLIB.OBJS       := $(ZLIB.OBJS:.c=.o)
+ZLIB.CFLAGS     := -Isrc/zlib/include
+ZLIB.STATIC     := libz.a
+
+ifneq ($(filter linux%,$(SYSTEM)),)
+ZLIB.CFLAGS     += -DHAVE_UNISTD_H
+endif
+
+zlib.lib: lib lib/$(ZLIB.STATIC)
+
+tmp/$(SYSTEM)/zlib/static/%.o: src/zlib/src/%.c
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(CFLAGS) $(ZLIB.CFLAGS) $(PICFLAG) -o $@ -c $<
+
+lib/$(ZLIB.STATIC): $(ZLIB.OBJS)
+	$(CCACHE) $(AR) cr $@ $^
+ifneq ($(STRIP),)
+	$(STRIP) -x $@
+endif
+
+#
+# libpng
+#
+
+LIBPNG.SRCS += src/libpng/src/png.c
+LIBPNG.SRCS += src/libpng/src/pngerror.c
+LIBPNG.SRCS += src/libpng/src/pngget.c
+LIBPNG.SRCS += src/libpng/src/pngmem.c
+LIBPNG.SRCS += src/libpng/src/pngpread.c
+LIBPNG.SRCS += src/libpng/src/pngread.c
+LIBPNG.SRCS += src/libpng/src/pngrio.c
+LIBPNG.SRCS += src/libpng/src/pngrtran.c
+LIBPNG.SRCS += src/libpng/src/pngrutil.c
+LIBPNG.SRCS += src/libpng/src/pngset.c
+LIBPNG.SRCS += src/libpng/src/pngtrans.c
+LIBPNG.SRCS += src/libpng/src/pngwio.c
+LIBPNG.SRCS += src/libpng/src/pngwrite.c
+LIBPNG.SRCS += src/libpng/src/pngwtran.c
+LIBPNG.SRCS += src/libpng/src/pngwutil.c
+
+LIBPNG.SRCS.NAMES := $(notdir $(LIBPNG.SRCS))
+LIBPNG.OBJS       := $(addprefix tmp/$(SYSTEM)/libpng/static/,$(LIBPNG.SRCS.NAMES))
+LIBPNG.OBJS       := $(LIBPNG.OBJS:.c=.o)
+LIBPNG.CFLAGS     := -Isrc/zlib/include -Isrc/libpng/include
+LIBPNG.STATIC     := libpng.a
+
+ifneq ($(filter linux%,$(SYSTEM)),)
+LIBPNG.CFLAGS     += -DHAVE_UNISTD_H
+endif
+
+libpng.lib: zlib.lib lib lib/$(LIBPNG.STATIC)
+
+tmp/$(SYSTEM)/libpng/static/%.o: src/libpng/src/%.c
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(CFLAGS) $(LIBPNG.CFLAGS) $(PICFLAG) -o $@ -c $<
+
+lib/$(LIBPNG.STATIC): $(LIBPNG.OBJS)
+	$(CCACHE) $(AR) cr $@ $^
+ifneq ($(STRIP),)
+	$(STRIP) -x $@
+endif
+
 #
 
 LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
@@ -89,17 +177,8 @@ ifeq ($(filter -DREGAL_NO_MD5%,$(CFLAGS)),)
 LIB.SRCS           += src/md5/src/md5.c
 endif
 
-# Disable zlib and PNG for OSX and NaCL only
-
-ifeq ($(filter darwin%,$(SYSTEM)),)
-ifeq ($(filter nacl%,$(SYSTEM)),)
-LIB.LIBS           += -lpng -lz
-else
-CFLAGS             += -DREGAL_NO_PNG
-endif
-else
-CFLAGS             += -DREGAL_NO_PNG
-endif
+LIB.INCLUDE        += -Isrc/zlib/include -Isrc/libpng/include
+LIB.LIBS           += -Llib -lpng -lz
 
 LIB.INCLUDE        += -Isrc/mongoose
 LIB.INCLUDE        += -Isrc/md5/include
@@ -120,10 +199,7 @@ LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
 
-regal.lib: lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
-
-lib:
-	mkdir lib
+regal.lib: lib zlib.lib libpng.lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
 
 lib/$(LIB.STATIC): $(LIB.OBJS)
 	$(CCACHE) $(AR) cr $@ $^

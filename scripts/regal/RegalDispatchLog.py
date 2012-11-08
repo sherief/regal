@@ -145,7 +145,7 @@ def generateDispatchLog(apis, args):
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'log_', name, params)
       code += '    %s\n' % debugPrintFunction( function, 'Driver' )
-      code += '    RegalContext *_context = GET_REGAL_CONTEXT();\n'
+      code += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '    RegalAssert(_context);\n'
       code += '    DispatchTable *_next = _context->dispatcher.logging._next;\n'
       code += '    RegalAssert(_next);\n'

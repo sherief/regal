@@ -235,7 +235,7 @@ inline const char * GetEnv(const char * const varname)
 #ifdef NDEBUG
 #  define RegalCheckGLError( ctx )
 #else
-#  define RegalCheckGLError( ctx ) RegalCheckForGLErrors( (ctx) )
+#  define RegalCheckGLError( ctx ) ::REGAL_NAMESPACE_INTERNAL::Init::checkForGLErrors(ctx)
 #endif
 
 //

@@ -75,7 +75,7 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
 static void REGAL_CALL emu_glAlphaFunc(GLenum func, GLclampf ref)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -126,7 +126,7 @@ static void REGAL_CALL emu_glAlphaFunc(GLenum func, GLclampf ref)
 
 static void REGAL_CALL emu_glBegin(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -185,7 +185,7 @@ static void REGAL_CALL emu_glBegin(GLenum mode)
 
 static void REGAL_CALL emu_glClearDepth(GLclampd depth)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -216,7 +216,7 @@ static void REGAL_CALL emu_glClearDepth(GLclampd depth)
 
 static void REGAL_CALL emu_glClearStencil(GLint s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -244,7 +244,7 @@ static void REGAL_CALL emu_glClearStencil(GLint s)
 
 static void REGAL_CALL emu_glClipPlane(GLenum plane, const GLdouble *equation)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -295,7 +295,7 @@ static void REGAL_CALL emu_glClipPlane(GLenum plane, const GLdouble *equation)
 
 static void REGAL_CALL emu_glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -346,7 +346,7 @@ static void REGAL_CALL emu_glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 
 static void REGAL_CALL emu_glColor3bv(const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -397,7 +397,7 @@ static void REGAL_CALL emu_glColor3bv(const GLbyte *v)
 
 static void REGAL_CALL emu_glColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -448,7 +448,7 @@ static void REGAL_CALL emu_glColor3d(GLdouble red, GLdouble green, GLdouble blue
 
 static void REGAL_CALL emu_glColor3dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -499,7 +499,7 @@ static void REGAL_CALL emu_glColor3dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -550,7 +550,7 @@ static void REGAL_CALL emu_glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 
 static void REGAL_CALL emu_glColor3fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -601,7 +601,7 @@ static void REGAL_CALL emu_glColor3fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glColor3i(GLint red, GLint green, GLint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -652,7 +652,7 @@ static void REGAL_CALL emu_glColor3i(GLint red, GLint green, GLint blue)
 
 static void REGAL_CALL emu_glColor3iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -703,7 +703,7 @@ static void REGAL_CALL emu_glColor3iv(const GLint *v)
 
 static void REGAL_CALL emu_glColor3s(GLshort red, GLshort green, GLshort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -754,7 +754,7 @@ static void REGAL_CALL emu_glColor3s(GLshort red, GLshort green, GLshort blue)
 
 static void REGAL_CALL emu_glColor3sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -805,7 +805,7 @@ static void REGAL_CALL emu_glColor3sv(const GLshort *v)
 
 static void REGAL_CALL emu_glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -856,7 +856,7 @@ static void REGAL_CALL emu_glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 
 static void REGAL_CALL emu_glColor3ubv(const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -907,7 +907,7 @@ static void REGAL_CALL emu_glColor3ubv(const GLubyte *v)
 
 static void REGAL_CALL emu_glColor3ui(GLuint red, GLuint green, GLuint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -958,7 +958,7 @@ static void REGAL_CALL emu_glColor3ui(GLuint red, GLuint green, GLuint blue)
 
 static void REGAL_CALL emu_glColor3uiv(const GLuint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1009,7 +1009,7 @@ static void REGAL_CALL emu_glColor3uiv(const GLuint *v)
 
 static void REGAL_CALL emu_glColor3us(GLushort red, GLushort green, GLushort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1060,7 +1060,7 @@ static void REGAL_CALL emu_glColor3us(GLushort red, GLushort green, GLushort blu
 
 static void REGAL_CALL emu_glColor3usv(const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1111,7 +1111,7 @@ static void REGAL_CALL emu_glColor3usv(const GLushort *v)
 
 static void REGAL_CALL emu_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1162,7 +1162,7 @@ static void REGAL_CALL emu_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLby
 
 static void REGAL_CALL emu_glColor4bv(const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1213,7 +1213,7 @@ static void REGAL_CALL emu_glColor4bv(const GLbyte *v)
 
 static void REGAL_CALL emu_glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1264,7 +1264,7 @@ static void REGAL_CALL emu_glColor4d(GLdouble red, GLdouble green, GLdouble blue
 
 static void REGAL_CALL emu_glColor4dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1315,7 +1315,7 @@ static void REGAL_CALL emu_glColor4dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1366,7 +1366,7 @@ static void REGAL_CALL emu_glColor4f(GLfloat red, GLfloat green, GLfloat blue, G
 
 static void REGAL_CALL emu_glColor4fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1417,7 +1417,7 @@ static void REGAL_CALL emu_glColor4fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glColor4i(GLint red, GLint green, GLint blue, GLint alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1468,7 +1468,7 @@ static void REGAL_CALL emu_glColor4i(GLint red, GLint green, GLint blue, GLint a
 
 static void REGAL_CALL emu_glColor4iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1519,7 +1519,7 @@ static void REGAL_CALL emu_glColor4iv(const GLint *v)
 
 static void REGAL_CALL emu_glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1570,7 +1570,7 @@ static void REGAL_CALL emu_glColor4s(GLshort red, GLshort green, GLshort blue, G
 
 static void REGAL_CALL emu_glColor4sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1621,7 +1621,7 @@ static void REGAL_CALL emu_glColor4sv(const GLshort *v)
 
 static void REGAL_CALL emu_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1672,7 +1672,7 @@ static void REGAL_CALL emu_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, 
 
 static void REGAL_CALL emu_glColor4ubv(const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1723,7 +1723,7 @@ static void REGAL_CALL emu_glColor4ubv(const GLubyte *v)
 
 static void REGAL_CALL emu_glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1774,7 +1774,7 @@ static void REGAL_CALL emu_glColor4ui(GLuint red, GLuint green, GLuint blue, GLu
 
 static void REGAL_CALL emu_glColor4uiv(const GLuint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1825,7 +1825,7 @@ static void REGAL_CALL emu_glColor4uiv(const GLuint *v)
 
 static void REGAL_CALL emu_glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1876,7 +1876,7 @@ static void REGAL_CALL emu_glColor4us(GLushort red, GLushort green, GLushort blu
 
 static void REGAL_CALL emu_glColor4usv(const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1927,7 +1927,7 @@ static void REGAL_CALL emu_glColor4usv(const GLushort *v)
 
 static void REGAL_CALL emu_glColorMaterial(GLenum face, GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -1978,7 +1978,7 @@ static void REGAL_CALL emu_glColorMaterial(GLenum face, GLenum mode)
 
 static void REGAL_CALL emu_glCullFace(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2006,7 +2006,7 @@ static void REGAL_CALL emu_glCullFace(GLenum mode)
 
 static void REGAL_CALL emu_glDepthFunc(GLenum func)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2034,7 +2034,7 @@ static void REGAL_CALL emu_glDepthFunc(GLenum func)
 
 static void REGAL_CALL emu_glDepthMask(GLboolean flag)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2062,7 +2062,7 @@ static void REGAL_CALL emu_glDepthMask(GLboolean flag)
 
 static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -2075,7 +2075,7 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
 
 static void REGAL_CALL emu_glDisable(GLenum cap)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2168,7 +2168,7 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
 
 static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2215,7 +2215,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
 
 static void REGAL_CALL emu_glEnable(GLenum cap)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2308,7 +2308,7 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
 
 static void REGAL_CALL emu_glEnd(void)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2359,7 +2359,7 @@ static void REGAL_CALL emu_glEnd(void)
 
 static void REGAL_CALL emu_glFogf(GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2410,7 +2410,7 @@ static void REGAL_CALL emu_glFogf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glFogfv(GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2461,7 +2461,7 @@ static void REGAL_CALL emu_glFogfv(GLenum pname, const GLfloat *params)
 
 static void REGAL_CALL emu_glFogi(GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2512,7 +2512,7 @@ static void REGAL_CALL emu_glFogi(GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glFogiv(GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2563,7 +2563,7 @@ static void REGAL_CALL emu_glFogiv(GLenum pname, const GLint *params)
 
 static void REGAL_CALL emu_glFrontFace(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2591,7 +2591,7 @@ static void REGAL_CALL emu_glFrontFace(GLenum mode)
 
 static void REGAL_CALL emu_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2642,7 +2642,7 @@ static void REGAL_CALL emu_glFrustum(GLdouble left, GLdouble right, GLdouble bot
 
 static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2719,7 +2719,7 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
 
 static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2797,7 +2797,7 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
 
 static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2889,7 +2889,7 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
 
 static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -2981,7 +2981,7 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
 
 static void REGAL_CALL emu_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3032,7 +3032,7 @@ static void REGAL_CALL emu_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *p
 
 static void REGAL_CALL emu_glGetMaterialiv(GLenum face, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3083,7 +3083,7 @@ static void REGAL_CALL emu_glGetMaterialiv(GLenum face, GLenum pname, GLint *par
 
 static void REGAL_CALL emu_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3143,7 +3143,7 @@ static void REGAL_CALL emu_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *p
 
 static void REGAL_CALL emu_glGetTexEnviv(GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3203,7 +3203,7 @@ static void REGAL_CALL emu_glGetTexEnviv(GLenum target, GLenum pname, GLint *par
 
 static void REGAL_CALL emu_glGetTexGendv(GLenum coord, GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3257,7 +3257,7 @@ static void REGAL_CALL emu_glGetTexGendv(GLenum coord, GLenum pname, GLdouble *p
 
 static void REGAL_CALL emu_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3311,7 +3311,7 @@ static void REGAL_CALL emu_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *pa
 
 static void REGAL_CALL emu_glGetTexGeniv(GLenum coord, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3365,7 +3365,7 @@ static void REGAL_CALL emu_glGetTexGeniv(GLenum coord, GLenum pname, GLint *para
 
 static void REGAL_CALL emu_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3396,7 +3396,7 @@ static void REGAL_CALL emu_glGetTexParameterfv(GLenum target, GLenum pname, GLfl
 
 static void REGAL_CALL emu_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3427,7 +3427,7 @@ static void REGAL_CALL emu_glGetTexParameteriv(GLenum target, GLenum pname, GLin
 
 static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3473,7 +3473,7 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
 
 static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3553,7 +3553,7 @@ static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
 
 static void REGAL_CALL emu_glLightModelf(GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3604,7 +3604,7 @@ static void REGAL_CALL emu_glLightModelf(GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glLightModelfv(GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3655,7 +3655,7 @@ static void REGAL_CALL emu_glLightModelfv(GLenum pname, const GLfloat *params)
 
 static void REGAL_CALL emu_glLightModeli(GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3706,7 +3706,7 @@ static void REGAL_CALL emu_glLightModeli(GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glLightModeliv(GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3757,7 +3757,7 @@ static void REGAL_CALL emu_glLightModeliv(GLenum pname, const GLint *params)
 
 static void REGAL_CALL emu_glLightf(GLenum light, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3808,7 +3808,7 @@ static void REGAL_CALL emu_glLightf(GLenum light, GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glLightfv(GLenum light, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3859,7 +3859,7 @@ static void REGAL_CALL emu_glLightfv(GLenum light, GLenum pname, const GLfloat *
 
 static void REGAL_CALL emu_glLighti(GLenum light, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3910,7 +3910,7 @@ static void REGAL_CALL emu_glLighti(GLenum light, GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glLightiv(GLenum light, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -3961,7 +3961,7 @@ static void REGAL_CALL emu_glLightiv(GLenum light, GLenum pname, const GLint *pa
 
 static void REGAL_CALL emu_glLoadIdentity(void)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4020,7 +4020,7 @@ static void REGAL_CALL emu_glLoadIdentity(void)
 
 static void REGAL_CALL emu_glLoadMatrixd(const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4079,7 +4079,7 @@ static void REGAL_CALL emu_glLoadMatrixd(const GLdouble *m)
 
 static void REGAL_CALL emu_glLoadMatrixf(const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4138,7 +4138,7 @@ static void REGAL_CALL emu_glLoadMatrixf(const GLfloat *m)
 
 static void REGAL_CALL emu_glMaterialf(GLenum face, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4189,7 +4189,7 @@ static void REGAL_CALL emu_glMaterialf(GLenum face, GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glMaterialfv(GLenum face, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4240,7 +4240,7 @@ static void REGAL_CALL emu_glMaterialfv(GLenum face, GLenum pname, const GLfloat
 
 static void REGAL_CALL emu_glMateriali(GLenum face, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4291,7 +4291,7 @@ static void REGAL_CALL emu_glMateriali(GLenum face, GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glMaterialiv(GLenum face, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4342,7 +4342,7 @@ static void REGAL_CALL emu_glMaterialiv(GLenum face, GLenum pname, const GLint *
 
 static void REGAL_CALL emu_glMatrixMode(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4409,7 +4409,7 @@ static void REGAL_CALL emu_glMatrixMode(GLenum mode)
 
 static void REGAL_CALL emu_glMultMatrixd(const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4468,7 +4468,7 @@ static void REGAL_CALL emu_glMultMatrixd(const GLdouble *m)
 
 static void REGAL_CALL emu_glMultMatrixf(const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4527,7 +4527,7 @@ static void REGAL_CALL emu_glMultMatrixf(const GLfloat *m)
 
 static void REGAL_CALL emu_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4578,7 +4578,7 @@ static void REGAL_CALL emu_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 
 static void REGAL_CALL emu_glNormal3bv(const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4629,7 +4629,7 @@ static void REGAL_CALL emu_glNormal3bv(const GLbyte *v)
 
 static void REGAL_CALL emu_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4680,7 +4680,7 @@ static void REGAL_CALL emu_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 
 static void REGAL_CALL emu_glNormal3dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4731,7 +4731,7 @@ static void REGAL_CALL emu_glNormal3dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4782,7 +4782,7 @@ static void REGAL_CALL emu_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 
 static void REGAL_CALL emu_glNormal3fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4833,7 +4833,7 @@ static void REGAL_CALL emu_glNormal3fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glNormal3i(GLint nx, GLint ny, GLint nz)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4884,7 +4884,7 @@ static void REGAL_CALL emu_glNormal3i(GLint nx, GLint ny, GLint nz)
 
 static void REGAL_CALL emu_glNormal3iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4935,7 +4935,7 @@ static void REGAL_CALL emu_glNormal3iv(const GLint *v)
 
 static void REGAL_CALL emu_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -4986,7 +4986,7 @@ static void REGAL_CALL emu_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 
 static void REGAL_CALL emu_glNormal3sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5037,7 +5037,7 @@ static void REGAL_CALL emu_glNormal3sv(const GLshort *v)
 
 static void REGAL_CALL emu_glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5088,7 +5088,7 @@ static void REGAL_CALL emu_glOrtho(GLdouble left, GLdouble right, GLdouble botto
 
 static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5116,7 +5116,7 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
 
 static void REGAL_CALL emu_glPopAttrib(void)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5161,7 +5161,7 @@ static void REGAL_CALL emu_glPopAttrib(void)
 
 static void REGAL_CALL emu_glPopMatrix(void)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5220,7 +5220,7 @@ static void REGAL_CALL emu_glPopMatrix(void)
 
 static void REGAL_CALL emu_glPushAttrib(GLbitfield mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5265,7 +5265,7 @@ static void REGAL_CALL emu_glPushAttrib(GLbitfield mask)
 
 static void REGAL_CALL emu_glPushMatrix(void)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5324,7 +5324,7 @@ static void REGAL_CALL emu_glPushMatrix(void)
 
 static void REGAL_CALL emu_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5383,7 +5383,7 @@ static void REGAL_CALL emu_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLd
 
 static void REGAL_CALL emu_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5442,7 +5442,7 @@ static void REGAL_CALL emu_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloa
 
 static void REGAL_CALL emu_glScaled(GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5501,7 +5501,7 @@ static void REGAL_CALL emu_glScaled(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL emu_glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5560,7 +5560,7 @@ static void REGAL_CALL emu_glScalef(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL emu_glShadeModel(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5591,7 +5591,7 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
 
 static void REGAL_CALL emu_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5619,7 +5619,7 @@ static void REGAL_CALL emu_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 
 static void REGAL_CALL emu_glStencilMask(GLuint mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5647,7 +5647,7 @@ static void REGAL_CALL emu_glStencilMask(GLuint mask)
 
 static void REGAL_CALL emu_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5675,7 +5675,7 @@ static void REGAL_CALL emu_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 
 static void REGAL_CALL emu_glTexCoord1d(GLdouble s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5726,7 +5726,7 @@ static void REGAL_CALL emu_glTexCoord1d(GLdouble s)
 
 static void REGAL_CALL emu_glTexCoord1dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5777,7 +5777,7 @@ static void REGAL_CALL emu_glTexCoord1dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glTexCoord1f(GLfloat s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5828,7 +5828,7 @@ static void REGAL_CALL emu_glTexCoord1f(GLfloat s)
 
 static void REGAL_CALL emu_glTexCoord1fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5879,7 +5879,7 @@ static void REGAL_CALL emu_glTexCoord1fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glTexCoord1i(GLint s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5930,7 +5930,7 @@ static void REGAL_CALL emu_glTexCoord1i(GLint s)
 
 static void REGAL_CALL emu_glTexCoord1iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -5981,7 +5981,7 @@ static void REGAL_CALL emu_glTexCoord1iv(const GLint *v)
 
 static void REGAL_CALL emu_glTexCoord1s(GLshort s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6032,7 +6032,7 @@ static void REGAL_CALL emu_glTexCoord1s(GLshort s)
 
 static void REGAL_CALL emu_glTexCoord1sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6083,7 +6083,7 @@ static void REGAL_CALL emu_glTexCoord1sv(const GLshort *v)
 
 static void REGAL_CALL emu_glTexCoord2d(GLdouble s, GLdouble t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6134,7 +6134,7 @@ static void REGAL_CALL emu_glTexCoord2d(GLdouble s, GLdouble t)
 
 static void REGAL_CALL emu_glTexCoord2dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6185,7 +6185,7 @@ static void REGAL_CALL emu_glTexCoord2dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glTexCoord2f(GLfloat s, GLfloat t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6236,7 +6236,7 @@ static void REGAL_CALL emu_glTexCoord2f(GLfloat s, GLfloat t)
 
 static void REGAL_CALL emu_glTexCoord2fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6287,7 +6287,7 @@ static void REGAL_CALL emu_glTexCoord2fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glTexCoord2i(GLint s, GLint t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6338,7 +6338,7 @@ static void REGAL_CALL emu_glTexCoord2i(GLint s, GLint t)
 
 static void REGAL_CALL emu_glTexCoord2iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6389,7 +6389,7 @@ static void REGAL_CALL emu_glTexCoord2iv(const GLint *v)
 
 static void REGAL_CALL emu_glTexCoord2s(GLshort s, GLshort t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6440,7 +6440,7 @@ static void REGAL_CALL emu_glTexCoord2s(GLshort s, GLshort t)
 
 static void REGAL_CALL emu_glTexCoord2sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6491,7 +6491,7 @@ static void REGAL_CALL emu_glTexCoord2sv(const GLshort *v)
 
 static void REGAL_CALL emu_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6542,7 +6542,7 @@ static void REGAL_CALL emu_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 
 static void REGAL_CALL emu_glTexCoord3dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6593,7 +6593,7 @@ static void REGAL_CALL emu_glTexCoord3dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6644,7 +6644,7 @@ static void REGAL_CALL emu_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 
 static void REGAL_CALL emu_glTexCoord3fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6695,7 +6695,7 @@ static void REGAL_CALL emu_glTexCoord3fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glTexCoord3i(GLint s, GLint t, GLint r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6746,7 +6746,7 @@ static void REGAL_CALL emu_glTexCoord3i(GLint s, GLint t, GLint r)
 
 static void REGAL_CALL emu_glTexCoord3iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6797,7 +6797,7 @@ static void REGAL_CALL emu_glTexCoord3iv(const GLint *v)
 
 static void REGAL_CALL emu_glTexCoord3s(GLshort s, GLshort t, GLshort r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6848,7 +6848,7 @@ static void REGAL_CALL emu_glTexCoord3s(GLshort s, GLshort t, GLshort r)
 
 static void REGAL_CALL emu_glTexCoord3sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6899,7 +6899,7 @@ static void REGAL_CALL emu_glTexCoord3sv(const GLshort *v)
 
 static void REGAL_CALL emu_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -6950,7 +6950,7 @@ static void REGAL_CALL emu_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdo
 
 static void REGAL_CALL emu_glTexCoord4dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7001,7 +7001,7 @@ static void REGAL_CALL emu_glTexCoord4dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7052,7 +7052,7 @@ static void REGAL_CALL emu_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat
 
 static void REGAL_CALL emu_glTexCoord4fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7103,7 +7103,7 @@ static void REGAL_CALL emu_glTexCoord4fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7154,7 +7154,7 @@ static void REGAL_CALL emu_glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 
 static void REGAL_CALL emu_glTexCoord4iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7205,7 +7205,7 @@ static void REGAL_CALL emu_glTexCoord4iv(const GLint *v)
 
 static void REGAL_CALL emu_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7256,7 +7256,7 @@ static void REGAL_CALL emu_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort
 
 static void REGAL_CALL emu_glTexCoord4sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7307,7 +7307,7 @@ static void REGAL_CALL emu_glTexCoord4sv(const GLshort *v)
 
 static void REGAL_CALL emu_glTexEnvf(GLenum target, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7367,7 +7367,7 @@ static void REGAL_CALL emu_glTexEnvf(GLenum target, GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glTexEnvfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7427,7 +7427,7 @@ static void REGAL_CALL emu_glTexEnvfv(GLenum target, GLenum pname, const GLfloat
 
 static void REGAL_CALL emu_glTexEnvi(GLenum target, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7487,7 +7487,7 @@ static void REGAL_CALL emu_glTexEnvi(GLenum target, GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glTexEnviv(GLenum target, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7547,7 +7547,7 @@ static void REGAL_CALL emu_glTexEnviv(GLenum target, GLenum pname, const GLint *
 
 static void REGAL_CALL emu_glTexGend(GLenum coord, GLenum pname, GLdouble param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7598,7 +7598,7 @@ static void REGAL_CALL emu_glTexGend(GLenum coord, GLenum pname, GLdouble param)
 
 static void REGAL_CALL emu_glTexGendv(GLenum coord, GLenum pname, const GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7649,7 +7649,7 @@ static void REGAL_CALL emu_glTexGendv(GLenum coord, GLenum pname, const GLdouble
 
 static void REGAL_CALL emu_glTexGenf(GLenum coord, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7708,7 +7708,7 @@ static void REGAL_CALL emu_glTexGenf(GLenum coord, GLenum pname, GLfloat param)
 
 static void REGAL_CALL emu_glTexGenfv(GLenum coord, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7767,7 +7767,7 @@ static void REGAL_CALL emu_glTexGenfv(GLenum coord, GLenum pname, const GLfloat 
 
 static void REGAL_CALL emu_glTexGeni(GLenum coord, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7826,7 +7826,7 @@ static void REGAL_CALL emu_glTexGeni(GLenum coord, GLenum pname, GLint param)
 
 static void REGAL_CALL emu_glTexGeniv(GLenum coord, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7885,7 +7885,7 @@ static void REGAL_CALL emu_glTexGeniv(GLenum coord, GLenum pname, const GLint *p
 
 static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7916,7 +7916,7 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
 
 static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7947,7 +7947,7 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
 
 static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -7978,7 +7978,7 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
 
 static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8009,7 +8009,7 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
 
 static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8040,7 +8040,7 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
 
 static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8071,7 +8071,7 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
 
 static void REGAL_CALL emu_glTranslated(GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8130,7 +8130,7 @@ static void REGAL_CALL emu_glTranslated(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL emu_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8189,7 +8189,7 @@ static void REGAL_CALL emu_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL emu_glVertex2d(GLdouble x, GLdouble y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8240,7 +8240,7 @@ static void REGAL_CALL emu_glVertex2d(GLdouble x, GLdouble y)
 
 static void REGAL_CALL emu_glVertex2dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8291,7 +8291,7 @@ static void REGAL_CALL emu_glVertex2dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glVertex2f(GLfloat x, GLfloat y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8342,7 +8342,7 @@ static void REGAL_CALL emu_glVertex2f(GLfloat x, GLfloat y)
 
 static void REGAL_CALL emu_glVertex2fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8393,7 +8393,7 @@ static void REGAL_CALL emu_glVertex2fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glVertex2i(GLint x, GLint y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8444,7 +8444,7 @@ static void REGAL_CALL emu_glVertex2i(GLint x, GLint y)
 
 static void REGAL_CALL emu_glVertex2iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8495,7 +8495,7 @@ static void REGAL_CALL emu_glVertex2iv(const GLint *v)
 
 static void REGAL_CALL emu_glVertex2s(GLshort x, GLshort y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8546,7 +8546,7 @@ static void REGAL_CALL emu_glVertex2s(GLshort x, GLshort y)
 
 static void REGAL_CALL emu_glVertex2sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8597,7 +8597,7 @@ static void REGAL_CALL emu_glVertex2sv(const GLshort *v)
 
 static void REGAL_CALL emu_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8648,7 +8648,7 @@ static void REGAL_CALL emu_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 
 static void REGAL_CALL emu_glVertex3dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8699,7 +8699,7 @@ static void REGAL_CALL emu_glVertex3dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8750,7 +8750,7 @@ static void REGAL_CALL emu_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 
 static void REGAL_CALL emu_glVertex3fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8801,7 +8801,7 @@ static void REGAL_CALL emu_glVertex3fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glVertex3i(GLint x, GLint y, GLint z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8852,7 +8852,7 @@ static void REGAL_CALL emu_glVertex3i(GLint x, GLint y, GLint z)
 
 static void REGAL_CALL emu_glVertex3iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8903,7 +8903,7 @@ static void REGAL_CALL emu_glVertex3iv(const GLint *v)
 
 static void REGAL_CALL emu_glVertex3s(GLshort x, GLshort y, GLshort z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -8954,7 +8954,7 @@ static void REGAL_CALL emu_glVertex3s(GLshort x, GLshort y, GLshort z)
 
 static void REGAL_CALL emu_glVertex3sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9005,7 +9005,7 @@ static void REGAL_CALL emu_glVertex3sv(const GLshort *v)
 
 static void REGAL_CALL emu_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9056,7 +9056,7 @@ static void REGAL_CALL emu_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdoub
 
 static void REGAL_CALL emu_glVertex4dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9107,7 +9107,7 @@ static void REGAL_CALL emu_glVertex4dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9158,7 +9158,7 @@ static void REGAL_CALL emu_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w
 
 static void REGAL_CALL emu_glVertex4fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9209,7 +9209,7 @@ static void REGAL_CALL emu_glVertex4fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glVertex4i(GLint x, GLint y, GLint z, GLint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9260,7 +9260,7 @@ static void REGAL_CALL emu_glVertex4i(GLint x, GLint y, GLint z, GLint w)
 
 static void REGAL_CALL emu_glVertex4iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9311,7 +9311,7 @@ static void REGAL_CALL emu_glVertex4iv(const GLint *v)
 
 static void REGAL_CALL emu_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9362,7 +9362,7 @@ static void REGAL_CALL emu_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w
 
 static void REGAL_CALL emu_glVertex4sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9415,7 +9415,7 @@ static void REGAL_CALL emu_glVertex4sv(const GLshort *v)
 
 static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9475,7 +9475,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
 
 static void REGAL_CALL emu_glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9548,7 +9548,7 @@ static void REGAL_CALL emu_glColorPointer(GLint size, GLenum type, GLsizei strid
 
 static void REGAL_CALL emu_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9579,7 +9579,7 @@ static void REGAL_CALL emu_glCopyTexImage2D(GLenum target, GLint level, GLenum i
 
 static void REGAL_CALL emu_glDisableClientState(GLenum cap)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9653,7 +9653,7 @@ static void REGAL_CALL emu_glDisableClientState(GLenum cap)
 
 static void REGAL_CALL emu_glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9701,7 +9701,7 @@ static void REGAL_CALL emu_glDrawArrays(GLenum mode, GLint first, GLsizei count)
 
 static void REGAL_CALL emu_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9749,7 +9749,7 @@ static void REGAL_CALL emu_glDrawElements(GLenum mode, GLsizei count, GLenum typ
 
 static void REGAL_CALL emu_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9800,7 +9800,7 @@ static void REGAL_CALL emu_glEdgeFlagPointer(GLsizei stride, const GLvoid *point
 
 static void REGAL_CALL emu_glEnableClientState(GLenum cap)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9874,7 +9874,7 @@ static void REGAL_CALL emu_glEnableClientState(GLenum cap)
 
 static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -9927,7 +9927,7 @@ static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, co
 
 static void REGAL_CALL emu_glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10000,7 +10000,7 @@ static void REGAL_CALL emu_glNormalPointer(GLenum type, GLsizei stride, const GL
 
 static void REGAL_CALL emu_glPolygonOffset(GLfloat factor, GLfloat units)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10028,7 +10028,7 @@ static void REGAL_CALL emu_glPolygonOffset(GLfloat factor, GLfloat units)
 
 static void REGAL_CALL emu_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10102,7 +10102,7 @@ static void REGAL_CALL emu_glTexCoordPointer(GLint size, GLenum type, GLsizei st
 
 static void REGAL_CALL emu_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10177,7 +10177,7 @@ static void REGAL_CALL emu_glVertexPointer(GLint size, GLenum type, GLsizei stri
 
 static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10210,7 +10210,7 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
 
 static void REGAL_CALL emu_glActiveTexture(GLenum texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10277,7 +10277,7 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
 
 static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10356,7 +10356,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
 
 static void REGAL_CALL emu_glLoadTransposeMatrixd(const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10415,7 +10415,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixd(const GLdouble *m)
 
 static void REGAL_CALL emu_glLoadTransposeMatrixf(const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10474,7 +10474,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixf(const GLfloat *m)
 
 static void REGAL_CALL emu_glMultTransposeMatrixd(const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10533,7 +10533,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixd(const GLdouble *m)
 
 static void REGAL_CALL emu_glMultTransposeMatrixf(const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10592,7 +10592,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixf(const GLfloat *m)
 
 static void REGAL_CALL emu_glMultiTexCoord1d(GLenum target, GLdouble s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10643,7 +10643,7 @@ static void REGAL_CALL emu_glMultiTexCoord1d(GLenum target, GLdouble s)
 
 static void REGAL_CALL emu_glMultiTexCoord1dv(GLenum target, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10694,7 +10694,7 @@ static void REGAL_CALL emu_glMultiTexCoord1dv(GLenum target, const GLdouble *v)
 
 static void REGAL_CALL emu_glMultiTexCoord1f(GLenum target, GLfloat s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10745,7 +10745,7 @@ static void REGAL_CALL emu_glMultiTexCoord1f(GLenum target, GLfloat s)
 
 static void REGAL_CALL emu_glMultiTexCoord1fv(GLenum target, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10796,7 +10796,7 @@ static void REGAL_CALL emu_glMultiTexCoord1fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL emu_glMultiTexCoord1i(GLenum target, GLint s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10847,7 +10847,7 @@ static void REGAL_CALL emu_glMultiTexCoord1i(GLenum target, GLint s)
 
 static void REGAL_CALL emu_glMultiTexCoord1iv(GLenum target, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10898,7 +10898,7 @@ static void REGAL_CALL emu_glMultiTexCoord1iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL emu_glMultiTexCoord1s(GLenum target, GLshort s)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -10949,7 +10949,7 @@ static void REGAL_CALL emu_glMultiTexCoord1s(GLenum target, GLshort s)
 
 static void REGAL_CALL emu_glMultiTexCoord1sv(GLenum target, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11000,7 +11000,7 @@ static void REGAL_CALL emu_glMultiTexCoord1sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL emu_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11051,7 +11051,7 @@ static void REGAL_CALL emu_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble
 
 static void REGAL_CALL emu_glMultiTexCoord2dv(GLenum target, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11102,7 +11102,7 @@ static void REGAL_CALL emu_glMultiTexCoord2dv(GLenum target, const GLdouble *v)
 
 static void REGAL_CALL emu_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11153,7 +11153,7 @@ static void REGAL_CALL emu_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t
 
 static void REGAL_CALL emu_glMultiTexCoord2fv(GLenum target, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11204,7 +11204,7 @@ static void REGAL_CALL emu_glMultiTexCoord2fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL emu_glMultiTexCoord2i(GLenum target, GLint s, GLint t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11255,7 +11255,7 @@ static void REGAL_CALL emu_glMultiTexCoord2i(GLenum target, GLint s, GLint t)
 
 static void REGAL_CALL emu_glMultiTexCoord2iv(GLenum target, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11306,7 +11306,7 @@ static void REGAL_CALL emu_glMultiTexCoord2iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL emu_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11357,7 +11357,7 @@ static void REGAL_CALL emu_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t
 
 static void REGAL_CALL emu_glMultiTexCoord2sv(GLenum target, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11408,7 +11408,7 @@ static void REGAL_CALL emu_glMultiTexCoord2sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL emu_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble t, GLdouble r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11459,7 +11459,7 @@ static void REGAL_CALL emu_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble
 
 static void REGAL_CALL emu_glMultiTexCoord3dv(GLenum target, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11510,7 +11510,7 @@ static void REGAL_CALL emu_glMultiTexCoord3dv(GLenum target, const GLdouble *v)
 
 static void REGAL_CALL emu_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t, GLfloat r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11561,7 +11561,7 @@ static void REGAL_CALL emu_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t
 
 static void REGAL_CALL emu_glMultiTexCoord3fv(GLenum target, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11612,7 +11612,7 @@ static void REGAL_CALL emu_glMultiTexCoord3fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL emu_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GLint r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11663,7 +11663,7 @@ static void REGAL_CALL emu_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GL
 
 static void REGAL_CALL emu_glMultiTexCoord3iv(GLenum target, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11714,7 +11714,7 @@ static void REGAL_CALL emu_glMultiTexCoord3iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL emu_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t, GLshort r)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11765,7 +11765,7 @@ static void REGAL_CALL emu_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t
 
 static void REGAL_CALL emu_glMultiTexCoord3sv(GLenum target, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11816,7 +11816,7 @@ static void REGAL_CALL emu_glMultiTexCoord3sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL emu_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11867,7 +11867,7 @@ static void REGAL_CALL emu_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble
 
 static void REGAL_CALL emu_glMultiTexCoord4dv(GLenum target, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11918,7 +11918,7 @@ static void REGAL_CALL emu_glMultiTexCoord4dv(GLenum target, const GLdouble *v)
 
 static void REGAL_CALL emu_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -11969,7 +11969,7 @@ static void REGAL_CALL emu_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t
 
 static void REGAL_CALL emu_glMultiTexCoord4fv(GLenum target, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12020,7 +12020,7 @@ static void REGAL_CALL emu_glMultiTexCoord4fv(GLenum target, const GLfloat *v)
 
 static void REGAL_CALL emu_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GLint r, GLint q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12071,7 +12071,7 @@ static void REGAL_CALL emu_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GL
 
 static void REGAL_CALL emu_glMultiTexCoord4iv(GLenum target, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12122,7 +12122,7 @@ static void REGAL_CALL emu_glMultiTexCoord4iv(GLenum target, const GLint *v)
 
 static void REGAL_CALL emu_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12173,7 +12173,7 @@ static void REGAL_CALL emu_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t
 
 static void REGAL_CALL emu_glMultiTexCoord4sv(GLenum target, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12226,7 +12226,7 @@ static void REGAL_CALL emu_glMultiTexCoord4sv(GLenum target, const GLshort *v)
 
 static void REGAL_CALL emu_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12291,7 +12291,7 @@ static void REGAL_CALL emu_glFogCoordPointer(GLenum type, GLsizei stride, const 
 
 static void REGAL_CALL emu_glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12339,7 +12339,7 @@ static void REGAL_CALL emu_glMultiDrawArrays(GLenum mode, const GLint *first, co
 
 static void REGAL_CALL emu_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12387,7 +12387,7 @@ static void REGAL_CALL emu_glMultiDrawElements(GLenum mode, const GLsizei *count
 
 static void REGAL_CALL emu_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12438,7 +12438,7 @@ static void REGAL_CALL emu_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte b
 
 static void REGAL_CALL emu_glSecondaryColor3bv(const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12489,7 +12489,7 @@ static void REGAL_CALL emu_glSecondaryColor3bv(const GLbyte *v)
 
 static void REGAL_CALL emu_glSecondaryColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12540,7 +12540,7 @@ static void REGAL_CALL emu_glSecondaryColor3d(GLdouble red, GLdouble green, GLdo
 
 static void REGAL_CALL emu_glSecondaryColor3dv(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12591,7 +12591,7 @@ static void REGAL_CALL emu_glSecondaryColor3dv(const GLdouble *v)
 
 static void REGAL_CALL emu_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12642,7 +12642,7 @@ static void REGAL_CALL emu_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloa
 
 static void REGAL_CALL emu_glSecondaryColor3fv(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12693,7 +12693,7 @@ static void REGAL_CALL emu_glSecondaryColor3fv(const GLfloat *v)
 
 static void REGAL_CALL emu_glSecondaryColor3i(GLint red, GLint green, GLint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12744,7 +12744,7 @@ static void REGAL_CALL emu_glSecondaryColor3i(GLint red, GLint green, GLint blue
 
 static void REGAL_CALL emu_glSecondaryColor3iv(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12795,7 +12795,7 @@ static void REGAL_CALL emu_glSecondaryColor3iv(const GLint *v)
 
 static void REGAL_CALL emu_glSecondaryColor3s(GLshort red, GLshort green, GLshort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12846,7 +12846,7 @@ static void REGAL_CALL emu_glSecondaryColor3s(GLshort red, GLshort green, GLshor
 
 static void REGAL_CALL emu_glSecondaryColor3sv(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12897,7 +12897,7 @@ static void REGAL_CALL emu_glSecondaryColor3sv(const GLshort *v)
 
 static void REGAL_CALL emu_glSecondaryColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12948,7 +12948,7 @@ static void REGAL_CALL emu_glSecondaryColor3ub(GLubyte red, GLubyte green, GLuby
 
 static void REGAL_CALL emu_glSecondaryColor3ubv(const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -12999,7 +12999,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubv(const GLubyte *v)
 
 static void REGAL_CALL emu_glSecondaryColor3ui(GLuint red, GLuint green, GLuint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13050,7 +13050,7 @@ static void REGAL_CALL emu_glSecondaryColor3ui(GLuint red, GLuint green, GLuint 
 
 static void REGAL_CALL emu_glSecondaryColor3uiv(const GLuint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13101,7 +13101,7 @@ static void REGAL_CALL emu_glSecondaryColor3uiv(const GLuint *v)
 
 static void REGAL_CALL emu_glSecondaryColor3us(GLushort red, GLushort green, GLushort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13152,7 +13152,7 @@ static void REGAL_CALL emu_glSecondaryColor3us(GLushort red, GLushort green, GLu
 
 static void REGAL_CALL emu_glSecondaryColor3usv(const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13203,7 +13203,7 @@ static void REGAL_CALL emu_glSecondaryColor3usv(const GLushort *v)
 
 static void REGAL_CALL emu_glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13278,7 +13278,7 @@ static void REGAL_CALL emu_glSecondaryColorPointer(GLint size, GLenum type, GLsi
 
 static void REGAL_CALL emu_glBindBuffer(GLenum target, GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13359,7 +13359,7 @@ static void REGAL_CALL emu_glBindBuffer(GLenum target, GLuint buffer)
 
 static void REGAL_CALL emu_glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13389,7 +13389,7 @@ static void REGAL_CALL emu_glBufferData(GLenum target, GLsizeiptr size, const GL
 
 static void REGAL_CALL emu_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13419,7 +13419,7 @@ static void REGAL_CALL emu_glBufferSubData(GLenum target, GLintptr offset, GLsiz
 
 static void REGAL_CALL emu_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13462,7 +13462,7 @@ static void REGAL_CALL emu_glDeleteBuffers(GLsizei n, const GLuint *buffers)
 
 static void REGAL_CALL emu_glGenBuffers(GLsizei n, GLuint *buffers)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13505,7 +13505,7 @@ static void REGAL_CALL emu_glGenBuffers(GLsizei n, GLuint *buffers)
 
 static void REGAL_CALL emu_glGetBufferParameteriv(GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13535,7 +13535,7 @@ static void REGAL_CALL emu_glGetBufferParameteriv(GLenum target, GLenum pname, G
 
 static void REGAL_CALL emu_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid **params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13565,7 +13565,7 @@ static void REGAL_CALL emu_glGetBufferPointerv(GLenum target, GLenum pname, GLvo
 
 static void REGAL_CALL emu_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13595,7 +13595,7 @@ static void REGAL_CALL emu_glGetBufferSubData(GLenum target, GLintptr offset, GL
 
 static GLboolean REGAL_CALL emu_glIsBuffer(GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13636,7 +13636,7 @@ static GLboolean REGAL_CALL emu_glIsBuffer(GLuint buffer)
 
 static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13666,7 +13666,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
 
 static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13698,7 +13698,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
 
 static GLuint REGAL_CALL emu_glCreateShader(GLenum type)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13747,7 +13747,7 @@ static GLuint REGAL_CALL emu_glCreateShader(GLenum type)
 
 static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13808,7 +13808,7 @@ static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13855,7 +13855,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
 
 static void REGAL_CALL emu_glEnableVertexAttribArray(GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13916,7 +13916,7 @@ static void REGAL_CALL emu_glEnableVertexAttribArray(GLuint index)
 
 static void REGAL_CALL emu_glGetVertexAttribPointerv(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -13977,7 +13977,7 @@ static void REGAL_CALL emu_glGetVertexAttribPointerv(GLuint index, GLenum pname,
 
 static void REGAL_CALL emu_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14038,7 +14038,7 @@ static void REGAL_CALL emu_glGetVertexAttribdv(GLuint index, GLenum pname, GLdou
 
 static void REGAL_CALL emu_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14099,7 +14099,7 @@ static void REGAL_CALL emu_glGetVertexAttribfv(GLuint index, GLenum pname, GLflo
 
 static void REGAL_CALL emu_glGetVertexAttribiv(GLuint index, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14160,7 +14160,7 @@ static void REGAL_CALL emu_glGetVertexAttribiv(GLuint index, GLenum pname, GLint
 
 static void REGAL_CALL emu_glLinkProgram(GLuint program)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14211,7 +14211,7 @@ static void REGAL_CALL emu_glLinkProgram(GLuint program)
 
 static void REGAL_CALL emu_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14262,7 +14262,7 @@ static void REGAL_CALL emu_glShaderSource(GLuint shader, GLsizei count, const GL
 
 static void REGAL_CALL emu_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14290,7 +14290,7 @@ static void REGAL_CALL emu_glStencilFuncSeparate(GLenum face, GLenum func, GLint
 
 static void REGAL_CALL emu_glStencilMaskSeparate(GLenum face, GLuint mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14318,7 +14318,7 @@ static void REGAL_CALL emu_glStencilMaskSeparate(GLenum face, GLuint mask)
 
 static void REGAL_CALL emu_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14346,7 +14346,7 @@ static void REGAL_CALL emu_glStencilOpSeparate(GLenum face, GLenum fail, GLenum 
 
 static void REGAL_CALL emu_glUniform1f(GLint location, GLfloat v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14376,7 +14376,7 @@ static void REGAL_CALL emu_glUniform1f(GLint location, GLfloat v0)
 
 static void REGAL_CALL emu_glUniform1fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14406,7 +14406,7 @@ static void REGAL_CALL emu_glUniform1fv(GLint location, GLsizei count, const GLf
 
 static void REGAL_CALL emu_glUniform1i(GLint location, GLint v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14436,7 +14436,7 @@ static void REGAL_CALL emu_glUniform1i(GLint location, GLint v0)
 
 static void REGAL_CALL emu_glUniform1iv(GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14466,7 +14466,7 @@ static void REGAL_CALL emu_glUniform1iv(GLint location, GLsizei count, const GLi
 
 static void REGAL_CALL emu_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14496,7 +14496,7 @@ static void REGAL_CALL emu_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 
 static void REGAL_CALL emu_glUniform2fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14526,7 +14526,7 @@ static void REGAL_CALL emu_glUniform2fv(GLint location, GLsizei count, const GLf
 
 static void REGAL_CALL emu_glUniform2i(GLint location, GLint v0, GLint v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14556,7 +14556,7 @@ static void REGAL_CALL emu_glUniform2i(GLint location, GLint v0, GLint v1)
 
 static void REGAL_CALL emu_glUniform2iv(GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14586,7 +14586,7 @@ static void REGAL_CALL emu_glUniform2iv(GLint location, GLsizei count, const GLi
 
 static void REGAL_CALL emu_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14616,7 +14616,7 @@ static void REGAL_CALL emu_glUniform3f(GLint location, GLfloat v0, GLfloat v1, G
 
 static void REGAL_CALL emu_glUniform3fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14646,7 +14646,7 @@ static void REGAL_CALL emu_glUniform3fv(GLint location, GLsizei count, const GLf
 
 static void REGAL_CALL emu_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14676,7 +14676,7 @@ static void REGAL_CALL emu_glUniform3i(GLint location, GLint v0, GLint v1, GLint
 
 static void REGAL_CALL emu_glUniform3iv(GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14706,7 +14706,7 @@ static void REGAL_CALL emu_glUniform3iv(GLint location, GLsizei count, const GLi
 
 static void REGAL_CALL emu_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14736,7 +14736,7 @@ static void REGAL_CALL emu_glUniform4f(GLint location, GLfloat v0, GLfloat v1, G
 
 static void REGAL_CALL emu_glUniform4fv(GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14766,7 +14766,7 @@ static void REGAL_CALL emu_glUniform4fv(GLint location, GLsizei count, const GLf
 
 static void REGAL_CALL emu_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14796,7 +14796,7 @@ static void REGAL_CALL emu_glUniform4i(GLint location, GLint v0, GLint v1, GLint
 
 static void REGAL_CALL emu_glUniform4iv(GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14826,7 +14826,7 @@ static void REGAL_CALL emu_glUniform4iv(GLint location, GLsizei count, const GLi
 
 static void REGAL_CALL emu_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14856,7 +14856,7 @@ static void REGAL_CALL emu_glUniformMatrix2fv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14886,7 +14886,7 @@ static void REGAL_CALL emu_glUniformMatrix3fv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14916,7 +14916,7 @@ static void REGAL_CALL emu_glUniformMatrix4fv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUseProgram(GLuint program)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -14983,7 +14983,7 @@ static void REGAL_CALL emu_glUseProgram(GLuint program)
 
 static void REGAL_CALL emu_glVertexAttrib1d(GLuint index, GLdouble x)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15034,7 +15034,7 @@ static void REGAL_CALL emu_glVertexAttrib1d(GLuint index, GLdouble x)
 
 static void REGAL_CALL emu_glVertexAttrib1dv(GLuint index, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15085,7 +15085,7 @@ static void REGAL_CALL emu_glVertexAttrib1dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL emu_glVertexAttrib1f(GLuint index, GLfloat x)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15136,7 +15136,7 @@ static void REGAL_CALL emu_glVertexAttrib1f(GLuint index, GLfloat x)
 
 static void REGAL_CALL emu_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15187,7 +15187,7 @@ static void REGAL_CALL emu_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL emu_glVertexAttrib1s(GLuint index, GLshort x)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15238,7 +15238,7 @@ static void REGAL_CALL emu_glVertexAttrib1s(GLuint index, GLshort x)
 
 static void REGAL_CALL emu_glVertexAttrib1sv(GLuint index, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15289,7 +15289,7 @@ static void REGAL_CALL emu_glVertexAttrib1sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL emu_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15340,7 +15340,7 @@ static void REGAL_CALL emu_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y
 
 static void REGAL_CALL emu_glVertexAttrib2dv(GLuint index, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15391,7 +15391,7 @@ static void REGAL_CALL emu_glVertexAttrib2dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL emu_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15442,7 +15442,7 @@ static void REGAL_CALL emu_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 
 static void REGAL_CALL emu_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15493,7 +15493,7 @@ static void REGAL_CALL emu_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL emu_glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15544,7 +15544,7 @@ static void REGAL_CALL emu_glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
 
 static void REGAL_CALL emu_glVertexAttrib2sv(GLuint index, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15595,7 +15595,7 @@ static void REGAL_CALL emu_glVertexAttrib2sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL emu_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15646,7 +15646,7 @@ static void REGAL_CALL emu_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y
 
 static void REGAL_CALL emu_glVertexAttrib3dv(GLuint index, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15697,7 +15697,7 @@ static void REGAL_CALL emu_glVertexAttrib3dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL emu_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15748,7 +15748,7 @@ static void REGAL_CALL emu_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, 
 
 static void REGAL_CALL emu_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15799,7 +15799,7 @@ static void REGAL_CALL emu_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL emu_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15850,7 +15850,7 @@ static void REGAL_CALL emu_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, 
 
 static void REGAL_CALL emu_glVertexAttrib3sv(GLuint index, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15901,7 +15901,7 @@ static void REGAL_CALL emu_glVertexAttrib3sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL emu_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -15952,7 +15952,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL emu_glVertexAttrib4Niv(GLuint index, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16003,7 +16003,7 @@ static void REGAL_CALL emu_glVertexAttrib4Niv(GLuint index, const GLint *v)
 
 static void REGAL_CALL emu_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16054,7 +16054,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL emu_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16105,7 +16105,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y
 
 static void REGAL_CALL emu_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16156,7 +16156,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
 
 static void REGAL_CALL emu_glVertexAttrib4Nusv(GLuint index, const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16207,7 +16207,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nusv(GLuint index, const GLushort *v)
 
 static void REGAL_CALL emu_glVertexAttrib4bv(GLuint index, const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16258,7 +16258,7 @@ static void REGAL_CALL emu_glVertexAttrib4bv(GLuint index, const GLbyte *v)
 
 static void REGAL_CALL emu_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16309,7 +16309,7 @@ static void REGAL_CALL emu_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y
 
 static void REGAL_CALL emu_glVertexAttrib4dv(GLuint index, const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16360,7 +16360,7 @@ static void REGAL_CALL emu_glVertexAttrib4dv(GLuint index, const GLdouble *v)
 
 static void REGAL_CALL emu_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16411,7 +16411,7 @@ static void REGAL_CALL emu_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, 
 
 static void REGAL_CALL emu_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16462,7 +16462,7 @@ static void REGAL_CALL emu_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 
 static void REGAL_CALL emu_glVertexAttrib4iv(GLuint index, const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16513,7 +16513,7 @@ static void REGAL_CALL emu_glVertexAttrib4iv(GLuint index, const GLint *v)
 
 static void REGAL_CALL emu_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16564,7 +16564,7 @@ static void REGAL_CALL emu_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, 
 
 static void REGAL_CALL emu_glVertexAttrib4sv(GLuint index, const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16615,7 +16615,7 @@ static void REGAL_CALL emu_glVertexAttrib4sv(GLuint index, const GLshort *v)
 
 static void REGAL_CALL emu_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16666,7 +16666,7 @@ static void REGAL_CALL emu_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
 
 static void REGAL_CALL emu_glVertexAttrib4usv(GLuint index, const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16717,7 +16717,7 @@ static void REGAL_CALL emu_glVertexAttrib4usv(GLuint index, const GLushort *v)
 
 static void REGAL_CALL emu_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16779,7 +16779,7 @@ static void REGAL_CALL emu_glVertexAttribPointer(GLuint index, GLint size, GLenu
 
 static void REGAL_CALL emu_glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16809,7 +16809,7 @@ static void REGAL_CALL emu_glUniformMatrix2x3fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16839,7 +16839,7 @@ static void REGAL_CALL emu_glUniformMatrix2x4fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16869,7 +16869,7 @@ static void REGAL_CALL emu_glUniformMatrix3x2fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16899,7 +16899,7 @@ static void REGAL_CALL emu_glUniformMatrix3x4fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16929,7 +16929,7 @@ static void REGAL_CALL emu_glUniformMatrix4x2fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -16961,7 +16961,7 @@ static void REGAL_CALL emu_glUniformMatrix4x3fv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glDisablei(GLenum cap, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17012,7 +17012,7 @@ static void REGAL_CALL emu_glDisablei(GLenum cap, GLuint index)
 
 static void REGAL_CALL emu_glEnablei(GLenum cap, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17063,7 +17063,7 @@ static void REGAL_CALL emu_glEnablei(GLenum cap, GLuint index)
 
 static void REGAL_CALL emu_glUniform1ui(GLint location, GLuint v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17093,7 +17093,7 @@ static void REGAL_CALL emu_glUniform1ui(GLint location, GLuint v0)
 
 static void REGAL_CALL emu_glUniform1uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17123,7 +17123,7 @@ static void REGAL_CALL emu_glUniform1uiv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL emu_glUniform2ui(GLint location, GLuint v0, GLuint v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17153,7 +17153,7 @@ static void REGAL_CALL emu_glUniform2ui(GLint location, GLuint v0, GLuint v1)
 
 static void REGAL_CALL emu_glUniform2uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17183,7 +17183,7 @@ static void REGAL_CALL emu_glUniform2uiv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL emu_glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17213,7 +17213,7 @@ static void REGAL_CALL emu_glUniform3ui(GLint location, GLuint v0, GLuint v1, GL
 
 static void REGAL_CALL emu_glUniform3uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17243,7 +17243,7 @@ static void REGAL_CALL emu_glUniform3uiv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL emu_glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17273,7 +17273,7 @@ static void REGAL_CALL emu_glUniform4ui(GLint location, GLuint v0, GLuint v1, GL
 
 static void REGAL_CALL emu_glUniform4uiv(GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17305,7 +17305,7 @@ static void REGAL_CALL emu_glUniform4uiv(GLint location, GLsizei count, const GL
 
 static void REGAL_CALL emu_glDrawArraysInstanced(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17353,7 +17353,7 @@ static void REGAL_CALL emu_glDrawArraysInstanced(GLenum mode, GLint start, GLsiz
 
 static void REGAL_CALL emu_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17401,7 +17401,7 @@ static void REGAL_CALL emu_glDrawElementsInstanced(GLenum mode, GLsizei count, G
 
 static void REGAL_CALL emu_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17434,7 +17434,7 @@ static void REGAL_CALL emu_glTexBuffer(GLenum target, GLenum internalformat, GLu
 
 static void REGAL_CALL emu_glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17464,7 +17464,7 @@ static void REGAL_CALL emu_glFramebufferTexture(GLenum target, GLenum attachment
 
 static void REGAL_CALL emu_glFramebufferTextureFace(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17506,7 +17506,7 @@ static void REGAL_CALL emu_glFramebufferTextureFace(GLenum target, GLenum attach
 
 static void REGAL_CALL emu_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17554,7 +17554,7 @@ static void REGAL_CALL emu_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoi
 
 static void REGAL_CALL emu_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17624,7 +17624,7 @@ static void REGAL_CALL emu_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum ty
 
 static void REGAL_CALL emu_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17672,7 +17672,7 @@ static void REGAL_CALL emu_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLs
 
 static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17736,7 +17736,7 @@ static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint
 
 static void REGAL_CALL emu_glBindVertexArrayAPPLE(GLuint array)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17773,7 +17773,7 @@ static void REGAL_CALL emu_glBindVertexArrayAPPLE(GLuint array)
 
 static void REGAL_CALL emu_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17834,7 +17834,7 @@ static void REGAL_CALL emu_glShaderBinary(GLsizei count, const GLuint *shaders, 
 
 static void REGAL_CALL emu_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17874,7 +17874,7 @@ static void REGAL_CALL emu_glCopyBufferSubData(GLenum readtarget, GLenum writeta
 
 static void REGAL_CALL emu_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17922,7 +17922,7 @@ static void REGAL_CALL emu_glDrawElementsBaseVertex(GLenum mode, GLsizei count, 
 
 static void REGAL_CALL emu_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -17970,7 +17970,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedBaseVertex(GLenum mode, GLsize
 
 static void REGAL_CALL emu_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *count, GLenum type, GLvoid **indices, GLsizei primcount, GLint *basevertex)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18020,7 +18020,7 @@ static void REGAL_CALL emu_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *c
 
 static void REGAL_CALL emu_glDrawArraysIndirect(GLenum mode, const GLvoid *indirect)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18068,7 +18068,7 @@ static void REGAL_CALL emu_glDrawArraysIndirect(GLenum mode, const GLvoid *indir
 
 static void REGAL_CALL emu_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18118,7 +18118,7 @@ static void REGAL_CALL emu_glDrawElementsIndirect(GLenum mode, GLenum type, cons
 
 static void REGAL_CALL emu_glDrawArraysInstancedARB(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18166,7 +18166,7 @@ static void REGAL_CALL emu_glDrawArraysInstancedARB(GLenum mode, GLint start, GL
 
 static void REGAL_CALL emu_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18218,7 +18218,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedARB(GLenum mode, GLsizei count
 
 static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18269,7 +18269,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
 
 static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18299,7 +18299,7 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
 
 static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18329,7 +18329,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
 
 static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18359,7 +18359,7 @@ static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachme
 
 static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18389,7 +18389,7 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
 
 static void REGAL_CALL emu_glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18419,7 +18419,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayer(GLenum target, GLenum attac
 
 static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18450,7 +18450,7 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
 
 static void REGAL_CALL emu_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18480,7 +18480,7 @@ static void REGAL_CALL emu_glRenderbufferStorage(GLenum target, GLenum internalf
 
 static void REGAL_CALL emu_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18512,7 +18512,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisample(GLenum target, GLsiz
 
 static void REGAL_CALL emu_glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18542,7 +18542,7 @@ static void REGAL_CALL emu_glFramebufferTextureARB(GLenum target, GLenum attachm
 
 static void REGAL_CALL emu_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18572,7 +18572,7 @@ static void REGAL_CALL emu_glFramebufferTextureFaceARB(GLenum target, GLenum att
 
 static void REGAL_CALL emu_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18606,7 +18606,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayerARB(GLenum target, GLenum at
 
 static void REGAL_CALL emu_glUniform1d(GLint location, GLdouble x)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18636,7 +18636,7 @@ static void REGAL_CALL emu_glUniform1d(GLint location, GLdouble x)
 
 static void REGAL_CALL emu_glUniform1dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18666,7 +18666,7 @@ static void REGAL_CALL emu_glUniform1dv(GLint location, GLsizei count, const GLd
 
 static void REGAL_CALL emu_glUniform2d(GLint location, GLdouble x, GLdouble y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18696,7 +18696,7 @@ static void REGAL_CALL emu_glUniform2d(GLint location, GLdouble x, GLdouble y)
 
 static void REGAL_CALL emu_glUniform2dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18726,7 +18726,7 @@ static void REGAL_CALL emu_glUniform2dv(GLint location, GLsizei count, const GLd
 
 static void REGAL_CALL emu_glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18756,7 +18756,7 @@ static void REGAL_CALL emu_glUniform3d(GLint location, GLdouble x, GLdouble y, G
 
 static void REGAL_CALL emu_glUniform3dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18786,7 +18786,7 @@ static void REGAL_CALL emu_glUniform3dv(GLint location, GLsizei count, const GLd
 
 static void REGAL_CALL emu_glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18816,7 +18816,7 @@ static void REGAL_CALL emu_glUniform4d(GLint location, GLdouble x, GLdouble y, G
 
 static void REGAL_CALL emu_glUniform4dv(GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18846,7 +18846,7 @@ static void REGAL_CALL emu_glUniform4dv(GLint location, GLsizei count, const GLd
 
 static void REGAL_CALL emu_glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18876,7 +18876,7 @@ static void REGAL_CALL emu_glUniformMatrix2dv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18906,7 +18906,7 @@ static void REGAL_CALL emu_glUniformMatrix2x3dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18936,7 +18936,7 @@ static void REGAL_CALL emu_glUniformMatrix2x4dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18966,7 +18966,7 @@ static void REGAL_CALL emu_glUniformMatrix3dv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -18996,7 +18996,7 @@ static void REGAL_CALL emu_glUniformMatrix3x2dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19026,7 +19026,7 @@ static void REGAL_CALL emu_glUniformMatrix3x4dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19056,7 +19056,7 @@ static void REGAL_CALL emu_glUniformMatrix4dv(GLint location, GLsizei count, GLb
 
 static void REGAL_CALL emu_glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19086,7 +19086,7 @@ static void REGAL_CALL emu_glUniformMatrix4x2dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19128,7 +19128,7 @@ static void REGAL_CALL emu_glUniformMatrix4x3dv(GLint location, GLsizei count, G
 
 static void REGAL_CALL emu_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19158,7 +19158,7 @@ static void REGAL_CALL emu_glFlushMappedBufferRange(GLenum target, GLintptr offs
 
 static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19192,7 +19192,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, G
 
 static void REGAL_CALL emu_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19240,7 +19240,7 @@ static void REGAL_CALL emu_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *
 
 static void REGAL_CALL emu_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19292,7 +19292,7 @@ static void REGAL_CALL emu_glMultiDrawElementsIndirect(GLenum mode, GLenum type,
 
 static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19345,7 +19345,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
 
 static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19406,7 +19406,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
 
 static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19471,7 +19471,7 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
 
 static void REGAL_CALL emu_glTexImage2DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19502,7 +19502,7 @@ static void REGAL_CALL emu_glTexImage2DMultisample(GLenum target, GLsizei sample
 
 static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19553,7 +19553,7 @@ static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei sample
 
 static void REGAL_CALL emu_glBindVertexArray(GLuint array)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19640,7 +19640,7 @@ static void REGAL_CALL emu_glBindVertexArray(GLuint array)
 
 static void REGAL_CALL emu_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19717,7 +19717,7 @@ static void REGAL_CALL emu_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
 
 static void REGAL_CALL emu_glGenVertexArrays(GLsizei n, GLuint *arrays)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19782,7 +19782,7 @@ static void REGAL_CALL emu_glGenVertexArrays(GLsizei n, GLuint *arrays)
 
 static GLboolean REGAL_CALL emu_glIsVertexArray(GLuint array)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19863,7 +19863,7 @@ static GLboolean REGAL_CALL emu_glIsVertexArray(GLuint array)
 
 static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19919,7 +19919,7 @@ static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
 
 static void REGAL_CALL emu_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -19962,7 +19962,7 @@ static void REGAL_CALL emu_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
 
 static void REGAL_CALL emu_glGenBuffersARB(GLsizei n, GLuint *buffers)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20005,7 +20005,7 @@ static void REGAL_CALL emu_glGenBuffersARB(GLsizei n, GLuint *buffers)
 
 static GLboolean REGAL_CALL emu_glIsBufferARB(GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20046,7 +20046,7 @@ static GLboolean REGAL_CALL emu_glIsBufferARB(GLuint buffer)
 
 static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20076,7 +20076,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
 
 static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20108,7 +20108,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
 
 static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20159,7 +20159,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
 
 static void REGAL_CALL emu_glDisableVertexAttribArrayARB(GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20220,7 +20220,7 @@ static void REGAL_CALL emu_glDisableVertexAttribArrayARB(GLuint index)
 
 static void REGAL_CALL emu_glEnableVertexAttribArrayARB(GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20281,7 +20281,7 @@ static void REGAL_CALL emu_glEnableVertexAttribArrayARB(GLuint index)
 
 static void REGAL_CALL emu_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20311,7 +20311,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterdvARB(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20341,7 +20341,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterfvARB(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20371,7 +20371,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterdvARB(GLenum target, GLuint
 
 static void REGAL_CALL emu_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20401,7 +20401,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterfvARB(GLenum target, GLuint
 
 static void REGAL_CALL emu_glGetVertexAttribPointervARB(GLuint index, GLenum pname, GLvoid **pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20462,7 +20462,7 @@ static void REGAL_CALL emu_glGetVertexAttribPointervARB(GLuint index, GLenum pna
 
 static void REGAL_CALL emu_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20523,7 +20523,7 @@ static void REGAL_CALL emu_glGetVertexAttribdvARB(GLuint index, GLenum pname, GL
 
 static void REGAL_CALL emu_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20584,7 +20584,7 @@ static void REGAL_CALL emu_glGetVertexAttribfvARB(GLuint index, GLenum pname, GL
 
 static void REGAL_CALL emu_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20645,7 +20645,7 @@ static void REGAL_CALL emu_glGetVertexAttribivARB(GLuint index, GLenum pname, GL
 
 static void REGAL_CALL emu_glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20675,7 +20675,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4dARB(GLenum target, GLuint inde
 
 static void REGAL_CALL emu_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20705,7 +20705,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4dvARB(GLenum target, GLuint ind
 
 static void REGAL_CALL emu_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20735,7 +20735,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4fARB(GLenum target, GLuint inde
 
 static void REGAL_CALL emu_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20765,7 +20765,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4fvARB(GLenum target, GLuint ind
 
 static void REGAL_CALL emu_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20795,7 +20795,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4dARB(GLenum target, GLuint in
 
 static void REGAL_CALL emu_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20825,7 +20825,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4dvARB(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20855,7 +20855,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4fARB(GLenum target, GLuint in
 
 static void REGAL_CALL emu_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20885,7 +20885,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4fvARB(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -20951,7 +20951,7 @@ static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GL
 
 static void REGAL_CALL emu_glGetDoublei_v(GLenum target, GLuint index, GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21002,7 +21002,7 @@ static void REGAL_CALL emu_glGetDoublei_v(GLenum target, GLuint index, GLdouble 
 
 static void REGAL_CALL emu_glGetFloati_v(GLenum target, GLuint index, GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21059,7 +21059,7 @@ static void REGAL_CALL emu_glGetFloati_v(GLenum target, GLuint index, GLfloat *v
 
 static void REGAL_CALL emu_glDrawElementArrayATI(GLenum mode, GLsizei count)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21153,7 +21153,7 @@ static void REGAL_CALL emu_glDrawElementArrayATI(GLenum mode, GLsizei count)
 
 static void REGAL_CALL emu_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21213,7 +21213,7 @@ static void REGAL_CALL emu_glBindMultiTextureEXT(GLenum texunit, GLenum target, 
 
 static GLenum REGAL_CALL emu_glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21261,7 +21261,7 @@ static GLenum REGAL_CALL emu_glCheckNamedFramebufferStatusEXT(GLuint framebuffer
 
 static void REGAL_CALL emu_glClientAttribDefaultEXT(GLbitfield mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21310,7 +21310,7 @@ static void REGAL_CALL emu_glClientAttribDefaultEXT(GLbitfield mask)
 
 static void REGAL_CALL emu_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21360,7 +21360,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum
 
 static void REGAL_CALL emu_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21410,7 +21410,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum
 
 static void REGAL_CALL emu_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21460,7 +21460,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum
 
 static void REGAL_CALL emu_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21510,7 +21510,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLe
 
 static void REGAL_CALL emu_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21560,7 +21560,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLe
 
 static void REGAL_CALL emu_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21610,7 +21610,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLe
 
 static void REGAL_CALL emu_glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21660,7 +21660,7 @@ static void REGAL_CALL emu_glCompressedTextureImage1DEXT(GLuint texture, GLenum 
 
 static void REGAL_CALL emu_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21710,7 +21710,7 @@ static void REGAL_CALL emu_glCompressedTextureImage2DEXT(GLuint texture, GLenum 
 
 static void REGAL_CALL emu_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21760,7 +21760,7 @@ static void REGAL_CALL emu_glCompressedTextureImage3DEXT(GLuint texture, GLenum 
 
 static void REGAL_CALL emu_glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21810,7 +21810,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage1DEXT(GLuint texture, GLen
 
 static void REGAL_CALL emu_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21860,7 +21860,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage2DEXT(GLuint texture, GLen
 
 static void REGAL_CALL emu_glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21910,7 +21910,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage3DEXT(GLuint texture, GLen
 
 static void REGAL_CALL emu_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -21960,7 +21960,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum targe
 
 static void REGAL_CALL emu_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22010,7 +22010,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum targe
 
 static void REGAL_CALL emu_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22060,7 +22060,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22110,7 +22110,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22160,7 +22160,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22210,7 +22210,7 @@ static void REGAL_CALL emu_glCopyTextureImage1DEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL emu_glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22260,7 +22260,7 @@ static void REGAL_CALL emu_glCopyTextureImage2DEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL emu_glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22310,7 +22310,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage1DEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL emu_glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22360,7 +22360,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage2DEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL emu_glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22410,7 +22410,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage3DEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22460,7 +22460,7 @@ static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint i
 
 static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22510,7 +22510,7 @@ static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
 
 static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22560,7 +22560,7 @@ static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint in
 
 static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22610,7 +22610,7 @@ static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
 
 static void REGAL_CALL emu_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22660,7 +22660,7 @@ static void REGAL_CALL emu_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLint
 
 static void REGAL_CALL emu_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22710,7 +22710,7 @@ static void REGAL_CALL emu_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum
 
 static void REGAL_CALL emu_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum *bufs)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22760,7 +22760,7 @@ static void REGAL_CALL emu_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsiz
 
 static void REGAL_CALL emu_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22810,7 +22810,7 @@ static void REGAL_CALL emu_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum
 
 static void REGAL_CALL emu_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22860,7 +22860,7 @@ static void REGAL_CALL emu_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glGenerateTextureMipmapEXT(GLuint texture, GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22910,7 +22910,7 @@ static void REGAL_CALL emu_glGenerateTextureMipmapEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL emu_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, GLvoid *img)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -22960,7 +22960,7 @@ static void REGAL_CALL emu_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenu
 
 static void REGAL_CALL emu_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, GLvoid *img)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23010,7 +23010,7 @@ static void REGAL_CALL emu_glGetCompressedTextureImageEXT(GLuint texture, GLenum
 
 static void REGAL_CALL emu_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23061,7 +23061,7 @@ static void REGAL_CALL emu_glGetDoubleIndexedvEXT(GLenum target, GLuint index, G
 
 static void REGAL_CALL emu_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23112,7 +23112,7 @@ static void REGAL_CALL emu_glGetDoublei_vEXT(GLenum target, GLuint index, GLdoub
 
 static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23163,7 +23163,7 @@ static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GL
 
 static void REGAL_CALL emu_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23214,7 +23214,7 @@ static void REGAL_CALL emu_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat
 
 static void REGAL_CALL emu_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23264,7 +23264,7 @@ static void REGAL_CALL emu_glGetFramebufferParameterivEXT(GLuint framebuffer, GL
 
 static void REGAL_CALL emu_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23314,7 +23314,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, 
 
 static void REGAL_CALL emu_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23364,7 +23364,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, 
 
 static void REGAL_CALL emu_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23431,7 +23431,7 @@ static void REGAL_CALL emu_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, G
 
 static void REGAL_CALL emu_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23498,7 +23498,7 @@ static void REGAL_CALL emu_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, G
 
 static void REGAL_CALL emu_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23565,7 +23565,7 @@ static void REGAL_CALL emu_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, G
 
 static void REGAL_CALL emu_glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23615,7 +23615,7 @@ static void REGAL_CALL emu_glGetMultiTexImageEXT(GLenum texunit, GLenum target, 
 
 static void REGAL_CALL emu_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23665,7 +23665,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLen
 
 static void REGAL_CALL emu_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23715,7 +23715,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLen
 
 static void REGAL_CALL emu_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23765,7 +23765,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum t
 
 static void REGAL_CALL emu_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23815,7 +23815,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum 
 
 static void REGAL_CALL emu_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23865,7 +23865,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23915,7 +23915,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterivEXT(GLenum texunit, GLenum ta
 
 static void REGAL_CALL emu_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -23965,7 +23965,7 @@ static void REGAL_CALL emu_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum 
 
 static void REGAL_CALL emu_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, GLvoid **params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24015,7 +24015,7 @@ static void REGAL_CALL emu_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pna
 
 static void REGAL_CALL emu_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24065,7 +24065,7 @@ static void REGAL_CALL emu_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr of
 
 static void REGAL_CALL emu_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24115,7 +24115,7 @@ static void REGAL_CALL emu_glGetNamedFramebufferAttachmentParameterivEXT(GLuint 
 
 static void REGAL_CALL emu_glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24165,7 +24165,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIivEXT(GLuint program,
 
 static void REGAL_CALL emu_glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24215,7 +24215,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIuivEXT(GLuint program
 
 static void REGAL_CALL emu_glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24265,7 +24265,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterdvEXT(GLuint program, 
 
 static void REGAL_CALL emu_glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24315,7 +24315,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterfvEXT(GLuint program, 
 
 static void REGAL_CALL emu_glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, GLvoid *string)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24365,7 +24365,7 @@ static void REGAL_CALL emu_glGetNamedProgramStringEXT(GLuint program, GLenum tar
 
 static void REGAL_CALL emu_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24415,7 +24415,7 @@ static void REGAL_CALL emu_glGetNamedProgramivEXT(GLuint program, GLenum target,
 
 static void REGAL_CALL emu_glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24465,7 +24465,7 @@ static void REGAL_CALL emu_glGetNamedRenderbufferParameterivEXT(GLuint renderbuf
 
 static void REGAL_CALL emu_glGetPointerIndexedvEXT(GLenum target, GLuint index, GLvoid **data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24516,7 +24516,7 @@ static void REGAL_CALL emu_glGetPointerIndexedvEXT(GLenum target, GLuint index, 
 
 static void REGAL_CALL emu_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24566,7 +24566,7 @@ static void REGAL_CALL emu_glGetTextureImageEXT(GLuint texture, GLenum target, G
 
 static void REGAL_CALL emu_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24616,7 +24616,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterfvEXT(GLuint texture, GLenu
 
 static void REGAL_CALL emu_glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24666,7 +24666,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterivEXT(GLuint texture, GLenu
 
 static void REGAL_CALL emu_glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24716,7 +24716,7 @@ static void REGAL_CALL emu_glGetTextureParameterIivEXT(GLuint texture, GLenum ta
 
 static void REGAL_CALL emu_glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24766,7 +24766,7 @@ static void REGAL_CALL emu_glGetTextureParameterIuivEXT(GLuint texture, GLenum t
 
 static void REGAL_CALL emu_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24816,7 +24816,7 @@ static void REGAL_CALL emu_glGetTextureParameterfvEXT(GLuint texture, GLenum tar
 
 static void REGAL_CALL emu_glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24866,7 +24866,7 @@ static void REGAL_CALL emu_glGetTextureParameterivEXT(GLuint texture, GLenum tar
 
 static GLvoid *REGAL_CALL emu_glMapNamedBufferEXT(GLuint buffer, GLenum access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24914,7 +24914,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferEXT(GLuint buffer, GLenum access)
 
 static GLvoid *REGAL_CALL emu_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -24962,7 +24962,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr o
 
 static void REGAL_CALL emu_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25026,7 +25026,7 @@ static void REGAL_CALL emu_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdoub
 
 static void REGAL_CALL emu_glMatrixLoadIdentityEXT(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25090,7 +25090,7 @@ static void REGAL_CALL emu_glMatrixLoadIdentityEXT(GLenum mode)
 
 static void REGAL_CALL emu_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25154,7 +25154,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble
 
 static void REGAL_CALL emu_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25218,7 +25218,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat 
 
 static void REGAL_CALL emu_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25282,7 +25282,7 @@ static void REGAL_CALL emu_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
 
 static void REGAL_CALL emu_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25346,7 +25346,7 @@ static void REGAL_CALL emu_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
 
 static void REGAL_CALL emu_glMatrixMultTransposedEXT(GLenum mode, const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25410,7 +25410,7 @@ static void REGAL_CALL emu_glMatrixMultTransposedEXT(GLenum mode, const GLdouble
 
 static void REGAL_CALL emu_glMatrixMultTransposefEXT(GLenum mode, const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25474,7 +25474,7 @@ static void REGAL_CALL emu_glMatrixMultTransposefEXT(GLenum mode, const GLfloat 
 
 static void REGAL_CALL emu_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25538,7 +25538,7 @@ static void REGAL_CALL emu_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
 
 static void REGAL_CALL emu_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25602,7 +25602,7 @@ static void REGAL_CALL emu_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
 
 static void REGAL_CALL emu_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25666,7 +25666,7 @@ static void REGAL_CALL emu_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble
 
 static void REGAL_CALL emu_glMatrixPopEXT(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25730,7 +25730,7 @@ static void REGAL_CALL emu_glMatrixPopEXT(GLenum mode)
 
 static void REGAL_CALL emu_glMatrixPushEXT(GLenum mode)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25794,7 +25794,7 @@ static void REGAL_CALL emu_glMatrixPushEXT(GLenum mode)
 
 static void REGAL_CALL emu_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25858,7 +25858,7 @@ static void REGAL_CALL emu_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdou
 
 static void REGAL_CALL emu_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25922,7 +25922,7 @@ static void REGAL_CALL emu_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloa
 
 static void REGAL_CALL emu_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -25986,7 +25986,7 @@ static void REGAL_CALL emu_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y
 
 static void REGAL_CALL emu_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26050,7 +26050,7 @@ static void REGAL_CALL emu_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, 
 
 static void REGAL_CALL emu_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26114,7 +26114,7 @@ static void REGAL_CALL emu_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdoub
 
 static void REGAL_CALL emu_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26178,7 +26178,7 @@ static void REGAL_CALL emu_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat
 
 static void REGAL_CALL emu_glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26228,7 +26228,7 @@ static void REGAL_CALL emu_glMultiTexBufferEXT(GLenum texunit, GLenum target, GL
 
 static void REGAL_CALL emu_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26278,7 +26278,7 @@ static void REGAL_CALL emu_glMultiTexCoordPointerEXT(GLenum texunit, GLint size,
 
 static void REGAL_CALL emu_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26342,7 +26342,7 @@ static void REGAL_CALL emu_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLen
 
 static void REGAL_CALL emu_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26406,7 +26406,7 @@ static void REGAL_CALL emu_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLe
 
 static void REGAL_CALL emu_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26470,7 +26470,7 @@ static void REGAL_CALL emu_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLen
 
 static void REGAL_CALL emu_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26534,7 +26534,7 @@ static void REGAL_CALL emu_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLe
 
 static void REGAL_CALL emu_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26584,7 +26584,7 @@ static void REGAL_CALL emu_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenu
 
 static void REGAL_CALL emu_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26634,7 +26634,7 @@ static void REGAL_CALL emu_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLen
 
 static void REGAL_CALL emu_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26684,7 +26684,7 @@ static void REGAL_CALL emu_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenu
 
 static void REGAL_CALL emu_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26734,7 +26734,7 @@ static void REGAL_CALL emu_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLen
 
 static void REGAL_CALL emu_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26784,7 +26784,7 @@ static void REGAL_CALL emu_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenu
 
 static void REGAL_CALL emu_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26834,7 +26834,7 @@ static void REGAL_CALL emu_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLen
 
 static void REGAL_CALL emu_glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26893,7 +26893,7 @@ static void REGAL_CALL emu_glMultiTexImage1DEXT(GLenum texunit, GLenum target, G
 
 static void REGAL_CALL emu_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -26952,7 +26952,7 @@ static void REGAL_CALL emu_glMultiTexImage2DEXT(GLenum texunit, GLenum target, G
 
 static void REGAL_CALL emu_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27011,7 +27011,7 @@ static void REGAL_CALL emu_glMultiTexImage3DEXT(GLenum texunit, GLenum target, G
 
 static void REGAL_CALL emu_glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27061,7 +27061,7 @@ static void REGAL_CALL emu_glMultiTexParameterIivEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL emu_glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27111,7 +27111,7 @@ static void REGAL_CALL emu_glMultiTexParameterIuivEXT(GLenum texunit, GLenum tar
 
 static void REGAL_CALL emu_glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27161,7 +27161,7 @@ static void REGAL_CALL emu_glMultiTexParameterfEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL emu_glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27211,7 +27211,7 @@ static void REGAL_CALL emu_glMultiTexParameterfvEXT(GLenum texunit, GLenum targe
 
 static void REGAL_CALL emu_glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27261,7 +27261,7 @@ static void REGAL_CALL emu_glMultiTexParameteriEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL emu_glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27311,7 +27311,7 @@ static void REGAL_CALL emu_glMultiTexParameterivEXT(GLenum texunit, GLenum targe
 
 static void REGAL_CALL emu_glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27361,7 +27361,7 @@ static void REGAL_CALL emu_glMultiTexRenderbufferEXT(GLenum texunit, GLenum targ
 
 static void REGAL_CALL emu_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27411,7 +27411,7 @@ static void REGAL_CALL emu_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL emu_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27461,7 +27461,7 @@ static void REGAL_CALL emu_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL emu_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27511,7 +27511,7 @@ static void REGAL_CALL emu_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target
 
 static void REGAL_CALL emu_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27561,7 +27561,7 @@ static void REGAL_CALL emu_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, 
 
 static void REGAL_CALL emu_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27611,7 +27611,7 @@ static void REGAL_CALL emu_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offse
 
 static void REGAL_CALL emu_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27661,7 +27661,7 @@ static void REGAL_CALL emu_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint
 
 static void REGAL_CALL emu_glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27711,7 +27711,7 @@ static void REGAL_CALL emu_glNamedFramebufferRenderbufferEXT(GLuint framebuffer,
 
 static void REGAL_CALL emu_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27761,7 +27761,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GL
 
 static void REGAL_CALL emu_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27811,7 +27811,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GL
 
 static void REGAL_CALL emu_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27861,7 +27861,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GL
 
 static void REGAL_CALL emu_glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27911,7 +27911,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureEXT(GLuint framebuffer, GLen
 
 static void REGAL_CALL emu_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -27961,7 +27961,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, 
 
 static void REGAL_CALL emu_glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28011,7 +28011,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureLayerEXT(GLuint framebuffer,
 
 static void REGAL_CALL emu_glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28061,7 +28061,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dEXT(GLuint program, GLe
 
 static void REGAL_CALL emu_glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28111,7 +28111,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dvEXT(GLuint program, GL
 
 static void REGAL_CALL emu_glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28161,7 +28161,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fEXT(GLuint program, GLe
 
 static void REGAL_CALL emu_glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28211,7 +28211,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fvEXT(GLuint program, GL
 
 static void REGAL_CALL emu_glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28261,7 +28261,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4iEXT(GLuint program, GL
 
 static void REGAL_CALL emu_glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28311,7 +28311,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4ivEXT(GLuint program, G
 
 static void REGAL_CALL emu_glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28361,7 +28361,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uiEXT(GLuint program, G
 
 static void REGAL_CALL emu_glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28411,7 +28411,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uivEXT(GLuint program, 
 
 static void REGAL_CALL emu_glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28461,7 +28461,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameters4fvEXT(GLuint program, G
 
 static void REGAL_CALL emu_glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28511,7 +28511,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4ivEXT(GLuint program, 
 
 static void REGAL_CALL emu_glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28561,7 +28561,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4uivEXT(GLuint program,
 
 static void REGAL_CALL emu_glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28611,7 +28611,7 @@ static void REGAL_CALL emu_glNamedProgramStringEXT(GLuint program, GLenum target
 
 static void REGAL_CALL emu_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28661,7 +28661,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GL
 
 static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28711,7 +28711,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleCoverageEXT(GLui
 
 static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28761,7 +28761,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleEXT(GLuint rende
 
 static void REGAL_CALL emu_glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28811,7 +28811,7 @@ static void REGAL_CALL emu_glProgramUniform1dEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28861,7 +28861,7 @@ static void REGAL_CALL emu_glProgramUniform1dvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28911,7 +28911,7 @@ static void REGAL_CALL emu_glProgramUniform1fEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -28961,7 +28961,7 @@ static void REGAL_CALL emu_glProgramUniform1fvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform1iEXT(GLuint program, GLint location, GLint v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29011,7 +29011,7 @@ static void REGAL_CALL emu_glProgramUniform1iEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29061,7 +29061,7 @@ static void REGAL_CALL emu_glProgramUniform1ivEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29111,7 +29111,7 @@ static void REGAL_CALL emu_glProgramUniform1uiEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29161,7 +29161,7 @@ static void REGAL_CALL emu_glProgramUniform1uivEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL emu_glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29211,7 +29211,7 @@ static void REGAL_CALL emu_glProgramUniform2dEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29261,7 +29261,7 @@ static void REGAL_CALL emu_glProgramUniform2dvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29311,7 +29311,7 @@ static void REGAL_CALL emu_glProgramUniform2fEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29361,7 +29361,7 @@ static void REGAL_CALL emu_glProgramUniform2fvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29411,7 +29411,7 @@ static void REGAL_CALL emu_glProgramUniform2iEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29461,7 +29461,7 @@ static void REGAL_CALL emu_glProgramUniform2ivEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29511,7 +29511,7 @@ static void REGAL_CALL emu_glProgramUniform2uiEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29561,7 +29561,7 @@ static void REGAL_CALL emu_glProgramUniform2uivEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL emu_glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29611,7 +29611,7 @@ static void REGAL_CALL emu_glProgramUniform3dEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29661,7 +29661,7 @@ static void REGAL_CALL emu_glProgramUniform3dvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29711,7 +29711,7 @@ static void REGAL_CALL emu_glProgramUniform3fEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29761,7 +29761,7 @@ static void REGAL_CALL emu_glProgramUniform3fvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29811,7 +29811,7 @@ static void REGAL_CALL emu_glProgramUniform3iEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29861,7 +29861,7 @@ static void REGAL_CALL emu_glProgramUniform3ivEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29911,7 +29911,7 @@ static void REGAL_CALL emu_glProgramUniform3uiEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -29961,7 +29961,7 @@ static void REGAL_CALL emu_glProgramUniform3uivEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL emu_glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30011,7 +30011,7 @@ static void REGAL_CALL emu_glProgramUniform4dEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30061,7 +30061,7 @@ static void REGAL_CALL emu_glProgramUniform4dvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30111,7 +30111,7 @@ static void REGAL_CALL emu_glProgramUniform4fEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30161,7 +30161,7 @@ static void REGAL_CALL emu_glProgramUniform4fvEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30211,7 +30211,7 @@ static void REGAL_CALL emu_glProgramUniform4iEXT(GLuint program, GLint location,
 
 static void REGAL_CALL emu_glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30261,7 +30261,7 @@ static void REGAL_CALL emu_glProgramUniform4ivEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30311,7 +30311,7 @@ static void REGAL_CALL emu_glProgramUniform4uiEXT(GLuint program, GLint location
 
 static void REGAL_CALL emu_glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30361,7 +30361,7 @@ static void REGAL_CALL emu_glProgramUniform4uivEXT(GLuint program, GLint locatio
 
 static void REGAL_CALL emu_glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30411,7 +30411,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2dvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30461,7 +30461,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2fvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30511,7 +30511,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30561,7 +30561,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30611,7 +30611,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30661,7 +30661,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30711,7 +30711,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3dvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30761,7 +30761,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3fvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30811,7 +30811,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30861,7 +30861,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30911,7 +30911,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -30961,7 +30961,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31011,7 +31011,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4dvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31061,7 +31061,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4fvEXT(GLuint program, GLint lo
 
 static void REGAL_CALL emu_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31111,7 +31111,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31161,7 +31161,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31211,7 +31211,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31261,7 +31261,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint 
 
 static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31311,7 +31311,7 @@ static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
 
 static void REGAL_CALL emu_glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31361,7 +31361,7 @@ static void REGAL_CALL emu_glTextureBufferEXT(GLuint texture, GLenum target, GLe
 
 static void REGAL_CALL emu_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31420,7 +31420,7 @@ static void REGAL_CALL emu_glTextureImage1DEXT(GLuint texture, GLenum target, GL
 
 static void REGAL_CALL emu_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31479,7 +31479,7 @@ static void REGAL_CALL emu_glTextureImage2DEXT(GLuint texture, GLenum target, GL
 
 static void REGAL_CALL emu_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31538,7 +31538,7 @@ static void REGAL_CALL emu_glTextureImage3DEXT(GLuint texture, GLenum target, GL
 
 static void REGAL_CALL emu_glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31588,7 +31588,7 @@ static void REGAL_CALL emu_glTextureParameterIivEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL emu_glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31638,7 +31638,7 @@ static void REGAL_CALL emu_glTextureParameterIuivEXT(GLuint texture, GLenum targ
 
 static void REGAL_CALL emu_glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31688,7 +31688,7 @@ static void REGAL_CALL emu_glTextureParameterfEXT(GLuint texture, GLenum target,
 
 static void REGAL_CALL emu_glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31738,7 +31738,7 @@ static void REGAL_CALL emu_glTextureParameterfvEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL emu_glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31788,7 +31788,7 @@ static void REGAL_CALL emu_glTextureParameteriEXT(GLuint texture, GLenum target,
 
 static void REGAL_CALL emu_glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *param)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31838,7 +31838,7 @@ static void REGAL_CALL emu_glTextureParameterivEXT(GLuint texture, GLenum target
 
 static void REGAL_CALL emu_glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31888,7 +31888,7 @@ static void REGAL_CALL emu_glTextureRenderbufferEXT(GLuint texture, GLenum targe
 
 static void REGAL_CALL emu_glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31938,7 +31938,7 @@ static void REGAL_CALL emu_glTextureSubImage1DEXT(GLuint texture, GLenum target,
 
 static void REGAL_CALL emu_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -31988,7 +31988,7 @@ static void REGAL_CALL emu_glTextureSubImage2DEXT(GLuint texture, GLenum target,
 
 static void REGAL_CALL emu_glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32038,7 +32038,7 @@ static void REGAL_CALL emu_glTextureSubImage3DEXT(GLuint texture, GLenum target,
 
 static GLboolean REGAL_CALL emu_glUnmapNamedBufferEXT(GLuint buffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32090,7 +32090,7 @@ static GLboolean REGAL_CALL emu_glUnmapNamedBufferEXT(GLuint buffer)
 
 static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32154,7 +32154,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
 
 static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32218,7 +32218,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
 
 static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint index)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32269,7 +32269,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
 
 static void REGAL_CALL emu_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32317,7 +32317,7 @@ static void REGAL_CALL emu_glDrawArraysInstancedEXT(GLenum mode, GLint start, GL
 
 static void REGAL_CALL emu_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32375,7 +32375,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedEXT(GLenum mode, GLsizei count
 
 static void REGAL_CALL emu_glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32407,7 +32407,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleEXT(GLenum target, GL
 
 static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32437,7 +32437,7 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
 
 static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32467,7 +32467,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
 
 static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32497,7 +32497,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
 
 static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32527,7 +32527,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
 
 static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32558,7 +32558,7 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
 
 static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32590,7 +32590,7 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
 
 static void REGAL_CALL emu_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32620,7 +32620,7 @@ static void REGAL_CALL emu_glFramebufferTextureEXT(GLenum target, GLenum attachm
 
 static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32664,7 +32664,7 @@ static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum att
 
 static void REGAL_CALL emu_glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32694,7 +32694,7 @@ static void REGAL_CALL emu_glFlushMappedBufferRangeEXT(GLenum target, GLintptr o
 
 static GLvoid *REGAL_CALL emu_glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32726,7 +32726,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferRangeEXT(GLenum target, GLintptr offset
 
 static void REGAL_CALL emu_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32774,7 +32774,7 @@ static void REGAL_CALL emu_glMultiDrawArraysEXT(GLenum mode, const GLint *first,
 
 static void REGAL_CALL emu_glMultiDrawElementsEXT(GLenum mode, GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32846,7 +32846,7 @@ static void REGAL_CALL emu_glMultiDrawElementsEXT(GLenum mode, GLsizei *count, G
 
 static void REGAL_CALL emu_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32897,7 +32897,7 @@ static void REGAL_CALL emu_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyt
 
 static void REGAL_CALL emu_glSecondaryColor3bvEXT(const GLbyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32948,7 +32948,7 @@ static void REGAL_CALL emu_glSecondaryColor3bvEXT(const GLbyte *v)
 
 static void REGAL_CALL emu_glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -32999,7 +32999,7 @@ static void REGAL_CALL emu_glSecondaryColor3dEXT(GLdouble red, GLdouble green, G
 
 static void REGAL_CALL emu_glSecondaryColor3dvEXT(const GLdouble *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33050,7 +33050,7 @@ static void REGAL_CALL emu_glSecondaryColor3dvEXT(const GLdouble *v)
 
 static void REGAL_CALL emu_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33101,7 +33101,7 @@ static void REGAL_CALL emu_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLf
 
 static void REGAL_CALL emu_glSecondaryColor3fvEXT(const GLfloat *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33152,7 +33152,7 @@ static void REGAL_CALL emu_glSecondaryColor3fvEXT(const GLfloat *v)
 
 static void REGAL_CALL emu_glSecondaryColor3iEXT(GLint red, GLint green, GLint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33203,7 +33203,7 @@ static void REGAL_CALL emu_glSecondaryColor3iEXT(GLint red, GLint green, GLint b
 
 static void REGAL_CALL emu_glSecondaryColor3ivEXT(const GLint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33254,7 +33254,7 @@ static void REGAL_CALL emu_glSecondaryColor3ivEXT(const GLint *v)
 
 static void REGAL_CALL emu_glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33305,7 +33305,7 @@ static void REGAL_CALL emu_glSecondaryColor3sEXT(GLshort red, GLshort green, GLs
 
 static void REGAL_CALL emu_glSecondaryColor3svEXT(const GLshort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33356,7 +33356,7 @@ static void REGAL_CALL emu_glSecondaryColor3svEXT(const GLshort *v)
 
 static void REGAL_CALL emu_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33407,7 +33407,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GL
 
 static void REGAL_CALL emu_glSecondaryColor3ubvEXT(const GLubyte *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33458,7 +33458,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubvEXT(const GLubyte *v)
 
 static void REGAL_CALL emu_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33509,7 +33509,7 @@ static void REGAL_CALL emu_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLui
 
 static void REGAL_CALL emu_glSecondaryColor3uivEXT(const GLuint *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33560,7 +33560,7 @@ static void REGAL_CALL emu_glSecondaryColor3uivEXT(const GLuint *v)
 
 static void REGAL_CALL emu_glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33611,7 +33611,7 @@ static void REGAL_CALL emu_glSecondaryColor3usEXT(GLushort red, GLushort green, 
 
 static void REGAL_CALL emu_glSecondaryColor3usvEXT(const GLushort *v)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33674,7 +33674,7 @@ static void REGAL_CALL emu_glSecondaryColor3usvEXT(const GLushort *v)
 
 static void REGAL_CALL emu_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33707,7 +33707,7 @@ static void REGAL_CALL emu_glTexImage3DEXT(GLenum target, GLint level, GLenum in
 
 static void REGAL_CALL emu_glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33743,7 +33743,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayerEXT(GLenum target, GLenum at
 
 static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33784,7 +33784,7 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
 
 static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33884,7 +33884,7 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
 
 static void REGAL_CALL emu_glTexRenderbufferNV(GLenum target, GLuint renderbuffer)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33921,7 +33921,7 @@ static void REGAL_CALL emu_glTexRenderbufferNV(GLenum target, GLuint renderbuffe
 
 static void REGAL_CALL emu_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33955,7 +33955,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleCoverageNV(GLenum tar
 
 static void REGAL_CALL emu_glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -33985,7 +33985,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterIivNV(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34015,7 +34015,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterIuivNV(GLenum target, GLuint 
 
 static void REGAL_CALL emu_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34045,7 +34045,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterIivNV(GLenum target, GLuint
 
 static void REGAL_CALL emu_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34075,7 +34075,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterIuivNV(GLenum target, GLuin
 
 static void REGAL_CALL emu_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34105,7 +34105,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4iNV(GLenum target, GLuint inde
 
 static void REGAL_CALL emu_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34135,7 +34135,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4ivNV(GLenum target, GLuint ind
 
 static void REGAL_CALL emu_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34165,7 +34165,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4uiNV(GLenum target, GLuint ind
 
 static void REGAL_CALL emu_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34195,7 +34195,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4uivNV(GLenum target, GLuint in
 
 static void REGAL_CALL emu_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34225,7 +34225,7 @@ static void REGAL_CALL emu_glProgramEnvParametersI4ivNV(GLenum target, GLuint in
 
 static void REGAL_CALL emu_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34255,7 +34255,7 @@ static void REGAL_CALL emu_glProgramEnvParametersI4uivNV(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34285,7 +34285,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4iNV(GLenum target, GLuint in
 
 static void REGAL_CALL emu_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34315,7 +34315,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4ivNV(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34345,7 +34345,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4uiNV(GLenum target, GLuint i
 
 static void REGAL_CALL emu_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34375,7 +34375,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4uivNV(GLenum target, GLuint 
 
 static void REGAL_CALL emu_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34405,7 +34405,7 @@ static void REGAL_CALL emu_glProgramLocalParametersI4ivNV(GLenum target, GLuint 
 
 static void REGAL_CALL emu_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34465,7 +34465,7 @@ static void REGAL_CALL emu_glProgramLocalParametersI4uivNV(GLenum target, GLuint
 
 static void REGAL_CALL emu_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34496,7 +34496,7 @@ static void REGAL_CALL emu_glTexImage2DMultisampleCoverageNV(GLenum target, GLsi
 
 static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34565,7 +34565,7 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 
 static void REGAL_CALL emu_glBindVertexArrayOES(GLuint array)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
@@ -34626,7 +34626,7 @@ static void REGAL_CALL emu_glBindVertexArrayOES(GLuint array)
 
 static void REGAL_CALL emu_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalContext *_context = GET_REGAL_CONTEXT();
+  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // prefix
