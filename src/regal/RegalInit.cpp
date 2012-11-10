@@ -373,6 +373,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
     return;
   }
 
+  setContext(NULL);
   ::REGAL_NAMESPACE_INTERNAL::Init::setContextTLS(NULL);
 }
 
