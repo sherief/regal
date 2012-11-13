@@ -29805,6 +29805,7 @@ extern "C" {
     {
       Driver("wglDeleteContext","(", hglrc, ")");
       ret = dispatchTableGlobal.wglDeleteContext(hglrc);
+      Init::destroyContext( RegalSystemContext(hglrc) );
     }
     else
       Warning( "wglDeleteContext not available." );
@@ -30259,6 +30260,7 @@ extern "C" {
     {
       Driver("glXDestroyContext","(", dpy, ", ", ctx, ")");
       dispatchTableGlobal.glXDestroyContext(dpy, ctx);
+      Init::destroyContext( RegalSystemContext(ctx) );
     }
     else
       Warning( "glXDestroyContext not available." );
@@ -32897,6 +32899,7 @@ extern "C" {
     {
       Driver("CGLDestroyContext","(", ctx, ")");
       ret = dispatchTableGlobal.CGLDestroyContext(ctx);
+      Init::destroyContext( RegalSystemContext(ctx) );
     }
     else
       Warning( "CGLDestroyContext not available." );
@@ -34023,6 +34026,7 @@ extern "C" {
     {
       Driver("eglDestroyContext","(", dpy, ", ", ctx, ")");
       ret = dispatchTableGlobal.eglDestroyContext(dpy, ctx);
+      Init::destroyContext( RegalSystemContext(ctx) );
     }
     else
       Warning( "eglDestroyContext not available." );
