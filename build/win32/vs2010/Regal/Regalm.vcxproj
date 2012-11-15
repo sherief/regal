@@ -256,6 +256,8 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalEnum.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalFavicon.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalFavicon.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalFrame.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalFrame.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalHelper.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalHelper.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalHttp.cpp" />
@@ -276,8 +278,12 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalPrecompile.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPrivate.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPush.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalSharedList.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalSharedMap.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalSharedPtr.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalState.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSystem.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalThread.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalTimer.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalToken.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalToken.h" />

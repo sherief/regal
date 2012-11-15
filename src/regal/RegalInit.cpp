@@ -128,7 +128,10 @@ Init::getContext(RegalSystemContext sysCtx)
 
   SC2RC::iterator i = sc2rc.find(sysCtx);
   if (i!=sc2rc.end())
+  {
+    Internal("Init::context lookup for ",sysCtx);
     return i->second;
+  }
   else
   {
     Internal("Init::context factory for ",sysCtx);
@@ -146,7 +149,7 @@ Init::setContext(RegalContext *context)
 {
   Thread::Thread thread = Thread::Self();
 
-  Internal("Init::setContext ",thread," to ",context," ",context->info->version);
+  Internal("Init::setContext ",thread," to ",context," ",context ? context->info->version : "");
 
   // First do the lookup
 
@@ -287,7 +290,7 @@ Init::checkForGLErrors(RegalContext *context)
 RegalErrorCallback
 Init::setErrorCallback(RegalErrorCallback callback)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+  init();
 
   // TODO - warning or error for context==NULL ?
 
@@ -299,7 +302,7 @@ Init::setErrorCallback(RegalErrorCallback callback)
 void
 Init::shareContext(RegalSystemContext a, RegalSystemContext b)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+  init();
 
   RegalContext *contextA = getContext(a);
   RegalContext *contextB = getContext(b);
@@ -337,7 +340,7 @@ Init::makeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *interface)
 Init::makeCurrent(RegalSystemContext sysCtx)
 #endif
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+  init();
 
   if (sysCtx)
   {
@@ -373,7 +376,8 @@ Init::makeCurrent(RegalSystemContext sysCtx)
     return;
   }
 
-  ::REGAL_NAMESPACE_INTERNAL::Init::setContextTLS(NULL);
+  setContext(NULL);
+  setContextTLS(NULL);  // Need to do this in addition to setContext?
 }
 
 // Cleanup all the resources associated with sysCtx
@@ -382,7 +386,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 void
 Init::destroyContext(RegalSystemContext sysCtx)
 {
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
+  init();
 
   if (sysCtx)
   {
@@ -394,6 +398,11 @@ Init::destroyContext(RegalSystemContext sysCtx)
 
       th2rc.erase(context->thread);
       sc2rc.erase(sysCtx);
+      
+      // TODO - clear TLS for other threads too?
+      
+      if (context==Thread::CurrentContext())
+        setContextTLS(NULL);
 
       delete context;
     }

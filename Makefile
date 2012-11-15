@@ -165,6 +165,7 @@ LIB.SRCS           += src/regal/RegalInit.cpp
 LIB.SRCS           += src/regal/RegalUtil.cpp
 LIB.SRCS           += src/regal/RegalConfig.cpp
 LIB.SRCS           += src/regal/RegalLookup.cpp
+LIB.SRCS           += src/regal/RegalFrame.cpp
 LIB.SRCS           += src/regal/RegalHelper.cpp
 LIB.SRCS           += src/regal/RegalMarker.cpp
 LIB.SRCS           += src/regal/RegalContext.cpp

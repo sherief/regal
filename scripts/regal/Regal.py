@@ -651,6 +651,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 
+#include "RegalFrame.h"
 #include "RegalMarker.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;

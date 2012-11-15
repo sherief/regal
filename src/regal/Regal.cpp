@@ -54,6 +54,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 
+#include "RegalFrame.h"
 #include "RegalMarker.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
@@ -19773,10 +19774,9 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFrameTerminatorGREMEDY","()");
     if (!_context) return;
-    if (_context->marker)
+    if (_context->frame)
     {
-      _context->frame++;
-      _context->marker->FrameTerminator(*_context);
+      _context->frame->glFrameTerminatorGREMEDY(*_context);
       RegalAssert(_context->info);
       if (!_context->info->gl_gremedy_frame_terminator) return;
     }
@@ -28175,6 +28175,9 @@ extern "C" {
         dispatchTableGlobal.wglSwapBuffers = NULL;
     }
     BOOL  ret = (BOOL )0;
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context && _context->frame)
+        _context->frame->wglSwapBuffers(*_context);
     if (dispatchTableGlobal.wglSwapBuffers)
     {
       Driver("wglSwapBuffers","(", hDC, ")");
@@ -30443,6 +30446,9 @@ extern "C" {
       if (dispatchTableGlobal.glXSwapBuffers==glXSwapBuffers)
         dispatchTableGlobal.glXSwapBuffers = NULL;
     }
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context && _context->frame)
+        _context->frame->glXSwapBuffers(*_context);
     if (dispatchTableGlobal.glXSwapBuffers)
     {
       Driver("glXSwapBuffers","(", dpy, ", ", drawable, ")");
@@ -33022,6 +33028,9 @@ extern "C" {
         dispatchTableGlobal.CGLFlushDrawable = NULL;
     }
     CGLError  ret = (CGLError )0;
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context && _context->frame)
+        _context->frame->CGLFlushDrawable(*_context);
     if (dispatchTableGlobal.CGLFlushDrawable)
     {
       Driver("CGLFlushDrawable","(", ctx, ")");
@@ -34399,6 +34408,9 @@ extern "C" {
     #endif // !REGAL_STATIC_EGL
 
     EGLBoolean  ret = (EGLBoolean )0;
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context && _context->frame)
+        _context->frame->eglSwapBuffers(*_context);
     if (dispatchTableGlobal.eglSwapBuffers)
     {
       Driver("eglSwapBuffers","(", dpy, ", ", surface, ")");

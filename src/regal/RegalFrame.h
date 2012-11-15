@@ -28,16 +28,74 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "pch.h" /* For MS precompiled header support */
+/*
+
+ Frame capture, etc
+ Nigel Stewart
+
+ */
+
+#ifndef __REGAL_FRAME_H__
+#define __REGAL_FRAME_H__
 
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
 
-#include "RegalMarker.h"
+#include "RegalTimer.h"
+#include "RegalContext.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+struct Frame {
+
+  Frame()
+  : frame(0),
+    frameSamples(0),
+    mode(AutoDetect)
+  {
+    frameTimer.restart();
+  }
+
+  void Init(RegalContext &ctx)
+  {
+    UNUSED_PARAMETER(ctx);
+    Internal("Regal::Frame::Init","()");
+  }
+
+  //
+  // Per-frame state and configuration
+  //
+
+  size_t              frame;
+  Timer               frameTimer;
+
+  size_t              frameSamples;
+  Timer               frameSimpleTimeout;
+
+  //
+  
+  inline void glFrameTerminatorGREMEDY(RegalContext &ctx) { if (mode==AutoDetect) mode = FrameTerminatorGREMEDY; if (mode==FrameTerminatorGREMEDY) capture(ctx); }
+  inline void wglSwapBuffers          (RegalContext &ctx) { if (mode==AutoDetect) mode = SwapBuffers;            if (mode==SwapBuffers)            capture(ctx); }
+  inline void glXSwapBuffers          (RegalContext &ctx) { if (mode==AutoDetect) mode = SwapBuffers;            if (mode==SwapBuffers)            capture(ctx); }
+  inline void eglSwapBuffers          (RegalContext &ctx) { if (mode==AutoDetect) mode = SwapBuffers;            if (mode==SwapBuffers)            capture(ctx); }
+  inline void CGLFlushDrawable        (RegalContext &ctx) { if (mode==AutoDetect) mode = SwapBuffers;            if (mode==SwapBuffers)            capture(ctx); }
+
+private:
+  void capture(RegalContext &ctx);
+  
+  enum Mode
+  {
+    AutoDetect,
+    FrameTerminatorGREMEDY,
+    SwapBuffers
+  };
+
+  Mode mode;
+};
+
 REGAL_NAMESPACE_END
+
+#endif
