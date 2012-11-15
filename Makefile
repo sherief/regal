@@ -549,7 +549,7 @@ endif
 # Examples
 
 ifneq ($(filter nacl%,$(SYSTEM)),)
-regal.bin: lib bin
+regal.bin: lib bin bin/nacl$(BIN_EXTENSION)
 else
 regal.bin: lib bin bin/glewinfo bin/dreamtorus bin/tiger
 endif
@@ -580,6 +580,24 @@ tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/glut/code/%.cpp
 
 bin/dreamtorus: $(DREAMTORUS.OBJS) lib/$(LIB.SHARED) 
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(DREAMTORUS.OBJS) $(LIB.LDFLAGS) $(DREAMTORUS.LIBS)
+ifneq ($(STRIP),)
+	$(STRIP) -x $@
+endif
+
+NACLHELLOWORLD.SRCS       += examples/nacl/main.cpp
+NACLHELLOWORLD.SRCS.NAMES := $(notdir $(NACLHELLOWORLD.SRCS))
+NACLHELLOWORLD.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACLHELLOWORLD.SRCS.NAMES))
+NACLHELLOWORLD.OBJS       := $(NACLHELLOWORLD.OBJS:.cpp=.o)
+NACLHELLOWORLD.CFLAGS     := -Iinclude
+NACLHELLOWORLD.LIBS       += -L./lib -Wl,-Bstatic -lRegal -Wl,-Bdynamic
+NACLHELLOWORLD.LIBS       += -lm -lpthread -lppapi -lppapi_gles2 -lstdc++
+
+tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(NACLHELLOWORLD.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+
+bin/nacl$(BIN_EXTENSION): $(NACLHELLOWORLD.OBJS)
+	$(CC) -o $@ $^ $(NACLHELLOWORLD.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
