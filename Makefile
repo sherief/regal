@@ -596,8 +596,8 @@ tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(NACLHELLOWORLD.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/nacl$(BIN_EXTENSION): $(NACLHELLOWORLD.OBJS)
-	$(CC) -o $@ $^ $(NACLHELLOWORLD.LIBS)
+bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACLHELLOWORLD.OBJS)
+	$(CC) -o $@ $(NACLHELLOWORLD.OBJS) $(NACLHELLOWORLD.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
