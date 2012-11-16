@@ -549,7 +549,7 @@ endif
 # Examples
 
 ifneq ($(filter nacl%,$(SYSTEM)),)
-regal.bin: lib bin bin/nacl$(BIN_EXTENSION)
+regal.bin: lib bin bin/nacl$(BIN_EXTENSION) examples/nacl/nacl.nmf
 else
 regal.bin: lib bin bin/glewinfo bin/dreamtorus bin/tiger
 endif
@@ -590,7 +590,7 @@ NACLHELLOWORLD.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACLHELLOW
 NACLHELLOWORLD.OBJS       := $(NACLHELLOWORLD.OBJS:.cpp=.o)
 NACLHELLOWORLD.CFLAGS     := -Iinclude
 NACLHELLOWORLD.LIBS       += -L./lib -Wl,-Bstatic -lRegal -Wl,-Bdynamic
-NACLHELLOWORLD.LIBS       += -lm -lpthread -lppapi -lppapi_gles2 -lstdc++
+NACLHELLOWORLD.LIBS       += -lpng -lz -lm -lpthread -lppapi -lppapi_gles2 -lstdc++
 
 tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	@mkdir -p $(dir $@)
@@ -601,6 +601,12 @@ bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACLHELLOWORLD.OBJS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
+
+TOOLCHAIN=$(NACL_SDK_ROOT)/toolchain/linux_x86_glibc
+
+# Uncomment this to enable automatic regeneration of the nacl nmf file
+#examples/nacl/nacl.nmf: bin/nacl$(BIN_EXTENSION)
+	#$(NACL_SDK_ROOT)/tools/create_nmf.py -o $@ -D $(TOOLCHAIN)/x86_64-nacl/bin/objdump -t glibc bin/nacl* -L $(TOOLCHAIN)/x86_64-nacl/lib32 -L $(TOOLCHAIN)/x86_64-nacl/lib -s examples/nacl
 
 # GLUT and GLU dependency for non-Mac, non-Nacl builds
 

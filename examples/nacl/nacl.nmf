@@ -1,8 +1,8 @@
 {
   "files": {
-    "libpthread.so.a9de5678": {
+    "main.nexe": {
       "x86-64": {
-        "url": "lib64/libpthread.so.a9de5678"
+        "url": "nacl_64.nexe"
       }
     },
     "libstdc++.so.6": {
@@ -10,14 +10,14 @@
         "url": "lib64/libstdc++.so.6"
       }
     },
+    "libm.so.51fe1ff9": {
+      "x86-64": {
+        "url": "lib64/libm.so.51fe1ff9"
+      }
+    },
     "libppapi_gles2.so": {
       "x86-64": {
         "url": "lib64/libppapi_gles2.so"
-      }
-    },
-    "libc.so.a9de5678": {
-      "x86-64": {
-        "url": "lib64/libc.so.a9de5678"
       }
     },
     "libgcc_s.so.1": {
@@ -25,14 +25,14 @@
         "url": "lib64/libgcc_s.so.1"
       }
     },
-    "main.nexe": {
+    "libpthread.so.51fe1ff9": {
       "x86-64": {
-        "url": "nacl.x64.nexe"
+        "url": "lib64/libpthread.so.51fe1ff9"
       }
     },
-    "libm.so.a9de5678": {
+    "libc.so.51fe1ff9": {
       "x86-64": {
-        "url": "lib64/libm.so.a9de5678"
+        "url": "lib64/libc.so.51fe1ff9"
       }
     }
   },
