@@ -584,20 +584,20 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
-NACLHELLOWORLD.SRCS       += examples/nacl/main.cpp
-NACLHELLOWORLD.SRCS.NAMES := $(notdir $(NACLHELLOWORLD.SRCS))
-NACLHELLOWORLD.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACLHELLOWORLD.SRCS.NAMES))
-NACLHELLOWORLD.OBJS       := $(NACLHELLOWORLD.OBJS:.cpp=.o)
-NACLHELLOWORLD.CFLAGS     := -Iinclude
-NACLHELLOWORLD.LIBS       += -L./lib -Wl,-Bstatic -lRegal -Wl,-Bdynamic
-NACLHELLOWORLD.LIBS       += -lpng -lz -lm -lpthread -lppapi -lppapi_gles2 -lstdc++
+NACL.SRCS       += examples/nacl/main.cpp
+NACL.SRCS.NAMES := $(notdir $(NACL.SRCS))
+NACL.OBJS       := $(addprefix tmp/$(SYSTEM)/nacl/static/,$(NACL.SRCS.NAMES))
+NACL.OBJS       := $(NACL.OBJS:.cpp=.o)
+NACL.CFLAGS     := -Iinclude
+NACL.LIBS       += -L./lib -Wl,-Bstatic -lRegal -Wl,-Bdynamic
+NACL.LIBS       += -lpng -lz -lm -lpthread -lppapi -lppapi_gles2 -lstdc++
 
 tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(NACLHELLOWORLD.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(CC) $(CFLAGS) $(NACL.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACLHELLOWORLD.OBJS)
-	$(CC) -o $@ $(NACLHELLOWORLD.OBJS) $(NACLHELLOWORLD.LIBS)
+bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACL.OBJS)
+	$(CC) -o $@ $(NACL.OBJS) $(NACL.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
