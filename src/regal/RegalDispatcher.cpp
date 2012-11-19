@@ -51,6 +51,8 @@ void InitDispatchTableStaticES2(DispatchTable &tbl);
 void InitDispatchTableMissing  (DispatchTable &tbl);
 
 Dispatcher::Dispatcher()
+: _front(NULL),
+  _size(0)
 {
   #if REGAL_DEBUG
   InitDispatchTableDebug(debug);
@@ -111,6 +113,11 @@ Dispatcher::push_back(DispatchTable &table, bool enabled)
   }
 
    _table.push_back(&table);
+   
+   // Cached front() and size()
+   
+   if (!_size++)
+    _front = &table;
 }
 
 REGAL_NAMESPACE_END

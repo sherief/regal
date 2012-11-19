@@ -183,6 +183,7 @@ LIB.SRCS           += src/regal/RegalDispatchStaticEGL.cpp
 LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
+LIB.SRCS           += src/regal/RegalMac.cpp
 
 # Disable mongoose and Regal HTTP for NaCL build
 
@@ -215,6 +216,10 @@ LIB.OBJS           := $(LIB.OBJS:.cpp=.o)
 LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
+
+ifneq ($(filter darwin%,$(SYSTEM)),)
+LIB.LDFLAGS        += -Wl,-reexport-lGLU -L/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
+endif
 
 regal.lib: lib zlib.lib libpng.lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
 
@@ -597,7 +602,7 @@ tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	$(CC) $(CFLAGS) $(NACL.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACL.OBJS)
-	$(CC) -o $@ $(NACL.OBJS) $(NACL.LIBS)
+	$(CC) $(CFLAGS) -o $@ $(NACL.OBJS) $(NACL.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif

@@ -97,6 +97,9 @@ inline Thread Self()
 // Thread::CurrentContext()
 //
 
+#if REGAL_NO_TLS
+extern RegalContext *currentContext;
+#else
 #if REGAL_SYS_WGL
 #if REGAL_WIN_TLS
 extern DWORD currentContextIndex;
@@ -105,6 +108,7 @@ extern __declspec( thread ) void *currentContext;
 #endif
 #else
 extern pthread_key_t currentContextKey;
+#endif
 #endif
 
 inline void *CurrentContext()

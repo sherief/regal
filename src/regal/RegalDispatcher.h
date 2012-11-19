@@ -91,7 +91,8 @@ public:
 
   inline std::size_t size() const
   {
-    return _table.size();
+    return _size;
+//  return _table.size();
   }
 
   inline DispatchTable &operator[](const std::size_t i)
@@ -103,7 +104,8 @@ public:
   inline DispatchTable &front()
   {
     RegalAssert(size());
-    return *_table.front();
+    return *_front;
+//  return *_table.front();
   }
 
   inline DispatchTable &back()
@@ -113,7 +115,9 @@ public:
   }
 
 private:
-  std::vector<DispatchTable *> _table;
+  std::vector<DispatchTable *>  _table;
+  DispatchTable                *_front;
+  std::size_t                   _size;
 };
 
 REGAL_NAMESPACE_END
