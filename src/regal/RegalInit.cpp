@@ -334,7 +334,7 @@ Init::shareContext(RegalSystemContext a, RegalSystemContext b)
 }
 
 void
-#if REGAL_SYS_NACL
+#if REGAL_SYS_NACL || REGAL_SYS_PPAPI
 Init::makeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *interface)
 #else
 Init::makeCurrent(RegalSystemContext sysCtx)
@@ -356,7 +356,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 
       setContextTLS(context);
 
-#if REGAL_SYS_NACL
+#if REGAL_SYS_NACL || REGAL_SYS_PPAPI
       context->naclResource = sysCtx;
       context->naclES2      = interface;
 #endif
@@ -429,13 +429,13 @@ REGAL_DECL void RegalShareContext(RegalSystemContext a, RegalSystemContext b)
   ::REGAL_NAMESPACE_INTERNAL::Init::shareContext(a,b);
 }
 
-#if REGAL_SYS_NACL
+#if REGAL_SYS_NACL || REGAL_SYS_PPAPI
 REGAL_DECL void RegalMakeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *interface)
 #else
 REGAL_DECL void RegalMakeCurrent(RegalSystemContext sysCtx)
 #endif
 {
-#if REGAL_SYS_NACL
+#if REGAL_SYS_NACL || REGAL_SYS_PPAPI
   ::REGAL_NAMESPACE_INTERNAL::Init::makeCurrent(sysCtx,interface);
 #else
   ::REGAL_NAMESPACE_INTERNAL::Init::makeCurrent(sysCtx);

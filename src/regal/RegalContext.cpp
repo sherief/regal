@@ -81,7 +81,7 @@ RegalContext::RegalContext()
   iff(NULL),
   vao(NULL),
 #endif
-#if defined(__native_client__)
+#if defined(__native_client__) || defined(PPAPI)
   naclES2(NULL),
   naclResource(NULL),
 #endif

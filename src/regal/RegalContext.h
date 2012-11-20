@@ -49,7 +49,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatchError.h"
 #include "RegalSharedList.h"
 
-#if defined(__native_client__)
+#if defined(__native_client__) || defined(PPAPI)
 #define __gl2_h_  // HACK - revisit
 #include <ppapi/c/pp_resource.h>
 #include <ppapi/c/ppb_opengles2.h>
@@ -103,7 +103,7 @@ struct RegalContext
   RegalVao           *vao;
 #endif
 
-  #if defined(__native_client__)
+  #if defined(__native_client__) || defined(PPAPI)
   PPB_OpenGLES2      *naclES2;
   PP_Resource         naclResource;
   #endif

@@ -37,7 +37,7 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalInit.h"
 
-#if !REGAL_SYS_WGL
+#if !(REGAL_SYS_WGL || REGAL_SYS_PPAPI)
 #include <pthread.h>
 #endif
 
