@@ -41,8 +41,14 @@
 #define __REGAL_DECLARATIONS_H
 
 #if _WIN32
-# ifndef REGAL_SYS_WGL
-#  define REGAL_SYS_WGL 1
+# if defined(PPAPI)
+#   ifndef REGAL_SYS_PPAPI
+#     define REGAL_SYS_PPAPI 1
+#   endif
+# else
+#   ifndef REGAL_SYS_WGL
+#     define REGAL_SYS_WGL 1
+#   endif
 # endif
 #elif __APPLE__
 # include <TargetConditionals.h>
@@ -144,8 +150,13 @@ extern "C" {
       typedef struct HGLRC__* HGLRC;
     #endif
   #endif
-#else
-# include <inttypes.h>
+#elif REGAL_SYS_PPAPI
+  #if defined(__native_client__)
+    #include <inttypes.h>
+  #else
+    typedef __int64 int64_t;
+    typedef unsigned __int64 uint64_t;
+  #endif
 #endif
 
 typedef unsigned int GLenum;
