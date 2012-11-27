@@ -20,6 +20,9 @@ LIBDIR     ?= $(REGAL_DEST)/lib
 #
 # To disable symlinks:
 #   - use LN= on gmake command-line
+#
+# To specify additional compiler flags:
+#   - use CFLAGS= on gmake command-line
 
 AR      ?= ar
 INSTALL ?= install
@@ -34,7 +37,8 @@ else
 OPT = $(POPT)
 endif
 INCLUDE = -Iinclude
-CFLAGS = $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
+
+override CFLAGS := $(CFLAGS) $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
 
 all: regal.lib glew.lib glu.lib glut.lib regal.bin
 
@@ -89,14 +93,14 @@ ifneq ($(filter nacl%,$(SYSTEM)),)
 ZLIB.CFLAGS     += -DHAVE_UNISTD_H
 endif
 
-zlib.lib: lib lib/$(ZLIB.STATIC)
+zlib.lib: lib/$(ZLIB.STATIC)
 
 tmp/$(SYSTEM)/zlib/static/%.o: src/zlib/src/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(ZLIB.CFLAGS) $(PICFLAG) -o $@ -c $<
 
-lib/$(ZLIB.STATIC): $(ZLIB.OBJS)
-	$(CCACHE) $(AR) cr $@ $^
+lib/$(ZLIB.STATIC): lib $(ZLIB.OBJS)
+	$(CCACHE) $(AR) cr $@ $(ZLIB.OBJS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -139,14 +143,14 @@ ifneq ($(filter nacl%,$(SYSTEM)),)
 LIBPNG.CFLAGS     += -DHAVE_UNISTD_H
 endif
 
-libpng.lib: zlib.lib lib lib/$(LIBPNG.STATIC)
+libpng.lib: zlib.lib lib/$(LIBPNG.STATIC)
 
 tmp/$(SYSTEM)/libpng/static/%.o: src/libpng/src/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(LIBPNG.CFLAGS) $(PICFLAG) -o $@ -c $<
 
-lib/$(LIBPNG.STATIC): $(LIBPNG.OBJS)
-	$(CCACHE) $(AR) cr $@ $^
+lib/$(LIBPNG.STATIC): lib $(LIBPNG.OBJS)
+	$(CCACHE) $(AR) cr $@ $(LIBPNG.OBJS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -221,7 +225,7 @@ ifneq ($(filter darwin%,$(SYSTEM)),)
 LIB.LDFLAGS        += -Wl,-reexport-lGLU -L/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
 endif
 
-regal.lib: lib zlib.lib libpng.lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
+regal.lib: zlib.lib libpng.lib lib/$(LIB.SHARED) lib/$(LIB.STATIC)
 
 lib/$(LIB.STATIC): $(LIB.OBJS)
 	$(CCACHE) $(AR) cr $@ $^
@@ -279,14 +283,14 @@ GLEW.LIBS       := -Llib -lRegal
 GLEW.SHARED     := libRegalGLEW.$(EXT.DYNAMIC)
 GLEW.STATIC     := libRegalGLEW.a
 
-glew.lib: lib lib/$(GLEW.SHARED)
+glew.lib: lib/$(GLEW.SHARED)
 
 tmp/$(SYSTEM)/glew/shared/%.o: src/glew/src/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(GLEW.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-lib/$(GLEW.SHARED): $(GLEW.OBJS) lib/$(LIB.SHARED)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $^ $(LIB.LDFLAGS) $(GLEW.LIBS)  -lpthread
+lib/$(GLEW.SHARED): lib $(GLEW.OBJS) lib/$(LIB.SHARED)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $(GLEW.OBJS) $(LIB.LDFLAGS) $(GLEW.LIBS)  -lpthread
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -310,7 +314,7 @@ tmp/$(SYSTEM)/glewinfo/static/%.o: src/glew/src/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(GLEWINFO.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/glewinfo: $(GLEWINFO.OBJS) lib/$(LIB.SHARED) lib/$(GLEW.SHARED)
+bin/glewinfo: bin $(GLEWINFO.OBJS) lib/$(LIB.SHARED) lib/$(GLEW.SHARED)
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(GLEWINFO.OBJS) $(LIB.LDFLAGS) $(GLEWINFO.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
@@ -423,12 +427,12 @@ GLU.OBJS       := $(GLU.OBJS:.c=.o) $(GLU.OBJS:.cc=.o)
 GLU.OBJS       := $(filter %.o,$(GLU.OBJS)) 
 GLU.CFLAGS     := -Isrc/glu/include -Isrc/glu/libnurbs/interface -Isrc/glu/libnurbs/internals -Isrc/glu/libnurbs/nurbtess
 GLU.CFLAGS     += -DLIBRARYBUILD
-GLU.LIBS       := -Llib 
+GLU.LIBS       := -Llib -lRegal
 GLU.LIBS       += -lpthread -lm
 GLU.SHARED     := libRegalGLU.$(EXT.DYNAMIC)
 GLU.STATIC     := libRegalGLU.a
 
-glu.lib: lib lib/$(GLU.SHARED)
+glu.lib: lib/$(GLU.SHARED)
 
 tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libtess/%.c
 	@mkdir -p $(dir $@)
@@ -450,8 +454,8 @@ tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libnurbs/nurbtess/%.cc
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-lib/$(GLU.SHARED): $(GLU.OBJS)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $^
+lib/$(GLU.SHARED): lib $(GLU.OBJS)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) $(GLU.LIBS) $(LIB.LDFLAGS) -o $@ $(GLU.OBJS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
@@ -536,13 +540,13 @@ GLUT.LIBS       += -lpthread -lm
 GLUT.SHARED     := libRegalGLUT.$(EXT.DYNAMIC)
 GLUT.STATIC     := libRegalGLUT.a
 
-glut.lib: lib lib/$(GLUT.SHARED)
+glut.lib: lib/$(GLUT.SHARED)
 
 tmp/$(SYSTEM)/glut/shared/%.o: src/glut/src/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(GLUT.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-lib/$(GLUT.SHARED): $(GLUT.OBJS) lib/$(GLU.SHARED) lib/$(LIB.SHARED)
+lib/$(GLUT.SHARED): lib $(GLUT.OBJS) lib/$(GLU.SHARED) lib/$(LIB.SHARED)
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.DYNAMIC) -o $@ $(GLUT.OBJS) $(GLUT.LIBS) 
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
@@ -554,9 +558,9 @@ endif
 # Examples
 
 ifneq ($(filter nacl%,$(SYSTEM)),)
-regal.bin: lib bin bin/nacl$(BIN_EXTENSION) examples/nacl/nacl.nmf
+regal.bin: bin/nacl$(BIN_EXTENSION) examples/nacl/nacl.nmf
 else
-regal.bin: lib bin bin/glewinfo bin/dreamtorus bin/tiger
+regal.bin: bin/glewinfo bin/dreamtorus bin/tiger
 endif
 
 bin:
@@ -583,7 +587,7 @@ tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/glut/code/%.cpp
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(DREAMTORUS.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/dreamtorus: $(DREAMTORUS.OBJS) lib/$(LIB.SHARED) 
+bin/dreamtorus: bin $(DREAMTORUS.OBJS) lib/$(LIB.SHARED) 
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(DREAMTORUS.OBJS) $(LIB.LDFLAGS) $(DREAMTORUS.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
@@ -601,7 +605,7 @@ tmp/$(SYSTEM)/nacl/static/%.o: examples/nacl/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(NACL.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/nacl$(BIN_EXTENSION): lib/$(LIB.STATIC) $(NACL.OBJS)
+bin/nacl$(BIN_EXTENSION): bin lib/$(LIB.STATIC) $(NACL.OBJS)
 	$(CC) $(CFLAGS) -o $@ $(NACL.OBJS) $(NACL.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
@@ -639,7 +643,7 @@ tmp/$(SYSTEM)/tiger/static/%.o: examples/tiger/%.c
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(TIGER.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/tiger: $(TIGER.OBJS) lib/$(GLEW.SHARED) lib/$(LIB.SHARED)
+bin/tiger: bin $(TIGER.OBJS) lib/$(GLEW.SHARED) lib/$(LIB.SHARED)
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(TIGER.OBJS) $(TIGER.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@

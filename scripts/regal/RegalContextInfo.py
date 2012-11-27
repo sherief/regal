@@ -292,6 +292,8 @@ def traverseContextInfo(apis, args):
       api.versions += [ [1, 5], [1, 4], [1, 3], [1, 2], [1, 1], [1, 0] ]
     if api.name == 'glx':
       api.versions = [ [1, 4], [1, 3], [1, 2], [1, 1], [1, 0] ]
+    if api.name == 'egl':
+      api.versions = [ [1, 2], [1, 1], [1, 0] ]
     c = set()
     c.update([i.category for i in api.functions])
     c.update([i.category for i in api.typedefs])
@@ -309,7 +311,7 @@ def versionDeclareCode(apis, args):
       code += '  GLboolean core   : 1;\n'
       code += '  GLboolean gles   : 1;\n\n'
 
-    if name in ['gl', 'glx']:
+    if name in ['gl', 'glx', 'egl']:
       code += '  GLint     %s_version_major;\n' % name
       code += '  GLint     %s_version_minor;\n' % name
       code += '\n'

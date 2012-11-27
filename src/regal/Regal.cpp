@@ -33864,6 +33864,753 @@ extern "C" {
 #endif /* REGAL_SYS_OSX */
 #if REGAL_SYS_EGL
 
+  /* EGL_ANGLE_query_surface_pointer */
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value)
+  {
+    App("eglQuerySurfacePointerANGLE","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglQuerySurfacePointerANGLE)
+    {
+      GetProcAddress( dispatchTableGlobal.eglQuerySurfacePointerANGLE, "eglQuerySurfacePointerANGLE" );
+      RegalAssert(dispatchTableGlobal.eglQuerySurfacePointerANGLE!=eglQuerySurfacePointerANGLE);
+      if (dispatchTableGlobal.eglQuerySurfacePointerANGLE==eglQuerySurfacePointerANGLE)
+        dispatchTableGlobal.eglQuerySurfacePointerANGLE = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglQuerySurfacePointerANGLE)
+    {
+      Driver("eglQuerySurfacePointerANGLE","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+      ret = dispatchTableGlobal.eglQuerySurfacePointerANGLE(dpy, surface, attribute, value);
+    }
+    else
+      Warning( "eglQuerySurfacePointerANGLE not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_fence_sync */
+
+  REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout)
+  {
+    App("eglClientWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ", ", timeout, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglClientWaitSyncKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglClientWaitSyncKHR, "eglClientWaitSyncKHR" );
+      RegalAssert(dispatchTableGlobal.eglClientWaitSyncKHR!=eglClientWaitSyncKHR);
+      if (dispatchTableGlobal.eglClientWaitSyncKHR==eglClientWaitSyncKHR)
+        dispatchTableGlobal.eglClientWaitSyncKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLint  ret = (EGLint )0;
+    if (dispatchTableGlobal.eglClientWaitSyncKHR)
+    {
+      Driver("eglClientWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ", ", timeout, ")");
+      ret = dispatchTableGlobal.eglClientWaitSyncKHR(dpy, GLsync, flags, timeout);
+    }
+    else
+      Warning( "eglClientWaitSyncKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLSyncKHR REGAL_CALL eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint *attrib_list)
+  {
+    App("eglCreateSyncKHR","(", dpy, ", ", type, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateSyncKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateSyncKHR, "eglCreateSyncKHR" );
+      RegalAssert(dispatchTableGlobal.eglCreateSyncKHR!=eglCreateSyncKHR);
+      if (dispatchTableGlobal.eglCreateSyncKHR==eglCreateSyncKHR)
+        dispatchTableGlobal.eglCreateSyncKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLSyncKHR  ret = (EGLSyncKHR )0;
+    if (dispatchTableGlobal.eglCreateSyncKHR)
+    {
+      Driver("eglCreateSyncKHR","(", dpy, ", ", type, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglCreateSyncKHR(dpy, type, attrib_list);
+    }
+    else
+      Warning( "eglCreateSyncKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync)
+  {
+    App("eglDestroySyncKHR","(", dpy, ", ", GLsync, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglDestroySyncKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglDestroySyncKHR, "eglDestroySyncKHR" );
+      RegalAssert(dispatchTableGlobal.eglDestroySyncKHR!=eglDestroySyncKHR);
+      if (dispatchTableGlobal.eglDestroySyncKHR==eglDestroySyncKHR)
+        dispatchTableGlobal.eglDestroySyncKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglDestroySyncKHR)
+    {
+      Driver("eglDestroySyncKHR","(", dpy, ", ", GLsync, ")");
+      ret = dispatchTableGlobal.eglDestroySyncKHR(dpy, GLsync);
+    }
+    else
+      Warning( "eglDestroySyncKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value)
+  {
+    App("eglGetSyncAttribKHR","(", dpy, ", ", GLsync, ", ", attribute, ", ", value, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglGetSyncAttribKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglGetSyncAttribKHR, "eglGetSyncAttribKHR" );
+      RegalAssert(dispatchTableGlobal.eglGetSyncAttribKHR!=eglGetSyncAttribKHR);
+      if (dispatchTableGlobal.eglGetSyncAttribKHR==eglGetSyncAttribKHR)
+        dispatchTableGlobal.eglGetSyncAttribKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglGetSyncAttribKHR)
+    {
+      Driver("eglGetSyncAttribKHR","(", dpy, ", ", GLsync, ", ", attribute, ", ", value, ")");
+      ret = dispatchTableGlobal.eglGetSyncAttribKHR(dpy, GLsync, attribute, value);
+    }
+    else
+      Warning( "eglGetSyncAttribKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_image_base */
+
+  REGAL_DECL EGLImageKHR REGAL_CALL eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list)
+  {
+    App("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", target, ", ", buffer, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateImageKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateImageKHR, "eglCreateImageKHR" );
+      RegalAssert(dispatchTableGlobal.eglCreateImageKHR!=eglCreateImageKHR);
+      if (dispatchTableGlobal.eglCreateImageKHR==eglCreateImageKHR)
+        dispatchTableGlobal.eglCreateImageKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLImageKHR  ret = (EGLImageKHR )0;
+    if (dispatchTableGlobal.eglCreateImageKHR)
+    {
+      Driver("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", target, ", ", buffer, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglCreateImageKHR(dpy, ctx, target, buffer, attrib_list);
+    }
+    else
+      Warning( "eglCreateImageKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image)
+  {
+    App("eglDestroyImageKHR","(", dpy, ", ", image, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglDestroyImageKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglDestroyImageKHR, "eglDestroyImageKHR" );
+      RegalAssert(dispatchTableGlobal.eglDestroyImageKHR!=eglDestroyImageKHR);
+      if (dispatchTableGlobal.eglDestroyImageKHR==eglDestroyImageKHR)
+        dispatchTableGlobal.eglDestroyImageKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglDestroyImageKHR)
+    {
+      Driver("eglDestroyImageKHR","(", dpy, ", ", image, ")");
+      ret = dispatchTableGlobal.eglDestroyImageKHR(dpy, image);
+    }
+    else
+      Warning( "eglDestroyImageKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_lock_surface */
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglLockSurfaceKHR(EGLDisplay display, EGLSurface surface, const EGLint *attrib_list)
+  {
+    App("eglLockSurfaceKHR","(", display, ", ", surface, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglLockSurfaceKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglLockSurfaceKHR, "eglLockSurfaceKHR" );
+      RegalAssert(dispatchTableGlobal.eglLockSurfaceKHR!=eglLockSurfaceKHR);
+      if (dispatchTableGlobal.eglLockSurfaceKHR==eglLockSurfaceKHR)
+        dispatchTableGlobal.eglLockSurfaceKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglLockSurfaceKHR)
+    {
+      Driver("eglLockSurfaceKHR","(", display, ", ", surface, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglLockSurfaceKHR(display, surface, attrib_list);
+    }
+    else
+      Warning( "eglLockSurfaceKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglUnlockSurfaceKHR(EGLDisplay display, EGLSurface surface)
+  {
+    App("eglUnlockSurfaceKHR","(", display, ", ", surface, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglUnlockSurfaceKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglUnlockSurfaceKHR, "eglUnlockSurfaceKHR" );
+      RegalAssert(dispatchTableGlobal.eglUnlockSurfaceKHR!=eglUnlockSurfaceKHR);
+      if (dispatchTableGlobal.eglUnlockSurfaceKHR==eglUnlockSurfaceKHR)
+        dispatchTableGlobal.eglUnlockSurfaceKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglUnlockSurfaceKHR)
+    {
+      Driver("eglUnlockSurfaceKHR","(", display, ", ", surface, ")");
+      ret = dispatchTableGlobal.eglUnlockSurfaceKHR(display, surface);
+    }
+    else
+      Warning( "eglUnlockSurfaceKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_stream_consumer_gltexture */
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream)
+  {
+    App("eglStreamConsumerAcquireKHR","(", dpy, ", ", stream, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglStreamConsumerAcquireKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglStreamConsumerAcquireKHR, "eglStreamConsumerAcquireKHR" );
+      RegalAssert(dispatchTableGlobal.eglStreamConsumerAcquireKHR!=eglStreamConsumerAcquireKHR);
+      if (dispatchTableGlobal.eglStreamConsumerAcquireKHR==eglStreamConsumerAcquireKHR)
+        dispatchTableGlobal.eglStreamConsumerAcquireKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglStreamConsumerAcquireKHR)
+    {
+      Driver("eglStreamConsumerAcquireKHR","(", dpy, ", ", stream, ")");
+      ret = dispatchTableGlobal.eglStreamConsumerAcquireKHR(dpy, stream);
+    }
+    else
+      Warning( "eglStreamConsumerAcquireKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream)
+  {
+    App("eglStreamConsumerGLTextureExternalKHR","(", dpy, ", ", stream, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR, "eglStreamConsumerGLTextureExternalKHR" );
+      RegalAssert(dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR!=eglStreamConsumerGLTextureExternalKHR);
+      if (dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR==eglStreamConsumerGLTextureExternalKHR)
+        dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR)
+    {
+      Driver("eglStreamConsumerGLTextureExternalKHR","(", dpy, ", ", stream, ")");
+      ret = dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR(dpy, stream);
+    }
+    else
+      Warning( "eglStreamConsumerGLTextureExternalKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream)
+  {
+    App("eglStreamConsumerReleaseKHR","(", dpy, ", ", stream, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglStreamConsumerReleaseKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglStreamConsumerReleaseKHR, "eglStreamConsumerReleaseKHR" );
+      RegalAssert(dispatchTableGlobal.eglStreamConsumerReleaseKHR!=eglStreamConsumerReleaseKHR);
+      if (dispatchTableGlobal.eglStreamConsumerReleaseKHR==eglStreamConsumerReleaseKHR)
+        dispatchTableGlobal.eglStreamConsumerReleaseKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglStreamConsumerReleaseKHR)
+    {
+      Driver("eglStreamConsumerReleaseKHR","(", dpy, ", ", stream, ")");
+      ret = dispatchTableGlobal.eglStreamConsumerReleaseKHR(dpy, stream);
+    }
+    else
+      Warning( "eglStreamConsumerReleaseKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_stream_cross_process_fd */
+
+  REGAL_DECL EGLStreamKHR REGAL_CALL eglCreateStreamFromFileDescriptorKHR(EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor)
+  {
+    App("eglCreateStreamFromFileDescriptorKHR","(", dpy, ", ", file_descriptor, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR, "eglCreateStreamFromFileDescriptorKHR" );
+      RegalAssert(dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR!=eglCreateStreamFromFileDescriptorKHR);
+      if (dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR==eglCreateStreamFromFileDescriptorKHR)
+        dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLStreamKHR  ret = (EGLStreamKHR )0;
+    if (dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR)
+    {
+      Driver("eglCreateStreamFromFileDescriptorKHR","(", dpy, ", ", file_descriptor, ")");
+      ret = dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR(dpy, file_descriptor);
+    }
+    else
+      Warning( "eglCreateStreamFromFileDescriptorKHR not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLNativeFileDescriptorKHR REGAL_CALL eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStreamKHR stream)
+  {
+    App("eglGetStreamFileDescriptorKHR","(", dpy, ", ", stream, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglGetStreamFileDescriptorKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglGetStreamFileDescriptorKHR, "eglGetStreamFileDescriptorKHR" );
+      RegalAssert(dispatchTableGlobal.eglGetStreamFileDescriptorKHR!=eglGetStreamFileDescriptorKHR);
+      if (dispatchTableGlobal.eglGetStreamFileDescriptorKHR==eglGetStreamFileDescriptorKHR)
+        dispatchTableGlobal.eglGetStreamFileDescriptorKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLNativeFileDescriptorKHR  ret = (EGLNativeFileDescriptorKHR )0;
+    if (dispatchTableGlobal.eglGetStreamFileDescriptorKHR)
+    {
+      Driver("eglGetStreamFileDescriptorKHR","(", dpy, ", ", stream, ")");
+      ret = dispatchTableGlobal.eglGetStreamFileDescriptorKHR(dpy, stream);
+    }
+    else
+      Warning( "eglGetStreamFileDescriptorKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_stream_producer_eglsurface */
+
+  REGAL_DECL EGLSurface REGAL_CALL eglCreateStreamProducerSurfaceKHR(EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list)
+  {
+    App("eglCreateStreamProducerSurfaceKHR","(", dpy, ", ", config, ", ", stream, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR, "eglCreateStreamProducerSurfaceKHR" );
+      RegalAssert(dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR!=eglCreateStreamProducerSurfaceKHR);
+      if (dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR==eglCreateStreamProducerSurfaceKHR)
+        dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLSurface  ret = (EGLSurface )0;
+    if (dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR)
+    {
+      Driver("eglCreateStreamProducerSurfaceKHR","(", dpy, ", ", config, ", ", stream, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR(dpy, config, stream, attrib_list);
+    }
+    else
+      Warning( "eglCreateStreamProducerSurfaceKHR not available." );
+    return ret;
+  }
+
+  /* EGL_KHR_wait_sync */
+
+  REGAL_DECL EGLint REGAL_CALL eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags)
+  {
+    App("eglWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglWaitSyncKHR)
+    {
+      GetProcAddress( dispatchTableGlobal.eglWaitSyncKHR, "eglWaitSyncKHR" );
+      RegalAssert(dispatchTableGlobal.eglWaitSyncKHR!=eglWaitSyncKHR);
+      if (dispatchTableGlobal.eglWaitSyncKHR==eglWaitSyncKHR)
+        dispatchTableGlobal.eglWaitSyncKHR = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLint  ret = (EGLint )0;
+    if (dispatchTableGlobal.eglWaitSyncKHR)
+    {
+      Driver("eglWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ")");
+      ret = dispatchTableGlobal.eglWaitSyncKHR(dpy, GLsync, flags);
+    }
+    else
+      Warning( "eglWaitSyncKHR not available." );
+    return ret;
+  }
+
+  /* EGL_MESA_drm_image */
+
+  REGAL_DECL EGLImageKHR REGAL_CALL eglCreateDRMImageMESA(EGLDisplay dpy, const EGLint *attrib_list)
+  {
+    App("eglCreateDRMImageMESA","(", dpy, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateDRMImageMESA)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateDRMImageMESA, "eglCreateDRMImageMESA" );
+      RegalAssert(dispatchTableGlobal.eglCreateDRMImageMESA!=eglCreateDRMImageMESA);
+      if (dispatchTableGlobal.eglCreateDRMImageMESA==eglCreateDRMImageMESA)
+        dispatchTableGlobal.eglCreateDRMImageMESA = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLImageKHR  ret = (EGLImageKHR )0;
+    if (dispatchTableGlobal.eglCreateDRMImageMESA)
+    {
+      Driver("eglCreateDRMImageMESA","(", dpy, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglCreateDRMImageMESA(dpy, attrib_list);
+    }
+    else
+      Warning( "eglCreateDRMImageMESA not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride)
+  {
+    App("eglExportDRMImageMESA","(", dpy, ", ", image, ", ", name, ", ", handle, ", ", stride, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglExportDRMImageMESA)
+    {
+      GetProcAddress( dispatchTableGlobal.eglExportDRMImageMESA, "eglExportDRMImageMESA" );
+      RegalAssert(dispatchTableGlobal.eglExportDRMImageMESA!=eglExportDRMImageMESA);
+      if (dispatchTableGlobal.eglExportDRMImageMESA==eglExportDRMImageMESA)
+        dispatchTableGlobal.eglExportDRMImageMESA = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglExportDRMImageMESA)
+    {
+      Driver("eglExportDRMImageMESA","(", dpy, ", ", image, ", ", name, ", ", handle, ", ", stride, ")");
+      ret = dispatchTableGlobal.eglExportDRMImageMESA(dpy, image, name, handle, stride);
+    }
+    else
+      Warning( "eglExportDRMImageMESA not available." );
+    return ret;
+  }
+
+  /* EGL_NV_coverage_sample */
+
+  REGAL_DECL void REGAL_CALL eglCoverageMaskNV(GLboolean mask)
+  {
+    App("eglCoverageMaskNV","(", toString(mask), ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCoverageMaskNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCoverageMaskNV, "eglCoverageMaskNV" );
+      RegalAssert(dispatchTableGlobal.eglCoverageMaskNV!=eglCoverageMaskNV);
+      if (dispatchTableGlobal.eglCoverageMaskNV==eglCoverageMaskNV)
+        dispatchTableGlobal.eglCoverageMaskNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    if (dispatchTableGlobal.eglCoverageMaskNV)
+    {
+      Driver("eglCoverageMaskNV","(", toString(mask), ")");
+      dispatchTableGlobal.eglCoverageMaskNV(mask);
+    }
+    else
+      Warning( "eglCoverageMaskNV not available." );
+  }
+
+  REGAL_DECL void REGAL_CALL eglCoverageOperationNV(GLenum operation)
+  {
+    App("eglCoverageOperationNV","(", toString(operation), ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCoverageOperationNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCoverageOperationNV, "eglCoverageOperationNV" );
+      RegalAssert(dispatchTableGlobal.eglCoverageOperationNV!=eglCoverageOperationNV);
+      if (dispatchTableGlobal.eglCoverageOperationNV==eglCoverageOperationNV)
+        dispatchTableGlobal.eglCoverageOperationNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    if (dispatchTableGlobal.eglCoverageOperationNV)
+    {
+      Driver("eglCoverageOperationNV","(", toString(operation), ")");
+      dispatchTableGlobal.eglCoverageOperationNV(operation);
+    }
+    else
+      Warning( "eglCoverageOperationNV not available." );
+  }
+
+  /* EGL_NV_post_sub_buffer */
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
+  {
+    App("eglPostSubBufferNV","(", dpy, ", ", surface, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglPostSubBufferNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglPostSubBufferNV, "eglPostSubBufferNV" );
+      RegalAssert(dispatchTableGlobal.eglPostSubBufferNV!=eglPostSubBufferNV);
+      if (dispatchTableGlobal.eglPostSubBufferNV==eglPostSubBufferNV)
+        dispatchTableGlobal.eglPostSubBufferNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglPostSubBufferNV)
+    {
+      Driver("eglPostSubBufferNV","(", dpy, ", ", surface, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+      ret = dispatchTableGlobal.eglPostSubBufferNV(dpy, surface, x, y, width, height);
+    }
+    else
+      Warning( "eglPostSubBufferNV not available." );
+    return ret;
+  }
+
+  /* EGL_NV_sync */
+
+  REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncNV(EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout)
+  {
+    App("eglClientWaitSyncNV","(", GLsync, ", ", flags, ", ", timeout, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglClientWaitSyncNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglClientWaitSyncNV, "eglClientWaitSyncNV" );
+      RegalAssert(dispatchTableGlobal.eglClientWaitSyncNV!=eglClientWaitSyncNV);
+      if (dispatchTableGlobal.eglClientWaitSyncNV==eglClientWaitSyncNV)
+        dispatchTableGlobal.eglClientWaitSyncNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLint  ret = (EGLint )0;
+    if (dispatchTableGlobal.eglClientWaitSyncNV)
+    {
+      Driver("eglClientWaitSyncNV","(", GLsync, ", ", flags, ", ", timeout, ")");
+      ret = dispatchTableGlobal.eglClientWaitSyncNV(GLsync, flags, timeout);
+    }
+    else
+      Warning( "eglClientWaitSyncNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLSyncNV REGAL_CALL eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list)
+  {
+    App("eglCreateFenceSyncNV","(", dpy, ", ", condition, ", ", attrib_list, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglCreateFenceSyncNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglCreateFenceSyncNV, "eglCreateFenceSyncNV" );
+      RegalAssert(dispatchTableGlobal.eglCreateFenceSyncNV!=eglCreateFenceSyncNV);
+      if (dispatchTableGlobal.eglCreateFenceSyncNV==eglCreateFenceSyncNV)
+        dispatchTableGlobal.eglCreateFenceSyncNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLSyncNV  ret = (EGLSyncNV )0;
+    if (dispatchTableGlobal.eglCreateFenceSyncNV)
+    {
+      Driver("eglCreateFenceSyncNV","(", dpy, ", ", condition, ", ", attrib_list, ")");
+      ret = dispatchTableGlobal.eglCreateFenceSyncNV(dpy, condition, attrib_list);
+    }
+    else
+      Warning( "eglCreateFenceSyncNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglDestroySyncNV(EGLSyncNV GLsync)
+  {
+    App("eglDestroySyncNV","(", GLsync, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglDestroySyncNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglDestroySyncNV, "eglDestroySyncNV" );
+      RegalAssert(dispatchTableGlobal.eglDestroySyncNV!=eglDestroySyncNV);
+      if (dispatchTableGlobal.eglDestroySyncNV==eglDestroySyncNV)
+        dispatchTableGlobal.eglDestroySyncNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglDestroySyncNV)
+    {
+      Driver("eglDestroySyncNV","(", GLsync, ")");
+      ret = dispatchTableGlobal.eglDestroySyncNV(GLsync);
+    }
+    else
+      Warning( "eglDestroySyncNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglFenceNV(EGLSyncNV GLsync)
+  {
+    App("eglFenceNV","(", GLsync, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglFenceNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglFenceNV, "eglFenceNV" );
+      RegalAssert(dispatchTableGlobal.eglFenceNV!=eglFenceNV);
+      if (dispatchTableGlobal.eglFenceNV==eglFenceNV)
+        dispatchTableGlobal.eglFenceNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglFenceNV)
+    {
+      Driver("eglFenceNV","(", GLsync, ")");
+      ret = dispatchTableGlobal.eglFenceNV(GLsync);
+    }
+    else
+      Warning( "eglFenceNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglGetSyncAttribNV(EGLSyncNV GLsync, EGLint attribute, EGLint *value)
+  {
+    App("eglGetSyncAttribNV","(", GLsync, ", ", attribute, ", ", value, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglGetSyncAttribNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglGetSyncAttribNV, "eglGetSyncAttribNV" );
+      RegalAssert(dispatchTableGlobal.eglGetSyncAttribNV!=eglGetSyncAttribNV);
+      if (dispatchTableGlobal.eglGetSyncAttribNV==eglGetSyncAttribNV)
+        dispatchTableGlobal.eglGetSyncAttribNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglGetSyncAttribNV)
+    {
+      Driver("eglGetSyncAttribNV","(", GLsync, ", ", attribute, ", ", value, ")");
+      ret = dispatchTableGlobal.eglGetSyncAttribNV(GLsync, attribute, value);
+    }
+    else
+      Warning( "eglGetSyncAttribNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLBoolean REGAL_CALL eglSignalSyncNV(EGLSyncNV GLsync, EGLenum mode)
+  {
+    App("eglSignalSyncNV","(", GLsync, ", ", mode, ")");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglSignalSyncNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglSignalSyncNV, "eglSignalSyncNV" );
+      RegalAssert(dispatchTableGlobal.eglSignalSyncNV!=eglSignalSyncNV);
+      if (dispatchTableGlobal.eglSignalSyncNV==eglSignalSyncNV)
+        dispatchTableGlobal.eglSignalSyncNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLBoolean  ret = (EGLBoolean )0;
+    if (dispatchTableGlobal.eglSignalSyncNV)
+    {
+      Driver("eglSignalSyncNV","(", GLsync, ", ", mode, ")");
+      ret = dispatchTableGlobal.eglSignalSyncNV(GLsync, mode);
+    }
+    else
+      Warning( "eglSignalSyncNV not available." );
+    return ret;
+  }
+
+  /* EGL_NV_system_time */
+
+  REGAL_DECL EGLuint64NV REGAL_CALL eglGetSystemTimeFrequencyNV(void)
+  {
+    App("eglGetSystemTimeFrequencyNV","()");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglGetSystemTimeFrequencyNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglGetSystemTimeFrequencyNV, "eglGetSystemTimeFrequencyNV" );
+      RegalAssert(dispatchTableGlobal.eglGetSystemTimeFrequencyNV!=eglGetSystemTimeFrequencyNV);
+      if (dispatchTableGlobal.eglGetSystemTimeFrequencyNV==eglGetSystemTimeFrequencyNV)
+        dispatchTableGlobal.eglGetSystemTimeFrequencyNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLuint64NV  ret = (EGLuint64NV )0;
+    if (dispatchTableGlobal.eglGetSystemTimeFrequencyNV)
+    {
+      Driver("eglGetSystemTimeFrequencyNV","()");
+      ret = dispatchTableGlobal.eglGetSystemTimeFrequencyNV();
+    }
+    else
+      Warning( "eglGetSystemTimeFrequencyNV not available." );
+    return ret;
+  }
+
+  REGAL_DECL EGLuint64NV REGAL_CALL eglGetSystemTimeNV(void)
+  {
+    App("eglGetSystemTimeNV","()");
+
+    #if !REGAL_STATIC_EGL
+    if (!dispatchTableGlobal.eglGetSystemTimeNV)
+    {
+      GetProcAddress( dispatchTableGlobal.eglGetSystemTimeNV, "eglGetSystemTimeNV" );
+      RegalAssert(dispatchTableGlobal.eglGetSystemTimeNV!=eglGetSystemTimeNV);
+      if (dispatchTableGlobal.eglGetSystemTimeNV==eglGetSystemTimeNV)
+        dispatchTableGlobal.eglGetSystemTimeNV = NULL;
+    }
+    #endif // !REGAL_STATIC_EGL
+
+    EGLuint64NV  ret = (EGLuint64NV )0;
+    if (dispatchTableGlobal.eglGetSystemTimeNV)
+    {
+      Driver("eglGetSystemTimeNV","()");
+      ret = dispatchTableGlobal.eglGetSystemTimeNV();
+    }
+    else
+      Warning( "eglGetSystemTimeNV not available." );
+    return ret;
+  }
+
   /* EGL_VERSION_1_0 */
 
   REGAL_DECL EGLBoolean REGAL_CALL eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config)
