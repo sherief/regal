@@ -30,7 +30,7 @@ STRIP   ?= strip
 RM      ?= rm -f
 LN      ?= ln -sf
 
-ifeq ($(MAKECMDGOALS), debug)
+ifeq ($(MODE),debug)
 OPT = -g
 STRIP :=
 else
@@ -41,10 +41,6 @@ INCLUDE = -Iinclude
 override CFLAGS := $(CFLAGS) $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
 
 all: regal.lib glew.lib glu.lib glut.lib regal.bin
-
-# Debug target implies Regal targets, only
-
-debug: regal.lib
 
 # REGAL shared and static libraries
 
@@ -233,8 +229,8 @@ ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
-lib/$(LIB.SHARED): $(LIB.SOBJS)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.SO) -o $@ $^ $(LIB.LDFLAGS) $(LIB.LIBS)
+lib/$(LIB.SHARED): lib/$(LIBPNG.STATIC) lib/$(ZLIB.STATIC) $(LIB.SOBJS)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.SO) -o $@ $(LIB.SOBJS) $(LIB.LDFLAGS) $(LIB.LIBS)
 ifneq ($(LN),)
 	$(LN) $(LIB.SHARED) lib/$(LIB.SONAME)
 	$(LN) $(LIB.SHARED) lib/$(LIB.DEVLNK)
@@ -667,5 +663,5 @@ clean:
 
 
 .PHONY: export
-.PHONY: regal.lib regal.bin all debug
+.PHONY: regal.lib regal.bin all
 .PHONY: clean distclean tardist dist-win32 dist-src

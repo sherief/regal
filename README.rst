@@ -172,14 +172,14 @@ Spoofing OpenGL vendor, renderer, version and extension strings
   - **REGAL_GL_VENDOR**
   - **REGAL_GL_RENDERER**
   - **REGAL_GL_VERSION**
-  - **REGAL_GL_EXTENSION**
+  - **REGAL_GL_EXTENSIONS**
 
   Environment variable configuration:
 
   - **REGAL_GL_VENDOR**
   - **REGAL_GL_RENDERER**
   - **REGAL_GL_VERSION**
-  - **REGAL_GL_EXTENSION**
+  - **REGAL_GL_EXTENSIONS**
 
   Environment variable lookup is globally disabled by defining **REGAL_NO_GETENV**
   at compile-time.

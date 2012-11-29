@@ -14682,12 +14682,10 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glInsertEventMarkerEXT","(", length, ", ", boost::print::quote(marker,'"'), ")");
     if (!_context) return;
-    if (_context->marker)
-    {
+    if (_context && _context->marker)
       _context->marker->InsertEventMarker( *_context, length, marker );
-      RegalAssert(_context->info);
-      if (!_context->info->gl_ext_debug_marker) return;
-    }
+    RegalAssert(_context->info);
+    if (!_context->info->gl_ext_debug_marker) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glInsertEventMarkerEXT)(length, marker);
@@ -14698,12 +14696,10 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPopGroupMarkerEXT","()");
     if (!_context) return;
-    if (_context->marker)
-    {
+    if (_context && _context->marker)
       _context->marker->PopGroupMarker( *_context );
-      RegalAssert(_context->info);
-      if (!_context->info->gl_ext_debug_marker) return;
-    }
+    RegalAssert(_context->info);
+    if (!_context->info->gl_ext_debug_marker) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glPopGroupMarkerEXT)();
@@ -14714,12 +14710,10 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPushGroupMarkerEXT","(", length, ", ", boost::print::quote(marker,'"'), ")");
     if (!_context) return;
-    if (_context->marker)
-    {
+    if (_context && _context->marker)
       _context->marker->PushGroupMarker( *_context, length, marker );
-      RegalAssert(_context->info);
-      if (!_context->info->gl_ext_debug_marker) return;
-    }
+    RegalAssert(_context->info);
+    if (!_context->info->gl_ext_debug_marker) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glPushGroupMarkerEXT)(length, marker);
@@ -19774,12 +19768,10 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFrameTerminatorGREMEDY","()");
     if (!_context) return;
-    if (_context->frame)
-    {
+    if (_context && _context->frame)
       _context->frame->glFrameTerminatorGREMEDY(*_context);
-      RegalAssert(_context->info);
-      if (!_context->info->gl_gremedy_frame_terminator) return;
-    }
+    RegalAssert(_context->info);
+    if (!_context->info->gl_gremedy_frame_terminator) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glFrameTerminatorGREMEDY)();
@@ -19792,12 +19784,10 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glStringMarkerGREMEDY","(", len, ", ", string, ")");
     if (!_context) return;
-    if (_context->marker)
-    {
+    if (_context && _context->marker)
       _context->marker->InsertEventMarker( *_context, len, string );
-      RegalAssert(_context->info);
-      if (!_context->info->gl_gremedy_string_marker) return;
-    }
+    RegalAssert(_context->info);
+    if (!_context->info->gl_gremedy_string_marker) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glStringMarkerGREMEDY)(len, string);
@@ -33920,7 +33910,7 @@ extern "C" {
 
   REGAL_DECL EGLSyncKHR REGAL_CALL eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint *attrib_list)
   {
-    App("eglCreateSyncKHR","(", dpy, ", ", type, ", ", attrib_list, ")");
+    App("eglCreateSyncKHR","(", dpy, ", ", EGLenumToString(type), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateSyncKHR)
@@ -33935,7 +33925,7 @@ extern "C" {
     EGLSyncKHR  ret = (EGLSyncKHR )0;
     if (dispatchTableGlobal.eglCreateSyncKHR)
     {
-      Driver("eglCreateSyncKHR","(", dpy, ", ", type, ", ", attrib_list, ")");
+      Driver("eglCreateSyncKHR","(", dpy, ", ", EGLenumToString(type), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateSyncKHR(dpy, type, attrib_list);
     }
     else
@@ -33997,7 +33987,7 @@ extern "C" {
 
   REGAL_DECL EGLImageKHR REGAL_CALL eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list)
   {
-    App("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", target, ", ", buffer, ", ", attrib_list, ")");
+    App("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", EGLenumToString(target), ", ", buffer, ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateImageKHR)
@@ -34012,7 +34002,7 @@ extern "C" {
     EGLImageKHR  ret = (EGLImageKHR )0;
     if (dispatchTableGlobal.eglCreateImageKHR)
     {
-      Driver("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", target, ", ", buffer, ", ", attrib_list, ")");
+      Driver("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", EGLenumToString(target), ", ", buffer, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateImageKHR(dpy, ctx, target, buffer, attrib_list);
     }
     else
@@ -34436,7 +34426,7 @@ extern "C" {
 
   REGAL_DECL EGLSyncNV REGAL_CALL eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list)
   {
-    App("eglCreateFenceSyncNV","(", dpy, ", ", condition, ", ", attrib_list, ")");
+    App("eglCreateFenceSyncNV","(", dpy, ", ", EGLenumToString(condition), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateFenceSyncNV)
@@ -34451,7 +34441,7 @@ extern "C" {
     EGLSyncNV  ret = (EGLSyncNV )0;
     if (dispatchTableGlobal.eglCreateFenceSyncNV)
     {
-      Driver("eglCreateFenceSyncNV","(", dpy, ", ", condition, ", ", attrib_list, ")");
+      Driver("eglCreateFenceSyncNV","(", dpy, ", ", EGLenumToString(condition), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateFenceSyncNV(dpy, condition, attrib_list);
     }
     else
@@ -34536,7 +34526,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglSignalSyncNV(EGLSyncNV GLsync, EGLenum mode)
   {
-    App("eglSignalSyncNV","(", GLsync, ", ", mode, ")");
+    App("eglSignalSyncNV","(", GLsync, ", ", EGLenumToString(mode), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglSignalSyncNV)
@@ -34551,7 +34541,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglSignalSyncNV)
     {
-      Driver("eglSignalSyncNV","(", GLsync, ", ", mode, ")");
+      Driver("eglSignalSyncNV","(", GLsync, ", ", EGLenumToString(mode), ")");
       ret = dispatchTableGlobal.eglSignalSyncNV(GLsync, mode);
     }
     else
@@ -35004,6 +34994,12 @@ extern "C" {
     #endif // !REGAL_STATIC_EGL
 
     __eglMustCastToProperFunctionPointerType  ret = (__eglMustCastToProperFunctionPointerType )0;
+    ret = Lookup::gl_Lookup<__eglMustCastToProperFunctionPointerType>(reinterpret_cast<const char *>(procname));
+    if (ret)
+      return ret;
+    ret = Lookup::egl_Lookup<__eglMustCastToProperFunctionPointerType>(reinterpret_cast<const char *>(procname));
+    if (ret)
+      return ret;
     if (dispatchTableGlobal.eglGetProcAddress)
     {
       Driver("eglGetProcAddress","(", boost::print::quote(procname,'"'), ")");
@@ -35092,7 +35088,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name)
   {
-    App("eglQueryString","(", dpy, ", ", name, ")");
+    App("eglQueryString","(", dpy, ", ", EGLenumToString(name), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQueryString)
@@ -35107,7 +35103,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.eglQueryString)
     {
-      Driver("eglQueryString","(", dpy, ", ", name, ")");
+      Driver("eglQueryString","(", dpy, ", ", EGLenumToString(name), ")");
       ret = dispatchTableGlobal.eglQueryString(dpy, name);
     }
     else
@@ -35299,7 +35295,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglBindAPI(EGLenum api)
   {
-    App("eglBindAPI","(", api, ")");
+    App("eglBindAPI","(", EGLenumToString(api), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglBindAPI)
@@ -35314,7 +35310,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglBindAPI)
     {
-      Driver("eglBindAPI","(", api, ")");
+      Driver("eglBindAPI","(", EGLenumToString(api), ")");
       ret = dispatchTableGlobal.eglBindAPI(api);
     }
     else
@@ -35324,7 +35320,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list)
   {
-    App("eglCreatePbufferFromClientBuffer","(", dpy, ", ", buftype, ", ", buffer, ", ", config, ", ", attrib_list, ")");
+    App("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", buffer, ", ", config, ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreatePbufferFromClientBuffer)
@@ -35339,7 +35335,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer)
     {
-      Driver("eglCreatePbufferFromClientBuffer","(", dpy, ", ", buftype, ", ", buffer, ", ", config, ", ", attrib_list, ")");
+      Driver("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", buffer, ", ", config, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreatePbufferFromClientBuffer(dpy, buftype, buffer, config, attrib_list);
     }
     else

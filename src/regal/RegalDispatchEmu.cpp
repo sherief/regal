@@ -10335,12 +10335,12 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     case 2 :
     case 1 :
       #if REGAL_EMU_FILTER
-        #if REGAL_FORCE_ES2_PROFILE
-        return;
-        #else
+        #if !REGAL_FORCE_ES2_PROFILE
         if (_context->info->gles)
-          return;
         #endif
+        {
+          return;
+        }
       #endif
     default:
     {

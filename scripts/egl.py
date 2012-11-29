@@ -1453,7 +1453,7 @@ egl.add(eglQueryContext)
 eglQueryString = Function('eglQueryString')
 eglQueryString.ret = Return('const char *')
 eglQueryString.add( Input( 'dpy','EGLDisplay' ))
-eglQueryString.add( Input( 'name','EGLint' ))
+eglQueryString.add( Input( 'name','EGLint' ,regalLog = 'EGLenumToString(name)' ))
 eglQueryString.version = ''
 eglQueryString.category = 'EGL_VERSION_1_0'
 eglQueryString.trace = True

@@ -5,16 +5,17 @@ from string import Template, upper, replace
 from ApiUtil import outputCode
 from ApiCodeGen import *
 
-from EmuContextState   import formulae as contextStateFormulae
-from EmuGetString      import formulae as getStringFormulae
-from EmuForceCore      import formulae as forceCoreFormulae
-from EmuLookup         import formulae as lookupFormulae
-from EmuMarker         import formulae as markerFormulae
-from EmuFrame          import formulae as frameFormulae
+from EmuContextState   import formulae       as contextStateFormulae
+from EmuGetString      import formulae       as getStringFormulae
+from EmuForceCore      import formulae       as forceCoreFormulae
+from EmuLookup         import formulae       as lookupFormulae
+from EmuMarker         import formulae       as markerFormulae
+from EmuMarker         import formulaeGlobal as markerFormulaeGlobal
+from EmuFrame          import formulae       as frameFormulae
 from EmuFrame          import formulaeGlobal as frameFormulaeGlobal
-from EmuExtensionQuery import formulae as extensionQueryFormulae
-from EmuErrorString    import formulae as errorStringFormulae
-from EmuEnable         import formulae as enableFormulae
+from EmuExtensionQuery import formulae       as extensionQueryFormulae
+from EmuErrorString    import formulae       as errorStringFormulae
+from EmuEnable         import formulae       as enableFormulae
 
 from EmuLog    import logFormulae
 
@@ -36,6 +37,7 @@ emuRegal = [
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
     { 'type' : 'Marker',   'member' : 'marker', 'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulae },
+    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulaeGlobal },
     { 'type' : 'Frame',    'member' : 'frame',  'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulaeGlobal },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },

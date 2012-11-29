@@ -2,18 +2,19 @@
 
 formulae = {
 
+}
+
+formulaeGlobal = {
+
     # GL_GREMEDY_frame_terminator
 
     'GL_GREMEDY_frame_terminator' : {
         'entries' : [ 'glFrameTerminatorGREMEDY' ],
-        'impl' : [ '_context->frame->glFrameTerminatorGREMEDY(*_context);',
+        'impl' : [ 'if (_context && _context->frame)',
+                   '  _context->frame->glFrameTerminatorGREMEDY(*_context);',
                    'RegalAssert(_context->info);',
                    'if (!_context->info->gl_gremedy_frame_terminator) return;' ]
-    }
-
-}
-
-formulaeGlobal = {
+    },
 
     # wglSwapBuffers
 

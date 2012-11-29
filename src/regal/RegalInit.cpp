@@ -371,7 +371,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 
     setContext(context);
 
-    Internal("RegalMakeCurrent ",context," ",context->info->version);
+    Internal("Init::makeCurrent ",context," ",context->info->version);
     
     return;
   }

@@ -358,6 +358,10 @@ def debugPrintFunction(function, trace = 'ITrace'):
       args.append('%s'%i.regalLog)
     elif t == 'GLenum':
       args.append('toString(%s)'%n)
+    elif t == 'GLXenum':
+      args.append('GLXenumToString(%s)'%n)
+    elif t == 'EGLenum':
+      args.append('EGLenumToString(%s)'%n)
     elif t == 'GLboolean' or t == 'const GLboolean':
       args.append('toString(%s)'%n)
     elif t == 'char *' or t == 'const char *' or t == 'GLchar *' or t == 'const GLchar *' or t == 'LPCSTR':

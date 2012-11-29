@@ -523,9 +523,9 @@ ContextInfo::init(const RegalContext &context)
   gles   = true;
   #endif
 
-  // Detect extensions
+  // Detect driver extensions
 
-  string_list<string> extList;
+  string_list<string> driverExtensions;
 
   if (core)
   {
@@ -536,14 +536,16 @@ ContextInfo::init(const RegalContext &context)
     context.dispatcher.driver.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
 
     for (GLint i=0; i<n; ++i)
-      extList.push_back(reinterpret_cast<const char *>(context.dispatcher.driver.glGetStringi(GL_EXTENSIONS,i)));
-    extensions = extList.join(" ");
+      driverExtensions.push_back(reinterpret_cast<const char *>(context.dispatcher.driver.glGetStringi(GL_EXTENSIONS,i)));
+    extensions = driverExtensions.join(" ");
   }
   else
   {
     extensions = getString(context, GL_EXTENSIONS);
-    extList.split(extensions,' ');
+    driverExtensions.split(extensions,' ');
   }
+
+  regalExtensionsSet.insert(driverExtensions.begin(),driverExtensions.end());
 
   Info("OpenGL extensions: ",extensions);
 
@@ -568,7 +570,12 @@ ContextInfo::init(const RegalContext &context)
 #endif
 
 #ifdef REGAL_GL_EXTENSIONS
-  regalExtensions = REGAL_EQUOTE(REGAL_GL_EXTENSIONS);
+  {
+    string_list<string> extList;
+    extList.split(REGAL_EQUOTE(REGAL_GL_EXTENSIONS),' ');
+    regalExtensionsSet.clear();
+    regalExtensionsSet.insert(extList.begin(),extList.end());
+  }
 #else
   static const char *ourExtensions[9] = {
     "GL_REGAL_log",
@@ -581,9 +588,7 @@ ContextInfo::init(const RegalContext &context)
     "GL_GREMEDY_string_marker",
     "GL_GREMEDY_frame_terminator"
   };
-  regalExtensionsSet.insert(extList.begin(),extList.end());
   regalExtensionsSet.insert(&ourExtensions[0],&ourExtensions[9]);
-  regalExtensions = ::boost::print::detail::join(regalExtensionsSet,string(" "));
 #endif
 
 #ifndef REGAL_NO_GETENV
@@ -598,9 +603,19 @@ ContextInfo::init(const RegalContext &context)
     if (versionEnv) regalVersion = versionEnv;
 
     const char *extensionsEnv = GetEnv("REGAL_GL_EXTENSIONS");
-    if (extensionsEnv) regalExtensions = extensionsEnv;
+    if (extensionsEnv)
+    {
+      string_list<string> extList;
+      extList.split(extensionsEnv,' ');
+      regalExtensionsSet.clear();
+      regalExtensionsSet.insert(extList.begin(),extList.end());
+    }
   }
 #endif
+
+  // Form Regal extension string from the set
+
+  regalExtensions = ::boost::print::detail::join(regalExtensionsSet,string(" "));
 
   Info("Regal vendor     : ",regalVendor);
   Info("Regal renderer   : ",regalRenderer);
@@ -636,10 +651,10 @@ ContextInfo::init(const RegalContext &context)
   egl_version_1_1 = egl_version_1_2 || (egl_version_major == 1 && egl_version_minor == 1);
   egl_version_1_0 = egl_version_1_1 || egl_version_major == 1;
 
-  // Vendor, rendering, version, extensions reported by Regal to application
+  // Driver extensions, etc detected by Regal
 
   set<string> e;
-  e.insert(extList.begin(),extList.end());
+  e.insert(driverExtensions.begin(),driverExtensions.end());
 
   gl_3dfx_tbuffer = e.find("GL_3DFX_tbuffer")!=e.end();
   gl_amd_debug_output = e.find("GL_AMD_debug_output")!=e.end();
