@@ -48,7 +48,7 @@ REGAL_NAMESPACE_END
 def filterTokens(tokens):
 
   u = tokens
-  for i in ['_ARB','_KHR','_EXT','_NV','_ATI','_PGI','_OES','_IBM','_SUN','_SGI','_SGIX','_SGIS','_APPLE']:
+  for i in ['_ARB','_KHR','_EXT','_NV','_ATI','_PGI','_OES','_IBM','_SUN','_SGI','_SGIX','_SGIS','_APPLE','_QCOM','_ANGLE']:
     u = [ (j[0], [ k for k in j[1] if not k.endswith(i)  ]) for j in u ]
 
   # Filter out _BIT duplicates

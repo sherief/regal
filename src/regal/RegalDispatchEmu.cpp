@@ -2138,7 +2138,9 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
     case 1 :
     default:
     {
+       #if !REGAL_FORCE_ES2_PROFILE
        if (_context->info->gles)
+       #endif
          switch (cap)
          {
            case GL_BLEND:
@@ -2278,7 +2280,9 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
     case 1 :
     default:
     {
+       #if !REGAL_FORCE_ES2_PROFILE
        if (_context->info->gles)
+       #endif
          switch (cap)
          {
            case GL_BLEND:
@@ -3452,7 +3456,9 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
     case 1 :
     default:
     {
+       #if !REGAL_FORCE_ES2_PROFILE
        if (_context->info->gles)
+       #endif
          switch (target)
          {
            case GL_GENERATE_MIPMAP_HINT:
@@ -3524,7 +3530,9 @@ static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
     case 1 :
     default:
     {
+       #if !REGAL_FORCE_ES2_PROFILE
        if (_context->info->gles)
+       #endif
          switch (cap)
          {
            case GL_BLEND:
@@ -7940,6 +7948,28 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
       break;
   }
 
+  #if !REGAL_FORCE_ES2_PROFILE
+  if (_context->info->gles)
+  #endif
+  {
+    switch (internalformat)
+    {
+      case GL_ALPHA:
+      case GL_LUMINANCE:
+      case GL_LUMINANCE_ALPHA:
+      case GL_RGB:
+      case GL_RGBA:
+        break;
+      default:
+        Warning("glTexImage2D does not support ",GLenumToString(internalformat)," for ES 2.0.");
+        return;
+    }
+    if (format!=GLenum(internalformat))
+    {
+        Warning("glTexImage2D does not support mismatching format and internalformat ",GLenumToString(format),"!=",GLenumToString(internalformat)," for ES 2.0.");
+        return;
+    }
+  }
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glTexImage2D)(target, level, internalformat, width, height, border, format, type, pixels);
@@ -9463,6 +9493,18 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
     case 1 :
     default:
     {
+       #if !REGAL_FORCE_ES2_PROFILE
+       if (_context->info->gles)
+       #endif
+         switch (target)
+         {
+           case GL_TEXTURE_CUBE_MAP:
+           case GL_TEXTURE_2D:
+             break;
+           default:
+             Warning("glBindTexture does not support ",GLenumToString(target)," for ES 2.0.");
+             return;
+         }
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glBindTexture)(target, texture);

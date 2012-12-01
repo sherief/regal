@@ -331,13 +331,19 @@ def apiFuncDefineCode(apis, args):
 
   return code
 
+#
 # debug print function
-def debugPrintFunction(function, trace = 'ITrace'):
+#
+
+def debugPrintFunction(function, trace = 'ITrace', input = True, output = False):
   c =  ''
   args = []
   for i in function.parameters:
 
-    if i.output:
+    if not output and i.output:
+      continue
+
+    if not input and not i.output:
       continue
 
     # Use a cast, if necessary

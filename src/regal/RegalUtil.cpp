@@ -164,7 +164,7 @@ const char *libraryLocation(const Library &library)
 #endif
     }
   }
-  
+
   // GLES
 
   if (library==LIBRARY_GLES)
@@ -345,17 +345,32 @@ void *GetProcAddress(const char *entry)
   if (lib_EGL)
   {
     void *sym = dlsym(lib_EGL,entry);
-    if( sym ) {
-      Internal("Regal::GetProcAddress ","loading ",entry," from ",lib_EGL_filename,sym ? " succeeded." : " failed.");
+    Internal("Regal::GetProcAddress ","loading ",entry," from ",lib_EGL_filename,sym ? " succeeded." : " failed.");
+    if (sym)
       return sym;
-    }
   }
 
   if (lib_GLES)
   {
     void *sym = dlsym(lib_GLES,entry);
     Internal("Regal::GetProcAddress ","loading ",entry," from ",lib_GLES_filename,sym ? " succeeded." : " failed.");
-    return sym;
+    if (sym)
+      return sym;
+  }
+
+  static PFNEGLGETPROCADDRESSPROC eglGetProcAddress = NULL;
+
+  if (lib_EGL)
+  {
+    if (!eglGetProcAddress)
+      eglGetProcAddress = (PFNEGLGETPROCADDRESSPROC) dlsym(lib_EGL, "eglGetProcAddress");
+
+    if (eglGetProcAddress)
+    {
+      void *sym = (void *) eglGetProcAddress(entry);
+      Internal("Regal::GetProcAddress ","loading ",entry," from eglGetProcAddress",sym ? " succeeded." : " failed.");
+      return sym;
+    }
   }
 
   return NULL;

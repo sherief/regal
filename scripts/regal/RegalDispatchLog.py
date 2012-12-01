@@ -144,7 +144,7 @@ def generateDispatchLog(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'log_', name, params)
-      code += '    %s\n' % debugPrintFunction( function, 'Driver' )
+#     code += '    %s\n' % debugPrintFunction( function, 'Driver', True, False )
       code += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '    RegalAssert(_context);\n'
       code += '    DispatchTable *_next = _context->dispatcher.logging._next;\n'
@@ -153,7 +153,9 @@ def generateDispatchLog(apis, args):
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
       code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+      code += '    %s\n' % debugPrintFunction( function, 'Driver', True, True )
       if not typeIsVoid(rType):
+        code += '    Driver("%s","returned ", ret);\n' % (name)
         code += '    return ret;\n'
       code += '}\n\n'
 

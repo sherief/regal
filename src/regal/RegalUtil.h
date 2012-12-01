@@ -278,6 +278,18 @@ T *GetProcAddress(T *&f, const char *entry )
 inline bool starts_with(const std::string &input, const std::string &test) { return std::strncmp(input.c_str(),test.c_str(),test.length())==0; }
 inline bool starts_with(const std::string &input, const char * const test) { return std::strncmp(input.c_str(),test,        strlen(test) )==0; }
 
+// Mac OSX lacks strndup
+
+inline char *
+strndup(const char *str, size_t n)
+{
+  char *tmp = static_cast<char *>(malloc(n+1));
+  if (n)
+    memcpy(tmp,str,n);
+  tmp[n] = '\0';
+  return tmp;
+}
+
 //
 
 extern bool  fileExists(const char *filename);
