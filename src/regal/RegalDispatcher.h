@@ -58,6 +58,10 @@ public:
    DispatchTable emulation;
 #endif
 
+#if REGAL_CACHE
+   DispatchTable cache;
+#endif
+
 #if REGAL_LOG
    DispatchTable logging;
 #endif

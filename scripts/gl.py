@@ -16709,7 +16709,7 @@ glGetAttachedShaders.ret = Return('void')
 glGetAttachedShaders.add( Input( 'program','GLuint' ))
 glGetAttachedShaders.add( Input( 'maxCount','GLsizei' ))
 glGetAttachedShaders.add( Output( 'count','GLsizei *' ,size = 1 ))
-glGetAttachedShaders.add( Output( 'shaders','GLuint *' ))
+glGetAttachedShaders.add( Output( 'shaders','GLuint *' ,size = 'count ? *count : 0' ))
 glGetAttachedShaders.version = '2.0'
 glGetAttachedShaders.category = ''
 glGetAttachedShaders.esVersions = [2.0]

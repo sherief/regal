@@ -28,63 +28,30 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef __REGAL_CONFIG_H__
-#define __REGAL_CONFIG_H__
+/*
+
+ Disk-based shader caching
+ Nigel Stewart
+
+ */
+
+#ifndef __REGAL_SHADER_CACHE_H__
+#define __REGAL_SHADER_CACHE_H__
 
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
 
-#include <string>
+#include <GL/Regal.h>
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace Config
-{
-  void Init();
+namespace ShaderCache {
 
-  extern bool forceCoreProfile;
-  extern bool forceES2Profile;
+  void shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar **string, const GLint *length);
 
-  // Initial dispatch enable/disable state
-
-  extern bool forceEmulation;
-  extern bool enableEmulation;
-  extern bool enableDebug;
-  extern bool enableError;
-  extern bool enableLog;
-  extern bool enableDriver;
-
-  // Initial emulation layer enable/disable
-
-  extern bool enableEmuPpa;
-  extern bool enableEmuObj;
-  extern bool enableEmuBin;
-  extern bool enableEmuDsa;
-  extern bool enableEmuIff;
-  extern bool enableEmuVao;
-  extern bool enableEmuFilter;
-
-  // Initial context configuration
-
-  extern int  frameLimit;       // Maximum number of frames
-
-  extern bool frameMd5Color;    // Log md5 hash of color buffer
-  extern bool frameMd5Stencil;
-  extern bool frameMd5Depth;
-
-  extern bool frameSaveColor;   // Save color buffer to PNG file
-  extern bool frameSaveStencil;
-  extern bool frameSaveDepth;
-
-  // Caching
-
-  extern bool        cache;
-  extern bool        cacheShader;
-  extern bool        cacheShaderRead;
-  extern std::string cacheDirectory;
 };
 
 REGAL_NAMESPACE_END

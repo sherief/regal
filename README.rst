@@ -157,6 +157,14 @@ Logging
   - **GL_LOG_INTERNAL_REGAL**
   - **GL_LOG_HTTP_REGAL**
 
+  Other compile-time or runtime configuration of logging:
+  
+  - **REGAL_LOG**           --- enable or disable logging
+  - **REGAL_LOG_FILE**      --- log to specified filename
+  - **REGAL_LOG_MAX_LINES** --- limit the number of lines of multi-line messages (shaders, etc)
+  - **REGAL_LOG_JSON**      --- log in JSON mode
+  - **REGAL_LOG_JSON_FILE** --- JSON log to specified filename
+
 Multi-threading support
 -----------------------
 

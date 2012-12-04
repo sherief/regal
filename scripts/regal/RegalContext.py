@@ -16,6 +16,7 @@ from EmuFrame          import formulaeGlobal as frameFormulaeGlobal
 from EmuExtensionQuery import formulae       as extensionQueryFormulae
 from EmuErrorString    import formulae       as errorStringFormulae
 from EmuEnable         import formulae       as enableFormulae
+from EmuCache          import formulaeGlobal as cacheFormulaeGlobal
 
 from EmuLog    import logFormulae
 
@@ -44,6 +45,7 @@ emuRegal = [
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : logFormulae    },
     { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : enableFormulae },
+    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : cacheFormulaeGlobal },    
 ]
 
 

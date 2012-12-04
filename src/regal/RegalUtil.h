@@ -179,6 +179,26 @@
 
 //
 
+// Caching enabled by default
+
+#ifndef REGAL_CACHE
+#define REGAL_CACHE 1
+#endif
+
+// Shader caching support by default
+
+#ifndef REGAL_CACHE_SHADER
+#define REGAL_CACHE_SHADER REGAL_CACHE
+#endif
+
+// Shader cache readback support by default
+
+#ifndef REGAL_CACHE_SHADER_READ
+#define REGAL_CACHE_SHADER_READ REGAL_CACHE
+#endif
+
+//
+
 #ifndef REGAL_FORCE_CORE_PROFILE
 #define REGAL_FORCE_CORE_PROFILE 0
 #endif

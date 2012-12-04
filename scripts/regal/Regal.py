@@ -257,6 +257,9 @@ def apiFuncDefineCode(apis, args):
           if getattr(function,'regalOnly',False)==False:
             c += '  DispatchTable *_next = &_context->dispatcher.front();\n'
             c += '  RegalAssert(_next);\n'
+
+            c += listToString(indent(emuCodeGen(emue,'suffix'),'  '))
+
             c += '  '
             if not typeIsVoid(rType):
               c += 'return '
@@ -335,7 +338,7 @@ def apiFuncDefineCode(apis, args):
 # debug print function
 #
 
-def debugPrintFunction(function, trace = 'ITrace', input = True, output = False):
+def debugPrintFunction(function, trace = 'ITrace', input = True, output = False, ret = None):
   c =  ''
   args = []
   for i in function.parameters:
@@ -372,11 +375,11 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False)
       args.append('toString(%s)'%n)
     elif t == 'char *' or t == 'const char *' or t == 'GLchar *' or t == 'const GLchar *' or t == 'LPCSTR':
       args.append('boost::print::quote(%s,\'"\')'%n)
-    elif i.input and i.size!=None and (isinstance(i.size,int) or isinstance(i.size, long)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1:
+    elif i.size!=None and (isinstance(i.size,int) or isinstance(i.size, long)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1:
       args.append('boost::print::array(%s,%s)'%(n,i.size))
-    elif i.input and i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==-1:
+    elif i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==-1:
       args.append('boost::print::array(%s,%s%s)'%(n,i.size,quote))
-    elif i.input and i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==0:
+    elif i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==0:
       h = i.size.split('(')[0]
       if h in helpers:
         args.append('boost::print::array(%s,%s(%s%s)'%(n,helpers[h],i.size.split('(',1)[1],quote))
@@ -393,9 +396,15 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False)
   if len(args):
     c += '%s("%s","(", ' % (trace, function.name)
     c += ', ", ", '.join(args)
-    c += ', ")");'
+    c += ', ")"'
+    if ret:
+      c += ', " returned ", ret'
+    c += ');'
   else:
-    c += '%s("%s","()");' % (trace, function.name)
+    c += '%s("%s","()"' % (trace, function.name)
+    if ret:
+      c += ', " returned ", ret'
+    c += ');'
   return c
 
 def apiTypedefCode( apis, args ):
@@ -660,6 +669,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
+#include "RegalShaderCache.h"
 
 #include "RegalFrame.h"
 #include "RegalMarker.h"

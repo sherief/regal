@@ -53,6 +53,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
+#include "RegalShaderCache.h"
 
 #include "RegalFrame.h"
 #include "RegalMarker.h"
@@ -5078,6 +5079,11 @@ extern "C" {
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
+    if (REGAL_CACHE && REGAL_CACHE_SHADER)
+    {
+      ShaderCache::shaderSource(_next->call(&_next->glShaderSource), shader, count, string, length);
+      return;
+    }
     _next->call(&_next->glShaderSource)(shader, count, string, length);
   }
 

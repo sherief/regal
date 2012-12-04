@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2011-2012 NVIDIA Corporation
+  Copyright (c) 2011 NVIDIA Corporation
   Copyright (c) 2011-2012 Cass Everitt
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
@@ -28,65 +28,42 @@
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef __REGAL_CONFIG_H__
-#define __REGAL_CONFIG_H__
+/*
+  Intended formatting conventions:
+  $ astyle --style=allman --indent=spaces=2 --indent-switches
+*/
+
+#include "pch.h" /* For MS precompiled header support */
 
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
 
-#include <string>
+#include "RegalThread.h"
+#include "RegalContext.h"
+#include "RegalDispatcher.h"
+#include "RegalShaderCache.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace Config
+static void REGAL_CALL cache_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
 {
-  void Init();
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.cache._next;
+  RegalAssert(_next);
+  if (REGAL_CACHE && REGAL_CACHE_SHADER)
+    ShaderCache::shaderSource(_next->call(&_next->glShaderSource), shader, count, string, length);
+  else
+    _next->call(&_next->glShaderSource)(shader, count, string, length);
+}
 
-  extern bool forceCoreProfile;
-  extern bool forceES2Profile;
-
-  // Initial dispatch enable/disable state
-
-  extern bool forceEmulation;
-  extern bool enableEmulation;
-  extern bool enableDebug;
-  extern bool enableError;
-  extern bool enableLog;
-  extern bool enableDriver;
-
-  // Initial emulation layer enable/disable
-
-  extern bool enableEmuPpa;
-  extern bool enableEmuObj;
-  extern bool enableEmuBin;
-  extern bool enableEmuDsa;
-  extern bool enableEmuIff;
-  extern bool enableEmuVao;
-  extern bool enableEmuFilter;
-
-  // Initial context configuration
-
-  extern int  frameLimit;       // Maximum number of frames
-
-  extern bool frameMd5Color;    // Log md5 hash of color buffer
-  extern bool frameMd5Stencil;
-  extern bool frameMd5Depth;
-
-  extern bool frameSaveColor;   // Save color buffer to PNG file
-  extern bool frameSaveStencil;
-  extern bool frameSaveDepth;
-
-  // Caching
-
-  extern bool        cache;
-  extern bool        cacheShader;
-  extern bool        cacheShaderRead;
-  extern std::string cacheDirectory;
-};
+void InitDispatchTableCache(DispatchTable &tbl)
+{
+  tbl.glShaderSource = cache_glShaderSource;
+}
 
 REGAL_NAMESPACE_END
 
-#endif

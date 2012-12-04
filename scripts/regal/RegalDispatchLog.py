@@ -153,9 +153,23 @@ def generateDispatchLog(apis, args):
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
       code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
-      code += '    %s\n' % debugPrintFunction( function, 'Driver', True, True )
+
+      if typeIsVoid(rType):
+        code += '    %s\n' % debugPrintFunction( function, 'Driver', True, True )
+      else:
+        code += '    %s\n' % debugPrintFunction( function, 'Driver', True, True, "ret" )
+
+      # Special handling for glUseProgram - log the attached shaders.
+
+      if name=='glUseProgram':
+        code += '    if (program && log_glIsProgram(program))\n'
+        code += '    {\n'
+        code += '      GLuint  _shaders[16];\n'
+        code += '      GLsizei _count;\n'
+        code += '      log_glGetAttachedShaders(program,16,&_count,_shaders);\n'
+        code += '    }\n'
+
       if not typeIsVoid(rType):
-        code += '    Driver("%s","returned ", ret);\n' % (name)
         code += '    return ret;\n'
       code += '}\n\n'
 
