@@ -4,6 +4,7 @@
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
   Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2012 Google Inc.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -225,6 +226,14 @@
 
 #ifndef REGAL_STATIC_EGL
 #define REGAL_STATIC_EGL 0
+#endif
+
+#ifndef REGAL_EMU_TEXC
+#if REGAL_SYS_PPAPI
+#define REGAL_EMU_TEXC 1
+#else
+#define REGAL_EMU_TEXC 0
+#endif
 #endif
 
 // AssertFunction depends on Error log, but

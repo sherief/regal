@@ -4,6 +4,7 @@
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
   Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2012 Google Inc.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -72,6 +73,7 @@ namespace Config
   extern bool enableEmuSo;
   extern bool enableEmuVao;
   extern bool enableEmuFilter;
+  extern bool enableEmuTexC;
 
   // Initial context configuration
 
