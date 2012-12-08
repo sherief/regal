@@ -176,6 +176,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\regal\RegalDispatchCache.cpp" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalDispatchPpapi.cpp" />
     <ClCompile Include="..\..\..\..\src\Regal\RegalMac.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\Regal.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalBin.h" />
@@ -195,7 +197,6 @@
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchLoader.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchLog.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchMissing.cpp" />
-    <ClCompile Include="..\..\..\..\src\regal\RegalDispatchNacl.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchStaticEGL.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchStaticES2.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatcher.cpp" />
@@ -228,13 +229,17 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalPrecompile.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPrivate.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPush.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalShaderCache.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedList.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedMap.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedPtr.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalSo.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalState.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSystem.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalThread.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalTimer.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalShaderCache.cpp" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalSo.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalToken.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalToken.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalUtil.cpp" />
@@ -246,6 +251,7 @@
   <ItemGroup>
     <None Include="..\..\..\..\include\GL\Regal.h" />
     <None Include="..\..\..\..\src\lookup3\lookup3.h" />
+    <None Include="..\..\..\..\src\regal\RegalPPAPI.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
