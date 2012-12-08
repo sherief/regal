@@ -60,6 +60,7 @@ bool enableEmuObj     = REGAL_EMU_OBJ;
 bool enableEmuBin     = REGAL_EMU_BIN;
 bool enableEmuDsa     = REGAL_EMU_DSA;
 bool enableEmuIff     = REGAL_EMU_IFF;
+bool enableEmuSo      = REGAL_EMU_SO;
 bool enableEmuVao     = REGAL_EMU_VAO;
 bool enableEmuFilter  = REGAL_EMU_FILTER;
 
@@ -155,6 +156,11 @@ void Init()
   if (tmp) enableEmuIff = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMU_SO
+  tmp = GetEnv( "REGAL_EMU_SO" );
+  if (tmp) enableEmuSo = atoi(tmp)!=0;
+#endif
+
 #if REGAL_EMU_VAO
   tmp = GetEnv( "REGAL_EMU_VAO" );
   if (tmp) enableEmuVao = atoi(tmp)!=0;
@@ -227,6 +233,7 @@ void Init()
   Info("REGAL_EMU_BIN            ", enableEmuBin     ? "enabled" : "disabled");
   Info("REGAL_EMU_DSA            ", enableEmuDsa     ? "enabled" : "disabled");
   Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
+  Info("REGAL_EMU_SO             ", enableEmuSo      ? "enabled" : "disabled");
   Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
   Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
 

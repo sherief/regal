@@ -23,6 +23,7 @@ from EmuLog    import logFormulae
 from Emu       import emuFindEntry, emuCodeGen
 from EmuDsa    import dsaFormulae
 from EmuVao    import vaoFormulae
+from EmuSo     import soFormulae
 from EmuPpc    import ppcFormulae
 from EmuPpa    import ppaFormulae
 from EmuIff    import iffFormulae
@@ -33,34 +34,35 @@ from EmuFilter import formulae as filterFormulae
 # Regal.cpp emulation
 
 emuRegal = [
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
-    { 'type' : 'Marker',   'member' : 'marker', 'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulaeGlobal },
-    { 'type' : 'Frame',    'member' : 'frame',  'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulaeGlobal },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : logFormulae    },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : enableFormulae },
-    { 'type' : None,       'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : cacheFormulaeGlobal },    
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
+    { 'type' : 'Marker',   'include' : 'RegalMarker.h', 'member' : 'marker', 'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : markerFormulaeGlobal },
+    { 'type' : 'Frame',    'include' : 'RegalFrame.h',  'member' : 'frame',  'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : frameFormulaeGlobal },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : logFormulae    },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : enableFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : cacheFormulaeGlobal },    
 ]
 
 
 # RegalDispathEmu.cpp fixed-function emulation
 
 emu = [
-    { 'type' : 'RegalObj',    'member' : 'obj',    'conditional' : 'Config::enableEmuObj',    'ifdef' : 'REGAL_EMU_OBJ',    'formulae' : objFormulae    },
-    #{ 'type' : 'RegalPpc',   'member' : 'ppc',    'conditional' : None,                      'ifdef' : '',                 'formulae' : ppcFormulae    },
-    { 'type' : 'RegalPpa',    'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa',    'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
-    { 'type' : 'RegalBin',    'member' : 'bin',    'conditional' : 'Config::enableEmuBin',    'ifdef' : 'REGAL_EMU_BIN',    'formulae' : binFormulae    },
-    { 'type' : 'RegalDsa',    'member' : 'dsa',    'conditional' : 'Config::enableEmuDsa',    'ifdef' : 'REGAL_EMU_DSA',    'formulae' : dsaFormulae    },
-    { 'type' : 'RegalIff',    'member' : 'iff',    'conditional' : 'Config::enableEmuIff',    'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
-    { 'type' : 'RegalVao',    'member' : 'vao',    'conditional' : 'Config::enableEmuVao',    'ifdef' : 'REGAL_EMU_VAO',    'formulae' : vaoFormulae    },
-    { 'type' : None,          'member' : None,     'conditional' : 'Config::enableEmuFilter', 'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
-    { 'type' : 'void',        'member' : None,     'conditional' : None,                      'ifdef' : None,               'formulae' : None           }
+    { 'type' : 'RegalObj',    'include' : 'RegalObj.h', 'member' : 'obj',    'conditional' : 'Config::enableEmuObj',    'ifdef' : 'REGAL_EMU_OBJ',    'formulae' : objFormulae    },
+    #{ 'type' : 'RegalPpc',   'include' : 'RegalPpc.h', 'member' : 'ppc',    'conditional' : None,                      'ifdef' : '',                 'formulae' : ppcFormulae    },
+    { 'type' : 'RegalPpa',    'include' : 'RegalPpa.h', 'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa',    'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
+    { 'type' : 'RegalBin',    'include' : 'RegalBin.h', 'member' : 'bin',    'conditional' : 'Config::enableEmuBin',    'ifdef' : 'REGAL_EMU_BIN',    'formulae' : binFormulae    },
+    { 'type' : 'RegalDsa',    'include' : 'RegalDsa.h', 'member' : 'dsa',    'conditional' : 'Config::enableEmuDsa',    'ifdef' : 'REGAL_EMU_DSA',    'formulae' : dsaFormulae    },
+    { 'type' : 'Emu::Iff',    'include' : 'RegalIff.h', 'member' : 'iff',    'conditional' : 'Config::enableEmuIff',    'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
+    { 'type' : 'RegalSo',     'include' : 'RegalSo.h',  'member' : 'so',     'conditional' : 'Config::enableEmuSo',     'ifdef' : 'REGAL_EMU_SO',     'formulae' : soFormulae     },
+    { 'type' : 'RegalVao',    'include' : 'RegalVao.h', 'member' : 'vao',    'conditional' : 'Config::enableEmuVao',    'ifdef' : 'REGAL_EMU_VAO',    'formulae' : vaoFormulae    },
+    { 'type' : None,          'include' : None,         'member' : None,     'conditional' : 'Config::enableEmuFilter', 'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
+    { 'type' : 'void',        'include' : None,         'member' : None,     'conditional' : None,                      'ifdef' : None,               'formulae' : None           }
 ]
 
 contextHeaderTemplate = Template( '''${AUTOGENERATED}
@@ -311,7 +313,10 @@ def generateContextHeader(apis, args):
 
     for i in emu:
       if i.get('member')!=None:
-        emuForwardDeclare += 'struct %s;\n' % i['type']
+        if i['type']=='Emu::Iff':
+          emuForwardDeclare += 'namespace Emu { struct Iff; };\n'
+        else:
+          emuForwardDeclare += 'struct %s;\n' % i['type']
         emuMemberDeclare  += '  %-18s *%s;\n' % ( i['type'], i['member'] )
 
     emuForwardDeclare += '#endif\n'
@@ -344,8 +349,9 @@ def generateContextSource(apis, args):
     emuMemberCleanup   = ''
 
     for i in emuRegal:
+      if i['include']:
+        includes        += '#include "%s"\n' % i['include']
       if i['member']:
-        includes        += '#include "Regal%s.h"\n' % i['type']
         memberConstruct += '  %s(NULL),\n' % ( i['member'] )
         memberInit      += '  %s = new %s;\n'%(i['member'],i['type'])
         memberCleanup   += '  delete %s;\n' % i['member']
@@ -361,8 +367,9 @@ def generateContextSource(apis, args):
         emuMemberConstruct += '  %s(NULL),\n' % emu[i]['member']
 
     for i in range( len( emu ) - 1 ) :
+        if emu[i]['include']:
+            emuIncludes += '#include "%s"\n' % emu[i]['include']
         if emu[i]['member']:
-            emuIncludes += '#include "%s.h"\n' % emu[i]['type']
             emuMemberCleanup += '  delete %s;\n' % emu[i]['member']
         revi = len( emu ) - 2 - i;
         if emu[revi]['member']:

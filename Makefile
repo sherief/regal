@@ -186,6 +186,7 @@ LIB.SRCS           += src/regal/RegalShaderCache.cpp
 LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 LIB.SRCS           += src/regal/RegalMac.cpp
+LIB.SRCS           += src/regal/RegalSo.cpp
 
 # Disable mongoose and Regal HTTP for NaCL build
 

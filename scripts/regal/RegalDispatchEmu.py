@@ -431,6 +431,7 @@ def generateEmuSource(apis, args):
 #include "RegalMarker.h"
 #include "RegalObj.h"
 #include "RegalDsa.h"
+#include "RegalSo.h"
 #include "RegalVao.h"'''
 
   # Output

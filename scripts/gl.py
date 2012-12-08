@@ -12373,7 +12373,7 @@ gl.add(glStencilFunc)
 
 glStencilMask = Function('glStencilMask')
 glStencilMask.ret = Return('void')
-glStencilMask.add( Input( 'mask','GLuint' ))
+glStencilMask.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
 glStencilMask.version = '1.0'
 glStencilMask.category = 'GL_VERSION_1_0'
 glStencilMask.esVersions = [1.0, 1.1, 2.0]
@@ -16821,7 +16821,7 @@ glGetProgramInfoLog = Function('glGetProgramInfoLog')
 glGetProgramInfoLog.ret = Return('void')
 glGetProgramInfoLog.add( Input( 'program','GLuint' ))
 glGetProgramInfoLog.add( Input( 'bufSize','GLsizei' ))
-glGetProgramInfoLog.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetProgramInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
 glGetProgramInfoLog.add( Output( 'infoLog','GLchar *' ))
 glGetProgramInfoLog.version = '2.0'
 glGetProgramInfoLog.category = ''
@@ -16879,7 +16879,7 @@ glGetShaderInfoLog = Function('glGetShaderInfoLog')
 glGetShaderInfoLog.ret = Return('void')
 glGetShaderInfoLog.add( Input( 'shader','GLuint' ))
 glGetShaderInfoLog.add( Input( 'bufSize','GLsizei' ))
-glGetShaderInfoLog.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetShaderInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
 glGetShaderInfoLog.add( Output( 'infoLog','GLchar *' ))
 glGetShaderInfoLog.version = '2.0'
 glGetShaderInfoLog.category = ''
@@ -16892,7 +16892,7 @@ glGetShaderSource = Function('glGetShaderSource')
 glGetShaderSource.ret = Return('void')
 glGetShaderSource.add( Input( 'shader','GLuint' ))
 glGetShaderSource.add( Input( 'bufSize','GLsizei' ))
-glGetShaderSource.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetShaderSource.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
 glGetShaderSource.add( Output( 'source','GLchar *' ))
 glGetShaderSource.version = '2.0'
 glGetShaderSource.category = ''
@@ -21959,7 +21959,7 @@ glGetSamplerParameterIiv = Function('glGetSamplerParameterIiv')
 glGetSamplerParameterIiv.ret = Return('void')
 glGetSamplerParameterIiv.add( Input( 'sampler','GLuint' ))
 glGetSamplerParameterIiv.add( Input( 'pname','GLenum' ))
-glGetSamplerParameterIiv.add( Output( 'params','GLint *' ))
+glGetSamplerParameterIiv.add( Output( 'params','GLint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glGetSamplerParameterIiv.version = '3.3'
 glGetSamplerParameterIiv.category = 'GL_ARB_sampler_objects'
 glGetSamplerParameterIiv.trace = True
@@ -21970,7 +21970,7 @@ glGetSamplerParameterIuiv = Function('glGetSamplerParameterIuiv')
 glGetSamplerParameterIuiv.ret = Return('void')
 glGetSamplerParameterIuiv.add( Input( 'sampler','GLuint' ))
 glGetSamplerParameterIuiv.add( Input( 'pname','GLenum' ))
-glGetSamplerParameterIuiv.add( Output( 'params','GLuint *' ))
+glGetSamplerParameterIuiv.add( Output( 'params','GLuint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glGetSamplerParameterIuiv.version = '3.3'
 glGetSamplerParameterIuiv.category = 'GL_ARB_sampler_objects'
 glGetSamplerParameterIuiv.trace = True
@@ -21981,7 +21981,7 @@ glGetSamplerParameterfv = Function('glGetSamplerParameterfv')
 glGetSamplerParameterfv.ret = Return('void')
 glGetSamplerParameterfv.add( Input( 'sampler','GLuint' ))
 glGetSamplerParameterfv.add( Input( 'pname','GLenum' ))
-glGetSamplerParameterfv.add( Output( 'params','GLfloat *' ))
+glGetSamplerParameterfv.add( Output( 'params','GLfloat *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glGetSamplerParameterfv.version = '3.3'
 glGetSamplerParameterfv.category = 'GL_ARB_sampler_objects'
 glGetSamplerParameterfv.trace = True
@@ -21992,7 +21992,7 @@ glGetSamplerParameteriv = Function('glGetSamplerParameteriv')
 glGetSamplerParameteriv.ret = Return('void')
 glGetSamplerParameteriv.add( Input( 'sampler','GLuint' ))
 glGetSamplerParameteriv.add( Input( 'pname','GLenum' ))
-glGetSamplerParameteriv.add( Output( 'params','GLint *' ))
+glGetSamplerParameteriv.add( Output( 'params','GLint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glGetSamplerParameteriv.version = '3.3'
 glGetSamplerParameteriv.category = 'GL_ARB_sampler_objects'
 glGetSamplerParameteriv.trace = True
@@ -22012,7 +22012,7 @@ glSamplerParameterIiv = Function('glSamplerParameterIiv')
 glSamplerParameterIiv.ret = Return('void')
 glSamplerParameterIiv.add( Input( 'sampler','GLuint' ))
 glSamplerParameterIiv.add( Input( 'pname','GLenum' ))
-glSamplerParameterIiv.add( Input( 'params','const GLint *' ))
+glSamplerParameterIiv.add( Input( 'params','const GLint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glSamplerParameterIiv.version = '3.3'
 glSamplerParameterIiv.category = 'GL_ARB_sampler_objects'
 glSamplerParameterIiv.trace = True
@@ -22023,7 +22023,7 @@ glSamplerParameterIuiv = Function('glSamplerParameterIuiv')
 glSamplerParameterIuiv.ret = Return('void')
 glSamplerParameterIuiv.add( Input( 'sampler','GLuint' ))
 glSamplerParameterIuiv.add( Input( 'pname','GLenum' ))
-glSamplerParameterIuiv.add( Input( 'params','const GLuint *' ))
+glSamplerParameterIuiv.add( Input( 'params','const GLuint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glSamplerParameterIuiv.version = '3.3'
 glSamplerParameterIuiv.category = 'GL_ARB_sampler_objects'
 glSamplerParameterIuiv.trace = True
@@ -22045,7 +22045,7 @@ glSamplerParameterfv = Function('glSamplerParameterfv')
 glSamplerParameterfv.ret = Return('void')
 glSamplerParameterfv.add( Input( 'sampler','GLuint' ))
 glSamplerParameterfv.add( Input( 'pname','GLenum' ))
-glSamplerParameterfv.add( Input( 'params','const GLfloat *' ))
+glSamplerParameterfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glSamplerParameterfv.version = '3.3'
 glSamplerParameterfv.category = 'GL_ARB_sampler_objects'
 glSamplerParameterfv.trace = True
@@ -22067,7 +22067,7 @@ glSamplerParameteriv = Function('glSamplerParameteriv')
 glSamplerParameteriv.ret = Return('void')
 glSamplerParameteriv.add( Input( 'sampler','GLuint' ))
 glSamplerParameteriv.add( Input( 'pname','GLenum' ))
-glSamplerParameteriv.add( Input( 'params','const GLint *' ))
+glSamplerParameteriv.add( Input( 'params','const GLint *' ,size = 'helperGLSamplerParametervSize(pname)' ))
 glSamplerParameteriv.version = '3.3'
 glSamplerParameteriv.category = 'GL_ARB_sampler_objects'
 glSamplerParameteriv.trace = True
@@ -22941,7 +22941,7 @@ glGetInfoLogARB = Function('glGetInfoLogARB')
 glGetInfoLogARB.ret = Return('void')
 glGetInfoLogARB.add( Input( 'obj','GLhandleARB' ))
 glGetInfoLogARB.add( Input( 'maxLength','GLsizei' ))
-glGetInfoLogARB.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetInfoLogARB.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
 glGetInfoLogARB.add( Output( 'infoLog','GLcharARB *' ))
 glGetInfoLogARB.version = '1.1'
 glGetInfoLogARB.category = 'GL_ARB_shader_objects'

@@ -2523,7 +2523,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glStencilMask(GLuint mask)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glStencilMask","(", mask, ")");
+    App("glStencilMask","(", boost::print::hex(mask), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4593,7 +4593,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferData","(", toString(target), ", ", size, ", ", data, ", ", toString(usage), ")");
+    App("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4603,7 +4603,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -9576,7 +9576,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    App("glSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -9586,7 +9586,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    App("glSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -9606,7 +9606,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    App("glSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -9626,7 +9626,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    App("glSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11810,7 +11810,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferDataARB(GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferDataARB","(", toString(target), ", ", size, ", ", data, ", ", toString(usage), ")");
+    App("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11820,7 +11820,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);

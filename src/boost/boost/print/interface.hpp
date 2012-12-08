@@ -60,6 +60,26 @@ template<typename T,typename U>
 detail::array<T,U> array(const T *data, const std::size_t size, const U &quote, const U &open, const U &close, const U &delim)
 { return detail::array<T,U>(data,size,quote,open,close,delim); }
 
+inline
+detail::raw<const char * const> raw(const void *data, const std::size_t size)
+{
+  static const char * const quote = "";
+  static const char * const open  = "[ ";
+  static const char * const close = " ]";
+  static const char * const delim = " ";
+  return detail::raw<const char * const>(data,size,quote,open,close,delim);
+}
+
+template<typename T>
+detail::raw<const char * const> raw(const T *data, const std::size_t size)
+{
+  static const char * const quote = "";
+  static const char * const open  = "[ ";
+  static const char * const close = " ]";
+  static const char * const delim = " ";
+  return detail::raw<const char * const>(static_cast<const void *>(data),size,quote,open,close,delim);
+}
+
 template<typename T>
 detail::iterator<T,const char * const> iterator(const T &begin, const T &end)
 {
@@ -109,6 +129,7 @@ using boost::print::detail::left;
 using boost::print::detail::right;
 using boost::print::detail::quote;
 using boost::print::detail::array;
+using boost::print::detail::raw;
 using boost::print::detail::iterator;
 using boost::print::detail::trim;
 
@@ -124,6 +145,8 @@ using boost::print::detail::write_hex;
 using boost::print::detail::write_iterator;
 
 // Determine the length (number of characters) for various types
+
+inline size_t length(bool               val) { return val ? 4 : 5; /* true or false */ }
 
 inline size_t length(unsigned char      val) { return unsigned_length(val); }
 inline size_t length(unsigned short     val) { return unsigned_length(val); }
@@ -226,6 +249,24 @@ template<typename T, typename U> size_t length(const array<T,U> &val)
   return len;
 }
 
+// Raw
+
+template<typename U> size_t length(const raw<U> &val)
+{
+  if (val._data)
+  {
+    const size_t words = (val._size+3)/4;
+    size_t len = length(val._open) + length(val._close);
+    len += length(val._quote)*2*words;
+    len += val._size*2;
+    if (words>1)
+      len += (words-1)*length(val._delim);
+    return len;
+  }
+  
+  return 4; // NULL
+}
+
 // Iterator
 
 template<typename T, typename U> size_t length(const iterator<T,U> &val)
@@ -274,6 +315,8 @@ template<typename T, typename U> size_t length(const trim<T,U> &val)
 }
 
 // Write to a std::string (or similar) for various types
+
+template<typename Iterator> inline void write(Iterator &i, const bool           val) { if (val) { *(i++) = 't'; *(i++) = 'r'; *(i++) = 'u'; *(i++) = 'e'; } else { *(i++) = 'f'; *(i++) = 'a'; *(i++) = 'l'; *(i++) = 's'; *(i++) = 'e'; } }
 
 template<typename Iterator> inline void write(Iterator &i, const char           val) { *i = val; ++i; }
 
@@ -427,17 +470,47 @@ inline void write(Iterator &i, const quote<T,C> &val)
 template<typename Iterator, typename T, typename U>
 inline void write(Iterator &i, const array<T,U> &val)
 {
+  if (val._data)
+  {
+    write(i,val._open);
+    if (val._size)
+    {
+      write(i,val._quote);
+      write(i,val._data[0]);
+      write(i,val._quote);
+      for (size_t j=1; j<val._size; ++j)
+      {
+        write(i,val._delim);
+        write(i,val._quote);
+        write(i,val._data[j]);
+        write(i,val._quote);
+      }
+    }
+    write(i,val._close);
+  }
+  else
+    write(i,"NULL");
+}
+
+// Raw
+
+template<typename Iterator, typename U>
+inline void write(Iterator &i, const raw<U> &val)
+{
   write(i,val._open);
   if (val._size)
   {
-    write(i,val._quote);
-    write(i,val._data[0]);
-    write(i,val._quote);
-    for (size_t j=1; j<val._size; ++j)
+    const uint8_t *k = (const uint8_t *) val._data;
+
+    for (size_t j=0; j<val._size;)
     {
-      write(i,val._delim);
+      if (j>0)
+        write(i,val._delim);
       write(i,val._quote);
-      write(i,val._data[j]);
+      write(i,hex<uint8_t>(k[j++]));
+      if (j<val._size) write(i,hex<uint8_t>(k[j++]));
+      if (j<val._size) write(i,hex<uint8_t>(k[j++]));
+      if (j<val._size) write(i,hex<uint8_t>(k[j++]));
       write(i,val._quote);
     }
   }

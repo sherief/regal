@@ -201,6 +201,7 @@ helpers = {
   'helperGLTexEnvvSize'           : 'helper::size::texEnvv',
   'helperGLTexGenvSize'           : 'helper::size::texGenv',
   'helperGLNamedStringSize'       : 'helper::size::namedString',
+  'helperGLSamplerParametervSize' : 'helper::size::samplerParameterv',
 #  'helperGLDrawElementsSize'      : 'helper::size::drawElements',
   'helperGLNamedStringParamsSize' : 'helper::size::namedStringParams'
 }
@@ -379,6 +380,8 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False,
       args.append('boost::print::array(%s,%s)'%(n,i.size))
     elif i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==-1:
       args.append('boost::print::array(%s,%s%s)'%(n,i.size,quote))
+#   elif i.size!=None and (isinstance(i.size,int) or isinstance(i.size, long) or isinstance(i.size, str) or isinstance(i.size, unicode)) and t=='const GLvoid *':
+#     args.append('boost::print::raw(%s,%s)'%(n,i.size))
     elif i.size!=None and (isinstance(i.size, str) or isinstance(i.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and i.size.find('helper')==0:
       h = i.size.split('(')[0]
       if h in helpers:
@@ -389,6 +392,10 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False,
       pass
     elif t.startswith('GLLOGPROC'):
       pass
+    elif n=='data' and (function.name=='glBufferData' or function.name=='glBufferDataARB'):
+      args.append('boost::print::raw(data,data ? size : 0)')
+    elif n=='data' and (function.name=='glBufferSubData' or function.name=='glBufferSubDataARB'):
+      args.append('boost::print::raw(data,data ? size : 0)')
     else:
       args.append(n)
 

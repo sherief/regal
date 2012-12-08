@@ -64,6 +64,7 @@ namespace Config
   extern bool enableEmuBin;
   extern bool enableEmuDsa;
   extern bool enableEmuIff;
+  extern bool enableEmuSo;
   extern bool enableEmuVao;
   extern bool enableEmuFilter;
 

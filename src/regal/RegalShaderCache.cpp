@@ -63,7 +63,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
     for (GLsizei i=0; i<count; ++i)
       hash = Lookup3::hashlittle(string[i], length ? length[i] : strlen(string[i]), hash);
 
-    ::std::string filename = print_string(Config::cacheDirectory,(void *) hash,".txt");
+    ::std::string filename = print_string(Config::cacheDirectory,boost::print::hex(hash),".txt");
 
     // Cache it to disk, iff it's not there yet
 
@@ -76,7 +76,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
       }
       else
       {
-        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",(void *) hash," filename=",filename," written.");
+        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," written.");
         for (GLsizei i=0; i<count; ++i)
           fwrite(string[i], length ? length[i] : strlen(string[i]),1,f);
         fclose(f);
@@ -97,7 +97,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
           FILE *f = fopen(filename.c_str(),"rt");
           if (!f)
           {
-            Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",(void *) hash," filename=",filename," not found.");
+            Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," not found.");
             goto done;
           }
 
@@ -112,7 +112,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
           buffer.resize(buffer.size()*2);
         }
 
-        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",(void *) hash," filename=",filename," read.");
+        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," read.");
 
         const GLchar *bufferPtr[2];
         bufferPtr[0] = &buffer[0];
@@ -122,7 +122,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
         return;
       }
       else
-        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",(void *) hash," filename=",filename," not read.");
+        Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," not read.");
     }
   }
 

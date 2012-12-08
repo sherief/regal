@@ -227,6 +227,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\Regal\RegalMac.cpp" />
+    <ClCompile Include="..\..\..\..\src\Regal\RegalSo.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\Regal.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalBin.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalConfig.cpp" />
@@ -284,6 +285,7 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedList.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedMap.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedPtr.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalSo.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalState.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSystem.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalThread.h" />

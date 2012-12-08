@@ -60,6 +60,7 @@
 // VC8, VC9  - C4127: conditional expression is constant in std::list
 // VC10      - C4512:
 // VC9, VC10 - C4996: 'vsprintf': This function or variable may be unsafe
+// VC10      - C4127: conditional expression is constant
 
 #ifdef _MSC_VER
 # define REGAL_GLOBAL_BEGIN         \
@@ -85,6 +86,7 @@
   __pragma(pack(8))                    \
   __pragma(warning(push))              \
   __pragma(warning(disable : 4996))    \
+  __pragma(warning(disable : 4127))    \
   namespace REGAL_NAMESPACE_INTERNAL   \
   {
 # define REGAL_NAMESPACE_END           \
@@ -167,6 +169,10 @@
 
 #ifndef REGAL_EMU_IFF
 #define REGAL_EMU_IFF 1
+#endif
+
+#ifndef REGAL_EMU_SO
+#define REGAL_EMU_SO 1
 #endif
 
 #ifndef REGAL_EMU_VAO

@@ -2363,7 +2363,7 @@ static void REGAL_CALL log_glStencilMask(GLuint mask)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glStencilMask)(mask);
-    Driver("glStencilMask","(", mask, ")");
+    Driver("glStencilMask","(", boost::print::hex(mask), ")");
 }
 
 static void REGAL_CALL log_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
@@ -4435,7 +4435,7 @@ static void REGAL_CALL log_glBufferData(GLenum target, GLsizeiptr size, const GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferData)(target, size, data, usage);
-    Driver("glBufferData","(", toString(target), ", ", size, ", ", data, ", ", toString(usage), ")");
+    Driver("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
@@ -4445,7 +4445,7 @@ static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsiz
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferSubData)(target, offset, size, data);
-    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffers(GLsizei n, const GLuint *buffers)
@@ -4774,7 +4774,7 @@ static void REGAL_CALL log_glGetProgramInfoLog(GLuint program, GLsizei bufSize, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramInfoLog)(program, bufSize, length, infoLog);
-    Driver("glGetProgramInfoLog","(", program, ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::quote(infoLog,'"'), ")");
+    Driver("glGetProgramInfoLog","(", program, ", ", bufSize, ", ", boost::print::array(length,length ? 1 : 0), ", ", boost::print::quote(infoLog,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetProgramiv(GLuint program, GLenum pname, GLint *params)
@@ -4794,7 +4794,7 @@ static void REGAL_CALL log_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetShaderInfoLog)(shader, bufSize, length, infoLog);
-    Driver("glGetShaderInfoLog","(", shader, ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::quote(infoLog,'"'), ")");
+    Driver("glGetShaderInfoLog","(", shader, ", ", bufSize, ", ", boost::print::array(length,length ? 1 : 0), ", ", boost::print::quote(infoLog,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source)
@@ -4804,7 +4804,7 @@ static void REGAL_CALL log_glGetShaderSource(GLuint shader, GLsizei bufSize, GLs
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetShaderSource)(shader, bufSize, length, source);
-    Driver("glGetShaderSource","(", shader, ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::quote(source,'"'), ")");
+    Driver("glGetShaderSource","(", shader, ", ", bufSize, ", ", boost::print::array(length,length ? 1 : 0), ", ", boost::print::quote(source,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetShaderiv(GLuint shader, GLenum pname, GLint *params)
@@ -9406,7 +9406,7 @@ static void REGAL_CALL log_glGetSamplerParameterIiv(GLuint sampler, GLenum pname
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSamplerParameterIiv)(sampler, pname, params);
-    Driver("glGetSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint *params)
@@ -9416,7 +9416,7 @@ static void REGAL_CALL log_glGetSamplerParameterIuiv(GLuint sampler, GLenum pnam
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSamplerParameterIuiv)(sampler, pname, params);
-    Driver("glGetSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat *params)
@@ -9426,7 +9426,7 @@ static void REGAL_CALL log_glGetSamplerParameterfv(GLuint sampler, GLenum pname,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSamplerParameterfv)(sampler, pname, params);
-    Driver("glGetSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint *params)
@@ -9436,7 +9436,7 @@ static void REGAL_CALL log_glGetSamplerParameteriv(GLuint sampler, GLenum pname,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSamplerParameteriv)(sampler, pname, params);
-    Driver("glGetSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static GLboolean REGAL_CALL log_glIsSampler(GLuint sampler)
@@ -9457,7 +9457,7 @@ static void REGAL_CALL log_glSamplerParameterIiv(GLuint sampler, GLenum pname, c
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSamplerParameterIiv)(sampler, pname, params);
-    Driver("glSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glSamplerParameterIiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint *params)
@@ -9467,7 +9467,7 @@ static void REGAL_CALL log_glSamplerParameterIuiv(GLuint sampler, GLenum pname, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSamplerParameterIuiv)(sampler, pname, params);
-    Driver("glSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glSamplerParameterIuiv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
@@ -9487,7 +9487,7 @@ static void REGAL_CALL log_glSamplerParameterfv(GLuint sampler, GLenum pname, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSamplerParameterfv)(sampler, pname, params);
-    Driver("glSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glSamplerParameterfv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 static void REGAL_CALL log_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param)
@@ -9507,7 +9507,7 @@ static void REGAL_CALL log_glSamplerParameteriv(GLuint sampler, GLenum pname, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSamplerParameteriv)(sampler, pname, params);
-    Driver("glSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", params, ")");
+    Driver("glSamplerParameteriv","(", sampler, ", ", toString(pname), ", ", boost::print::array(params,helper::size::samplerParameterv(pname)), ")");
 }
 
 // GL_ARB_separate_shader_objects
@@ -10250,7 +10250,7 @@ static void REGAL_CALL log_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetInfoLogARB)(obj, maxLength, length, infoLog);
-    Driver("glGetInfoLogARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,1), ", ", infoLog, ")");
+    Driver("glGetInfoLogARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,length ? 1 : 0), ", ", infoLog, ")");
 }
 
 static void REGAL_CALL log_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params)
@@ -11706,7 +11706,7 @@ static void REGAL_CALL log_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferDataARB)(target, size, data, usage);
-    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", data, ", ", toString(usage), ")");
+    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
@@ -11716,7 +11716,7 @@ static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferSubDataARB)(target, offset, size, data);
-    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)

@@ -304,28 +304,40 @@ materialv(GLenum pname)
   }
 }
 
-/* TODO: Review extensions later. */
+/* TODO: Extension enums. */
 
 size_t
 texParameterv(GLenum pname)
 {
   switch (pname)
   {
-    case GL_TEXTURE_MIN_FILTER:   return 1;
-    case GL_TEXTURE_MAG_FILTER:   return 1;
-    case GL_TEXTURE_MIN_LOD:      return 1;
-    case GL_TEXTURE_MAX_LOD:      return 1;
-    case GL_TEXTURE_BASE_LEVEL:   return 1;
-    case GL_TEXTURE_MAX_LEVEL:    return 1;
-    case GL_TEXTURE_WRAP_S:       return 1;
-    case GL_TEXTURE_WRAP_T:       return 1;
-    case GL_TEXTURE_WRAP_R:       return 1;
-    case GL_TEXTURE_BORDER_COLOR: return 4;
-    case GL_TEXTURE_PRIORITY:     return 1;
-    case GL_TEXTURE_COMPARE_MODE: return 1;
-    case GL_TEXTURE_COMPARE_FUNC: return 1;
-    case GL_DEPTH_TEXTURE_MODE:   return 1;
-    case GL_GENERATE_MIPMAP:      return 1;
+    /* Dec 2012 - http://www.opengl.org/sdk/docs/man/xhtml/glTexParameter.xml */
+
+    case GL_DEPTH_STENCIL_TEXTURE_MODE: return 1;
+    case GL_TEXTURE_BASE_LEVEL:         return 1;
+    case GL_TEXTURE_BORDER_COLOR:       return 4;
+    case GL_TEXTURE_COMPARE_FUNC:       return 1;
+    case GL_TEXTURE_COMPARE_MODE:       return 1;
+    case GL_TEXTURE_LOD_BIAS:           return 1;
+    case GL_TEXTURE_MIN_FILTER:         return 1;
+    case GL_TEXTURE_MAG_FILTER:         return 1;
+    case GL_TEXTURE_MIN_LOD:            return 1;
+    case GL_TEXTURE_MAX_LOD:            return 1;
+    case GL_TEXTURE_MAX_LEVEL:          return 1;
+    case GL_TEXTURE_SWIZZLE_R:          return 1;
+    case GL_TEXTURE_SWIZZLE_G:          return 1;
+    case GL_TEXTURE_SWIZZLE_B:          return 1;
+    case GL_TEXTURE_SWIZZLE_A:          return 1;
+    case GL_TEXTURE_SWIZZLE_RGBA:       return 4;
+    case GL_TEXTURE_WRAP_S:             return 1;
+    case GL_TEXTURE_WRAP_T:             return 1;
+    case GL_TEXTURE_WRAP_R:             return 1;
+
+    /* others */
+
+    case GL_TEXTURE_PRIORITY:               return 1;
+    case GL_DEPTH_TEXTURE_MODE:             return 1;
+    case GL_GENERATE_MIPMAP:                return 1;
 
     // GL_EXT_texture_filter_anisotropic
 
@@ -340,20 +352,9 @@ texParameterv(GLenum pname)
 
     case GL_TEXTURE_UNSIGNED_REMAP_MODE_NV: return 1;
 
-    // GL_EXT_texture_swizzle
-
-    case GL_TEXTURE_SWIZZLE_R_EXT:
-    case GL_TEXTURE_SWIZZLE_G_EXT:
-    case GL_TEXTURE_SWIZZLE_B_EXT:
-    case GL_TEXTURE_SWIZZLE_A_EXT:          return 1;
-
     // GL_NV_texture_shader
 
     case GL_TEXTURE_BORDER_VALUES_NV:       return 4;
-
-    // GL_EXT_texture_swizzle
-
-    case GL_TEXTURE_SWIZZLE_RGBA_EXT:       return 4;
 
     default:                                return 0;
   }
@@ -407,6 +408,36 @@ texGenv(GLenum pname)
     case GL_OBJECT_PLANE:     return 4;
     case GL_EYE_PLANE:        return 4;
     default:                  return 0;
+  }
+}
+
+/* TODO: Extension enums. */
+
+size_t
+samplerParameterv(GLenum pname)
+{
+  switch (pname)
+  {
+    /* Dec 2012 - http://www.opengl.org/sdk/docs/man4/xhtml/glSamplerParameter.xml */
+
+    case GL_TEXTURE_MIN_FILTER:         return 1;
+    case GL_TEXTURE_MAG_FILTER:         return 1;
+    case GL_TEXTURE_MIN_LOD:            return 1;
+    case GL_TEXTURE_MAX_LOD:            return 1;
+    case GL_TEXTURE_WRAP_S:             return 1;
+    case GL_TEXTURE_WRAP_T:             return 1;
+    case GL_TEXTURE_WRAP_R:             return 1;
+    case GL_TEXTURE_BORDER_COLOR:       return 4;
+    case GL_TEXTURE_COMPARE_MODE:       return 1;
+    case GL_TEXTURE_COMPARE_FUNC:       return 1;
+
+    /* Extensions */
+
+    case GL_TEXTURE_LOD_BIAS:           return 1;
+    case GL_TEXTURE_MAX_ANISOTROPY_EXT: return 1;
+    case GL_TEXTURE_SRGB_DECODE_EXT:    return 1;
+
+    default:                            return 0;
   }
 }
 

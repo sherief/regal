@@ -282,12 +282,16 @@ ${EXT_INIT}
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
 
-  if (maxVertexAttribs > REGAL_MAX_VERTEX_ATTRIBS)
-      maxVertexAttribs = REGAL_MAX_VERTEX_ATTRIBS;
+  Info("OpenGL v attribs : ",maxVertexAttribs);
+
+  if (maxVertexAttribs > REGAL_EMU_IFF_VERTEX_ATTRIBS)
+      maxVertexAttribs = REGAL_EMU_IFF_VERTEX_ATTRIBS;
 
   // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs
   if (vendor == "Qualcomm" || vendor == "Chromium")
     maxVertexAttribs = 8;
+
+  Info("Regal  v attribs : ",maxVertexAttribs);
 }
 
 ${EXT_CODE}
@@ -367,7 +371,7 @@ def versionInitCode(apis, args):
       code += '  core(false),\n'
       code += '  gles(false),\n'
 
-    if name in ['gl', 'glx']:
+    if name in ['gl', 'glx', 'egl']:
       code += '  %s_version_major(-1),\n' % name
       code += '  %s_version_minor(-1),\n' % name
 

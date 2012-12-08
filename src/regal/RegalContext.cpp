@@ -56,6 +56,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalBin.h"
 #include "RegalDsa.h"
 #include "RegalIff.h"
+#include "RegalSo.h"
 #include "RegalVao.h"
 #endif
 
@@ -79,6 +80,7 @@ RegalContext::RegalContext()
   bin(NULL),
   dsa(NULL),
   iff(NULL),
+  so(NULL),
   vao(NULL),
 #endif
 #if REGAL_SYS_PPAPI
@@ -135,7 +137,7 @@ RegalContext::Init()
   {
     RegalAssert(info);
     // emu
-    emuLevel = 7;
+    emuLevel = 8;
     #if REGAL_EMU_VAO
     if (Config::enableEmuVao)
     {
@@ -144,11 +146,19 @@ RegalContext::Init()
       vao->Init(*this);
     }
     #endif /* REGAL_EMU_VAO */
+    #if REGAL_EMU_SO
+    if (Config::enableEmuSo)
+    {
+      so = new RegalSo;
+      emuLevel = 2;
+      so->Init(*this);
+    }
+    #endif /* REGAL_EMU_SO */
     #if REGAL_EMU_IFF
     if (Config::enableEmuIff)
     {
-      iff = new RegalIff;
-      emuLevel = 2;
+      iff = new Emu::Iff;
+      emuLevel = 3;
       iff->Init(*this);
     }
     #endif /* REGAL_EMU_IFF */
@@ -160,7 +170,7 @@ RegalContext::Init()
       info->regalExtensionsSet.insert("GL_EXT_direct_state_access");
       info->regalExtensions = ::boost::print::detail::join(info->regalExtensionsSet,std::string(" "));
       dsa = new RegalDsa;
-      emuLevel = 3;
+      emuLevel = 4;
       dsa->Init(*this);
     }
     #endif /* REGAL_EMU_DSA */
@@ -168,7 +178,7 @@ RegalContext::Init()
     if (Config::enableEmuBin)
     {
       bin = new RegalBin;
-      emuLevel = 4;
+      emuLevel = 5;
       bin->Init(*this);
     }
     #endif /* REGAL_EMU_BIN */
@@ -176,7 +186,7 @@ RegalContext::Init()
     if (Config::enableEmuPpa)
     {
       ppa = new RegalPpa;
-      emuLevel = 5;
+      emuLevel = 6;
       ppa->Init(*this);
     }
     #endif /* REGAL_EMU_PPA */
@@ -184,11 +194,11 @@ RegalContext::Init()
     if (Config::enableEmuObj)
     {
       obj = new RegalObj;
-      emuLevel = 6;
+      emuLevel = 7;
       obj->Init(*this);
     }
     #endif /* REGAL_EMU_OBJ */
-    emuLevel = 7;
+    emuLevel = 8;
 
   }
 #endif
@@ -215,6 +225,7 @@ RegalContext::~RegalContext()
   delete bin;
   delete dsa;
   delete iff;
+  delete so;
   delete vao;
 #endif
 }

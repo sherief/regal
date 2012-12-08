@@ -155,6 +155,27 @@ private:
   array<T,U> &operator=(const array<T,U> &other);
 };
 
+// Raw memory dumping, in groups of 4 bytes
+
+template<typename U>
+struct raw
+{
+  raw(const void *data, const size_t size, const U &quote, const U &open, const U &close, const U &delim)
+  : _data(data), _size(size), _quote(quote), _open(open), _close(close), _delim(delim) {}
+
+  const void *_data;
+  size_t      _size;
+
+  const U _quote;
+  const U _open;
+  const U _close;
+  const U _delim;
+
+private:
+  raw();
+  raw<U> &operator=(const raw<U> &other);
+};
+
 // Iterator printing for containers
 
 template<typename T, typename U>
