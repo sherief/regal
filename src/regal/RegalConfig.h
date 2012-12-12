@@ -48,6 +48,11 @@ namespace Config
   extern bool forceCoreProfile;
   extern bool forceES2Profile;
 
+  // Use GLX or EGL, but not both
+
+  extern bool sysGLX;
+  extern bool sysEGL;
+
   // Initial dispatch enable/disable state
 
   extern bool forceEmulation;

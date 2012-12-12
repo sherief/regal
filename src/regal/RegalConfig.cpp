@@ -39,6 +39,7 @@ using boost::print::print_string;
 
 #include "RegalLog.h"
 #include "RegalConfig.h"
+#include "RegalSystem.h"
 
 REGAL_GLOBAL_END
 
@@ -48,6 +49,8 @@ namespace Config {
 
 bool forceCoreProfile = REGAL_FORCE_CORE_PROFILE;
 bool forceES2Profile  = REGAL_FORCE_ES2_PROFILE;
+bool sysGLX           = REGAL_SYS_GLX;
+bool sysEGL           = REGAL_SYS_EGL && !REGAL_SYS_GLX;
 bool forceEmulation   = REGAL_FORCE_EMULATION;
 bool enableEmulation  = REGAL_EMULATION;
 bool enableDebug      = false;
@@ -94,6 +97,23 @@ void Init()
 #if !REGAL_FORCE_ES2_PROFILE
   tmp = GetEnv( "REGAL_FORCE_ES2_PROFILE" );
   if (tmp) forceES2Profile = atoi(tmp)!=0;
+#endif
+
+#if REGAL_SYS_GLX
+  tmp = GetEnv( "REGAL_SYS_GLX" );
+  if (tmp) sysGLX = atoi(tmp)!=0;
+#endif
+
+#if REGAL_SYS_EGL
+  tmp = GetEnv( "REGAL_SYS_EGL" );
+  if (tmp) sysEGL = atoi(tmp)!=0;
+#endif
+
+  // Default to GLX, if necessary
+
+#if REGAL_SYS_GLX && REGAL_SYS_EGL
+  if (sysGLX && sysEGL)
+    sysEGL = false;
 #endif
 
 #if !REGAL_FORCE_EMULATION
@@ -220,6 +240,14 @@ void Init()
 
   Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
   Info("REGAL_FORCE_ES2_PROFILE  ", forceES2Profile  ? "enabled" : "disabled");
+
+#if REGAL_SYS_GLX
+  Info("REGAL_SYS_GLX            ", sysGLX           ? "enabled" : "disabled");
+#endif
+
+#if REGAL_SYS_EGL
+  Info("REGAL_SYS_EGL            ", sysEGL           ? "enabled" : "disabled");
+#endif
 
   Info("REGAL_FORCE_EMULATION    ", forceEmulation   ? "enabled" : "disabled");
   Info("REGAL_DEBUG              ", enableDebug      ? "enabled" : "disabled");

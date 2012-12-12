@@ -32754,6 +32754,7 @@ extern "C" {
   REGAL_DECL CGLError REGAL_CALL CGLChoosePixelFormat(const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix)
   {
     App("CGLChoosePixelFormat","(", attribs, ")");
+    Init::init();
     if (!dispatchTableGlobal.CGLChoosePixelFormat)
     {
       GetProcAddress( dispatchTableGlobal.CGLChoosePixelFormat, "CGLChoosePixelFormat" );
@@ -32762,7 +32763,6 @@ extern "C" {
         dispatchTableGlobal.CGLChoosePixelFormat = NULL;
     }
     CGLError  ret = (CGLError )0;
-    Init::init();
     static const CGLPixelFormatAttribute nattribs[] =
     {
       kCGLPFAOpenGLProfile,
@@ -34938,6 +34938,7 @@ extern "C" {
   REGAL_DECL EGLDisplay REGAL_CALL eglGetDisplay(EGLNativeDisplayType display_id)
   {
     App("eglGetDisplay","(", display_id, ")");
+    Init::init();
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetDisplay)

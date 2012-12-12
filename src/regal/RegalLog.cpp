@@ -103,6 +103,12 @@ namespace Logging {
 
   bool initialized = false;
 
+#if REGAL_LOG_ONCE
+  bool once      = (REGAL_LOG_ONCE);
+  std::set<std::string> uniqueErrors;
+  std::set<std::string> uniqueWarnings;
+#endif
+
   Timer                   timer;
 
   void Init()
@@ -136,6 +142,11 @@ namespace Logging {
 
     const char *ml = GetEnv("REGAL_LOG_MAX_LINES");
     if (ml) maxLines = atoi(ml);
+
+#if REGAL_LOG_ONCE
+    const char *lo = GetEnv("REGAL_LOG_ONCE");
+    if (lo) once = atoi(lo)!=0;
+#endif
 
     const char *tmp = GetEnv("REGAL_FRAME_TIME");
     if (tmp) frameTime = atoi(tmp)!=0;
@@ -251,7 +262,7 @@ namespace Logging {
     // trying to create a RegalContext and triggering more
     // (recursive) logging.
 
-#if !defined(REGAL_SYS_WGL) && !REGAL_NO_TLS
+#if !REGAL_SYS_WGL && !REGAL_NO_TLS
     if (!Thread::currentContextKey || !pthread_getspecific(Thread::currentContextKey))
       return 0;
 #endif
@@ -380,15 +391,41 @@ namespace Logging {
 #define REGAL_LOG_TAG "Regal"
 #endif
 
-  void Output(const char *prefix, const char *delim, const char *name, const string &str)
+  void Output(const Mode mode, const char *file, const int line, const char *prefix, const char *delim, const char *name, const string &str)
   {
     if (initialized && str.length())
     {
       string m = message(prefix,delim,name,str);
 
+      // TODO - optional Regal source line numbers.
+#if 0
+      m = print_string(file,":",line," ",m);
+#endif
+
+#if REGAL_LOG_ONCE
+      if (once)
+        switch (mode)
+        {
+          case LOG_WARNING:
+            if (uniqueWarnings.find(m)!=uniqueWarnings.end())
+              return;
+            uniqueWarnings.insert(m);
+            break;
+
+          case LOG_ERROR:
+            if (uniqueErrors.find(m)!=uniqueErrors.end())
+              return;
+            uniqueErrors.insert(m);
+            break;
+
+          default:
+            break;
+        }
+#endif
+
       RegalContext *rCtx = NULL;
 
-#if !defined(REGAL_SYS_WGL) && !REGAL_NO_TLS
+#if !REGAL_SYS_WGL && !REGAL_NO_TLS
       if (Thread::currentContextKey && pthread_getspecific(Thread::currentContextKey))
         rCtx = REGAL_GET_CONTEXT();
 #else

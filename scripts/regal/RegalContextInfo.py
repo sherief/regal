@@ -317,7 +317,14 @@ def traverseContextInfo(apis, args):
     c.update([i.category for i in api.functions])
     c.update([i.category for i in api.typedefs])
     c.update([i.category for i in api.enums])
+    
+    for i in api.enums:
+      c.update([j.category for j in i.enumerants])
+
     api.categories = [i for i in c if i and len(i) and i.find('_VERSION_')==-1 and i.find('WGL_core')==-1]
+
+    if api.name == 'egl':
+      api.categories = [i for i in api.categories if not i.startswith('GL_')]
 
 def versionDeclareCode(apis, args):
 

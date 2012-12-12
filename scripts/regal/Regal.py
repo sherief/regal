@@ -92,8 +92,15 @@ extern "C" {
       typedef struct HGLRC__* HGLRC;
     #endif
   #endif
+#elif REGAL_SYS_PPAPI
+  #if defined(__native_client__)
+    #include <inttypes.h>
+  #else
+    typedef __int64 int64_t;
+    typedef unsigned __int64 uint64_t;
+  #endif
 #else
-# include <inttypes.h>
+  #include <inttypes.h>
 #endif
 
 ${API_TYPEDEF}
@@ -268,6 +275,8 @@ def apiFuncDefineCode(apis, args):
       else:
         c += '  %s\n' % debugPrintFunction(function, 'App' )
 
+        c += listToString(indent(emuCodeGen(emue,'prefix'),'  '))
+
         if api.name=='egl':
           c += '\n'
           c += '  #if !REGAL_STATIC_EGL\n'
@@ -361,7 +370,7 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False,
     # If it's array of strings, quote each string
 
     quote = ''
-    if t == 'char **' or t == 'const char **' or t == 'GLchar **' or t == 'const GLchar **' or t == 'LPCSTR *':
+    if t == 'char **' or t == 'const char **' or t == 'GLchar **' or t == 'const GLchar **' or t == 'GLcharARB *' or t == 'LPCSTR *':
       quote = ',"\\\""'
 
     if i.regalLog != None:
@@ -374,7 +383,7 @@ def debugPrintFunction(function, trace = 'ITrace', input = True, output = False,
       args.append('EGLenumToString(%s)'%n)
     elif t == 'GLboolean' or t == 'const GLboolean':
       args.append('toString(%s)'%n)
-    elif t == 'char *' or t == 'const char *' or t == 'GLchar *' or t == 'const GLchar *' or t == 'LPCSTR':
+    elif t == 'char *' or t == 'const char *' or t == 'GLchar *' or t == 'const GLchar *' or t == 'GLcharARB *' or t == 'LPCSTR':
       args.append('boost::print::quote(%s,\'"\')'%n)
     elif i.size!=None and (isinstance(i.size,int) or isinstance(i.size, long)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1:
       args.append('boost::print::array(%s,%s)'%(n,i.size))

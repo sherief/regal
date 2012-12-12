@@ -10219,7 +10219,7 @@ static void REGAL_CALL log_glGetActiveUniformARB(GLhandleARB programObj, GLuint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetActiveUniformARB)(programObj, index, maxLength, length, size, type, name);
-    Driver("glGetActiveUniformARB","(", programObj, ", ", index, ", ", maxLength, ", ", boost::print::array(length,1), ", ", boost::print::array(size,1), ", ", boost::print::array(type,1), ", ", name, ")");
+    Driver("glGetActiveUniformARB","(", programObj, ", ", index, ", ", maxLength, ", ", boost::print::array(length,1), ", ", boost::print::array(size,1), ", ", boost::print::array(type,1), ", ", boost::print::quote(name,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj)
@@ -10250,7 +10250,7 @@ static void REGAL_CALL log_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetInfoLogARB)(obj, maxLength, length, infoLog);
-    Driver("glGetInfoLogARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,length ? 1 : 0), ", ", infoLog, ")");
+    Driver("glGetInfoLogARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,length ? 1 : 0), ", ", boost::print::quote(infoLog,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params)
@@ -10280,7 +10280,7 @@ static void REGAL_CALL log_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLeng
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetShaderSourceARB)(obj, maxLength, length, source);
-    Driver("glGetShaderSourceARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,1), ", ", source, ")");
+    Driver("glGetShaderSourceARB","(", obj, ", ", maxLength, ", ", boost::print::array(length,1), ", ", boost::print::quote(source,'"'), ")");
 }
 
 static GLint REGAL_CALL log_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name)
@@ -12444,7 +12444,7 @@ static void REGAL_CALL log_glGetActiveAttribARB(GLhandleARB programObj, GLuint i
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetActiveAttribARB)(programObj, index, maxLength, length, size, type, name);
-    Driver("glGetActiveAttribARB","(", programObj, ", ", index, ", ", maxLength, ", ", boost::print::array(length,1), ", ", boost::print::array(size,1), ", ", boost::print::array(type,1), ", ", name, ")");
+    Driver("glGetActiveAttribARB","(", programObj, ", ", index, ", ", maxLength, ", ", boost::print::array(length,1), ", ", boost::print::array(size,1), ", ", boost::print::array(type,1), ", ", boost::print::quote(name,'"'), ")");
 }
 
 static GLint REGAL_CALL log_glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name)

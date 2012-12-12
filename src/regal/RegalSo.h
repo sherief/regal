@@ -494,7 +494,19 @@ struct RegalSo : public RegalEmu
                     to->self.SrgbDecodeExt = (GLenum)(params[0]);
                     break;
 
+                case GL_DEPTH_STENCIL_TEXTURE_MODE:
+                case GL_TEXTURE_BASE_LEVEL:
+                case GL_TEXTURE_MAX_LEVEL:
+                case GL_TEXTURE_SWIZZLE_A:
+                case GL_TEXTURE_SWIZZLE_B:
+                case GL_TEXTURE_SWIZZLE_G:
+                case GL_TEXTURE_SWIZZLE_R:
+                    // Known texture object state that is not in a sampler object.
+                    // Everything is cool, just return silently
+                    return;
+
                 default:
+                    // Otherwise an unrecognezed enum.  Issue a warning...
                     Warning( "Unhandled texture parameter enum: pname = ", Token::GLenumToString(pname));
                     return;
             }

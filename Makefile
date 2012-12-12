@@ -680,8 +680,8 @@ tmp/$(SYSTEM)/gtest/static/%.o: src/googletest/src/%.cc
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(GTEST.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-lib/$(GTEST.STATIC): $(GTEST.OBJS)
-	$(CCACHE) $(AR) cr $@ $^
+lib/$(GTEST.STATIC): lib $(GTEST.OBJS)
+	$(CCACHE) $(AR) cr $@ $(GTEST.OBJS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif

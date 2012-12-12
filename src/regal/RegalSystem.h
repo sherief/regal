@@ -41,15 +41,15 @@
 #define __REGAL_SYSTEM_H__
 
 #if _WIN32
-#if defined(PPAPI)
-# ifndef REGAL_SYS_PPAPI
-#  define REGAL_SYS_PPAPI 1
+# if defined(PPAPI)
+#  ifndef REGAL_SYS_PPAPI
+#   define REGAL_SYS_PPAPI 1
+#  endif
+# else
+#  ifndef REGAL_SYS_WGL
+#   define REGAL_SYS_WGL 1
+#  endif
 # endif
-#else
-# ifndef REGAL_SYS_WGL
-#  define REGAL_SYS_WGL 1
-# endif
-#endif
 #elif __APPLE__
 # include <TargetConditionals.h>
 # if TARGET_OS_IPHONE
@@ -76,6 +76,34 @@
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1
 # endif
+#endif
+
+#ifndef REGAL_SYS_WGL
+# define REGAL_SYS_WGL 0
+#endif
+
+#ifndef REGAL_SYS_IOS
+# define REGAL_SYS_IOS 0
+#endif
+
+#ifndef REGAL_SYS_OSX
+# define REGAL_SYS_OSX 0
+#endif
+
+#ifndef REGAL_SYS_PPAPI
+# define REGAL_SYS_PPAPI 0
+#endif
+
+#ifndef REGAL_SYS_ANDROID
+# define REGAL_SYS_ANDROID 0
+#endif
+
+#ifndef REGAL_SYS_EGL
+# define REGAL_SYS_EGL 0
+#endif
+
+#ifndef REGAL_SYS_GLX
+# define REGAL_SYS_GLX 0
 #endif
 
 #endif // __REGAL_SYSTEM_H__

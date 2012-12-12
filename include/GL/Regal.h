@@ -42,13 +42,13 @@
 
 #if _WIN32
 # if defined(PPAPI)
-#   ifndef REGAL_SYS_PPAPI
-#     define REGAL_SYS_PPAPI 1
-#   endif
+#  ifndef REGAL_SYS_PPAPI
+#   define REGAL_SYS_PPAPI 1
+#  endif
 # else
-#   ifndef REGAL_SYS_WGL
-#     define REGAL_SYS_WGL 1
-#   endif
+#  ifndef REGAL_SYS_WGL
+#   define REGAL_SYS_WGL 1
+#  endif
 # endif
 #elif __APPLE__
 # include <TargetConditionals.h>
@@ -76,6 +76,34 @@
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1
 # endif
+#endif
+
+#ifndef REGAL_SYS_WGL
+# define REGAL_SYS_WGL 0
+#endif
+
+#ifndef REGAL_SYS_IOS
+# define REGAL_SYS_IOS 0
+#endif
+
+#ifndef REGAL_SYS_OSX
+# define REGAL_SYS_OSX 0
+#endif
+
+#ifndef REGAL_SYS_PPAPI
+# define REGAL_SYS_PPAPI 0
+#endif
+
+#ifndef REGAL_SYS_ANDROID
+# define REGAL_SYS_ANDROID 0
+#endif
+
+#ifndef REGAL_SYS_EGL
+# define REGAL_SYS_EGL 0
+#endif
+
+#ifndef REGAL_SYS_GLX
+# define REGAL_SYS_GLX 0
 #endif
 
 #if REGAL_SYS_WGL
@@ -158,7 +186,7 @@ extern "C" {
     typedef unsigned __int64 uint64_t;
   #endif
 #else
-#include <inttypes.h>
+  #include <inttypes.h>
 #endif
 
 typedef unsigned int GLenum;

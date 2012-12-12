@@ -5,6 +5,7 @@ from string import Template, upper, replace
 from ApiUtil import outputCode
 from ApiCodeGen import *
 
+from EmuInit           import formulae       as initFormulae
 from EmuContextState   import formulae       as contextStateFormulae
 from EmuGetString      import formulae       as getStringFormulae
 from EmuForceCore      import formulae       as forceCoreFormulae
@@ -34,6 +35,7 @@ from EmuFilter import formulae as filterFormulae
 # Regal.cpp emulation
 
 emuRegal = [
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : initFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },

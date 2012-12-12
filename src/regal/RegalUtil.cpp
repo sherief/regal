@@ -42,6 +42,8 @@ using namespace std;
 #include <boost/print/print_string.hpp>
 using boost::print::print_string;
 
+#include "RegalConfig.h"
+
 #if REGAL_SYS_WGL
 
 typedef void *HMODULE;
