@@ -6,11 +6,11 @@ soFormulae = {
 
     'GenSamplers' : {
         'entries' : [ 'glGenSamplers' ],
-        'impl' : [ '_context->so->GenSamplers( ${arg0}, ${arg1} );' ],
+        'impl' : [ '_context->so->GenSamplers( ${arg0plus} );' ],
     },
     'DeleteSamplers' : {
         'entries' : [ 'glDeleteSamplers' ],
-        'impl' : [ '_context->so->DeleteSamplers( _context, ${arg0}, ${arg1} );' ],
+        'impl' : [ '_context->so->DeleteSamplers( ${arg0plus} );' ],
     },
     'IsSampler' : {
         'entries' : [ 'glIsSampler' ],
@@ -18,12 +18,12 @@ soFormulae = {
     },
     'BindSampler' : {
         'entries' : [ 'glBindSampler' ],
-        'impl' : [ 'return _context->so->BindSampler( _context,  ${arg0}, ${arg1} );' ],
+        'impl' : [ '_context->so->BindSampler( ${arg0plus} );' ],
     },
     'GetSamplerParameterv' : {
         'entries' : [ 'glGetSamplerParameter(I|)(u|)(f|i)v' ],
         'impl' : [
-            'if ( !_context->so->GetSamplerParameterv( ${arg0plus} ) ) {',
+            'if ( !_context->so->GetSamplerParameterv( _context, ${arg0plus} ) ) {',
             '   _context->dispatcher.emulation.glGetSamplerParameter${m1}${m2}${m3}v( ${arg0plus} );',
             '}',
         ]
@@ -38,7 +38,11 @@ soFormulae = {
     },
     'ActiveTexture' : {
         'entries' : [ 'glActiveTexture' ],
-        'prefix' : [ '_context->so->ActiveTexture( ${arg0} );' ],
+        'impl' : [
+            'if ( !_context->so->ActiveTexture( _context, ${arg0plus} ) ) {',
+            '   _context->dispatcher.emulation.glActiveTexture( ${arg0plus} );',
+            '}',
+        ]
     },
     'GenTextures' : {
         'entries' : [ 'glGenTextures' ],
@@ -50,10 +54,26 @@ soFormulae = {
     },
     'BindTexture' : {
         'entries' : [ 'glBindTexture' ],
-        'impl' : [ 'return _context->so->BindTexture( _context, ${arg0plus} );' ],
+        'impl' : [
+            'if ( !_context->so->BindTexture( _context, ${arg0plus} ) ) {',
+            '   _context->dispatcher.emulation.glBindTexture( ${arg0plus} );',
+            '}',
+        ]
     },
     'TexParameter' : {
         'entries' : [ 'glTexParameter(I|)(u|)(f|i)(v|)(EXT|)' ],
-        'prefix' : [ '_context->so->TexParameter${m4}( ${arg0plus} );' ],
+        'prefix' : [ '_context->so->TexParameter${m4}( _context, ${arg0plus} );', ]
+    },
+    'GetTexParameterv' : {
+        'entries' : [ 'glGetTexParameter(I|)(u|)(f|i)v' ],
+        'impl' : [
+            'if ( !_context->so->GetTexParameterv( _context, ${arg0plus} ) ) {',
+            '   _context->dispatcher.emulation.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
+            '}',
+        ]
+    },
+    'PreDraw' : {
+        'entries' : [ 'gl(Multi|)Draw(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
+        'prefix' : [ '_context->so->PreDraw( _context );', ],
     },
 }

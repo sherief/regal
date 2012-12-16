@@ -317,7 +317,7 @@ def traverseContextInfo(apis, args):
     c.update([i.category for i in api.functions])
     c.update([i.category for i in api.typedefs])
     c.update([i.category for i in api.enums])
-    
+
     for i in api.enums:
       c.update([j.category for j in i.enumerants])
 

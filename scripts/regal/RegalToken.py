@@ -18,6 +18,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalToken.h"
 
+#include <boost/print/string_list.hpp>
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -35,6 +37,19 @@ namespace Token {
     return 1<=v && v<=4 ? integer[v] : GLenumToString(v);
   }
 
+  std::string GLclearToString(GLbitfield v)
+  {
+    const GLbitfield other = v & ~(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+    boost::print::string_list<std::string> tmp;
+    if (v & GL_COLOR_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT"; }
+    if (v & GL_DEPTH_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_DEPTH_BUFFER_BIT"; }
+    if (v & GL_STENCIL_BUFFER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_STENCIL_BUFFER_BIT"; }
+    if (other || v==0)             { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+
+    return tmp.str();
+  }
+
 ${CODE}
 
 }
@@ -47,8 +62,54 @@ REGAL_NAMESPACE_END
 
 def filterTokens(tokens):
 
+  suffixes  = ['_ARB','_KHR','_EXT','_NV','_ATI','_PGI','_OES','_IBM','_SUN','_SGI','_SGIX','_SGIS','_APPLE','_QCOM','_ANGLE']
+  suffixes2 = ['_BIT','_BITS','_BIT_NV','_BITS_NV','_BIT_PGI','_BITS_PGI','_BIT_EXT','_BITS_EXT','_BIT_SGIX','_BITS_SGIX']
+
+  def suffixCompare(i,j):
+  
+    # Prefer anything to _BIT, _BITS
+
+    im = [ 1 for k in suffixes2 if i.endswith(k) ]
+    jm = [ 1 for k in suffixes2 if j.endswith(k) ]
+
+    if len(im)>0 and len(jm)==0:
+        return 1
+
+    if len(im)==0 and len(jm)>0:
+        return -1
+
+    # prefer the string with none of the above suffixes
+    
+    im = [ 1 for k in suffixes if i.endswith(k) ]
+    jm = [ 1 for k in suffixes if j.endswith(k) ]
+
+    if len(im)>0 and len(jm)==0:
+        return 1
+
+    if len(im)==0 and len(jm)>0:
+        return -1
+
+    # prefer the string with earliest of the above suffixes
+
+    for k in suffixes:
+      if i.endswith(k):
+        if j.endswith(k):
+          return 0
+        else:
+          return -1
+      else:
+        if j.endswith(k):
+          return 1
+  
+    return 0
+      
+  # Sort names into preferred suffix order
+  
+  tokens = [ (j[0], sorted(j[1],cmp=suffixCompare)) for j in tokens ]
+
   u = tokens
-  for i in ['_ARB','_KHR','_EXT','_NV','_ATI','_PGI','_OES','_IBM','_SUN','_SGI','_SGIX','_SGIS','_APPLE','_QCOM','_ANGLE']:
+  
+  for i in suffixes:
     u = [ (j[0], [ k for k in j[1] if not k.endswith(i)  ]) for j in u ]
 
   # Filter out _BIT duplicates
@@ -231,23 +292,27 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
+#include <string>
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
 namespace Token {
 
-  const char * GLenumToString        (GLenum    v);
-  const char * GLerrorToString       (GLenum    v); // gluErrorString
-  const char * GLbooleanToString     (GLboolean v);
-  const char * internalFormatToString(GLint     v);
+  const char * GLenumToString        (GLenum     v);
+  const char * GLerrorToString       (GLenum     v); // gluErrorString
+  const char * GLbooleanToString     (GLboolean  v);
+  const char * internalFormatToString(GLint      v);
+
+  std::string  GLclearToString       (GLbitfield v);
 
   #if REGAL_SYS_GLX
-  const char * GLXenumToString       (int       v);
+  const char * GLXenumToString       (int        v);
   #endif
 
   #if REGAL_SYS_EGL
-  const char * EGLenumToString       (int       v);
+  const char * EGLenumToString       (int        v);
   #endif
 
   inline const char *toString(const GLenum    v) { return GLenumToString(v);    }

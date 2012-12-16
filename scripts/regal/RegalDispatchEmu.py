@@ -7,7 +7,6 @@ from ApiUtil import typeIsVoid
 
 from ApiCodeGen import *
 
-from Regal            import debugPrintFunction
 from RegalContext     import emu
 from RegalContextInfo import cond
 
@@ -316,7 +315,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '    }\n'
                 code += '    if (format!=GLenum(internalformat))\n'
                 code += '    {\n'
-                code += '        Warning("%s does not support mismatching format and internalformat ",GLenumToString(format),"!=",GLenumToString(internalformat)," for ES 2.0.");\n'%(name)              
+                code += '        Warning("%s does not support mismatching format and internalformat ",GLenumToString(format),"!=",GLenumToString(internalformat)," for ES 2.0.");\n'%(name)
                 code += '        return;\n'
                 code += '    }\n'
                 code += '  }\n'

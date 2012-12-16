@@ -91,7 +91,9 @@ RegalContext::RegalContext()
   thread(0),
   logCallback(NULL),
   depthBeginEnd(0),
-  depthPushAttrib(0)
+  depthPushAttrib(0),
+  codeInputNext(0),
+  codeOutputNext(0)
 {
   Internal("RegalContext::RegalContext","()");
 
@@ -220,13 +222,27 @@ RegalContext::~RegalContext()
 
 #if REGAL_EMULATION
   // emu
+  #if REGAL_EMU_OBJ
   delete obj;
+  #endif /* REGAL_EMU_OBJ */
+  #if REGAL_EMU_PPA
   delete ppa;
+  #endif /* REGAL_EMU_PPA */
+  #if REGAL_EMU_BIN
   delete bin;
+  #endif /* REGAL_EMU_BIN */
+  #if REGAL_EMU_DSA
   delete dsa;
+  #endif /* REGAL_EMU_DSA */
+  #if REGAL_EMU_IFF
   delete iff;
+  #endif /* REGAL_EMU_IFF */
+  #if REGAL_EMU_SO
   delete so;
+  #endif /* REGAL_EMU_SO */
+  #if REGAL_EMU_VAO
   delete vao;
+  #endif /* REGAL_EMU_VAO */
 #endif
 }
 

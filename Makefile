@@ -174,6 +174,7 @@ LIB.SRCS           += src/regal/RegalDispatchGlobal.cpp
 LIB.SRCS           += src/regal/RegalDispatcher.cpp
 LIB.SRCS           += src/regal/RegalDispatchEmu.cpp
 LIB.SRCS           += src/regal/RegalDispatchLog.cpp
+LIB.SRCS           += src/regal/RegalDispatchCode.cpp
 LIB.SRCS           += src/regal/RegalDispatchDebug.cpp
 LIB.SRCS           += src/regal/RegalDispatchError.cpp
 LIB.SRCS           += src/regal/RegalDispatchCache.cpp

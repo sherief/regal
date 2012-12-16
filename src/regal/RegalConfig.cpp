@@ -55,6 +55,7 @@ bool forceEmulation   = REGAL_FORCE_EMULATION;
 bool enableEmulation  = REGAL_EMULATION;
 bool enableDebug      = false;
 bool enableError      = false;
+bool enableCode       = false;
 bool enableLog        = REGAL_LOG;
 bool enableDriver     = REGAL_DRIVER;
 
@@ -139,6 +140,11 @@ void Init()
 #if REGAL_ERROR
   tmp = GetEnv( "REGAL_ERROR" );
   if (tmp) enableError = atoi(tmp)!=0;
+#endif
+
+#if REGAL_CODE
+  tmp = GetEnv( "REGAL_CODE" );
+  if (tmp) enableCode = atoi(tmp)!=0;
 #endif
 
 #if REGAL_LOG
@@ -252,6 +258,7 @@ void Init()
   Info("REGAL_FORCE_EMULATION    ", forceEmulation   ? "enabled" : "disabled");
   Info("REGAL_DEBUG              ", enableDebug      ? "enabled" : "disabled");
   Info("REGAL_ERROR              ", enableError      ? "enabled" : "disabled");
+  Info("REGAL_CODE               ", enableCode       ? "enabled" : "disabled");
   Info("REGAL_EMULATION          ", enableEmulation  ? "enabled" : "disabled");
   Info("REGAL_LOG                ", enableLog        ? "enabled" : "disabled");
   Info("REGAL_DRIVER             ", enableDriver     ? "enabled" : "disabled");

@@ -48,13 +48,27 @@ public:
   string_list &operator=(const string_list &other);
 
   void clear();
-  void push_back     (const char *string);
-  void push_back     (const T    &string);
-  void push_back_swap(      T    &string);
+
+  void push_front     (const char *string);
+  void push_front     (const T    &string);
+  void push_front_swap(      T    &string);
+
+  void push_back      (const char *string);
+  void push_back      (const T    &string);
+  void push_back_swap (      T    &string);
 
   template<typename I>
   string_list<T> &
   operator<<(I i)
+  {
+    PushBack p(*this);
+    ::boost::print::print(static_cast<T &>(p),i);
+    return *this;
+  }
+
+  template<typename I>
+  string_list<T> &
+  operator+=(I i)
   {
     PushBack p(*this);
     ::boost::print::print(static_cast<T &>(p),i);
@@ -78,6 +92,29 @@ public:
 
         T &operator[](const size_type i);
   const T &operator[](const size_type i) const;
+
+  // Zero-copy push_front to string_list
+
+  struct PushFront : public T
+  {
+  public:
+    inline PushFront(string_list<T> &list) : _list(list) {}
+    inline ~PushFront()
+    {
+      if (T::length())
+      {
+        _list._count += T::length();
+        _list._list.push_front(T());
+        _list._list.front().swap(*this);
+      }
+    }
+
+  private:
+    PushFront();                                  // Not implemented
+    PushFront &operator=(const PushFront &other);  // Not implemented
+
+    string_list<T> &_list;
+  };
 
   // Zero-copy push_back to string_list
 
@@ -175,6 +212,25 @@ string_list<T>::operator=(const string_list<T> &other)
 
 template<typename T> void string_list<T>::clear()   { _list.clear(); _count = 0; }
 
+template<typename T> void string_list<T>::push_front(const typename string_list<T>::char_type *string)
+{
+  _list.push_front(string ? string : T());
+  _count += _list.front().length();
+}
+
+template<typename T> void string_list<T>::push_front(const T &string)
+{
+  _list.push_front(string);
+  _count += string.length();
+}
+
+template<typename T> void string_list<T>::push_front_swap(T &string)
+{
+  _list.push_front(T());
+  _count += string.length();
+  _list.front().swap(string);
+}
+
 template<typename T> void string_list<T>::push_back(const typename string_list<T>::char_type *string)
 {
   _list.push_back(string ? string : T());
@@ -190,8 +246,8 @@ template<typename T> void string_list<T>::push_back(const T &string)
 template<typename T> void string_list<T>::push_back_swap(T &string)
 {
   _list.push_back(T());
-  _list.back().swap(string);
   _count += string.length();
+  _list.back().swap(string);
 }
 
 template<typename T> void string_list<T>::sort()

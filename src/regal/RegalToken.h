@@ -46,23 +46,27 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
+#include <string>
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
 namespace Token {
 
-  const char * GLenumToString        (GLenum    v);
-  const char * GLerrorToString       (GLenum    v); // gluErrorString
-  const char * GLbooleanToString     (GLboolean v);
-  const char * internalFormatToString(GLint     v);
+  const char * GLenumToString        (GLenum     v);
+  const char * GLerrorToString       (GLenum     v); // gluErrorString
+  const char * GLbooleanToString     (GLboolean  v);
+  const char * internalFormatToString(GLint      v);
+
+  std::string  GLclearToString       (GLbitfield v);
 
   #if REGAL_SYS_GLX
-  const char * GLXenumToString       (int       v);
+  const char * GLXenumToString       (int        v);
   #endif
 
   #if REGAL_SYS_EGL
-  const char * EGLenumToString       (int       v);
+  const char * EGLenumToString       (int        v);
   #endif
 
   inline const char *toString(const GLenum    v) { return GLenumToString(v);    }

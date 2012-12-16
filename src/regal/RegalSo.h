@@ -77,13 +77,13 @@ struct RegalSo : public RegalEmu
 
     RegalSo(const RegalSo &other)
     {
-        memcpy(this,&other,sizeof(SamplerObject));
+        memcpy(this,&other,sizeof(RegalSo));
     }
 
     RegalSo &operator=(const RegalSo &other)
     {
         if (&other!=this)
-            memcpy(this,&other,sizeof(SamplerObject));
+            memcpy(this,&other,sizeof(RegalSo));
         return *this;
     }
 
@@ -98,7 +98,7 @@ struct RegalSo : public RegalEmu
         nextSamplerObjectId = 1;
     }
 
-    GLenum TT_Index2Enum(GLuint index)
+    static GLenum TT_Index2Enum(GLuint index)
     {
         switch (index)
         {
@@ -108,8 +108,8 @@ struct RegalSo : public RegalEmu
             case 3: return GL_TEXTURE_1D_ARRAY;
             case 4: return GL_TEXTURE_2D_ARRAY;
             case 5: return GL_TEXTURE_RECTANGLE;
-            case 6: return GL_TEXTURE_BUFFER;
-            case 7: return GL_TEXTURE_CUBE_MAP;
+            case 6: return GL_TEXTURE_CUBE_MAP;
+            case 7: return GL_TEXTURE_CUBE_MAP_ARRAY;
             case 8: return GL_TEXTURE_2D_MULTISAMPLE;
             case 9: return GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
             default:
@@ -119,7 +119,7 @@ struct RegalSo : public RegalEmu
         return REGAL_NUM_TEXTURE_TARGETS;
     }
 
-    GLuint TT_Enum2Index(GLenum texture)
+    static GLuint TT_Enum2Index(GLenum texture)
     {
         switch (texture)
         {
@@ -129,8 +129,8 @@ struct RegalSo : public RegalEmu
             case GL_TEXTURE_1D_ARRAY: return 3;
             case GL_TEXTURE_2D_ARRAY: return 4;
             case GL_TEXTURE_RECTANGLE: return 5;
-            case GL_TEXTURE_BUFFER: return 6;
-            case GL_TEXTURE_CUBE_MAP: return 7;
+            case GL_TEXTURE_CUBE_MAP: return 6;
+            case GL_TEXTURE_CUBE_MAP_ARRAY: return 7;
             case GL_TEXTURE_2D_MULTISAMPLE: return 8;
             case GL_TEXTURE_2D_MULTISAMPLE_ARRAY: return 9;
             default:
@@ -140,8 +140,33 @@ struct RegalSo : public RegalEmu
         return ~(GLuint(0));
     }
 
-    struct SamplerObject
+    struct Version
     {
+        Version()
+        : val( 0 )
+        , updated( false )
+        {}
+        GLuint64 Current() const {
+            return val;
+        }
+        GLuint64 Update() {
+            if( updated == false ) {
+                val++;
+                updated = true;
+            }
+          return val;
+        }
+        void Reset() {
+            updated = false;
+        }
+        GLuint64 val;
+        bool updated;
+    };
+
+    struct SamplingState
+    {
+        GLuint64 ver;
+
         GLint BorderColor[4];     //  Border color
         GLenum MinFilter;         //  Minification function
         GLenum MagFilter;         //  Magnification function
@@ -156,8 +181,9 @@ struct RegalSo : public RegalEmu
         GLenum SrgbDecodeExt;     //  sRGB decode mode
         GLfloat MaxAnisotropyExt; //  maximum degree of anisotropy
 
-        SamplerObject()
-        : MinFilter(GL_NEAREST_MIPMAP_LINEAR)
+        SamplingState()
+        : ver(0)
+        , MinFilter(GL_NEAREST_MIPMAP_LINEAR)
         , MagFilter(GL_LINEAR)
         , WrapS(GL_REPEAT)
         , WrapT(GL_REPEAT)
@@ -173,41 +199,43 @@ struct RegalSo : public RegalEmu
             BorderColor[0] = BorderColor[1] = BorderColor[2] = BorderColor[3] = 0;
         }
 
-        SamplerObject(const SamplerObject &other)
+        SamplingState(const SamplingState &other)
         {
-            memcpy(this,&other,sizeof(SamplerObject));
+            memcpy(this,&other,sizeof(SamplingState));
         }
 
-        SamplerObject &operator=(const SamplerObject &other)
+        SamplingState &operator=(const SamplingState &other)
         {
             if (&other!=this)
-                memcpy(this,&other,sizeof(SamplerObject));
+                memcpy(this,&other,sizeof(SamplingState));
             return *this;
         }
-
-        void SendStateToTextureUnit(GLenum target, GLuint unit, GLuint activeUnit, DispatchTable &tbl);
     };
 
-    struct TextureObject
+    struct TextureState
     {
-        GLuint name;
-        SamplerObject self;
-
-        TextureObject()
-        : name(0)
-        {
-        }
+        SamplingState app;
+        SamplingState drv;
     };
 
     struct TextureUnit
     {
-        GLuint boundTextureObjects[REGAL_NUM_TEXTURE_TARGETS];
-        GLuint boundSamplerObject;
+        GLuint64 ver;
+        GLuint64 boundSamplerVersion;
+        GLuint64 boundTextureVersions[REGAL_NUM_TEXTURE_TARGETS];
+        SamplingState* boundSamplerObject;
+        TextureState* boundTextureObjects[REGAL_NUM_TEXTURE_TARGETS];
 
         TextureUnit()
-        : boundSamplerObject(0)
+        : ver(0)
+        , boundSamplerVersion(0)
+        , boundSamplerObject(NULL)
         {
-            memset(boundTextureObjects,0,sizeof(boundTextureObjects));
+            for (int tti = 0; tti< REGAL_NUM_TEXTURE_TARGETS; tti++)
+            {
+                boundTextureVersions[tti] = 0;
+                boundTextureObjects[tti] = NULL;
+            }
         }
 
         TextureUnit(const TextureUnit &other)
@@ -230,83 +258,75 @@ struct RegalSo : public RegalEmu
         return SamplerParameterv(ctx, sampler, pname, &param);
     }
 
-    void TexParameterV( RegalContext * ctx, GLenum target, GLenum pname, const GLint * params )
-    {
-        ctx->dispatcher.emulation.glTexParameteriv(target, pname, params);
-    }
-
-    void TexParameterV( RegalContext * ctx, GLenum target, GLenum pname, const GLuint * params )
-    {
-        ctx->dispatcher.emulation.glTexParameterIuiv(target, pname, params);
-    }
-
-    void TexParameterV( RegalContext * ctx, GLenum target, GLenum pname, const GLfloat * params )
-    {
-        ctx->dispatcher.emulation.glTexParameterfv(target, pname, params);
-    }
-
     template <typename T> bool SamplerParameterv( RegalContext * ctx, GLuint sampler, GLenum pname, T * params )
     {
         if (!sampler || samplerObjects.count(sampler) < 1)
             return false;
 
-        SamplerObject *so = samplerObjects[sampler];
+        SamplingState *ss = samplerObjects[sampler];
+
+        if (!ss)
+            return false;
 
         switch (pname)
         {
             case GL_TEXTURE_BORDER_COLOR:
-                so->BorderColor[0] = static_cast<GLint>(params[0]);
-                so->BorderColor[1] = static_cast<GLint>(params[1]);
-                so->BorderColor[2] = static_cast<GLint>(params[2]);
-                so->BorderColor[3] = static_cast<GLint>(params[3]);
+                ss->BorderColor[0] = static_cast<GLint>(params[0]);
+                ss->BorderColor[1] = static_cast<GLint>(params[1]);
+                ss->BorderColor[2] = static_cast<GLint>(params[2]);
+                ss->BorderColor[3] = static_cast<GLint>(params[3]);
                 break;
 
             case GL_TEXTURE_COMPARE_FUNC:
-                so->CompareFunc = static_cast<GLenum>(*params);
+                ss->CompareFunc = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_COMPARE_MODE:
-                so->CompareMode = static_cast<GLenum>(*params);
+                ss->CompareMode = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_LOD_BIAS:
-                so->LodBias = static_cast<GLfloat>(*params);
+                ss->LodBias = static_cast<GLfloat>(*params);
                 break;
 
             case GL_TEXTURE_MAX_ANISOTROPY_EXT:
-                so->MaxAnisotropyExt = static_cast<GLfloat>(*params);
+                if (!ctx->info->gl_ext_texture_filter_anisotropic)
+                    return false;
+                ss->MaxAnisotropyExt = static_cast<GLfloat>(*params);
                 break;
 
             case GL_TEXTURE_MAG_FILTER:
-                so->MagFilter = static_cast<GLenum>(*params);
+                ss->MagFilter = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_MAX_LOD:
-                so->MaxLod = static_cast<GLfloat>(*params);
+                ss->MaxLod = static_cast<GLfloat>(*params);
                 break;
 
             case GL_TEXTURE_MIN_FILTER:
-                so->MinFilter = static_cast<GLenum>(*params);
+                ss->MinFilter = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_MIN_LOD:
-                so->MinLod = static_cast<GLfloat>(*params);
+                ss->MinLod = static_cast<GLfloat>(*params);
                 break;
 
             case GL_TEXTURE_WRAP_R:
-                so->WrapR = static_cast<GLenum>(*params);
+                ss->WrapR = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_WRAP_S:
-                so->WrapS = static_cast<GLenum>(*params);
+                ss->WrapS = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_WRAP_T:
-                so->WrapT = static_cast<GLenum>(*params);
+                ss->WrapT = static_cast<GLenum>(*params);
                 break;
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
-                so->SrgbDecodeExt = static_cast<GLenum>(*params);
+                if (!ctx->info->gl_ext_texture_srgb_decode)
+                    return false;
+                ss->SrgbDecodeExt = static_cast<GLenum>(*params);
                 break;
 
             default:
@@ -314,231 +334,282 @@ struct RegalSo : public RegalEmu
                 return false;
         }
 
-        GLuint originalActiveUnit = activeTextureUnit;
-
-        for (GLuint unit=0; unit < REGAL_EMU_MAX_TEXTURE_UNITS; unit++)
-        {
-            TextureUnit &tu = textureUnits[unit];
-
-            if (tu.boundSamplerObject == sampler)
-            {
-                for (GLuint tti=0; tti < REGAL_NUM_TEXTURE_TARGETS; tti++)
-                {
-                    GLuint to = tu.boundTextureObjects[tti];
-                    if (to)
-                    {
-                        if (unit != activeTextureUnit)
-                            ctx->dispatcher.emulation.glActiveTexture( GL_TEXTURE0 + unit );
-
-                        TexParameterV( ctx, TT_Index2Enum(tti), pname, params);
-                    }
-                }
-            }
-        }
-
-        if (activeTextureUnit != originalActiveUnit)
-            ctx->dispatcher.emulation.glActiveTexture( GL_TEXTURE0 + originalActiveUnit );
+        ss->ver = mainVer.Update();
 
         return true;
     }
 
-    template <typename T> bool GetSamplerParameterv( GLuint sampler, GLenum pname, T * params )
+    template <typename T> bool GetSamplerParameterv( RegalContext * ctx, GLuint sampler, GLenum pname, T * params )
     {
         if (!sampler || samplerObjects.count(sampler) < 1)
             return false;
 
-        SamplerObject *so = samplerObjects[sampler];
+        SamplingState *ss = samplerObjects[sampler];
 
         switch (pname)
         {
             case GL_TEXTURE_BORDER_COLOR:
-                params[0] = static_cast<T>(so->BorderColor[0]);
-                params[1] = static_cast<T>(so->BorderColor[1]);
-                params[2] = static_cast<T>(so->BorderColor[2]);
-                params[3] = static_cast<T>(so->BorderColor[3]);
+                params[0] = static_cast<T>(ss->BorderColor[0]);
+                params[1] = static_cast<T>(ss->BorderColor[1]);
+                params[2] = static_cast<T>(ss->BorderColor[2]);
+                params[3] = static_cast<T>(ss->BorderColor[3]);
                 break;
 
             case GL_TEXTURE_COMPARE_FUNC:
-                *params = static_cast<T>(so->CompareFunc);
+                *params = static_cast<T>(ss->CompareFunc);
                 break;
 
             case GL_TEXTURE_COMPARE_MODE:
-                *params = static_cast<T>(so->CompareMode);
+                *params = static_cast<T>(ss->CompareMode);
                 break;
 
             case GL_TEXTURE_LOD_BIAS:
-                *params = static_cast<T>(so->LodBias);
+                *params = static_cast<T>(ss->LodBias);
                 break;
 
             case GL_TEXTURE_MAX_ANISOTROPY_EXT:
-                *params = static_cast<T>(so->MaxAnisotropyExt);
+                if (!ctx->info->gl_ext_texture_filter_anisotropic)
+                    return false;
+                *params = static_cast<T>(ss->MaxAnisotropyExt);
                 break;
 
             case GL_TEXTURE_MAG_FILTER:
-                *params = static_cast<T>(so->MagFilter);
+                *params = static_cast<T>(ss->MagFilter);
                 break;
 
             case GL_TEXTURE_MAX_LOD:
-                *params = static_cast<T>(so->MaxLod);
+                *params = static_cast<T>(ss->MaxLod);
                 break;
 
             case GL_TEXTURE_MIN_FILTER:
-                *params = static_cast<T>(so->MinFilter);
+                *params = static_cast<T>(ss->MinFilter);
                 break;
 
             case GL_TEXTURE_MIN_LOD:
-                *params = static_cast<T>(so->MinLod);
+                *params = static_cast<T>(ss->MinLod);
                 break;
 
             case GL_TEXTURE_WRAP_R:
-                *params = static_cast<T>(so->WrapR);
+                *params = static_cast<T>(ss->WrapR);
                 break;
 
             case GL_TEXTURE_WRAP_S:
-                *params = static_cast<T>(so->WrapS);
+                *params = static_cast<T>(ss->WrapS);
                 break;
 
             case GL_TEXTURE_WRAP_T:
-                *params = static_cast<T>(so->WrapT);
+                *params = static_cast<T>(ss->WrapT);
                 break;
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
-                *params = static_cast<T>(so->SrgbDecodeExt);
+                if (!ctx->info->gl_ext_texture_srgb_decode)
+                    return false;
+                *params = static_cast<T>(ss->SrgbDecodeExt);
                 break;
 
             default:
-                Warning( "Unhandled texture parameter enum: pname = ", Token::GLenumToString(pname));
+                Warning( "Unhandled sampler parameter enum: pname = ", Token::GLenumToString(pname));
                 return false;
         }
         return true;
     }
 
-    template <typename T> void TexParameter( GLenum target, GLenum pname, T param )
+    template <typename T> void TexParameter( RegalContext * ctx, GLenum target, GLenum pname, T param )
     {
         if ( target != GL_TEXTURE_BORDER_COLOR)
-            TexParameterv(target, pname, &param);
+            TexParameterv(ctx, target, pname, &param);
     }
 
-    template <typename T> void TexParameterv( GLenum target, GLenum pname, T * params )
+    template <typename T> void TexParameterv( RegalContext * ctx, GLenum target, GLenum pname, T * params )
     {
         GLuint tti = TT_Enum2Index(target);
 
-        if (tti == ~(GLuint(0)))
+        if (tti >= REGAL_NUM_TEXTURE_TARGETS)
             return;
 
         TextureUnit &tu = textureUnits[activeTextureUnit];
 
-        GLuint t = tu.boundTextureObjects[tti];
+        TextureState* ts = tu.boundTextureObjects[tti];
 
-        if (t)
+        SamplingState *as = NULL;
+        SamplingState *ds = NULL;
+
+        if (ts)
         {
-            TextureObject *to = textureObjects[t];
-
-            if (!to)
-                return;
-
-            switch (pname)
-            {
-                case GL_TEXTURE_BORDER_COLOR:
-                    to->self.BorderColor[0] = (GLint)(params[0]);
-                    to->self.BorderColor[1] = (GLint)(params[1]);
-                    to->self.BorderColor[2] = (GLint)(params[2]);
-                    to->self.BorderColor[3] = (GLint)(params[3]);
-                    break;
-
-                case GL_TEXTURE_MIN_FILTER:
-                    to->self.MinFilter = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_MAG_FILTER:
-                    to->self.MagFilter = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_WRAP_S:
-                    to->self.WrapS = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_WRAP_T:
-                    to->self.WrapT = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_WRAP_R:
-                    to->self.WrapR = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_COMPARE_MODE:
-                    to->self.CompareMode = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_COMPARE_FUNC:
-                    to->self.CompareFunc = (GLint)(params[0]);
-                    break;
-
-                case GL_TEXTURE_MIN_LOD:
-                    to->self.MinLod = (GLfloat)(params[0]);
-                    break;
-
-                case GL_TEXTURE_MAX_LOD:
-                    to->self.MaxLod = (GLfloat)(params[0]);
-                    break;
-
-                case GL_TEXTURE_LOD_BIAS:
-                    to->self.LodBias = (GLfloat)(params[0]);
-                    break;
-
-                case GL_TEXTURE_MAX_ANISOTROPY_EXT:
-                    to->self.MaxAnisotropyExt = (GLfloat)(params[0]);
-                    break;
-
-                case GL_TEXTURE_SRGB_DECODE_EXT:
-                    to->self.SrgbDecodeExt = (GLenum)(params[0]);
-                    break;
-
-                case GL_DEPTH_STENCIL_TEXTURE_MODE:
-                case GL_TEXTURE_BASE_LEVEL:
-                case GL_TEXTURE_MAX_LEVEL:
-                case GL_TEXTURE_SWIZZLE_A:
-                case GL_TEXTURE_SWIZZLE_B:
-                case GL_TEXTURE_SWIZZLE_G:
-                case GL_TEXTURE_SWIZZLE_R:
-                    // Known texture object state that is not in a sampler object.
-                    // Everything is cool, just return silently
-                    return;
-
-                default:
-                    // Otherwise an unrecognezed enum.  Issue a warning...
-                    Warning( "Unhandled texture parameter enum: pname = ", Token::GLenumToString(pname));
-                    return;
-            }
+            as = &ts->app;
+            ds = &ts->drv;
         }
+        else
+        {
+            as = &defaultTextureObjects[tti].app;
+            ds = &defaultTextureObjects[tti].drv;
+        }
+
+        if (!as || !ds)
+            return;
+
+        switch (pname)
+        {
+            case GL_TEXTURE_BORDER_COLOR:
+                as->BorderColor[0] = ds->BorderColor[0] = (GLint)(params[0]);
+                as->BorderColor[1] = ds->BorderColor[1] = (GLint)(params[1]);
+                as->BorderColor[2] = ds->BorderColor[2] = (GLint)(params[2]);
+                as->BorderColor[3] = ds->BorderColor[3] = (GLint)(params[3]);
+                break;
+
+            case GL_TEXTURE_MIN_FILTER:
+                as->MinFilter = ds->MinFilter = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_MAG_FILTER:
+                as->MagFilter = ds->MagFilter = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_WRAP_S:
+                as->WrapS = ds->WrapS = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_WRAP_T:
+                as->WrapT = ds->WrapT = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_WRAP_R:
+                as->WrapR = ds->WrapR = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_COMPARE_MODE:
+                as->CompareMode = ds->CompareMode = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_COMPARE_FUNC:
+                as->CompareFunc = ds->CompareFunc = (GLint)(params[0]);
+                break;
+
+            case GL_TEXTURE_MIN_LOD:
+                as->MinLod = ds->MinLod = (GLfloat)(params[0]);
+                break;
+
+            case GL_TEXTURE_MAX_LOD:
+                as->MaxLod = ds->MaxLod = (GLfloat)(params[0]);
+                break;
+
+            case GL_TEXTURE_LOD_BIAS:
+                as->LodBias = ds->LodBias = (GLfloat)(params[0]);
+                break;
+
+            case GL_TEXTURE_MAX_ANISOTROPY_EXT:
+                if (!ctx->info->gl_ext_texture_filter_anisotropic)
+                    return;
+                as->MaxAnisotropyExt = ds->MaxAnisotropyExt = (GLfloat)(params[0]);
+                break;
+
+            case GL_TEXTURE_SRGB_DECODE_EXT:
+                if (!ctx->info->gl_ext_texture_srgb_decode)
+                    return;
+                as->SrgbDecodeExt = ds->SrgbDecodeExt = (GLenum)(params[0]);
+                break;
+
+            default:
+                return;
+        }
+        as->ver = ds->ver = mainVer.Update();
     }
 
-    void ActiveTexture( GLenum tex )
+    template <typename T> bool GetTexParameterv( RegalContext * ctx, GLuint tex, GLenum pname, T * params )
     {
-        GLuint unit = tex - GL_TEXTURE0;
-        if (unit < REGAL_EMU_MAX_TEXTURE_UNITS)
-            activeTextureUnit = unit;
-        else
-            Warning( "Active texture out of range: ", tex, " >= ",
-                Token::GLenumToString(GL_TEXTURE0 + REGAL_EMU_MAX_TEXTURE_UNITS));
+        if (!tex || textureObjects.count(tex) < 1)
+            return false;
+
+        SamplingState *ts = &textureObjects[tex]->app;
+
+        switch (pname)
+        {
+            case GL_TEXTURE_BORDER_COLOR:
+                params[0] = static_cast<T>(ts->BorderColor[0]);
+                params[1] = static_cast<T>(ts->BorderColor[1]);
+                params[2] = static_cast<T>(ts->BorderColor[2]);
+                params[3] = static_cast<T>(ts->BorderColor[3]);
+                break;
+
+            case GL_TEXTURE_COMPARE_FUNC:
+                *params = static_cast<T>(ts->CompareFunc);
+                break;
+
+            case GL_TEXTURE_COMPARE_MODE:
+                *params = static_cast<T>(ts->CompareMode);
+                break;
+
+            case GL_TEXTURE_LOD_BIAS:
+                *params = static_cast<T>(ts->LodBias);
+                break;
+
+            case GL_TEXTURE_MAX_ANISOTROPY_EXT:
+                if (!ctx->info->gl_ext_texture_filter_anisotropic)
+                    return false;
+                *params = static_cast<T>(ts->MaxAnisotropyExt);
+                break;
+
+            case GL_TEXTURE_MAG_FILTER:
+                *params = static_cast<T>(ts->MagFilter);
+                break;
+
+            case GL_TEXTURE_MAX_LOD:
+                *params = static_cast<T>(ts->MaxLod);
+                break;
+
+            case GL_TEXTURE_MIN_FILTER:
+                *params = static_cast<T>(ts->MinFilter);
+                break;
+
+            case GL_TEXTURE_MIN_LOD:
+                *params = static_cast<T>(ts->MinLod);
+                break;
+
+            case GL_TEXTURE_WRAP_R:
+                *params = static_cast<T>(ts->WrapR);
+                break;
+
+            case GL_TEXTURE_WRAP_S:
+                *params = static_cast<T>(ts->WrapS);
+                break;
+
+            case GL_TEXTURE_WRAP_T:
+                *params = static_cast<T>(ts->WrapT);
+                break;
+
+            case GL_TEXTURE_SRGB_DECODE_EXT:
+                if (!ctx->info->gl_ext_texture_srgb_decode)
+                    return false;
+                *params = static_cast<T>(ts->SrgbDecodeExt);
+                break;
+
+            default:
+                return false;
+        }
+        return true;
     }
 
     void GenTextures(RegalContext * ctx, GLsizei count, GLuint *textures);
     void DeleteTextures(RegalContext * ctx, GLsizei count, const GLuint * textures);
-    void BindTexture(RegalContext * ctx, GLuint unit, GLenum target, GLuint texture);
-    void BindTexture(RegalContext * ctx, GLenum target, GLuint texture);
+    bool BindTexture(RegalContext * ctx, GLuint unit, GLenum target, GLuint texture);
+    bool BindTexture(RegalContext * ctx, GLenum target, GLuint texture);
 
     void GenSamplers(GLsizei count, GLuint *samplers);
-    void DeleteSamplers(RegalContext * ctx, GLsizei count, const GLuint * samplers);
+    void DeleteSamplers(GLsizei count, const GLuint * samplers);
     GLboolean IsSampler(GLuint sampler);
-    void BindSampler(RegalContext * ctx, GLuint unit, GLuint sampler);
+    void BindSampler(GLuint unit, GLuint sampler);
 
+    bool ActiveTexture(RegalContext * ctx, GLenum tex);
+    void PreDraw(RegalContext * ctx);
+    void SendStateToDriver(RegalContext * ctx, GLuint unit, GLenum target, SamplingState& newSS, SamplingState& oldSS);
+
+    Version mainVer;
     GLuint activeTextureUnit;
     GLuint nextSamplerObjectId;
-    TextureUnit textureUnits[ REGAL_EMU_MAX_TEXTURE_UNITS ];
-    SamplerObject defaultTextureObjects[ REGAL_NUM_TEXTURE_TARGETS ];
-    std::map<GLuint, SamplerObject*> samplerObjects;
-    std::map<GLuint, TextureObject*> textureObjects;
+    TextureUnit textureUnits[REGAL_EMU_MAX_TEXTURE_UNITS];
+    TextureState defaultTextureObjects[REGAL_NUM_TEXTURE_TARGETS];
+    std::map<GLuint, SamplingState*> samplerObjects;
+    std::map<GLuint, TextureState*> textureObjects;
 };
 
 REGAL_NAMESPACE_END

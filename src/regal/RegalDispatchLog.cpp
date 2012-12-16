@@ -84,6 +84,9 @@ static void REGAL_CALL log_glBegin(GLenum mode)
 {
     RegalContext *_context = REGAL_GET_CONTEXT();
     RegalAssert(_context);
+    RegalAssert(_context->depthBeginEnd>0);
+    Push<size_t> pushDepth(_context->depthBeginEnd);
+    _context->depthBeginEnd--;
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBegin)(mode);
@@ -137,7 +140,7 @@ static void REGAL_CALL log_glClear(GLbitfield mask)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glClear)(mask);
-    Driver("glClear","(", mask, ")");
+    Driver("glClear","(", GLclearToString(mask), ")");
 }
 
 static void REGAL_CALL log_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
@@ -938,7 +941,7 @@ static GLenum REGAL_CALL log_glGetError(void)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glGetError)();
-    Driver("glGetError","()", " returned ", ret);
+    Driver("glGetError","()", " returned ", toString(ret));
     return ret;
 }
 
@@ -1300,7 +1303,7 @@ static GLboolean REGAL_CALL log_glIsEnabled(GLenum cap)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsEnabled)(cap);
-    Driver("glIsEnabled","(", toString(cap), ")", " returned ", ret);
+    Driver("glIsEnabled","(", toString(cap), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -1311,7 +1314,7 @@ static GLboolean REGAL_CALL log_glIsList(GLuint list)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsList)(list);
-    Driver("glIsList","(", list, ")", " returned ", ret);
+    Driver("glIsList","(", list, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -3135,7 +3138,7 @@ static GLboolean REGAL_CALL log_glAreTexturesResident(GLsizei n, const GLuint *t
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glAreTexturesResident)(n, textures, residences);
-    Driver("glAreTexturesResident","(", n, ", ", boost::print::array(textures,n), ", ", boost::print::array(residences,n), ")", " returned ", ret);
+    Driver("glAreTexturesResident","(", n, ", ", boost::print::array(textures,n), ", ", boost::print::array(residences,n), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -3336,7 +3339,7 @@ static GLboolean REGAL_CALL log_glIsTexture(GLuint texture)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsTexture)(texture);
-    Driver("glIsTexture","(", texture, ")", " returned ", ret);
+    Driver("glIsTexture","(", texture, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -4565,7 +4568,7 @@ static GLboolean REGAL_CALL log_glIsBuffer(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsBuffer)(buffer);
-    Driver("glIsBuffer","(", buffer, ")", " returned ", ret);
+    Driver("glIsBuffer","(", buffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -4576,7 +4579,7 @@ static GLboolean REGAL_CALL log_glIsQuery(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsQuery)(id);
-    Driver("glIsQuery","(", id, ")", " returned ", ret);
+    Driver("glIsQuery","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -4598,7 +4601,7 @@ static GLboolean REGAL_CALL log_glUnmapBuffer(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glUnmapBuffer)(target);
-    Driver("glUnmapBuffer","(", toString(target), ")", " returned ", ret);
+    Driver("glUnmapBuffer","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -4895,7 +4898,7 @@ static GLboolean REGAL_CALL log_glIsProgram(GLuint program)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsProgram)(program);
-    Driver("glIsProgram","(", program, ")", " returned ", ret);
+    Driver("glIsProgram","(", program, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -4906,7 +4909,7 @@ static GLboolean REGAL_CALL log_glIsShader(GLuint shader)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsShader)(shader);
-    Driver("glIsShader","(", shader, ")", " returned ", ret);
+    Driver("glIsShader","(", shader, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -5839,7 +5842,7 @@ static GLboolean REGAL_CALL log_glIsEnabledi(GLenum target, GLuint index)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsEnabledi)(target, index);
-    Driver("glIsEnabledi","(", toString(target), ", ", index, ")", " returned ", ret);
+    Driver("glIsEnabledi","(", toString(target), ", ", index, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6449,7 +6452,7 @@ static GLboolean REGAL_CALL log_glIsNameAMD(GLenum identifier, GLuint name)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsNameAMD)(identifier, name);
-    Driver("glIsNameAMD","(", toString(identifier), ", ", name, ")", " returned ", ret);
+    Driver("glIsNameAMD","(", toString(identifier), ", ", name, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6792,7 +6795,7 @@ static GLboolean REGAL_CALL log_glIsFenceAPPLE(GLuint fence)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsFenceAPPLE)(fence);
-    Driver("glIsFenceAPPLE","(", fence, ")", " returned ", ret);
+    Driver("glIsFenceAPPLE","(", fence, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6813,7 +6816,7 @@ static GLboolean REGAL_CALL log_glTestFenceAPPLE(GLuint fence)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glTestFenceAPPLE)(fence);
-    Driver("glTestFenceAPPLE","(", fence, ")", " returned ", ret);
+    Driver("glTestFenceAPPLE","(", fence, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6824,7 +6827,7 @@ static GLboolean REGAL_CALL log_glTestObjectAPPLE(GLenum object, GLuint name)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glTestObjectAPPLE)(object, name);
-    Driver("glTestObjectAPPLE","(", toString(object), ", ", name, ")", " returned ", ret);
+    Driver("glTestObjectAPPLE","(", toString(object), ", ", name, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6923,7 +6926,7 @@ static GLenum REGAL_CALL log_glObjectPurgeableAPPLE(GLenum objectType, GLuint na
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glObjectPurgeableAPPLE)(objectType, name, option);
-    Driver("glObjectPurgeableAPPLE","(", toString(objectType), ", ", name, ", ", toString(option), ")", " returned ", ret);
+    Driver("glObjectPurgeableAPPLE","(", toString(objectType), ", ", name, ", ", toString(option), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6934,7 +6937,7 @@ static GLenum REGAL_CALL log_glObjectUnpurgeableAPPLE(GLenum objectType, GLuint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glObjectUnpurgeableAPPLE)(objectType, name, option);
-    Driver("glObjectUnpurgeableAPPLE","(", toString(objectType), ", ", name, ", ", toString(option), ")", " returned ", ret);
+    Driver("glObjectUnpurgeableAPPLE","(", toString(objectType), ", ", name, ", ", toString(option), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6947,7 +6950,7 @@ static GLenum REGAL_CALL log_glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glClientWaitSyncAPPLE)(sync, flags, timeout);
-    Driver("glClientWaitSyncAPPLE","(", sync, ", ", flags, ", ", timeout, ")", " returned ", ret);
+    Driver("glClientWaitSyncAPPLE","(", sync, ", ", flags, ", ", timeout, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -6999,7 +7002,7 @@ static GLboolean REGAL_CALL log_glIsSyncAPPLE(GLsync sync)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsSyncAPPLE)(sync);
-    Driver("glIsSyncAPPLE","(", sync, ")", " returned ", ret);
+    Driver("glIsSyncAPPLE","(", sync, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -7074,7 +7077,7 @@ static GLboolean REGAL_CALL log_glIsVertexArrayAPPLE(GLuint array)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsVertexArrayAPPLE)(array);
-    Driver("glIsVertexArrayAPPLE","(", array, ")", " returned ", ret);
+    Driver("glIsVertexArrayAPPLE","(", array, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -7139,7 +7142,7 @@ static GLboolean REGAL_CALL log_glIsVertexAttribEnabledAPPLE(GLuint index, GLenu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsVertexAttribEnabledAPPLE)(index, pname);
-    Driver("glIsVertexAttribEnabledAPPLE","(", index, ", ", toString(pname), ")", " returned ", ret);
+    Driver("glIsVertexAttribEnabledAPPLE","(", index, ", ", toString(pname), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -7667,7 +7670,7 @@ static GLenum REGAL_CALL log_glCheckFramebufferStatus(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glCheckFramebufferStatus)(target);
-    Driver("glCheckFramebufferStatus","(", toString(target), ")", " returned ", ret);
+    Driver("glCheckFramebufferStatus","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -7798,7 +7801,7 @@ static GLboolean REGAL_CALL log_glIsFramebuffer(GLuint framebuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsFramebuffer)(framebuffer);
-    Driver("glIsFramebuffer","(", framebuffer, ")", " returned ", ret);
+    Driver("glIsFramebuffer","(", framebuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -7809,7 +7812,7 @@ static GLboolean REGAL_CALL log_glIsRenderbuffer(GLuint renderbuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsRenderbuffer)(renderbuffer);
-    Driver("glIsRenderbuffer","(", renderbuffer, ")", " returned ", ret);
+    Driver("glIsRenderbuffer","(", renderbuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -9039,7 +9042,7 @@ static GLboolean REGAL_CALL log_glIsQueryARB(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsQueryARB)(id);
-    Driver("glIsQueryARB","(", id, ")", " returned ", ret);
+    Driver("glIsQueryARB","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -9151,7 +9154,7 @@ static GLenum REGAL_CALL log_glGetGraphicsResetStatusARB(void)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glGetGraphicsResetStatusARB)();
-    Driver("glGetGraphicsResetStatusARB","()", " returned ", ret);
+    Driver("glGetGraphicsResetStatusARB","()", " returned ", toString(ret));
     return ret;
 }
 
@@ -9446,7 +9449,7 @@ static GLboolean REGAL_CALL log_glIsSampler(GLuint sampler)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsSampler)(sampler);
-    Driver("glIsSampler","(", sampler, ")", " returned ", ret);
+    Driver("glIsSampler","(", sampler, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -9590,7 +9593,7 @@ static GLboolean REGAL_CALL log_glIsProgramPipeline(GLuint pipeline)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsProgramPipeline)(pipeline);
-    Driver("glIsProgramPipeline","(", pipeline, ")", " returned ", ret);
+    Driver("glIsProgramPipeline","(", pipeline, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -10689,7 +10692,7 @@ static GLboolean REGAL_CALL log_glIsNamedStringARB(GLint namelen, const GLchar *
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsNamedStringARB)(namelen, name);
-    Driver("glIsNamedStringARB","(", namelen, ", ", boost::print::quote(name,'"'), ")", " returned ", ret);
+    Driver("glIsNamedStringARB","(", namelen, ", ", boost::print::quote(name,'"'), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -10712,7 +10715,7 @@ static GLenum REGAL_CALL log_glClientWaitSync(GLsync sync, GLbitfield flags, GLu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glClientWaitSync)(sync, flags, timeout);
-    Driver("glClientWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")", " returned ", ret);
+    Driver("glClientWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -10764,7 +10767,7 @@ static GLboolean REGAL_CALL log_glIsSync(GLsync sync)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsSync)(sync);
-    Driver("glIsSync","(", reinterpret_cast<void *>(sync), ")", " returned ", ret);
+    Driver("glIsSync","(", reinterpret_cast<void *>(sync), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -11145,7 +11148,7 @@ static GLboolean REGAL_CALL log_glIsTransformFeedback(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsTransformFeedback)(id);
-    Driver("glIsTransformFeedback","(", id, ")", " returned ", ret);
+    Driver("glIsTransformFeedback","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -11417,7 +11420,7 @@ static GLboolean REGAL_CALL log_glIsVertexArray(GLuint array)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsVertexArray)(array);
-    Driver("glIsVertexArray","(", array, ")", " returned ", ret);
+    Driver("glIsVertexArray","(", array, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -11776,7 +11779,7 @@ static GLboolean REGAL_CALL log_glIsBufferARB(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsBufferARB)(buffer);
-    Driver("glIsBufferARB","(", buffer, ")", " returned ", ret);
+    Driver("glIsBufferARB","(", buffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -11798,7 +11801,7 @@ static GLboolean REGAL_CALL log_glUnmapBufferARB(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glUnmapBufferARB)(target);
-    Driver("glUnmapBufferARB","(", toString(target), ")", " returned ", ret);
+    Driver("glUnmapBufferARB","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -11961,7 +11964,7 @@ static GLboolean REGAL_CALL log_glIsProgramARB(GLuint program)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsProgramARB)(program);
-    Driver("glIsProgramARB","(", program, ")", " returned ", ret);
+    Driver("glIsProgramARB","(", program, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -13489,7 +13492,7 @@ static GLboolean REGAL_CALL log_glIsObjectBufferATI(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsObjectBufferATI)(buffer);
-    Driver("glIsObjectBufferATI","(", buffer, ")", " returned ", ret);
+    Driver("glIsObjectBufferATI","(", buffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -14647,7 +14650,7 @@ static GLenum REGAL_CALL log_glCheckNamedFramebufferStatusEXT(GLuint framebuffer
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glCheckNamedFramebufferStatusEXT)(framebuffer, target);
-    Driver("glCheckNamedFramebufferStatusEXT","(", framebuffer, ", ", toString(target), ")", " returned ", ret);
+    Driver("glCheckNamedFramebufferStatusEXT","(", framebuffer, ", ", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -16820,7 +16823,7 @@ static GLboolean REGAL_CALL log_glUnmapNamedBufferEXT(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glUnmapNamedBufferEXT)(buffer);
-    Driver("glUnmapNamedBufferEXT","(", buffer, ")", " returned ", ret);
+    Driver("glUnmapNamedBufferEXT","(", buffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -17005,7 +17008,7 @@ static GLboolean REGAL_CALL log_glIsEnabledIndexedEXT(GLenum target, GLuint inde
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsEnabledIndexedEXT)(target, index);
-    Driver("glIsEnabledIndexedEXT","(", toString(target), ", ", index, ")", " returned ", ret);
+    Driver("glIsEnabledIndexedEXT","(", toString(target), ", ", index, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -17330,7 +17333,7 @@ static GLenum REGAL_CALL log_glCheckFramebufferStatusEXT(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glCheckFramebufferStatusEXT)(target);
-    Driver("glCheckFramebufferStatusEXT","(", toString(target), ")", " returned ", ret);
+    Driver("glCheckFramebufferStatusEXT","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -17451,7 +17454,7 @@ static GLboolean REGAL_CALL log_glIsFramebufferEXT(GLuint framebuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsFramebufferEXT)(framebuffer);
-    Driver("glIsFramebufferEXT","(", framebuffer, ")", " returned ", ret);
+    Driver("glIsFramebufferEXT","(", framebuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -17462,7 +17465,7 @@ static GLboolean REGAL_CALL log_glIsRenderbufferEXT(GLuint renderbuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsRenderbufferEXT)(renderbuffer);
-    Driver("glIsRenderbufferEXT","(", renderbuffer, ")", " returned ", ret);
+    Driver("glIsRenderbufferEXT","(", renderbuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -18211,7 +18214,7 @@ static GLboolean REGAL_CALL log_glIsQueryEXT(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsQueryEXT)(id);
-    Driver("glIsQueryEXT","(", id, ")", " returned ", ret);
+    Driver("glIsQueryEXT","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -18809,7 +18812,7 @@ static GLboolean REGAL_CALL log_glAreTexturesResidentEXT(GLsizei n, const GLuint
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glAreTexturesResidentEXT)(n, textures, residences);
-    Driver("glAreTexturesResidentEXT","(", n, ", ", boost::print::array(textures,n), ", ", boost::print::array(residences,n), ")", " returned ", ret);
+    Driver("glAreTexturesResidentEXT","(", n, ", ", boost::print::array(textures,n), ", ", boost::print::array(residences,n), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -18850,7 +18853,7 @@ static GLboolean REGAL_CALL log_glIsTextureEXT(GLuint texture)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsTextureEXT)(texture);
-    Driver("glIsTextureEXT","(", texture, ")", " returned ", ret);
+    Driver("glIsTextureEXT","(", texture, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -19472,7 +19475,7 @@ static GLboolean REGAL_CALL log_glIsVariantEnabledEXT(GLuint id, GLenum cap)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsVariantEnabledEXT)(id, cap);
-    Driver("glIsVariantEnabledEXT","(", id, ", ", toString(cap), ")", " returned ", ret);
+    Driver("glIsVariantEnabledEXT","(", id, ", ", toString(cap), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -20444,7 +20447,7 @@ static GLboolean REGAL_CALL log_glIsImageHandleResidentNV(GLuint64 handle)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsImageHandleResidentNV)(handle);
-    Driver("glIsImageHandleResidentNV","(", handle, ")", " returned ", ret);
+    Driver("glIsImageHandleResidentNV","(", handle, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -20455,7 +20458,7 @@ static GLboolean REGAL_CALL log_glIsTextureHandleResidentNV(GLuint64 handle)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsTextureHandleResidentNV)(handle);
-    Driver("glIsTextureHandleResidentNV","(", handle, ")", " returned ", ret);
+    Driver("glIsTextureHandleResidentNV","(", handle, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -20812,7 +20815,7 @@ static GLboolean REGAL_CALL log_glIsFenceNV(GLuint fence)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsFenceNV)(fence);
-    Driver("glIsFenceNV","(", fence, ")", " returned ", ret);
+    Driver("glIsFenceNV","(", fence, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -20833,7 +20836,7 @@ static GLboolean REGAL_CALL log_glTestFenceNV(GLuint fence)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glTestFenceNV)(fence);
-    Driver("glTestFenceNV","(", fence, ")", " returned ", ret);
+    Driver("glTestFenceNV","(", fence, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -21948,7 +21951,7 @@ static GLboolean REGAL_CALL log_glIsOcclusionQueryNV(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsOcclusionQueryNV)(id);
-    Driver("glIsOcclusionQueryNV","(", id, ")", " returned ", ret);
+    Driver("glIsOcclusionQueryNV","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22205,7 +22208,7 @@ static GLboolean REGAL_CALL log_glIsPathNV(GLuint path)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsPathNV)(path);
-    Driver("glIsPathNV","(", path, ")", " returned ", ret);
+    Driver("glIsPathNV","(", path, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22216,7 +22219,7 @@ static GLboolean REGAL_CALL log_glIsPointInFillPathNV(GLuint path, GLuint mask, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsPointInFillPathNV)(path, mask, x, y);
-    Driver("glIsPointInFillPathNV","(", path, ", ", mask, ", ", x, ", ", y, ")", " returned ", ret);
+    Driver("glIsPointInFillPathNV","(", path, ", ", mask, ", ", x, ", ", y, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22227,7 +22230,7 @@ static GLboolean REGAL_CALL log_glIsPointInStrokePathNV(GLuint path, GLfloat x, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsPointInStrokePathNV)(path, x, y);
-    Driver("glIsPointInStrokePathNV","(", path, ", ", x, ", ", y, ")", " returned ", ret);
+    Driver("glIsPointInStrokePathNV","(", path, ", ", x, ", ", y, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22418,7 +22421,7 @@ static GLboolean REGAL_CALL log_glPointAlongPathNV(GLuint path, GLsizei startSeg
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glPointAlongPathNV)(path, startSegment, numSegments, distance, x, y, tangentX, tangentY);
-    Driver("glPointAlongPathNV","(", path, ", ", startSegment, ", ", numSegments, ", ", distance, ", ", x, ", ", y, ", ", tangentX, ", ", tangentY, ")", " returned ", ret);
+    Driver("glPointAlongPathNV","(", path, ", ", startSegment, ", ", numSegments, ", ", distance, ", ", x, ", ", y, ", ", tangentX, ", ", tangentY, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22825,7 +22828,7 @@ static GLboolean REGAL_CALL log_glIsBufferResidentNV(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsBufferResidentNV)(target);
-    Driver("glIsBufferResidentNV","(", toString(target), ")", " returned ", ret);
+    Driver("glIsBufferResidentNV","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -22836,7 +22839,7 @@ static GLboolean REGAL_CALL log_glIsNamedBufferResidentNV(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsNamedBufferResidentNV)(buffer);
-    Driver("glIsNamedBufferResidentNV","(", buffer, ")", " returned ", ret);
+    Driver("glIsNamedBufferResidentNV","(", buffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -23156,7 +23159,7 @@ static GLboolean REGAL_CALL log_glIsTransformFeedbackNV(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsTransformFeedbackNV)(id);
-    Driver("glIsTransformFeedbackNV","(", id, ")", " returned ", ret);
+    Driver("glIsTransformFeedbackNV","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -23219,7 +23222,7 @@ static GLboolean REGAL_CALL log_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glVDPAUIsSurfaceNV)(surface);
-    Driver("glVDPAUIsSurfaceNV","(", surface, ")", " returned ", ret);
+    Driver("glVDPAUIsSurfaceNV","(", surface, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -23630,7 +23633,7 @@ static GLboolean REGAL_CALL log_glAreProgramsResidentNV(GLsizei n, const GLuint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glAreProgramsResidentNV)(n, programs, residences);
-    Driver("glAreProgramsResidentNV","(", n, ", ", boost::print::array(programs,n), ", ", boost::print::array(residences,n), ")", " returned ", ret);
+    Driver("glAreProgramsResidentNV","(", n, ", ", boost::print::array(programs,n), ", ", boost::print::array(residences,n), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -23771,7 +23774,7 @@ static GLboolean REGAL_CALL log_glIsProgramNV(GLuint id)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsProgramNV)(id);
-    Driver("glIsProgramNV","(", id, ")", " returned ", ret);
+    Driver("glIsProgramNV","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24354,7 +24357,7 @@ static GLenum REGAL_CALL log_glVideoCaptureNV(GLuint video_capture_slot, GLuint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glVideoCaptureNV)(video_capture_slot, sequence_num, capture_time);
-    Driver("glVideoCaptureNV","(", video_capture_slot, ", ", boost::print::array(sequence_num,1), ", ", boost::print::array(capture_time,1), ")", " returned ", ret);
+    Driver("glVideoCaptureNV","(", video_capture_slot, ", ", boost::print::array(sequence_num,1), ", ", boost::print::array(capture_time,1), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24453,7 +24456,7 @@ static GLenum REGAL_CALL log_glCheckFramebufferStatusOES(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glCheckFramebufferStatusOES)(target);
-    Driver("glCheckFramebufferStatusOES","(", toString(target), ")", " returned ", ret);
+    Driver("glCheckFramebufferStatusOES","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24554,7 +24557,7 @@ static GLboolean REGAL_CALL log_glIsFramebufferOES(GLuint framebuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsFramebufferOES)(framebuffer);
-    Driver("glIsFramebufferOES","(", framebuffer, ")", " returned ", ret);
+    Driver("glIsFramebufferOES","(", framebuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24565,7 +24568,7 @@ static GLboolean REGAL_CALL log_glIsRenderbufferOES(GLuint renderbuffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsRenderbufferOES)(renderbuffer);
-    Driver("glIsRenderbufferOES","(", renderbuffer, ")", " returned ", ret);
+    Driver("glIsRenderbufferOES","(", renderbuffer, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24631,7 +24634,7 @@ static GLboolean REGAL_CALL log_glUnmapBufferOES(GLenum target)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glUnmapBufferOES)(target);
-    Driver("glUnmapBufferOES","(", toString(target), ")", " returned ", ret);
+    Driver("glUnmapBufferOES","(", toString(target), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -24922,7 +24925,7 @@ static GLboolean REGAL_CALL log_glIsVertexArrayOES(GLuint array)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsVertexArrayOES)(array);
-    Driver("glIsVertexArrayOES","(", array, ")", " returned ", ret);
+    Driver("glIsVertexArrayOES","(", array, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -25113,7 +25116,7 @@ static GLboolean REGAL_CALL log_glExtIsProgramBinaryQCOM(GLuint program)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glExtIsProgramBinaryQCOM)(program);
-    Driver("glExtIsProgramBinaryQCOM","(", program, ")", " returned ", ret);
+    Driver("glExtIsProgramBinaryQCOM","(", program, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -25442,7 +25445,7 @@ static GLboolean REGAL_CALL log_glIsAsyncMarkerSGIX(GLuint marker)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsAsyncMarkerSGIX)(marker);
-    Driver("glIsAsyncMarkerSGIX","(", marker, ")", " returned ", ret);
+    Driver("glIsAsyncMarkerSGIX","(", marker, ")", " returned ", toString(ret));
     return ret;
 }
 

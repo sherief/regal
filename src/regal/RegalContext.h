@@ -135,6 +135,11 @@ struct RegalContext
 
   size_t              depthBeginEnd;   // Normally zero or one
   size_t              depthPushAttrib; //
+
+  // For RegalDispatchCode
+
+  size_t              codeInputNext;
+  size_t              codeOutputNext;
 };
 
 REGAL_NAMESPACE_END

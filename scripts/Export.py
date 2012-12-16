@@ -32,6 +32,7 @@ from RegalContextInfo     import *
 from RegalLookup          import *
 from RegalToken           import *
 from RegalDispatch        import *
+from RegalDispatchCode    import *
 from RegalDispatchDebug   import *
 from RegalDispatchError   import *
 from RegalDispatchEmu     import *
@@ -151,6 +152,7 @@ def generate(apis, args):
   generateSystemHeader(apis, args)
   generateEmuSource( apis, args )
   generateDispatchLog( apis, args )
+  generateDispatchCode( apis, args )
   generateErrorSource( apis, args )
   generateDebugSource( apis, args )
   generateLoaderSource( apis, args )

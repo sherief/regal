@@ -59,6 +59,7 @@ namespace Config
   extern bool enableEmulation;
   extern bool enableDebug;
   extern bool enableError;
+  extern bool enableCode;
   extern bool enableLog;
   extern bool enableDriver;
 

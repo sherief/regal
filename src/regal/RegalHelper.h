@@ -52,7 +52,7 @@ namespace helper {
     std::size_t lightModelv(GLenum);
     std::size_t materialv(GLenum);
     std::size_t texParameterv(GLenum);
-//  std::size_t pixelImage(GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLint, GLenum);
+    std::size_t pixelImage(GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLint, GLenum);
     std::size_t texEnvv(GLenum, GLenum);
     std::size_t texGenv(GLenum);
     std::size_t samplerParameterv(GLenum);

@@ -141,7 +141,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glClear(GLbitfield mask)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClear","(", mask, ")");
+    App("glClear","(", GLclearToString(mask), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);

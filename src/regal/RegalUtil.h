@@ -131,6 +131,17 @@
 #endif
 #endif
 
+// Code logging disabled by default in
+// release mode, or embedded
+
+#ifndef REGAL_CODE
+# if defined(NDEBUG) || REGAL_SYS_IOS || REGAL_SYS_PPAPI || REGAL_SYS_ANDROID
+#  define REGAL_CODE 0
+# else
+#  define REGAL_CODE 0
+# endif
+#endif
+
 // Emulation dispatch enabled by default
 
 #ifndef REGAL_EMULATION
@@ -186,10 +197,16 @@
 //
 
 // Caching enabled by default
+// ... except for release-mode and embedded platforms
 
 #ifndef REGAL_CACHE
-#define REGAL_CACHE 1
+# if defined(NDEBUG) || REGAL_SYS_IOS || REGAL_SYS_PPAPI || REGAL_SYS_ANDROID
+#  define REGAL_CACHE 0
+# else
+#  define REGAL_CACHE 1
+# endif
 #endif
+
 
 // Shader caching support by default
 

@@ -11719,7 +11719,7 @@ gl.add(glBlendFunc)
 
 glClear = Function('glClear')
 glClear.ret = Return('void')
-glClear.add( Input( 'mask','GLbitfield' ))
+glClear.add( Input( 'mask','GLbitfield' ,regalLog = 'GLclearToString(mask)' ))
 glClear.version = '1.0'
 glClear.category = 'GL_VERSION_1_0'
 glClear.esVersions = [1.0, 1.1, 2.0]
@@ -16680,7 +16680,7 @@ glGetActiveAttrib.add( Input( 'bufSize','GLsizei' ))
 glGetActiveAttrib.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetActiveAttrib.add( Output( 'size','GLint *' ,size = 1 ))
 glGetActiveAttrib.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveAttrib.add( Output( 'name','GLchar *' ))
+glGetActiveAttrib.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveAttrib.version = '2.0'
 glGetActiveAttrib.category = ''
 glGetActiveAttrib.esVersions = [2.0]
@@ -16696,7 +16696,7 @@ glGetActiveUniform.add( Input( 'bufSize','GLsizei' ))
 glGetActiveUniform.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetActiveUniform.add( Output( 'size','GLint *' ,size = 1 ))
 glGetActiveUniform.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveUniform.add( Output( 'name','GLchar *' ))
+glGetActiveUniform.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveUniform.version = '2.0'
 glGetActiveUniform.category = ''
 glGetActiveUniform.esVersions = [2.0]
@@ -16822,7 +16822,7 @@ glGetProgramInfoLog.ret = Return('void')
 glGetProgramInfoLog.add( Input( 'program','GLuint' ))
 glGetProgramInfoLog.add( Input( 'bufSize','GLsizei' ))
 glGetProgramInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetProgramInfoLog.add( Output( 'infoLog','GLchar *' ))
+glGetProgramInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
 glGetProgramInfoLog.version = '2.0'
 glGetProgramInfoLog.category = ''
 glGetProgramInfoLog.esVersions = [2.0]
@@ -16880,7 +16880,7 @@ glGetShaderInfoLog.ret = Return('void')
 glGetShaderInfoLog.add( Input( 'shader','GLuint' ))
 glGetShaderInfoLog.add( Input( 'bufSize','GLsizei' ))
 glGetShaderInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetShaderInfoLog.add( Output( 'infoLog','GLchar *' ))
+glGetShaderInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
 glGetShaderInfoLog.version = '2.0'
 glGetShaderInfoLog.category = ''
 glGetShaderInfoLog.esVersions = [2.0]
@@ -16893,7 +16893,7 @@ glGetShaderSource.ret = Return('void')
 glGetShaderSource.add( Input( 'shader','GLuint' ))
 glGetShaderSource.add( Input( 'bufSize','GLsizei' ))
 glGetShaderSource.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetShaderSource.add( Output( 'source','GLchar *' ))
+glGetShaderSource.add( Output( 'source','GLchar *' ,maxSize = 'bufSize' ))
 glGetShaderSource.version = '2.0'
 glGetShaderSource.category = ''
 glGetShaderSource.esVersions = [2.0]
@@ -18671,7 +18671,7 @@ glGetPerfMonitorCounterStringAMD.add( Input( 'group','GLuint' ))
 glGetPerfMonitorCounterStringAMD.add( Input( 'counter','GLuint' ))
 glGetPerfMonitorCounterStringAMD.add( Input( 'bufSize','GLsizei' ))
 glGetPerfMonitorCounterStringAMD.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetPerfMonitorCounterStringAMD.add( Output( 'counterString','GLchar *' ))
+glGetPerfMonitorCounterStringAMD.add( Output( 'counterString','GLchar *' ,maxSize = 'bufSize' ))
 glGetPerfMonitorCounterStringAMD.version = '1.2'
 glGetPerfMonitorCounterStringAMD.category = 'GL_AMD_performance_monitor'
 glGetPerfMonitorCounterStringAMD.trace = True
@@ -18696,7 +18696,7 @@ glGetPerfMonitorGroupStringAMD.ret = Return('void')
 glGetPerfMonitorGroupStringAMD.add( Input( 'group','GLuint' ))
 glGetPerfMonitorGroupStringAMD.add( Input( 'bufSize','GLsizei' ))
 glGetPerfMonitorGroupStringAMD.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetPerfMonitorGroupStringAMD.add( Output( 'groupString','GLchar *' ))
+glGetPerfMonitorGroupStringAMD.add( Output( 'groupString','GLchar *' ,maxSize = 'bufSize' ))
 glGetPerfMonitorGroupStringAMD.version = '1.2'
 glGetPerfMonitorGroupStringAMD.category = 'GL_AMD_performance_monitor'
 glGetPerfMonitorGroupStringAMD.trace = True
@@ -19708,12 +19708,12 @@ glGetDebugMessageLogARB = Function('glGetDebugMessageLogARB')
 glGetDebugMessageLogARB.ret = Return('GLuint')
 glGetDebugMessageLogARB.add( Input( 'count','GLuint' ))
 glGetDebugMessageLogARB.add( Input( 'bufsize','GLsizei' ))
-glGetDebugMessageLogARB.add( Output( 'sources','GLenum *' ,size = 'ret' ))
-glGetDebugMessageLogARB.add( Output( 'types','GLenum *' ,size = 'ret' ))
-glGetDebugMessageLogARB.add( Output( 'ids','GLuint *' ,size = 'ret' ))
-glGetDebugMessageLogARB.add( Output( 'severities','GLenum *' ,size = 'ret' ))
-glGetDebugMessageLogARB.add( Output( 'lengths','GLsizei *' ,size = 'ret' ))
-glGetDebugMessageLogARB.add( Output( 'messageLog','GLchar *' ))
+glGetDebugMessageLogARB.add( Output( 'sources','GLenum *' ,size = 'ret' ,maxSize = 'count' ))
+glGetDebugMessageLogARB.add( Output( 'types','GLenum *' ,size = 'ret' ,maxSize = 'count' ))
+glGetDebugMessageLogARB.add( Output( 'ids','GLuint *' ,size = 'ret' ,maxSize = 'count' ))
+glGetDebugMessageLogARB.add( Output( 'severities','GLenum *' ,size = 'ret' ,maxSize = 'count' ))
+glGetDebugMessageLogARB.add( Output( 'lengths','GLsizei *' ,size = 'ret' ,maxSize = 'count' ))
+glGetDebugMessageLogARB.add( Output( 'messageLog','GLchar *' ,maxSize = 'logsize' ))
 glGetDebugMessageLogARB.version = '4.1'
 glGetDebugMessageLogARB.category = 'GL_ARB_debug_output'
 glGetDebugMessageLogARB.trace = True
@@ -20236,7 +20236,7 @@ glGetProgramBinary.add( Input( 'program','GLuint' ))
 glGetProgramBinary.add( Input( 'bufSize','GLsizei' ))
 glGetProgramBinary.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetProgramBinary.add( Output( 'binaryFormat','GLenum *' ,size = 1 ))
-glGetProgramBinary.add( Output( 'binary','GLvoid *' ))
+glGetProgramBinary.add( Output( 'binary','GLvoid *' ,maxSize = 'bufSize' ))
 glGetProgramBinary.version = '4.1'
 glGetProgramBinary.category = 'GL_ARB_get_program_binary'
 glGetProgramBinary.trace = True
@@ -22131,7 +22131,7 @@ glGetProgramPipelineInfoLog.ret = Return('void')
 glGetProgramPipelineInfoLog.add( Input( 'pipeline','GLuint' ))
 glGetProgramPipelineInfoLog.add( Input( 'bufSize','GLsizei' ))
 glGetProgramPipelineInfoLog.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetProgramPipelineInfoLog.add( Output( 'infoLog','GLchar *' ))
+glGetProgramPipelineInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
 glGetProgramPipelineInfoLog.version = '4.1'
 glGetProgramPipelineInfoLog.category = 'GL_ARB_separate_shader_objects'
 glGetProgramPipelineInfoLog.trace = True
@@ -22909,7 +22909,7 @@ glGetActiveUniformARB.add( Input( 'maxLength','GLsizei' ))
 glGetActiveUniformARB.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetActiveUniformARB.add( Output( 'size','GLint *' ,size = 1 ))
 glGetActiveUniformARB.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveUniformARB.add( Output( 'name','GLcharARB *' ))
+glGetActiveUniformARB.add( Output( 'name','GLcharARB *' ,maxSize = 'maxLength' ))
 glGetActiveUniformARB.version = '1.1'
 glGetActiveUniformARB.category = 'GL_ARB_shader_objects'
 glGetActiveUniformARB.trace = True
@@ -22942,7 +22942,7 @@ glGetInfoLogARB.ret = Return('void')
 glGetInfoLogARB.add( Input( 'obj','GLhandleARB' ))
 glGetInfoLogARB.add( Input( 'maxLength','GLsizei' ))
 glGetInfoLogARB.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetInfoLogARB.add( Output( 'infoLog','GLcharARB *' ))
+glGetInfoLogARB.add( Output( 'infoLog','GLcharARB *' ,maxSize = 'maxLength' ))
 glGetInfoLogARB.version = '1.1'
 glGetInfoLogARB.category = 'GL_ARB_shader_objects'
 glGetInfoLogARB.trace = True
@@ -22976,7 +22976,7 @@ glGetShaderSourceARB.ret = Return('void')
 glGetShaderSourceARB.add( Input( 'obj','GLhandleARB' ))
 glGetShaderSourceARB.add( Input( 'maxLength','GLsizei' ))
 glGetShaderSourceARB.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetShaderSourceARB.add( Output( 'source','GLcharARB *' ))
+glGetShaderSourceARB.add( Output( 'source','GLcharARB *' ,maxSize = 'maxLength' ))
 glGetShaderSourceARB.version = '1.1'
 glGetShaderSourceARB.category = 'GL_ARB_shader_objects'
 glGetShaderSourceARB.trace = True
@@ -23292,7 +23292,7 @@ glGetActiveSubroutineName.add( Input( 'shaderType','GLenum' ))
 glGetActiveSubroutineName.add( Input( 'index','GLuint' ))
 glGetActiveSubroutineName.add( Input( 'bufSize','GLsizei' ))
 glGetActiveSubroutineName.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveSubroutineName.add( Output( 'name','GLchar *' ))
+glGetActiveSubroutineName.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveSubroutineName.version = '4.0'
 glGetActiveSubroutineName.category = 'GL_ARB_shader_subroutine'
 glGetActiveSubroutineName.trace = True
@@ -23306,7 +23306,7 @@ glGetActiveSubroutineUniformName.add( Input( 'shaderType','GLenum' ))
 glGetActiveSubroutineUniformName.add( Input( 'index','GLuint' ))
 glGetActiveSubroutineUniformName.add( Input( 'bufSize','GLsizei' ))
 glGetActiveSubroutineUniformName.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveSubroutineUniformName.add( Output( 'name','GLchar *' ))
+glGetActiveSubroutineUniformName.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveSubroutineUniformName.version = '4.0'
 glGetActiveSubroutineUniformName.category = 'GL_ARB_shader_subroutine'
 glGetActiveSubroutineUniformName.trace = True
@@ -23412,7 +23412,7 @@ glGetNamedStringARB.add( Input( 'namelen','GLint' ))
 glGetNamedStringARB.add( Input( 'name','const GLchar *' ,size = 'helperGLNamedStringSize(namelen, name)' ))
 glGetNamedStringARB.add( Input( 'bufSize','GLsizei' ))
 glGetNamedStringARB.add( Output( 'stringlen','GLint *' ,size = 1 ))
-glGetNamedStringARB.add( Output( 'string','GLchar *' ))
+glGetNamedStringARB.add( Output( 'string','GLchar *' ,maxSize = 'bufSize' ))
 glGetNamedStringARB.version = '4.0'
 glGetNamedStringARB.category = 'GL_ARB_shading_language_include'
 glGetNamedStringARB.trace = True
@@ -24162,7 +24162,7 @@ glGetActiveUniformBlockName.add( Input( 'program','GLuint' ))
 glGetActiveUniformBlockName.add( Input( 'uniformBlockIndex','GLuint' ))
 glGetActiveUniformBlockName.add( Input( 'bufSize','GLsizei' ))
 glGetActiveUniformBlockName.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveUniformBlockName.add( Output( 'uniformBlockName','GLchar *' ))
+glGetActiveUniformBlockName.add( Output( 'uniformBlockName','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveUniformBlockName.version = '3.1'
 glGetActiveUniformBlockName.category = 'GL_ARB_uniform_buffer_object'
 glGetActiveUniformBlockName.trace = True
@@ -24187,7 +24187,7 @@ glGetActiveUniformName.add( Input( 'program','GLuint' ))
 glGetActiveUniformName.add( Input( 'uniformIndex','GLuint' ))
 glGetActiveUniformName.add( Input( 'bufSize','GLsizei' ))
 glGetActiveUniformName.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveUniformName.add( Output( 'uniformName','GLchar *' ))
+glGetActiveUniformName.add( Output( 'uniformName','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveUniformName.version = '3.1'
 glGetActiveUniformName.category = 'GL_ARB_uniform_buffer_object'
 glGetActiveUniformName.trace = True
@@ -25392,7 +25392,7 @@ glGetActiveAttribARB.add( Input( 'maxLength','GLsizei' ))
 glGetActiveAttribARB.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetActiveAttribARB.add( Output( 'size','GLint *' ,size = 1 ))
 glGetActiveAttribARB.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveAttribARB.add( Output( 'name','GLcharARB *' ))
+glGetActiveAttribARB.add( Output( 'name','GLcharARB *' ,maxSize = 'maxLength' ))
 glGetActiveAttribARB.version = '1.1'
 glGetActiveAttribARB.category = 'GL_ARB_vertex_shader'
 glGetActiveAttribARB.trace = True
@@ -32970,7 +32970,7 @@ glGetTransformFeedbackVaryingEXT.add( Input( 'bufSize','GLsizei' ))
 glGetTransformFeedbackVaryingEXT.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetTransformFeedbackVaryingEXT.add( Output( 'size','GLsizei *' ,size = 1 ))
 glGetTransformFeedbackVaryingEXT.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetTransformFeedbackVaryingEXT.add( Output( 'name','GLchar *' ))
+glGetTransformFeedbackVaryingEXT.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetTransformFeedbackVaryingEXT.version = '2.0'
 glGetTransformFeedbackVaryingEXT.category = 'GL_EXT_transform_feedback'
 glGetTransformFeedbackVaryingEXT.trace = True
@@ -37484,7 +37484,7 @@ glGetActiveVaryingNV.add( Input( 'bufSize','GLsizei' ))
 glGetActiveVaryingNV.add( Output( 'length','GLsizei *' ,size = 1 ))
 glGetActiveVaryingNV.add( Output( 'size','GLsizei *' ,size = 1 ))
 glGetActiveVaryingNV.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveVaryingNV.add( Output( 'name','GLchar *' ))
+glGetActiveVaryingNV.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
 glGetActiveVaryingNV.version = '1.5'
 glGetActiveVaryingNV.category = 'GL_NV_transform_feedback'
 glGetActiveVaryingNV.trace = True

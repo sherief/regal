@@ -239,6 +239,7 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalDebugInfo.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalDispatch.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchCache.cpp" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalDispatchCode.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchDebug.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchEmu.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalDispatchError.cpp" />

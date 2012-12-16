@@ -41,6 +41,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+void InitDispatchTableCode     (DispatchTable &tbl);
 void InitDispatchTableDebug    (DispatchTable &tbl);
 void InitDispatchTableError    (DispatchTable &tbl);
 void InitDispatchTableEmu      (DispatchTable &tbl);
@@ -75,6 +76,12 @@ Dispatcher::Dispatcher()
   ::memset(&cache,0,sizeof(DispatchTable));
   InitDispatchTableCache(cache);
   push_back(cache,true);
+  #endif
+
+  #if REGAL_CODE
+  ::memset(&code,0,sizeof(DispatchTable));
+  InitDispatchTableCode(code);
+  push_back(code,Config::enableCode);
   #endif
 
   #if REGAL_LOG

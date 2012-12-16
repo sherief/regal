@@ -304,6 +304,201 @@ materialv(GLenum pname)
   }
 }
 
+size_t
+pixelImage(GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLint pack, GLenum target)
+{
+  /* TODO: Review later: Does texture "level" affect size? */
+  /* TODO: Review later: Properly account for effects of glPixelStore. */
+
+  size_t numComponent = 0;
+  size_t sizeElement  = 8; /* bits */
+
+  size_t dataWidth  = 0;
+  size_t dataHeight = 0;
+  size_t dataDepth  = 0;
+
+//  if (!traceGL_Native.glGetIntegerv)
+//    return 0;
+
+  if (width < 0 || height < 0 || depth < 0)
+    return 0;
+
+  if (pack != 0 && pack != 1)
+    return 0;
+
+  /* When target is a GL_PROXY_TEXUTRE_xx, size is 0. */
+
+  if ((target == GL_PROXY_TEXTURE_1D) ||
+      (target == GL_PROXY_TEXTURE_2D) ||
+      (target == GL_PROXY_TEXTURE_3D))
+    return 0;
+
+  /* TODO: If an unpack buffer is bound for glDrawPixels... */
+  if (!pack)
+  {
+#if 0
+    GLint bufferBinding = 0;
+    traceGL_Native.glGetIntegerv(GL_PIXEL_UNPACK_BUFFER_BINDING, &bufferBinding);
+    if (bufferBinding > 0)
+      return 1;
+#endif
+  }
+  else
+  {
+#if 0
+    /* TODO: Data is treated as byte offset when a non-zero named buffer is bound. */
+    GLint bufferBinding = 0;
+    traceGL_Native.glGetIntegerv(GL_PIXEL_PACK_BUFFER_BINDING, &bufferBinding);
+    if (bufferBinding > 0)
+      return 1;
+#endif
+  }
+
+  /* Compute number of components in each element. */
+
+  switch (format)
+  {
+    case GL_COLOR_INDEX:     numComponent = 1; break;
+    case GL_STENCIL_INDEX:   numComponent = 1; break;
+    case GL_DEPTH_COMPONENT: numComponent = 1; break;
+    case GL_RED:
+    case GL_GREEN:
+    case GL_BLUE:
+    case GL_ALPHA:           numComponent = 1; break;
+    case GL_INTENSITY:       numComponent = 1; break;
+    case GL_RGB:
+    case GL_BGR:             numComponent = 3; break;
+    case GL_RGBA:
+    case GL_BGRA:            numComponent = 4; break;
+    case GL_LUMINANCE:       numComponent = 1; break;
+    case GL_LUMINANCE_ALPHA: numComponent = 2; break;
+
+    default: break;
+  }
+
+  /* Compute size of each element. */
+
+  switch (type)
+  {
+    /* Each value is one component per element. */
+
+    case GL_UNSIGNED_BYTE:               sizeElement *= sizeof(GLubyte)  * numComponent; break;
+    case GL_BYTE:                        sizeElement *= sizeof(GLbyte)   * numComponent; break;
+    case GL_BITMAP:                      sizeElement *= sizeof(GLubyte)  * numComponent; break;
+    case GL_UNSIGNED_SHORT:              sizeElement *= sizeof(GLushort) * numComponent; break;
+    case GL_SHORT:                       sizeElement *= sizeof(GLshort)  * numComponent; break;
+    case GL_UNSIGNED_INT:                sizeElement *= sizeof(GLuint)   * numComponent; break;
+    case GL_INT:                         sizeElement *= sizeof(GLint)    * numComponent; break;
+    case GL_FLOAT:                       sizeElement *= sizeof(GLfloat)  * numComponent; break;
+
+    /* Each unsigned value contains all the components per element. */
+
+    case GL_UNSIGNED_BYTE_3_3_2:
+    case GL_UNSIGNED_BYTE_2_3_3_REV:     sizeElement *= sizeof(GLbyte);   break;
+
+    case GL_UNSIGNED_SHORT_5_6_5:
+    case GL_UNSIGNED_SHORT_5_6_5_REV:
+    case GL_UNSIGNED_SHORT_4_4_4_4:
+    case GL_UNSIGNED_SHORT_4_4_4_4_REV:
+    case GL_UNSIGNED_SHORT_5_5_5_1:
+    case GL_UNSIGNED_SHORT_1_5_5_5_REV:  sizeElement *= sizeof(GLushort); break;
+
+    case GL_UNSIGNED_INT_8_8_8_8:
+    case GL_UNSIGNED_INT_8_8_8_8_REV:
+    case GL_UNSIGNED_INT_10_10_10_2:
+    case GL_UNSIGNED_INT_2_10_10_10_REV: sizeElement *= sizeof(GLuint);   break;
+
+    default: break;
+  }
+
+  /* Special case: GL_BITMAP. */
+
+  if (type == GL_BITMAP)
+  {
+     /* TODO: Confirm calculations. */
+    if ((format == GL_COLOR_INDEX) || (format == GL_STENCIL_INDEX))
+      sizeElement = sizeElement/8;
+    else
+      return 0;
+  }
+
+  /* Take into account client state set by glPixelStore. */
+
+  if (depth)
+  {
+#if 0
+    GLint skipImages = 0;
+
+    /* GL_PACK_SKIP_IMAGES */
+    if (pack)
+      traceGL_Native.glGetIntegerv(GL_PACK_SKIP_IMAGES, &skipImages);
+    else
+      traceGL_Native.glGetIntegerv(GL_UNPACK_SKIP_IMAGES, &skipImages);
+    dataDepth += skipImages > 0 ? skipImages : 0;
+#endif
+  }
+  else
+  {
+    dataDepth = 1;
+  }
+
+  if (height)
+  {
+    GLint imageHeight = 0;
+    GLint skipRows    = 0;
+    GLint rowLength   = 0;
+    GLint alignment   = 1; /* Allowed values: 1,2,4,8 */
+
+#if 0
+    /* GL_PACK_IMAGE_HEIGHT */
+    if (pack)
+      traceGL_Native.glGetIntegerv(GL_PACK_IMAGE_HEIGHT, &imageHeight);
+    else
+      traceGL_Native.glGetIntegerv(GL_UNPACK_IMAGE_HEIGHT, &imageHeight);
+#endif
+    dataHeight = imageHeight > 0 ? imageHeight : height;
+
+#if 0
+    /* GL_PACK_SKIP_ROWS */
+    if (pack)
+      traceGL_Native.glGetIntegerv(GL_PACK_SKIP_ROWS, &skipRows);
+    else
+      traceGL_Native.glGetIntegerv(GL_UNPACK_SKIP_ROWS, &skipRows);
+#endif
+    dataHeight += skipRows > 0 ? skipRows : 0;
+
+#if 0
+    /* GL_PACK_ROW_LENGTH */
+    if (pack)
+      traceGL_Native.glGetIntegerv(GL_PACK_ROW_LENGTH, &rowLength);
+    else
+      traceGL_Native.glGetIntegerv(GL_UNPACK_ROW_LENGTH, &rowLength);
+#endif
+    dataWidth = rowLength > 0 ? rowLength : width;
+
+    /* Align byte boundary */
+    dataWidth = (dataWidth * sizeElement + 7)/8;
+
+#if 0
+    /* GL_PACK_ALIGNMENT */
+    if (pack)
+      traceGL_Native.glGetIntegerv(GL_PACK_ALIGNMENT, &alignment);
+    else
+      traceGL_Native.glGetIntegerv(GL_UNPACK_ALIGNMENT, &alignment);
+#endif
+    dataWidth = alignment > 0 ? alignment * (dataWidth + alignment - 1)/alignment : dataWidth;
+  }
+  else
+  {
+    dataHeight = 1;
+
+    /* Align byte boundary */
+    dataWidth = (width * sizeElement + 7)/8;
+  }
+
+  return dataWidth * dataHeight * dataDepth;
+}
+
 /* TODO: Extension enums. */
 
 size_t
