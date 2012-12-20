@@ -157,6 +157,8 @@ LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
 LIB.LIBS           := 
 
 LIB.SRCS           :=
+LIB.SRCS           += src/regal/RegalPixelConversions.cpp
+LIB.SRCS           += src/regal/RegalTexC.cpp
 LIB.SRCS           += src/regal/RegalIff.cpp
 LIB.SRCS           += src/regal/Regal.cpp
 LIB.SRCS           += src/regal/RegalToken.cpp
@@ -692,17 +694,19 @@ endif
 #
 
 REGALTESTS.SRCS       += tests/test_main.cpp
+REGALTESTS.SRCS       += tests/testRegalTexC.cpp
+REGALTESTS.SRCS       += tests/testRegalPixelConversions.cpp
 REGALTESTS.SRCS.NAMES := $(notdir $(REGALTESTS.SRCS))
 REGALTESTS.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTESTS.SRCS.NAMES))
 REGALTESTS.OBJS       := $(REGALTESTS.OBJS:.cpp=.o)
-REGALTESTS.CFLAGS     := -Isrc/googletest/include -Isrc/regal
-REGALTESTS.LIBS       := -Llib -lgtest -lRegal
+REGALTESTS.CFLAGS     := -Isrc/googletest/include -Isrc/regal -Isrc/boost
+REGALTESTS.LIBS       := -Llib -lgtest -lRegal -lm -ldl
 
 tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(CFLAGS) $(REGALTESTS.CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/RegalTests: bin $(REGALTESTS.OBJS) lib/$(GTEST.STATIC) lib/$(LIB.SHARED)
+bin/RegalTests: bin $(REGALTESTS.OBJS) lib/$(GTEST.STATIC) lib/$(LIB.STATIC)
 	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTESTS.OBJS) $(LIB.LDFLAGS) $(REGALTESTS.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@

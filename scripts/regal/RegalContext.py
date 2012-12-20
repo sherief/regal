@@ -31,6 +31,7 @@ from EmuIff    import iffFormulae
 from EmuBin    import binFormulae
 from EmuObj    import objFormulae
 from EmuFilter import formulae as filterFormulae
+from EmuTexC   import texCFormulae
 
 # Regal.cpp emulation
 
@@ -64,6 +65,7 @@ emu = [
     { 'type' : 'RegalSo',     'include' : 'RegalSo.h',   'member' : 'so',     'conditional' : 'Config::enableEmuSo',     'ifdef' : 'REGAL_EMU_SO',     'formulae' : soFormulae     },
     { 'type' : 'RegalVao',    'include' : 'RegalVao.h',  'member' : 'vao',    'conditional' : 'Config::enableEmuVao',    'ifdef' : 'REGAL_EMU_VAO',    'formulae' : vaoFormulae    },
     { 'type' : None,          'include' : None,          'member' : None,     'conditional' : 'Config::enableEmuFilter', 'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
+    { 'type' : 'RegalTexC',   'include' : 'RegalTexC.h', 'member' : 'texc',   'conditional' : 'Config::enableEmuTexC',   'ifdef' : 'REGAL_EMU_TEXC',   'formulae' : texCFormulae   },
     { 'type' : 'void',        'include' : None,          'member' : None,     'conditional' : None,                      'ifdef' : None,               'formulae' : None           }
 ]
 

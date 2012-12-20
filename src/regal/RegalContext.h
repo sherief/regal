@@ -8,6 +8,7 @@
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
   Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2012 Google Inc.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -72,6 +73,7 @@ struct RegalDsa;
 namespace Emu { struct Iff; };
 struct RegalSo;
 struct RegalVao;
+struct RegalTexC;
 #endif
 
 struct RegalContext
@@ -103,6 +105,7 @@ struct RegalContext
   Emu::Iff           *iff;
   RegalSo            *so;
   RegalVao           *vao;
+  RegalTexC          *texc;
 #endif
 
   #if REGAL_SYS_PPAPI

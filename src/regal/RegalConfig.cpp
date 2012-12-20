@@ -4,6 +4,7 @@
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
   Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2012 Google Inc.
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -67,6 +68,7 @@ bool enableEmuIff     = REGAL_EMU_IFF;
 bool enableEmuSo      = REGAL_EMU_SO;
 bool enableEmuVao     = REGAL_EMU_VAO;
 bool enableEmuFilter  = REGAL_EMU_FILTER;
+bool enableEmuTexC    = REGAL_EMU_TEXC;
 
 int  frameLimit       = 0;  // Unlimited
 
@@ -192,6 +194,11 @@ void Init()
   if (tmp) enableEmuVao = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMU_TEXC
+  tmp = GetEnv( "REGAL_EMU_TEXC" );
+  if (tmp) enableEmuTexC = atoi(tmp)!=0;
+#endif
+
   tmp = GetEnv( "REGAL_EMU_FILTER" );
   if (tmp) enableEmuFilter = atoi(tmp)!=0;
 
@@ -271,6 +278,7 @@ void Init()
   Info("REGAL_EMU_SO             ", enableEmuSo      ? "enabled" : "disabled");
   Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
   Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
+  Info("REGAL_EMU_TEXC           ", enableEmuTexC    ? "enabled" : "disabled");
 
   Info("REGAL_FRAME_LIMIT        ", frameLimit                               );
 
