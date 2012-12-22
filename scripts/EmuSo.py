@@ -23,7 +23,7 @@ soFormulae = {
     'GetSamplerParameterv' : {
         'entries' : [ 'glGetSamplerParameter(I|)(u|)(f|i)v' ],
         'impl' : [
-            'if ( !_context->so->GetSamplerParameterv( _context, ${arg0plus} ) ) {',
+            'if ( !_context->so->GetSamplerParameterv( _context, ${arg0plus} )) {',
             '   _context->dispatcher.emulation.glGetSamplerParameter${m1}${m2}${m3}v( ${arg0plus} );',
             '}',
         ]
@@ -31,7 +31,7 @@ soFormulae = {
     'SamplerParameter' : {
         'entries' : [ 'glSamplerParameter(I|)(u|)(f|i)(v|)' ],
         'impl' : [
-            'if ( !_context->so->SamplerParameter${m4}( _context, ${arg0plus} ) ) {',
+            'if ( !_context->so->SamplerParameter${m4}( _context, ${arg0plus} )) {',
             '   _context->dispatcher.emulation.glSamplerParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
             '}',
         ]
@@ -62,7 +62,11 @@ soFormulae = {
     },
     'TexParameter' : {
         'entries' : [ 'glTexParameter(I|)(u|)(f|i)(v|)(EXT|)' ],
-        'prefix' : [ '_context->so->TexParameter${m4}( _context, ${arg0plus} );', ]
+        'impl' : [
+            'if ( !_context->so->TexParameter${m4}( _context, ${arg0plus} ) ) {',
+            '   _context->dispatcher.emulation.glTexParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
+            '}',
+        ]
     },
     'GetTexParameterv' : {
         'entries' : [ 'glGetTexParameter(I|)(u|)(f|i)v' ],
@@ -73,7 +77,7 @@ soFormulae = {
         ]
     },
     'PreDraw' : {
-        'entries' : [ 'gl(Multi|)Draw(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
+        'entries' : [ 'gl(Multi|)Draw(Range|)(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
         'prefix' : [ '_context->so->PreDraw( _context );', ],
     },
 }

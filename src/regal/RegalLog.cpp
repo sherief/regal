@@ -86,7 +86,9 @@ namespace Logging {
   bool enableHttp     = true;
 
   int  maxLines  = (REGAL_LOG_MAX_LINES);
+  int  maxBytes  = (REGAL_LOG_MAX_BYTES);
   bool frameTime = false;
+  bool pointers  = (REGAL_LOG_POINTERS);
   bool callback  = (REGAL_LOG_CALLBACK);
 
   bool         log          = (REGAL_LOG);
@@ -143,6 +145,9 @@ namespace Logging {
     const char *ml = GetEnv("REGAL_LOG_MAX_LINES");
     if (ml) maxLines = atoi(ml);
 
+    const char *mb = GetEnv("REGAL_LOG_MAX_BYTES");
+    if (mb) maxBytes = atoi(mb);
+
 #if REGAL_LOG_ONCE
     const char *lo = GetEnv("REGAL_LOG_ONCE");
     if (lo) once = atoi(lo)!=0;
@@ -150,6 +155,11 @@ namespace Logging {
 
     const char *tmp = GetEnv("REGAL_FRAME_TIME");
     if (tmp) frameTime = atoi(tmp)!=0;
+
+#if REGAL_LOG_POINTERS
+    const char *p = GetEnv("REGAL_LOG_POINTERS");
+    if (p) pointers = atoi(p)!=0;
+#endif
 
     const char *cb = GetEnv("REGAL_LOG_CALLBACK");
     if (cb) callback = atoi(cb)!=0;
@@ -237,6 +247,14 @@ namespace Logging {
 
 #if REGAL_LOG_STDOUT
     Info("REGAL_LOG_STDOUT   ", stdOut         ? "enabled" : "disabled");
+#endif
+
+#if REGAL_LOG_ONCE
+    Info("REGAL_LOG_ONCE     ", once           ? "enabled" : "disabled");
+#endif
+
+#if REGAL_LOG_POINTERS
+    Info("REGAL_LOG_POINTERS ", pointers       ? "enabled" : "disabled");
 #endif
   }
 

@@ -12127,6 +12127,7 @@ gl.add(glGetPolygonStipple)
 
 glGetString = Function('glGetString')
 glGetString.ret = Return('const GLubyte *')
+glGetString.ret.cast = 'const GLchar *'
 glGetString.add( Input( 'name','GLenum' ))
 glGetString.version = '1.0'
 glGetString.category = 'GL_VERSION_1_0'
@@ -16834,7 +16835,7 @@ glGetProgramiv = Function('glGetProgramiv')
 glGetProgramiv.ret = Return('void')
 glGetProgramiv.add( Input( 'program','GLuint' ))
 glGetProgramiv.add( Input( 'pname','GLenum' ))
-glGetProgramiv.add( Output( 'params','GLint *' ))
+glGetProgramiv.add( Output( 'params','GLint *' ,size = 1 ))
 glGetProgramiv.version = '2.0'
 glGetProgramiv.category = ''
 glGetProgramiv.esVersions = [2.0]
@@ -16905,7 +16906,7 @@ glGetShaderiv = Function('glGetShaderiv')
 glGetShaderiv.ret = Return('void')
 glGetShaderiv.add( Input( 'shader','GLuint' ))
 glGetShaderiv.add( Input( 'pname','GLenum' ))
-glGetShaderiv.add( Output( 'params','GLint *' ))
+glGetShaderiv.add( Output( 'params','GLint *' ,size = 1 ))
 glGetShaderiv.version = '2.0'
 glGetShaderiv.category = ''
 glGetShaderiv.esVersions = [2.0]
@@ -16915,6 +16916,7 @@ gl.add(glGetShaderiv)
 
 glGetStringi = Function('glGetStringi')
 glGetStringi.ret = Return('const GLubyte *')
+glGetStringi.ret.cast = 'const GLchar *'
 glGetStringi.add( Input( 'name','GLenum' ))
 glGetStringi.add( Input( 'index','GLuint' ))
 glGetStringi.version = '3.0'
@@ -23478,6 +23480,7 @@ gl.add(glDeleteSync)
 
 glFenceSync = Function('glFenceSync')
 glFenceSync.ret = Return('GLsync')
+glFenceSync.ret.cast = 'void *'
 glFenceSync.add( Input( 'condition','GLenum' ))
 glFenceSync.add( Input( 'flags','GLbitfield' ))
 glFenceSync.version = '3.2'

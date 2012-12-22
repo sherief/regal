@@ -33,10 +33,14 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
+#include <utility>
 #include <algorithm>
-#include <math.h>
+
+#include <cmath>
 
 #include "RegalTexC.h"
 #include "RegalContext.h"
@@ -105,18 +109,8 @@ bool RegalConvertedBuffer::ConvertFrom( GLsizei width, GLsizei height, GLenum so
   const size_t sourceStride        = ( sourcePixelsPerRow * sourcePixelSize + sourceAlignment - 1 ) & ~( sourceAlignment - 1 );
 
   std::vector<uint32_t> rowBuffer;
-
-  try {
-    targetBuffer_ .resize( targetStride * height );
-  } catch ( std::bad_alloc& e ) {
-    return false;
-  }
-
-  try {
-    rowBuffer.resize( width * sizeof( uint32_t ) );
-  } catch ( std::bad_alloc& e ) {
-    return false;
-  }
+  targetBuffer_ .resize( targetStride * height );
+  rowBuffer.resize( width * sizeof( uint32_t ) );
 
   const uint8_t* sourceRowData = static_cast<const uint8_t*>( sourcePixels );
   uint8_t*       targetRowData = &targetBuffer_[ 0 ];
@@ -413,3 +407,5 @@ void RegalTexC::DeleteTexture_( GLuint texture ) {
 }
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION

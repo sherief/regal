@@ -764,6 +764,7 @@ struct ContextInfo
 #endif
 
   GLuint maxVertexAttribs;
+  GLuint maxVaryings;
 };
 
 REGAL_NAMESPACE_END

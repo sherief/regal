@@ -102,7 +102,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBitmap","(", width, ", ", height, ", ", xorig, ", ", yorig, ", ", xmove, ", ", ymove, ", ", bitmap, ")");
+    App("glBitmap","(", width, ", ", height, ", ", xorig, ", ", yorig, ", ", xmove, ", ", ymove, ", ", boost::print::optional(bitmap,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -677,7 +677,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawPixels","(", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glDrawPixels","(", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -2020,7 +2020,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPolygonStipple(const GLubyte *mask)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPolygonStipple","(", mask, ")");
+    App("glPolygonStipple","(", boost::print::optional(mask,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -2964,7 +2964,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexImage1D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexImage1D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -2974,7 +2974,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexImage2D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", height, ", ", border, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexImage2D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", height, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3326,7 +3326,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3406,7 +3406,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElements","(", toString(mode), ", ", count, ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(indices), ")");
+    App("glDrawElements","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(indices),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3416,7 +3416,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glEdgeFlagPointer","(", stride, ", ", pointer, ")");
+    App("glEdgeFlagPointer","(", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3456,7 +3456,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glIndexPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glIndexPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glIndexPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3486,7 +3486,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glInterleavedArrays","(", toString(format), ", ", stride, ", ", pointer, ")");
+    App("glInterleavedArrays","(", toString(format), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3506,7 +3506,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNormalPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glNormalPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3556,7 +3556,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexCoordPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glTexCoordPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3566,7 +3566,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3576,7 +3576,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3586,7 +3586,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3628,7 +3628,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawRangeElements","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ")");
+    App("glDrawRangeElements","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3680,7 +3680,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage1D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage1D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3690,7 +3690,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage2D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage2D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3700,7 +3700,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage3D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage3D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3710,7 +3710,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3720,7 +3720,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4132,7 +4132,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glFogCoordPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glFogCoordPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4402,7 +4402,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSecondaryColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glSecondaryColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4594,7 +4594,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
+    App("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -4604,7 +4604,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
+    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -5691,7 +5691,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribPointer","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribPointer","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6305,7 +6305,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribIPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribIPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6327,7 +6327,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstanced","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    App("glDrawElementsInstanced","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6467,7 +6467,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, GLvoid *userParam)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDebugMessageCallbackAMD","(", userParam, ")");
+    App("glDebugMessageCallbackAMD","(", boost::print::optional(userParam,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6551,7 +6551,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiDrawArraysIndirectAMD","(", toString(mode), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    App("glMultiDrawArraysIndirectAMD","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6561,7 +6561,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiDrawElementsIndirectAMD","(", toString(mode), ", ", toString(type), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    App("glMultiDrawElementsIndirectAMD","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6797,7 +6797,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedANGLE","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    App("glDrawElementsInstancedANGLE","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6863,7 +6863,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glElementPointerAPPLE(GLenum type, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glElementPointerAPPLE","(", toString(type), ", ", pointer, ")");
+    App("glElementPointerAPPLE","(", toString(type), ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7167,7 +7167,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTextureRangeAPPLE(GLenum target, GLsizei length, GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTextureRangeAPPLE","(", toString(target), ", ", length, ", ", pointer, ")");
+    App("glTextureRangeAPPLE","(", toString(target), ", ", length, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7365,7 +7365,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glShaderBinary","(", count, ", ", boost::print::array(shaders,count), ", ", toString(binaryformat), ", ", binary, ", ", length, ")");
+    App("glShaderBinary","(", count, ", ", boost::print::array(shaders,count), ", ", toString(binaryformat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7387,7 +7387,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", baseinstance, ")");
+    App("glDrawElementsInstancedBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", baseinstance, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7397,7 +7397,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedBaseVertexBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", basevertex, ", ", baseinstance, ")");
+    App("glDrawElementsInstancedBaseVertexBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", basevertex, ", ", baseinstance, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7443,7 +7443,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClearBufferData","(", toString(target), ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    App("glClearBufferData","(", toString(target), ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7453,7 +7453,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClearBufferSubData","(", toString(target), ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    App("glClearBufferSubData","(", toString(target), ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7463,7 +7463,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClearNamedBufferDataEXT","(", buffer, ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    App("glClearNamedBufferDataEXT","(", buffer, ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7473,7 +7473,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClearNamedBufferSubDataEXT","(", buffer, ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    App("glClearNamedBufferSubDataEXT","(", buffer, ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7543,7 +7543,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDebugMessageCallbackARB(GLDEBUGPROCARB callback, GLvoid *userParam)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDebugMessageCallbackARB","(", userParam, ")");
+    App("glDebugMessageCallbackARB","(", boost::print::optional(userParam,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7639,7 +7639,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", basevertex, ")");
+    App("glDrawElementsBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", basevertex, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7649,7 +7649,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", basevertex, ")");
+    App("glDrawElementsInstancedBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", basevertex, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7659,7 +7659,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawRangeElementsBaseVertex","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ", ", basevertex, ")");
+    App("glDrawRangeElementsBaseVertex","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", basevertex, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7681,7 +7681,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawArraysIndirect(GLenum mode, const GLvoid *indirect)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawArraysIndirect","(", toString(mode), ", ", indirect, ")");
+    App("glDrawArraysIndirect","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7691,7 +7691,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", indirect, ")");
+    App("glDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -7713,7 +7713,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedARB","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    App("glDrawElementsInstancedARB","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8021,7 +8021,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glProgramBinary(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glProgramBinary","(", program, ", ", toString(binaryFormat), ", ", binary, ", ", length, ")");
+    App("glProgramBinary","(", program, ", ", toString(binaryFormat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8225,7 +8225,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorSubTable(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorSubTable","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    App("glColorSubTable","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8235,7 +8235,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorTable","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    App("glColorTable","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8265,7 +8265,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glConvolutionFilter1D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    App("glConvolutionFilter1D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8275,7 +8275,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glConvolutionFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    App("glConvolutionFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8535,7 +8535,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSeparableFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ")");
+    App("glSeparableFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8677,7 +8677,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMatrixIndexPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glMatrixIndexPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8687,7 +8687,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMatrixIndexubvARB(GLint size, GLubyte *indices)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMatrixIndexubvARB","(", size, ", ", indices, ")");
+    App("glMatrixIndexubvARB","(", size, ", ", boost::print::optional(indices,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8719,7 +8719,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiDrawArraysIndirect","(", toString(mode), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    App("glMultiDrawArraysIndirect","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -8729,7 +8729,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    App("glMultiDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -9403,7 +9403,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetnSeparableFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", rowBufSize, ", ", columnBufSize, ", ", span, ")");
+    App("glGetnSeparableFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", rowBufSize, ", ", columnBufSize, ", ", boost::print::optional(span,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10405,7 +10405,7 @@ extern "C" {
   REGAL_DECL GLint REGAL_CALL glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetUniformLocationARB","(", programObj, ", ", name, ")");
+    App("glGetUniformLocationARB","(", programObj, ", ", boost::print::quote(name,'"'), ")");
     if (!_context) return (GLint )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10823,7 +10823,7 @@ extern "C" {
   REGAL_DECL GLenum REGAL_CALL glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glClientWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")");
+    App("glClientWaitSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", flags, ", ", timeout, ")");
     if (!_context) return (GLenum )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10833,7 +10833,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDeleteSync(GLsync sync)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDeleteSync","(", reinterpret_cast<void *>(sync), ")");
+    App("glDeleteSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10863,7 +10863,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetSynciv","(", reinterpret_cast<void *>(sync), ", ", toString(pname), ", ", bufSize, ")");
+    App("glGetSynciv","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", toString(pname), ", ", bufSize, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10873,7 +10873,7 @@ extern "C" {
   REGAL_DECL GLboolean REGAL_CALL glIsSync(GLsync sync)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glIsSync","(", reinterpret_cast<void *>(sync), ")");
+    App("glIsSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ")");
     if (!_context) return (GLboolean )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10883,7 +10883,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")");
+    App("glWaitSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", flags, ", ", timeout, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10951,7 +10951,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage1DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage1DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10961,7 +10961,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage2DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage2DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10971,7 +10971,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage3DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage3DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10981,7 +10981,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexSubImage1DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexSubImage1DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -10991,7 +10991,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexSubImage2DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexSubImage2DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11625,7 +11625,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribLPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribLPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11709,7 +11709,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glWeightPointerARB(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glWeightPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glWeightPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11769,7 +11769,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glWeightubvARB(GLint size, GLubyte *weights)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glWeightubvARB","(", size, ", ", weights, ")");
+    App("glWeightubvARB","(", size, ", ", boost::print::optional(weights,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11811,7 +11811,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferDataARB(GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
+    App("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -11821,7 +11821,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
+    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -12523,7 +12523,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribPointerARB","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribPointerARB","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -12535,7 +12535,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBindAttribLocationARB","(", programObj, ", ", index, ", ", name, ")");
+    App("glBindAttribLocationARB","(", programObj, ", ", index, ", ", boost::print::quote(name,'"'), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -12555,7 +12555,7 @@ extern "C" {
   REGAL_DECL GLint REGAL_CALL glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetAttribLocationARB","(", programObj, ", ", name, ")");
+    App("glGetAttribLocationARB","(", programObj, ", ", boost::print::quote(name,'"'), ")");
     if (!_context) return (GLint )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -13245,7 +13245,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glElementPointerATI(GLenum type, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glElementPointerATI","(", toString(type), ", ", pointer, ")");
+    App("glElementPointerATI","(", toString(type), ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -13597,7 +13597,7 @@ extern "C" {
   REGAL_DECL GLuint REGAL_CALL glNewObjectBufferATI(GLsizei size, const GLvoid *pointer, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNewObjectBufferATI","(", size, ", ", pointer, ", ", toString(usage), ")");
+    App("glNewObjectBufferATI","(", size, ", ", boost::print::optional(pointer,Logging::pointers), ", ", toString(usage), ")");
     if (!_context) return (GLuint )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -13607,7 +13607,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const GLvoid *pointer, GLenum preserve)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glUpdateObjectBufferATI","(", buffer, ", ", offset, ", ", size, ", ", pointer, ", ", toString(preserve), ")");
+    App("glUpdateObjectBufferATI","(", buffer, ", ", offset, ", ", size, ", ", boost::print::optional(pointer,Logging::pointers), ", ", toString(preserve), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14193,7 +14193,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *table)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorSubTableEXT","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    App("glColorSubTableEXT","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14237,7 +14237,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glConvolutionFilter1DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    App("glConvolutionFilter1DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14247,7 +14247,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glConvolutionFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    App("glConvolutionFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14357,7 +14357,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSeparableFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ")");
+    App("glSeparableFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14469,7 +14469,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glBinormalPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glBinormalPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glBinormalPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14579,7 +14579,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTangentPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTangentPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glTangentPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14773,7 +14773,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14783,7 +14783,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedMultiTexImage2DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", bits, ")");
+    App("glCompressedMultiTexImage2DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14803,7 +14803,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    App("glCompressedMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14833,7 +14833,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", bits, ")");
+    App("glCompressedTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14843,7 +14843,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTextureImage2DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", bits, ")");
+    App("glCompressedTextureImage2DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -14863,7 +14863,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", bits, ")");
+    App("glCompressedTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -15783,7 +15783,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiTexCoordPointerEXT","(", toString(texunit), ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glMultiTexCoordPointerEXT","(", toString(texunit), ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -15893,7 +15893,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", internalformat, ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    App("glMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", internalformat, ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -15993,7 +15993,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    App("glMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -16023,7 +16023,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNamedBufferDataEXT","(", buffer, ", ", size, ", ", data, ", ", toString(usage), ")");
+    App("glNamedBufferDataEXT","(", buffer, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ", ", toString(usage), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -16033,7 +16033,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", data, ")");
+    App("glNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -16233,7 +16233,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(format), ", ", len, ", ", string, ")");
+    App("glNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(format), ", ", len, ", ", boost::print::optional(string,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -16793,7 +16793,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    App("glTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -16893,7 +16893,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    App("glTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -17129,7 +17129,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawElementsInstancedEXT","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    App("glDrawElementsInstancedEXT","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -17141,7 +17141,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDrawRangeElementsEXT","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ")");
+    App("glDrawRangeElementsEXT","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -17153,7 +17153,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glFogCoordPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glFogCoordPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glFogCoordPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -17967,7 +17967,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribIPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribIPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18319,7 +18319,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorTableEXT","(", toString(target), ", ", toString(internalFormat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    App("glColorTableEXT","(", toString(target), ", ", toString(internalFormat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18489,7 +18489,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glReadnPixelsEXT","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", data, ")");
+    App("glReadnPixelsEXT","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18683,7 +18683,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSecondaryColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glSecondaryColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18773,7 +18773,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexSubImage1DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexSubImage1DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18783,7 +18783,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexSubImage2DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    App("glTexSubImage2DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19113,7 +19113,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    App("glColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19153,7 +19153,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glIndexPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    App("glIndexPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19163,7 +19163,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glNormalPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    App("glNormalPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19173,7 +19173,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexCoordPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    App("glTexCoordPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19183,7 +19183,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    App("glVertexPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19295,7 +19295,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribLPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribLPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19567,7 +19567,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSetInvariantEXT(GLuint id, GLenum type, const GLvoid *addr)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSetInvariantEXT","(", id, ", ", toString(type), ", ", addr, ")");
+    App("glSetInvariantEXT","(", id, ", ", toString(type), ", ", boost::print::optional(addr,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19577,7 +19577,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glSetLocalConstantEXT(GLuint id, GLenum type, const GLvoid *addr)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glSetLocalConstantEXT","(", id, ", ", toString(type), ", ", addr, ")");
+    App("glSetLocalConstantEXT","(", id, ", ", toString(type), ", ", boost::print::optional(addr,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19627,7 +19627,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const GLvoid *addr)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVariantPointerEXT","(", id, ", ", toString(type), ", ", stride, ", ", addr, ")");
+    App("glVariantPointerEXT","(", id, ", ", toString(type), ", ", stride, ", ", boost::print::optional(addr,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19687,7 +19687,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVariantubvEXT(GLuint id, const GLubyte *addr)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVariantubvEXT","(", id, ", ", addr, ")");
+    App("glVariantubvEXT","(", id, ", ", boost::print::optional(addr,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19729,7 +19729,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexWeightPointerEXT(GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexWeightPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexWeightPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -19789,7 +19789,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glStringMarkerGREMEDY(GLsizei len, const GLvoid *string)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glStringMarkerGREMEDY","(", len, ", ", string, ")");
+    App("glStringMarkerGREMEDY","(", len, ", ", boost::print::optional(string,Logging::pointers), ")");
     if (!_context) return;
     if (_context && _context->marker)
       _context->marker->InsertEventMarker( *_context, len, string );
@@ -20069,7 +20069,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *userParam)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glDebugMessageCallback","(", userParam, ")");
+    App("glDebugMessageCallback","(", boost::print::optional(userParam,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -20119,7 +20119,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetObjectPtrLabel","(", ptr, ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    App("glGetObjectPtrLabel","(", boost::print::optional(ptr,Logging::pointers), ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -20139,7 +20139,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glObjectPtrLabel(GLvoid *ptr, GLsizei length, const GLchar *label)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glObjectPtrLabel","(", ptr, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    App("glObjectPtrLabel","(", boost::print::optional(ptr,Logging::pointers), ", ", length, ", ", boost::print::quote(label,'"'), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -20791,7 +20791,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const GLvoid *points)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", uorder, ", ", vorder, ", ", toString(packed), ", ", points, ")");
+    App("glMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", uorder, ", ", vorder, ", ", toString(packed), ", ", boost::print::optional(points,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22083,7 +22083,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCoverFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
+    App("glCoverFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22103,7 +22103,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCoverStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
+    App("glCoverStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22213,7 +22213,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetPathMetricsNV","(", metricQueryMask, ", ", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", stride, ", ", metrics, ")");
+    App("glGetPathMetricsNV","(", metricQueryMask, ", ", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", stride, ", ", metrics, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22243,7 +22243,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetPathSpacingNV","(", toString(pathListMode), ", ", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", advanceScale, ", ", kerningScale, ", ", toString(transformType), ", ", returnedSpacing, ")");
+    App("glGetPathSpacingNV","(", toString(pathListMode), ", ", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", advanceScale, ", ", kerningScale, ", ", toString(transformType), ", ", returnedSpacing, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22323,7 +22323,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathCommandsNV","(", path, ", ", numCommands, ", ", commands, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    App("glPathCommandsNV","(", path, ", ", numCommands, ", ", boost::print::optional(commands,Logging::pointers), ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22333,7 +22333,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathCoordsNV","(", path, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    App("glPathCoordsNV","(", path, ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22373,7 +22373,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathGlyphRangeNV","(", firstPathName, ", ", toString(fontTarget), ", ", fontName, ", ", fontStyle, ", ", firstGlyph, ", ", numGlyphs, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ", ", emScale, ")");
+    App("glPathGlyphRangeNV","(", firstPathName, ", ", toString(fontTarget), ", ", boost::print::optional(fontName,Logging::pointers), ", ", fontStyle, ", ", firstGlyph, ", ", numGlyphs, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ", ", emScale, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22383,7 +22383,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathGlyphsNV","(", firstPathName, ", ", toString(fontTarget), ", ", fontName, ", ", fontStyle, ", ", numGlyphs, ", ", toString(type), ", ", charcodes, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ")");
+    App("glPathGlyphsNV","(", firstPathName, ", ", toString(fontTarget), ", ", boost::print::optional(fontName,Logging::pointers), ", ", fontStyle, ", ", numGlyphs, ", ", toString(type), ", ", boost::print::optional(charcodes,Logging::pointers), ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22453,7 +22453,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathStringNV(GLuint path, GLenum format, GLsizei length, const GLvoid *pathString)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathStringNV","(", path, ", ", toString(format), ", ", length, ", ", pathString, ")");
+    App("glPathStringNV","(", path, ", ", toString(format), ", ", length, ", ", boost::print::optional(pathString,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22463,7 +22463,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathSubCommandsNV","(", path, ", ", commandStart, ", ", commandsToDelete, ", ", numCommands, ", ", commands, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    App("glPathSubCommandsNV","(", path, ", ", commandStart, ", ", commandsToDelete, ", ", numCommands, ", ", boost::print::optional(commands,Logging::pointers), ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22473,7 +22473,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPathSubCoordsNV","(", path, ", ", coordStart, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    App("glPathSubCoordsNV","(", path, ", ", coordStart, ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22503,7 +22503,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glStencilFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(fillMode), ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
+    App("glStencilFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(fillMode), ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22523,7 +22523,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glStencilStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", reference, ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
+    App("glStencilStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", reference, ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -22575,7 +22575,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPixelDataRangeNV(GLenum target, GLsizei size, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPixelDataRangeNV","(", toString(target), ", ", size, ", ", pointer, ")");
+    App("glPixelDataRangeNV","(", toString(target), ", ", size, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -23279,7 +23279,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVDPAUInitNV(const GLvoid *vdpDevice, const GLvoid *getProcAddress)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVDPAUInitNV","(", vdpDevice, ", ", getProcAddress, ")");
+    App("glVDPAUInitNV","(", boost::print::optional(vdpDevice,Logging::pointers), ", ", boost::print::optional(getProcAddress,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -23309,7 +23309,7 @@ extern "C" {
   REGAL_DECL GLvdpauSurfaceNV REGAL_CALL glVDPAURegisterOutputSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVDPAURegisterOutputSurfaceNV","(", vdpSurface, ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")");
+    App("glVDPAURegisterOutputSurfaceNV","(", boost::print::optional(vdpSurface,Logging::pointers), ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")");
     if (!_context) return (GLvdpauSurfaceNV )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -23319,7 +23319,7 @@ extern "C" {
   REGAL_DECL GLvdpauSurfaceNV REGAL_CALL glVDPAURegisterVideoSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVDPAURegisterVideoSurfaceNV","(", vdpSurface, ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")");
+    App("glVDPAURegisterVideoSurfaceNV","(", boost::print::optional(vdpSurface,Logging::pointers), ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")");
     if (!_context) return (GLvdpauSurfaceNV )0;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -23371,7 +23371,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexArrayRangeNV(GLsizei size, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexArrayRangeNV","(", size, ", ", pointer, ")");
+    App("glVertexArrayRangeNV","(", size, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24197,7 +24197,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glVertexAttribPointerNV(GLuint index, GLint fsize, GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glVertexAttribPointerNV","(", index, ", ", fsize, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glVertexAttribPointerNV","(", index, ", ", fsize, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24649,7 +24649,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glGetProgramBinaryOES","(", program, ", ", bufSize, ", ", length, ", ", binaryFormat, ", ", binary, ")");
+    App("glGetProgramBinaryOES","(", program, ", ", bufSize, ", ", length, ", ", binaryFormat, ", ", boost::print::optional(binary,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24659,7 +24659,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glProgramBinaryOES(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glProgramBinaryOES","(", program, ", ", toString(binaryFormat), ", ", binary, ", ", length, ")");
+    App("glProgramBinaryOES","(", program, ", ", toString(binaryFormat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24713,7 +24713,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glMatrixIndexPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glMatrixIndexPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24723,7 +24723,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glWeightPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glWeightPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glWeightPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -24797,7 +24797,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glCompressedTexImage3DOES","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    App("glCompressedTexImage3DOES","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -25577,7 +25577,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glPointSizePointerOES","(", toString(type), ", ", stride, ", ", pointer, ")");
+    App("glPointSizePointerOES","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -26156,7 +26156,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glIglooInterfaceSGIX(GLenum pname, const GLvoid *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glIglooInterfaceSGIX","(", toString(pname), ", ", params, ")");
+    App("glIglooInterfaceSGIX","(", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -26432,7 +26432,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glColorTableSGI","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    App("glColorTableSGI","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -26590,7 +26590,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glReadVideoPixelsSUN","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    App("glReadVideoPixelsSUN","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -26622,7 +26622,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glReplacementCodeubvSUN(const GLubyte *code)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glReplacementCodeubvSUN","(", code, ")");
+    App("glReplacementCodeubvSUN","(", boost::print::optional(code,Logging::pointers), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -28894,7 +28894,7 @@ extern "C" {
 
   REGAL_DECL HANDLE REGAL_CALL wglDXOpenDeviceNV(GLvoid *dxDevice)
   {
-    App("wglDXOpenDeviceNV","(", dxDevice, ")");
+    App("wglDXOpenDeviceNV","(", boost::print::optional(dxDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDXOpenDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglDXOpenDeviceNV, "wglDXOpenDeviceNV" );
@@ -28905,7 +28905,7 @@ extern "C" {
     HANDLE  ret = (HANDLE )0;
     if (dispatchTableGlobal.wglDXOpenDeviceNV)
     {
-      Driver("wglDXOpenDeviceNV","(", dxDevice, ")");
+      Driver("wglDXOpenDeviceNV","(", boost::print::optional(dxDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDXOpenDeviceNV(dxDevice);
     }
     else
@@ -28915,7 +28915,7 @@ extern "C" {
 
   REGAL_DECL HANDLE REGAL_CALL wglDXRegisterObjectNV(HANDLE hDevice, GLvoid *dxObject, GLuint name, GLenum type, GLenum access)
   {
-    App("wglDXRegisterObjectNV","(", hDevice, ", ", dxObject, ", ", name, ", ", toString(type), ", ", toString(access), ")");
+    App("wglDXRegisterObjectNV","(", hDevice, ", ", boost::print::optional(dxObject,Logging::pointers), ", ", name, ", ", toString(type), ", ", toString(access), ")");
     if (!dispatchTableGlobal.wglDXRegisterObjectNV)
     {
       GetProcAddress( dispatchTableGlobal.wglDXRegisterObjectNV, "wglDXRegisterObjectNV" );
@@ -28926,7 +28926,7 @@ extern "C" {
     HANDLE  ret = (HANDLE )0;
     if (dispatchTableGlobal.wglDXRegisterObjectNV)
     {
-      Driver("wglDXRegisterObjectNV","(", hDevice, ", ", dxObject, ", ", name, ", ", toString(type), ", ", toString(access), ")");
+      Driver("wglDXRegisterObjectNV","(", hDevice, ", ", boost::print::optional(dxObject,Logging::pointers), ", ", name, ", ", toString(type), ", ", toString(access), ")");
       ret = dispatchTableGlobal.wglDXRegisterObjectNV(hDevice, dxObject, name, type, access);
     }
     else
@@ -28936,7 +28936,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDXSetResourceShareHandleNV(GLvoid *dxObject, HANDLE shareHandle)
   {
-    App("wglDXSetResourceShareHandleNV","(", dxObject, ", ", shareHandle, ")");
+    App("wglDXSetResourceShareHandleNV","(", boost::print::optional(dxObject,Logging::pointers), ", ", shareHandle, ")");
     if (!dispatchTableGlobal.wglDXSetResourceShareHandleNV)
     {
       GetProcAddress( dispatchTableGlobal.wglDXSetResourceShareHandleNV, "wglDXSetResourceShareHandleNV" );
@@ -28947,7 +28947,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDXSetResourceShareHandleNV)
     {
-      Driver("wglDXSetResourceShareHandleNV","(", dxObject, ", ", shareHandle, ")");
+      Driver("wglDXSetResourceShareHandleNV","(", boost::print::optional(dxObject,Logging::pointers), ", ", shareHandle, ")");
       ret = dispatchTableGlobal.wglDXSetResourceShareHandleNV(dxObject, shareHandle);
     }
     else
@@ -29345,7 +29345,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL wglFreeMemoryNV(void *pointer)
   {
-    App("wglFreeMemoryNV","(", pointer, ")");
+    App("wglFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglFreeMemoryNV)
     {
       GetProcAddress( dispatchTableGlobal.wglFreeMemoryNV, "wglFreeMemoryNV" );
@@ -29355,7 +29355,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.wglFreeMemoryNV)
     {
-      Driver("wglFreeMemoryNV","(", pointer, ")");
+      Driver("wglFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
       dispatchTableGlobal.wglFreeMemoryNV(pointer);
     }
     else
@@ -30166,7 +30166,7 @@ extern "C" {
 
   REGAL_DECL XVisualInfo *REGAL_CALL glXChooseVisual(Display *dpy, int screen, int *attribList)
   {
-    App("glXChooseVisual","(", dpy, ", ", screen, ", ", attribList, ")");
+    App("glXChooseVisual","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attribList, ")");
     if (!dispatchTableGlobal.glXChooseVisual)
     {
       GetProcAddress( dispatchTableGlobal.glXChooseVisual, "glXChooseVisual" );
@@ -30177,7 +30177,7 @@ extern "C" {
     XVisualInfo * ret = NULL;
     if (dispatchTableGlobal.glXChooseVisual)
     {
-      Driver("glXChooseVisual","(", dpy, ", ", screen, ", ", attribList, ")");
+      Driver("glXChooseVisual","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attribList, ")");
       ret = dispatchTableGlobal.glXChooseVisual(dpy, screen, attribList);
     }
     else
@@ -30187,7 +30187,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXCopyContext(Display *dpy, GLXContext src, GLXContext dst, unsigned long mask)
   {
-    App("glXCopyContext","(", dpy, ", ", src, ", ", dst, ", ", mask, ")");
+    App("glXCopyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(src,Logging::pointers), ", ", boost::print::optional(dst,Logging::pointers), ", ", mask, ")");
     if (!dispatchTableGlobal.glXCopyContext)
     {
       GetProcAddress( dispatchTableGlobal.glXCopyContext, "glXCopyContext" );
@@ -30197,7 +30197,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXCopyContext)
     {
-      Driver("glXCopyContext","(", dpy, ", ", src, ", ", dst, ", ", mask, ")");
+      Driver("glXCopyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(src,Logging::pointers), ", ", boost::print::optional(dst,Logging::pointers), ", ", mask, ")");
       dispatchTableGlobal.glXCopyContext(dpy, src, dst, mask);
     }
     else
@@ -30206,7 +30206,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateContext(Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct)
   {
-    App("glXCreateContext","(", dpy, ", ", vis, ", ", shareList, ", ", direct, ")");
+    App("glXCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", boost::print::optional(shareList,Logging::pointers), ", ", direct, ")");
     if (!dispatchTableGlobal.glXCreateContext)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateContext, "glXCreateContext" );
@@ -30217,7 +30217,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateContext)
     {
-      Driver("glXCreateContext","(", dpy, ", ", vis, ", ", shareList, ", ", direct, ")");
+      Driver("glXCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", boost::print::optional(shareList,Logging::pointers), ", ", direct, ")");
       ret = dispatchTableGlobal.glXCreateContext(dpy, vis, shareList, direct);
     }
     else
@@ -30227,7 +30227,7 @@ extern "C" {
 
   REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmap(Display *dpy, XVisualInfo *vis, Pixmap pixmap)
   {
-    App("glXCreateGLXPixmap","(", dpy, ", ", vis, ", ", pixmap, ")");
+    App("glXCreateGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXCreateGLXPixmap)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmap, "glXCreateGLXPixmap" );
@@ -30238,7 +30238,7 @@ extern "C" {
     GLXPixmap  ret = (GLXPixmap )0;
     if (dispatchTableGlobal.glXCreateGLXPixmap)
     {
-      Driver("glXCreateGLXPixmap","(", dpy, ", ", vis, ", ", pixmap, ")");
+      Driver("glXCreateGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", boost::print::optional(pixmap,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXCreateGLXPixmap(dpy, vis, pixmap);
     }
     else
@@ -30248,7 +30248,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyContext(Display *dpy, GLXContext ctx)
   {
-    App("glXDestroyContext","(", dpy, ", ", ctx, ")");
+    App("glXDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyContext)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyContext, "glXDestroyContext" );
@@ -30258,7 +30258,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyContext)
     {
-      Driver("glXDestroyContext","(", dpy, ", ", ctx, ")");
+      Driver("glXDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyContext(dpy, ctx);
       Init::destroyContext( RegalSystemContext(ctx) );
     }
@@ -30268,7 +30268,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyGLXPixmap(Display *dpy, GLXPixmap pix)
   {
-    App("glXDestroyGLXPixmap","(", dpy, ", ", pix, ")");
+    App("glXDestroyGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pix,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyGLXPixmap)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyGLXPixmap, "glXDestroyGLXPixmap" );
@@ -30278,7 +30278,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyGLXPixmap)
     {
-      Driver("glXDestroyGLXPixmap","(", dpy, ", ", pix, ")");
+      Driver("glXDestroyGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pix,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyGLXPixmap(dpy, pix);
     }
     else
@@ -30287,7 +30287,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetConfig(Display *dpy, XVisualInfo *vis, int attrib, int *value)
   {
-    App("glXGetConfig","(", dpy, ", ", vis, ", ", attrib, ")");
+    App("glXGetConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", attrib, ")");
     if (!dispatchTableGlobal.glXGetConfig)
     {
       GetProcAddress( dispatchTableGlobal.glXGetConfig, "glXGetConfig" );
@@ -30298,7 +30298,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetConfig)
     {
-      Driver("glXGetConfig","(", dpy, ", ", vis, ", ", attrib, ")");
+      Driver("glXGetConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ", ", attrib, ")");
       ret = dispatchTableGlobal.glXGetConfig(dpy, vis, attrib, value);
     }
     else
@@ -30350,7 +30350,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXIsDirect(Display *dpy, GLXContext ctx)
   {
-    App("glXIsDirect","(", dpy, ", ", ctx, ")");
+    App("glXIsDirect","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXIsDirect)
     {
       GetProcAddress( dispatchTableGlobal.glXIsDirect, "glXIsDirect" );
@@ -30361,7 +30361,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXIsDirect)
     {
-      Driver("glXIsDirect","(", dpy, ", ", ctx, ")");
+      Driver("glXIsDirect","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXIsDirect(dpy, ctx);
     }
     else
@@ -30371,7 +30371,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXMakeCurrent(Display *dpy, GLXDrawable drawable, GLXContext ctx)
   {
-    App("glXMakeCurrent","(", dpy, ", ", drawable, ", ", ctx, ")");
+    App("glXMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXMakeCurrent)
     {
       GetProcAddress( dispatchTableGlobal.glXMakeCurrent, "glXMakeCurrent" );
@@ -30382,7 +30382,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXMakeCurrent)
     {
-      Driver("glXMakeCurrent","(", dpy, ", ", drawable, ", ", ctx, ")");
+      Driver("glXMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXMakeCurrent(dpy, drawable, ctx);
       Init::makeCurrent( RegalSystemContext(ctx) );
     }
@@ -30393,7 +30393,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQueryExtension(Display *dpy, int *errorBase, int *eventBase)
   {
-    App("glXQueryExtension","(", dpy, ")");
+    App("glXQueryExtension","(", boost::print::optional(dpy,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXQueryExtension)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryExtension, "glXQueryExtension" );
@@ -30404,7 +30404,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQueryExtension)
     {
-      Driver("glXQueryExtension","(", dpy, ")");
+      Driver("glXQueryExtension","(", boost::print::optional(dpy,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXQueryExtension(dpy, errorBase, eventBase);
     }
     else
@@ -30414,7 +30414,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQueryVersion(Display *dpy, int *major, int *minor)
   {
-    App("glXQueryVersion","(", dpy, ")");
+    App("glXQueryVersion","(", boost::print::optional(dpy,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXQueryVersion)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryVersion, "glXQueryVersion" );
@@ -30425,7 +30425,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQueryVersion)
     {
-      Driver("glXQueryVersion","(", dpy, ")");
+      Driver("glXQueryVersion","(", boost::print::optional(dpy,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXQueryVersion(dpy, major, minor);
     }
     else
@@ -30435,7 +30435,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXSwapBuffers(Display *dpy, GLXDrawable drawable)
   {
-    App("glXSwapBuffers","(", dpy, ", ", drawable, ")");
+    App("glXSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     if (!dispatchTableGlobal.glXSwapBuffers)
     {
       GetProcAddress( dispatchTableGlobal.glXSwapBuffers, "glXSwapBuffers" );
@@ -30448,7 +30448,7 @@ extern "C" {
         _context->frame->glXSwapBuffers(*_context);
     if (dispatchTableGlobal.glXSwapBuffers)
     {
-      Driver("glXSwapBuffers","(", dpy, ", ", drawable, ")");
+      Driver("glXSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
       dispatchTableGlobal.glXSwapBuffers(dpy, drawable);
     }
     else
@@ -30457,7 +30457,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXUseXFont(Font font, int first, int count, int listBase)
   {
-    App("glXUseXFont","(", font, ", ", first, ", ", count, ", ", listBase, ")");
+    App("glXUseXFont","(", boost::print::optional(font,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     if (!dispatchTableGlobal.glXUseXFont)
     {
       GetProcAddress( dispatchTableGlobal.glXUseXFont, "glXUseXFont" );
@@ -30467,7 +30467,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXUseXFont)
     {
-      Driver("glXUseXFont","(", font, ", ", first, ", ", count, ", ", listBase, ")");
+      Driver("glXUseXFont","(", boost::print::optional(font,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
       dispatchTableGlobal.glXUseXFont(font, first, count, listBase);
     }
     else
@@ -30516,7 +30516,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL glXGetClientString(Display *dpy, int name)
   {
-    App("glXGetClientString","(", dpy, ", ", name, ")");
+    App("glXGetClientString","(", boost::print::optional(dpy,Logging::pointers), ", ", name, ")");
     if (!dispatchTableGlobal.glXGetClientString)
     {
       GetProcAddress( dispatchTableGlobal.glXGetClientString, "glXGetClientString" );
@@ -30527,7 +30527,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.glXGetClientString)
     {
-      Driver("glXGetClientString","(", dpy, ", ", name, ")");
+      Driver("glXGetClientString","(", boost::print::optional(dpy,Logging::pointers), ", ", name, ")");
       ret = dispatchTableGlobal.glXGetClientString(dpy, name);
     }
     else
@@ -30537,7 +30537,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL glXQueryExtensionsString(Display *dpy, int screen)
   {
-    App("glXQueryExtensionsString","(", dpy, ", ", screen, ")");
+    App("glXQueryExtensionsString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXQueryExtensionsString)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryExtensionsString, "glXQueryExtensionsString" );
@@ -30548,7 +30548,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.glXQueryExtensionsString)
     {
-      Driver("glXQueryExtensionsString","(", dpy, ", ", screen, ")");
+      Driver("glXQueryExtensionsString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXQueryExtensionsString(dpy, screen);
     }
     else
@@ -30558,7 +30558,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL glXQueryServerString(Display *dpy, int screen, int name)
   {
-    App("glXQueryServerString","(", dpy, ", ", screen, ", ", name, ")");
+    App("glXQueryServerString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", name, ")");
     if (!dispatchTableGlobal.glXQueryServerString)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryServerString, "glXQueryServerString" );
@@ -30569,7 +30569,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.glXQueryServerString)
     {
-      Driver("glXQueryServerString","(", dpy, ", ", screen, ", ", name, ")");
+      Driver("glXQueryServerString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", name, ")");
       ret = dispatchTableGlobal.glXQueryServerString(dpy, screen, name);
     }
     else
@@ -30604,7 +30604,7 @@ extern "C" {
 
   REGAL_DECL GLXFBConfig *REGAL_CALL glXChooseFBConfig(Display *dpy, int screen, const int *attrib_list, int *nelements)
   {
-    App("glXChooseFBConfig","(", dpy, ", ", screen, ", ", attrib_list, ")");
+    App("glXChooseFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXChooseFBConfig)
     {
       GetProcAddress( dispatchTableGlobal.glXChooseFBConfig, "glXChooseFBConfig" );
@@ -30615,7 +30615,7 @@ extern "C" {
     GLXFBConfig * ret = NULL;
     if (dispatchTableGlobal.glXChooseFBConfig)
     {
-      Driver("glXChooseFBConfig","(", dpy, ", ", screen, ", ", attrib_list, ")");
+      Driver("glXChooseFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXChooseFBConfig(dpy, screen, attrib_list, nelements);
     }
     else
@@ -30625,7 +30625,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateNewContext(Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct)
   {
-    App("glXCreateNewContext","(", dpy, ", ", config, ", ", render_type, ", ", share_list, ", ", direct, ")");
+    App("glXCreateNewContext","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
     if (!dispatchTableGlobal.glXCreateNewContext)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateNewContext, "glXCreateNewContext" );
@@ -30636,7 +30636,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateNewContext)
     {
-      Driver("glXCreateNewContext","(", dpy, ", ", config, ", ", render_type, ", ", share_list, ", ", direct, ")");
+      Driver("glXCreateNewContext","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
       ret = dispatchTableGlobal.glXCreateNewContext(dpy, config, render_type, share_list, direct);
     }
     else
@@ -30646,7 +30646,7 @@ extern "C" {
 
   REGAL_DECL GLXPbuffer REGAL_CALL glXCreatePbuffer(Display *dpy, GLXFBConfig config, const int *attrib_list)
   {
-    App("glXCreatePbuffer","(", dpy, ", ", config, ", ", attrib_list, ")");
+    App("glXCreatePbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXCreatePbuffer)
     {
       GetProcAddress( dispatchTableGlobal.glXCreatePbuffer, "glXCreatePbuffer" );
@@ -30657,7 +30657,7 @@ extern "C" {
     GLXPbuffer  ret = (GLXPbuffer )0;
     if (dispatchTableGlobal.glXCreatePbuffer)
     {
-      Driver("glXCreatePbuffer","(", dpy, ", ", config, ", ", attrib_list, ")");
+      Driver("glXCreatePbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXCreatePbuffer(dpy, config, attrib_list);
     }
     else
@@ -30667,7 +30667,7 @@ extern "C" {
 
   REGAL_DECL GLXPixmap REGAL_CALL glXCreatePixmap(Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list)
   {
-    App("glXCreatePixmap","(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
+    App("glXCreatePixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXCreatePixmap)
     {
       GetProcAddress( dispatchTableGlobal.glXCreatePixmap, "glXCreatePixmap" );
@@ -30678,7 +30678,7 @@ extern "C" {
     GLXPixmap  ret = (GLXPixmap )0;
     if (dispatchTableGlobal.glXCreatePixmap)
     {
-      Driver("glXCreatePixmap","(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
+      Driver("glXCreatePixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXCreatePixmap(dpy, config, pixmap, attrib_list);
     }
     else
@@ -30688,7 +30688,7 @@ extern "C" {
 
   REGAL_DECL GLXWindow REGAL_CALL glXCreateWindow(Display *dpy, GLXFBConfig config, Window win, const int *attrib_list)
   {
-    App("glXCreateWindow","(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
+    App("glXCreateWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", win, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXCreateWindow)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateWindow, "glXCreateWindow" );
@@ -30699,7 +30699,7 @@ extern "C" {
     GLXWindow  ret = (GLXWindow )0;
     if (dispatchTableGlobal.glXCreateWindow)
     {
-      Driver("glXCreateWindow","(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
+      Driver("glXCreateWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", win, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXCreateWindow(dpy, config, win, attrib_list);
     }
     else
@@ -30709,7 +30709,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyPbuffer(Display *dpy, GLXPbuffer pbuf)
   {
-    App("glXDestroyPbuffer","(", dpy, ", ", pbuf, ")");
+    App("glXDestroyPbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyPbuffer)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyPbuffer, "glXDestroyPbuffer" );
@@ -30719,7 +30719,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyPbuffer)
     {
-      Driver("glXDestroyPbuffer","(", dpy, ", ", pbuf, ")");
+      Driver("glXDestroyPbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyPbuffer(dpy, pbuf);
     }
     else
@@ -30728,7 +30728,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyPixmap(Display *dpy, GLXPixmap pixmap)
   {
-    App("glXDestroyPixmap","(", dpy, ", ", pixmap, ")");
+    App("glXDestroyPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyPixmap)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyPixmap, "glXDestroyPixmap" );
@@ -30738,7 +30738,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyPixmap)
     {
-      Driver("glXDestroyPixmap","(", dpy, ", ", pixmap, ")");
+      Driver("glXDestroyPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyPixmap(dpy, pixmap);
     }
     else
@@ -30747,7 +30747,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyWindow(Display *dpy, GLXWindow win)
   {
-    App("glXDestroyWindow","(", dpy, ", ", win, ")");
+    App("glXDestroyWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyWindow)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyWindow, "glXDestroyWindow" );
@@ -30757,7 +30757,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyWindow)
     {
-      Driver("glXDestroyWindow","(", dpy, ", ", win, ")");
+      Driver("glXDestroyWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyWindow(dpy, win);
     }
     else
@@ -30787,7 +30787,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetFBConfigAttrib(Display *dpy, GLXFBConfig config, int attribute, int *value)
   {
-    App("glXGetFBConfigAttrib","(", dpy, ", ", config, ", ", attribute, ")");
+    App("glXGetFBConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ")");
     if (!dispatchTableGlobal.glXGetFBConfigAttrib)
     {
       GetProcAddress( dispatchTableGlobal.glXGetFBConfigAttrib, "glXGetFBConfigAttrib" );
@@ -30798,7 +30798,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetFBConfigAttrib)
     {
-      Driver("glXGetFBConfigAttrib","(", dpy, ", ", config, ", ", attribute, ")");
+      Driver("glXGetFBConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ")");
       ret = dispatchTableGlobal.glXGetFBConfigAttrib(dpy, config, attribute, value);
     }
     else
@@ -30808,7 +30808,7 @@ extern "C" {
 
   REGAL_DECL GLXFBConfig *REGAL_CALL glXGetFBConfigs(Display *dpy, int screen, int *nelements)
   {
-    App("glXGetFBConfigs","(", dpy, ", ", screen, ")");
+    App("glXGetFBConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXGetFBConfigs)
     {
       GetProcAddress( dispatchTableGlobal.glXGetFBConfigs, "glXGetFBConfigs" );
@@ -30819,7 +30819,7 @@ extern "C" {
     GLXFBConfig * ret = NULL;
     if (dispatchTableGlobal.glXGetFBConfigs)
     {
-      Driver("glXGetFBConfigs","(", dpy, ", ", screen, ")");
+      Driver("glXGetFBConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXGetFBConfigs(dpy, screen, nelements);
     }
     else
@@ -30829,7 +30829,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXGetSelectedEvent(Display *dpy, GLXDrawable draw, unsigned long *event_mask)
   {
-    App("glXGetSelectedEvent","(", dpy, ", ", draw, ")");
+    App("glXGetSelectedEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ")");
     if (!dispatchTableGlobal.glXGetSelectedEvent)
     {
       GetProcAddress( dispatchTableGlobal.glXGetSelectedEvent, "glXGetSelectedEvent" );
@@ -30839,7 +30839,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXGetSelectedEvent)
     {
-      Driver("glXGetSelectedEvent","(", dpy, ", ", draw, ")");
+      Driver("glXGetSelectedEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ")");
       dispatchTableGlobal.glXGetSelectedEvent(dpy, draw, event_mask);
     }
     else
@@ -30848,7 +30848,7 @@ extern "C" {
 
   REGAL_DECL XVisualInfo *REGAL_CALL glXGetVisualFromFBConfig(Display *dpy, GLXFBConfig config)
   {
-    App("glXGetVisualFromFBConfig","(", dpy, ", ", config, ")");
+    App("glXGetVisualFromFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
     if (!dispatchTableGlobal.glXGetVisualFromFBConfig)
     {
       GetProcAddress( dispatchTableGlobal.glXGetVisualFromFBConfig, "glXGetVisualFromFBConfig" );
@@ -30859,7 +30859,7 @@ extern "C" {
     XVisualInfo * ret = NULL;
     if (dispatchTableGlobal.glXGetVisualFromFBConfig)
     {
-      Driver("glXGetVisualFromFBConfig","(", dpy, ", ", config, ")");
+      Driver("glXGetVisualFromFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
       ret = dispatchTableGlobal.glXGetVisualFromFBConfig(dpy, config);
     }
     else
@@ -30869,7 +30869,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXMakeContextCurrent(Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx)
   {
-    App("glXMakeContextCurrent","(", display, ", ", draw, ", ", read, ", ", ctx, ")");
+    App("glXMakeContextCurrent","(", boost::print::optional(display,Logging::pointers), ", ", draw, ", ", read, ", ", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXMakeContextCurrent)
     {
       GetProcAddress( dispatchTableGlobal.glXMakeContextCurrent, "glXMakeContextCurrent" );
@@ -30880,7 +30880,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXMakeContextCurrent)
     {
-      Driver("glXMakeContextCurrent","(", display, ", ", draw, ", ", read, ", ", ctx, ")");
+      Driver("glXMakeContextCurrent","(", boost::print::optional(display,Logging::pointers), ", ", draw, ", ", read, ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXMakeContextCurrent(display, draw, read, ctx);
     }
     else
@@ -30890,7 +30890,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXQueryContext(Display *dpy, GLXContext ctx, int attribute, int *value)
   {
-    App("glXQueryContext","(", dpy, ", ", ctx, ", ", GLXenumToString(attribute), ")");
+    App("glXQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", GLXenumToString(attribute), ")");
     if (!dispatchTableGlobal.glXQueryContext)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryContext, "glXQueryContext" );
@@ -30901,7 +30901,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXQueryContext)
     {
-      Driver("glXQueryContext","(", dpy, ", ", ctx, ", ", GLXenumToString(attribute), ")");
+      Driver("glXQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", GLXenumToString(attribute), ")");
       ret = dispatchTableGlobal.glXQueryContext(dpy, ctx, attribute, value);
     }
     else
@@ -30911,7 +30911,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXQueryDrawable(Display *dpy, GLXDrawable draw, int attribute, unsigned int *value)
   {
-    App("glXQueryDrawable","(", dpy, ", ", draw, ", ", attribute, ")");
+    App("glXQueryDrawable","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", attribute, ")");
     if (!dispatchTableGlobal.glXQueryDrawable)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryDrawable, "glXQueryDrawable" );
@@ -30921,7 +30921,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXQueryDrawable)
     {
-      Driver("glXQueryDrawable","(", dpy, ", ", draw, ", ", attribute, ")");
+      Driver("glXQueryDrawable","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", attribute, ")");
       dispatchTableGlobal.glXQueryDrawable(dpy, draw, attribute, value);
     }
     else
@@ -30930,7 +30930,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXSelectEvent(Display *dpy, GLXDrawable draw, unsigned long event_mask)
   {
-    App("glXSelectEvent","(", dpy, ", ", draw, ", ", event_mask, ")");
+    App("glXSelectEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", event_mask, ")");
     if (!dispatchTableGlobal.glXSelectEvent)
     {
       GetProcAddress( dispatchTableGlobal.glXSelectEvent, "glXSelectEvent" );
@@ -30940,7 +30940,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXSelectEvent)
     {
-      Driver("glXSelectEvent","(", dpy, ", ", draw, ", ", event_mask, ")");
+      Driver("glXSelectEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", event_mask, ")");
       dispatchTableGlobal.glXSelectEvent(dpy, draw, event_mask);
     }
     else
@@ -30980,7 +30980,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
   {
-    App("glXBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+    App("glXBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
     if (!dispatchTableGlobal.glXBlitContextFramebufferAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXBlitContextFramebufferAMD, "glXBlitContextFramebufferAMD" );
@@ -30990,7 +30990,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXBlitContextFramebufferAMD)
     {
-      Driver("glXBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+      Driver("glXBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
       dispatchTableGlobal.glXBlitContextFramebufferAMD(dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     }
     else
@@ -30999,7 +30999,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list)
   {
-    App("glXCreateAssociatedContextAMD","(", id, ", ", share_list, ")");
+    App("glXCreateAssociatedContextAMD","(", id, ", ", boost::print::optional(share_list,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXCreateAssociatedContextAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateAssociatedContextAMD, "glXCreateAssociatedContextAMD" );
@@ -31010,7 +31010,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateAssociatedContextAMD)
     {
-      Driver("glXCreateAssociatedContextAMD","(", id, ", ", share_list, ")");
+      Driver("glXCreateAssociatedContextAMD","(", id, ", ", boost::print::optional(share_list,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXCreateAssociatedContextAMD(id, share_list);
     }
     else
@@ -31020,7 +31020,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int *attribList)
   {
-    App("glXCreateAssociatedContextAttribsAMD","(", id, ", ", share_context, ", ", attribList, ")");
+    App("glXCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(share_context,Logging::pointers), ", ", attribList, ")");
     if (!dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD, "glXCreateAssociatedContextAttribsAMD" );
@@ -31031,7 +31031,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD)
     {
-      Driver("glXCreateAssociatedContextAttribsAMD","(", id, ", ", share_context, ", ", attribList, ")");
+      Driver("glXCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(share_context,Logging::pointers), ", ", attribList, ")");
       ret = dispatchTableGlobal.glXCreateAssociatedContextAttribsAMD(id, share_context, attribList);
     }
     else
@@ -31041,7 +31041,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXDeleteAssociatedContextAMD(GLXContext ctx)
   {
-    App("glXDeleteAssociatedContextAMD","(", ctx, ")");
+    App("glXDeleteAssociatedContextAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDeleteAssociatedContextAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXDeleteAssociatedContextAMD, "glXDeleteAssociatedContextAMD" );
@@ -31052,7 +31052,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXDeleteAssociatedContextAMD)
     {
-      Driver("glXDeleteAssociatedContextAMD","(", ctx, ")");
+      Driver("glXDeleteAssociatedContextAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXDeleteAssociatedContextAMD(ctx);
     }
     else
@@ -31062,7 +31062,7 @@ extern "C" {
 
   REGAL_DECL unsigned int REGAL_CALL glXGetContextGPUIDAMD(GLXContext ctx)
   {
-    App("glXGetContextGPUIDAMD","(", ctx, ")");
+    App("glXGetContextGPUIDAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXGetContextGPUIDAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXGetContextGPUIDAMD, "glXGetContextGPUIDAMD" );
@@ -31073,7 +31073,7 @@ extern "C" {
     unsigned int  ret = (unsigned int )0;
     if (dispatchTableGlobal.glXGetContextGPUIDAMD)
     {
-      Driver("glXGetContextGPUIDAMD","(", ctx, ")");
+      Driver("glXGetContextGPUIDAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXGetContextGPUIDAMD(ctx);
     }
     else
@@ -31125,7 +31125,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data)
   {
-    App("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", data, ")");
+    App("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXGetGPUInfoAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXGetGPUInfoAMD, "glXGetGPUInfoAMD" );
@@ -31136,7 +31136,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetGPUInfoAMD)
     {
-      Driver("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", data, ")");
+      Driver("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXGetGPUInfoAMD(id, property, dataType, size, data);
     }
     else
@@ -31146,7 +31146,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXMakeAssociatedContextCurrentAMD(GLXContext ctx)
   {
-    App("glXMakeAssociatedContextCurrentAMD","(", ctx, ")");
+    App("glXMakeAssociatedContextCurrentAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD)
     {
       GetProcAddress( dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD, "glXMakeAssociatedContextCurrentAMD" );
@@ -31157,7 +31157,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD)
     {
-      Driver("glXMakeAssociatedContextCurrentAMD","(", ctx, ")");
+      Driver("glXMakeAssociatedContextCurrentAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXMakeAssociatedContextCurrentAMD(ctx);
     }
     else
@@ -31169,7 +31169,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateContextAttribsARB(Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list)
   {
-    App("glXCreateContextAttribsARB","(", dpy, ", ", config, ", ", share_context, ", ", direct, ", ", attrib_list, ")");
+    App("glXCreateContextAttribsARB","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(share_context,Logging::pointers), ", ", direct, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXCreateContextAttribsARB)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateContextAttribsARB, "glXCreateContextAttribsARB" );
@@ -31180,7 +31180,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateContextAttribsARB)
     {
-      Driver("glXCreateContextAttribsARB","(", dpy, ", ", config, ", ", share_context, ", ", direct, ", ", attrib_list, ")");
+      Driver("glXCreateContextAttribsARB","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(share_context,Logging::pointers), ", ", direct, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXCreateContextAttribsARB(dpy, config, share_context, direct, attrib_list);
     }
     else
@@ -31221,7 +31221,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXBindTexImageATI(Display *dpy, GLXPbuffer pbuf, int buffer)
   {
-    App("glXBindTexImageATI","(", dpy, ", ", pbuf, ", ", buffer, ")");
+    App("glXBindTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
     if (!dispatchTableGlobal.glXBindTexImageATI)
     {
       GetProcAddress( dispatchTableGlobal.glXBindTexImageATI, "glXBindTexImageATI" );
@@ -31231,7 +31231,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXBindTexImageATI)
     {
-      Driver("glXBindTexImageATI","(", dpy, ", ", pbuf, ", ", buffer, ")");
+      Driver("glXBindTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
       dispatchTableGlobal.glXBindTexImageATI(dpy, pbuf, buffer);
     }
     else
@@ -31240,7 +31240,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDrawableAttribATI(Display *dpy, GLXDrawable draw, const int *attrib_list)
   {
-    App("glXDrawableAttribATI","(", dpy, ", ", draw, ", ", attrib_list, ")");
+    App("glXDrawableAttribATI","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXDrawableAttribATI)
     {
       GetProcAddress( dispatchTableGlobal.glXDrawableAttribATI, "glXDrawableAttribATI" );
@@ -31250,7 +31250,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDrawableAttribATI)
     {
-      Driver("glXDrawableAttribATI","(", dpy, ", ", draw, ", ", attrib_list, ")");
+      Driver("glXDrawableAttribATI","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", attrib_list, ")");
       dispatchTableGlobal.glXDrawableAttribATI(dpy, draw, attrib_list);
     }
     else
@@ -31259,7 +31259,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXReleaseTexImageATI(Display *dpy, GLXPbuffer pbuf, int buffer)
   {
-    App("glXReleaseTexImageATI","(", dpy, ", ", pbuf, ", ", buffer, ")");
+    App("glXReleaseTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
     if (!dispatchTableGlobal.glXReleaseTexImageATI)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseTexImageATI, "glXReleaseTexImageATI" );
@@ -31269,7 +31269,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXReleaseTexImageATI)
     {
-      Driver("glXReleaseTexImageATI","(", dpy, ", ", pbuf, ", ", buffer, ")");
+      Driver("glXReleaseTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
       dispatchTableGlobal.glXReleaseTexImageATI(dpy, pbuf, buffer);
     }
     else
@@ -31280,7 +31280,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXFreeContextEXT(Display *dpy, GLXContext context)
   {
-    App("glXFreeContextEXT","(", dpy, ", ", context, ")");
+    App("glXFreeContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXFreeContextEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXFreeContextEXT, "glXFreeContextEXT" );
@@ -31290,7 +31290,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXFreeContextEXT)
     {
-      Driver("glXFreeContextEXT","(", dpy, ", ", context, ")");
+      Driver("glXFreeContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ")");
       dispatchTableGlobal.glXFreeContextEXT(dpy, context);
     }
     else
@@ -31320,7 +31320,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXImportContextEXT(Display *dpy, GLXContextID contextID)
   {
-    App("glXImportContextEXT","(", dpy, ", ", contextID, ")");
+    App("glXImportContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", contextID, ")");
     if (!dispatchTableGlobal.glXImportContextEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXImportContextEXT, "glXImportContextEXT" );
@@ -31331,7 +31331,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXImportContextEXT)
     {
-      Driver("glXImportContextEXT","(", dpy, ", ", contextID, ")");
+      Driver("glXImportContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", contextID, ")");
       ret = dispatchTableGlobal.glXImportContextEXT(dpy, contextID);
     }
     else
@@ -31341,7 +31341,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXQueryContextInfoEXT(Display *dpy, GLXContext context, int attribute, int *value)
   {
-    App("glXQueryContextInfoEXT","(", dpy, ", ", context, ", ", attribute, ")");
+    App("glXQueryContextInfoEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ", ", attribute, ")");
     if (!dispatchTableGlobal.glXQueryContextInfoEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryContextInfoEXT, "glXQueryContextInfoEXT" );
@@ -31352,7 +31352,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXQueryContextInfoEXT)
     {
-      Driver("glXQueryContextInfoEXT","(", dpy, ", ", context, ", ", attribute, ")");
+      Driver("glXQueryContextInfoEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ", ", attribute, ")");
       ret = dispatchTableGlobal.glXQueryContextInfoEXT(dpy, context, attribute, value);
     }
     else
@@ -31364,7 +31364,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXSwapIntervalEXT(Display *dpy, GLXDrawable drawable, int interval)
   {
-    App("glXSwapIntervalEXT","(", dpy, ", ", drawable, ", ", interval, ")");
+    App("glXSwapIntervalEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", interval, ")");
     if (!dispatchTableGlobal.glXSwapIntervalEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXSwapIntervalEXT, "glXSwapIntervalEXT" );
@@ -31374,7 +31374,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXSwapIntervalEXT)
     {
-      Driver("glXSwapIntervalEXT","(", dpy, ", ", drawable, ", ", interval, ")");
+      Driver("glXSwapIntervalEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", interval, ")");
       dispatchTableGlobal.glXSwapIntervalEXT(dpy, drawable, interval);
     }
     else
@@ -31385,7 +31385,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXBindTexImageEXT(Display *display, GLXDrawable drawable, int buffer, const int *attrib_list)
   {
-    App("glXBindTexImageEXT","(", display, ", ", drawable, ", ", buffer, ", ", attrib_list, ")");
+    App("glXBindTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXBindTexImageEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXBindTexImageEXT, "glXBindTexImageEXT" );
@@ -31395,7 +31395,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXBindTexImageEXT)
     {
-      Driver("glXBindTexImageEXT","(", display, ", ", drawable, ", ", buffer, ", ", attrib_list, ")");
+      Driver("glXBindTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ", ", attrib_list, ")");
       dispatchTableGlobal.glXBindTexImageEXT(display, drawable, buffer, attrib_list);
     }
     else
@@ -31404,7 +31404,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXReleaseTexImageEXT(Display *display, GLXDrawable drawable, int buffer)
   {
-    App("glXReleaseTexImageEXT","(", display, ", ", drawable, ", ", buffer, ")");
+    App("glXReleaseTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ")");
     if (!dispatchTableGlobal.glXReleaseTexImageEXT)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseTexImageEXT, "glXReleaseTexImageEXT" );
@@ -31414,7 +31414,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXReleaseTexImageEXT)
     {
-      Driver("glXReleaseTexImageEXT","(", display, ", ", drawable, ", ", buffer, ")");
+      Driver("glXReleaseTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ")");
       dispatchTableGlobal.glXReleaseTexImageEXT(display, drawable, buffer);
     }
     else
@@ -31425,7 +31425,7 @@ extern "C" {
 
   REGAL_DECL unsigned int REGAL_CALL glXGetAGPOffsetMESA(const void *pointer)
   {
-    App("glXGetAGPOffsetMESA","(", pointer, ")");
+    App("glXGetAGPOffsetMESA","(", boost::print::optional(pointer,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXGetAGPOffsetMESA)
     {
       GetProcAddress( dispatchTableGlobal.glXGetAGPOffsetMESA, "glXGetAGPOffsetMESA" );
@@ -31436,7 +31436,7 @@ extern "C" {
     unsigned int  ret = (unsigned int )0;
     if (dispatchTableGlobal.glXGetAGPOffsetMESA)
     {
-      Driver("glXGetAGPOffsetMESA","(", pointer, ")");
+      Driver("glXGetAGPOffsetMESA","(", boost::print::optional(pointer,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXGetAGPOffsetMESA(pointer);
     }
     else
@@ -31448,7 +31448,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXCopySubBufferMESA(Display *dpy, GLXDrawable drawable, int x, int y, int width, int height)
   {
-    App("glXCopySubBufferMESA","(", dpy, ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+    App("glXCopySubBufferMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
     if (!dispatchTableGlobal.glXCopySubBufferMESA)
     {
       GetProcAddress( dispatchTableGlobal.glXCopySubBufferMESA, "glXCopySubBufferMESA" );
@@ -31458,7 +31458,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXCopySubBufferMESA)
     {
-      Driver("glXCopySubBufferMESA","(", dpy, ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+      Driver("glXCopySubBufferMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
       dispatchTableGlobal.glXCopySubBufferMESA(dpy, drawable, x, y, width, height);
     }
     else
@@ -31469,7 +31469,7 @@ extern "C" {
 
   REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmapMESA(Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap)
   {
-    App("glXCreateGLXPixmapMESA","(", dpy, ", ", visual, ", ", pixmap, ", ", cmap, ")");
+    App("glXCreateGLXPixmapMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", visual, ", ", boost::print::optional(pixmap,Logging::pointers), ", ", cmap, ")");
     if (!dispatchTableGlobal.glXCreateGLXPixmapMESA)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmapMESA, "glXCreateGLXPixmapMESA" );
@@ -31480,7 +31480,7 @@ extern "C" {
     GLXPixmap  ret = (GLXPixmap )0;
     if (dispatchTableGlobal.glXCreateGLXPixmapMESA)
     {
-      Driver("glXCreateGLXPixmapMESA","(", dpy, ", ", visual, ", ", pixmap, ", ", cmap, ")");
+      Driver("glXCreateGLXPixmapMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", visual, ", ", boost::print::optional(pixmap,Logging::pointers), ", ", cmap, ")");
       ret = dispatchTableGlobal.glXCreateGLXPixmapMESA(dpy, visual, pixmap, cmap);
     }
     else
@@ -31492,7 +31492,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXReleaseBuffersMESA(Display *dpy, GLXDrawable d)
   {
-    App("glXReleaseBuffersMESA","(", dpy, ", ", d, ")");
+    App("glXReleaseBuffersMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", d, ")");
     if (!dispatchTableGlobal.glXReleaseBuffersMESA)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseBuffersMESA, "glXReleaseBuffersMESA" );
@@ -31503,7 +31503,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXReleaseBuffersMESA)
     {
-      Driver("glXReleaseBuffersMESA","(", dpy, ", ", d, ")");
+      Driver("glXReleaseBuffersMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", d, ")");
       ret = dispatchTableGlobal.glXReleaseBuffersMESA(dpy, d);
     }
     else
@@ -31582,7 +31582,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXCopyImageSubDataNV(Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
   {
-    App("glXCopyImageSubDataNV","(", dpy, ", ", srcCtx, ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", dstCtx, ")");
+    App("glXCopyImageSubDataNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(srcCtx,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(dstCtx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXCopyImageSubDataNV)
     {
       GetProcAddress( dispatchTableGlobal.glXCopyImageSubDataNV, "glXCopyImageSubDataNV" );
@@ -31592,7 +31592,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXCopyImageSubDataNV)
     {
-      Driver("glXCopyImageSubDataNV","(", dpy, ", ", srcCtx, ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", dstCtx, ")");
+      Driver("glXCopyImageSubDataNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(srcCtx,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(dstCtx,Logging::pointers), ")");
       dispatchTableGlobal.glXCopyImageSubDataNV(dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
     }
     else
@@ -31603,7 +31603,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXBindVideoDeviceNV(Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list)
   {
-    App("glXBindVideoDeviceNV","(", dpy, ", ", video_slot, ", ", video_device, ", ", attrib_list, ")");
+    App("glXBindVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_slot, ", ", video_device, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXBindVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXBindVideoDeviceNV, "glXBindVideoDeviceNV" );
@@ -31614,7 +31614,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXBindVideoDeviceNV)
     {
-      Driver("glXBindVideoDeviceNV","(", dpy, ", ", video_slot, ", ", video_device, ", ", attrib_list, ")");
+      Driver("glXBindVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_slot, ", ", video_device, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXBindVideoDeviceNV(dpy, video_slot, video_device, attrib_list);
     }
     else
@@ -31624,7 +31624,7 @@ extern "C" {
 
   REGAL_DECL unsigned int *REGAL_CALL glXEnumerateVideoDevicesNV(Display *dpy, int screen, int *nelements)
   {
-    App("glXEnumerateVideoDevicesNV","(", dpy, ", ", screen, ")");
+    App("glXEnumerateVideoDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXEnumerateVideoDevicesNV)
     {
       GetProcAddress( dispatchTableGlobal.glXEnumerateVideoDevicesNV, "glXEnumerateVideoDevicesNV" );
@@ -31635,7 +31635,7 @@ extern "C" {
     unsigned int * ret = NULL;
     if (dispatchTableGlobal.glXEnumerateVideoDevicesNV)
     {
-      Driver("glXEnumerateVideoDevicesNV","(", dpy, ", ", screen, ")");
+      Driver("glXEnumerateVideoDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXEnumerateVideoDevicesNV(dpy, screen, nelements);
     }
     else
@@ -31647,7 +31647,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXBindSwapBarrierNV(Display *dpy, GLuint group, GLuint barrier)
   {
-    App("glXBindSwapBarrierNV","(", dpy, ", ", group, ", ", barrier, ")");
+    App("glXBindSwapBarrierNV","(", boost::print::optional(dpy,Logging::pointers), ", ", group, ", ", barrier, ")");
     if (!dispatchTableGlobal.glXBindSwapBarrierNV)
     {
       GetProcAddress( dispatchTableGlobal.glXBindSwapBarrierNV, "glXBindSwapBarrierNV" );
@@ -31658,7 +31658,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXBindSwapBarrierNV)
     {
-      Driver("glXBindSwapBarrierNV","(", dpy, ", ", group, ", ", barrier, ")");
+      Driver("glXBindSwapBarrierNV","(", boost::print::optional(dpy,Logging::pointers), ", ", group, ", ", barrier, ")");
       ret = dispatchTableGlobal.glXBindSwapBarrierNV(dpy, group, barrier);
     }
     else
@@ -31668,7 +31668,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXJoinSwapGroupNV(Display *dpy, GLXDrawable drawable, GLuint group)
   {
-    App("glXJoinSwapGroupNV","(", dpy, ", ", drawable, ", ", group, ")");
+    App("glXJoinSwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", group, ")");
     if (!dispatchTableGlobal.glXJoinSwapGroupNV)
     {
       GetProcAddress( dispatchTableGlobal.glXJoinSwapGroupNV, "glXJoinSwapGroupNV" );
@@ -31679,7 +31679,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXJoinSwapGroupNV)
     {
-      Driver("glXJoinSwapGroupNV","(", dpy, ", ", drawable, ", ", group, ")");
+      Driver("glXJoinSwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", group, ")");
       ret = dispatchTableGlobal.glXJoinSwapGroupNV(dpy, drawable, group);
     }
     else
@@ -31689,7 +31689,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQueryFrameCountNV(Display *dpy, int screen, GLuint *count)
   {
-    App("glXQueryFrameCountNV","(", dpy, ", ", screen, ")");
+    App("glXQueryFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXQueryFrameCountNV)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryFrameCountNV, "glXQueryFrameCountNV" );
@@ -31700,7 +31700,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQueryFrameCountNV)
     {
-      Driver("glXQueryFrameCountNV","(", dpy, ", ", screen, ")");
+      Driver("glXQueryFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXQueryFrameCountNV(dpy, screen, count);
     }
     else
@@ -31710,7 +31710,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQueryMaxSwapGroupsNV(Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers)
   {
-    App("glXQueryMaxSwapGroupsNV","(", dpy, ", ", screen, ")");
+    App("glXQueryMaxSwapGroupsNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXQueryMaxSwapGroupsNV)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryMaxSwapGroupsNV, "glXQueryMaxSwapGroupsNV" );
@@ -31721,7 +31721,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQueryMaxSwapGroupsNV)
     {
-      Driver("glXQueryMaxSwapGroupsNV","(", dpy, ", ", screen, ")");
+      Driver("glXQueryMaxSwapGroupsNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXQueryMaxSwapGroupsNV(dpy, screen, maxGroups, maxBarriers);
     }
     else
@@ -31731,7 +31731,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQuerySwapGroupNV(Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier)
   {
-    App("glXQuerySwapGroupNV","(", dpy, ", ", drawable, ")");
+    App("glXQuerySwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     if (!dispatchTableGlobal.glXQuerySwapGroupNV)
     {
       GetProcAddress( dispatchTableGlobal.glXQuerySwapGroupNV, "glXQuerySwapGroupNV" );
@@ -31742,7 +31742,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQuerySwapGroupNV)
     {
-      Driver("glXQuerySwapGroupNV","(", dpy, ", ", drawable, ")");
+      Driver("glXQuerySwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
       ret = dispatchTableGlobal.glXQuerySwapGroupNV(dpy, drawable, group, barrier);
     }
     else
@@ -31752,7 +31752,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXResetFrameCountNV(Display *dpy, int screen)
   {
-    App("glXResetFrameCountNV","(", dpy, ", ", screen, ")");
+    App("glXResetFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXResetFrameCountNV)
     {
       GetProcAddress( dispatchTableGlobal.glXResetFrameCountNV, "glXResetFrameCountNV" );
@@ -31763,7 +31763,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXResetFrameCountNV)
     {
-      Driver("glXResetFrameCountNV","(", dpy, ", ", screen, ")");
+      Driver("glXResetFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXResetFrameCountNV(dpy, screen);
     }
     else
@@ -31796,7 +31796,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXFreeMemoryNV(void *pointer)
   {
-    App("glXFreeMemoryNV","(", pointer, ")");
+    App("glXFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXFreeMemoryNV)
     {
       GetProcAddress( dispatchTableGlobal.glXFreeMemoryNV, "glXFreeMemoryNV" );
@@ -31806,7 +31806,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXFreeMemoryNV)
     {
-      Driver("glXFreeMemoryNV","(", pointer, ")");
+      Driver("glXFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
       dispatchTableGlobal.glXFreeMemoryNV(pointer);
     }
     else
@@ -31817,7 +31817,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXBindVideoCaptureDeviceNV(Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device)
   {
-    App("glXBindVideoCaptureDeviceNV","(", dpy, ", ", video_capture_slot, ", ", device, ")");
+    App("glXBindVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_capture_slot, ", ", device, ")");
     if (!dispatchTableGlobal.glXBindVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXBindVideoCaptureDeviceNV, "glXBindVideoCaptureDeviceNV" );
@@ -31828,7 +31828,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXBindVideoCaptureDeviceNV)
     {
-      Driver("glXBindVideoCaptureDeviceNV","(", dpy, ", ", video_capture_slot, ", ", device, ")");
+      Driver("glXBindVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_capture_slot, ", ", device, ")");
       ret = dispatchTableGlobal.glXBindVideoCaptureDeviceNV(dpy, video_capture_slot, device);
     }
     else
@@ -31838,7 +31838,7 @@ extern "C" {
 
   REGAL_DECL GLXVideoCaptureDeviceNV *REGAL_CALL glXEnumerateVideoCaptureDevicesNV(Display *dpy, int screen, int *nelements)
   {
-    App("glXEnumerateVideoCaptureDevicesNV","(", dpy, ", ", screen, ", ", nelements, ")");
+    App("glXEnumerateVideoCaptureDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", nelements, ")");
     if (!dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV)
     {
       GetProcAddress( dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV, "glXEnumerateVideoCaptureDevicesNV" );
@@ -31849,7 +31849,7 @@ extern "C" {
     GLXVideoCaptureDeviceNV * ret = NULL;
     if (dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV)
     {
-      Driver("glXEnumerateVideoCaptureDevicesNV","(", dpy, ", ", screen, ", ", nelements, ")");
+      Driver("glXEnumerateVideoCaptureDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", nelements, ")");
       ret = dispatchTableGlobal.glXEnumerateVideoCaptureDevicesNV(dpy, screen, nelements);
     }
     else
@@ -31859,7 +31859,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXLockVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device)
   {
-    App("glXLockVideoCaptureDeviceNV","(", dpy, ", ", device, ")");
+    App("glXLockVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
     if (!dispatchTableGlobal.glXLockVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXLockVideoCaptureDeviceNV, "glXLockVideoCaptureDeviceNV" );
@@ -31869,7 +31869,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXLockVideoCaptureDeviceNV)
     {
-      Driver("glXLockVideoCaptureDeviceNV","(", dpy, ", ", device, ")");
+      Driver("glXLockVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
       dispatchTableGlobal.glXLockVideoCaptureDeviceNV(dpy, device);
     }
     else
@@ -31878,7 +31878,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXQueryVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value)
   {
-    App("glXQueryVideoCaptureDeviceNV","(", dpy, ", ", device, ", ", attribute, ", ", value, ")");
+    App("glXQueryVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ", ", attribute, ", ", value, ")");
     if (!dispatchTableGlobal.glXQueryVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryVideoCaptureDeviceNV, "glXQueryVideoCaptureDeviceNV" );
@@ -31889,7 +31889,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXQueryVideoCaptureDeviceNV)
     {
-      Driver("glXQueryVideoCaptureDeviceNV","(", dpy, ", ", device, ", ", attribute, ", ", value, ")");
+      Driver("glXQueryVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.glXQueryVideoCaptureDeviceNV(dpy, device, attribute, value);
     }
     else
@@ -31899,7 +31899,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device)
   {
-    App("glXReleaseVideoCaptureDeviceNV","(", dpy, ", ", device, ")");
+    App("glXReleaseVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
     if (!dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV, "glXReleaseVideoCaptureDeviceNV" );
@@ -31909,7 +31909,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV)
     {
-      Driver("glXReleaseVideoCaptureDeviceNV","(", dpy, ", ", device, ")");
+      Driver("glXReleaseVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
       dispatchTableGlobal.glXReleaseVideoCaptureDeviceNV(dpy, device);
     }
     else
@@ -31920,7 +31920,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXBindVideoImageNV(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer)
   {
-    App("glXBindVideoImageNV","(", dpy, ", ", VideoDevice, ", ", pbuf, ", ", iVideoBuffer, ")");
+    App("glXBindVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(VideoDevice,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iVideoBuffer, ")");
     if (!dispatchTableGlobal.glXBindVideoImageNV)
     {
       GetProcAddress( dispatchTableGlobal.glXBindVideoImageNV, "glXBindVideoImageNV" );
@@ -31931,7 +31931,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXBindVideoImageNV)
     {
-      Driver("glXBindVideoImageNV","(", dpy, ", ", VideoDevice, ", ", pbuf, ", ", iVideoBuffer, ")");
+      Driver("glXBindVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(VideoDevice,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iVideoBuffer, ")");
       ret = dispatchTableGlobal.glXBindVideoImageNV(dpy, VideoDevice, pbuf, iVideoBuffer);
     }
     else
@@ -31941,7 +31941,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetVideoDeviceNV(Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice)
   {
-    App("glXGetVideoDeviceNV","(", dpy, ", ", screen, ", ", numVideoDevices, ")");
+    App("glXGetVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", numVideoDevices, ")");
     if (!dispatchTableGlobal.glXGetVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXGetVideoDeviceNV, "glXGetVideoDeviceNV" );
@@ -31952,7 +31952,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetVideoDeviceNV)
     {
-      Driver("glXGetVideoDeviceNV","(", dpy, ", ", screen, ", ", numVideoDevices, ")");
+      Driver("glXGetVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", numVideoDevices, ")");
       ret = dispatchTableGlobal.glXGetVideoDeviceNV(dpy, screen, numVideoDevices, pVideoDevice);
     }
     else
@@ -31962,7 +31962,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetVideoInfoNV(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo)
   {
-    App("glXGetVideoInfoNV","(", dpy, ", ", screen, ", ", VideoDevice, ")");
+    App("glXGetVideoInfoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXGetVideoInfoNV)
     {
       GetProcAddress( dispatchTableGlobal.glXGetVideoInfoNV, "glXGetVideoInfoNV" );
@@ -31973,7 +31973,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetVideoInfoNV)
     {
-      Driver("glXGetVideoInfoNV","(", dpy, ", ", screen, ", ", VideoDevice, ")");
+      Driver("glXGetVideoInfoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXGetVideoInfoNV(dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
     }
     else
@@ -31983,7 +31983,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXReleaseVideoDeviceNV(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice)
   {
-    App("glXReleaseVideoDeviceNV","(", dpy, ", ", screen, ", ", VideoDevice, ")");
+    App("glXReleaseVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXReleaseVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseVideoDeviceNV, "glXReleaseVideoDeviceNV" );
@@ -31994,7 +31994,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXReleaseVideoDeviceNV)
     {
-      Driver("glXReleaseVideoDeviceNV","(", dpy, ", ", screen, ", ", VideoDevice, ")");
+      Driver("glXReleaseVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXReleaseVideoDeviceNV(dpy, screen, VideoDevice);
     }
     else
@@ -32004,7 +32004,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXReleaseVideoImageNV(Display *dpy, GLXPbuffer pbuf)
   {
-    App("glXReleaseVideoImageNV","(", dpy, ", ", pbuf, ")");
+    App("glXReleaseVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXReleaseVideoImageNV)
     {
       GetProcAddress( dispatchTableGlobal.glXReleaseVideoImageNV, "glXReleaseVideoImageNV" );
@@ -32015,7 +32015,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXReleaseVideoImageNV)
     {
-      Driver("glXReleaseVideoImageNV","(", dpy, ", ", pbuf, ")");
+      Driver("glXReleaseVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXReleaseVideoImageNV(dpy, pbuf);
     }
     else
@@ -32025,7 +32025,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXSendPbufferToVideoNV(Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock)
   {
-    App("glXSendPbufferToVideoNV","(", dpy, ", ", pbuf, ", ", iBufferType, ", ", toString(bBlock), ")");
+    App("glXSendPbufferToVideoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iBufferType, ", ", toString(bBlock), ")");
     if (!dispatchTableGlobal.glXSendPbufferToVideoNV)
     {
       GetProcAddress( dispatchTableGlobal.glXSendPbufferToVideoNV, "glXSendPbufferToVideoNV" );
@@ -32036,7 +32036,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXSendPbufferToVideoNV)
     {
-      Driver("glXSendPbufferToVideoNV","(", dpy, ", ", pbuf, ", ", iBufferType, ", ", toString(bBlock), ")");
+      Driver("glXSendPbufferToVideoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iBufferType, ", ", toString(bBlock), ")");
       ret = dispatchTableGlobal.glXSendPbufferToVideoNV(dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock);
     }
     else
@@ -32048,7 +32048,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXGetMscRateOML(Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator)
   {
-    App("glXGetMscRateOML","(", dpy, ", ", drawable, ")");
+    App("glXGetMscRateOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     if (!dispatchTableGlobal.glXGetMscRateOML)
     {
       GetProcAddress( dispatchTableGlobal.glXGetMscRateOML, "glXGetMscRateOML" );
@@ -32059,7 +32059,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXGetMscRateOML)
     {
-      Driver("glXGetMscRateOML","(", dpy, ", ", drawable, ")");
+      Driver("glXGetMscRateOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
       ret = dispatchTableGlobal.glXGetMscRateOML(dpy, drawable, numerator, denominator);
     }
     else
@@ -32069,7 +32069,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXGetSyncValuesOML(Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc)
   {
-    App("glXGetSyncValuesOML","(", dpy, ", ", drawable, ")");
+    App("glXGetSyncValuesOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     if (!dispatchTableGlobal.glXGetSyncValuesOML)
     {
       GetProcAddress( dispatchTableGlobal.glXGetSyncValuesOML, "glXGetSyncValuesOML" );
@@ -32080,7 +32080,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXGetSyncValuesOML)
     {
-      Driver("glXGetSyncValuesOML","(", dpy, ", ", drawable, ")");
+      Driver("glXGetSyncValuesOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
       ret = dispatchTableGlobal.glXGetSyncValuesOML(dpy, drawable, ust, msc, sbc);
     }
     else
@@ -32090,7 +32090,7 @@ extern "C" {
 
   REGAL_DECL int64_t REGAL_CALL glXSwapBuffersMscOML(Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder)
   {
-    App("glXSwapBuffersMscOML","(", dpy, ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+    App("glXSwapBuffersMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     if (!dispatchTableGlobal.glXSwapBuffersMscOML)
     {
       GetProcAddress( dispatchTableGlobal.glXSwapBuffersMscOML, "glXSwapBuffersMscOML" );
@@ -32101,7 +32101,7 @@ extern "C" {
     int64_t  ret = (int64_t )0;
     if (dispatchTableGlobal.glXSwapBuffersMscOML)
     {
-      Driver("glXSwapBuffersMscOML","(", dpy, ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+      Driver("glXSwapBuffersMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
       ret = dispatchTableGlobal.glXSwapBuffersMscOML(dpy, drawable, target_msc, divisor, remainder);
     }
     else
@@ -32111,7 +32111,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXWaitForMscOML(Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc)
   {
-    App("glXWaitForMscOML","(", dpy, ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+    App("glXWaitForMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     if (!dispatchTableGlobal.glXWaitForMscOML)
     {
       GetProcAddress( dispatchTableGlobal.glXWaitForMscOML, "glXWaitForMscOML" );
@@ -32122,7 +32122,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXWaitForMscOML)
     {
-      Driver("glXWaitForMscOML","(", dpy, ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+      Driver("glXWaitForMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
       ret = dispatchTableGlobal.glXWaitForMscOML(dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc);
     }
     else
@@ -32132,7 +32132,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXWaitForSbcOML(Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc)
   {
-    App("glXWaitForSbcOML","(", dpy, ", ", drawable, ", ", target_sbc, ", ", boost::print::array(ust,1), ", ", boost::print::array(msc,1), ", ", boost::print::array(sbc,1), ")");
+    App("glXWaitForSbcOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_sbc, ", ", boost::print::array(ust,1), ", ", boost::print::array(msc,1), ", ", boost::print::array(sbc,1), ")");
     if (!dispatchTableGlobal.glXWaitForSbcOML)
     {
       GetProcAddress( dispatchTableGlobal.glXWaitForSbcOML, "glXWaitForSbcOML" );
@@ -32143,7 +32143,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXWaitForSbcOML)
     {
-      Driver("glXWaitForSbcOML","(", dpy, ", ", drawable, ", ", target_sbc, ", ", boost::print::array(ust,1), ", ", boost::print::array(msc,1), ", ", boost::print::array(sbc,1), ")");
+      Driver("glXWaitForSbcOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_sbc, ", ", boost::print::array(ust,1), ", ", boost::print::array(msc,1), ", ", boost::print::array(sbc,1), ")");
       ret = dispatchTableGlobal.glXWaitForSbcOML(dpy, drawable, target_sbc, ust, msc, sbc);
     }
     else
@@ -32155,7 +32155,7 @@ extern "C" {
 
   REGAL_DECL GLXFBConfigSGIX *REGAL_CALL glXChooseFBConfigSGIX(Display *dpy, int screen, const int *attrib_list, int *nelements)
   {
-    App("glXChooseFBConfigSGIX","(", dpy, ", ", screen, ", ", attrib_list, ", ", nelements, ")");
+    App("glXChooseFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attrib_list, ", ", nelements, ")");
     if (!dispatchTableGlobal.glXChooseFBConfigSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXChooseFBConfigSGIX, "glXChooseFBConfigSGIX" );
@@ -32166,7 +32166,7 @@ extern "C" {
     GLXFBConfigSGIX * ret = NULL;
     if (dispatchTableGlobal.glXChooseFBConfigSGIX)
     {
-      Driver("glXChooseFBConfigSGIX","(", dpy, ", ", screen, ", ", attrib_list, ", ", nelements, ")");
+      Driver("glXChooseFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", attrib_list, ", ", nelements, ")");
       ret = dispatchTableGlobal.glXChooseFBConfigSGIX(dpy, screen, attrib_list, nelements);
     }
     else
@@ -32176,7 +32176,7 @@ extern "C" {
 
   REGAL_DECL GLXContext REGAL_CALL glXCreateContextWithConfigSGIX(Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct)
   {
-    App("glXCreateContextWithConfigSGIX","(", dpy, ", ", config, ", ", render_type, ", ", share_list, ", ", direct, ")");
+    App("glXCreateContextWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
     if (!dispatchTableGlobal.glXCreateContextWithConfigSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateContextWithConfigSGIX, "glXCreateContextWithConfigSGIX" );
@@ -32187,7 +32187,7 @@ extern "C" {
     GLXContext  ret = (GLXContext )0;
     if (dispatchTableGlobal.glXCreateContextWithConfigSGIX)
     {
-      Driver("glXCreateContextWithConfigSGIX","(", dpy, ", ", config, ", ", render_type, ", ", share_list, ", ", direct, ")");
+      Driver("glXCreateContextWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
       ret = dispatchTableGlobal.glXCreateContextWithConfigSGIX(dpy, config, render_type, share_list, direct);
     }
     else
@@ -32197,7 +32197,7 @@ extern "C" {
 
   REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmapWithConfigSGIX(Display *dpy, GLXFBConfig config, Pixmap pixmap)
   {
-    App("glXCreateGLXPixmapWithConfigSGIX","(", dpy, ", ", config, ", ", pixmap, ")");
+    App("glXCreateGLXPixmapWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX, "glXCreateGLXPixmapWithConfigSGIX" );
@@ -32208,7 +32208,7 @@ extern "C" {
     GLXPixmap  ret = (GLXPixmap )0;
     if (dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX)
     {
-      Driver("glXCreateGLXPixmapWithConfigSGIX","(", dpy, ", ", config, ", ", pixmap, ")");
+      Driver("glXCreateGLXPixmapWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXCreateGLXPixmapWithConfigSGIX(dpy, config, pixmap);
     }
     else
@@ -32218,7 +32218,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetFBConfigAttribSGIX(Display *dpy, GLXFBConfigSGIX config, int attribute, int *value)
   {
-    App("glXGetFBConfigAttribSGIX","(", dpy, ", ", config, ", ", attribute, ", ", boost::print::array(value,1), ")");
+    App("glXGetFBConfigAttribSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ", ", boost::print::array(value,1), ")");
     if (!dispatchTableGlobal.glXGetFBConfigAttribSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXGetFBConfigAttribSGIX, "glXGetFBConfigAttribSGIX" );
@@ -32229,7 +32229,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetFBConfigAttribSGIX)
     {
-      Driver("glXGetFBConfigAttribSGIX","(", dpy, ", ", config, ", ", attribute, ", ", boost::print::array(value,1), ")");
+      Driver("glXGetFBConfigAttribSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ", ", boost::print::array(value,1), ")");
       ret = dispatchTableGlobal.glXGetFBConfigAttribSGIX(dpy, config, attribute, value);
     }
     else
@@ -32239,7 +32239,7 @@ extern "C" {
 
   REGAL_DECL GLXFBConfigSGIX REGAL_CALL glXGetFBConfigFromVisualSGIX(Display *dpy, XVisualInfo *vis)
   {
-    App("glXGetFBConfigFromVisualSGIX","(", dpy, ", ", vis, ")");
+    App("glXGetFBConfigFromVisualSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ")");
     if (!dispatchTableGlobal.glXGetFBConfigFromVisualSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXGetFBConfigFromVisualSGIX, "glXGetFBConfigFromVisualSGIX" );
@@ -32250,7 +32250,7 @@ extern "C" {
     GLXFBConfigSGIX  ret = (GLXFBConfigSGIX )0;
     if (dispatchTableGlobal.glXGetFBConfigFromVisualSGIX)
     {
-      Driver("glXGetFBConfigFromVisualSGIX","(", dpy, ", ", vis, ")");
+      Driver("glXGetFBConfigFromVisualSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", vis, ")");
       ret = dispatchTableGlobal.glXGetFBConfigFromVisualSGIX(dpy, vis);
     }
     else
@@ -32260,7 +32260,7 @@ extern "C" {
 
   REGAL_DECL XVisualInfo *REGAL_CALL glXGetVisualFromFBConfigSGIX(Display *dpy, GLXFBConfig config)
   {
-    App("glXGetVisualFromFBConfigSGIX","(", dpy, ", ", config, ")");
+    App("glXGetVisualFromFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
     if (!dispatchTableGlobal.glXGetVisualFromFBConfigSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXGetVisualFromFBConfigSGIX, "glXGetVisualFromFBConfigSGIX" );
@@ -32271,7 +32271,7 @@ extern "C" {
     XVisualInfo * ret = NULL;
     if (dispatchTableGlobal.glXGetVisualFromFBConfigSGIX)
     {
-      Driver("glXGetVisualFromFBConfigSGIX","(", dpy, ", ", config, ")");
+      Driver("glXGetVisualFromFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
       ret = dispatchTableGlobal.glXGetVisualFromFBConfigSGIX(dpy, config);
     }
     else
@@ -32283,7 +32283,7 @@ extern "C" {
 
   REGAL_DECL GLXPbuffer REGAL_CALL glXCreateGLXPbufferSGIX(Display *dpy, GLXFBConfig config, unsigned int width, unsigned int height, int *attrib_list)
   {
-    App("glXCreateGLXPbufferSGIX","(", dpy, ", ", config, ", ", width, ", ", height, ", ", attrib_list, ")");
+    App("glXCreateGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", width, ", ", height, ", ", attrib_list, ")");
     if (!dispatchTableGlobal.glXCreateGLXPbufferSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXCreateGLXPbufferSGIX, "glXCreateGLXPbufferSGIX" );
@@ -32294,7 +32294,7 @@ extern "C" {
     GLXPbuffer  ret = (GLXPbuffer )0;
     if (dispatchTableGlobal.glXCreateGLXPbufferSGIX)
     {
-      Driver("glXCreateGLXPbufferSGIX","(", dpy, ", ", config, ", ", width, ", ", height, ", ", attrib_list, ")");
+      Driver("glXCreateGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", width, ", ", height, ", ", attrib_list, ")");
       ret = dispatchTableGlobal.glXCreateGLXPbufferSGIX(dpy, config, width, height, attrib_list);
     }
     else
@@ -32304,7 +32304,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXDestroyGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf)
   {
-    App("glXDestroyGLXPbufferSGIX","(", dpy, ", ", pbuf, ")");
+    App("glXDestroyGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXDestroyGLXPbufferSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXDestroyGLXPbufferSGIX, "glXDestroyGLXPbufferSGIX" );
@@ -32314,7 +32314,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXDestroyGLXPbufferSGIX)
     {
-      Driver("glXDestroyGLXPbufferSGIX","(", dpy, ", ", pbuf, ")");
+      Driver("glXDestroyGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyGLXPbufferSGIX(dpy, pbuf);
     }
     else
@@ -32323,7 +32323,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXGetSelectedEventSGIX(Display *dpy, GLXDrawable drawable, unsigned long *mask)
   {
-    App("glXGetSelectedEventSGIX","(", dpy, ", ", drawable, ", ", boost::print::array(mask,1), ")");
+    App("glXGetSelectedEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::array(mask,1), ")");
     if (!dispatchTableGlobal.glXGetSelectedEventSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXGetSelectedEventSGIX, "glXGetSelectedEventSGIX" );
@@ -32333,7 +32333,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXGetSelectedEventSGIX)
     {
-      Driver("glXGetSelectedEventSGIX","(", dpy, ", ", drawable, ", ", boost::print::array(mask,1), ")");
+      Driver("glXGetSelectedEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::array(mask,1), ")");
       dispatchTableGlobal.glXGetSelectedEventSGIX(dpy, drawable, mask);
     }
     else
@@ -32342,7 +32342,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXQueryGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value)
   {
-    App("glXQueryGLXPbufferSGIX","(", dpy, ", ", pbuf, ", ", attribute, ", ", boost::print::array(value,1), ")");
+    App("glXQueryGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", attribute, ", ", boost::print::array(value,1), ")");
     if (!dispatchTableGlobal.glXQueryGLXPbufferSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryGLXPbufferSGIX, "glXQueryGLXPbufferSGIX" );
@@ -32352,7 +32352,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXQueryGLXPbufferSGIX)
     {
-      Driver("glXQueryGLXPbufferSGIX","(", dpy, ", ", pbuf, ", ", attribute, ", ", boost::print::array(value,1), ")");
+      Driver("glXQueryGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", attribute, ", ", boost::print::array(value,1), ")");
       dispatchTableGlobal.glXQueryGLXPbufferSGIX(dpy, pbuf, attribute, value);
     }
     else
@@ -32361,7 +32361,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXSelectEventSGIX(Display *dpy, GLXDrawable drawable, unsigned long mask)
   {
-    App("glXSelectEventSGIX","(", dpy, ", ", drawable, ", ", mask, ")");
+    App("glXSelectEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", mask, ")");
     if (!dispatchTableGlobal.glXSelectEventSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXSelectEventSGIX, "glXSelectEventSGIX" );
@@ -32371,7 +32371,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXSelectEventSGIX)
     {
-      Driver("glXSelectEventSGIX","(", dpy, ", ", drawable, ", ", mask, ")");
+      Driver("glXSelectEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", mask, ")");
       dispatchTableGlobal.glXSelectEventSGIX(dpy, drawable, mask);
     }
     else
@@ -32382,7 +32382,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXBindSwapBarrierSGIX(Display *dpy, GLXDrawable drawable, int barrier)
   {
-    App("glXBindSwapBarrierSGIX","(", dpy, ", ", drawable, ", ", barrier, ")");
+    App("glXBindSwapBarrierSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", barrier, ")");
     if (!dispatchTableGlobal.glXBindSwapBarrierSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXBindSwapBarrierSGIX, "glXBindSwapBarrierSGIX" );
@@ -32392,7 +32392,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXBindSwapBarrierSGIX)
     {
-      Driver("glXBindSwapBarrierSGIX","(", dpy, ", ", drawable, ", ", barrier, ")");
+      Driver("glXBindSwapBarrierSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", barrier, ")");
       dispatchTableGlobal.glXBindSwapBarrierSGIX(dpy, drawable, barrier);
     }
     else
@@ -32401,7 +32401,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXQueryMaxSwapBarriersSGIX(Display *dpy, int screen, int *max)
   {
-    App("glXQueryMaxSwapBarriersSGIX","(", dpy, ", ", screen, ")");
+    App("glXQueryMaxSwapBarriersSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     if (!dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX, "glXQueryMaxSwapBarriersSGIX" );
@@ -32412,7 +32412,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX)
     {
-      Driver("glXQueryMaxSwapBarriersSGIX","(", dpy, ", ", screen, ")");
+      Driver("glXQueryMaxSwapBarriersSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
       ret = dispatchTableGlobal.glXQueryMaxSwapBarriersSGIX(dpy, screen, max);
     }
     else
@@ -32424,7 +32424,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXJoinSwapGroupSGIX(Display *dpy, GLXDrawable drawable, GLXDrawable member)
   {
-    App("glXJoinSwapGroupSGIX","(", dpy, ", ", drawable, ", ", member, ")");
+    App("glXJoinSwapGroupSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", member, ")");
     if (!dispatchTableGlobal.glXJoinSwapGroupSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXJoinSwapGroupSGIX, "glXJoinSwapGroupSGIX" );
@@ -32434,7 +32434,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXJoinSwapGroupSGIX)
     {
-      Driver("glXJoinSwapGroupSGIX","(", dpy, ", ", drawable, ", ", member, ")");
+      Driver("glXJoinSwapGroupSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", member, ")");
       dispatchTableGlobal.glXJoinSwapGroupSGIX(dpy, drawable, member);
     }
     else
@@ -32445,7 +32445,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXBindChannelToWindowSGIX(Display *display, int screen, int channel, Window window)
   {
-    App("glXBindChannelToWindowSGIX","(", display, ", ", screen, ", ", channel, ", ", window, ")");
+    App("glXBindChannelToWindowSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", window, ")");
     if (!dispatchTableGlobal.glXBindChannelToWindowSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXBindChannelToWindowSGIX, "glXBindChannelToWindowSGIX" );
@@ -32456,7 +32456,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXBindChannelToWindowSGIX)
     {
-      Driver("glXBindChannelToWindowSGIX","(", display, ", ", screen, ", ", channel, ", ", window, ")");
+      Driver("glXBindChannelToWindowSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", window, ")");
       ret = dispatchTableGlobal.glXBindChannelToWindowSGIX(display, screen, channel, window);
     }
     else
@@ -32466,7 +32466,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXChannelRectSGIX(Display *display, int screen, int channel, int x, int y, int w, int h)
   {
-    App("glXChannelRectSGIX","(", display, ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")");
+    App("glXChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")");
     if (!dispatchTableGlobal.glXChannelRectSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXChannelRectSGIX, "glXChannelRectSGIX" );
@@ -32477,7 +32477,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXChannelRectSGIX)
     {
-      Driver("glXChannelRectSGIX","(", display, ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")");
+      Driver("glXChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")");
       ret = dispatchTableGlobal.glXChannelRectSGIX(display, screen, channel, x, y, w, h);
     }
     else
@@ -32487,7 +32487,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXChannelRectSyncSGIX(Display *display, int screen, int channel, GLenum synctype)
   {
-    App("glXChannelRectSyncSGIX","(", display, ", ", screen, ", ", channel, ", ", toString(synctype), ")");
+    App("glXChannelRectSyncSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", toString(synctype), ")");
     if (!dispatchTableGlobal.glXChannelRectSyncSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXChannelRectSyncSGIX, "glXChannelRectSyncSGIX" );
@@ -32498,7 +32498,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXChannelRectSyncSGIX)
     {
-      Driver("glXChannelRectSyncSGIX","(", display, ", ", screen, ", ", channel, ", ", toString(synctype), ")");
+      Driver("glXChannelRectSyncSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", toString(synctype), ")");
       ret = dispatchTableGlobal.glXChannelRectSyncSGIX(display, screen, channel, synctype);
     }
     else
@@ -32508,7 +32508,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXQueryChannelDeltasSGIX(Display *display, int screen, int channel, int *x, int *y, int *w, int *h)
   {
-    App("glXQueryChannelDeltasSGIX","(", display, ", ", screen, ", ", channel, ", ", boost::print::array(x,1), ", ", boost::print::array(y,1), ", ", boost::print::array(w,1), ", ", boost::print::array(h,1), ")");
+    App("glXQueryChannelDeltasSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(x,1), ", ", boost::print::array(y,1), ", ", boost::print::array(w,1), ", ", boost::print::array(h,1), ")");
     if (!dispatchTableGlobal.glXQueryChannelDeltasSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryChannelDeltasSGIX, "glXQueryChannelDeltasSGIX" );
@@ -32519,7 +32519,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXQueryChannelDeltasSGIX)
     {
-      Driver("glXQueryChannelDeltasSGIX","(", display, ", ", screen, ", ", channel, ", ", boost::print::array(x,1), ", ", boost::print::array(y,1), ", ", boost::print::array(w,1), ", ", boost::print::array(h,1), ")");
+      Driver("glXQueryChannelDeltasSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(x,1), ", ", boost::print::array(y,1), ", ", boost::print::array(w,1), ", ", boost::print::array(h,1), ")");
       ret = dispatchTableGlobal.glXQueryChannelDeltasSGIX(display, screen, channel, x, y, w, h);
     }
     else
@@ -32529,7 +32529,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXQueryChannelRectSGIX(Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh)
   {
-    App("glXQueryChannelRectSGIX","(", display, ", ", screen, ", ", channel, ", ", boost::print::array(dx,1), ", ", boost::print::array(dy,1), ", ", boost::print::array(dw,1), ", ", boost::print::array(dh,1), ")");
+    App("glXQueryChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(dx,1), ", ", boost::print::array(dy,1), ", ", boost::print::array(dw,1), ", ", boost::print::array(dh,1), ")");
     if (!dispatchTableGlobal.glXQueryChannelRectSGIX)
     {
       GetProcAddress( dispatchTableGlobal.glXQueryChannelRectSGIX, "glXQueryChannelRectSGIX" );
@@ -32540,7 +32540,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXQueryChannelRectSGIX)
     {
-      Driver("glXQueryChannelRectSGIX","(", display, ", ", screen, ", ", channel, ", ", boost::print::array(dx,1), ", ", boost::print::array(dy,1), ", ", boost::print::array(dw,1), ", ", boost::print::array(dh,1), ")");
+      Driver("glXQueryChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(dx,1), ", ", boost::print::array(dy,1), ", ", boost::print::array(dw,1), ", ", boost::print::array(dh,1), ")");
       ret = dispatchTableGlobal.glXQueryChannelRectSGIX(display, screen, channel, dx, dy, dw, dh);
     }
     else
@@ -32552,7 +32552,7 @@ extern "C" {
 
   REGAL_DECL void REGAL_CALL glXCushionSGI(Display *dpy, Window window, float cushion)
   {
-    App("glXCushionSGI","(", dpy, ", ", window, ", ", cushion, ")");
+    App("glXCushionSGI","(", boost::print::optional(dpy,Logging::pointers), ", ", window, ", ", cushion, ")");
     if (!dispatchTableGlobal.glXCushionSGI)
     {
       GetProcAddress( dispatchTableGlobal.glXCushionSGI, "glXCushionSGI" );
@@ -32562,7 +32562,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.glXCushionSGI)
     {
-      Driver("glXCushionSGI","(", dpy, ", ", window, ", ", cushion, ")");
+      Driver("glXCushionSGI","(", boost::print::optional(dpy,Logging::pointers), ", ", window, ", ", cushion, ")");
       dispatchTableGlobal.glXCushionSGI(dpy, window, cushion);
     }
     else
@@ -32594,7 +32594,7 @@ extern "C" {
 
   REGAL_DECL Bool REGAL_CALL glXMakeCurrentReadSGI(Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx)
   {
-    App("glXMakeCurrentReadSGI","(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
+    App("glXMakeCurrentReadSGI","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", read, ", ", boost::print::optional(ctx,Logging::pointers), ")");
     if (!dispatchTableGlobal.glXMakeCurrentReadSGI)
     {
       GetProcAddress( dispatchTableGlobal.glXMakeCurrentReadSGI, "glXMakeCurrentReadSGI" );
@@ -32605,7 +32605,7 @@ extern "C" {
     Bool  ret = (Bool )0;
     if (dispatchTableGlobal.glXMakeCurrentReadSGI)
     {
-      Driver("glXMakeCurrentReadSGI","(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
+      Driver("glXMakeCurrentReadSGI","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", read, ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXMakeCurrentReadSGI(dpy, draw, read, ctx);
     }
     else
@@ -32684,7 +32684,7 @@ extern "C" {
 
   REGAL_DECL Status REGAL_CALL glXGetTransparentIndexSUN(Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex)
   {
-    App("glXGetTransparentIndexSUN","(", dpy, ", ", overlay, ", ", underlay, ", ", boost::print::array(pTransparentIndex,1), ")");
+    App("glXGetTransparentIndexSUN","(", boost::print::optional(dpy,Logging::pointers), ", ", overlay, ", ", underlay, ", ", boost::print::array(pTransparentIndex,1), ")");
     if (!dispatchTableGlobal.glXGetTransparentIndexSUN)
     {
       GetProcAddress( dispatchTableGlobal.glXGetTransparentIndexSUN, "glXGetTransparentIndexSUN" );
@@ -32695,7 +32695,7 @@ extern "C" {
     Status  ret = (Status )0;
     if (dispatchTableGlobal.glXGetTransparentIndexSUN)
     {
-      Driver("glXGetTransparentIndexSUN","(", dpy, ", ", overlay, ", ", underlay, ", ", boost::print::array(pTransparentIndex,1), ")");
+      Driver("glXGetTransparentIndexSUN","(", boost::print::optional(dpy,Logging::pointers), ", ", overlay, ", ", underlay, ", ", boost::print::array(pTransparentIndex,1), ")");
       ret = dispatchTableGlobal.glXGetTransparentIndexSUN(dpy, overlay, underlay, pTransparentIndex);
     }
     else
@@ -32707,7 +32707,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXGetVideoResizeSUN(Display *display, GLXDrawable window, float *factor)
   {
-    App("glXGetVideoResizeSUN","(", display, ", ", window, ")");
+    App("glXGetVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ")");
     if (!dispatchTableGlobal.glXGetVideoResizeSUN)
     {
       GetProcAddress( dispatchTableGlobal.glXGetVideoResizeSUN, "glXGetVideoResizeSUN" );
@@ -32718,7 +32718,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXGetVideoResizeSUN)
     {
-      Driver("glXGetVideoResizeSUN","(", display, ", ", window, ")");
+      Driver("glXGetVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ")");
       ret = dispatchTableGlobal.glXGetVideoResizeSUN(display, window, factor);
     }
     else
@@ -32728,7 +32728,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL glXVideoResizeSUN(Display *display, GLXDrawable window, float factor)
   {
-    App("glXVideoResizeSUN","(", display, ", ", window, ", ", factor, ")");
+    App("glXVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ", ", factor, ")");
     if (!dispatchTableGlobal.glXVideoResizeSUN)
     {
       GetProcAddress( dispatchTableGlobal.glXVideoResizeSUN, "glXVideoResizeSUN" );
@@ -32739,7 +32739,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.glXVideoResizeSUN)
     {
-      Driver("glXVideoResizeSUN","(", display, ", ", window, ", ", factor, ")");
+      Driver("glXVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ", ", factor, ")");
       ret = dispatchTableGlobal.glXVideoResizeSUN(display, window, factor);
     }
     else
@@ -33206,7 +33206,7 @@ extern "C" {
 
   REGAL_DECL CGLError REGAL_CALL CGLSetOffScreen(CGLContextObj ctx, GLsizei width, GLsizei height, GLsizei rowbytes, void *baseaddr)
   {
-    App("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", baseaddr, ")");
+    App("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", boost::print::optional(baseaddr,Logging::pointers), ")");
     if (!dispatchTableGlobal.CGLSetOffScreen)
     {
       GetProcAddress( dispatchTableGlobal.CGLSetOffScreen, "CGLSetOffScreen" );
@@ -33217,7 +33217,7 @@ extern "C" {
     CGLError  ret = (CGLError )0;
     if (dispatchTableGlobal.CGLSetOffScreen)
     {
-      Driver("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", baseaddr, ")");
+      Driver("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", boost::print::optional(baseaddr,Logging::pointers), ")");
       ret = dispatchTableGlobal.CGLSetOffScreen(ctx, width, height, rowbytes, baseaddr);
     }
     else
@@ -33865,7 +33865,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value)
   {
-    App("eglQuerySurfacePointerANGLE","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+    App("eglQuerySurfacePointerANGLE","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQuerySurfacePointerANGLE)
@@ -33880,7 +33880,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglQuerySurfacePointerANGLE)
     {
-      Driver("eglQuerySurfacePointerANGLE","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+      Driver("eglQuerySurfacePointerANGLE","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglQuerySurfacePointerANGLE(dpy, surface, attribute, value);
     }
     else
@@ -33892,7 +33892,7 @@ extern "C" {
 
   REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout)
   {
-    App("eglClientWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ", ", timeout, ")");
+    App("eglClientWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglClientWaitSyncKHR)
@@ -33907,7 +33907,7 @@ extern "C" {
     EGLint  ret = (EGLint )0;
     if (dispatchTableGlobal.eglClientWaitSyncKHR)
     {
-      Driver("eglClientWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ", ", timeout, ")");
+      Driver("eglClientWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
       ret = dispatchTableGlobal.eglClientWaitSyncKHR(dpy, GLsync, flags, timeout);
     }
     else
@@ -33917,7 +33917,7 @@ extern "C" {
 
   REGAL_DECL EGLSyncKHR REGAL_CALL eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint *attrib_list)
   {
-    App("eglCreateSyncKHR","(", dpy, ", ", EGLenumToString(type), ", ", attrib_list, ")");
+    App("eglCreateSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(type), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateSyncKHR)
@@ -33932,7 +33932,7 @@ extern "C" {
     EGLSyncKHR  ret = (EGLSyncKHR )0;
     if (dispatchTableGlobal.eglCreateSyncKHR)
     {
-      Driver("eglCreateSyncKHR","(", dpy, ", ", EGLenumToString(type), ", ", attrib_list, ")");
+      Driver("eglCreateSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(type), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateSyncKHR(dpy, type, attrib_list);
     }
     else
@@ -33942,7 +33942,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync)
   {
-    App("eglDestroySyncKHR","(", dpy, ", ", GLsync, ")");
+    App("eglDestroySyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglDestroySyncKHR)
@@ -33957,7 +33957,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglDestroySyncKHR)
     {
-      Driver("eglDestroySyncKHR","(", dpy, ", ", GLsync, ")");
+      Driver("eglDestroySyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroySyncKHR(dpy, GLsync);
     }
     else
@@ -33967,7 +33967,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value)
   {
-    App("eglGetSyncAttribKHR","(", dpy, ", ", GLsync, ", ", attribute, ", ", value, ")");
+    App("eglGetSyncAttribKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetSyncAttribKHR)
@@ -33982,7 +33982,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglGetSyncAttribKHR)
     {
-      Driver("eglGetSyncAttribKHR","(", dpy, ", ", GLsync, ", ", attribute, ", ", value, ")");
+      Driver("eglGetSyncAttribKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglGetSyncAttribKHR(dpy, GLsync, attribute, value);
     }
     else
@@ -33994,7 +33994,7 @@ extern "C" {
 
   REGAL_DECL EGLImageKHR REGAL_CALL eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list)
   {
-    App("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", EGLenumToString(target), ", ", buffer, ", ", attrib_list, ")");
+    App("eglCreateImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", EGLenumToString(target), ", ", boost::print::optional(buffer,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateImageKHR)
@@ -34009,7 +34009,7 @@ extern "C" {
     EGLImageKHR  ret = (EGLImageKHR )0;
     if (dispatchTableGlobal.eglCreateImageKHR)
     {
-      Driver("eglCreateImageKHR","(", dpy, ", ", ctx, ", ", EGLenumToString(target), ", ", buffer, ", ", attrib_list, ")");
+      Driver("eglCreateImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", EGLenumToString(target), ", ", boost::print::optional(buffer,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateImageKHR(dpy, ctx, target, buffer, attrib_list);
     }
     else
@@ -34019,7 +34019,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image)
   {
-    App("eglDestroyImageKHR","(", dpy, ", ", image, ")");
+    App("eglDestroyImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglDestroyImageKHR)
@@ -34034,7 +34034,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglDestroyImageKHR)
     {
-      Driver("eglDestroyImageKHR","(", dpy, ", ", image, ")");
+      Driver("eglDestroyImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroyImageKHR(dpy, image);
     }
     else
@@ -34046,7 +34046,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglLockSurfaceKHR(EGLDisplay display, EGLSurface surface, const EGLint *attrib_list)
   {
-    App("eglLockSurfaceKHR","(", display, ", ", surface, ", ", attrib_list, ")");
+    App("eglLockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglLockSurfaceKHR)
@@ -34061,7 +34061,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglLockSurfaceKHR)
     {
-      Driver("eglLockSurfaceKHR","(", display, ", ", surface, ", ", attrib_list, ")");
+      Driver("eglLockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglLockSurfaceKHR(display, surface, attrib_list);
     }
     else
@@ -34071,7 +34071,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglUnlockSurfaceKHR(EGLDisplay display, EGLSurface surface)
   {
-    App("eglUnlockSurfaceKHR","(", display, ", ", surface, ")");
+    App("eglUnlockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglUnlockSurfaceKHR)
@@ -34086,7 +34086,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglUnlockSurfaceKHR)
     {
-      Driver("eglUnlockSurfaceKHR","(", display, ", ", surface, ")");
+      Driver("eglUnlockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglUnlockSurfaceKHR(display, surface);
     }
     else
@@ -34098,7 +34098,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream)
   {
-    App("eglStreamConsumerAcquireKHR","(", dpy, ", ", stream, ")");
+    App("eglStreamConsumerAcquireKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglStreamConsumerAcquireKHR)
@@ -34113,7 +34113,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglStreamConsumerAcquireKHR)
     {
-      Driver("eglStreamConsumerAcquireKHR","(", dpy, ", ", stream, ")");
+      Driver("eglStreamConsumerAcquireKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglStreamConsumerAcquireKHR(dpy, stream);
     }
     else
@@ -34123,7 +34123,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream)
   {
-    App("eglStreamConsumerGLTextureExternalKHR","(", dpy, ", ", stream, ")");
+    App("eglStreamConsumerGLTextureExternalKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR)
@@ -34138,7 +34138,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR)
     {
-      Driver("eglStreamConsumerGLTextureExternalKHR","(", dpy, ", ", stream, ")");
+      Driver("eglStreamConsumerGLTextureExternalKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglStreamConsumerGLTextureExternalKHR(dpy, stream);
     }
     else
@@ -34148,7 +34148,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream)
   {
-    App("eglStreamConsumerReleaseKHR","(", dpy, ", ", stream, ")");
+    App("eglStreamConsumerReleaseKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglStreamConsumerReleaseKHR)
@@ -34163,7 +34163,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglStreamConsumerReleaseKHR)
     {
-      Driver("eglStreamConsumerReleaseKHR","(", dpy, ", ", stream, ")");
+      Driver("eglStreamConsumerReleaseKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglStreamConsumerReleaseKHR(dpy, stream);
     }
     else
@@ -34175,7 +34175,7 @@ extern "C" {
 
   REGAL_DECL EGLStreamKHR REGAL_CALL eglCreateStreamFromFileDescriptorKHR(EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor)
   {
-    App("eglCreateStreamFromFileDescriptorKHR","(", dpy, ", ", file_descriptor, ")");
+    App("eglCreateStreamFromFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", file_descriptor, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR)
@@ -34190,7 +34190,7 @@ extern "C" {
     EGLStreamKHR  ret = (EGLStreamKHR )0;
     if (dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR)
     {
-      Driver("eglCreateStreamFromFileDescriptorKHR","(", dpy, ", ", file_descriptor, ")");
+      Driver("eglCreateStreamFromFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", file_descriptor, ")");
       ret = dispatchTableGlobal.eglCreateStreamFromFileDescriptorKHR(dpy, file_descriptor);
     }
     else
@@ -34200,7 +34200,7 @@ extern "C" {
 
   REGAL_DECL EGLNativeFileDescriptorKHR REGAL_CALL eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStreamKHR stream)
   {
-    App("eglGetStreamFileDescriptorKHR","(", dpy, ", ", stream, ")");
+    App("eglGetStreamFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetStreamFileDescriptorKHR)
@@ -34215,7 +34215,7 @@ extern "C" {
     EGLNativeFileDescriptorKHR  ret = (EGLNativeFileDescriptorKHR )0;
     if (dispatchTableGlobal.eglGetStreamFileDescriptorKHR)
     {
-      Driver("eglGetStreamFileDescriptorKHR","(", dpy, ", ", stream, ")");
+      Driver("eglGetStreamFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglGetStreamFileDescriptorKHR(dpy, stream);
     }
     else
@@ -34227,7 +34227,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreateStreamProducerSurfaceKHR(EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list)
   {
-    App("eglCreateStreamProducerSurfaceKHR","(", dpy, ", ", config, ", ", stream, ", ", attrib_list, ")");
+    App("eglCreateStreamProducerSurfaceKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR)
@@ -34242,7 +34242,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR)
     {
-      Driver("eglCreateStreamProducerSurfaceKHR","(", dpy, ", ", config, ", ", stream, ", ", attrib_list, ")");
+      Driver("eglCreateStreamProducerSurfaceKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateStreamProducerSurfaceKHR(dpy, config, stream, attrib_list);
     }
     else
@@ -34254,7 +34254,7 @@ extern "C" {
 
   REGAL_DECL EGLint REGAL_CALL eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags)
   {
-    App("eglWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ")");
+    App("eglWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglWaitSyncKHR)
@@ -34269,7 +34269,7 @@ extern "C" {
     EGLint  ret = (EGLint )0;
     if (dispatchTableGlobal.eglWaitSyncKHR)
     {
-      Driver("eglWaitSyncKHR","(", dpy, ", ", GLsync, ", ", flags, ")");
+      Driver("eglWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ")");
       ret = dispatchTableGlobal.eglWaitSyncKHR(dpy, GLsync, flags);
     }
     else
@@ -34281,7 +34281,7 @@ extern "C" {
 
   REGAL_DECL EGLImageKHR REGAL_CALL eglCreateDRMImageMESA(EGLDisplay dpy, const EGLint *attrib_list)
   {
-    App("eglCreateDRMImageMESA","(", dpy, ", ", attrib_list, ")");
+    App("eglCreateDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateDRMImageMESA)
@@ -34296,7 +34296,7 @@ extern "C" {
     EGLImageKHR  ret = (EGLImageKHR )0;
     if (dispatchTableGlobal.eglCreateDRMImageMESA)
     {
-      Driver("eglCreateDRMImageMESA","(", dpy, ", ", attrib_list, ")");
+      Driver("eglCreateDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateDRMImageMESA(dpy, attrib_list);
     }
     else
@@ -34306,7 +34306,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride)
   {
-    App("eglExportDRMImageMESA","(", dpy, ", ", image, ", ", name, ", ", handle, ", ", stride, ")");
+    App("eglExportDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ", ", name, ", ", handle, ", ", stride, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglExportDRMImageMESA)
@@ -34321,7 +34321,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglExportDRMImageMESA)
     {
-      Driver("eglExportDRMImageMESA","(", dpy, ", ", image, ", ", name, ", ", handle, ", ", stride, ")");
+      Driver("eglExportDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ", ", name, ", ", handle, ", ", stride, ")");
       ret = dispatchTableGlobal.eglExportDRMImageMESA(dpy, image, name, handle, stride);
     }
     else
@@ -34381,7 +34381,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
   {
-    App("eglPostSubBufferNV","(", dpy, ", ", surface, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+    App("eglPostSubBufferNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", x, ", ", y, ", ", width, ", ", height, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglPostSubBufferNV)
@@ -34396,7 +34396,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglPostSubBufferNV)
     {
-      Driver("eglPostSubBufferNV","(", dpy, ", ", surface, ", ", x, ", ", y, ", ", width, ", ", height, ")");
+      Driver("eglPostSubBufferNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", x, ", ", y, ", ", width, ", ", height, ")");
       ret = dispatchTableGlobal.eglPostSubBufferNV(dpy, surface, x, y, width, height);
     }
     else
@@ -34408,7 +34408,7 @@ extern "C" {
 
   REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncNV(EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout)
   {
-    App("eglClientWaitSyncNV","(", GLsync, ", ", flags, ", ", timeout, ")");
+    App("eglClientWaitSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglClientWaitSyncNV)
@@ -34423,7 +34423,7 @@ extern "C" {
     EGLint  ret = (EGLint )0;
     if (dispatchTableGlobal.eglClientWaitSyncNV)
     {
-      Driver("eglClientWaitSyncNV","(", GLsync, ", ", flags, ", ", timeout, ")");
+      Driver("eglClientWaitSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
       ret = dispatchTableGlobal.eglClientWaitSyncNV(GLsync, flags, timeout);
     }
     else
@@ -34433,7 +34433,7 @@ extern "C" {
 
   REGAL_DECL EGLSyncNV REGAL_CALL eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list)
   {
-    App("eglCreateFenceSyncNV","(", dpy, ", ", EGLenumToString(condition), ", ", attrib_list, ")");
+    App("eglCreateFenceSyncNV","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(condition), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateFenceSyncNV)
@@ -34448,7 +34448,7 @@ extern "C" {
     EGLSyncNV  ret = (EGLSyncNV )0;
     if (dispatchTableGlobal.eglCreateFenceSyncNV)
     {
-      Driver("eglCreateFenceSyncNV","(", dpy, ", ", EGLenumToString(condition), ", ", attrib_list, ")");
+      Driver("eglCreateFenceSyncNV","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(condition), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateFenceSyncNV(dpy, condition, attrib_list);
     }
     else
@@ -34458,7 +34458,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglDestroySyncNV(EGLSyncNV GLsync)
   {
-    App("eglDestroySyncNV","(", GLsync, ")");
+    App("eglDestroySyncNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglDestroySyncNV)
@@ -34473,7 +34473,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglDestroySyncNV)
     {
-      Driver("eglDestroySyncNV","(", GLsync, ")");
+      Driver("eglDestroySyncNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroySyncNV(GLsync);
     }
     else
@@ -34483,7 +34483,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglFenceNV(EGLSyncNV GLsync)
   {
-    App("eglFenceNV","(", GLsync, ")");
+    App("eglFenceNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglFenceNV)
@@ -34498,7 +34498,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglFenceNV)
     {
-      Driver("eglFenceNV","(", GLsync, ")");
+      Driver("eglFenceNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglFenceNV(GLsync);
     }
     else
@@ -34508,7 +34508,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglGetSyncAttribNV(EGLSyncNV GLsync, EGLint attribute, EGLint *value)
   {
-    App("eglGetSyncAttribNV","(", GLsync, ", ", attribute, ", ", value, ")");
+    App("eglGetSyncAttribNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetSyncAttribNV)
@@ -34523,7 +34523,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglGetSyncAttribNV)
     {
-      Driver("eglGetSyncAttribNV","(", GLsync, ", ", attribute, ", ", value, ")");
+      Driver("eglGetSyncAttribNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglGetSyncAttribNV(GLsync, attribute, value);
     }
     else
@@ -34533,7 +34533,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglSignalSyncNV(EGLSyncNV GLsync, EGLenum mode)
   {
-    App("eglSignalSyncNV","(", GLsync, ", ", EGLenumToString(mode), ")");
+    App("eglSignalSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", EGLenumToString(mode), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglSignalSyncNV)
@@ -34548,7 +34548,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglSignalSyncNV)
     {
-      Driver("eglSignalSyncNV","(", GLsync, ", ", EGLenumToString(mode), ")");
+      Driver("eglSignalSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", EGLenumToString(mode), ")");
       ret = dispatchTableGlobal.eglSignalSyncNV(GLsync, mode);
     }
     else
@@ -34612,7 +34612,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config)
   {
-    App("eglChooseConfig","(", dpy, ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
+    App("eglChooseConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglChooseConfig)
@@ -34627,7 +34627,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglChooseConfig)
     {
-      Driver("eglChooseConfig","(", dpy, ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
+      Driver("eglChooseConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
       ret = dispatchTableGlobal.eglChooseConfig(dpy, attrib_list, configs, config_size, num_config);
     }
     else
@@ -34637,7 +34637,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target)
   {
-    App("eglCopyBuffers","(", dpy, ", ", surface, ", ", target, ")");
+    App("eglCopyBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", boost::print::optional(target,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCopyBuffers)
@@ -34652,7 +34652,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglCopyBuffers)
     {
-      Driver("eglCopyBuffers","(", dpy, ", ", surface, ", ", target, ")");
+      Driver("eglCopyBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", boost::print::optional(target,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglCopyBuffers(dpy, surface, target);
     }
     else
@@ -34662,7 +34662,7 @@ extern "C" {
 
   REGAL_DECL EGLContext REGAL_CALL eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list)
   {
-    App("eglCreateContext","(", dpy, ", ", config, ", ", share_context, ", ", attrib_list, ")");
+    App("eglCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(share_context,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateContext)
@@ -34677,7 +34677,7 @@ extern "C" {
     EGLContext  ret = (EGLContext )0;
     if (dispatchTableGlobal.eglCreateContext)
     {
-      Driver("eglCreateContext","(", dpy, ", ", config, ", ", share_context, ", ", attrib_list, ")");
+      Driver("eglCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(share_context,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateContext(dpy, config, share_context, attrib_list);
     }
     else
@@ -34687,7 +34687,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list)
   {
-    App("eglCreatePbufferSurface","(", dpy, ", ", config, ", ", attrib_list, ")");
+    App("eglCreatePbufferSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreatePbufferSurface)
@@ -34702,7 +34702,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreatePbufferSurface)
     {
-      Driver("eglCreatePbufferSurface","(", dpy, ", ", config, ", ", attrib_list, ")");
+      Driver("eglCreatePbufferSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreatePbufferSurface(dpy, config, attrib_list);
     }
     else
@@ -34712,7 +34712,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreatePixmapSurface(EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list)
   {
-    App("eglCreatePixmapSurface","(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
+    App("eglCreatePixmapSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreatePixmapSurface)
@@ -34727,7 +34727,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreatePixmapSurface)
     {
-      Driver("eglCreatePixmapSurface","(", dpy, ", ", config, ", ", pixmap, ", ", attrib_list, ")");
+      Driver("eglCreatePixmapSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreatePixmapSurface(dpy, config, pixmap, attrib_list);
     }
     else
@@ -34737,7 +34737,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list)
   {
-    App("eglCreateWindowSurface","(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
+    App("eglCreateWindowSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreateWindowSurface)
@@ -34752,7 +34752,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreateWindowSurface)
     {
-      Driver("eglCreateWindowSurface","(", dpy, ", ", config, ", ", win, ", ", attrib_list, ")");
+      Driver("eglCreateWindowSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreateWindowSurface(dpy, config, win, attrib_list);
     }
     else
@@ -34762,7 +34762,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglDestroyContext(EGLDisplay dpy, EGLContext ctx)
   {
-    App("eglDestroyContext","(", dpy, ", ", ctx, ")");
+    App("eglDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglDestroyContext)
@@ -34777,7 +34777,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglDestroyContext)
     {
-      Driver("eglDestroyContext","(", dpy, ", ", ctx, ")");
+      Driver("eglDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroyContext(dpy, ctx);
       Init::destroyContext( RegalSystemContext(ctx) );
     }
@@ -34788,7 +34788,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglDestroySurface(EGLDisplay dpy, EGLSurface surface)
   {
-    App("eglDestroySurface","(", dpy, ", ", surface, ")");
+    App("eglDestroySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglDestroySurface)
@@ -34803,7 +34803,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglDestroySurface)
     {
-      Driver("eglDestroySurface","(", dpy, ", ", surface, ")");
+      Driver("eglDestroySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroySurface(dpy, surface);
     }
     else
@@ -34813,7 +34813,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value)
   {
-    App("eglGetConfigAttrib","(", dpy, ", ", config, ", ", attribute, ", ", value, ")");
+    App("eglGetConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetConfigAttrib)
@@ -34828,7 +34828,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglGetConfigAttrib)
     {
-      Driver("eglGetConfigAttrib","(", dpy, ", ", config, ", ", attribute, ", ", value, ")");
+      Driver("eglGetConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglGetConfigAttrib(dpy, config, attribute, value);
     }
     else
@@ -34838,7 +34838,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglGetConfigs(EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config)
   {
-    App("eglGetConfigs","(", dpy, ", ", configs, ", ", config_size, ", ", num_config, ")");
+    App("eglGetConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", configs, ", ", config_size, ", ", num_config, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglGetConfigs)
@@ -34853,7 +34853,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglGetConfigs)
     {
-      Driver("eglGetConfigs","(", dpy, ", ", configs, ", ", config_size, ", ", num_config, ")");
+      Driver("eglGetConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", configs, ", ", config_size, ", ", num_config, ")");
       ret = dispatchTableGlobal.eglGetConfigs(dpy, configs, config_size, num_config);
     }
     else
@@ -34938,7 +34938,7 @@ extern "C" {
 
   REGAL_DECL EGLDisplay REGAL_CALL eglGetDisplay(EGLNativeDisplayType display_id)
   {
-    App("eglGetDisplay","(", display_id, ")");
+    App("eglGetDisplay","(", boost::print::optional(display_id,Logging::pointers), ")");
     Init::init();
 
     #if !REGAL_STATIC_EGL
@@ -34954,7 +34954,7 @@ extern "C" {
     EGLDisplay  ret = (EGLDisplay )0;
     if (dispatchTableGlobal.eglGetDisplay)
     {
-      Driver("eglGetDisplay","(", display_id, ")");
+      Driver("eglGetDisplay","(", boost::print::optional(display_id,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglGetDisplay(display_id);
     }
     else
@@ -35020,7 +35020,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor)
   {
-    App("eglInitialize","(", dpy, ", ", major, ", ", minor, ")");
+    App("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ", ", major, ", ", minor, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglInitialize)
@@ -35035,7 +35035,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglInitialize)
     {
-      Driver("eglInitialize","(", dpy, ", ", major, ", ", minor, ")");
+      Driver("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ", ", major, ", ", minor, ")");
       ret = dispatchTableGlobal.eglInitialize(dpy, major, minor);
     }
     else
@@ -35045,7 +35045,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
   {
-    App("eglMakeCurrent","(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
+    App("eglMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(draw,Logging::pointers), ", ", boost::print::optional(read,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglMakeCurrent)
@@ -35060,7 +35060,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglMakeCurrent)
     {
-      Driver("eglMakeCurrent","(", dpy, ", ", draw, ", ", read, ", ", ctx, ")");
+      Driver("eglMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(draw,Logging::pointers), ", ", boost::print::optional(read,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglMakeCurrent(dpy, draw, read, ctx);
       Init::makeCurrent( ctx );
     }
@@ -35071,7 +35071,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value)
   {
-    App("eglQueryContext","(", dpy, ", ", ctx, ", ", attribute, ", ", value, ")");
+    App("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQueryContext)
@@ -35086,7 +35086,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglQueryContext)
     {
-      Driver("eglQueryContext","(", dpy, ", ", ctx, ", ", attribute, ", ", value, ")");
+      Driver("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglQueryContext(dpy, ctx, attribute, value);
     }
     else
@@ -35096,7 +35096,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name)
   {
-    App("eglQueryString","(", dpy, ", ", EGLenumToString(name), ")");
+    App("eglQueryString","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(name), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQueryString)
@@ -35111,7 +35111,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.eglQueryString)
     {
-      Driver("eglQueryString","(", dpy, ", ", EGLenumToString(name), ")");
+      Driver("eglQueryString","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(name), ")");
       ret = dispatchTableGlobal.eglQueryString(dpy, name);
     }
     else
@@ -35121,7 +35121,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value)
   {
-    App("eglQuerySurface","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+    App("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQuerySurface)
@@ -35136,7 +35136,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglQuerySurface)
     {
-      Driver("eglQuerySurface","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+      Driver("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglQuerySurface(dpy, surface, attribute, value);
     }
     else
@@ -35146,7 +35146,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
   {
-    App("eglSwapBuffers","(", dpy, ", ", surface, ")");
+    App("eglSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglSwapBuffers)
@@ -35164,7 +35164,7 @@ extern "C" {
         _context->frame->eglSwapBuffers(*_context);
     if (dispatchTableGlobal.eglSwapBuffers)
     {
-      Driver("eglSwapBuffers","(", dpy, ", ", surface, ")");
+      Driver("eglSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglSwapBuffers(dpy, surface);
     }
     else
@@ -35174,7 +35174,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglTerminate(EGLDisplay dpy)
   {
-    App("eglTerminate","(", dpy, ")");
+    App("eglTerminate","(", boost::print::optional(dpy,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglTerminate)
@@ -35189,7 +35189,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglTerminate)
     {
-      Driver("eglTerminate","(", dpy, ")");
+      Driver("eglTerminate","(", boost::print::optional(dpy,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglTerminate(dpy);
     }
     else
@@ -35251,7 +35251,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
   {
-    App("eglBindTexImage","(", dpy, ", ", surface, ", ", buffer, ")");
+    App("eglBindTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglBindTexImage)
@@ -35266,7 +35266,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglBindTexImage)
     {
-      Driver("eglBindTexImage","(", dpy, ", ", surface, ", ", buffer, ")");
+      Driver("eglBindTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
       ret = dispatchTableGlobal.eglBindTexImage(dpy, surface, buffer);
     }
     else
@@ -35276,7 +35276,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
   {
-    App("eglReleaseTexImage","(", dpy, ", ", surface, ", ", buffer, ")");
+    App("eglReleaseTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglReleaseTexImage)
@@ -35291,7 +35291,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglReleaseTexImage)
     {
-      Driver("eglReleaseTexImage","(", dpy, ", ", surface, ", ", buffer, ")");
+      Driver("eglReleaseTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
       ret = dispatchTableGlobal.eglReleaseTexImage(dpy, surface, buffer);
     }
     else
@@ -35328,7 +35328,7 @@ extern "C" {
 
   REGAL_DECL EGLSurface REGAL_CALL eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list)
   {
-    App("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", buffer, ", ", config, ", ", attrib_list, ")");
+    App("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", boost::print::optional(buffer,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglCreatePbufferFromClientBuffer)
@@ -35343,7 +35343,7 @@ extern "C" {
     EGLSurface  ret = (EGLSurface )0;
     if (dispatchTableGlobal.eglCreatePbufferFromClientBuffer)
     {
-      Driver("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", buffer, ", ", config, ", ", attrib_list, ")");
+      Driver("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", boost::print::optional(buffer,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
       ret = dispatchTableGlobal.eglCreatePbufferFromClientBuffer(dpy, buftype, buffer, config, attrib_list);
     }
     else
@@ -35403,7 +35403,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value)
   {
-    App("eglSurfaceAttrib","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+    App("eglSurfaceAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglSurfaceAttrib)
@@ -35418,7 +35418,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglSurfaceAttrib)
     {
-      Driver("eglSurfaceAttrib","(", dpy, ", ", surface, ", ", attribute, ", ", value, ")");
+      Driver("eglSurfaceAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
       ret = dispatchTableGlobal.eglSurfaceAttrib(dpy, surface, attribute, value);
     }
     else
@@ -35428,7 +35428,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglSwapInterval(EGLDisplay dpy, EGLint interval)
   {
-    App("eglSwapInterval","(", dpy, ", ", interval, ")");
+    App("eglSwapInterval","(", boost::print::optional(dpy,Logging::pointers), ", ", interval, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglSwapInterval)
@@ -35443,7 +35443,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglSwapInterval)
     {
-      Driver("eglSwapInterval","(", dpy, ", ", interval, ")");
+      Driver("eglSwapInterval","(", boost::print::optional(dpy,Logging::pointers), ", ", interval, ")");
       ret = dispatchTableGlobal.eglSwapInterval(dpy, interval);
     }
     else

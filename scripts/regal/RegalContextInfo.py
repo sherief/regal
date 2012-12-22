@@ -62,6 +62,7 @@ struct ContextInfo
 ${VERSION_DECLARE}
 
   GLuint maxVertexAttribs;
+  GLuint maxVaryings;
 };
 
 REGAL_NAMESPACE_END
@@ -159,17 +160,19 @@ ContextInfo::init(const RegalContext &context)
 
   compat = !core && !gles;
 
-  #if REGAL_FORCE_CORE_PROFILE
-  compat = false;
-  core   = true;
-  gles   = false;
-  #endif
+  if (REGAL_FORCE_CORE_PROFILE || Config::forceCoreProfile)
+  {
+    compat = false;
+    core   = true;
+    gles   = false;
+  }
 
-  #if REGAL_FORCE_ES2_PROFILE
-  compat = false;
-  core   = false;
-  gles   = true;
-  #endif
+  if (REGAL_FORCE_ES2_PROFILE || Config::forceES2Profile)
+  {
+    compat = false;
+    core   = false;
+    gles   = true;
+  }
 
   // Detect driver extensions
 
@@ -281,8 +284,10 @@ ${EXT_INIT}
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
+  context.dispatcher.driver.glGetIntegerv( gles ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
 
   Info("OpenGL v attribs : ",maxVertexAttribs);
+  Info("OpenGL varyings  : ",maxVaryings);
 
   if (maxVertexAttribs > REGAL_EMU_IFF_VERTEX_ATTRIBS)
       maxVertexAttribs = REGAL_EMU_IFF_VERTEX_ATTRIBS;

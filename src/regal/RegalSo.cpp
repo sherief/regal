@@ -296,8 +296,21 @@ void
 RSO::SendStateToDriver(RegalContext * ctx, GLuint unit, GLenum target, SamplingState& app, SamplingState& drv)
 {
     if (target == GL_TEXTURE_2D_MULTISAMPLE ||
-        target == GL_TEXTURE_2D_MULTISAMPLE_ARRAY)
+        target == GL_TEXTURE_2D_MULTISAMPLE_ARRAY ||
+        drv.ver >= app.ver )
+    {
+        drv.ver = mainVer.Current();
         return;
+    }
+
+    if (REGAL_FORCE_ES2_PROFILE || ctx->info->gles)
+    {
+        if (target != GL_TEXTURE_2D && target != GL_TEXTURE_CUBE_MAP)
+        {
+            drv.ver = mainVer.Current();
+            return;
+        }
+    }
 
     DispatchTable &tbl = ctx->dispatcher.emulation;
 

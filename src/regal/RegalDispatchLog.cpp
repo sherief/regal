@@ -101,7 +101,7 @@ static void REGAL_CALL log_glBitmap(GLsizei width, GLsizei height, GLfloat xorig
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBitmap)(width, height, xorig, yorig, xmove, ymove, bitmap);
-    Driver("glBitmap","(", width, ", ", height, ", ", xorig, ", ", yorig, ", ", xmove, ", ", ymove, ", ", bitmap, ")");
+    Driver("glBitmap","(", width, ", ", height, ", ", xorig, ", ", yorig, ", ", xmove, ", ", ymove, ", ", boost::print::optional(bitmap,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glBlendFunc(GLenum sfactor, GLenum dfactor)
@@ -631,7 +631,7 @@ static void REGAL_CALL log_glDrawPixels(GLsizei width, GLsizei height, GLenum fo
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawPixels)(width, height, format, type, pixels);
-    Driver("glDrawPixels","(", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glDrawPixels","(", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glEdgeFlag(GLboolean flag)
@@ -1073,7 +1073,7 @@ static void REGAL_CALL log_glGetPolygonStipple(GLubyte *mask)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetPolygonStipple)(mask);
-    Driver("glGetPolygonStipple","(", mask, ")");
+    Driver("glGetPolygonStipple","(", boost::print::optional(mask,Logging::pointers), ")");
 }
 
 static const GLubyte *REGAL_CALL log_glGetString(GLenum name)
@@ -1083,7 +1083,7 @@ static const GLubyte *REGAL_CALL log_glGetString(GLenum name)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     const GLubyte * ret = _next->call(&_next->glGetString)(name);
-    Driver("glGetString","(", toString(name), ")", " returned ", ret);
+    Driver("glGetString","(", toString(name), ")", " returned ", boost::print::quote(reinterpret_cast<const GLchar *>(ret),'"'));
     return ret;
 }
 
@@ -1144,7 +1144,7 @@ static void REGAL_CALL log_glGetTexImage(GLenum target, GLint level, GLenum form
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetTexImage)(target, level, format, type, pixels);
-    Driver("glGetTexImage","(", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glGetTexImage","(", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params)
@@ -1866,7 +1866,7 @@ static void REGAL_CALL log_glPolygonStipple(const GLubyte *mask)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPolygonStipple)(mask);
-    Driver("glPolygonStipple","(", mask, ")");
+    Driver("glPolygonStipple","(", boost::print::optional(mask,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPopAttrib(void)
@@ -2186,7 +2186,7 @@ static void REGAL_CALL log_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glReadPixels)(x, y, width, height, format, type, pixels);
-    Driver("glReadPixels","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<GLubyte *>(pixels), ")");
+    Driver("glReadPixels","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
@@ -2807,7 +2807,7 @@ static void REGAL_CALL log_glTexImage1D(GLenum target, GLint level, GLint intern
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexImage1D)(target, level, internalformat, width, border, format, type, pixels);
-    Driver("glTexImage1D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexImage1D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -2817,7 +2817,7 @@ static void REGAL_CALL log_glTexImage2D(GLenum target, GLint level, GLint intern
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexImage2D)(target, level, internalformat, width, height, border, format, type, pixels);
-    Driver("glTexImage2D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", height, ", ", border, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexImage2D","(", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", height, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexParameterf(GLenum target, GLenum pname, GLfloat param)
@@ -3170,7 +3170,7 @@ static void REGAL_CALL log_glColorPointer(GLint size, GLenum type, GLsizei strid
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorPointer)(size, type, stride, pointer);
-    Driver("glColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
@@ -3250,7 +3250,7 @@ static void REGAL_CALL log_glDrawElements(GLenum mode, GLsizei count, GLenum typ
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElements)(mode, count, type, indices);
-    Driver("glDrawElements","(", toString(mode), ", ", count, ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(indices), ")");
+    Driver("glDrawElements","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(indices),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
@@ -3260,7 +3260,7 @@ static void REGAL_CALL log_glEdgeFlagPointer(GLsizei stride, const GLvoid *point
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glEdgeFlagPointer)(stride, pointer);
-    Driver("glEdgeFlagPointer","(", stride, ", ", pointer, ")");
+    Driver("glEdgeFlagPointer","(", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glEnableClientState(GLenum cap)
@@ -3300,7 +3300,7 @@ static void REGAL_CALL log_glIndexPointer(GLenum type, GLsizei stride, const GLv
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glIndexPointer)(type, stride, pointer);
-    Driver("glIndexPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glIndexPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glIndexub(GLubyte c)
@@ -3330,7 +3330,7 @@ static void REGAL_CALL log_glInterleavedArrays(GLenum format, GLsizei stride, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glInterleavedArrays)(format, stride, pointer);
-    Driver("glInterleavedArrays","(", toString(format), ", ", stride, ", ", pointer, ")");
+    Driver("glInterleavedArrays","(", toString(format), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static GLboolean REGAL_CALL log_glIsTexture(GLuint texture)
@@ -3351,7 +3351,7 @@ static void REGAL_CALL log_glNormalPointer(GLenum type, GLsizei stride, const GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNormalPointer)(type, stride, pointer);
-    Driver("glNormalPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glNormalPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPolygonOffset(GLfloat factor, GLfloat units)
@@ -3401,7 +3401,7 @@ static void REGAL_CALL log_glTexCoordPointer(GLint size, GLenum type, GLsizei st
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexCoordPointer)(size, type, stride, pointer);
-    Driver("glTexCoordPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glTexCoordPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3411,7 +3411,7 @@ static void REGAL_CALL log_glTexSubImage1D(GLenum target, GLint level, GLint xof
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexSubImage1D)(target, level, xoffset, width, format, type, pixels);
-    Driver("glTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3421,7 +3421,7 @@ static void REGAL_CALL log_glTexSubImage2D(GLenum target, GLint level, GLint xof
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexSubImage2D)(target, level, xoffset, yoffset, width, height, format, type, pixels);
-    Driver("glTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -3431,7 +3431,7 @@ static void REGAL_CALL log_glVertexPointer(GLint size, GLenum type, GLsizei stri
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexPointer)(size, type, stride, pointer);
-    Driver("glVertexPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_VERSION_1_2
@@ -3473,7 +3473,7 @@ static void REGAL_CALL log_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawRangeElements)(mode, start, end, count, type, indices);
-    Driver("glDrawRangeElements","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ")");
+    Driver("glDrawRangeElements","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3525,7 +3525,7 @@ static void REGAL_CALL log_glCompressedTexImage1D(GLenum target, GLint level, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage1D)(target, level, internalformat, width, border, imageSize, data);
-    Driver("glCompressedTexImage1D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage1D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -3535,7 +3535,7 @@ static void REGAL_CALL log_glCompressedTexImage2D(GLenum target, GLint level, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage2D)(target, level, internalformat, width, height, border, imageSize, data);
-    Driver("glCompressedTexImage2D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage2D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -3545,7 +3545,7 @@ static void REGAL_CALL log_glCompressedTexImage3D(GLenum target, GLint level, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage3D)(target, level, internalformat, width, height, depth, border, imageSize, data);
-    Driver("glCompressedTexImage3D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage3D","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -3555,7 +3555,7 @@ static void REGAL_CALL log_glCompressedTexSubImage1D(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexSubImage1D)(target, level, xoffset, width, format, imageSize, data);
-    Driver("glCompressedTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexSubImage1D","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -3565,7 +3565,7 @@ static void REGAL_CALL log_glCompressedTexSubImage2D(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexSubImage2D)(target, level, xoffset, yoffset, width, height, format, imageSize, data);
-    Driver("glCompressedTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexSubImage2D","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -3585,7 +3585,7 @@ static void REGAL_CALL log_glGetCompressedTexImage(GLenum target, GLint lod, GLv
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetCompressedTexImage)(target, lod, img);
-    Driver("glGetCompressedTexImage","(", toString(target), ", ", lod, ", ", img, ")");
+    Driver("glGetCompressedTexImage","(", toString(target), ", ", lod, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glLoadTransposeMatrixd(const GLdouble *m)
@@ -3977,7 +3977,7 @@ static void REGAL_CALL log_glFogCoordPointer(GLenum type, GLsizei stride, const 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glFogCoordPointer)(type, stride, pointer);
-    Driver("glFogCoordPointer","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glFogCoordPointer","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glFogCoordd(GLdouble coord)
@@ -4247,7 +4247,7 @@ static void REGAL_CALL log_glSecondaryColorPointer(GLint size, GLenum type, GLsi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSecondaryColorPointer)(size, type, stride, pointer);
-    Driver("glSecondaryColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glSecondaryColorPointer","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glWindowPos2d(GLdouble x, GLdouble y)
@@ -4439,7 +4439,7 @@ static void REGAL_CALL log_glBufferData(GLenum target, GLsizeiptr size, const GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferData)(target, size, data, usage);
-    Driver("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
+    Driver("glBufferData","(", toString(target), ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
@@ -4449,7 +4449,7 @@ static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsiz
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferSubData)(target, offset, size, data);
-    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
+    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffers(GLsizei n, const GLuint *buffers)
@@ -4529,7 +4529,7 @@ static void REGAL_CALL log_glGetBufferSubData(GLenum target, GLintptr offset, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetBufferSubData)(target, offset, size, data);
-    Driver("glGetBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glGetBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetQueryObjectiv(GLuint id, GLenum pname, GLint *params)
@@ -4591,7 +4591,7 @@ static GLvoid *REGAL_CALL log_glMapBuffer(GLenum target, GLenum access)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapBuffer)(target, access);
-    Driver("glMapBuffer","(", toString(target), ", ", toString(access), ")", " returned ", ret);
+    Driver("glMapBuffer","(", toString(target), ", ", toString(access), ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -4788,7 +4788,7 @@ static void REGAL_CALL log_glGetProgramiv(GLuint program, GLenum pname, GLint *p
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramiv)(program, pname, params);
-    Driver("glGetProgramiv","(", program, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetProgramiv","(", program, ", ", toString(pname), ", ", boost::print::array(params,1), ")");
 }
 
 static void REGAL_CALL log_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog)
@@ -4818,7 +4818,7 @@ static void REGAL_CALL log_glGetShaderiv(GLuint shader, GLenum pname, GLint *par
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetShaderiv)(shader, pname, params);
-    Driver("glGetShaderiv","(", shader, ", ", toString(pname), ", ", params, ")");
+    Driver("glGetShaderiv","(", shader, ", ", toString(pname), ", ", boost::print::array(params,1), ")");
 }
 
 static GLint REGAL_CALL log_glGetUniformLocation(GLuint program, const GLchar *name)
@@ -5547,7 +5547,7 @@ static void REGAL_CALL log_glVertexAttribPointer(GLuint index, GLint size, GLenu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribPointer)(index, size, type, normalized, stride, pointer);
-    Driver("glVertexAttribPointer","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribPointer","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_VERSION_2_1
@@ -5772,7 +5772,7 @@ static const GLubyte *REGAL_CALL log_glGetStringi(GLenum name, GLuint index)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     const GLubyte * ret = _next->call(&_next->glGetStringi)(name, index);
-    Driver("glGetStringi","(", toString(name), ", ", index, ")", " returned ", ret);
+    Driver("glGetStringi","(", toString(name), ", ", index, ")", " returned ", boost::print::quote(reinterpret_cast<const GLchar *>(ret),'"'));
     return ret;
 }
 
@@ -6164,7 +6164,7 @@ static void REGAL_CALL log_glVertexAttribIPointer(GLuint index, GLint size, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribIPointer)(index, size, type, stride, pointer);
-    Driver("glVertexAttribIPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribIPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_VERSION_3_1
@@ -6186,7 +6186,7 @@ static void REGAL_CALL log_glDrawElementsInstanced(GLenum mode, GLsizei count, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstanced)(mode, count, type, indices, primcount);
-    Driver("glDrawElementsInstanced","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    Driver("glDrawElementsInstanced","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
 }
 
 static void REGAL_CALL log_glPrimitiveRestartIndex(GLuint index)
@@ -6326,7 +6326,7 @@ static void REGAL_CALL log_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDebugMessageCallbackAMD)(callback, userParam);
-    Driver("glDebugMessageCallbackAMD","(", userParam, ")");
+    Driver("glDebugMessageCallbackAMD","(", boost::print::optional(userParam,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
@@ -6411,7 +6411,7 @@ static void REGAL_CALL log_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiDrawArraysIndirectAMD)(mode, indirect, primcount, stride);
-    Driver("glMultiDrawArraysIndirectAMD","(", toString(mode), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    Driver("glMultiDrawArraysIndirectAMD","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
 }
 
 static void REGAL_CALL log_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -6421,7 +6421,7 @@ static void REGAL_CALL log_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum ty
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiDrawElementsIndirectAMD)(mode, type, indirect, primcount, stride);
-    Driver("glMultiDrawElementsIndirectAMD","(", toString(mode), ", ", toString(type), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    Driver("glMultiDrawElementsIndirectAMD","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
 }
 
 // GL_AMD_name_gen_delete
@@ -6516,7 +6516,7 @@ static void REGAL_CALL log_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint c
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetPerfMonitorCounterInfoAMD)(group, counter, pname, data);
-    Driver("glGetPerfMonitorCounterInfoAMD","(", group, ", ", counter, ", ", toString(pname), ", ", data, ")");
+    Driver("glGetPerfMonitorCounterInfoAMD","(", group, ", ", counter, ", ", toString(pname), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei *length, GLchar *counterString)
@@ -6658,7 +6658,7 @@ static void REGAL_CALL log_glDrawElementsInstancedANGLE(GLenum mode, GLsizei cou
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedANGLE)(mode, count, type, indices, primcount);
-    Driver("glDrawElementsInstancedANGLE","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    Driver("glDrawElementsInstancedANGLE","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
 }
 
 static void REGAL_CALL log_glVertexAttribDivisorANGLE(GLuint index, GLuint divisor)
@@ -6724,7 +6724,7 @@ static void REGAL_CALL log_glElementPointerAPPLE(GLenum type, const GLvoid *poin
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glElementPointerAPPLE)(type, pointer);
-    Driver("glElementPointerAPPLE","(", toString(type), ", ", pointer, ")");
+    Driver("glElementPointerAPPLE","(", toString(type), ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -7036,7 +7036,7 @@ static void REGAL_CALL log_glTextureRangeAPPLE(GLenum target, GLsizei length, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTextureRangeAPPLE)(target, length, pointer);
-    Driver("glTextureRangeAPPLE","(", toString(target), ", ", length, ", ", pointer, ")");
+    Driver("glTextureRangeAPPLE","(", toString(target), ", ", length, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_APPLE_vertex_array_object
@@ -7091,7 +7091,7 @@ static void REGAL_CALL log_glFlushVertexArrayRangeAPPLE(GLsizei length, GLvoid *
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glFlushVertexArrayRangeAPPLE)(length, pointer);
-    Driver("glFlushVertexArrayRangeAPPLE","(", length, ", ", pointer, ")");
+    Driver("glFlushVertexArrayRangeAPPLE","(", length, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVertexArrayParameteriAPPLE(GLenum pname, GLint param)
@@ -7111,7 +7111,7 @@ static void REGAL_CALL log_glVertexArrayRangeAPPLE(GLsizei length, GLvoid *point
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexArrayRangeAPPLE)(length, pointer);
-    Driver("glVertexArrayRangeAPPLE","(", length, ", ", pointer, ")");
+    Driver("glVertexArrayRangeAPPLE","(", length, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_APPLE_vertex_program_evaluators
@@ -7236,7 +7236,7 @@ static void REGAL_CALL log_glShaderBinary(GLsizei count, const GLuint *shaders, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glShaderBinary)(count, shaders, binaryformat, binary, length);
-    Driver("glShaderBinary","(", count, ", ", boost::print::array(shaders,count), ", ", toString(binaryformat), ", ", binary, ", ", length, ")");
+    Driver("glShaderBinary","(", count, ", ", boost::print::array(shaders,count), ", ", toString(binaryformat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
 }
 
 // GL_ARB_base_instance
@@ -7258,7 +7258,7 @@ static void REGAL_CALL log_glDrawElementsInstancedBaseInstance(GLenum mode, GLsi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedBaseInstance)(mode, count, type, indices, primcount, baseinstance);
-    Driver("glDrawElementsInstancedBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", baseinstance, ")");
+    Driver("glDrawElementsInstancedBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", baseinstance, ")");
 }
 
 static void REGAL_CALL log_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
@@ -7268,7 +7268,7 @@ static void REGAL_CALL log_glDrawElementsInstancedBaseVertexBaseInstance(GLenum 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedBaseVertexBaseInstance)(mode, count, type, indices, primcount, basevertex, baseinstance);
-    Driver("glDrawElementsInstancedBaseVertexBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", basevertex, ", ", baseinstance, ")");
+    Driver("glDrawElementsInstancedBaseVertexBaseInstance","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", basevertex, ", ", baseinstance, ")");
 }
 
 // GL_ARB_blend_func_extended
@@ -7316,7 +7316,7 @@ static void REGAL_CALL log_glClearBufferData(GLenum target, GLenum internalforma
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glClearBufferData)(target, internalformat, format, type, data);
-    Driver("glClearBufferData","(", toString(target), ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glClearBufferData","(", toString(target), ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
@@ -7326,7 +7326,7 @@ static void REGAL_CALL log_glClearBufferSubData(GLenum target, GLenum internalfo
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glClearBufferSubData)(target, internalformat, offset, size, format, type, data);
-    Driver("glClearBufferSubData","(", toString(target), ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glClearBufferSubData","(", toString(target), ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
@@ -7336,7 +7336,7 @@ static void REGAL_CALL log_glClearNamedBufferDataEXT(GLuint buffer, GLenum inter
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glClearNamedBufferDataEXT)(buffer, internalformat, format, type, data);
-    Driver("glClearNamedBufferDataEXT","(", buffer, ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glClearNamedBufferDataEXT","(", buffer, ", ", toString(internalformat), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data)
@@ -7346,7 +7346,7 @@ static void REGAL_CALL log_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum in
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glClearNamedBufferSubDataEXT)(buffer, internalformat, offset, size, format, type, data);
-    Driver("glClearNamedBufferSubDataEXT","(", buffer, ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glClearNamedBufferSubDataEXT","(", buffer, ", ", toString(internalformat), ", ", offset, ", ", size, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 // GL_ARB_color_buffer_float
@@ -7416,7 +7416,7 @@ static void REGAL_CALL log_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDebugMessageCallbackARB)(callback, userParam);
-    Driver("glDebugMessageCallbackARB","(", userParam, ")");
+    Driver("glDebugMessageCallbackARB","(", boost::print::optional(userParam,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
@@ -7513,7 +7513,7 @@ static void REGAL_CALL log_glDrawElementsBaseVertex(GLenum mode, GLsizei count, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsBaseVertex)(mode, count, type, indices, basevertex);
-    Driver("glDrawElementsBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", basevertex, ")");
+    Driver("glDrawElementsBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", basevertex, ")");
 }
 
 static void REGAL_CALL log_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
@@ -7523,7 +7523,7 @@ static void REGAL_CALL log_glDrawElementsInstancedBaseVertex(GLenum mode, GLsize
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedBaseVertex)(mode, count, type, indices, primcount, basevertex);
-    Driver("glDrawElementsInstancedBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ", ", basevertex, ")");
+    Driver("glDrawElementsInstancedBaseVertex","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ", ", basevertex, ")");
 }
 
 static void REGAL_CALL log_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
@@ -7533,7 +7533,7 @@ static void REGAL_CALL log_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawRangeElementsBaseVertex)(mode, start, end, count, type, indices, basevertex);
-    Driver("glDrawRangeElementsBaseVertex","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ", ", basevertex, ")");
+    Driver("glDrawRangeElementsBaseVertex","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", basevertex, ")");
 }
 
 static void REGAL_CALL log_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *count, GLenum type, GLvoid **indices, GLsizei primcount, GLint *basevertex)
@@ -7555,7 +7555,7 @@ static void REGAL_CALL log_glDrawArraysIndirect(GLenum mode, const GLvoid *indir
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawArraysIndirect)(mode, indirect);
-    Driver("glDrawArraysIndirect","(", toString(mode), ", ", indirect, ")");
+    Driver("glDrawArraysIndirect","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
@@ -7565,7 +7565,7 @@ static void REGAL_CALL log_glDrawElementsIndirect(GLenum mode, GLenum type, cons
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsIndirect)(mode, type, indirect);
-    Driver("glDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", indirect, ")");
+    Driver("glDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ")");
 }
 
 // GL_ARB_draw_instanced
@@ -7587,7 +7587,7 @@ static void REGAL_CALL log_glDrawElementsInstancedARB(GLenum mode, GLsizei count
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedARB)(mode, count, type, indices, primcount);
-    Driver("glDrawElementsInstancedARB","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    Driver("glDrawElementsInstancedARB","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
 }
 
 // GL_ARB_framebuffer_no_attachments
@@ -7888,7 +7888,7 @@ static void REGAL_CALL log_glGetProgramBinary(GLuint program, GLsizei bufSize, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramBinary)(program, bufSize, length, binaryFormat, binary);
-    Driver("glGetProgramBinary","(", program, ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::array(binaryFormat,1), ", ", binary, ")");
+    Driver("glGetProgramBinary","(", program, ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::array(binaryFormat,1), ", ", boost::print::optional(binary,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glProgramBinary(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length)
@@ -7898,7 +7898,7 @@ static void REGAL_CALL log_glProgramBinary(GLuint program, GLenum binaryFormat, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glProgramBinary)(program, binaryFormat, binary, length);
-    Driver("glProgramBinary","(", program, ", ", toString(binaryFormat), ", ", binary, ", ", length, ")");
+    Driver("glProgramBinary","(", program, ", ", toString(binaryFormat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
 }
 
 static void REGAL_CALL log_glProgramParameteri(GLuint program, GLenum pname, GLint value)
@@ -8102,7 +8102,7 @@ static void REGAL_CALL log_glColorSubTable(GLenum target, GLsizei start, GLsizei
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorSubTable)(target, start, count, format, type, data);
-    Driver("glColorSubTable","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glColorSubTable","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table)
@@ -8112,7 +8112,7 @@ static void REGAL_CALL log_glColorTable(GLenum target, GLenum internalformat, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorTable)(target, internalformat, width, format, type, table);
-    Driver("glColorTable","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glColorTable","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat *params)
@@ -8142,7 +8142,7 @@ static void REGAL_CALL log_glConvolutionFilter1D(GLenum target, GLenum internalf
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glConvolutionFilter1D)(target, internalformat, width, format, type, image);
-    Driver("glConvolutionFilter1D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glConvolutionFilter1D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
@@ -8152,7 +8152,7 @@ static void REGAL_CALL log_glConvolutionFilter2D(GLenum target, GLenum internalf
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glConvolutionFilter2D)(target, internalformat, width, height, format, type, image);
-    Driver("glConvolutionFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glConvolutionFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params)
@@ -8242,7 +8242,7 @@ static void REGAL_CALL log_glGetColorTable(GLenum target, GLenum format, GLenum 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetColorTable)(target, format, type, table);
-    Driver("glGetColorTable","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glGetColorTable","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat *params)
@@ -8272,7 +8272,7 @@ static void REGAL_CALL log_glGetConvolutionFilter(GLenum target, GLenum format, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetConvolutionFilter)(target, format, type, image);
-    Driver("glGetConvolutionFilter","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glGetConvolutionFilter","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat *params)
@@ -8302,7 +8302,7 @@ static void REGAL_CALL log_glGetHistogram(GLenum target, GLboolean reset, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetHistogram)(target, reset, format, type, values);
-    Driver("glGetHistogram","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", values, ")");
+    Driver("glGetHistogram","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetHistogramParameterfv(GLenum target, GLenum pname, GLfloat *params)
@@ -8332,7 +8332,7 @@ static void REGAL_CALL log_glGetMinmax(GLenum target, GLboolean reset, GLenum fo
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetMinmax)(target, reset, format, types, values);
-    Driver("glGetMinmax","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(types), ", ", values, ")");
+    Driver("glGetMinmax","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(types), ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat *params)
@@ -8362,7 +8362,7 @@ static void REGAL_CALL log_glGetSeparableFilter(GLenum target, GLenum format, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSeparableFilter)(target, format, type, row, column, span);
-    Driver("glGetSeparableFilter","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ", ", span, ")");
+    Driver("glGetSeparableFilter","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ", ", boost::print::optional(span,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink)
@@ -8412,7 +8412,7 @@ static void REGAL_CALL log_glSeparableFilter2D(GLenum target, GLenum internalfor
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSeparableFilter2D)(target, internalformat, width, height, format, type, row, column);
-    Driver("glSeparableFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ")");
+    Driver("glSeparableFilter2D","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ")");
 }
 
 // GL_ARB_instanced_arrays
@@ -8532,7 +8532,7 @@ static GLvoid *REGAL_CALL log_glMapBufferRange(GLenum target, GLintptr offset, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapBufferRange)(target, offset, length, access);
-    Driver("glMapBufferRange","(", toString(target), ", ", offset, ", ", length, ", ", access, ")", " returned ", ret);
+    Driver("glMapBufferRange","(", toString(target), ", ", offset, ", ", length, ", ", access, ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -8555,7 +8555,7 @@ static void REGAL_CALL log_glMatrixIndexPointerARB(GLint size, GLenum type, GLsi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMatrixIndexPointerARB)(size, type, stride, pointer);
-    Driver("glMatrixIndexPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glMatrixIndexPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMatrixIndexubvARB(GLint size, GLubyte *indices)
@@ -8565,7 +8565,7 @@ static void REGAL_CALL log_glMatrixIndexubvARB(GLint size, GLubyte *indices)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMatrixIndexubvARB)(size, indices);
-    Driver("glMatrixIndexubvARB","(", size, ", ", indices, ")");
+    Driver("glMatrixIndexubvARB","(", size, ", ", boost::print::optional(indices,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMatrixIndexuivARB(GLint size, GLuint *indices)
@@ -8597,7 +8597,7 @@ static void REGAL_CALL log_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiDrawArraysIndirect)(mode, indirect, primcount, stride);
-    Driver("glMultiDrawArraysIndirect","(", toString(mode), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    Driver("glMultiDrawArraysIndirect","(", toString(mode), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
 }
 
 static void REGAL_CALL log_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -8607,7 +8607,7 @@ static void REGAL_CALL log_glMultiDrawElementsIndirect(GLenum mode, GLenum type,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiDrawElementsIndirect)(mode, type, indirect, primcount, stride);
-    Driver("glMultiDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", indirect, ", ", primcount, ", ", stride, ")");
+    Driver("glMultiDrawElementsIndirect","(", toString(mode), ", ", toString(type), ", ", boost::print::optional(indirect,Logging::pointers), ", ", primcount, ", ", stride, ")");
 }
 
 // GL_ARB_multisample
@@ -9166,7 +9166,7 @@ static void REGAL_CALL log_glGetnColorTableARB(GLenum target, GLenum format, GLe
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnColorTableARB)(target, format, type, bufSize, table);
-    Driver("glGetnColorTableARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", table, ")");
+    Driver("glGetnColorTableARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, GLvoid *img)
@@ -9176,7 +9176,7 @@ static void REGAL_CALL log_glGetnCompressedTexImageARB(GLenum target, GLint lod,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnCompressedTexImageARB)(target, lod, bufSize, img);
-    Driver("glGetnCompressedTexImageARB","(", toString(target), ", ", lod, ", ", bufSize, ", ", img, ")");
+    Driver("glGetnCompressedTexImageARB","(", toString(target), ", ", lod, ", ", bufSize, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *image)
@@ -9186,7 +9186,7 @@ static void REGAL_CALL log_glGetnConvolutionFilterARB(GLenum target, GLenum form
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnConvolutionFilterARB)(target, format, type, bufSize, image);
-    Driver("glGetnConvolutionFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", image, ")");
+    Driver("glGetnConvolutionFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values)
@@ -9196,7 +9196,7 @@ static void REGAL_CALL log_glGetnHistogramARB(GLenum target, GLboolean reset, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnHistogramARB)(target, reset, format, type, bufSize, values);
-    Driver("glGetnHistogramARB","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", values, ")");
+    Driver("glGetnHistogramARB","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble *v)
@@ -9236,7 +9236,7 @@ static void REGAL_CALL log_glGetnMinmaxARB(GLenum target, GLboolean reset, GLenu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnMinmaxARB)(target, reset, format, type, bufSize, values);
-    Driver("glGetnMinmaxARB","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", values, ")");
+    Driver("glGetnMinmaxARB","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat *values)
@@ -9276,7 +9276,7 @@ static void REGAL_CALL log_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte *pat
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnPolygonStippleARB)(bufSize, pattern);
-    Driver("glGetnPolygonStippleARB","(", bufSize, ", ", pattern, ")");
+    Driver("glGetnPolygonStippleARB","(", bufSize, ", ", boost::print::optional(pattern,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span)
@@ -9286,7 +9286,7 @@ static void REGAL_CALL log_glGetnSeparableFilterARB(GLenum target, GLenum format
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnSeparableFilterARB)(target, format, type, rowBufSize, row, columnBufSize, column, span);
-    Driver("glGetnSeparableFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", rowBufSize, ", ", row, ", ", columnBufSize, ", ", column, ", ", span, ")");
+    Driver("glGetnSeparableFilterARB","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", rowBufSize, ", ", boost::print::optional(row,Logging::pointers), ", ", columnBufSize, ", ", boost::print::optional(column,Logging::pointers), ", ", boost::print::optional(span,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, GLvoid *img)
@@ -9296,7 +9296,7 @@ static void REGAL_CALL log_glGetnTexImageARB(GLenum target, GLint level, GLenum 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetnTexImageARB)(target, level, format, type, bufSize, img);
-    Driver("glGetnTexImageARB","(", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", img, ")");
+    Driver("glGetnTexImageARB","(", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble *params)
@@ -9346,7 +9346,7 @@ static void REGAL_CALL log_glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLs
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glReadnPixelsARB)(x, y, width, height, format, type, bufSize, data);
-    Driver("glReadnPixelsARB","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", data, ")");
+    Driver("glReadnPixelsARB","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 // GL_ARB_sample_shading
@@ -10294,7 +10294,7 @@ static GLint REGAL_CALL log_glGetUniformLocationARB(GLhandleARB programObj, cons
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLint  ret = _next->call(&_next->glGetUniformLocationARB)(programObj, name);
-    Driver("glGetUniformLocationARB","(", programObj, ", ", name, ")", " returned ", ret);
+    Driver("glGetUniformLocationARB","(", programObj, ", ", boost::print::quote(name,'"'), ")", " returned ", ret);
     return ret;
 }
 
@@ -10716,7 +10716,7 @@ static GLenum REGAL_CALL log_glClientWaitSync(GLsync sync, GLbitfield flags, GLu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLenum  ret = _next->call(&_next->glClientWaitSync)(sync, flags, timeout);
-    Driver("glClientWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")", " returned ", toString(ret));
+    Driver("glClientWaitSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", flags, ", ", timeout, ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -10727,7 +10727,7 @@ static void REGAL_CALL log_glDeleteSync(GLsync sync)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDeleteSync)(sync);
-    Driver("glDeleteSync","(", reinterpret_cast<void *>(sync), ")");
+    Driver("glDeleteSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ")");
 }
 
 static GLsync REGAL_CALL log_glFenceSync(GLenum condition, GLbitfield flags)
@@ -10737,7 +10737,7 @@ static GLsync REGAL_CALL log_glFenceSync(GLenum condition, GLbitfield flags)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLsync  ret = _next->call(&_next->glFenceSync)(condition, flags);
-    Driver("glFenceSync","(", toString(condition), ", ", flags, ")", " returned ", ret);
+    Driver("glFenceSync","(", toString(condition), ", ", flags, ")", " returned ", boost::print::optional(reinterpret_cast<void *>(ret),Logging::pointers));
     return ret;
 }
 
@@ -10758,7 +10758,7 @@ static void REGAL_CALL log_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSiz
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSynciv)(sync, pname, bufSize, length, values);
-    Driver("glGetSynciv","(", reinterpret_cast<void *>(sync), ", ", toString(pname), ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::array(values,bufSize), ")");
+    Driver("glGetSynciv","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", toString(pname), ", ", bufSize, ", ", boost::print::array(length,1), ", ", boost::print::array(values,bufSize), ")");
 }
 
 static GLboolean REGAL_CALL log_glIsSync(GLsync sync)
@@ -10768,7 +10768,7 @@ static GLboolean REGAL_CALL log_glIsSync(GLsync sync)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLboolean  ret = _next->call(&_next->glIsSync)(sync);
-    Driver("glIsSync","(", reinterpret_cast<void *>(sync), ")", " returned ", toString(ret));
+    Driver("glIsSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ")", " returned ", toString(ret));
     return ret;
 }
 
@@ -10779,7 +10779,7 @@ static void REGAL_CALL log_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 ti
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glWaitSync)(sync, flags, timeout);
-    Driver("glWaitSync","(", reinterpret_cast<void *>(sync), ", ", flags, ", ", timeout, ")");
+    Driver("glWaitSync","(", boost::print::optional(reinterpret_cast<void *>(sync),Logging::pointers), ", ", flags, ", ", timeout, ")");
 }
 
 // GL_ARB_tessellation_shader
@@ -10847,7 +10847,7 @@ static void REGAL_CALL log_glCompressedTexImage1DARB(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage1DARB)(target, level, internalformat, width, border, imageSize, data);
-    Driver("glCompressedTexImage1DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage1DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -10857,7 +10857,7 @@ static void REGAL_CALL log_glCompressedTexImage2DARB(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage2DARB)(target, level, internalformat, width, height, border, imageSize, data);
-    Driver("glCompressedTexImage2DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage2DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data)
@@ -10867,7 +10867,7 @@ static void REGAL_CALL log_glCompressedTexImage3DARB(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage3DARB)(target, level, internalformat, width, height, depth, border, imageSize, data);
-    Driver("glCompressedTexImage3DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage3DARB","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -10877,7 +10877,7 @@ static void REGAL_CALL log_glCompressedTexSubImage1DARB(GLenum target, GLint lev
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexSubImage1DARB)(target, level, xoffset, width, format, imageSize, data);
-    Driver("glCompressedTexSubImage1DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexSubImage1DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -10887,7 +10887,7 @@ static void REGAL_CALL log_glCompressedTexSubImage2DARB(GLenum target, GLint lev
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexSubImage2DARB)(target, level, xoffset, yoffset, width, height, format, imageSize, data);
-    Driver("glCompressedTexSubImage2DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexSubImage2DARB","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -10907,7 +10907,7 @@ static void REGAL_CALL log_glGetCompressedTexImageARB(GLenum target, GLint lod, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetCompressedTexImageARB)(target, lod, img);
-    Driver("glGetCompressedTexImageARB","(", toString(target), ", ", lod, ", ", img, ")");
+    Driver("glGetCompressedTexImageARB","(", toString(target), ", ", lod, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 // GL_ARB_texture_multisample
@@ -11524,7 +11524,7 @@ static void REGAL_CALL log_glVertexAttribLPointer(GLuint index, GLint size, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribLPointer)(index, size, type, stride, pointer);
-    Driver("glVertexAttribLPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribLPointer","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_ARB_vertex_attrib_binding
@@ -11608,7 +11608,7 @@ static void REGAL_CALL log_glWeightPointerARB(GLint size, GLenum type, GLsizei s
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glWeightPointerARB)(size, type, stride, pointer);
-    Driver("glWeightPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glWeightPointerARB","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glWeightbvARB(GLint size, GLbyte *weights)
@@ -11668,7 +11668,7 @@ static void REGAL_CALL log_glWeightubvARB(GLint size, GLubyte *weights)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glWeightubvARB)(size, weights);
-    Driver("glWeightubvARB","(", size, ", ", weights, ")");
+    Driver("glWeightubvARB","(", size, ", ", boost::print::optional(weights,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glWeightuivARB(GLint size, GLuint *weights)
@@ -11710,7 +11710,7 @@ static void REGAL_CALL log_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferDataARB)(target, size, data, usage);
-    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,data ? size : 0), ", ", toString(usage), ")");
+    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
@@ -11720,7 +11720,7 @@ static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBufferSubDataARB)(target, offset, size, data);
-    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,data ? size : 0), ")");
+    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::raw(data,Logging::rawLimit(data ? size : 0)), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
@@ -11770,7 +11770,7 @@ static void REGAL_CALL log_glGetBufferSubDataARB(GLenum target, GLintptrARB offs
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetBufferSubDataARB)(target, offset, size, data);
-    Driver("glGetBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glGetBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static GLboolean REGAL_CALL log_glIsBufferARB(GLuint buffer)
@@ -11791,7 +11791,7 @@ static GLvoid *REGAL_CALL log_glMapBufferARB(GLenum target, GLenum access)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapBufferARB)(target, access);
-    Driver("glMapBufferARB","(", toString(target), ", ", toString(access), ")", " returned ", ret);
+    Driver("glMapBufferARB","(", toString(target), ", ", toString(access), ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -11905,7 +11905,7 @@ static void REGAL_CALL log_glGetProgramStringARB(GLenum target, GLenum pname, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramStringARB)(target, pname, string);
-    Driver("glGetProgramStringARB","(", toString(target), ", ", toString(pname), ", ", string, ")");
+    Driver("glGetProgramStringARB","(", toString(target), ", ", toString(pname), ", ", boost::print::optional(string,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetProgramivARB(GLenum target, GLenum pname, GLint *params)
@@ -12426,7 +12426,7 @@ static void REGAL_CALL log_glVertexAttribPointerARB(GLuint index, GLint size, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribPointerARB)(index, size, type, normalized, stride, pointer);
-    Driver("glVertexAttribPointerARB","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribPointerARB","(", index, ", ", size, ", ", toString(type), ", ", toString(normalized), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_ARB_vertex_shader
@@ -12438,7 +12438,7 @@ static void REGAL_CALL log_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBindAttribLocationARB)(programObj, index, name);
-    Driver("glBindAttribLocationARB","(", programObj, ", ", index, ", ", name, ")");
+    Driver("glBindAttribLocationARB","(", programObj, ", ", index, ", ", boost::print::quote(name,'"'), ")");
 }
 
 static void REGAL_CALL log_glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name)
@@ -12458,7 +12458,7 @@ static GLint REGAL_CALL log_glGetAttribLocationARB(GLhandleARB programObj, const
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLint  ret = _next->call(&_next->glGetAttribLocationARB)(programObj, name);
-    Driver("glGetAttribLocationARB","(", programObj, ", ", name, ")", " returned ", ret);
+    Driver("glGetAttribLocationARB","(", programObj, ", ", boost::print::quote(name,'"'), ")", " returned ", ret);
     return ret;
 }
 
@@ -13149,7 +13149,7 @@ static void REGAL_CALL log_glElementPointerATI(GLenum type, const GLvoid *pointe
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glElementPointerATI)(type, pointer);
-    Driver("glElementPointerATI","(", toString(type), ", ", pointer, ")");
+    Driver("glElementPointerATI","(", toString(type), ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_ATI_envmap_bumpmap
@@ -13346,7 +13346,7 @@ static GLvoid *REGAL_CALL log_glMapObjectBufferATI(GLuint buffer)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapObjectBufferATI)(buffer);
-    Driver("glMapObjectBufferATI","(", buffer, ")", " returned ", ret);
+    Driver("glMapObjectBufferATI","(", buffer, ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -13504,7 +13504,7 @@ static GLuint REGAL_CALL log_glNewObjectBufferATI(GLsizei size, const GLvoid *po
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLuint  ret = _next->call(&_next->glNewObjectBufferATI)(size, pointer, usage);
-    Driver("glNewObjectBufferATI","(", size, ", ", pointer, ", ", toString(usage), ")", " returned ", ret);
+    Driver("glNewObjectBufferATI","(", size, ", ", boost::print::optional(pointer,Logging::pointers), ", ", toString(usage), ")", " returned ", ret);
     return ret;
 }
 
@@ -13515,7 +13515,7 @@ static void REGAL_CALL log_glUpdateObjectBufferATI(GLuint buffer, GLuint offset,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glUpdateObjectBufferATI)(buffer, offset, size, pointer, preserve);
-    Driver("glUpdateObjectBufferATI","(", buffer, ", ", offset, ", ", size, ", ", pointer, ", ", toString(preserve), ")");
+    Driver("glUpdateObjectBufferATI","(", buffer, ", ", offset, ", ", size, ", ", boost::print::optional(pointer,Logging::pointers), ", ", toString(preserve), ")");
 }
 
 static void REGAL_CALL log_glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset)
@@ -14103,7 +14103,7 @@ static void REGAL_CALL log_glColorSubTableEXT(GLenum target, GLsizei start, GLsi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorSubTableEXT)(target, start, count, format, type, table);
-    Driver("glColorSubTableEXT","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glColorSubTableEXT","(", toString(target), ", ", start, ", ", count, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width)
@@ -14147,7 +14147,7 @@ static void REGAL_CALL log_glConvolutionFilter1DEXT(GLenum target, GLenum intern
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glConvolutionFilter1DEXT)(target, internalformat, width, format, type, image);
-    Driver("glConvolutionFilter1DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glConvolutionFilter1DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image)
@@ -14157,7 +14157,7 @@ static void REGAL_CALL log_glConvolutionFilter2DEXT(GLenum target, GLenum intern
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glConvolutionFilter2DEXT)(target, internalformat, width, height, format, type, image);
-    Driver("glConvolutionFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glConvolutionFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glConvolutionParameterfEXT(GLenum target, GLenum pname, GLfloat param)
@@ -14227,7 +14227,7 @@ static void REGAL_CALL log_glGetConvolutionFilterEXT(GLenum target, GLenum forma
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetConvolutionFilterEXT)(target, format, type, image);
-    Driver("glGetConvolutionFilterEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", image, ")");
+    Driver("glGetConvolutionFilterEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(image,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetConvolutionParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
@@ -14257,7 +14257,7 @@ static void REGAL_CALL log_glGetSeparableFilterEXT(GLenum target, GLenum format,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetSeparableFilterEXT)(target, format, type, row, column, span);
-    Driver("glGetSeparableFilterEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ", ", span, ")");
+    Driver("glGetSeparableFilterEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ", ", boost::print::optional(span,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column)
@@ -14267,7 +14267,7 @@ static void REGAL_CALL log_glSeparableFilter2DEXT(GLenum target, GLenum internal
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSeparableFilter2DEXT)(target, internalformat, width, height, format, type, row, column);
-    Driver("glSeparableFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", row, ", ", column, ")");
+    Driver("glSeparableFilter2DEXT","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(row,Logging::pointers), ", ", boost::print::optional(column,Logging::pointers), ")");
 }
 
 // GL_EXT_coordinate_frame
@@ -14379,7 +14379,7 @@ static void REGAL_CALL log_glBinormalPointerEXT(GLenum type, GLsizei stride, con
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glBinormalPointerEXT)(type, stride, pointer);
-    Driver("glBinormalPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glBinormalPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz)
@@ -14489,7 +14489,7 @@ static void REGAL_CALL log_glTangentPointerEXT(GLenum type, GLsizei stride, cons
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTangentPointerEXT)(type, stride, pointer);
-    Driver("glTangentPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glTangentPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_EXT_copy_texture
@@ -14672,7 +14672,7 @@ static void REGAL_CALL log_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedMultiTexImage1DEXT)(texunit, target, level, internalformat, width, border, imageSize, data);
-    Driver("glCompressedMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
@@ -14682,7 +14682,7 @@ static void REGAL_CALL log_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedMultiTexImage2DEXT)(texunit, target, level, internalformat, width, height, border, imageSize, bits);
-    Driver("glCompressedMultiTexImage2DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", bits, ")");
+    Driver("glCompressedMultiTexImage2DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
@@ -14702,7 +14702,7 @@ static void REGAL_CALL log_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLe
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedMultiTexSubImage1DEXT)(texunit, target, level, xoffset, width, format, imageSize, data);
-    Driver("glCompressedMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -14732,7 +14732,7 @@ static void REGAL_CALL log_glCompressedTextureImage1DEXT(GLuint texture, GLenum 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTextureImage1DEXT)(texture, target, level, internalformat, width, border, imageSize, bits);
-    Driver("glCompressedTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", bits, ")");
+    Driver("glCompressedTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
@@ -14742,7 +14742,7 @@ static void REGAL_CALL log_glCompressedTextureImage2DEXT(GLuint texture, GLenum 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTextureImage2DEXT)(texture, target, level, internalformat, width, height, border, imageSize, bits);
-    Driver("glCompressedTextureImage2DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", bits, ")");
+    Driver("glCompressedTextureImage2DEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", border, ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
@@ -14762,7 +14762,7 @@ static void REGAL_CALL log_glCompressedTextureSubImage1DEXT(GLuint texture, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTextureSubImage1DEXT)(texture, target, level, xoffset, width, format, imageSize, bits);
-    Driver("glCompressedTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", bits, ")");
+    Driver("glCompressedTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", imageSize, ", ", boost::print::optional(bits,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
@@ -15032,7 +15032,7 @@ static void REGAL_CALL log_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetCompressedMultiTexImageEXT)(texunit, target, lod, img);
-    Driver("glGetCompressedMultiTexImageEXT","(", toString(texunit), ", ", toString(target), ", ", lod, ", ", img, ")");
+    Driver("glGetCompressedMultiTexImageEXT","(", toString(texunit), ", ", toString(target), ", ", lod, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, GLvoid *img)
@@ -15042,7 +15042,7 @@ static void REGAL_CALL log_glGetCompressedTextureImageEXT(GLuint texture, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetCompressedTextureImageEXT)(texture, target, lod, img);
-    Driver("glGetCompressedTextureImageEXT","(", texture, ", ", toString(target), ", ", lod, ", ", img, ")");
+    Driver("glGetCompressedTextureImageEXT","(", texture, ", ", toString(target), ", ", lod, ", ", boost::print::optional(img,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble *data)
@@ -15152,7 +15152,7 @@ static void REGAL_CALL log_glGetMultiTexImageEXT(GLenum texunit, GLenum target, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetMultiTexImageEXT)(texunit, target, level, format, type, pixels);
-    Driver("glGetMultiTexImageEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glGetMultiTexImageEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
@@ -15242,7 +15242,7 @@ static void REGAL_CALL log_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr of
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetNamedBufferSubDataEXT)(buffer, offset, size, data);
-    Driver("glGetNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glGetNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
@@ -15302,7 +15302,7 @@ static void REGAL_CALL log_glGetNamedProgramStringEXT(GLuint program, GLenum tar
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetNamedProgramStringEXT)(program, target, pname, string);
-    Driver("glGetNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(pname), ", ", string, ")");
+    Driver("glGetNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(pname), ", ", boost::print::optional(string,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint *params)
@@ -15352,7 +15352,7 @@ static void REGAL_CALL log_glGetTextureImageEXT(GLuint texture, GLenum target, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetTextureImageEXT)(texture, target, level, format, type, pixels);
-    Driver("glGetTextureImageEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glGetTextureImageEXT","(", texture, ", ", toString(target), ", ", level, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
@@ -15462,7 +15462,7 @@ static GLvoid *REGAL_CALL log_glMapNamedBufferEXT(GLuint buffer, GLenum access)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapNamedBufferEXT)(buffer, access);
-    Driver("glMapNamedBufferEXT","(", buffer, ", ", toString(access), ")", " returned ", ret);
+    Driver("glMapNamedBufferEXT","(", buffer, ", ", toString(access), ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -15473,7 +15473,7 @@ static GLvoid *REGAL_CALL log_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr o
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapNamedBufferRangeEXT)(buffer, offset, length, access);
-    Driver("glMapNamedBufferRangeEXT","(", buffer, ", ", offset, ", ", length, ", ", access, ")", " returned ", ret);
+    Driver("glMapNamedBufferRangeEXT","(", buffer, ", ", offset, ", ", length, ", ", access, ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -15684,7 +15684,7 @@ static void REGAL_CALL log_glMultiTexCoordPointerEXT(GLenum texunit, GLint size,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiTexCoordPointerEXT)(texunit, size, type, stride, pointer);
-    Driver("glMultiTexCoordPointerEXT","(", toString(texunit), ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glMultiTexCoordPointerEXT","(", toString(texunit), ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
@@ -15794,7 +15794,7 @@ static void REGAL_CALL log_glMultiTexImage1DEXT(GLenum texunit, GLenum target, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiTexImage1DEXT)(texunit, target, level, internalformat, width, border, format, type, pixels);
-    Driver("glMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", internalformat, ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glMultiTexImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", internalformat, ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -15894,7 +15894,7 @@ static void REGAL_CALL log_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMultiTexSubImage1DEXT)(texunit, target, level, xoffset, width, format, type, pixels);
-    Driver("glMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glMultiTexSubImage1DEXT","(", toString(texunit), ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
@@ -15924,7 +15924,7 @@ static void REGAL_CALL log_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNamedBufferDataEXT)(buffer, size, data, usage);
-    Driver("glNamedBufferDataEXT","(", buffer, ", ", size, ", ", data, ", ", toString(usage), ")");
+    Driver("glNamedBufferDataEXT","(", buffer, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
@@ -15934,7 +15934,7 @@ static void REGAL_CALL log_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offse
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNamedBufferSubDataEXT)(buffer, offset, size, data);
-    Driver("glNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", data, ")");
+    Driver("glNamedBufferSubDataEXT","(", buffer, ", ", offset, ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
@@ -16134,7 +16134,7 @@ static void REGAL_CALL log_glNamedProgramStringEXT(GLuint program, GLenum target
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNamedProgramStringEXT)(program, target, format, len, string);
-    Driver("glNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(format), ", ", len, ", ", string, ")");
+    Driver("glNamedProgramStringEXT","(", program, ", ", toString(target), ", ", toString(format), ", ", len, ", ", boost::print::optional(string,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
@@ -16694,7 +16694,7 @@ static void REGAL_CALL log_glTextureImage1DEXT(GLuint texture, GLenum target, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTextureImage1DEXT)(texture, target, level, internalformat, width, border, format, type, pixels);
-    Driver("glTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glTextureImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", internalFormatToString(internalformat), ", ", width, ", ", border, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -16794,7 +16794,7 @@ static void REGAL_CALL log_glTextureSubImage1DEXT(GLuint texture, GLenum target,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTextureSubImage1DEXT)(texture, target, level, xoffset, width, format, type, pixels);
-    Driver("glTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glTextureSubImage1DEXT","(", texture, ", ", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
@@ -17032,7 +17032,7 @@ static void REGAL_CALL log_glDrawElementsInstancedEXT(GLenum mode, GLsizei count
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawElementsInstancedEXT)(mode, count, type, indices, primcount);
-    Driver("glDrawElementsInstancedEXT","(", toString(mode), ", ", count, ", ", toString(type), ", ", indices, ", ", primcount, ")");
+    Driver("glDrawElementsInstancedEXT","(", toString(mode), ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ", ", primcount, ")");
 }
 
 // GL_EXT_draw_range_elements
@@ -17044,7 +17044,7 @@ static void REGAL_CALL log_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLu
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDrawRangeElementsEXT)(mode, start, end, count, type, indices);
-    Driver("glDrawRangeElementsEXT","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", indices, ")");
+    Driver("glDrawRangeElementsEXT","(", toString(mode), ", ", start, ", ", end, ", ", count, ", ", toString(type), ", ", boost::print::optional(indices,Logging::pointers), ")");
 }
 
 // GL_EXT_fog_coord
@@ -17056,7 +17056,7 @@ static void REGAL_CALL log_glFogCoordPointerEXT(GLenum type, GLsizei stride, con
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glFogCoordPointerEXT)(type, stride, pointer);
-    Driver("glFogCoordPointerEXT","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glFogCoordPointerEXT","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glFogCoorddEXT(GLdouble coord)
@@ -17874,7 +17874,7 @@ static void REGAL_CALL log_glVertexAttribIPointerEXT(GLuint index, GLint size, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribIPointerEXT)(index, size, type, stride, pointer);
-    Driver("glVertexAttribIPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribIPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_EXT_histogram
@@ -17886,7 +17886,7 @@ static void REGAL_CALL log_glGetHistogramEXT(GLenum target, GLboolean reset, GLe
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetHistogramEXT)(target, reset, format, type, values);
-    Driver("glGetHistogramEXT","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", values, ")");
+    Driver("glGetHistogramEXT","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
@@ -17916,7 +17916,7 @@ static void REGAL_CALL log_glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetMinmaxEXT)(target, reset, format, type, values);
-    Driver("glGetMinmaxEXT","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", values, ")");
+    Driver("glGetMinmaxEXT","(", toString(target), ", ", toString(reset), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(values,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
@@ -18054,7 +18054,7 @@ static GLvoid *REGAL_CALL log_glMapBufferRangeEXT(GLenum target, GLintptr offset
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapBufferRangeEXT)(target, offset, length, access);
-    Driver("glMapBufferRangeEXT","(", toString(target), ", ", offset, ", ", length, ", ", access, ")", " returned ", ret);
+    Driver("glMapBufferRangeEXT","(", toString(target), ", ", offset, ", ", length, ", ", access, ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -18228,7 +18228,7 @@ static void REGAL_CALL log_glColorTableEXT(GLenum target, GLenum internalFormat,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorTableEXT)(target, internalFormat, width, format, type, table);
-    Driver("glColorTableEXT","(", toString(target), ", ", toString(internalFormat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glColorTableEXT","(", toString(target), ", ", toString(internalFormat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetColorTableEXT(GLenum target, GLenum format, GLenum type, GLvoid *data)
@@ -18238,7 +18238,7 @@ static void REGAL_CALL log_glGetColorTableEXT(GLenum target, GLenum format, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetColorTableEXT)(target, format, type, data);
-    Driver("glGetColorTableEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", data, ")");
+    Driver("glGetColorTableEXT","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat *params)
@@ -18398,7 +18398,7 @@ static void REGAL_CALL log_glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLs
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glReadnPixelsEXT)(x, y, width, height, format, type, bufSize, data);
-    Driver("glReadnPixelsEXT","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", data, ")");
+    Driver("glReadnPixelsEXT","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", bufSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 // GL_EXT_scene_marker
@@ -18592,7 +18592,7 @@ static void REGAL_CALL log_glSecondaryColorPointerEXT(GLint size, GLenum type, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSecondaryColorPointerEXT)(size, type, stride, pointer);
-    Driver("glSecondaryColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glSecondaryColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_EXT_separate_shader_objects
@@ -18683,7 +18683,7 @@ static void REGAL_CALL log_glTexSubImage1DEXT(GLenum target, GLint level, GLint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexSubImage1DEXT)(target, level, xoffset, width, format, type, pixels);
-    Driver("glTexSubImage1DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexSubImage1DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
@@ -18693,7 +18693,7 @@ static void REGAL_CALL log_glTexSubImage2DEXT(GLenum target, GLint level, GLint 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexSubImage2DEXT)(target, level, xoffset, yoffset, width, height, format, type, pixels);
-    Driver("glTexSubImage2DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", reinterpret_cast<const GLubyte *>(pixels), ")");
+    Driver("glTexSubImage2DEXT","(", toString(target), ", ", level, ", ", xoffset, ", ", yoffset, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(reinterpret_cast<const GLubyte *>(pixels),Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
@@ -19025,7 +19025,7 @@ static void REGAL_CALL log_glColorPointerEXT(GLint size, GLenum type, GLsizei st
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorPointerEXT)(size, type, stride, count, pointer);
-    Driver("glColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    Driver("glColorPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
@@ -19065,7 +19065,7 @@ static void REGAL_CALL log_glIndexPointerEXT(GLenum type, GLsizei stride, GLsize
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glIndexPointerEXT)(type, stride, count, pointer);
-    Driver("glIndexPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    Driver("glIndexPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
@@ -19075,7 +19075,7 @@ static void REGAL_CALL log_glNormalPointerEXT(GLenum type, GLsizei stride, GLsiz
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNormalPointerEXT)(type, stride, count, pointer);
-    Driver("glNormalPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    Driver("glNormalPointerEXT","(", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
@@ -19085,7 +19085,7 @@ static void REGAL_CALL log_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexCoordPointerEXT)(size, type, stride, count, pointer);
-    Driver("glTexCoordPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    Driver("glTexCoordPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
@@ -19095,7 +19095,7 @@ static void REGAL_CALL log_glVertexPointerEXT(GLint size, GLenum type, GLsizei s
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexPointerEXT)(size, type, stride, count, pointer);
-    Driver("glVertexPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", pointer, ")");
+    Driver("glVertexPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", count, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_EXT_vertex_attrib_64bit
@@ -19207,7 +19207,7 @@ static void REGAL_CALL log_glVertexAttribLPointerEXT(GLuint index, GLint size, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribLPointerEXT)(index, size, type, stride, pointer);
-    Driver("glVertexAttribLPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribLPointerEXT","(", index, ", ", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_EXT_vertex_shader
@@ -19487,7 +19487,7 @@ static void REGAL_CALL log_glSetInvariantEXT(GLuint id, GLenum type, const GLvoi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSetInvariantEXT)(id, type, addr);
-    Driver("glSetInvariantEXT","(", id, ", ", toString(type), ", ", addr, ")");
+    Driver("glSetInvariantEXT","(", id, ", ", toString(type), ", ", boost::print::optional(addr,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glSetLocalConstantEXT(GLuint id, GLenum type, const GLvoid *addr)
@@ -19497,7 +19497,7 @@ static void REGAL_CALL log_glSetLocalConstantEXT(GLuint id, GLenum type, const G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glSetLocalConstantEXT)(id, type, addr);
-    Driver("glSetLocalConstantEXT","(", id, ", ", toString(type), ", ", addr, ")");
+    Driver("glSetLocalConstantEXT","(", id, ", ", toString(type), ", ", boost::print::optional(addr,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1)
@@ -19547,7 +19547,7 @@ static void REGAL_CALL log_glVariantPointerEXT(GLuint id, GLenum type, GLuint st
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVariantPointerEXT)(id, type, stride, addr);
-    Driver("glVariantPointerEXT","(", id, ", ", toString(type), ", ", stride, ", ", addr, ")");
+    Driver("glVariantPointerEXT","(", id, ", ", toString(type), ", ", stride, ", ", boost::print::optional(addr,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVariantbvEXT(GLuint id, const GLbyte *addr)
@@ -19607,7 +19607,7 @@ static void REGAL_CALL log_glVariantubvEXT(GLuint id, const GLubyte *addr)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVariantubvEXT)(id, addr);
-    Driver("glVariantubvEXT","(", id, ", ", addr, ")");
+    Driver("glVariantubvEXT","(", id, ", ", boost::print::optional(addr,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVariantuivEXT(GLuint id, const GLuint *addr)
@@ -19649,7 +19649,7 @@ static void REGAL_CALL log_glVertexWeightPointerEXT(GLsizei size, GLenum type, G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexWeightPointerEXT)(size, type, stride, pointer);
-    Driver("glVertexWeightPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexWeightPointerEXT","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVertexWeightfEXT(GLfloat weight)
@@ -19706,7 +19706,7 @@ static void REGAL_CALL log_glStringMarkerGREMEDY(GLsizei len, const GLvoid *stri
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glStringMarkerGREMEDY)(len, string);
-    Driver("glStringMarkerGREMEDY","(", len, ", ", string, ")");
+    Driver("glStringMarkerGREMEDY","(", len, ", ", boost::print::optional(string,Logging::pointers), ")");
 }
 
 // GL_HP_image_transform
@@ -19982,7 +19982,7 @@ static void REGAL_CALL log_glDebugMessageCallback(GLDEBUGPROC callback, GLvoid *
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glDebugMessageCallback)(callback, userParam);
-    Driver("glDebugMessageCallback","(", userParam, ")");
+    Driver("glDebugMessageCallback","(", boost::print::optional(userParam,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled)
@@ -20033,7 +20033,7 @@ static void REGAL_CALL log_glGetObjectPtrLabel(GLvoid *ptr, GLsizei bufSize, GLs
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetObjectPtrLabel)(ptr, bufSize, length, label);
-    Driver("glGetObjectPtrLabel","(", ptr, ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    Driver("glGetObjectPtrLabel","(", boost::print::optional(ptr,Logging::pointers), ", ", bufSize, ", ", length, ", ", boost::print::quote(label,'"'), ")");
 }
 
 static void REGAL_CALL log_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label)
@@ -20053,7 +20053,7 @@ static void REGAL_CALL log_glObjectPtrLabel(GLvoid *ptr, GLsizei length, const G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glObjectPtrLabel)(ptr, length, label);
-    Driver("glObjectPtrLabel","(", ptr, ", ", length, ", ", boost::print::quote(label,'"'), ")");
+    Driver("glObjectPtrLabel","(", boost::print::optional(ptr,Logging::pointers), ", ", length, ", ", boost::print::quote(label,'"'), ")");
 }
 
 static void REGAL_CALL log_glPopDebugGroup(void)
@@ -20682,7 +20682,7 @@ static void REGAL_CALL log_glGetMapControlPointsNV(GLenum target, GLuint index, 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetMapControlPointsNV)(target, index, type, ustride, vstride, packed, points);
-    Driver("glGetMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", toString(packed), ", ", points, ")");
+    Driver("glGetMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", toString(packed), ", ", boost::print::optional(points,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetMapParameterfvNV(GLenum target, GLenum pname, GLfloat *params)
@@ -20712,7 +20712,7 @@ static void REGAL_CALL log_glMapControlPointsNV(GLenum target, GLuint index, GLe
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMapControlPointsNV)(target, index, type, ustride, vstride, uorder, vorder, packed, points);
-    Driver("glMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", uorder, ", ", vorder, ", ", toString(packed), ", ", points, ")");
+    Driver("glMapControlPointsNV","(", toString(target), ", ", index, ", ", toString(type), ", ", ustride, ", ", vstride, ", ", uorder, ", ", vorder, ", ", toString(packed), ", ", boost::print::optional(points,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat *params)
@@ -22007,7 +22007,7 @@ static void REGAL_CALL log_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum p
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCoverFillPathInstancedNV)(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues);
-    Driver("glCoverFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
+    Driver("glCoverFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
 }
 
 static void REGAL_CALL log_glCoverFillPathNV(GLuint path, GLenum coverMode)
@@ -22027,7 +22027,7 @@ static void REGAL_CALL log_glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCoverStrokePathInstancedNV)(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues);
-    Driver("glCoverStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
+    Driver("glCoverStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(coverMode), ", ", toString(transformType), ", ", transformValues, ")");
 }
 
 static void REGAL_CALL log_glCoverStrokePathNV(GLuint name, GLenum coverMode)
@@ -22088,7 +22088,7 @@ static void REGAL_CALL log_glGetPathCommandsNV(GLuint name, GLubyte *commands)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetPathCommandsNV)(name, commands);
-    Driver("glGetPathCommandsNV","(", name, ", ", commands, ")");
+    Driver("glGetPathCommandsNV","(", name, ", ", boost::print::optional(commands,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetPathCoordsNV(GLuint name, GLfloat *coords)
@@ -22139,7 +22139,7 @@ static void REGAL_CALL log_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsize
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetPathMetricsNV)(metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics);
-    Driver("glGetPathMetricsNV","(", metricQueryMask, ", ", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", stride, ", ", metrics, ")");
+    Driver("glGetPathMetricsNV","(", metricQueryMask, ", ", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", stride, ", ", metrics, ")");
 }
 
 static void REGAL_CALL log_glGetPathParameterfvNV(GLuint name, GLenum param, GLfloat *value)
@@ -22169,7 +22169,7 @@ static void REGAL_CALL log_glGetPathSpacingNV(GLenum pathListMode, GLsizei numPa
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetPathSpacingNV)(pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing);
-    Driver("glGetPathSpacingNV","(", toString(pathListMode), ", ", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", advanceScale, ", ", kerningScale, ", ", toString(transformType), ", ", returnedSpacing, ")");
+    Driver("glGetPathSpacingNV","(", toString(pathListMode), ", ", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", advanceScale, ", ", kerningScale, ", ", toString(transformType), ", ", returnedSpacing, ")");
 }
 
 static void REGAL_CALL log_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat *value)
@@ -22252,7 +22252,7 @@ static void REGAL_CALL log_glPathCommandsNV(GLuint path, GLsizei numCommands, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathCommandsNV)(path, numCommands, commands, numCoords, coordType, coords);
-    Driver("glPathCommandsNV","(", path, ", ", numCommands, ", ", commands, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    Driver("glPathCommandsNV","(", path, ", ", numCommands, ", ", boost::print::optional(commands,Logging::pointers), ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
@@ -22262,7 +22262,7 @@ static void REGAL_CALL log_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathCoordsNV)(path, numCoords, coordType, coords);
-    Driver("glPathCoordsNV","(", path, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    Driver("glPathCoordsNV","(", path, ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPathCoverDepthFuncNV(GLenum zfunc)
@@ -22302,7 +22302,7 @@ static void REGAL_CALL log_glPathGlyphRangeNV(GLuint firstPathName, GLenum fontT
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathGlyphRangeNV)(firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale);
-    Driver("glPathGlyphRangeNV","(", firstPathName, ", ", toString(fontTarget), ", ", fontName, ", ", fontStyle, ", ", firstGlyph, ", ", numGlyphs, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ", ", emScale, ")");
+    Driver("glPathGlyphRangeNV","(", firstPathName, ", ", toString(fontTarget), ", ", boost::print::optional(fontName,Logging::pointers), ", ", fontStyle, ", ", firstGlyph, ", ", numGlyphs, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ", ", emScale, ")");
 }
 
 static void REGAL_CALL log_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
@@ -22312,7 +22312,7 @@ static void REGAL_CALL log_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarge
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathGlyphsNV)(firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale);
-    Driver("glPathGlyphsNV","(", firstPathName, ", ", toString(fontTarget), ", ", fontName, ", ", fontStyle, ", ", numGlyphs, ", ", toString(type), ", ", charcodes, ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ")");
+    Driver("glPathGlyphsNV","(", firstPathName, ", ", toString(fontTarget), ", ", boost::print::optional(fontName,Logging::pointers), ", ", fontStyle, ", ", numGlyphs, ", ", toString(type), ", ", boost::print::optional(charcodes,Logging::pointers), ", ", toString(handleMissingGlyphs), ", ", pathParameterTemplate, ")");
 }
 
 static void REGAL_CALL log_glPathParameterfNV(GLuint path, GLenum pname, GLfloat value)
@@ -22382,7 +22382,7 @@ static void REGAL_CALL log_glPathStringNV(GLuint path, GLenum format, GLsizei le
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathStringNV)(path, format, length, pathString);
-    Driver("glPathStringNV","(", path, ", ", toString(format), ", ", length, ", ", pathString, ")");
+    Driver("glPathStringNV","(", path, ", ", toString(format), ", ", length, ", ", boost::print::optional(pathString,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
@@ -22392,7 +22392,7 @@ static void REGAL_CALL log_glPathSubCommandsNV(GLuint path, GLsizei commandStart
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathSubCommandsNV)(path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords);
-    Driver("glPathSubCommandsNV","(", path, ", ", commandStart, ", ", commandsToDelete, ", ", numCommands, ", ", commands, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    Driver("glPathSubCommandsNV","(", path, ", ", commandStart, ", ", commandsToDelete, ", ", numCommands, ", ", boost::print::optional(commands,Logging::pointers), ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords)
@@ -22402,7 +22402,7 @@ static void REGAL_CALL log_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPathSubCoordsNV)(path, coordStart, numCoords, coordType, coords);
-    Driver("glPathSubCoordsNV","(", path, ", ", coordStart, ", ", numCoords, ", ", toString(coordType), ", ", coords, ")");
+    Driver("glPathSubCoordsNV","(", path, ", ", coordStart, ", ", numCoords, ", ", toString(coordType), ", ", boost::print::optional(coords,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs)
@@ -22433,7 +22433,7 @@ static void REGAL_CALL log_glStencilFillPathInstancedNV(GLsizei numPaths, GLenum
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glStencilFillPathInstancedNV)(numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues);
-    Driver("glStencilFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", toString(fillMode), ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
+    Driver("glStencilFillPathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", toString(fillMode), ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
 }
 
 static void REGAL_CALL log_glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask)
@@ -22453,7 +22453,7 @@ static void REGAL_CALL log_glStencilStrokePathInstancedNV(GLsizei numPaths, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glStencilStrokePathInstancedNV)(numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues);
-    Driver("glStencilStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", paths, ", ", pathBase, ", ", reference, ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
+    Driver("glStencilStrokePathInstancedNV","(", numPaths, ", ", toString(pathNameType), ", ", boost::print::optional(paths,Logging::pointers), ", ", pathBase, ", ", reference, ", ", mask, ", ", toString(transformType), ", ", transformValues, ")");
 }
 
 static void REGAL_CALL log_glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask)
@@ -22505,7 +22505,7 @@ static void REGAL_CALL log_glPixelDataRangeNV(GLenum target, GLsizei size, const
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPixelDataRangeNV)(target, size, pointer);
-    Driver("glPixelDataRangeNV","(", toString(target), ", ", size, ", ", pointer, ")");
+    Driver("glPixelDataRangeNV","(", toString(target), ", ", size, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_NV_point_sprite
@@ -23213,7 +23213,7 @@ static void REGAL_CALL log_glVDPAUInitNV(const GLvoid *vdpDevice, const GLvoid *
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVDPAUInitNV)(vdpDevice, getProcAddress);
-    Driver("glVDPAUInitNV","(", vdpDevice, ", ", getProcAddress, ")");
+    Driver("glVDPAUInitNV","(", boost::print::optional(vdpDevice,Logging::pointers), ", ", boost::print::optional(getProcAddress,Logging::pointers), ")");
 }
 
 static GLboolean REGAL_CALL log_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface)
@@ -23244,7 +23244,7 @@ static GLvdpauSurfaceNV REGAL_CALL log_glVDPAURegisterOutputSurfaceNV(const GLvo
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvdpauSurfaceNV  ret = _next->call(&_next->glVDPAURegisterOutputSurfaceNV)(vdpSurface, target, numTextureNames, textureNames);
-    Driver("glVDPAURegisterOutputSurfaceNV","(", vdpSurface, ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")", " returned ", ret);
+    Driver("glVDPAURegisterOutputSurfaceNV","(", boost::print::optional(vdpSurface,Logging::pointers), ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")", " returned ", ret);
     return ret;
 }
 
@@ -23255,7 +23255,7 @@ static GLvdpauSurfaceNV REGAL_CALL log_glVDPAURegisterVideoSurfaceNV(const GLvoi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvdpauSurfaceNV  ret = _next->call(&_next->glVDPAURegisterVideoSurfaceNV)(vdpSurface, target, numTextureNames, textureNames);
-    Driver("glVDPAURegisterVideoSurfaceNV","(", vdpSurface, ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")", " returned ", ret);
+    Driver("glVDPAURegisterVideoSurfaceNV","(", boost::print::optional(vdpSurface,Logging::pointers), ", ", toString(target), ", ", numTextureNames, ", ", boost::print::array(textureNames,numTextureNames), ")", " returned ", ret);
     return ret;
 }
 
@@ -23308,7 +23308,7 @@ static void REGAL_CALL log_glVertexArrayRangeNV(GLsizei size, const GLvoid *poin
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexArrayRangeNV)(size, pointer);
-    Driver("glVertexArrayRangeNV","(", size, ", ", pointer, ")");
+    Driver("glVertexArrayRangeNV","(", size, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_NV_vertex_attrib_integer_64bit
@@ -23705,7 +23705,7 @@ static void REGAL_CALL log_glGetProgramStringNV(GLuint id, GLenum pname, GLubyte
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramStringNV)(id, pname, program);
-    Driver("glGetProgramStringNV","(", id, ", ", toString(pname), ", ", program, ")");
+    Driver("glGetProgramStringNV","(", id, ", ", toString(pname), ", ", boost::print::optional(program,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glGetProgramivNV(GLuint id, GLenum pname, GLint *params)
@@ -24136,7 +24136,7 @@ static void REGAL_CALL log_glVertexAttribPointerNV(GLuint index, GLint fsize, GL
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glVertexAttribPointerNV)(index, fsize, type, stride, pointer);
-    Driver("glVertexAttribPointerNV","(", index, ", ", fsize, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glVertexAttribPointerNV","(", index, ", ", fsize, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glVertexAttribs1dvNV(GLuint index, GLsizei n, const GLdouble *v)
@@ -24592,7 +24592,7 @@ static void REGAL_CALL log_glGetProgramBinaryOES(GLuint program, GLsizei bufSize
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetProgramBinaryOES)(program, bufSize, length, binaryFormat, binary);
-    Driver("glGetProgramBinaryOES","(", program, ", ", bufSize, ", ", length, ", ", binaryFormat, ", ", binary, ")");
+    Driver("glGetProgramBinaryOES","(", program, ", ", bufSize, ", ", length, ", ", binaryFormat, ", ", boost::print::optional(binary,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glProgramBinaryOES(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length)
@@ -24602,7 +24602,7 @@ static void REGAL_CALL log_glProgramBinaryOES(GLuint program, GLenum binaryForma
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glProgramBinaryOES)(program, binaryFormat, binary, length);
-    Driver("glProgramBinaryOES","(", program, ", ", toString(binaryFormat), ", ", binary, ", ", length, ")");
+    Driver("glProgramBinaryOES","(", program, ", ", toString(binaryFormat), ", ", boost::print::optional(binary,Logging::pointers), ", ", length, ")");
 }
 
 // GL_OES_mapbuffer
@@ -24624,7 +24624,7 @@ static GLvoid *REGAL_CALL log_glMapBufferOES(GLenum target, GLenum access)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     GLvoid * ret = _next->call(&_next->glMapBufferOES)(target, access);
-    Driver("glMapBufferOES","(", toString(target), ", ", toString(access), ")", " returned ", ret);
+    Driver("glMapBufferOES","(", toString(target), ", ", toString(access), ")", " returned ", boost::print::optional(ret,Logging::pointers));
     return ret;
 }
 
@@ -24658,7 +24658,7 @@ static void REGAL_CALL log_glMatrixIndexPointerOES(GLint size, GLenum type, GLsi
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glMatrixIndexPointerOES)(size, type, stride, pointer);
-    Driver("glMatrixIndexPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glMatrixIndexPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glWeightPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer)
@@ -24668,7 +24668,7 @@ static void REGAL_CALL log_glWeightPointerOES(GLint size, GLenum type, GLsizei s
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glWeightPointerOES)(size, type, stride, pointer);
-    Driver("glWeightPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glWeightPointerOES","(", size, ", ", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_OES_single_precision
@@ -24742,7 +24742,7 @@ static void REGAL_CALL log_glCompressedTexImage3DOES(GLenum target, GLint level,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glCompressedTexImage3DOES)(target, level, internalformat, width, height, depth, border, imageSize, data);
-    Driver("glCompressedTexImage3DOES","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", data, ")");
+    Driver("glCompressedTexImage3DOES","(", toString(target), ", ", level, ", ", toString(internalformat), ", ", width, ", ", height, ", ", depth, ", ", border, ", ", imageSize, ", ", boost::print::optional(data,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
@@ -25152,7 +25152,7 @@ static void REGAL_CALL log_glPointSizePointerOES(GLenum type, GLsizei stride, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPointSizePointerOES)(type, stride, pointer);
-    Driver("glPointSizePointerOES","(", toString(type), ", ", stride, ", ", pointer, ")");
+    Driver("glPointSizePointerOES","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
 }
 
 // GL_REGAL_log
@@ -25688,7 +25688,7 @@ static void REGAL_CALL log_glIglooInterfaceSGIX(GLenum pname, const GLvoid *para
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glIglooInterfaceSGIX)(pname, params);
-    Driver("glIglooInterfaceSGIX","(", toString(pname), ", ", params, ")");
+    Driver("glIglooInterfaceSGIX","(", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
 }
 
 // GL_SGIX_instruments
@@ -25966,7 +25966,7 @@ static void REGAL_CALL log_glColorTableSGI(GLenum target, GLenum internalformat,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glColorTableSGI)(target, internalformat, width, format, type, table);
-    Driver("glColorTableSGI","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glColorTableSGI","(", toString(target), ", ", toString(internalformat), ", ", width, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width)
@@ -26006,7 +26006,7 @@ static void REGAL_CALL log_glGetColorTableSGI(GLenum target, GLenum format, GLen
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetColorTableSGI)(target, format, type, table);
-    Driver("glGetColorTableSGI","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", table, ")");
+    Driver("glGetColorTableSGI","(", toString(target), ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(table,Logging::pointers), ")");
 }
 
 // GL_SUNX_constant_data
@@ -26124,7 +26124,7 @@ static void REGAL_CALL log_glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width,
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glReadVideoPixelsSUN)(x, y, width, height, format, type, pixels);
-    Driver("glReadVideoPixelsSUN","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", pixels, ")");
+    Driver("glReadVideoPixelsSUN","(", x, ", ", y, ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", boost::print::optional(pixels,Logging::pointers), ")");
 }
 
 // GL_SUN_triangle_list
@@ -26156,7 +26156,7 @@ static void REGAL_CALL log_glReplacementCodeubvSUN(const GLubyte *code)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glReplacementCodeubvSUN)(code);
-    Driver("glReplacementCodeubvSUN","(", code, ")");
+    Driver("glReplacementCodeubvSUN","(", boost::print::optional(code,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glReplacementCodeuiSUN(GLuint code)

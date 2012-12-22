@@ -41,9 +41,19 @@
 
 #include "RegalUtil.h"
 
-REGAL_NAMESPACE_BEGIN
+REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+
+#include <boost/cstdint.hpp>
+
+REGAL_GLOBAL_END
+
+REGAL_NAMESPACE_BEGIN
+
+using ::boost::uint8_t;
+using ::boost::uint16_t;
+using ::boost::uint32_t;
 
 // Each unpacker function unpacks pixel data from some arbitrary format into a
 // a simple full-size format.  Each packer function packs pixel data into some

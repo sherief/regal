@@ -34,28 +34,40 @@ template<typename T = std::string>
 struct string_list
 {
 public:
-  typedef const T                                  value_type;
-  typedef const T                                 &const_reference;
-  typedef char                                     char_type;
-  typedef typename ::std::deque<T>::iterator       iterator;
-  typedef typename ::std::deque<T>::const_iterator const_iterator;
-  typedef ::std::size_t                            size_type;
+  typedef const T                                          value_type;
+  typedef const T                                         &const_reference;
+  typedef char                                             char_type;
+  typedef typename ::std::deque<T>::iterator               iterator;
+  typedef typename ::std::deque<T>::const_iterator         const_iterator;
+  typedef typename ::std::deque<T>::reverse_iterator       reverse_iterator;
+  typedef typename ::std::deque<T>::const_reverse_iterator const_reverse_iterator;
+  typedef ::std::size_t                                    size_type;
 
   string_list();
   string_list(const string_list &other);
+  string_list(const T &input, const char_type delim = ' ');
+  string_list(const size_t count, const char_type * const *string, const int *length = NULL);
   ~string_list();
 
   string_list &operator=(const string_list &other);
 
   void clear();
 
-  void push_front     (const char *string);
-  void push_front     (const T    &string);
-  void push_front_swap(      T    &string);
+  void push_front     (const char        *string);
+  void push_front     (const T           &string);
+  void push_front_swap(      T           &string);
+  void push_front     (const string_list &other );
 
-  void push_back      (const char *string);
-  void push_back      (const T    &string);
-  void push_back_swap (      T    &string);
+  void push_back      (const char        *string);
+  void push_back      (const T           &string);
+  void push_back_swap (      T           &string);
+  void push_back      (const string_list &other );
+
+  void push_back(const size_t count, const char_type * const *string, const int *length = NULL);
+
+  void insert(const size_type i, const value_type &x);
+  void insert(const size_type i, const string_list &other);
+  void insert(const size_type i, const size_type n, const value_type &x);
 
   template<typename I>
   string_list<T> &
@@ -196,6 +208,19 @@ join(const C &container, const T &delim)
 
 template<typename T> string_list<T>::string_list() : _count(0) { }
 template<typename T> string_list<T>::string_list(const string_list<T> &other) : _list(other._list), _count(other._count) { }
+
+template<typename T> string_list<T>::string_list(const T &input, const char_type delim)
+: _count(0)
+{
+  split(input,delim);
+}
+
+template<typename T> string_list<T>::string_list(const size_t count, const char_type * const *string, const int *length)
+: _count(0)
+{
+  push_back(count,string,length);
+}
+
 template<typename T> string_list<T>::~string_list() { _list.clear(); _count = 0; }
 
 template<typename T> string_list<T> &
@@ -214,40 +239,125 @@ template<typename T> void string_list<T>::clear()   { _list.clear(); _count = 0;
 
 template<typename T> void string_list<T>::push_front(const typename string_list<T>::char_type *string)
 {
-  _list.push_front(string ? string : T());
-  _count += _list.front().length();
+  PushFront(*this).assign(string ? string : T(NULL));
 }
 
 template<typename T> void string_list<T>::push_front(const T &string)
 {
-  _list.push_front(string);
-  _count += string.length();
+  PushFront(*this).assign(string);
 }
 
 template<typename T> void string_list<T>::push_front_swap(T &string)
 {
-  _list.push_front(T());
-  _count += string.length();
-  _list.front().swap(string);
+  PushFront(*this).swap(string);
+}
+
+template<typename T> void string_list<T>::push_front(const string_list &other)
+{
+  for (const_iterator i = other.begin(); i!=other.end(); ++i)
+  {
+    PushFront(*this).assign(*i);
+  }
 }
 
 template<typename T> void string_list<T>::push_back(const typename string_list<T>::char_type *string)
 {
-  _list.push_back(string ? string : T());
-  _count += _list.back().length();
+  PushBack(*this).assign(string ? string : T(NULL));
 }
 
 template<typename T> void string_list<T>::push_back(const T &string)
 {
-  _list.push_back(string);
-  _count += string.length();
+  PushBack(*this).assign(string);
 }
 
 template<typename T> void string_list<T>::push_back_swap(T &string)
 {
-  _list.push_back(T());
-  _count += string.length();
-  _list.back().swap(string);
+  PushBack(*this).swap(string);
+}
+
+template<typename T> void string_list<T>::push_back(const string_list &other)
+{
+  for (const_iterator i = other.begin(); i!=other.end(); ++i)
+  {
+    PushBack(*this).assign(*i);
+  }
+}
+
+template<typename T> void string_list<T>::push_back(const size_t count, const char_type * const *string, const int *length)
+{
+  for (size_t i=0; i<count; ++i)
+    if (length && length[i]>=0)
+    {
+      PushBack(*this).assign(string[i] ? T(string[i],length[i]) : T());
+    }
+    else
+    {
+      PushBack(*this).assign(string[i] ? T(string[i])           : T());
+    }
+}
+
+template<typename T> void string_list<T>::insert(const size_type i, const value_type &x)
+{
+  if (i>=0 && i<=_list.size())
+  {
+    _count += x.length();
+    _list.push_back(x);                     // Append to the end
+
+    const size_type m = _list.size()-i-1;
+    reverse_iterator i = _list.rbegin();
+    reverse_iterator j = _list.rbegin();
+    ++j;
+
+    for (size_type k=0; k<m; ++i, ++j, ++k)
+      swap(*i,*j);
+  }
+}
+
+template<typename T> void string_list<T>::insert(const size_type i, const string_list &other)
+{
+  const size_type n = other.size();
+
+  if (this!=&other && i>=0 && i<=_list.size() && n>0)
+  {
+    _count += other.count();
+
+    const size_type m = _list.size()-i;
+    for (size_type k=0; k<n; ++k)
+      _list.push_back(T());                // Append to the end
+
+    reverse_iterator i = _list.rbegin();
+    reverse_iterator j = _list.rbegin();
+
+    for (size_type k=0; k<n; ++k)
+      ++j;
+
+    for (size_type k=0; k<m; ++i, ++j, ++k)
+      swap(*i,*j);
+
+    for (const_iterator k=other.begin(); k!=other.end(); )
+      *(--j) = *(k++);
+  }
+}
+
+template<typename T> void string_list<T>::insert(const size_type i, const size_type n, const value_type &x)
+{
+  if (i>=0 && i<=_list.size() && n>0)
+  {
+    _count += x.length()*n;
+
+    const size_type m = _list.size()-i;
+    for (size_type k=0; k<n; ++k)
+      _list.push_back(x);                // Append to the end
+
+    reverse_iterator i = _list.rbegin();
+    reverse_iterator j = _list.rbegin();
+
+    for (size_type k=0; k<n; ++k)
+      ++j;
+
+    for (size_type k=0; k<m; ++i, ++j, ++k)
+      swap(*i,*j);
+  }
 }
 
 template<typename T> void string_list<T>::sort()

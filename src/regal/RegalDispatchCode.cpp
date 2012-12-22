@@ -7527,7 +7527,7 @@ static void REGAL_CALL code_glBufferData(GLenum target, GLsizeiptr size, const G
     _code << indent << "glBufferData(";
                    _code << toString(target);
     _code << ", "; _code << size;
-    _code << ", "; _code << boost::print::raw(data,data ? size : 0);
+    _code << ", "; _code << boost::print::raw(data,Logging::rawLimit(data ? size : 0));
     _code << ", "; _code << toString(usage);
     _code << ");\n";
     printf("%s",_code.str().c_str());
@@ -7546,7 +7546,7 @@ static void REGAL_CALL code_glBufferSubData(GLenum target, GLintptr offset, GLsi
                    _code << toString(target);
     _code << ", "; _code << offset;
     _code << ", "; _code << size;
-    _code << ", "; _code << boost::print::raw(data,data ? size : 0);
+    _code << ", "; _code << boost::print::raw(data,Logging::rawLimit(data ? size : 0));
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -8116,10 +8116,12 @@ static void REGAL_CALL code_glGetProgramiv(GLuint program, GLenum pname, GLint *
     _next->call(&_next->glGetProgramiv)(program, pname, params);
     std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
     string_list< ::std::string > _code;
+    size_t _paramsIndex = _context->codeOutputNext++;
+    _code << indent << "GLint o" << _paramsIndex << "[" << (1) << "];\n";
     _code << indent << "glGetProgramiv(";
                    _code << program;
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << "o" << _paramsIndex;
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -8173,10 +8175,12 @@ static void REGAL_CALL code_glGetShaderiv(GLuint shader, GLenum pname, GLint *pa
     _next->call(&_next->glGetShaderiv)(shader, pname, params);
     std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
     string_list< ::std::string > _code;
+    size_t _paramsIndex = _context->codeOutputNext++;
+    _code << indent << "GLint o" << _paramsIndex << "[" << (1) << "];\n";
     _code << indent << "glGetShaderiv(";
                    _code << shader;
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << "o" << _paramsIndex;
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -17711,7 +17715,7 @@ static GLint REGAL_CALL code_glGetUniformLocationARB(GLhandleARB programObj, con
     string_list< ::std::string > _code;
     _code << indent << "glGetUniformLocationARB(";
                    _code << programObj;
-    _code << ", "; _code << name;
+    _code << ", "; _code << boost::print::quote(name,'"');
     _code << ");\n";
     printf("%s",_code.str().c_str());
     return _ret;
@@ -20154,7 +20158,7 @@ static void REGAL_CALL code_glBufferDataARB(GLenum target, GLsizeiptrARB size, c
     _code << indent << "glBufferDataARB(";
                    _code << toString(target);
     _code << ", "; _code << size;
-    _code << ", "; _code << boost::print::raw(data,data ? size : 0);
+    _code << ", "; _code << boost::print::raw(data,Logging::rawLimit(data ? size : 0));
     _code << ", "; _code << toString(usage);
     _code << ");\n";
     printf("%s",_code.str().c_str());
@@ -20173,7 +20177,7 @@ static void REGAL_CALL code_glBufferSubDataARB(GLenum target, GLintptrARB offset
                    _code << toString(target);
     _code << ", "; _code << offset;
     _code << ", "; _code << size;
-    _code << ", "; _code << boost::print::raw(data,data ? size : 0);
+    _code << ", "; _code << boost::print::raw(data,Logging::rawLimit(data ? size : 0));
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -21448,7 +21452,7 @@ static void REGAL_CALL code_glBindAttribLocationARB(GLhandleARB programObj, GLui
     _code << indent << "glBindAttribLocationARB(";
                    _code << programObj;
     _code << ", "; _code << index;
-    _code << ", "; _code << name;
+    _code << ", "; _code << boost::print::quote(name,'"');
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -21491,7 +21495,7 @@ static GLint REGAL_CALL code_glGetAttribLocationARB(GLhandleARB programObj, cons
     string_list< ::std::string > _code;
     _code << indent << "glGetAttribLocationARB(";
                    _code << programObj;
-    _code << ", "; _code << name;
+    _code << ", "; _code << boost::print::quote(name,'"');
     _code << ");\n";
     printf("%s",_code.str().c_str());
     return _ret;

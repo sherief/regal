@@ -134,6 +134,24 @@ private:
   quote<T,C> &operator=(const quote<T,C> &other);
 };
 
+// Optional 
+
+template<typename T>
+struct optional
+{
+  optional(const T &val, const bool enabled)
+  : _val(val), _enabled(enabled)
+  {
+  }
+
+  const T     &_val;
+  const bool   _enabled;
+
+private:
+  optional();
+  optional<T> &operator=(const optional<T> &other);
+};
+
 // Array printing
 
 template<typename T, typename U>

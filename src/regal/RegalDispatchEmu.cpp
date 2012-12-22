@@ -8147,21 +8147,44 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameter( _context, target, pname, param );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterf)(target, pname, param);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameter( _context, target, pname, param ) ) {
+           _context->dispatcher.emulation.glTexParameterf( target, pname, param );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterf)(target, pname, param);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
@@ -8188,21 +8211,44 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterfv)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameterfv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterfv)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint param)
@@ -8229,21 +8275,44 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameter( _context, target, pname, param );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameteri)(target, pname, param);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameter( _context, target, pname, param ) ) {
+           _context->dispatcher.emulation.glTexParameteri( target, pname, param );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameteri)(target, pname, param);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
@@ -8270,21 +8339,44 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameteriv)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameteriv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameteriv)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTranslated(GLdouble x, GLdouble y, GLdouble z)
@@ -10689,6 +10781,38 @@ static void REGAL_CALL emu_glVertexPointer(GLint size, GLenum type, GLsizei stri
 }
 
 // GL_VERSION_1_2
+
+static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glDrawRangeElements)(mode, start, end, count, type, indices);
+}
 
 static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
@@ -17774,21 +17898,44 @@ static void REGAL_CALL emu_glTexParameterIiv(GLenum target, GLenum pname, const 
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterIiv)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameterIiv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterIiv)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params)
@@ -17806,21 +17953,44 @@ static void REGAL_CALL emu_glTexParameterIuiv(GLenum target, GLenum pname, const
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterIuiv)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameterIuiv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterIuiv)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glUniform1ui(GLint location, GLuint v0)
@@ -18477,6 +18647,38 @@ static void REGAL_CALL emu_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLs
   _next->call(& _next->glDrawElementArrayAPPLE)(mode, first, count);
 }
 
+static void REGAL_CALL emu_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glDrawRangeElementArrayAPPLE)(mode, start, end, first, count);
+}
+
 static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -18532,6 +18734,38 @@ static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glMultiDrawElementArrayAPPLE)(mode, first, count, primcount);
+}
+
+static void REGAL_CALL emu_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glMultiDrawRangeElementArrayAPPLE)(mode, start, end, first, count, primcount);
 }
 
 // GL_APPLE_fence
@@ -18800,6 +19034,38 @@ static void REGAL_CALL emu_glDrawElementsInstancedBaseVertex(GLenum mode, GLsize
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glDrawElementsInstancedBaseVertex)(mode, count, type, indices, primcount, basevertex);
+}
+
+static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, GLvoid *indices, GLint basevertex)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glDrawRangeElementsBaseVertex)(mode, start, end, count, type, indices, basevertex);
 }
 
 static void REGAL_CALL emu_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *count, GLenum type, GLvoid **indices, GLsizei primcount, GLint *basevertex)
@@ -20516,7 +20782,7 @@ static void REGAL_CALL emu_glGetSamplerParameterIiv(GLuint sampler, GLenum pname
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glGetSamplerParameterIiv( sampler, pname, params );
         }
         return;
@@ -20571,7 +20837,7 @@ static void REGAL_CALL emu_glGetSamplerParameterIuiv(GLuint sampler, GLenum pnam
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glGetSamplerParameterIuiv( sampler, pname, params );
         }
         return;
@@ -20626,7 +20892,7 @@ static void REGAL_CALL emu_glGetSamplerParameterfv(GLuint sampler, GLenum pname,
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glGetSamplerParameterfv( sampler, pname, params );
         }
         return;
@@ -20681,7 +20947,7 @@ static void REGAL_CALL emu_glGetSamplerParameteriv(GLuint sampler, GLenum pname,
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->GetSamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glGetSamplerParameteriv( sampler, pname, params );
         }
         return;
@@ -20787,7 +21053,7 @@ static void REGAL_CALL emu_glSamplerParameterIiv(GLuint sampler, GLenum pname, c
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glSamplerParameterIiv( sampler, pname, params );
         }
         return;
@@ -20842,7 +21108,7 @@ static void REGAL_CALL emu_glSamplerParameterIuiv(GLuint sampler, GLenum pname, 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glSamplerParameterIuiv( sampler, pname, params );
         }
         return;
@@ -20897,7 +21163,7 @@ static void REGAL_CALL emu_glSamplerParameterf(GLuint sampler, GLenum pname, GLf
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameter( _context, sampler, pname, param ) ) {
+        if ( !_context->so->SamplerParameter( _context, sampler, pname, param )) {
            _context->dispatcher.emulation.glSamplerParameterf( sampler, pname, param );
         }
         return;
@@ -20952,7 +21218,7 @@ static void REGAL_CALL emu_glSamplerParameterfv(GLuint sampler, GLenum pname, co
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glSamplerParameterfv( sampler, pname, params );
         }
         return;
@@ -21007,7 +21273,7 @@ static void REGAL_CALL emu_glSamplerParameteri(GLuint sampler, GLenum pname, GLi
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameter( _context, sampler, pname, param ) ) {
+        if ( !_context->so->SamplerParameter( _context, sampler, pname, param )) {
            _context->dispatcher.emulation.glSamplerParameteri( sampler, pname, param );
         }
         return;
@@ -21062,7 +21328,7 @@ static void REGAL_CALL emu_glSamplerParameteriv(GLuint sampler, GLenum pname, co
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
-        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params ) ) {
+        if ( !_context->so->SamplerParameterv( _context, sampler, pname, params )) {
            _context->dispatcher.emulation.glSamplerParameteriv( sampler, pname, params );
         }
         return;
@@ -22830,6 +23096,38 @@ static void REGAL_CALL emu_glDrawElementArrayATI(GLenum mode, GLsizei count)
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glDrawElementArrayATI)(mode, count);
+}
+
+static void REGAL_CALL emu_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glDrawRangeElementArrayATI)(mode, start, end, count);
 }
 
 // GL_ATI_envmap_bumpmap
@@ -34110,6 +34408,38 @@ static void REGAL_CALL emu_glDrawElementsInstancedEXT(GLenum mode, GLsizei count
 
 // GL_EXT_draw_range_elements
 
+static void REGAL_CALL emu_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        _context->so->PreDraw( _context );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glDrawRangeElementsEXT)(mode, start, end, count, type, indices);
+}
+
 // GL_EXT_fog_coord
 
 // GL_EXT_fragment_lighting
@@ -35517,21 +35847,44 @@ static void REGAL_CALL emu_glTexParameterIivEXT(GLenum target, GLenum pname, con
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterIivEXT)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameterIiv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterIivEXT)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params)
@@ -35549,21 +35902,44 @@ static void REGAL_CALL emu_glTexParameterIuivEXT(GLenum target, GLenum pname, co
     case 5 :
     case 4 :
       #if REGAL_EMU_SO
-      if (_context->so)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 3;
-        _context->so->TexParameterv( _context, target, pname, params );
-      }
+      if (_context->so) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexParameterIuivEXT)(target, pname, params);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+      #if REGAL_EMU_SO
+      if (_context->so)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if ( !_context->so->TexParameterv( _context, target, pname, params ) ) {
+           _context->dispatcher.emulation.glTexParameterIuiv( target, pname, params );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterIuivEXT)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 // GL_EXT_texture_object
@@ -36748,6 +37124,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
 // GL_VERSION_1_2
 
+   tbl.glDrawRangeElements = emu_glDrawRangeElements;
    tbl.glTexImage3D = emu_glTexImage3D;
 
 // GL_VERSION_1_3
@@ -36944,7 +37321,9 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_APPLE_element_array
 
    tbl.glDrawElementArrayAPPLE = emu_glDrawElementArrayAPPLE;
+   tbl.glDrawRangeElementArrayAPPLE = emu_glDrawRangeElementArrayAPPLE;
    tbl.glMultiDrawElementArrayAPPLE = emu_glMultiDrawElementArrayAPPLE;
+   tbl.glMultiDrawRangeElementArrayAPPLE = emu_glMultiDrawRangeElementArrayAPPLE;
 
 // GL_APPLE_vertex_array_object
 
@@ -36962,6 +37341,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glDrawElementsBaseVertex = emu_glDrawElementsBaseVertex;
    tbl.glDrawElementsInstancedBaseVertex = emu_glDrawElementsInstancedBaseVertex;
+   tbl.glDrawRangeElementsBaseVertex = emu_glDrawRangeElementsBaseVertex;
    tbl.glMultiDrawElementsBaseVertex = emu_glMultiDrawElementsBaseVertex;
 
 // GL_ARB_draw_indirect
@@ -37100,6 +37480,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_ATI_element_array
 
    tbl.glDrawElementArrayATI = emu_glDrawElementArrayATI;
+   tbl.glDrawRangeElementArrayATI = emu_glDrawRangeElementArrayATI;
 
 // GL_EXT_direct_state_access
 
@@ -37324,6 +37705,10 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glDrawArraysInstancedEXT = emu_glDrawArraysInstancedEXT;
    tbl.glDrawElementsInstancedEXT = emu_glDrawElementsInstancedEXT;
+
+// GL_EXT_draw_range_elements
+
+   tbl.glDrawRangeElementsEXT = emu_glDrawRangeElementsEXT;
 
 // GL_EXT_framebuffer_multisample
 

@@ -325,7 +325,10 @@ struct RegalSo : public RegalEmu
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
                 if (!ctx->info->gl_ext_texture_srgb_decode)
-                    return false;
+                {
+                    Warning("Unsupported sampler parameter ",Token::GLenumToString(pname)," (GL_EXT_texture_sRGB_decode extension not available), skipping.");
+                    return true;
+                }
                 ss->SrgbDecodeExt = static_cast<GLenum>(*params);
                 break;
 
@@ -403,7 +406,10 @@ struct RegalSo : public RegalEmu
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
                 if (!ctx->info->gl_ext_texture_srgb_decode)
-                    return false;
+                {
+                    Warning("Unsupported sampler parameter ",Token::GLenumToString(pname)," (GL_EXT_texture_sRGB_decode extension not available), skipping.");
+                    return true;
+                }
                 *params = static_cast<T>(ss->SrgbDecodeExt);
                 break;
 
@@ -414,105 +420,107 @@ struct RegalSo : public RegalEmu
         return true;
     }
 
-    template <typename T> void TexParameter( RegalContext * ctx, GLenum target, GLenum pname, T param )
+    template <typename T> bool TexParameter( RegalContext * ctx, GLenum target, GLenum pname, T param )
     {
-        if ( target != GL_TEXTURE_BORDER_COLOR)
-            TexParameterv(ctx, target, pname, &param);
+        if ( target == GL_TEXTURE_BORDER_COLOR)
+            return false;
+        return TexParameterv(ctx, target, pname, &param);
     }
 
-    template <typename T> void TexParameterv( RegalContext * ctx, GLenum target, GLenum pname, T * params )
+    template <typename T> bool TexParameterv( RegalContext * ctx, GLenum target, GLenum pname, T * params )
     {
         GLuint tti = TT_Enum2Index(target);
 
         if (tti >= REGAL_NUM_TEXTURE_TARGETS)
-            return;
+            return false;
 
         TextureUnit &tu = textureUnits[activeTextureUnit];
 
         TextureState* ts = tu.boundTextureObjects[tti];
 
         SamplingState *as = NULL;
-        SamplingState *ds = NULL;
 
         if (ts)
         {
             as = &ts->app;
-            ds = &ts->drv;
         }
         else
         {
             as = &defaultTextureObjects[tti].app;
-            ds = &defaultTextureObjects[tti].drv;
         }
 
-        if (!as || !ds)
-            return;
+        if (!as)
+            return false;
 
         switch (pname)
         {
             case GL_TEXTURE_BORDER_COLOR:
-                as->BorderColor[0] = ds->BorderColor[0] = (GLint)(params[0]);
-                as->BorderColor[1] = ds->BorderColor[1] = (GLint)(params[1]);
-                as->BorderColor[2] = ds->BorderColor[2] = (GLint)(params[2]);
-                as->BorderColor[3] = ds->BorderColor[3] = (GLint)(params[3]);
+                as->BorderColor[0] = (GLint)(params[0]);
+                as->BorderColor[1] = (GLint)(params[1]);
+                as->BorderColor[2] = (GLint)(params[2]);
+                as->BorderColor[3] = (GLint)(params[3]);
                 break;
 
             case GL_TEXTURE_MIN_FILTER:
-                as->MinFilter = ds->MinFilter = (GLint)(params[0]);
+                as->MinFilter = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_MAG_FILTER:
-                as->MagFilter = ds->MagFilter = (GLint)(params[0]);
+                as->MagFilter = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_WRAP_S:
-                as->WrapS = ds->WrapS = (GLint)(params[0]);
+                as->WrapS = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_WRAP_T:
-                as->WrapT = ds->WrapT = (GLint)(params[0]);
+                as->WrapT = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_WRAP_R:
-                as->WrapR = ds->WrapR = (GLint)(params[0]);
+                as->WrapR = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_COMPARE_MODE:
-                as->CompareMode = ds->CompareMode = (GLint)(params[0]);
+                as->CompareMode = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_COMPARE_FUNC:
-                as->CompareFunc = ds->CompareFunc = (GLint)(params[0]);
+                as->CompareFunc = (GLint)(params[0]);
                 break;
 
             case GL_TEXTURE_MIN_LOD:
-                as->MinLod = ds->MinLod = (GLfloat)(params[0]);
+                as->MinLod = (GLfloat)(params[0]);
                 break;
 
             case GL_TEXTURE_MAX_LOD:
-                as->MaxLod = ds->MaxLod = (GLfloat)(params[0]);
+                as->MaxLod = (GLfloat)(params[0]);
                 break;
 
             case GL_TEXTURE_LOD_BIAS:
-                as->LodBias = ds->LodBias = (GLfloat)(params[0]);
+                as->LodBias = (GLfloat)(params[0]);
                 break;
 
             case GL_TEXTURE_MAX_ANISOTROPY_EXT:
                 if (!ctx->info->gl_ext_texture_filter_anisotropic)
-                    return;
-                as->MaxAnisotropyExt = ds->MaxAnisotropyExt = (GLfloat)(params[0]);
+                    return false;
+                as->MaxAnisotropyExt = (GLfloat)(params[0]);
                 break;
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
                 if (!ctx->info->gl_ext_texture_srgb_decode)
-                    return;
-                as->SrgbDecodeExt = ds->SrgbDecodeExt = (GLenum)(params[0]);
+                {
+                    Warning("Unsupported texture parameter ",Token::GLenumToString(pname)," (GL_EXT_texture_sRGB_decode extension not available), skipping.");
+                    return true;
+                }
+                as->SrgbDecodeExt = (GLenum)(params[0]);
                 break;
 
             default:
-                return;
+                return false;
         }
-        as->ver = ds->ver = mainVer.Update();
+        as->ver = mainVer.Update();
+        return true;
     }
 
     template <typename T> bool GetTexParameterv( RegalContext * ctx, GLuint tex, GLenum pname, T * params )
@@ -579,7 +587,10 @@ struct RegalSo : public RegalEmu
 
             case GL_TEXTURE_SRGB_DECODE_EXT:
                 if (!ctx->info->gl_ext_texture_srgb_decode)
-                    return false;
+                {
+                    Warning("Unsupported texture parameter ",Token::GLenumToString(pname)," (GL_EXT_texture_sRGB_decode extension not available), skipping.");
+                    return true;
+                }
                 *params = static_cast<T>(ts->SrgbDecodeExt);
                 break;
 

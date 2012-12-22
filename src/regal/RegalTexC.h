@@ -42,18 +42,22 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <vector>
+
+#include <boost/cstdint.hpp>
 
 #include "RegalEmu.h"
 #include "RegalSharedMap.h"
 
 REGAL_GLOBAL_END
 
-
-
 REGAL_NAMESPACE_BEGIN
+
+using ::boost::uint8_t;
 
 struct RegalTexC;
 struct TextureUnitState;
@@ -100,7 +104,7 @@ struct TextureLevelState {
 };
 
 struct TextureState {
-  enum { DEFAULT_FORMAT_LEVEL = -1 };
+  enum FormatLevel { DEFAULT_FORMAT_LEVEL = -1 };
 
   typedef std::vector<TextureUnitState*> BoundTextureUnits;
   typedef std::map<GLint, TextureLevelState> TextureLevelStateMap;
@@ -202,5 +206,7 @@ struct RegalTexC : public RegalEmu {
 };
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_TEXC_H__

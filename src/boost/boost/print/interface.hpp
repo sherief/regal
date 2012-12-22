@@ -37,6 +37,8 @@ template<typename T, typename C> detail::right<T,C>  right (const T &val, const 
 
 template<typename T, typename C> detail::quote<T,C>  quote (const T &val, const C q) { return detail::quote<T,C>(val,q); }
 
+template<typename T>             detail::optional<T> optional(const T &val, const bool enabled) { return detail::optional<T>(val, enabled); }
+
 template<typename T>
 detail::array<T,const char * const> array(const T *data, const std::size_t size)
 {
@@ -128,6 +130,7 @@ using boost::print::detail::hex;
 using boost::print::detail::left;
 using boost::print::detail::right;
 using boost::print::detail::quote;
+using boost::print::detail::optional;
 using boost::print::detail::array;
 using boost::print::detail::raw;
 using boost::print::detail::iterator;
@@ -224,12 +227,16 @@ inline size_t length(const void *) { return (sizeof(void *)<<1); }
 
 // Left and right
 
-template<typename T, typename C> size_t length(const left<T,C>  &val) { return std::max(length(*val._val),val._width); }
-template<typename T, typename C> size_t length(const right<T,C> &val) { return std::max(length(*val._val),val._width); }
+template<typename T, typename C> size_t length(const left<T,C>   &val) { return std::max(length(*val._val),val._width); }
+template<typename T, typename C> size_t length(const right<T,C>  &val) { return std::max(length(*val._val),val._width); }
 
 // Quoting
 
-template<typename T, typename C> size_t length(const quote<T,C> &val) { return length(*val._val) + 2*length(val._q); }
+template<typename T, typename C> size_t length(const quote<T,C>  &val) { return length(*val._val) + 2*length(val._q); }
+
+// Optional
+
+template<typename T>             size_t length(const optional<T> &val) { return val._enabled ? sizeof(void *)<<1 : 0; }
 
 // Array
 
@@ -463,6 +470,15 @@ inline void write(Iterator &i, const quote<T,C> &val)
   write(i,val._q);
   write(i,*val._val);
   write(i,val._q);
+}
+
+// Optional
+
+template<typename Iterator,typename T>
+inline void write(Iterator &i, const optional<T> &val)
+{
+  if (val._enabled)
+    write(i,val._val);
 }
 
 // Array

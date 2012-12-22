@@ -31,11 +31,14 @@ RM      ?= rm -f
 LN      ?= ln -sf
 
 ifeq ($(MODE),debug)
-OPT = -g
+OPT = $(CFLAGS.DEBUG)
 STRIP :=
-else
-OPT = $(POPT)
 endif
+
+ifeq ($(MODE),release)
+OPT = $(CFLAGS.RELEASE)
+endif
+
 INCLUDE = -Iinclude
 
 override CFLAGS := $(CFLAGS) $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
@@ -202,15 +205,50 @@ LIB.SRCS           += src/md5/src/md5.c
 endif
 
 LIB.INCLUDE        += -Isrc/zlib/include -Isrc/libpng/include
-LIB.LIBS           += -Llib -lpng -lz
-
 LIB.INCLUDE        += -Isrc/mongoose
 LIB.INCLUDE        += -Isrc/md5/include
 LIB.INCLUDE        += -Isrc/lookup3
 
-LIB.SRCS.NAMES     := $(notdir $(LIB.SRCS))
+#
+# Add debug-specific flags
+#
+
+ifeq ($(MODE),debug)
+endif
+
+#
+# In release mode we're agressive about leaving out functionality
+# in order to minimize the footprint of libRegal.so.1
+#
+
+ifeq ($(MODE),release)
+LIB.CFLAGS         += -DNDEBUG
+LIB.CFLAGS         += -DREGAL_DECL_EXPORT=1
+LIB.CFLAGS         += -DREGAL_LOG=0
+LIB.CFLAGS         += -DREGAL_LOG_ALL=0
+LIB.CFLAGS         += -DREGAL_LOG_ONCE=0
+LIB.CFLAGS         += -DREGAL_LOG_JSON=0
+LIB.CFLAGS         += -DREGAL_NO_HTTP=1
+LIB.CFLAGS         += -DREGAL_NO_ASSERT=1
+LIB.CFLAGS         += -DREGAL_NO_PNG=1
+LIB.CFLAGS         += -fomit-frame-pointer
+LIB.CFLAGS         += -DREGAL_ERROR=0
+LIB.CFLAGS         += -DREGAL_DEBUG=0
+LIB.CFLAGS         += -DREGAL_CACHE=0
+LIB.CFLAGS         += -DREGAL_EMULATION=1    # 0 for "loader only"
+LIB.CFLAGS         += -DREGAL_NO_TLS=0       # 1 for single threaded
+endif
+
+#
+# Flags for custom mode
+#
+
+ifeq ($(MODE),custom)
+endif
 
 LIB.INCLUDE        += -Isrc/boost
+
+LIB.SRCS.NAMES     := $(notdir $(LIB.SRCS))
 
 LIB.DEPS           :=
 LIB.DEPS           += include/GL/Regal.h
@@ -222,6 +260,8 @@ LIB.OBJS           := $(LIB.OBJS:.cpp=.o)
 LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
+
+LIB.LIBS           += -Llib -lpng -lz
 
 ifneq ($(filter darwin%,$(SYSTEM)),)
 LIB.LDFLAGS        += -Wl,-reexport-lGLU -L/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
@@ -250,27 +290,27 @@ endif
 
 tmp/$(SYSTEM)/regal/static/%.o: src/regal/%.cpp $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/regal/%.cpp $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/mongoose/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(CCACHE) $(CC) $(CFLAGS) $(LIB.CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 #
 # RegalGLEW

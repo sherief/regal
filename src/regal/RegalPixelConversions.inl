@@ -109,8 +109,8 @@ template <uint32_t CM_ > struct Component {
 // ===========================================================================
 
 template <> struct Component<0> {
-  static uint32_t u8( uint32_t v ) { return 0; }
-  static uint32_t p8( uint32_t v ) { return 0; }
+  static uint32_t u8( uint32_t v ) { UNUSED_PARAMETER(v); return 0; }
+  static uint32_t p8( uint32_t v ) { UNUSED_PARAMETER(v); return 0; }
 };
 
 // ===========================================================================
@@ -150,25 +150,25 @@ template <> uint32_t Read<uint8_t>( const uint8_t* src ) {
 }
 
 template <> void Write<uint32_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = ( v >>  0 ) & 255;
-  dst[ 1 ] = ( v >>  8 ) & 255;
-  dst[ 2 ] = ( v >> 16 ) & 255;
-  dst[ 3 ] = ( v >> 24 ) & 255;
+  dst[ 0 ] = static_cast<uint8_t>(( v >>  0 ) & 255);
+  dst[ 1 ] = static_cast<uint8_t>(( v >>  8 ) & 255);
+  dst[ 2 ] = static_cast<uint8_t>(( v >> 16 ) & 255);
+  dst[ 3 ] = static_cast<uint8_t>(( v >> 24 ) & 255);
 }
 
 template <> void Write<uint24_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = ( v >>  0 ) & 255;
-  dst[ 1 ] = ( v >>  8 ) & 255;
-  dst[ 2 ] = ( v >> 16 ) & 255;
+  dst[ 0 ] = static_cast<uint8_t>(( v >>  0 ) & 255);
+  dst[ 1 ] = static_cast<uint8_t>(( v >>  8 ) & 255);
+  dst[ 2 ] = static_cast<uint8_t>(( v >> 16 ) & 255);
 }
 
 template <> void Write<uint16_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = ( v >> 0 ) & 255;
-  dst[ 1 ] = ( v >> 8 ) & 255;
+  dst[ 0 ] = static_cast<uint8_t>(( v >> 0 ) & 255);
+  dst[ 1 ] = static_cast<uint8_t>(( v >> 8 ) & 255);
 }
 
 template <> void Write<uint8_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = ( v >> 0 ) & 255;
+  dst[ 0 ] = static_cast<uint8_t>(( v >> 0 ) & 255);
 }
 
 // ===========================================================================
