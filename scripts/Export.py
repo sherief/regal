@@ -22,7 +22,9 @@ from ApiUtil import typeIsVoid
 from ApiCodeGen import *
 
 import sys
-sys.path.insert(0,'scripts/regal')
+import os
+scripts = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, scripts+'/regal')
 
 from Regal                import *
 from RegalEnum            import *
