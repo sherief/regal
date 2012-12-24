@@ -195,7 +195,7 @@ def generatePublicHeader(apis, args):
   substitute['API_ENUM']         = apiEnum
   substitute['API_FUNC_DECLARE'] = apiFuncDeclare
 
-  outputCode( 'include/GL/Regal.h', publicHeaderTemplate.substitute(substitute))
+  outputCode( '%s/Regal.h' % args.incdir, publicHeaderTemplate.substitute(substitute))
 
 def apiFuncDefineCode(apis, args):
 
