@@ -88,7 +88,8 @@ def logParameter(function, parameter):
   elif n=='data' and (function.name=='glBufferSubData' or function.name=='glBufferSubDataARB'):
     return 'boost::print::raw(data,Logging::rawLimit(data ? size : 0))'
   elif t in [ 'void *', 'const void *', 'GLvoid *', 'const GLvoid *', 'GLubyte *', 'const GLubyte *'] or \
-    t in [ 'XID', 'Pixmap', 'Font', 'Display *', 'GLXDrawble', 'GLXPixmap', 'GLXContext', 'GLXVideoDeviceNV', 'GLXWindow', 'GLXPbuffer', 'GLXFBConfigID'] or \
+    t in [ 'int *', 'const int *', 'GLint *', 'const GLint *' ] or \
+    t in [ 'XID', 'XVisualInfo *', 'Pixmap', 'Font', 'Display *', 'GLXDrawble', 'GLXPixmap', 'GLXContext', 'GLXVideoDeviceNV', 'GLXWindow', 'GLXPbuffer', 'GLXFBConfigID'] or \
     t in [ 'EGLNativeWindowType', 'EGLNativePixmapType', 'EGLNativeDisplayType', 'EGLConfig', 'EGLContext', 'EGLDisplay', 'EGLSurface', 'EGLClientBuffer', 'EGLSyncKHR', 'EGLImageKHR', 'EGLStreamKHR', 'EGLSyncNV']:    
     return 'boost::print::optional(%s,Logging::pointers)'%n
 

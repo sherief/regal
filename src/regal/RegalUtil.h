@@ -215,10 +215,16 @@
 #define REGAL_CACHE_SHADER REGAL_CACHE
 #endif
 
-// Shader cache readback support by default
+// Cache writing supported by default
+
+#ifndef REGAL_CACHE_SHADER_WRITE
+#define REGAL_CACHE_SHADER_WRITE REGAL_CACHE_SHADER
+#endif
+
+// Cache reading supported by default
 
 #ifndef REGAL_CACHE_SHADER_READ
-#define REGAL_CACHE_SHADER_READ REGAL_CACHE
+#define REGAL_CACHE_SHADER_READ REGAL_CACHE_SHADER
 #endif
 
 //
@@ -347,6 +353,10 @@ strndup(const char *str, size_t n)
 extern bool  fileExists(const char *filename);
 extern FILE *fileOpen  (const char *filename, const char *mode);
 extern void  fileClose (FILE **file);
+
+//
+
+std::string makePath(const std::string &dir, const std::string &filename);
 
 // ToFloat for integer -> float
 

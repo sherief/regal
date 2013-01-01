@@ -108,6 +108,10 @@ REGAL_NAMESPACE_BEGIN
 # define REGAL_LOG_POINTERS 1
 #endif
 
+#ifndef REGAL_LOG_THREAD
+# define REGAL_LOG_THREAD 1
+#endif
+
 #ifndef REGAL_LOG_ONCE
 # define REGAL_LOG_ONCE 1
 #endif
@@ -177,6 +181,7 @@ namespace Logging
   extern bool frameTime;        // Per-frame elapsed time to info log
 
   extern bool pointers;         // Enabled by default, otherwise empty
+  extern bool thread;           // Disabled by default
 
 #if REGAL_LOG_ONCE
   extern bool once;             // Warning and error message logged once only
@@ -209,9 +214,9 @@ namespace Logging
   // Internal housekeeping
 
   extern bool initialized;
-  
+
   //
-  
+
   template<typename T>
   T rawLimit(const T size) { return maxBytes<0 ? size : ( size < maxBytes ? size : maxBytes ); }
 }

@@ -80,9 +80,10 @@ bool frameSaveColor   = false;
 bool frameSaveStencil = false;
 bool frameSaveDepth   = false;
 
-bool        cache           = REGAL_CACHE;
-bool        cacheShader     = false;
-bool        cacheShaderRead = false;
+bool        cache            = REGAL_CACHE;
+bool        cacheShader      = false;
+bool        cacheShaderRead  = false;
+bool        cacheShaderWrite = false;
 std::string cacheDirectory("./");
 
 void Init()
@@ -232,6 +233,11 @@ void Init()
 #if REGAL_CACHE_SHADER
   tmp = GetEnv( "REGAL_CACHE_SHADER" );
   if (tmp) cacheShader = atoi(tmp)!=0;
+#endif
+
+#if REGAL_CACHE_SHADER_WRITE
+  tmp = GetEnv( "REGAL_CACHE_SHADER_WRITE" );
+  if (tmp) cacheShaderWrite = atoi(tmp)!=0;
 #endif
 
 #if REGAL_CACHE_SHADER_READ

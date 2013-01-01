@@ -89,6 +89,7 @@ namespace Logging {
   int  maxBytes  = (REGAL_LOG_MAX_BYTES);
   bool frameTime = false;
   bool pointers  = (REGAL_LOG_POINTERS);
+  bool thread    = false;
   bool callback  = (REGAL_LOG_CALLBACK);
 
   bool         log          = (REGAL_LOG);
@@ -159,6 +160,11 @@ namespace Logging {
 #if REGAL_LOG_POINTERS
     const char *p = GetEnv("REGAL_LOG_POINTERS");
     if (p) pointers = atoi(p)!=0;
+#endif
+
+#if REGAL_LOG_THREAD
+    const char *t = GetEnv("REGAL_LOG_THREAD");
+    if (t) thread = atoi(t)!=0;
 #endif
 
     const char *cb = GetEnv("REGAL_LOG_CALLBACK");
@@ -256,6 +262,10 @@ namespace Logging {
 #if REGAL_LOG_POINTERS
     Info("REGAL_LOG_POINTERS ", pointers       ? "enabled" : "disabled");
 #endif
+
+#if REGAL_LOG_THREAD
+    Info("REGAL_LOG_THREAD   ", thread         ? "enabled" : "disabled");
+#endif
   }
 
   void Cleanup()
@@ -299,8 +309,12 @@ namespace Logging {
   inline string message(const char *prefix, const char *delim, const char *name, const string &str)
   {
     static const char *trimSuffix = " ...";
-    std::string trimPrefix = print_string(prefix ? prefix : "", delim ? delim : "", string(indent(),' '), name ? name : "", ' ');
-    return print_string(trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.c_str(),trimSuffix), '\n');
+    string_list trimPrefix;
+    trimPrefix << print_string(prefix ? prefix : "",delim ? delim : "");
+    if (thread)
+      trimPrefix << print_string(hex(Thread::threadId()),delim ? delim : "");
+    trimPrefix << print_string(string(indent(),' '),name ? name : "",name ? " " : "");
+    return print_string(trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.str().c_str(),trimSuffix), '\n');
   }
 
   inline string jsonObject(const char *prefix, const char *name, const string &str)
@@ -416,7 +430,10 @@ namespace Logging {
       string m = message(prefix,delim,name,str);
 
       // TODO - optional Regal source line numbers.
-#if 0
+#if 1
+      UNUSED_PARAMETER(file);
+      UNUSED_PARAMETER(line);
+#else
       m = print_string(file,":",line," ",m);
 #endif
 

@@ -93,6 +93,7 @@ namespace Config
   extern bool        cache;
   extern bool        cacheShader;
   extern bool        cacheShaderRead;
+  extern bool        cacheShaderWrite;
   extern std::string cacheDirectory;
 };
 

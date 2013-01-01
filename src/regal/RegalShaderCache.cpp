@@ -63,11 +63,11 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
     for (GLsizei i=0; i<count; ++i)
       hash = Lookup3::hashlittle(string[i], length ? length[i] : strlen(string[i]), hash);
 
-    ::std::string filename = print_string(Config::cacheDirectory,boost::print::hex(hash),".txt");
+    ::std::string filename = makePath(Config::cacheDirectory,print_string(boost::print::hex(hash),".txt"));
 
     // Cache it to disk, iff it's not there yet
 
-    if (!fileExists(filename.c_str()))
+    if (REGAL_CACHE_SHADER_WRITE && Config::cacheShaderWrite && !fileExists(filename.c_str()))
     {
       FILE *f = fopen(filename.c_str(),"wt");
       if (!f)
