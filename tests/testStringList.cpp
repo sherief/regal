@@ -31,6 +31,8 @@
 
 #include "gtest/gtest.h"
 
+#include <GL/Regal.h>
+
 #include <string>
 
 #include "boost/print/string_list.hpp"

@@ -4703,7 +4703,7 @@ static void REGAL_CALL code_glTexParameterf(GLenum target, GLenum pname, GLfloat
     _code << indent << "glTexParameterf(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << param;
+    _code << ", "; _code << GLTexParameterToString(pname,param);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -4720,7 +4720,7 @@ static void REGAL_CALL code_glTexParameterfv(GLenum target, GLenum pname, const 
     _code << indent << "glTexParameterfv(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << "/* params = ?? */";
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -4737,7 +4737,7 @@ static void REGAL_CALL code_glTexParameteri(GLenum target, GLenum pname, GLint p
     _code << indent << "glTexParameteri(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << param;
+    _code << ", "; _code << GLTexParameterToString(pname,param);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -4754,7 +4754,7 @@ static void REGAL_CALL code_glTexParameteriv(GLenum target, GLenum pname, const 
     _code << indent << "glTexParameteriv(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << "/* params = ?? */";
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -10000,7 +10000,7 @@ static void REGAL_CALL code_glTexParameterIiv(GLenum target, GLenum pname, const
     _code << indent << "glTexParameterIiv(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -10017,7 +10017,7 @@ static void REGAL_CALL code_glTexParameterIuiv(GLenum target, GLenum pname, cons
     _code << indent << "glTexParameterIuiv(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -32772,7 +32772,7 @@ static void REGAL_CALL code_glTexParameterIivEXT(GLenum target, GLenum pname, co
     _code << indent << "glTexParameterIivEXT(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -32789,7 +32789,7 @@ static void REGAL_CALL code_glTexParameterIuivEXT(GLenum target, GLenum pname, c
     _code << indent << "glTexParameterIuivEXT(";
                    _code << toString(target);
     _code << ", "; _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << GLTexParameterToString(pname,params);
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }

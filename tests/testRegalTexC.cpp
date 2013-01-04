@@ -31,6 +31,8 @@
 
 #include "gtest/gtest.h"
 
+#include <GL/Regal.h>
+
 #include "RegalTexC.h"
 
 namespace {

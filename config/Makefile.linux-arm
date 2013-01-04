@@ -13,6 +13,7 @@ LDFLAGS.DYNAMIC = -shared
 WARN = -Wall -W -Wno-unused-parameter
 CFLAGS.DEBUG   = -g -O0
 CFLAGS.RELEASE = -O1
+LIB.CFLAGS    += -DREGAL_SYS_GLX=1 -DREGAL_SYS_EGL=1
 BIN.SUFFIX =
 LIB.SONAME = lib$(NAME).so.$(SO_MAJOR)
 LIB.DEVLNK = lib$(NAME).so

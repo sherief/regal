@@ -57,7 +57,7 @@ INCLUDE = -Iinclude
 
 override CFLAGS := $(OPT) $(CFLAGS) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
 
-all: regal.lib glew.lib glu.lib glut.lib regal.bin
+all: regal.lib glew.lib glu.lib glut.lib regal.bin bin/regaltest
 
 # REGAL shared and static libraries
 
@@ -218,6 +218,9 @@ ifeq ($(filter -DREGAL_NO_MD5%,$(CFLAGS)),)
 LIB.SRCS           += src/md5/src/md5.c
 endif
 
+LIB.SRCS           += src/jsonsl/jsonsl.c
+LIB.CFLAGS         += -DJSONSL_STATE_GENERIC=1
+
 LIB.INCLUDE        += -Isrc/zlib/include -Isrc/libpng/include
 LIB.INCLUDE        += -Isrc/mongoose
 LIB.INCLUDE        += -Isrc/md5/include
@@ -323,6 +326,14 @@ tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(LIB.DEPS)
 	$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(LIB.DEPS)
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+
+tmp/$(SYSTEM)/regal/static/%.o: src/jsonsl/%.c $(LIB.DEPS)
+	@mkdir -p $(dir $@)
+	$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+
+tmp/$(SYSTEM)/regal/shared/%.o: src/jsonsl/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
 	$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
@@ -744,31 +755,31 @@ ifneq ($(STRIP),)
 endif
 
 #
-# RegalTests
+# regaltest
 #
 
-REGALTESTS.SRCS       += tests/test_main.cpp
-REGALTESTS.SRCS       += tests/testRegalTexC.cpp
-REGALTESTS.SRCS       += tests/testRegalPixelConversions.cpp
-REGALTESTS.SRCS       += tests/testStringList.cpp
-REGALTESTS.SRCS.NAMES := $(notdir $(REGALTESTS.SRCS))
-REGALTESTS.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTESTS.SRCS.NAMES))
-REGALTESTS.OBJS       := $(REGALTESTS.OBJS:.cpp=.o)
-REGALTESTS.CFLAGS     := -Isrc/googletest/include -Isrc/regal -Isrc/boost
-REGALTESTS.LIBS       := -Llib -lgtest -lRegal -lm -ldl
+REGALTEST.SRCS       += tests/test_main.cpp
+REGALTEST.SRCS       += tests/testRegalTexC.cpp
+REGALTEST.SRCS       += tests/testRegalPixelConversions.cpp
+REGALTEST.SRCS       += tests/testStringList.cpp
+REGALTEST.SRCS.NAMES := $(notdir $(REGALTEST.SRCS))
+REGALTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTEST.SRCS.NAMES))
+REGALTEST.OBJS       := $(REGALTEST.OBJS:.cpp=.o)
+REGALTEST.CFLAGS     := -Isrc/googletest/include -Isrc/regal -Isrc/boost
+REGALTEST.LIBS       := -Llib -lgtest -lRegal -lm -ldl
 
 tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)
-	$(CCACHE) $(CC) $(LIB.CFLAGS) $(REGALTESTS.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(CCACHE) $(CC) $(LIB.CFLAGS) $(REGALTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
-bin/RegalTests: bin $(REGALTESTS.OBJS) lib/$(GTEST.STATIC) lib/$(LIB.STATIC)
-	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTESTS.OBJS) $(LIB.LDFLAGS) $(REGALTESTS.LIBS)
+bin/regaltest: bin $(REGALTEST.OBJS) lib/$(GTEST.STATIC) lib/$(LIB.STATIC) lib/$(LIBPNG.STATIC) lib/$(ZLIB.STATIC)
+	$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTEST.OBJS) $(LIB.LDFLAGS) $(REGALTEST.LIBS) $(LIB.LIBS)
 ifneq ($(STRIP),)
 	$(STRIP) -x $@
 endif
 
-test: bin/RegalTests
-	bin/RegalTests
+test: bin/regaltest
+	bin/regaltest
 
 ######################################
 

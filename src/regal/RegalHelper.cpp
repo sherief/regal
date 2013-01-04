@@ -692,16 +692,16 @@ namedStringParams(const GLenum pname)
 
 }
 
-/* Convert glShaderSource parameters into NULL-terminated array of NUL-terminated strings. */
+/* Convert glShaderSource parameters into NUL-terminated string. */
 
-const GLchar **
+char *
 shaderSourceStrings(const GLsizei count, const GLchar **string,  const GLint *length)
 {
-  size_t total;   /* Total size of copy (bytes)      */
-  GLchar **tmp;   /* Copy of string array            */
-  GLsizei i;      /* Input iterator                  */
-  GLchar *j;      /* Output iterator                 */
-  size_t  k;      /* Scratch space for string length */
+  size_t total;  /* Total size of copy (bytes)      */
+  char *tmp;     /* Copy of string array            */
+  GLsizei i;     /* Input iterator                  */
+  GLchar *j;     /* Output iterator                 */
+  size_t  k;     /* Scratch space for string length */
 
   if (count<=0)
     return NULL;
@@ -713,29 +713,26 @@ shaderSourceStrings(const GLsizei count, const GLchar **string,  const GLint *le
     total += length ? length[i] : (string[i] ? strlen(string[i]) : 0);
   total += count;                        /* One NUL-terminator per string */
   total *= sizeof(GLchar);
-  total += (count + 1)*sizeof(GLchar *); /* One GLchar pointer per string, plus NULL terminator */
+  total += 1;                            /*  NULL terminator */
 
   /* Do the allocation */
 
-  tmp = (GLchar **) malloc(total);
+  tmp = (char *) malloc(total);
 
   /* Copy the strings */
 
-  j = (GLchar *) (tmp + count + 1);
+  j = tmp;
   for (i=0; i<count; ++i)
   {
     k = length ? length[i] : (string[i] ? strlen(string[i]) : 0);
-    tmp[i] = j;
     memcpy(j,string[i],k);
     j += k;
-    *(j++) = '\0';
   }
+  *(j++) = '\0';
 
-  tmp[count] = NULL;
+  RegalAssert(tmp+total == j);
 
-  RegalAssert(((GLchar *) tmp) + total == j);
-
-  return (const GLchar **) tmp;
+  return tmp;
 }
 
 }

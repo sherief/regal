@@ -103,14 +103,30 @@ void Init()
   if (tmp) forceES2Profile = atoi(tmp)!=0;
 #endif
 
+  // With REGAL_SYS_GLX && REGAL_SYS_EGL
+  // we infer each from other, if specified,
+  // to behave as a toggle.
+
 #if REGAL_SYS_GLX
   tmp = GetEnv( "REGAL_SYS_GLX" );
-  if (tmp) sysGLX = atoi(tmp)!=0;
+  if (tmp)
+  {
+    sysGLX = atoi(tmp)!=0;
+#if REGAL_SYS_EGL
+    sysEGL = !sysGLX;
+#endif
+  }
 #endif
 
 #if REGAL_SYS_EGL
   tmp = GetEnv( "REGAL_SYS_EGL" );
-  if (tmp) sysEGL = atoi(tmp)!=0;
+  if (tmp)
+  {
+    sysEGL = atoi(tmp)!=0;
+#if REGAL_SYS_GLX
+    sysGLX = !sysEGL;
+#endif
+   }
 #endif
 
   // Default to GLX, if necessary

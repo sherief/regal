@@ -31,13 +31,15 @@
 
 #include "gtest/gtest.h"
 
+#include <GL/Regal.h>
+
 #include "RegalPixelConversions.h"
 
 namespace {
 
-#include "RegalPixelConversions.inl"
-
 using namespace Regal;
+
+#include "RegalPixelConversions.inl"
 
 TEST( RegalPixelConversions, StaticLZC ) {
   EXPECT_EQ( 0, StaticLZC<0>::value );

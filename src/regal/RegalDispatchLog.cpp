@@ -2827,7 +2827,7 @@ static void REGAL_CALL log_glTexParameterf(GLenum target, GLenum pname, GLfloat 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterf)(target, pname, param);
-    Driver("glTexParameterf","(", toString(target), ", ", toString(pname), ", ", param, ")");
+    Driver("glTexParameterf","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,param), ")");
 }
 
 static void REGAL_CALL log_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
@@ -2837,7 +2837,7 @@ static void REGAL_CALL log_glTexParameterfv(GLenum target, GLenum pname, const G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterfv)(target, pname, params);
-    Driver("glTexParameterfv","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,helper::size::texParameterv(pname)), ")");
+    Driver("glTexParameterfv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 static void REGAL_CALL log_glTexParameteri(GLenum target, GLenum pname, GLint param)
@@ -2847,7 +2847,7 @@ static void REGAL_CALL log_glTexParameteri(GLenum target, GLenum pname, GLint pa
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameteri)(target, pname, param);
-    Driver("glTexParameteri","(", toString(target), ", ", toString(pname), ", ", param, ")");
+    Driver("glTexParameteri","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,param), ")");
 }
 
 static void REGAL_CALL log_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
@@ -2857,7 +2857,7 @@ static void REGAL_CALL log_glTexParameteriv(GLenum target, GLenum pname, const G
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameteriv)(target, pname, params);
-    Driver("glTexParameteriv","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,helper::size::texParameterv(pname)), ")");
+    Driver("glTexParameteriv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 static void REGAL_CALL log_glTranslated(GLdouble x, GLdouble y, GLdouble z)
@@ -5854,7 +5854,7 @@ static void REGAL_CALL log_glTexParameterIiv(GLenum target, GLenum pname, const 
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterIiv)(target, pname, params);
-    Driver("glTexParameterIiv","(", toString(target), ", ", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
+    Driver("glTexParameterIiv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 static void REGAL_CALL log_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params)
@@ -5864,7 +5864,7 @@ static void REGAL_CALL log_glTexParameterIuiv(GLenum target, GLenum pname, const
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterIuiv)(target, pname, params);
-    Driver("glTexParameterIuiv","(", toString(target), ", ", toString(pname), ", ", params, ")");
+    Driver("glTexParameterIuiv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 static void REGAL_CALL log_glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar **varyings, GLenum bufferMode)
@@ -18791,7 +18791,7 @@ static void REGAL_CALL log_glTexParameterIivEXT(GLenum target, GLenum pname, con
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterIivEXT)(target, pname, params);
-    Driver("glTexParameterIivEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
+    Driver("glTexParameterIivEXT","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 static void REGAL_CALL log_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params)
@@ -18801,7 +18801,7 @@ static void REGAL_CALL log_glTexParameterIuivEXT(GLenum target, GLenum pname, co
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glTexParameterIuivEXT)(target, pname, params);
-    Driver("glTexParameterIuivEXT","(", toString(target), ", ", toString(pname), ", ", params, ")");
+    Driver("glTexParameterIuivEXT","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
 }
 
 // GL_EXT_texture_object

@@ -2984,7 +2984,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterf(GLenum target, GLenum pname, GLfloat param)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterf","(", toString(target), ", ", toString(pname), ", ", param, ")");
+    App("glTexParameterf","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,param), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -2994,7 +2994,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterfv","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,helper::size::texParameterv(pname)), ")");
+    App("glTexParameterfv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3004,7 +3004,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameteri(GLenum target, GLenum pname, GLint param)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameteri","(", toString(target), ", ", toString(pname), ", ", param, ")");
+    App("glTexParameteri","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,param), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -3014,7 +3014,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameteriv","(", toString(target), ", ", toString(pname), ", ", boost::print::array(params,helper::size::texParameterv(pname)), ")");
+    App("glTexParameteriv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -5995,7 +5995,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterIiv(GLenum target, GLenum pname, const GLint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterIiv","(", toString(target), ", ", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
+    App("glTexParameterIiv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -6005,7 +6005,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterIuiv","(", toString(target), ", ", toString(pname), ", ", params, ")");
+    App("glTexParameterIuiv","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18881,7 +18881,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterIivEXT(GLenum target, GLenum pname, const GLint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterIivEXT","(", toString(target), ", ", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
+    App("glTexParameterIivEXT","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -18891,7 +18891,7 @@ extern "C" {
   REGAL_DECL void REGAL_CALL glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params)
   {
     RegalContext *_context = REGAL_GET_CONTEXT();
-    App("glTexParameterIuivEXT","(", toString(target), ", ", toString(pname), ", ", params, ")");
+    App("glTexParameterIuivEXT","(", toString(target), ", ", toString(pname), ", ", GLTexParameterToString(pname,params), ")");
     if (!_context) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);

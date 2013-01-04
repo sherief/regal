@@ -58,6 +58,8 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 using ::boost::uint8_t;
+using ::boost::uint16_t;
+using ::boost::uint32_t;
 
 struct RegalTexC;
 struct TextureUnitState;

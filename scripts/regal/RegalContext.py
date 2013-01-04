@@ -79,6 +79,7 @@ ${LICENSE}
 
 REGAL_GLOBAL_BEGIN
 
+#include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalDispatcher.h"
 #include "RegalDispatchError.h"

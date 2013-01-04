@@ -29,9 +29,11 @@ template<typename T> detail::binary<T> binary(const T &val) { return detail::bin
 template<typename T> detail::octal<T>  octal(const T &val)  { return detail::octal<T>(val); }
 template<typename T> detail::hex<T>    hex(const T &val, const bool upperCase = false) { return detail::hex<T>(val,upperCase); }
 
+inline               detail::pad<char>     pad   (              const size_t width) { return detail::pad<char>(width,' '); }
 template<typename T> detail::left<T,char>  left  (const T &val, const size_t width) { return detail::left<T,char>(val,width,' '); }
 template<typename T> detail::right<T,char> right (const T &val, const size_t width) { return detail::right<T,char>(val,width,' '); }
 
+template<            typename C> detail::pad<C>      pad   (              const size_t width, const C padding) { return detail::pad<C>(width,padding); }
 template<typename T, typename C> detail::left<T,C>   left  (const T &val, const size_t width, const C padding) { return detail::left<T,C>(val,width,padding); }
 template<typename T, typename C> detail::right<T,C>  right (const T &val, const size_t width, const C padding) { return detail::right<T,C>(val,width,padding); }
 
@@ -121,31 +123,32 @@ detail::trim<T,U> trim(const T &str, const U delim, const std::size_t n, const T
 
 namespace boost { namespace print { namespace extend {
 
-using std::size_t;
-using std::strlen;
+using ::std::size_t;
+using ::std::strlen;
 
-using boost::print::detail::binary;
-using boost::print::detail::octal;
-using boost::print::detail::hex;
-using boost::print::detail::left;
-using boost::print::detail::right;
-using boost::print::detail::quote;
-using boost::print::detail::optional;
-using boost::print::detail::array;
-using boost::print::detail::raw;
-using boost::print::detail::iterator;
-using boost::print::detail::trim;
+using ::boost::print::detail::binary;
+using ::boost::print::detail::octal;
+using ::boost::print::detail::hex;
+using ::boost::print::detail::pad;
+using ::boost::print::detail::left;
+using ::boost::print::detail::right;
+using ::boost::print::detail::quote;
+using ::boost::print::detail::optional;
+using ::boost::print::detail::array;
+using ::boost::print::detail::raw;
+using ::boost::print::detail::iterator;
+using ::boost::print::detail::trim;
 
-using boost::print::detail::signed_length;
-using boost::print::detail::unsigned_length;
-using boost::print::detail::sprintf_length;
-using boost::print::detail::write_signed;
-using boost::print::detail::write_unsigned;
-using boost::print::detail::write_sprintf;
-using boost::print::detail::write_binary;
-using boost::print::detail::write_octal;
-using boost::print::detail::write_hex;
-using boost::print::detail::write_iterator;
+using ::boost::print::detail::signed_length;
+using ::boost::print::detail::unsigned_length;
+using ::boost::print::detail::sprintf_length;
+using ::boost::print::detail::write_signed;
+using ::boost::print::detail::write_unsigned;
+using ::boost::print::detail::write_sprintf;
+using ::boost::print::detail::write_binary;
+using ::boost::print::detail::write_octal;
+using ::boost::print::detail::write_hex;
+using ::boost::print::detail::write_iterator;
 
 // Determine the length (number of characters) for various types
 
@@ -224,6 +227,10 @@ inline size_t length(const hex<unsigned long>      &) { return sizeof(unsigned l
 inline size_t length(const hex<unsigned long long> &) { return sizeof(unsigned long long)<<1; }
 
 inline size_t length(const void *) { return (sizeof(void *)<<1); }
+
+// Pad
+
+template<typename C> size_t length(const pad<C> &val) { return val._width; }
 
 // Left and right
 
@@ -442,10 +449,19 @@ template<typename Iterator> inline void write(Iterator &i, const void *val)
   write_hex(i,reinterpret_cast<size_t>(val),sizeof(size_t)<<1,false);
 }
 
+// Pad
+
+template<typename Iterator,typename C>
+inline void write(Iterator &i, const pad<C> &val)
+{
+  for (size_t j=0; j<val._width; ++j)
+    write(i,val._padding);
+}
+
 // Left and right
 
 template<typename Iterator, typename T, typename C>
-inline void write(Iterator &i, const left<T,C>  &val)
+inline void write(Iterator &i, const left<T,C> &val)
 {
   write(i,*val._val);
   const size_t len = length(*val._val);

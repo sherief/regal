@@ -41,15 +41,15 @@
 // StaticLZC<12>::value == 3, StaticLZC<256>::value == 8, etc.
 // ===========================================================================
 
-template <uint32_t V> struct StaticLZC { enum { value = ( V & 1 ) == 0 ? 1 + StaticLZC<V/2>::value : 0 }; };
-template <> struct StaticLZC<0> { enum { value = 0 }; };
+template <uint32_t V> struct StaticLZC { enum Value { value = ( V & 1 ) == 0 ? 1 + StaticLZC<V/2>::value : 0 }; };
+template <> struct StaticLZC<0> { enum Value { value = 0 }; };
 
 // ===========================================================================
 // Static is-power-of-two.
 // StaticIsPow2<4>::value == 1, StaticIsPow2<5>::value == 0, etc.
 // ===========================================================================
 
-template <uint32_t V> struct StaticIsPow2 { enum { value = ( V & ( V - 1 ) ) == 0 }; };
+template <uint32_t V> struct StaticIsPow2 { enum Value { value = ( V & ( V - 1 ) ) == 0 }; };
 
 // ===========================================================================
 // 24 bit RGB is a bit special, but is otherwise treated like any other
@@ -70,7 +70,7 @@ struct uint24_t;
 // ===========================================================================
 
 template <uint32_t CM_ > struct Component {
-  enum {
+  enum Value {
     COMPONENT_MASK = CM_,
     LEADING_BIT_COUNT = StaticLZC<COMPONENT_MASK>::value,
     COMPONENT_BIT_COUNT = StaticLZC<~( COMPONENT_MASK >> LEADING_BIT_COUNT )>::value

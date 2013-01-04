@@ -61,7 +61,7 @@ namespace helper {
     std::size_t namedStringParams(const GLenum);
   }
 
-   const GLchar **shaderSourceStrings(const GLsizei, const GLchar **, const GLint *);
+   char *shaderSourceStrings(const GLsizei, const GLchar **, const GLint *);
 }
 
 REGAL_NAMESPACE_END
