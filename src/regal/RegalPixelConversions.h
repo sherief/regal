@@ -66,17 +66,18 @@ using ::boost::uint32_t;
 // component (such as Alpha or Blue), the unpacked form will have zero values
 // for that component.
 
-//typedef void Unpacker32 ( const void* src,     uint32_t* dst, size_t cnt );
-//typedef void Packer32   ( const uint32_t* src, void* dst,     size_t cnt );
+// typedef void Unpacker32 ( const void* src,     uint32_t* dst, size_t cnt );
+// typedef void Packer32   ( const uint32_t* src, void* dst,     size_t cnt );
 
 // These functions retrieve a specific packer or unpacker function for a
 // specific OpenGL texture format and type, and return NULL if no such
 // conversion is known.
 
-//Unpacker32* GetUnpacker32 ( GLenum format, GLenum type );
-//Packer32*   GetPacker32   ( GLenum format, GLenum type );
+// Unpacker32 *GetUnpacker32 ( GLenum format, GLenum type );
+// Packer32   *GetPacker32   ( GLenum format, GLenum type );
 
-class IConversion {
+class IConversion
+{
  public:
   virtual void Unpack32 ( const void*     src, uint32_t* dst, size_t cnt ) const = 0;
   virtual void Pack32   ( const uint32_t* src, void*     dst, size_t cnt ) const = 0;
@@ -87,7 +88,7 @@ class IConversion {
   ~IConversion() {};
 };
 
-IConversion* GetConversionInterface( GLenum format, GLenum type );
+IConversion *GetConversionInterface(GLenum format, GLenum type);
 
 REGAL_NAMESPACE_END
 

@@ -146,7 +146,7 @@ RegalContext::Init()
     #if REGAL_EMU_TEXC
     if (Config::enableEmuTexC)
     {
-      texc = new RegalTexC;
+      texc = new Emu::TexC;
       emuLevel = 0;
       texc->Init(*this);
     }
@@ -162,7 +162,7 @@ RegalContext::Init()
     #if REGAL_EMU_SO
     if (Config::enableEmuSo)
     {
-      so = new RegalSo;
+      so = new Emu::So;
       emuLevel = 3;
       so->Init(*this);
     }

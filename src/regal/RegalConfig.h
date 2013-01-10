@@ -78,13 +78,17 @@ namespace Config
 
   // Initial context configuration
 
-  extern int  frameLimit;       // Maximum number of frames
+  extern int  frameLimit;        // Maximum number of frames
 
-  extern bool frameMd5Color;    // Log md5 hash of color buffer
+  extern bool frameMd5Color;     // Log md5 hash of color buffer
   extern bool frameMd5Stencil;
   extern bool frameMd5Depth;
 
-  extern bool frameSaveColor;   // Save color buffer to PNG file
+  extern unsigned char frameMd5ColorMask;   // bitwise mask for md5 hashing purposes
+  extern unsigned char frameMd5StencilMask; //
+  extern size_t        frameMd5DepthMask;   //
+
+  extern bool frameSaveColor;    // Save color buffer to PNG file
   extern bool frameSaveStencil;
   extern bool frameSaveDepth;
 

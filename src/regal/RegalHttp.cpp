@@ -111,7 +111,7 @@ namespace Http
     {
       case MG_EVENT_LOG:
       {
-        HTrace(request_info->ev_data);
+        HTrace(request_info->ev_data ? static_cast<const char *>(request_info->ev_data) : "");
         break;
       }
 

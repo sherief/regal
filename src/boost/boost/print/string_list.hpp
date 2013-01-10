@@ -335,7 +335,7 @@ template<typename T> void string_list<T>::push_back(const size_t count, const ch
 
 template<typename T> void string_list<T>::insert(const size_type i, const value_type &x)
 {
-  if (i>=0 && i<=_list.size())
+  if (i<=_list.size())
   {
     _list.push_back(x);                     // Append to the end
 
@@ -375,7 +375,7 @@ template<typename T> void string_list<T>::insert(const size_type i, const string
 
 template<typename T> void string_list<T>::insert(const size_type i, const size_type n, const value_type &x)
 {
-  if (i>=0 && i<=_list.size() && n>0)
+  if (i<=_list.size() && n>0)
   {
     const size_type m = _list.size()-i;
     for (size_type k=0; k<n; ++k)

@@ -51,7 +51,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace {
+namespace Conversion {
 
 #include "RegalPixelConversions.inl"
 
@@ -62,44 +62,54 @@ namespace {
 // functionality needed to convert that format.
 // ===========================================================================
 
-struct RegistryBase {
+struct RegistryBase
+{
   typedef std::map < std::pair < GLenum, GLenum >, IConversion* > ConversionMap;
   static ConversionMap conversionMap;
 
-  static IConversion* Lookup( GLenum format, GLenum type ) {
+  static inline IConversion *Lookup(GLenum format, GLenum type)
+  {
     ConversionMap::const_iterator i = conversionMap.find( std::make_pair( format, type ) );
-    if ( i == RegistryBase::conversionMap.end() ) {
+    if (i == RegistryBase::conversionMap.end())
       return NULL;
-    }
     return i->second;
   }
 };
 
 RegistryBase::ConversionMap RegistryBase::conversionMap;
 
-template < GLenum format, GLenum type, typename T > struct Registry : public RegistryBase, public IConversion {
+template < GLenum format, GLenum type, typename T >
+struct Registry : public RegistryBase, public IConversion
+{
   enum {FORMAT=format, TYPE=type};
-  Registry() {
+
+  Registry()
+  {
     conversionMap[ std::make_pair( format, type ) ] = this;
   }
 
-  virtual void Unpack32( const void* src, uint32_t* dst, size_t cnt ) const {
+  virtual void Unpack32( const void* src, uint32_t* dst, size_t cnt ) const
+  {
     return T::Unpack32( src, dst, cnt );
   }
 
-  virtual void Pack32( const uint32_t* src, void* dst, size_t cnt ) const {
+  virtual void Pack32( const uint32_t* src, void* dst, size_t cnt ) const
+  {
     return T::Pack32( src, dst, cnt );
   }
 
-  virtual size_t GetPackedPixelByteSize() {
+  virtual size_t GetPackedPixelByteSize()
+  {
     return T::PACKED_BYTES;
   }
 
-  virtual size_t GetPackedPixelAlignmentSize() {
+  virtual size_t GetPackedPixelAlignmentSize()
+  {
     return T::ALIGNMENT;
   }
 
-  virtual size_t GetPackedPixelComponents() {
+  virtual size_t GetPackedPixelComponents()
+  {
     return T::COMPONENT_COUNT;
   }
 };
@@ -114,14 +124,17 @@ template < GLenum format, GLenum type, typename T > struct Registry : public Reg
 // ===========================================================================
 
 // 8bpp
-Registry<GL_ALPHA,           GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1,    0,    0,    0, 0xff> > a_8_;
-Registry<GL_LUMINANCE,       GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1, 0xff,    0,    0,    0> > l_8_;
+Registry<GL_ALPHA,           GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1,      0,      0,      0,   0xff>     > a_8_;
+Registry<GL_LUMINANCE,       GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1,   0xff,      0,      0,      0>     > l_8_;
+
+// 15bpp
+Registry<GL_RGBA,            GL_RGB5,                   Pixel<uint16_t, 2, 0x001f, 0x03e0, 0x7c00,      0>     > rgb_555_;
 
 // 16bpp
-Registry<GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE,          Pixel<uint16_t, 2, 0xff,    0,    0, 0xff> > la_88_;
-Registry<GL_RGB,             GL_UNSIGNED_SHORT_5_6_5,   Pixel<uint16_t, 2, 0x001f, 0x07e0, 0xf800,      0> > rgb_565_;
-Registry<GL_RGBA,            GL_UNSIGNED_SHORT_4_4_4_4, Pixel<uint16_t, 2, 0x000f, 0x00f0, 0x0f00, 0xf000> > rgba_4444_;
-Registry<GL_RGBA,            GL_UNSIGNED_SHORT_5_5_5_1, Pixel<uint16_t, 2, 0x001f, 0x03e0, 0x7c00, 0x8000> > rgba_5551_;
+Registry<GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE,          Pixel<uint16_t, 2, 0xff,    0,    0, 0xff>             > la_88_;
+Registry<GL_RGB,             GL_UNSIGNED_SHORT_5_6_5,   Pixel<uint16_t, 2, 0x001f, 0x07e0, 0xf800,      0>     > rgb_565_;
+Registry<GL_RGBA,            GL_UNSIGNED_SHORT_4_4_4_4, Pixel<uint16_t, 2, 0x000f, 0x00f0, 0x0f00, 0xf000>     > rgba_4444_;
+Registry<GL_RGBA,            GL_UNSIGNED_SHORT_5_5_5_1, Pixel<uint16_t, 2, 0x001f, 0x03e0, 0x7c00, 0x8000>     > rgba_5551_;
 
 // 24bpp (needs some special handling)
 Registry<GL_RGB,             GL_UNSIGNED_BYTE,          PixelAny<uint24_t, 3, 0x0000ff, 0x00ff00, 0xff0000, 0> > rgb_888_;
@@ -132,10 +145,9 @@ Registry<GL_RGBA,            GL_UNSIGNED_BYTE,          Pixel<uint32_t, 4, 0x000
 
 }  // namespace
 
-
-
-IConversion* GetConversionInterface( GLenum format, GLenum type ) {
-  return RegistryBase::Lookup( format, type );
+IConversion *GetConversionInterface(GLenum format, GLenum type)
+{
+  return Conversion::RegistryBase::Lookup(format, type);
 }
 
 REGAL_NAMESPACE_END

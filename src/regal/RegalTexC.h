@@ -61,17 +61,21 @@ using ::boost::uint8_t;
 using ::boost::uint16_t;
 using ::boost::uint32_t;
 
-struct RegalTexC;
+namespace Emu {
+
+struct TexC;
 struct TextureUnitState;
 
-struct PixelStorageStateGLES20 {
+struct PixelStorageStateGLES20
+{
   GLint alignment;
 
   void Reset();
 };
 
-struct RegalConvertedBuffer {
-  RegalConvertedBuffer( const PixelStorageStateGLES20& pss, GLenum targetFormat, GLenum targetType );
+struct ConvertedBuffer
+{
+  ConvertedBuffer( const PixelStorageStateGLES20& pss, GLenum targetFormat, GLenum targetType );
 
   bool ConvertFrom( GLsizei width, GLsizei height, GLenum sourceFormat, GLenum sourceType, const GLvoid* sourcePixels );
 
@@ -86,11 +90,12 @@ struct RegalConvertedBuffer {
 
  private:
   // Disallow copying.
-  RegalConvertedBuffer( const RegalConvertedBuffer& );
-  RegalConvertedBuffer& operator= ( const RegalConvertedBuffer& );
+  ConvertedBuffer( const ConvertedBuffer& );
+  ConvertedBuffer& operator= ( const ConvertedBuffer& );
 };
 
-struct TextureLevelState {
+struct TextureLevelState
+{
   TextureLevelState()
   : format( GL_RGBA )
   , type( GL_UNSIGNED_BYTE )
@@ -105,7 +110,8 @@ struct TextureLevelState {
   GLenum type;
 };
 
-struct TextureState {
+struct TextureState
+{
   enum FormatLevel { DEFAULT_FORMAT_LEVEL = -1 };
 
   typedef std::vector<TextureUnitState*> BoundTextureUnits;
@@ -132,7 +138,8 @@ struct TextureState {
 
 struct TextureUnitState;
 
-struct TextureStateRef {
+struct TextureStateRef
+{
   TextureStateRef();
   ~TextureStateRef();
   void Reset( TextureUnitState* unit, TextureState* texture );
@@ -153,7 +160,8 @@ struct TextureStateRef {
   TextureUnitState* unit_;
 };
 
-struct TextureUnitState {
+struct TextureUnitState
+{
   TextureStateRef binding2D_;
   TextureStateRef bindingCubeMap_;
   TextureStateRef bindingRectangleARB_;
@@ -165,8 +173,9 @@ struct TextureUnitState {
 };
 
 
-struct RegalTexC : public RegalEmu {
-  RegalTexC();
+struct TexC : public RegalEmu
+{
+  TexC();
 
   void Init( RegalContext &ctx );
 
@@ -206,6 +215,8 @@ struct RegalTexC : public RegalEmu {
   TextureUnitState textureUnitArrayState[ REGAL_EMU_MAX_TEXTURE_UNITS ];
   TextureState textureZero;
 };
+
+}
 
 REGAL_NAMESPACE_END
 

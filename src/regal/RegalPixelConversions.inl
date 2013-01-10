@@ -69,10 +69,12 @@ struct uint24_t;
 // form, though represented as a 32 bit value for efficiency.
 // ===========================================================================
 
-template <uint32_t CM_ > struct Component {
-  enum Value {
-    COMPONENT_MASK = CM_,
-    LEADING_BIT_COUNT = StaticLZC<COMPONENT_MASK>::value,
+template <uint32_t CM_ > struct Component
+{
+  enum Value
+  {
+    COMPONENT_MASK      = CM_,
+    LEADING_BIT_COUNT   = StaticLZC<COMPONENT_MASK>::value,
     COMPONENT_BIT_COUNT = StaticLZC<~( COMPONENT_MASK >> LEADING_BIT_COUNT )>::value
   };
 
@@ -80,7 +82,9 @@ template <uint32_t CM_ > struct Component {
   // the full range of the unpacked integer size. For example from a four bit
   // packed form to an eight bit form, the value 0x0 is expanded to 0x00, 0x5
   // becomes 0x55, and 0xf becomes 0xff.
-  template <size_t OUTPUT_BITS> static uint32_t expand_( uint32_t v )
+
+  template <size_t OUTPUT_BITS>
+  static inline uint32_t expand_( uint32_t v )
   {
     v |= v >> ( ( ( COMPONENT_BIT_COUNT *  1 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT *  1 ) : 0 );
     v |= v >> ( ( ( COMPONENT_BIT_COUNT *  2 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT *  2 ) : 0 );
@@ -88,17 +92,18 @@ template <uint32_t CM_ > struct Component {
     v |= v >> ( ( ( COMPONENT_BIT_COUNT *  8 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT *  8 ) : 0 );
     v |= v >> ( ( ( COMPONENT_BIT_COUNT * 16 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT * 16 ) : 0 );
     v |= v >> ( ( ( COMPONENT_BIT_COUNT * 32 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT * 32 ) : 0 );
-
     return v;
   }
 
-  static uint32_t u8( uint32_t v ) {
+  static inline uint32_t u8( uint32_t v )
+  {
     v = ( v & COMPONENT_MASK ) >> LEADING_BIT_COUNT;
     v <<= 8 - COMPONENT_BIT_COUNT;
     return expand_<8>( v );
   }
 
-  static uint32_t p8( uint32_t v ) {
+  static inline uint32_t p8( uint32_t v )
+  {
     return ( v >> ( 8 - COMPONENT_BIT_COUNT ) ) << LEADING_BIT_COUNT;
   }
 };
@@ -177,7 +182,8 @@ template <> void Write<uint8_t>( uint8_t* dst, uint32_t v ) {
 // ===========================================================================
 
 template <typename PT_, uint32_t PBS_, uint32_t RM_, uint32_t GM_, uint32_t BM_, uint32_t AM_>
-struct PixelAny {
+struct PixelAny
+{
   typedef PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_> SelfType;
   typedef PT_ PixelType;
 
@@ -240,8 +246,17 @@ struct PixelAny {
   }
 };
 
+// Template parameters:
+//  - PT_   pixel type for stepping through input pixel data
+//  - PBS_
+//  - RM_   red bit mask
+//  - GM_   red bit mask
+//  - BM_   blue bit mask
+//  - AM_   alpha bit mask
+
 template <typename PT_, uint32_t PBS_, uint32_t RM_, uint32_t GM_, uint32_t BM_, uint32_t AM_>
-struct Pixel : public PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_> {
+struct Pixel : public PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_>
+{
   typedef PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_> BaseType;
   typedef Pixel   <PT_, PBS_, RM_, GM_, BM_, AM_> SelfType;
 

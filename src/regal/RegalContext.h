@@ -72,9 +72,9 @@ struct RegalPpa;
 struct RegalBin;
 struct RegalDsa;
 namespace Emu { struct Iff; };
-struct RegalSo;
+namespace Emu { struct So; };
 struct RegalVao;
-struct RegalTexC;
+namespace Emu { struct TexC; };
 #endif
 
 struct RegalContext
@@ -104,9 +104,9 @@ struct RegalContext
   RegalBin           *bin;
   RegalDsa           *dsa;
   Emu::Iff           *iff;
-  RegalSo            *so;
+  Emu::So            *so;
   RegalVao           *vao;
-  RegalTexC          *texc;
+  Emu::TexC          *texc;
 #endif
 
   #if REGAL_SYS_PPAPI

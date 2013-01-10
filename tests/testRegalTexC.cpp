@@ -37,10 +37,10 @@
 
 namespace {
 
-using namespace Regal;
+using namespace Regal::Emu;
 
 // ====================================
-// RegalConvertedBuffer
+// Emu::ConvertedBuffer
 // ====================================
 
 TEST( RegalTexC, RegalConvertedBuffer ) {
@@ -49,7 +49,7 @@ TEST( RegalTexC, RegalConvertedBuffer ) {
 
   uint16_t orig[] = {0x001f, 0x03e0, 0x7c00, 0x8000, 0x5555, 0xaaaa};
 
-  RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
+  ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
   ASSERT_TRUE( buffer.ConvertFrom ( 2, 2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
 
   ASSERT_EQ( 16u, buffer.targetBuffer_.size() );
@@ -85,12 +85,12 @@ TEST( RegalTexC, RegalConvertedBufferFailsFastOnIdentity ) {
   uint8_t orig[ 12 ] = { 0 };
 
   {
-    RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
+    ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, 2, GL_RGB, GL_UNSIGNED_BYTE, orig ) );
   }
 
   {
-    RegalConvertedBuffer buffer( pss, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1 );
+    ConvertedBuffer buffer( pss, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1 );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, 2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 }
@@ -102,32 +102,32 @@ TEST( RegalTexC, RegalConvertedBufferFailsFastOnError ) {
 
   // Bad width
   {
-    RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
+    ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
     ASSERT_FALSE( buffer.ConvertFrom ( -2, 2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 
   // Bad height
   {
-    RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
+    ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, -2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 
   // Bad target format
   {
-    RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_SHORT_5_5_5_1 );
+    ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_SHORT_5_5_5_1 );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, 2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 
   // Bad source format
   {
-    RegalConvertedBuffer buffer( pss, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1 );
+    ConvertedBuffer buffer( pss, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1 );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, 2, GL_RGB, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 
   // Bad alignment
   {
     pss.alignment = 123;
-    RegalConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
+    ConvertedBuffer buffer( pss, GL_RGB, GL_UNSIGNED_BYTE );
     ASSERT_FALSE( buffer.ConvertFrom ( 2, 2, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, orig ) );
   }
 }
@@ -552,11 +552,11 @@ TEST( RegalTexC, TextureUnitStateUnbindAllInDestructor ) {
 }
 
 // ====================================
-// RegalTexC
+// Regal::Emu::TexC
 // ====================================
 
 TEST ( RegalTexC, ResetUnbindsTextureUnits ) {
-  RegalTexC texc;
+  TexC texc;
 
   TextureState texture;
   texc.textureUnitArrayState[ 0 ].Bind( GL_TEXTURE_2D, &texture );
@@ -574,7 +574,7 @@ TEST ( RegalTexC, GetBoundTexture ) {
   // Verify that the internal TexC::GetBoundTexture_() behaves as expected, as
   // it is used by other calls.
 
-  RegalTexC texc;
+  TexC texc;
   TextureState boundToCubemapUnit0;
   TextureState boundToCubemapUnitMax;
 
@@ -594,7 +594,7 @@ TEST ( RegalTexC, GetTexture ) {
   // Verify that the internal TexC::GetTexture_() behaves as expected, as
   // it is used by other calls.
 
-  RegalTexC texc;
+  TexC texc;
 
   // Getting texture #0 should always return the special textureZero
   EXPECT_EQ( &texc.textureZero, texc.GetTexture_( 0 ) );
@@ -611,7 +611,7 @@ TEST ( RegalTexC, GetTexture ) {
 }
 
 TEST ( RegalTexC, PixelStoreStateShadowing ) {
-  RegalTexC texc;
+  TexC texc;
 
   // Verify that the initial state is as expected.
   EXPECT_EQ( 4, texc.unpackPSS.alignment );
@@ -634,7 +634,7 @@ TEST ( RegalTexC, PixelStoreStateShadowing ) {
 }
 
 TEST ( RegalTexC, GetFormatAndType ) {
-  RegalTexC texc;
+  TexC texc;
   GLenum format;
   GLenum type;
 
@@ -665,7 +665,7 @@ TEST ( RegalTexC, ShadowTexImage2D ) {
   // Test TexC::ShadowTexImage2D (2x overloaded)
   // Note for simplicity we use TexC::GetFormatAndType for verification.
 
-  RegalTexC texc;
+  TexC texc;
   TextureState boundTextureState;
   GLenum format;
   GLenum type;
@@ -698,7 +698,7 @@ TEST ( RegalTexC, ShadowTexImage2D ) {
 TEST ( RegalTexC, ShadowGenTextures ) {
   // Test TexC::ShadowGenTextures
 
-  RegalTexC texc;
+  TexC texc;
 
   GLuint textures[ 4 ] = { 11, 13, 17, 23 };
   texc.ShadowGenTextures( 4, textures );
@@ -748,7 +748,7 @@ TEST ( RegalTexC, ShadowGenTextures ) {
 TEST ( RegalTexC, ShadowDeleteTextures ) {
   // Test TexC::ShadowDeleteTextures
 
-  RegalTexC texc;
+  TexC texc;
 
   // Setup, and setup verification.
   texc.mapTextureToTextureState[ 0 ] = TextureState();
@@ -776,7 +776,7 @@ TEST ( RegalTexC, ShadowDeleteTextures ) {
 TEST ( RegalTexC, ShadowActiveTexture ) {
   // Test TexC::ShadowActiveTexture
 
-  RegalTexC texc;
+  TexC texc;
 
   // Verify initial state
   EXPECT_EQ( static_cast<GLenum>( GL_TEXTURE0 ), texc.currentTextureUnit );
@@ -793,7 +793,7 @@ TEST ( RegalTexC, ShadowActiveTexture ) {
 TEST ( RegalTexC, ShadowBindTexture ) {
   // Test TexC::ShadowBindTexture
 
-  RegalTexC texc;
+  TexC texc;
 
   // Verify initial state.
   EXPECT_TRUE( texc.mapTextureToTextureState.find ( 123 ) == texc.mapTextureToTextureState.end() );
@@ -828,7 +828,7 @@ TEST ( RegalTexC, ShadowBindTexture ) {
 TEST ( RegalTexC, ShadowGenerateMipmap ) {
   // Test TexC::ShadowGenerateMipmap
 
-  RegalTexC texc;
+  TexC texc;
 
   // Setup - Create a texture in mixed format, and bind it to texture unit 1.
   TextureState boundToUnit1;

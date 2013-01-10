@@ -50,26 +50,32 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+namespace Emu {
+
 // ====================================
 // PixelStorageState
 // ====================================
 
-void PixelStorageStateGLES20::Reset() {
+void
+PixelStorageStateGLES20::Reset()
+{
   alignment = 4;
 }
 
 // ====================================
-// RegalConvertedBuffer
+// ConvertedBuffer
 // ====================================
 
-RegalConvertedBuffer::RegalConvertedBuffer( const PixelStorageStateGLES20& pss, GLenum targetFormat, GLenum targetType )
+ConvertedBuffer::ConvertedBuffer( const PixelStorageStateGLES20& pss, GLenum targetFormat, GLenum targetType )
 : pss_( pss )
 , targetFormat_( targetFormat )
 , targetType_( targetType )
 {
 }
 
-bool RegalConvertedBuffer::ConvertFrom( GLsizei width, GLsizei height, GLenum sourceFormat, GLenum sourceType, const GLvoid* sourcePixels ) {
+bool
+ConvertedBuffer::ConvertFrom( GLsizei width, GLsizei height, GLenum sourceFormat, GLenum sourceType, const GLvoid* sourcePixels )
+{
   // No conversion necessary. This is the happiest case, and we bail early to
   // pass the call down unmodified.
   if ( ( sourceFormat == targetFormat_ ) && ( sourceType == targetType_ ) ) {
@@ -130,27 +136,32 @@ bool RegalConvertedBuffer::ConvertFrom( GLsizei width, GLsizei height, GLenum so
 // TextureState
 // ====================================
 
-TextureState::~TextureState() {
+TextureState::~TextureState()
+{
   UnbindAll();
 }
 
-void TextureState::Reset() {
+void TextureState::Reset()
+{
   UnbindAll();
   textureLevelState.clear();
 }
 
-void TextureState::Bind( TextureUnitState* unit ) {
+void TextureState::Bind( TextureUnitState* unit )
+{
   boundTextureUnits.push_back( unit );
 }
 
-void TextureState::Unbind( TextureUnitState* unit ) {
+void TextureState::Unbind( TextureUnitState* unit )
+{
   BoundTextureUnits::iterator f = std::find( boundTextureUnits.begin(), boundTextureUnits.end(), unit );
   if ( boundTextureUnits.end() != f ) {
     boundTextureUnits.erase( f );
   }
 }
 
-void TextureState::UnbindAll() {
+void TextureState::UnbindAll()
+{
   BoundTextureUnits tmp;
   tmp.swap( boundTextureUnits );
   for ( BoundTextureUnits::iterator i = tmp.begin(); i != tmp.end(); ++i ) {
@@ -158,7 +169,8 @@ void TextureState::UnbindAll() {
   }
 }
 
-TextureLevelState& TextureState::GetLevelState_( GLint level ) {
+TextureLevelState& TextureState::GetLevelState_( GLint level )
+{
   TextureLevelStateMap::iterator f = textureLevelState.find( level );
 
   if ( f == textureLevelState.end() ) {
@@ -168,17 +180,20 @@ TextureLevelState& TextureState::GetLevelState_( GLint level ) {
   return f->second;
 }
 
-void TextureState::SetFormatAndType( GLint level, GLenum format, GLenum type ) {
+void TextureState::SetFormatAndType( GLint level, GLenum format, GLenum type )
+{
   textureLevelState[ level ] = TextureLevelState( format, type );
 }
 
-void TextureState::GetFormatAndType( GLint level, GLenum* format, GLenum* type ) {
+void TextureState::GetFormatAndType( GLint level, GLenum* format, GLenum* type )
+{
   const TextureLevelState& levelState = GetLevelState_( level );
   *format = levelState.format;
   *type = levelState.type;
 }
 
-void TextureState::SimulateComputeMipMaps() {
+void TextureState::SimulateComputeMipMaps()
+{
   TextureLevelStateMap newLevelState;
   newLevelState.insert( std::make_pair ( DEFAULT_FORMAT_LEVEL, GetLevelState_( 0 ) ) );
   newLevelState.swap( textureLevelState );
@@ -194,11 +209,14 @@ TextureStateRef::TextureStateRef()
 {
 }
 
-TextureStateRef::~TextureStateRef() {
+TextureStateRef::~TextureStateRef()
+{
   Reset( NULL, NULL );
 }
 
-void TextureStateRef::Reset( TextureUnitState* unit, TextureState* texture ) {
+void
+TextureStateRef::Reset( TextureUnitState* unit, TextureState* texture )
+{
   if ( texture_ ) texture_->Unbind( unit_ );
   unit_ = unit;
   texture_ = texture;
@@ -209,13 +227,17 @@ void TextureStateRef::Reset( TextureUnitState* unit, TextureState* texture ) {
 // TextureUnitState
 // ====================================
 
-void TextureUnitState::UnbindAll() {
+void
+TextureUnitState::UnbindAll()
+{
   binding2D_.Reset( this, NULL );
   bindingCubeMap_.Reset( this, NULL );
   bindingRectangleARB_.Reset( this, NULL );
 }
 
-void TextureUnitState::Unbind( TextureState* texture ) {
+void
+TextureUnitState::Unbind( TextureState* texture )
+{
   if ( texture == NULL ) {
     return;
   }
@@ -230,7 +252,9 @@ void TextureUnitState::Unbind( TextureState* texture ) {
   }
 }
 
-void TextureUnitState::Bind( GLenum target, TextureState* texture ) {
+void
+TextureUnitState::Bind( GLenum target, TextureState* texture )
+{
   switch ( target ) {
     case GL_TEXTURE_2D:
       binding2D_.Reset( this, texture );
@@ -252,7 +276,9 @@ void TextureUnitState::Bind( GLenum target, TextureState* texture ) {
   }
 }
 
-TextureState* TextureUnitState::GetBinding( GLenum target ) const {
+TextureState *
+TextureUnitState::GetBinding( GLenum target ) const
+{
   switch ( target ) {
     case GL_TEXTURE_2D:
       return binding2D_.Get();
@@ -275,14 +301,17 @@ TextureState* TextureUnitState::GetBinding( GLenum target ) const {
 }
 
 // ====================================
-// RegalTexC
+// TexC
 // ====================================
 
-RegalTexC::RegalTexC() {
+TexC::TexC()
+{
   Reset_();
 }
 
-void RegalTexC::Init( RegalContext& ctx ) {
+void
+TexC::Init( RegalContext& ctx )
+{
   RegalContext* sharingWith = ctx.groupInitializedContext();
   if ( sharingWith != NULL ) {
     mapTextureToTextureState = sharingWith->texc->mapTextureToTextureState;
@@ -291,19 +320,25 @@ void RegalTexC::Init( RegalContext& ctx ) {
   Reset_();
 }
 
-void RegalTexC::Reset_() {
+void
+TexC::Reset_()
+{
   unpackPSS.Reset();
 
   currentTextureUnit = GL_TEXTURE0;
-  for ( size_t i = 0; i < REGAL_EMU_MAX_TEXTURE_UNITS; ++i ) {
+  for ( size_t i = 0; i < REGAL_EMU_MAX_TEXTURE_UNITS; ++i )
+  {
     textureUnitArrayState[ i ].UnbindAll();
   }
   textureZero = TextureState();
 }
 
-TextureState* RegalTexC::GetBoundTexture_( GLenum textureUnit, GLenum target ) {
+TextureState *
+TexC::GetBoundTexture_( GLenum textureUnit, GLenum target )
+{
   size_t i = textureUnit - GL_TEXTURE0;
-  if ( REGAL_EMU_MAX_TEXTURE_UNITS <= i ) {
+  if ( REGAL_EMU_MAX_TEXTURE_UNITS <= i )
+  {
     RegalAssert( i < REGAL_EMU_MAX_TEXTURE_UNITS );
     return NULL;
   }
@@ -314,7 +349,9 @@ TextureState* RegalTexC::GetBoundTexture_( GLenum textureUnit, GLenum target ) {
   return &textureZero;
 }
 
-TextureState* RegalTexC::GetTexture_( GLuint texture ) {
+TextureState *
+TexC::GetTexture_( GLuint texture )
+{
   if ( texture == TEXTURE_ZERO ) {
     return &textureZero;
   }
@@ -329,11 +366,15 @@ TextureState* RegalTexC::GetTexture_( GLuint texture ) {
   return &tfti->second;
 }
 
-void RegalTexC::GetFormatAndType( GLenum target, GLint level, GLenum* format, GLenum* type ) {
+void
+TexC::GetFormatAndType( GLenum target, GLint level, GLenum* format, GLenum* type )
+{
   GetBoundTexture_( currentTextureUnit, target )->GetFormatAndType( level, format, type );
 }
 
-void RegalTexC::ShadowTexImage2D( GLenum target, GLint level, GLenum format, GLenum type ) {
+void
+TexC::ShadowTexImage2D( GLenum target, GLint level, GLenum format, GLenum type )
+{
   if ( REGAL_EMU_MAX_TEXTURE_UNITS <= currentTextureUnit - GL_TEXTURE0 ) {
     return;
   }
@@ -341,7 +382,9 @@ void RegalTexC::ShadowTexImage2D( GLenum target, GLint level, GLenum format, GLe
   GetBoundTexture_( currentTextureUnit, target )->SetFormatAndType( level, format, type );
 }
 
-void RegalTexC::ShadowPixelStore( GLenum pname, GLint pvalue ) {
+void
+TexC::ShadowPixelStore( GLenum pname, GLint pvalue )
+{
   switch ( pname ) {
     case GL_UNPACK_ALIGNMENT:
       unpackPSS.alignment = pvalue;
@@ -349,23 +392,27 @@ void RegalTexC::ShadowPixelStore( GLenum pname, GLint pvalue ) {
     }
 }
 
-void RegalTexC::ShadowGenTextures( GLsizei n, GLuint* textures ) {
+void TexC::ShadowGenTextures( GLsizei n, GLuint* textures )
+{
   while ( n-- ) {
     GenTexture_( *textures++ );
   }
 }
 
-void RegalTexC::ShadowDeleteTextures( GLsizei n, const GLuint* textures ) {
+void TexC::ShadowDeleteTextures( GLsizei n, const GLuint* textures )
+{
   while ( n-- ) {
     DeleteTexture_( *textures++ );
   }
 }
 
-void RegalTexC::ShadowActiveTexture( GLenum texture ) {
+void TexC::ShadowActiveTexture( GLenum texture )
+{
   currentTextureUnit = texture;
 }
 
-void RegalTexC::ShadowBindTexture( GLenum target, GLuint texture ) {
+void TexC::ShadowBindTexture( GLenum target, GLuint texture )
+{
   size_t i = currentTextureUnit - GL_TEXTURE0;
   if ( REGAL_EMU_MAX_TEXTURE_UNITS <= i ) {
     return;
@@ -382,7 +429,9 @@ void RegalTexC::ShadowBindTexture( GLenum target, GLuint texture ) {
   }
 }
 
-void RegalTexC::ShadowGenerateMipmap( GLenum target ) {
+void
+TexC::ShadowGenerateMipmap( GLenum target )
+{
   if ( REGAL_EMU_MAX_TEXTURE_UNITS <= currentTextureUnit - GL_TEXTURE0 ) {
     return;
   }
@@ -390,7 +439,9 @@ void RegalTexC::ShadowGenerateMipmap( GLenum target ) {
   GetBoundTexture_( currentTextureUnit, target )->SimulateComputeMipMaps();
 }
 
-void RegalTexC::GenTexture_( GLuint texture ) {
+void
+TexC::GenTexture_( GLuint texture )
+{
   if ( texture == 0 ) {
     return;
   }
@@ -398,12 +449,16 @@ void RegalTexC::GenTexture_( GLuint texture ) {
   mapTextureToTextureState[ texture ].Reset();
 }
 
-void RegalTexC::DeleteTexture_( GLuint texture ) {
+void
+TexC::DeleteTexture_( GLuint texture )
+{
   if ( texture == 0 ) {
     return;
   }
 
   mapTextureToTextureState.erase( texture );
+}
+
 }
 
 REGAL_NAMESPACE_END
