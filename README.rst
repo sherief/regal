@@ -8,7 +8,7 @@ Regal
 =====
 
 | https://github.com/p3/regal
-| `Downloads <https://github.com/p3/regal/downloads>`_
+| `Downloads <https://bitbucket.org/nigels_com/regal/downloads>`_
 
 .. contents::
 
