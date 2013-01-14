@@ -142,7 +142,7 @@ void Frame::capture(RegalContext &context)
         {
           // Apply masking
           
-          for (size_t i=0; i<bufferSize; ++i)
+          for (GLint i=0; i<bufferSize; ++i)
             buffer[i] &= Config::frameMd5ColorMask;
 
           // Compute pixel md5sum
