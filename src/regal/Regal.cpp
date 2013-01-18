@@ -781,6 +781,8 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glEndList","()");
     if (!_context) return;
+    RegalAssert(_context);
+    _context->depthNewList--;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glEndList)();
@@ -1792,6 +1794,8 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glNewList","(", list, ", ", toString(mode), ")");
     if (!_context) return;
+    RegalAssert(_context);
+    _context->depthNewList++;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glNewList)(list, mode);
@@ -2044,6 +2048,8 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPopMatrix","()");
     if (!_context) return;
+    RegalAssert(_context);
+    _context->depthPushMatrix--;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glPopMatrix)();
@@ -2076,6 +2082,8 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPushMatrix","()");
     if (!_context) return;
+    RegalAssert(_context);
+    _context->depthPushMatrix++;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
     _next->call(&_next->glPushMatrix)();

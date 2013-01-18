@@ -243,7 +243,7 @@ template<typename T, typename C> size_t length(const quote<T,C>  &val) { return 
 
 // Optional
 
-template<typename T>             size_t length(const optional<T> &val) { return val._enabled ? sizeof(void *)<<1 : 0; }
+template<typename T>             size_t length(const optional<T> &val) { return val._enabled ? length(val._val) : 0; }
 
 // Array
 
@@ -277,7 +277,7 @@ template<typename U> size_t length(const raw<U> &val)
       len += (words-1)*length(val._delim);
     return len;
   }
-  
+
   return 4; // NULL
 }
 

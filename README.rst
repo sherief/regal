@@ -289,7 +289,7 @@ Linux
 
 * Ubuntu/Debian/Mint recommended packages:
 
- ``$ apt-get install libxmu-dev``
+ ``$ apt-get install libxmu-dev libxi-dev``
 
 * Use GNU make with Makefile
 

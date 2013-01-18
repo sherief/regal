@@ -1633,6 +1633,9 @@ static void REGAL_CALL log_glNewList(GLuint list, GLenum mode)
 {
     RegalContext *_context = REGAL_GET_CONTEXT();
     RegalAssert(_context);
+    RegalAssert(_context->depthNewList>0);
+    Push<size_t> pushDepth(_context->depthNewList);
+    _context->depthNewList--;
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glNewList)(list, mode);
@@ -1913,6 +1916,9 @@ static void REGAL_CALL log_glPushMatrix(void)
 {
     RegalContext *_context = REGAL_GET_CONTEXT();
     RegalAssert(_context);
+    RegalAssert(_context->depthPushMatrix>0);
+    Push<size_t> pushDepth(_context->depthPushMatrix);
+    _context->depthPushMatrix--;
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glPushMatrix)();

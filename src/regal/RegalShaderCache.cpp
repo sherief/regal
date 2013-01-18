@@ -90,29 +90,20 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
 
       if (REGAL_CACHE_SHADER_READ && Config::cacheShaderRead)
       {
-        std::vector<char> buffer(1024);
-        for (;;)
+        std::string buffer;
+
+        // Try opening the file
+
+        FILE *f = fopen(filename.c_str(),"rt");
+
+        if (!f)
         {
-          // Try opening the file
-
-          FILE *f = fopen(filename.c_str(),"rt");
-          if (!f)
-          {
-            Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," not found.");
-            Info("Cached shader ",boost::print::hex(hash)," not found: ",filename);
-            goto done;
-          }
-
-          size_t bytes = fread(&buffer[0],buffer.size()-1,1,f);
-          if (feof(f))
-          {
-            fclose(f);
-            break;
-          }
-          buffer[bytes] = '\0';
-          fclose(f);
-          buffer.resize(buffer.size()*2);
+          Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," not found.");
+          Info("Cached shader ",boost::print::hex(hash)," not found: ",filename);
+          goto done;
         }
+
+        buffer = fileRead(f);
 
         Internal("Regal::ShaderCache::glShaderSource","shader=",shader," hash=",boost::print::hex(hash)," filename=",filename," read.");
         Info("Cached shader ",boost::print::hex(hash)," read: ",filename);

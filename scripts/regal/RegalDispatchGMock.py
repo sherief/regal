@@ -33,7 +33,8 @@ REGAL_NAMESPACE_BEGIN
 
 struct DispatchTable;
 
-struct RegalGMockInterface {
+struct RegalGMockInterface
+{
   RegalGMockInterface();
   virtual ~RegalGMockInterface();
   static RegalGMockInterface* current;
@@ -79,11 +80,13 @@ ${API_DISPATCH_FUNC_DEFINE}
 
 } // namespace
 
-RegalGMockInterface::RegalGMockInterface() {
+RegalGMockInterface::RegalGMockInterface()
+{
   current = this;
 }
 
-RegalGMockInterface::~RegalGMockInterface() {
+RegalGMockInterface::~RegalGMockInterface()
+{
   current = NULL;
 }
 
@@ -91,7 +94,7 @@ RegalGMockInterface* RegalGMockInterface::current;
 
 void InitDispatchTable${DISPATCH_NAME}(DispatchTable &tbl)
 {
-  ${API_DISPATCH_FUNC_INIT}
+${API_DISPATCH_FUNC_INIT}
 }
 
 REGAL_NAMESPACE_END''')
@@ -140,6 +143,8 @@ def generateGMockFunctionApi(apis):
       if not function.needsContext:
         continue
       if getattr(function, 'regalOnly', False):
+        continue
+      if not function.category in [ 'GL_VERSION_1_0', 'GL_VERSION_1_1']:
         continue
 
       yield dict(

@@ -37,6 +37,7 @@
 
 namespace {
 
+using namespace Regal;
 using namespace Regal::Emu;
 
 // ====================================

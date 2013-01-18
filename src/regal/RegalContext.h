@@ -138,7 +138,9 @@ struct RegalContext
   // State tracked via EmuContextState.py / Regal.cpp
 
   size_t              depthBeginEnd;   // Normally zero or one
+  size_t              depthPushMatrix; //
   size_t              depthPushAttrib; //
+  size_t              depthNewList;    //
 
   // For RegalDispatchCode
 

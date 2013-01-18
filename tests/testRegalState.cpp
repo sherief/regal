@@ -1,4 +1,3 @@
-
 /*
   Copyright (c) 2011-2012 NVIDIA Corporation
   Copyright (c) 2011-2012 Cass Everitt
@@ -31,6 +30,9 @@
 */
 
 #include "gtest/gtest.h"
+
+#include <GL/Regal.h>
+
 #include "gmock/gmock.h"
 
 #include "RegalDispatchGMock.h"

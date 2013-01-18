@@ -356,7 +356,11 @@ extern void  fileClose (FILE **file);
 
 //
 
-std::string makePath(const std::string &dir, const std::string &filename);
+extern std::string makePath(const std::string &dir, const std::string &filename);
+
+//
+
+extern std::string fileRead(FILE *file);
 
 // ToFloat for integer -> float
 

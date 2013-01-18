@@ -300,7 +300,7 @@ namespace Logging {
     size_t indent = 0;
     if (rCtx)
     {
-      indent += (rCtx->depthBeginEnd + rCtx->depthPushAttrib)*2;
+      indent += (rCtx->depthBeginEnd + rCtx->depthPushMatrix + rCtx->depthPushAttrib + rCtx->depthNewList)*2;
       indent += rCtx->marker ? rCtx->marker->indent() : 0;
     }
     return indent;

@@ -153,8 +153,8 @@ Init::setContext(RegalContext *context)
   // std::map lookup
 
   TH2RC::iterator i = th2rc.find(thread);
-  
-  // Associate this thread with the Regal context  
+
+  // Associate this thread with the Regal context
 
   if (i!=th2rc.end())
   {
@@ -163,12 +163,12 @@ Init::setContext(RegalContext *context)
 
     if (i->second!=context)
     {
-      if (i->second)      
+      if (i->second)
       {
         RegalAssert(i->second->thread==thread);
         i->second->thread = 0;
       }
-      
+
       i->second = context;
     }
   }
@@ -180,7 +180,7 @@ Init::setContext(RegalContext *context)
     // If some other thread is associated
     // with this context, disassociate it.
 
-    th2rc.erase(context->thread);  
+    th2rc.erase(context->thread);
 
     // Associate the context with this thread.
 
@@ -241,7 +241,7 @@ TlsInit tlsInit;
 
 }
 
-void 
+void
 Init::setContextTLS(RegalContext *context)
 {
   Internal("Init::setContextTLS","thread=",::boost::print::hex(Thread::threadId())," context=",context);
@@ -309,7 +309,7 @@ Init::shareContext(RegalSystemContext a, RegalSystemContext b)
 
   RegalAssert(contextA);
   RegalAssert(contextB);
-  
+
   // Either of the groups of contexts needs to be uninitialized.
   // In principle Regal might be able to merge the shared
   // containers together, but that's not currently implemented.
@@ -372,7 +372,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
     }
 
     setContext(context);
-    
+
     return;
   }
 
@@ -386,9 +386,7 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 void
 Init::destroyContext(RegalSystemContext sysCtx)
 {
-  init();
-
-  if (sysCtx)
+  if (_init && sysCtx)
   {
     RegalContext *context = getContext(sysCtx);
 
@@ -398,9 +396,9 @@ Init::destroyContext(RegalSystemContext sysCtx)
 
       th2rc.erase(context->thread);
       sc2rc.erase(sysCtx);
-      
+
       // TODO - clear TLS for other threads too?
-      
+
       if (context==Thread::CurrentContext())
         setContextTLS(NULL);
 

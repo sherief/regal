@@ -94,7 +94,9 @@ RegalContext::RegalContext()
   thread(0),
   logCallback(NULL),
   depthBeginEnd(0),
+  depthPushMatrix(0),
   depthPushAttrib(0),
+  depthNewList(0),
   codeInputNext(0),
   codeOutputNext(0)
 {
@@ -152,7 +154,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_TEXC */
     #if REGAL_EMU_VAO
-    if (Config::enableEmuVao)
+    if (Config::enableEmuVao && Config::enableEmuIff)
     {
       vao = new RegalVao;
       emuLevel = 2;

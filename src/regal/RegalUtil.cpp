@@ -40,9 +40,19 @@ REGAL_GLOBAL_BEGIN
 using namespace std;
 
 #include <boost/print/print_string.hpp>
+#include <boost/print/string_list.hpp>
+
 using boost::print::print_string;
+using boost::print::string_list;
 
 #include "RegalConfig.h"
+
+// alloca for VC8
+
+#ifdef _MSC_VER
+#include <malloc.h>
+#define alloca _alloca
+#endif
 
 #if REGAL_SYS_WGL
 
@@ -633,6 +643,32 @@ string makePath(const string &dir, const string &filename)
     tmp += "/";
   tmp += filename;
   return tmp;
+}
+
+string fileRead(FILE *file)
+{
+  const size_t bufferSize = 4*1024;
+  char *buffer = static_cast<char *>(alloca(bufferSize+1));
+  string_list<string> tmp;
+
+  while (true)
+  {
+    size_t bytes = fread(buffer,1,bufferSize,file);
+    buffer[bytes] = '\0';
+    
+    if (feof(file))
+    {
+      if (tmp.size())
+      {
+        tmp.push_back(buffer);
+        return tmp.str();
+      }
+      else
+        return string(buffer); 
+    }
+    else
+        tmp.push_back(buffer);
+  }
 }
 
 REGAL_NAMESPACE_END
