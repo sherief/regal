@@ -179,10 +179,10 @@ TEST( RegalStateTransform, TransitionSetsStateCorrectly ) {
     State::Transform current;
     State::Transform target;
 
-    target.clipPlane[ 0 ].enabled = True;
+    target.clipPlane[ 0 ].enabled = true;
     target.clipPlane[ 0 ].equation.data[ 0 ] = 100;
     current.clipPlane[ 4 ].equation.data[ 3 ] = 101;
-    current.clipPlane[ 5 ].enabled = True;
+    current.clipPlane[ 5 ].enabled = true;
 
     EXPECT_CALL( mock, glEnable( GL_CLIP_PLANE0 ) );
     EXPECT_CALL( mock, glClipPlane( GL_CLIP_PLANE0, IsDouble4(  100,  0,  0,  0 ) ) );

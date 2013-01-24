@@ -865,16 +865,16 @@ struct Iff
     }
   }
 
-  template <int N, typename T> void Attribute( RegalContext * ctx, GLuint idx, const bool normalize, const T * v ) {
+  template <int N, bool Norm, typename T> void Attribute( RegalContext * ctx, GLuint idx, const T * v ) {
     if( idx >= maxVertexAttribs ) {
       // FIXME: set an error
       return;
     }
     Float4 & a = immVab.attr[ idx ];
-    a.x = ToFloat( normalize, v[0] );
-    a.y = N > 1 ? ToFloat( normalize, v[1] ) : 0.0f;
-    a.z = N > 2 ? ToFloat( normalize, v[2] ) : 0.0f;
-    a.w = N > 3 ? ToFloat( normalize, v[3] ) : 1.0f;
+    a.x = ToFloat<Norm>( v[0] );
+    a.y = N > 1 ? ToFloat<Norm>( v[1] ) : 0.0f;
+    a.z = N > 2 ? ToFloat<Norm>( v[2] ) : 0.0f;
+    a.w = N > 3 ? ToFloat<Norm>( v[3] ) : 1.0f;
     ffstate.uniform.vabVer = ver.Update();
     if( idx == immProvoking ) {
       Provoke( ctx );
@@ -884,19 +884,19 @@ struct Iff
 
   template <int N, typename T> void Attr( RegalContext *ctx, GLuint idx, T x, T y = 0, T z = 0, T w = 1 ) {
     T v[4] = { x, y, z, w };
-    Attribute<N>( ctx, idx, false, v );
+    Attribute<N,false>( ctx, idx,v );
   }
 
   template <int N, typename T> void AttrN( RegalContext *ctx, GLuint idx, T x, T y = 0, T z = 0, T w = 1 ) {
     T v[4] = { x, y, z, w };
-    Attribute<N>( ctx, idx, true, v );
+    Attribute<N,true>( ctx, idx, v );
   }
   template <int N, typename T> void Attr( RegalContext *ctx, GLuint idx, const T * v ) {
-    Attribute<N>( ctx, idx, false, v );
+    Attribute<N,false>( ctx, idx, v );
   }
 
   template <int N, typename T> void AttrN( RegalContext *ctx, GLuint idx, const T * v ) {
-    Attribute<N>( ctx, idx, true, v );
+    Attribute<N,true>( ctx, idx, v );
   }
 
   GLuint AttrIndex( RegalFixedFunctionAttrib attr, int cat = -1 ) const {

@@ -32,6 +32,17 @@
 #    include "config.h"
 #endif
 
+/* -- USER CONFIGURABLE COMPILE-TIME OPTIONS ------------------------------- */
+
+#ifndef FREEGLUT_WARNINGS
+#define FREEGLUT_WARNINGS 1
+#endif
+
+#ifndef FREEGLUT_ERRORS
+#define FREEGLUT_ERRORS 1
+#endif
+
+
 /* Freeglut is intended to function under all Unix/X11 and Win32 platforms. */
 /* XXX: Don't all MS-Windows compilers (except Cygwin) have _WIN32 defined?
  * XXX: If so, remove the first set of defined()'s below.

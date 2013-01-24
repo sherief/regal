@@ -317,7 +317,7 @@ iOS
 ---
 
 PPAPI and NaCl
-----
+--------------
 
 Questions and Answers
 =====================
@@ -335,6 +335,11 @@ Alternatives for OpenGL Loading
 * `GLEW <http://glew.sourceforge.net/>`_.
 
 * `OpenGL Loader Generator <https://bitbucket.org/alfonse/glloadgen/wiki/Home>`_.
+
+Related Efforts
+---------------
+
+* Mesa3D mail thread: `Mesa as part of OpenGL-on-OpenGL ES 2.0 <http://lists.freedesktop.org/archives/mesa-dev/2012-March/019692.html>`_
 
 License and Credits
 ===================

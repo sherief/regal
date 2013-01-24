@@ -100,7 +100,7 @@ def apiDispatchTableDefineCode(apis, args):
     RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(i));
     RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(i+1));
 
-    std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
+    const std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
 
     T f = *func;
 

@@ -803,6 +803,13 @@ namespace State {
     : enabled(false)
     {
     }
+
+    inline ClipPlane &swap(ClipPlane &other)
+    {
+      std::swap(enabled,other.enabled);
+      std::swap(equation,other.equation);
+      return *this;
+    }
   };
 
   struct Transform
@@ -820,7 +827,7 @@ namespace State {
 
     inline Transform &swap(Transform &other)
     {
-      std::swap(clipPlane,other.clipPlane);
+      std::swap_ranges(clipPlane,clipPlane+CLIP_PLANE_COUNT,other.clipPlane);
       std::swap(matrixMode,other.matrixMode);
       std::swap(normalize,other.normalize);
       std::swap(rescaleNormal,other.rescaleNormal);

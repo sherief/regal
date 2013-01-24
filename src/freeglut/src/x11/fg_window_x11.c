@@ -55,7 +55,7 @@ static int fghResizeFullscrToggle(void)
         XGetWindowAttributes(fgDisplay.pDisplay.Display,
                 fgStructure.CurrentWindow->Window.Handle,
                 &attributes);
-        
+
         /*
          * The "x" and "y" members of "attributes" are the window's coordinates
          * relative to its parent, i.e. to the decoration window.
@@ -357,7 +357,7 @@ void fgPlatformOpenWindow( SFG_Window* window, const char* title,
 #ifdef FREEGLUT_REGAL
     RegalMakeCurrent(window->Window.Context);
 #endif
-    
+
     /* register extension events _before_ window is mapped */
     #ifdef HAVE_X11_EXTENSIONS_XINPUT2_H
        fgRegisterDevices( fgDisplay.pDisplay.Display, &(window->Window.Handle) );

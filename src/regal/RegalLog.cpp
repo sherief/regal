@@ -117,73 +117,80 @@ namespace Logging {
   void Init()
   {
 #ifndef REGAL_NO_GETENV
+    const char *tmp;
 
-    const char *error    = GetEnv("REGAL_LOG_ERROR");
-    const char *warning  = GetEnv("REGAL_LOG_WARNING");
-    const char *info     = GetEnv("REGAL_LOG_INFO");
-    const char *app      = GetEnv("REGAL_LOG_APP");
-    const char *driver   = GetEnv("REGAL_LOG_DRIVER");
-    const char *internal = GetEnv("REGAL_LOG_INTERNAL");
-    const char *http     = GetEnv("REGAL_LOG_HTTP");
+    tmp = GetEnv("REGAL_LOG_ERROR");
+    if (tmp) enableError = atoi(tmp)!=0;
 
-    if (error)    enableError    = atoi(error)!=0;
-    if (warning)  enableWarning  = atoi(warning)!=0;
-    if (info)     enableInfo     = atoi(info)!=0;
-    if (app)      enableApp      = atoi(app)!=0;
-    if (driver)   enableDriver   = atoi(driver)!=0;
-    if (internal) enableInternal = atoi(internal)!=0;
-    if (http)     enableHttp     = atoi(http)!=0;
+    tmp = GetEnv("REGAL_LOG_WARNING");
+    if (tmp) enableWarning = atoi(tmp)!=0;
 
-    const char *api = GetEnv("REGAL_LOG_API");
-    const char *all = GetEnv("REGAL_LOG_ALL");
+    tmp = GetEnv("REGAL_LOG_INFO");
+    if (tmp) enableInfo = atoi(tmp)!=0;
 
-    if (api && atoi(api))
-      enableApp = enableDriver = true;
+    tmp = GetEnv("REGAL_LOG_APP");
+    if (tmp) enableApp = atoi(tmp)!=0;
 
-    if (all && atoi(all))
-      enableError = enableWarning = enableInfo = enableApp = enableDriver = enableInternal = enableHttp = true;
+    tmp = GetEnv("REGAL_LOG_DRIVER");
+    if (tmp) enableDriver = atoi(tmp)!=0;
 
-    const char *ml = GetEnv("REGAL_LOG_MAX_LINES");
-    if (ml) maxLines = atoi(ml);
+    tmp = GetEnv("REGAL_LOG_INTERNAL");
+    if (tmp) enableInternal = atoi(tmp)!=0;
 
-    const char *mb = GetEnv("REGAL_LOG_MAX_BYTES");
-    if (mb) maxBytes = atoi(mb);
+    tmp = GetEnv("REGAL_LOG_HTTP");
+    if (tmp) enableHttp = atoi(tmp)!=0;
+
+    //
+
+    tmp = GetEnv("REGAL_LOG_API");
+    if (tmp && atoi(tmp)) enableApp = enableDriver = true;
+
+    tmp = GetEnv("REGAL_LOG_ALL");
+    if (tmp && atoi(tmp)) enableError = enableWarning = enableInfo = enableApp = enableDriver = enableInternal = enableHttp = true;
+
+    //
+
+    tmp = GetEnv("REGAL_LOG_MAX_LINES");
+    if (tmp) maxLines = atoi(tmp);
+
+    tmp = GetEnv("REGAL_LOG_MAX_BYTES");
+    if (tmp) maxBytes = atoi(tmp);
 
 #if REGAL_LOG_ONCE
-    const char *lo = GetEnv("REGAL_LOG_ONCE");
-    if (lo) once = atoi(lo)!=0;
+    tmp = GetEnv("REGAL_LOG_ONCE");
+    if (tmp) once = atoi(tmp)!=0;
 #endif
 
-    const char *tmp = GetEnv("REGAL_FRAME_TIME");
+    tmp = GetEnv("REGAL_FRAME_TIME");
     if (tmp) frameTime = atoi(tmp)!=0;
 
 #if REGAL_LOG_POINTERS
-    const char *p = GetEnv("REGAL_LOG_POINTERS");
-    if (p) pointers = atoi(p)!=0;
+    tmp = GetEnv("REGAL_LOG_POINTERS");
+    if (tmp) pointers = atoi(tmp)!=0;
 #endif
 
 #if REGAL_LOG_THREAD
-    const char *t = GetEnv("REGAL_LOG_THREAD");
-    if (t) thread = atoi(t)!=0;
+    tmp = GetEnv("REGAL_LOG_THREAD");
+    if (tmp) thread = atoi(tmp)!=0;
 #endif
 
-    const char *cb = GetEnv("REGAL_LOG_CALLBACK");
-    if (cb) callback = atoi(cb)!=0;
+    tmp = GetEnv("REGAL_LOG_CALLBACK");
+    if (tmp) callback = atoi(tmp)!=0;
 
-    const char *rl = GetEnv("REGAL_LOG");
-    if (rl) log = atoi(rl)!=0;
+    tmp = GetEnv("REGAL_LOG");
+    if (tmp) log = atoi(tmp)!=0;
 
-    const char *rlf = GetEnv("REGAL_LOG_FILE");
-    if (rlf) logFilename = rlf;
+    tmp =  GetEnv("REGAL_LOG_FILE");
+    if (tmp) logFilename = tmp;
 
-    const char *js = GetEnv("REGAL_LOG_JSON");
-    if (js) json = atoi(js)!=0;
+    tmp = GetEnv("REGAL_LOG_JSON");
+    if (tmp) json = atoi(tmp)!=0;
 
-    const char *jf = GetEnv("REGAL_LOG_JSON_FILE");
-    if (jf) jsonFilename = jf;
+    tmp = GetEnv("REGAL_LOG_JSON_FILE");
+    if (tmp) jsonFilename = tmp;
 
-    const char *bl = GetEnv("REGAL_HTTP_LOG_LIMIT");
-    if (bl) bufferLimit = atoi(bl);
+    tmp = GetEnv("REGAL_HTTP_LOG_LIMIT");
+    if (tmp) bufferLimit = atoi(tmp);
 #endif
 
 #ifdef REGAL_HTTP_LOG_LIMIT
@@ -211,6 +218,10 @@ namespace Logging {
 
     initialized = true;
 
+#if REGAL_LOG
+    Info("REGAL_LOG          ", log            ? "enabled" : "disabled");
+#endif
+
 #if REGAL_LOG_ERROR
     Info("REGAL_LOG_ERROR    ", enableError    ? "enabled" : "disabled");
 #endif
@@ -237,10 +248,6 @@ namespace Logging {
 
 #if REGAL_LOG_HTTP
     Info("REGAL_LOG_HTTP     ", enableHttp     ? "enabled" : "disabled");
-#endif
-
-#if REGAL_LOG_JSON
-    Info("REGAL_LOG          ", log            ? "enabled" : "disabled");
 #endif
 
 #if REGAL_LOG_JSON

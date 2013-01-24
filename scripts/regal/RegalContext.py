@@ -58,7 +58,7 @@ emuRegal = [
 emu = [
     { 'type' : 'RegalObj',    'include' : 'RegalObj.h',  'member' : 'obj',    'conditional' : 'Config::enableEmuObj',                            'ifdef' : 'REGAL_EMU_OBJ',    'formulae' : objFormulae    },
     #{ 'type' : 'RegalPpc',   'include' : 'RegalPpc.h',  'member' : 'ppc',    'conditional' : None,                                              'ifdef' : '',                 'formulae' : ppcFormulae    },
-    { 'type' : 'RegalPpa',    'include' : 'RegalPpa.h',  'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa',                            'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
+    { 'type' : 'Emu::Ppa',    'include' : 'RegalPpa.h',  'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa',                            'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
     { 'type' : 'RegalBin',    'include' : 'RegalBin.h',  'member' : 'bin',    'conditional' : 'Config::enableEmuBin',                            'ifdef' : 'REGAL_EMU_BIN',    'formulae' : binFormulae    },
     { 'type' : 'RegalDsa',    'include' : 'RegalDsa.h',  'member' : 'dsa',    'conditional' : 'Config::enableEmuDsa',                            'ifdef' : 'REGAL_EMU_DSA',    'formulae' : dsaFormulae    },
     { 'type' : 'Emu::Iff',    'include' : 'RegalIff.h',  'member' : 'iff',    'conditional' : 'Config::enableEmuIff',                            'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
@@ -335,6 +335,8 @@ def generateContextHeader(apis, args):
           emuForwardDeclare += 'namespace Emu { struct So; };\n'
         elif i['type']=='Emu::TexC':
           emuForwardDeclare += 'namespace Emu { struct TexC; };\n'
+        elif i['type']=='Emu::Ppa':
+          emuForwardDeclare += 'namespace Emu { struct Ppa; };\n'
         else:
           emuForwardDeclare += 'struct %s;\n' % i['type']
         emuMemberDeclare  += '  %-18s *%s;\n' % ( i['type'], i['member'] )

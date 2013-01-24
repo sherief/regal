@@ -68,7 +68,7 @@ struct Marker;
 struct Frame;
 #if REGAL_EMULATION
 struct RegalObj;
-struct RegalPpa;
+namespace Emu { struct Ppa; };
 struct RegalBin;
 struct RegalDsa;
 namespace Emu { struct Iff; };
@@ -100,7 +100,7 @@ struct RegalContext
   // Fixed function emulation
   int emuLevel;
   RegalObj           *obj;
-  RegalPpa           *ppa;
+  Emu::Ppa           *ppa;
   RegalBin           *bin;
   RegalDsa           *dsa;
   Emu::Iff           *iff;

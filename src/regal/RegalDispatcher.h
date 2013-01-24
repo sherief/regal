@@ -126,6 +126,19 @@ private:
   std::size_t                   _size;
 };
 
+//
+
+extern void InitDispatchTableCode     (DispatchTable &tbl);
+extern void InitDispatchTableDebug    (DispatchTable &tbl);
+extern void InitDispatchTableError    (DispatchTable &tbl);
+extern void InitDispatchTableEmu      (DispatchTable &tbl);
+extern void InitDispatchTableLog      (DispatchTable &tbl);
+extern void InitDispatchTableLoader   (DispatchTable &tbl);
+extern void InitDispatchTablePpapi    (DispatchTable &tbl);
+extern void InitDispatchTableStaticES2(DispatchTable &tbl);
+extern void InitDispatchTableMissing  (DispatchTable &tbl);
+extern void InitDispatchTableCache    (DispatchTable &tbl);
+
 REGAL_NAMESPACE_END
 
 #endif // __REGAL_DISPATCHER__

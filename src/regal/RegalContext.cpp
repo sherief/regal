@@ -200,7 +200,7 @@ RegalContext::Init()
     #if REGAL_EMU_PPA
     if (Config::enableEmuPpa)
     {
-      ppa = new RegalPpa;
+      ppa = new Emu::Ppa;
       emuLevel = 7;
       ppa->Init(*this);
     }

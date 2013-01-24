@@ -149,6 +149,16 @@ ContextInfo::init(const RegalContext &context)
   else
     sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
 
+  // For Mesa3D EGL/ES 2.0 the version string doesn't start with "OpenGL ES"
+  // Is that a Mesa3D bug? Perhaps...
+
+  if (REGAL_SYS_EGL && Regal::Config::sysEGL)
+  {
+    gles = true;
+    gles_version_major = 2;
+    gl_version_minor = 0;
+  }
+
   // Detect core context
 
   if (!gles && gl_version_major>=3)

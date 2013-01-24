@@ -41,17 +41,6 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void InitDispatchTableCode     (DispatchTable &tbl);
-void InitDispatchTableDebug    (DispatchTable &tbl);
-void InitDispatchTableError    (DispatchTable &tbl);
-void InitDispatchTableEmu      (DispatchTable &tbl);
-void InitDispatchTableLog      (DispatchTable &tbl);
-void InitDispatchTableLoader   (DispatchTable &tbl);
-void InitDispatchTablePpapi    (DispatchTable &tbl);
-void InitDispatchTableStaticES2(DispatchTable &tbl);
-void InitDispatchTableMissing  (DispatchTable &tbl);
-void InitDispatchTableCache    (DispatchTable &tbl);
-
 Dispatcher::Dispatcher()
 : _front(NULL),
   _size(0)

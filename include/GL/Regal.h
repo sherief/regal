@@ -77,6 +77,9 @@
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1
 # endif
+# ifndef REGAL_SYS_X11
+#  define REGAL_SYS_X11 1
+# endif
 #endif
 
 #ifndef REGAL_SYS_WGL
@@ -105,6 +108,10 @@
 
 #ifndef REGAL_SYS_GLX
 # define REGAL_SYS_GLX 0
+#endif
+
+#ifndef REGAL_SYS_X11
+# define REGAL_SYS_X11 0
 #endif
 
 #if REGAL_SYS_WGL
@@ -161,6 +168,11 @@
 #include <X11/Xdefs.h>
 #include <X11/Xutil.h>
 typedef XID GLXDrawable;
+#endif
+
+#if REGAL_SYS_EGL && REGAL_SYS_X11
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 #endif
 
 #ifdef __cplusplus

@@ -144,7 +144,8 @@ def generateGMockFunctionApi(apis):
         continue
       if getattr(function, 'regalOnly', False):
         continue
-      if not function.category in [ 'GL_VERSION_1_0', 'GL_VERSION_1_1']:
+      if not function.category in [ 'GL_VERSION_1_0', 'GL_VERSION_1_1'] and \
+         not function.name     in [ 'glStencilFuncSeparate', 'glStencilMaskSeparate', 'glStencilOpSeparate']:
         continue
 
       yield dict(

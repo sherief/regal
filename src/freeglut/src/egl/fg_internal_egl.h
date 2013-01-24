@@ -28,8 +28,6 @@
 
 #ifdef FREEGLUT_REGAL
 #include <GL/Regal.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #else
 #include <EGL/egl.h>
 #endif

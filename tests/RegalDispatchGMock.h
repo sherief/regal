@@ -397,6 +397,9 @@ struct RegalGMockInterface
   MOCK_METHOD7(glTexSubImage1D, void(GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const GLvoid *));
   MOCK_METHOD9(glTexSubImage2D, void(GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const GLvoid *));
   MOCK_METHOD4(glVertexPointer, void(GLint, GLenum, GLsizei, const GLvoid *));
+  MOCK_METHOD4(glStencilFuncSeparate, void(GLenum, GLenum, GLint, GLuint));
+  MOCK_METHOD2(glStencilMaskSeparate, void(GLenum, GLuint));
+  MOCK_METHOD4(glStencilOpSeparate, void(GLenum, GLenum, GLenum, GLenum));
 };
 
 void InitDispatchTableGMock(DispatchTable &tbl);

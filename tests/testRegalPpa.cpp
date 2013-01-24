@@ -43,11 +43,14 @@
 
 namespace {
 
-using namespace Regal;
+using namespace ::Regal;
+
 using ::testing::Mock;
+using ::testing::_;
+using ::testing::AnyNumber;
 
 TEST( RegalPpa, Enable ) {
-  RegalPpa ppa;
+  Emu::Ppa ppa;
 
   RegalContext ctx;
   ctx.info = new ContextInfo();
@@ -86,9 +89,10 @@ TEST( RegalPpa, PushPopAttrib ) {
   RegalContext ctx;
   ctx.info = new ContextInfo();
   ctx.info->gles = ctx.info->core = false;
+  InitDispatchTableMissing( ctx.dispatcher.emulation );
   InitDispatchTableGMock( ctx.dispatcher.emulation );
 
-  RegalPpa ppa;
+  Emu::Ppa ppa;
 
   EXPECT_EQ( 0u, ppa.depthStack.size() );
   EXPECT_EQ( 0u, ppa.stencilStack.size() );
@@ -135,6 +139,22 @@ TEST( RegalPpa, PushPopAttrib ) {
   EXPECT_CALL( mock, glPopAttrib() );
   ppa.PopAttrib( &ctx );
   Mock::VerifyAndClear( &mock );
+
+  // Revisit - Emu::Ppa shouldn't make these calls if there
+  //           is no actual state change.
+
+  EXPECT_CALL( mock, glDisable(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glCullFace(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glFrontFace(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glPolygonMode(_,_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glPolygonOffset(_,_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glClearStencil(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glStencilFuncSeparate(_,_,_,_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glStencilMaskSeparate(_,_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glStencilOpSeparate(_,_,_,_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glDepthFunc(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glClearDepth(_) ).Times(AnyNumber());
+  EXPECT_CALL( mock, glDepthMask(_) ).Times(AnyNumber());
 
   EXPECT_EQ( 1u, ppa.depthStack.size() );
   EXPECT_EQ( 1u, ppa.stencilStack.size() );

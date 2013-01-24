@@ -220,7 +220,7 @@ static void fghCheckTimers( void )
     }
 }
 
- 
+
 /* Platform-dependent time in milliseconds, as an unsigned 64-bit integer.
  * This doesn't overflow in any reasonable time, so no need to worry about
  * that. The GLUT API return value will however overflow after 49.7 days,
@@ -230,12 +230,12 @@ static void fghCheckTimers( void )
  * This value wraps every 49.7 days, but integer overflows cancel
  * when subtracting an initial start time, unless the total time exceeds
  * 32-bit, where the GLUT API return value is also overflowed.
- */  
+ */
 fg_time_t fgSystemTime(void)
 {
 	return fgPlatformSystemTime();
 }
-  
+
 /*
  * Elapsed Time
  */
@@ -261,7 +261,7 @@ void fgError( const char *fmt, ... )
         va_end( ap );
 
     } else {
-
+#if FREEGLUT_ERRORS
         va_start( ap, fmt );
 
         fprintf( stderr, "freeglut ");
@@ -271,6 +271,7 @@ void fgError( const char *fmt, ... )
         fprintf( stderr, "\n" );
 
         va_end( ap );
+#endif
 
         if ( fgState.Initialised )
             fgDeinitialize ();
@@ -282,7 +283,7 @@ void fgError( const char *fmt, ... )
 void fgWarning( const char *fmt, ... )
 {
     va_list ap;
-#if 0
+
     if (fgState.WarningFunc) {
 
         va_start( ap, fmt );
@@ -293,7 +294,7 @@ void fgWarning( const char *fmt, ... )
         va_end( ap );
 
     } else {
-
+#if FREEGLUT_WARNINGS
         va_start( ap, fmt );
 
         fprintf( stderr, "freeglut ");
@@ -303,8 +304,8 @@ void fgWarning( const char *fmt, ... )
         fprintf( stderr, "\n" );
 
         va_end( ap );
-    }
 #endif
+    }
 }
 
 
@@ -383,7 +384,7 @@ static void fghSleepForEvents( void )
     msec = fghNextTimer( );
     /* XXX Use GLUT timers for joysticks... */
     /* XXX Dumb; forces granularity to .01sec */
-    if( fghHaveJoystick( ) && ( msec > 10 ) )     
+    if( fghHaveJoystick( ) && ( msec > 10 ) )
         msec = 10;
 
 	fgPlatformSleepForEvents ( msec );

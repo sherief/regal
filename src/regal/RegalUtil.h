@@ -364,40 +364,40 @@ extern std::string fileRead(FILE *file);
 
 // ToFloat for integer -> float
 
-template <typename T> inline float ToFloat(const bool normalize, const T v ) {
-  UNUSED_PARAMETER(normalize); return float(v);
+template <bool Norm, typename T> inline float ToFloat(const T v ) {
+  return float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const signed char v ) {
-  return normalize ? float(v)/float(std::numeric_limits<signed char>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const signed char v ) {
+  return Norm ? float(v)/float(std::numeric_limits<signed char>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const unsigned char v ) {
-  return normalize ? float(v)/float(std::numeric_limits<unsigned char>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const unsigned char v ) {
+  return Norm ? float(v)/float(std::numeric_limits<unsigned char>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const signed short v ) {
-  return normalize ? float(v)/float(std::numeric_limits<signed short>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const signed short v ) {
+  return Norm ? float(v)/float(std::numeric_limits<signed short>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const unsigned short v ) {
-  return normalize ? float(v)/float(std::numeric_limits<unsigned short>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const unsigned short v ) {
+  return Norm ? float(v)/float(std::numeric_limits<unsigned short>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const signed int v ) {
-  return normalize ? float(v)/float(std::numeric_limits<signed int>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const signed int v ) {
+  return Norm ? float(v)/float(std::numeric_limits<signed int>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const unsigned int v ) {
-  return normalize ? float(v)/float(std::numeric_limits<unsigned int>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const unsigned int v ) {
+  return Norm ? float(v)/float(std::numeric_limits<unsigned int>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const signed long int v ) {
-  return normalize ? float(v)/float(std::numeric_limits<signed long int>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const signed long int v ) {
+  return Norm ? float(v)/float(std::numeric_limits<signed long int>::max()) : float(v);
 }
 
-template <> inline float ToFloat(const bool normalize, const unsigned long int v ) {
-  return normalize ? float(v)/float(std::numeric_limits<unsigned long int>::max()) : float(v);
+template <bool Norm> inline float ToFloat(const unsigned long int v ) {
+  return Norm ? float(v)/float(std::numeric_limits<unsigned long int>::max()) : float(v);
 }
 
 REGAL_NAMESPACE_END

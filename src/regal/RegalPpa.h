@@ -59,9 +59,11 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-// Only glPushAttrib(GL_STENCIL_BUFFER_BIT) so far...
+namespace Emu {
 
-struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, State::Transform
+// Work in progress...
+
+struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, State::Transform
 {
   void Init(RegalContext &ctx)
   {
@@ -127,7 +129,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
         State::Depth::swap(depthStack.back());
         depthStack.pop_back();
 
-        Internal("RegalPpa::PopAttrib GL_DEPTH_BUFFER_BIT ",State::Depth::toString());
+        Internal("Regal::Ppa::PopAttrib GL_DEPTH_BUFFER_BIT ",State::Depth::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -143,7 +145,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
         State::Stencil::swap(stencilStack.back());
         stencilStack.pop_back();
 
-        Internal("RegalPpa::PopAttrib GL_STENCIL_BUFFER_BIT ",State::Stencil::toString());
+        Internal("Regal::Ppa::PopAttrib GL_STENCIL_BUFFER_BIT ",State::Stencil::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -159,7 +161,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
         State::Polygon::swap(polygonStack.back());
         polygonStack.pop_back();
 
-        Internal("RegalPpa::PopAttrib GL_POLYGON_BIT ",State::Polygon::toString());
+        Internal("Regal::Ppa::PopAttrib GL_POLYGON_BIT ",State::Polygon::toString());
 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
@@ -174,7 +176,7 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
         RegalAssert(transformStack.size());
         State::Transform::swap(transformStack.back());
 
-        Internal("RegalPpa::PopAttrib GL_TRANSFORM_BIT ",State::Transform::toString());
+        Internal("Regal::Ppa::PopAttrib GL_TRANSFORM_BIT ",State::Transform::toString());
 
         State::Transform::transition(ctx->dispatcher.emulation, transformStack.back());
         transformStack.pop_back();
@@ -264,13 +266,13 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
 
   bool Enable(RegalContext *ctx, GLenum cap)
   {
-    Internal("RegalPpa::Enable ",Token::toString(cap));
+    Internal("Regal::Ppa::Enable ",Token::toString(cap));
     return SetEnable(ctx, cap, GL_TRUE);
   }
 
   bool Disable(RegalContext * ctx, GLenum cap)
   {
-    Internal("RegalPpa::Disable ",Token::toString(cap));
+    Internal("Regal::Ppa::Disable ",Token::toString(cap));
     return SetEnable(ctx, cap, GL_FALSE);
   }
 
@@ -280,6 +282,8 @@ struct RegalPpa : public RegalEmu, State::Stencil, State::Depth, State::Polygon,
   std::vector<State::Polygon> polygonStack;
   std::vector<State::Transform> transformStack;
 };
+
+}
 
 REGAL_NAMESPACE_END
 

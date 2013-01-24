@@ -1399,6 +1399,18 @@ void REGAL_CALL gmock_glVertexPointer(GLint size, GLenum type, GLsizei stride, c
   return RegalGMockInterface::current->glVertexPointer(size, type, stride, pointer);
 }
 
+void REGAL_CALL gmock_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask) {
+  return RegalGMockInterface::current->glStencilFuncSeparate(face, func, ref, mask);
+}
+
+void REGAL_CALL gmock_glStencilMaskSeparate(GLenum face, GLuint mask) {
+  return RegalGMockInterface::current->glStencilMaskSeparate(face, mask);
+}
+
+void REGAL_CALL gmock_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass) {
+  return RegalGMockInterface::current->glStencilOpSeparate(face, fail, zfail, zpass);
+}
+
 } // namespace
 
 RegalGMockInterface::RegalGMockInterface()
@@ -1751,6 +1763,9 @@ void InitDispatchTableGMock(DispatchTable &tbl)
   tbl.glTexSubImage1D = gmock_glTexSubImage1D;
   tbl.glTexSubImage2D = gmock_glTexSubImage2D;
   tbl.glVertexPointer = gmock_glVertexPointer;
+  tbl.glStencilFuncSeparate = gmock_glStencilFuncSeparate;
+  tbl.glStencilMaskSeparate = gmock_glStencilMaskSeparate;
+  tbl.glStencilOpSeparate = gmock_glStencilOpSeparate;
 }
 
 REGAL_NAMESPACE_END

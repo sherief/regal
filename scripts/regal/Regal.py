@@ -77,6 +77,11 @@ ${REGAL_SYS}
 typedef XID GLXDrawable;
 #endif
 
+#if REGAL_SYS_EGL && REGAL_SYS_X11
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

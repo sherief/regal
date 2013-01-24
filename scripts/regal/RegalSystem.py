@@ -40,6 +40,9 @@ regalSys = '''#if _WIN32
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 1
 # endif
+# ifndef REGAL_SYS_X11
+#  define REGAL_SYS_X11 1
+# endif
 #endif
 
 #ifndef REGAL_SYS_WGL
@@ -68,6 +71,10 @@ regalSys = '''#if _WIN32
 
 #ifndef REGAL_SYS_GLX
 # define REGAL_SYS_GLX 0
+#endif
+
+#ifndef REGAL_SYS_X11
+# define REGAL_SYS_X11 0
 #endif
 '''
 
