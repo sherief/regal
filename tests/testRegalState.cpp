@@ -94,7 +94,7 @@ TEST( RegalStateTransform, WorksAsExpected ) {
   State::Transform t1;
   State::Transform t2;
 
-  for ( size_t i = 0; i < State::Transform::CLIP_PLANE_COUNT; ++i ) {
+  for ( size_t i = 0; i < t1.maxPlanes(); ++i ) {
     t1.clipPlane[ i ].enabled = 50 + i;
     for ( size_t j = 0; j < 4; ++j ) {
       t1.clipPlane[ i ].equation.data[ j ] = i * 4 + j;
@@ -109,7 +109,7 @@ TEST( RegalStateTransform, WorksAsExpected ) {
 
   // Test that t1 now has the correct initial state
 
-  for ( size_t i = 0; i < State::Transform::CLIP_PLANE_COUNT; ++i ) {
+  for ( size_t i = 0; i < t1.maxPlanes(); ++i ) {
     EXPECT_EQ( static_cast<GLboolean>( GL_FALSE ), t1.clipPlane[ i ].enabled );
     for ( size_t j = 0; j < 4; ++j ) {
       EXPECT_EQ( 0, t1.clipPlane[ i ].equation.data[ j ] );
@@ -122,7 +122,7 @@ TEST( RegalStateTransform, WorksAsExpected ) {
 
   // Test that t2 has the artificial state
 
-  for ( size_t i = 0; i < State::Transform::CLIP_PLANE_COUNT; ++i ) {
+  for ( size_t i = 0; i < t1.maxPlanes(); ++i ) {
     EXPECT_EQ( static_cast<GLboolean>( 50 + i ), t2.clipPlane[ i ].enabled );
     for ( size_t j = 0; j < 4; ++j ) {
       EXPECT_EQ( i * 4 + j, t2.clipPlane[ i ].equation.data[ j ] );

@@ -26592,6 +26592,8 @@ REGAL_DECL void REGAL_CALL glViewport(GLint x, GLint y, GLsizei width, GLsizei h
 #define GL_CLIP_PLANE3                   0x3003                         /* 12291 */
 #define GL_CLIP_PLANE4                   0x3004                         /* 12292 */
 #define GL_CLIP_PLANE5                   0x3005                         /* 12293 */
+#define GL_CLIP_PLANE6                   0x3006                         /* 12294 */
+#define GL_CLIP_PLANE7                   0x3007                         /* 12295 */
 #define GL_ONE_MINUS_SRC_COLOR           0x301                          /* 769 */
 #define GL_SRC_ALPHA                     0x302                          /* 770 */
 #define GL_ONE_MINUS_SRC_ALPHA           0x303                          /* 771 */

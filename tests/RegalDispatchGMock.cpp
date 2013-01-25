@@ -1399,6 +1399,134 @@ void REGAL_CALL gmock_glVertexPointer(GLint size, GLenum type, GLsizei stride, c
   return RegalGMockInterface::current->glVertexPointer(size, type, stride, pointer);
 }
 
+void REGAL_CALL gmock_glAttachShader(GLuint program, GLuint shader) {
+  return RegalGMockInterface::current->glAttachShader(program, shader);
+}
+
+void REGAL_CALL gmock_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name) {
+  return RegalGMockInterface::current->glBindAttribLocation(program, index, name);
+}
+
+void REGAL_CALL gmock_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha) {
+  return RegalGMockInterface::current->glBlendEquationSeparate(modeRGB, modeAlpha);
+}
+
+void REGAL_CALL gmock_glCompileShader(GLuint shader) {
+  return RegalGMockInterface::current->glCompileShader(shader);
+}
+
+GLuint REGAL_CALL gmock_glCreateProgram(void) {
+  return RegalGMockInterface::current->glCreateProgram();
+}
+
+GLuint REGAL_CALL gmock_glCreateShader(GLenum type) {
+  return RegalGMockInterface::current->glCreateShader(type);
+}
+
+void REGAL_CALL gmock_glDeleteProgram(GLuint program) {
+  return RegalGMockInterface::current->glDeleteProgram(program);
+}
+
+void REGAL_CALL gmock_glDeleteShader(GLuint shader) {
+  return RegalGMockInterface::current->glDeleteShader(shader);
+}
+
+void REGAL_CALL gmock_glDetachShader(GLuint program, GLuint shader) {
+  return RegalGMockInterface::current->glDetachShader(program, shader);
+}
+
+void REGAL_CALL gmock_glDisableVertexAttribArray(GLuint index) {
+  return RegalGMockInterface::current->glDisableVertexAttribArray(index);
+}
+
+void REGAL_CALL gmock_glDrawBuffers(GLsizei n, const GLenum *bufs) {
+  return RegalGMockInterface::current->glDrawBuffers(n, bufs);
+}
+
+void REGAL_CALL gmock_glEnableVertexAttribArray(GLuint index) {
+  return RegalGMockInterface::current->glEnableVertexAttribArray(index);
+}
+
+void REGAL_CALL gmock_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name) {
+  return RegalGMockInterface::current->glGetActiveAttrib(program, index, bufSize, length, size, type, name);
+}
+
+void REGAL_CALL gmock_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name) {
+  return RegalGMockInterface::current->glGetActiveUniform(program, index, bufSize, length, size, type, name);
+}
+
+void REGAL_CALL gmock_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders) {
+  return RegalGMockInterface::current->glGetAttachedShaders(program, maxCount, count, shaders);
+}
+
+GLint REGAL_CALL gmock_glGetAttribLocation(GLuint program, const GLchar *name) {
+  return RegalGMockInterface::current->glGetAttribLocation(program, name);
+}
+
+void REGAL_CALL gmock_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog) {
+  return RegalGMockInterface::current->glGetProgramInfoLog(program, bufSize, length, infoLog);
+}
+
+void REGAL_CALL gmock_glGetProgramiv(GLuint program, GLenum pname, GLint *params) {
+  return RegalGMockInterface::current->glGetProgramiv(program, pname, params);
+}
+
+void REGAL_CALL gmock_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog) {
+  return RegalGMockInterface::current->glGetShaderInfoLog(shader, bufSize, length, infoLog);
+}
+
+void REGAL_CALL gmock_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source) {
+  return RegalGMockInterface::current->glGetShaderSource(shader, bufSize, length, source);
+}
+
+void REGAL_CALL gmock_glGetShaderiv(GLuint shader, GLenum pname, GLint *params) {
+  return RegalGMockInterface::current->glGetShaderiv(shader, pname, params);
+}
+
+GLint REGAL_CALL gmock_glGetUniformLocation(GLuint program, const GLchar *name) {
+  return RegalGMockInterface::current->glGetUniformLocation(program, name);
+}
+
+void REGAL_CALL gmock_glGetUniformfv(GLuint program, GLint location, GLfloat *params) {
+  return RegalGMockInterface::current->glGetUniformfv(program, location, params);
+}
+
+void REGAL_CALL gmock_glGetUniformiv(GLuint program, GLint location, GLint *params) {
+  return RegalGMockInterface::current->glGetUniformiv(program, location, params);
+}
+
+void REGAL_CALL gmock_glGetVertexAttribPointerv(GLuint index, GLenum pname, GLvoid **pointer) {
+  return RegalGMockInterface::current->glGetVertexAttribPointerv(index, pname, pointer);
+}
+
+void REGAL_CALL gmock_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble *params) {
+  return RegalGMockInterface::current->glGetVertexAttribdv(index, pname, params);
+}
+
+void REGAL_CALL gmock_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat *params) {
+  return RegalGMockInterface::current->glGetVertexAttribfv(index, pname, params);
+}
+
+void REGAL_CALL gmock_glGetVertexAttribiv(GLuint index, GLenum pname, GLint *params) {
+  return RegalGMockInterface::current->glGetVertexAttribiv(index, pname, params);
+}
+
+GLboolean REGAL_CALL gmock_glIsProgram(GLuint program) {
+  return RegalGMockInterface::current->glIsProgram(program);
+}
+
+GLboolean REGAL_CALL gmock_glIsShader(GLuint shader) {
+  return RegalGMockInterface::current->glIsShader(shader);
+}
+
+void REGAL_CALL gmock_glLinkProgram(GLuint program) {
+  return RegalGMockInterface::current->glLinkProgram(program);
+}
+
+void REGAL_CALL gmock_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length) {
+  return RegalGMockInterface::current->glShaderSource(shader, count, string, length);
+}
+
 void REGAL_CALL gmock_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask) {
   return RegalGMockInterface::current->glStencilFuncSeparate(face, func, ref, mask);
 }
@@ -1409,6 +1537,238 @@ void REGAL_CALL gmock_glStencilMaskSeparate(GLenum face, GLuint mask) {
 
 void REGAL_CALL gmock_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass) {
   return RegalGMockInterface::current->glStencilOpSeparate(face, fail, zfail, zpass);
+}
+
+void REGAL_CALL gmock_glUniform1f(GLint location, GLfloat v0) {
+  return RegalGMockInterface::current->glUniform1f(location, v0);
+}
+
+void REGAL_CALL gmock_glUniform1fv(GLint location, GLsizei count, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniform1fv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform1i(GLint location, GLint v0) {
+  return RegalGMockInterface::current->glUniform1i(location, v0);
+}
+
+void REGAL_CALL gmock_glUniform1iv(GLint location, GLsizei count, const GLint *value) {
+  return RegalGMockInterface::current->glUniform1iv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform2f(GLint location, GLfloat v0, GLfloat v1) {
+  return RegalGMockInterface::current->glUniform2f(location, v0, v1);
+}
+
+void REGAL_CALL gmock_glUniform2fv(GLint location, GLsizei count, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniform2fv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform2i(GLint location, GLint v0, GLint v1) {
+  return RegalGMockInterface::current->glUniform2i(location, v0, v1);
+}
+
+void REGAL_CALL gmock_glUniform2iv(GLint location, GLsizei count, const GLint *value) {
+  return RegalGMockInterface::current->glUniform2iv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2) {
+  return RegalGMockInterface::current->glUniform3f(location, v0, v1, v2);
+}
+
+void REGAL_CALL gmock_glUniform3fv(GLint location, GLsizei count, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniform3fv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2) {
+  return RegalGMockInterface::current->glUniform3i(location, v0, v1, v2);
+}
+
+void REGAL_CALL gmock_glUniform3iv(GLint location, GLsizei count, const GLint *value) {
+  return RegalGMockInterface::current->glUniform3iv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) {
+  return RegalGMockInterface::current->glUniform4f(location, v0, v1, v2, v3);
+}
+
+void REGAL_CALL gmock_glUniform4fv(GLint location, GLsizei count, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniform4fv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3) {
+  return RegalGMockInterface::current->glUniform4i(location, v0, v1, v2, v3);
+}
+
+void REGAL_CALL gmock_glUniform4iv(GLint location, GLsizei count, const GLint *value) {
+  return RegalGMockInterface::current->glUniform4iv(location, count, value);
+}
+
+void REGAL_CALL gmock_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniformMatrix2fv(location, count, transpose, value);
+}
+
+void REGAL_CALL gmock_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniformMatrix3fv(location, count, transpose, value);
+}
+
+void REGAL_CALL gmock_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+  return RegalGMockInterface::current->glUniformMatrix4fv(location, count, transpose, value);
+}
+
+void REGAL_CALL gmock_glUseProgram(GLuint program) {
+  return RegalGMockInterface::current->glUseProgram(program);
+}
+
+void REGAL_CALL gmock_glValidateProgram(GLuint program) {
+  return RegalGMockInterface::current->glValidateProgram(program);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1d(GLuint index, GLdouble x) {
+  return RegalGMockInterface::current->glVertexAttrib1d(index, x);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1dv(GLuint index, const GLdouble *v) {
+  return RegalGMockInterface::current->glVertexAttrib1dv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1f(GLuint index, GLfloat x) {
+  return RegalGMockInterface::current->glVertexAttrib1f(index, x);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1fv(GLuint index, const GLfloat *v) {
+  return RegalGMockInterface::current->glVertexAttrib1fv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1s(GLuint index, GLshort x) {
+  return RegalGMockInterface::current->glVertexAttrib1s(index, x);
+}
+
+void REGAL_CALL gmock_glVertexAttrib1sv(GLuint index, const GLshort *v) {
+  return RegalGMockInterface::current->glVertexAttrib1sv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y) {
+  return RegalGMockInterface::current->glVertexAttrib2d(index, x, y);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2dv(GLuint index, const GLdouble *v) {
+  return RegalGMockInterface::current->glVertexAttrib2dv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y) {
+  return RegalGMockInterface::current->glVertexAttrib2f(index, x, y);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2fv(GLuint index, const GLfloat *v) {
+  return RegalGMockInterface::current->glVertexAttrib2fv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2s(GLuint index, GLshort x, GLshort y) {
+  return RegalGMockInterface::current->glVertexAttrib2s(index, x, y);
+}
+
+void REGAL_CALL gmock_glVertexAttrib2sv(GLuint index, const GLshort *v) {
+  return RegalGMockInterface::current->glVertexAttrib2sv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z) {
+  return RegalGMockInterface::current->glVertexAttrib3d(index, x, y, z);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3dv(GLuint index, const GLdouble *v) {
+  return RegalGMockInterface::current->glVertexAttrib3dv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z) {
+  return RegalGMockInterface::current->glVertexAttrib3f(index, x, y, z);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3fv(GLuint index, const GLfloat *v) {
+  return RegalGMockInterface::current->glVertexAttrib3fv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z) {
+  return RegalGMockInterface::current->glVertexAttrib3s(index, x, y, z);
+}
+
+void REGAL_CALL gmock_glVertexAttrib3sv(GLuint index, const GLshort *v) {
+  return RegalGMockInterface::current->glVertexAttrib3sv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nbv(GLuint index, const GLbyte *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Nbv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Niv(GLuint index, const GLint *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Niv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nsv(GLuint index, const GLshort *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Nsv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w) {
+  return RegalGMockInterface::current->glVertexAttrib4Nub(index, x, y, z, w);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nubv(GLuint index, const GLubyte *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Nubv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nuiv(GLuint index, const GLuint *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Nuiv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4Nusv(GLuint index, const GLushort *v) {
+  return RegalGMockInterface::current->glVertexAttrib4Nusv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4bv(GLuint index, const GLbyte *v) {
+  return RegalGMockInterface::current->glVertexAttrib4bv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w) {
+  return RegalGMockInterface::current->glVertexAttrib4d(index, x, y, z, w);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4dv(GLuint index, const GLdouble *v) {
+  return RegalGMockInterface::current->glVertexAttrib4dv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+  return RegalGMockInterface::current->glVertexAttrib4f(index, x, y, z, w);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4fv(GLuint index, const GLfloat *v) {
+  return RegalGMockInterface::current->glVertexAttrib4fv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4iv(GLuint index, const GLint *v) {
+  return RegalGMockInterface::current->glVertexAttrib4iv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w) {
+  return RegalGMockInterface::current->glVertexAttrib4s(index, x, y, z, w);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4sv(GLuint index, const GLshort *v) {
+  return RegalGMockInterface::current->glVertexAttrib4sv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4ubv(GLuint index, const GLubyte *v) {
+  return RegalGMockInterface::current->glVertexAttrib4ubv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4uiv(GLuint index, const GLuint *v) {
+  return RegalGMockInterface::current->glVertexAttrib4uiv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttrib4usv(GLuint index, const GLushort *v) {
+  return RegalGMockInterface::current->glVertexAttrib4usv(index, v);
+}
+
+void REGAL_CALL gmock_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer) {
+  return RegalGMockInterface::current->glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 }
 
 } // namespace
@@ -1763,9 +2123,99 @@ void InitDispatchTableGMock(DispatchTable &tbl)
   tbl.glTexSubImage1D = gmock_glTexSubImage1D;
   tbl.glTexSubImage2D = gmock_glTexSubImage2D;
   tbl.glVertexPointer = gmock_glVertexPointer;
+  tbl.glAttachShader = gmock_glAttachShader;
+  tbl.glBindAttribLocation = gmock_glBindAttribLocation;
+  tbl.glBlendEquationSeparate = gmock_glBlendEquationSeparate;
+  tbl.glCompileShader = gmock_glCompileShader;
+  tbl.glCreateProgram = gmock_glCreateProgram;
+  tbl.glCreateShader = gmock_glCreateShader;
+  tbl.glDeleteProgram = gmock_glDeleteProgram;
+  tbl.glDeleteShader = gmock_glDeleteShader;
+  tbl.glDetachShader = gmock_glDetachShader;
+  tbl.glDisableVertexAttribArray = gmock_glDisableVertexAttribArray;
+  tbl.glDrawBuffers = gmock_glDrawBuffers;
+  tbl.glEnableVertexAttribArray = gmock_glEnableVertexAttribArray;
+  tbl.glGetActiveAttrib = gmock_glGetActiveAttrib;
+  tbl.glGetActiveUniform = gmock_glGetActiveUniform;
+  tbl.glGetAttachedShaders = gmock_glGetAttachedShaders;
+  tbl.glGetAttribLocation = gmock_glGetAttribLocation;
+  tbl.glGetProgramInfoLog = gmock_glGetProgramInfoLog;
+  tbl.glGetProgramiv = gmock_glGetProgramiv;
+  tbl.glGetShaderInfoLog = gmock_glGetShaderInfoLog;
+  tbl.glGetShaderSource = gmock_glGetShaderSource;
+  tbl.glGetShaderiv = gmock_glGetShaderiv;
+  tbl.glGetUniformLocation = gmock_glGetUniformLocation;
+  tbl.glGetUniformfv = gmock_glGetUniformfv;
+  tbl.glGetUniformiv = gmock_glGetUniformiv;
+  tbl.glGetVertexAttribPointerv = gmock_glGetVertexAttribPointerv;
+  tbl.glGetVertexAttribdv = gmock_glGetVertexAttribdv;
+  tbl.glGetVertexAttribfv = gmock_glGetVertexAttribfv;
+  tbl.glGetVertexAttribiv = gmock_glGetVertexAttribiv;
+  tbl.glIsProgram = gmock_glIsProgram;
+  tbl.glIsShader = gmock_glIsShader;
+  tbl.glLinkProgram = gmock_glLinkProgram;
+  tbl.glShaderSource = gmock_glShaderSource;
   tbl.glStencilFuncSeparate = gmock_glStencilFuncSeparate;
   tbl.glStencilMaskSeparate = gmock_glStencilMaskSeparate;
   tbl.glStencilOpSeparate = gmock_glStencilOpSeparate;
+  tbl.glUniform1f = gmock_glUniform1f;
+  tbl.glUniform1fv = gmock_glUniform1fv;
+  tbl.glUniform1i = gmock_glUniform1i;
+  tbl.glUniform1iv = gmock_glUniform1iv;
+  tbl.glUniform2f = gmock_glUniform2f;
+  tbl.glUniform2fv = gmock_glUniform2fv;
+  tbl.glUniform2i = gmock_glUniform2i;
+  tbl.glUniform2iv = gmock_glUniform2iv;
+  tbl.glUniform3f = gmock_glUniform3f;
+  tbl.glUniform3fv = gmock_glUniform3fv;
+  tbl.glUniform3i = gmock_glUniform3i;
+  tbl.glUniform3iv = gmock_glUniform3iv;
+  tbl.glUniform4f = gmock_glUniform4f;
+  tbl.glUniform4fv = gmock_glUniform4fv;
+  tbl.glUniform4i = gmock_glUniform4i;
+  tbl.glUniform4iv = gmock_glUniform4iv;
+  tbl.glUniformMatrix2fv = gmock_glUniformMatrix2fv;
+  tbl.glUniformMatrix3fv = gmock_glUniformMatrix3fv;
+  tbl.glUniformMatrix4fv = gmock_glUniformMatrix4fv;
+  tbl.glUseProgram = gmock_glUseProgram;
+  tbl.glValidateProgram = gmock_glValidateProgram;
+  tbl.glVertexAttrib1d = gmock_glVertexAttrib1d;
+  tbl.glVertexAttrib1dv = gmock_glVertexAttrib1dv;
+  tbl.glVertexAttrib1f = gmock_glVertexAttrib1f;
+  tbl.glVertexAttrib1fv = gmock_glVertexAttrib1fv;
+  tbl.glVertexAttrib1s = gmock_glVertexAttrib1s;
+  tbl.glVertexAttrib1sv = gmock_glVertexAttrib1sv;
+  tbl.glVertexAttrib2d = gmock_glVertexAttrib2d;
+  tbl.glVertexAttrib2dv = gmock_glVertexAttrib2dv;
+  tbl.glVertexAttrib2f = gmock_glVertexAttrib2f;
+  tbl.glVertexAttrib2fv = gmock_glVertexAttrib2fv;
+  tbl.glVertexAttrib2s = gmock_glVertexAttrib2s;
+  tbl.glVertexAttrib2sv = gmock_glVertexAttrib2sv;
+  tbl.glVertexAttrib3d = gmock_glVertexAttrib3d;
+  tbl.glVertexAttrib3dv = gmock_glVertexAttrib3dv;
+  tbl.glVertexAttrib3f = gmock_glVertexAttrib3f;
+  tbl.glVertexAttrib3fv = gmock_glVertexAttrib3fv;
+  tbl.glVertexAttrib3s = gmock_glVertexAttrib3s;
+  tbl.glVertexAttrib3sv = gmock_glVertexAttrib3sv;
+  tbl.glVertexAttrib4Nbv = gmock_glVertexAttrib4Nbv;
+  tbl.glVertexAttrib4Niv = gmock_glVertexAttrib4Niv;
+  tbl.glVertexAttrib4Nsv = gmock_glVertexAttrib4Nsv;
+  tbl.glVertexAttrib4Nub = gmock_glVertexAttrib4Nub;
+  tbl.glVertexAttrib4Nubv = gmock_glVertexAttrib4Nubv;
+  tbl.glVertexAttrib4Nuiv = gmock_glVertexAttrib4Nuiv;
+  tbl.glVertexAttrib4Nusv = gmock_glVertexAttrib4Nusv;
+  tbl.glVertexAttrib4bv = gmock_glVertexAttrib4bv;
+  tbl.glVertexAttrib4d = gmock_glVertexAttrib4d;
+  tbl.glVertexAttrib4dv = gmock_glVertexAttrib4dv;
+  tbl.glVertexAttrib4f = gmock_glVertexAttrib4f;
+  tbl.glVertexAttrib4fv = gmock_glVertexAttrib4fv;
+  tbl.glVertexAttrib4iv = gmock_glVertexAttrib4iv;
+  tbl.glVertexAttrib4s = gmock_glVertexAttrib4s;
+  tbl.glVertexAttrib4sv = gmock_glVertexAttrib4sv;
+  tbl.glVertexAttrib4ubv = gmock_glVertexAttrib4ubv;
+  tbl.glVertexAttrib4uiv = gmock_glVertexAttrib4uiv;
+  tbl.glVertexAttrib4usv = gmock_glVertexAttrib4usv;
+  tbl.glVertexAttribPointer = gmock_glVertexAttribPointer;
 }
 
 REGAL_NAMESPACE_END

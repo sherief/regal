@@ -260,6 +260,8 @@ GL_CLIP_PLANE2 = Enumerant('GL_CLIP_PLANE2', 0x3002, 'GL_VERSION_1_1')
 GL_CLIP_PLANE3 = Enumerant('GL_CLIP_PLANE3', 0x3003, 'GL_VERSION_1_1')
 GL_CLIP_PLANE4 = Enumerant('GL_CLIP_PLANE4', 0x3004, 'GL_VERSION_1_1')
 GL_CLIP_PLANE5 = Enumerant('GL_CLIP_PLANE5', 0x3005, 'GL_VERSION_1_1')
+GL_CLIP_PLANE6 = Enumerant('GL_CLIP_PLANE6', 0x3006, 'GL_VERSION_1_1')
+GL_CLIP_PLANE7 = Enumerant('GL_CLIP_PLANE7', 0x3007, 'GL_VERSION_1_1')
 GL_COEFF = Enumerant('GL_COEFF', 0x0a00, 'GL_VERSION_1_1')
 GL_COLOR = Enumerant('GL_COLOR', 0x1800, 'GL_VERSION_1_1')
 GL_COLOR_ARRAY = Enumerant('GL_COLOR_ARRAY', 0x8076, 'GL_VERSION_1_1')
@@ -917,6 +919,8 @@ defines.add(GL_CLIP_PLANE2)
 defines.add(GL_CLIP_PLANE3)
 defines.add(GL_CLIP_PLANE4)
 defines.add(GL_CLIP_PLANE5)
+defines.add(GL_CLIP_PLANE6)
+defines.add(GL_CLIP_PLANE7)
 defines.add(GL_COEFF)
 defines.add(GL_COLOR)
 defines.add(GL_COLOR_ARRAY)
@@ -16042,6 +16046,1072 @@ glWindowPos3sv.trace = True
 glWindowPos3sv.play = True
 gl.add(glWindowPos3sv)
 
+# GL_VERSION_2_0
+
+glAttachShader = Function('glAttachShader')
+glAttachShader.ret = Return('void')
+glAttachShader.add( Input( 'program','GLuint' ))
+glAttachShader.add( Input( 'shader','GLuint' ))
+glAttachShader.version = '2.0'
+glAttachShader.category = 'GL_VERSION_2_0'
+glAttachShader.esVersions = [2.0]
+glAttachShader.trace = True
+glAttachShader.play = True
+gl.add(glAttachShader)
+
+glBindAttribLocation = Function('glBindAttribLocation')
+glBindAttribLocation.ret = Return('void')
+glBindAttribLocation.add( Input( 'program','GLuint' ))
+glBindAttribLocation.add( Input( 'index','GLuint' ))
+glBindAttribLocation.add( Input( 'name','const GLchar *' ))
+glBindAttribLocation.version = '2.0'
+glBindAttribLocation.category = 'GL_VERSION_2_0'
+glBindAttribLocation.esVersions = [2.0]
+glBindAttribLocation.trace = True
+glBindAttribLocation.play = True
+gl.add(glBindAttribLocation)
+
+glBlendEquationSeparate = Function('glBlendEquationSeparate')
+glBlendEquationSeparate.ret = Return('void')
+glBlendEquationSeparate.add( Input( 'modeRGB','GLenum' ))
+glBlendEquationSeparate.add( Input( 'modeAlpha','GLenum' ))
+glBlendEquationSeparate.version = '2.0'
+glBlendEquationSeparate.category = 'GL_VERSION_2_0'
+glBlendEquationSeparate.esVersions = [2.0]
+glBlendEquationSeparate.trace = True
+glBlendEquationSeparate.play = True
+gl.add(glBlendEquationSeparate)
+
+glCompileShader = Function('glCompileShader')
+glCompileShader.ret = Return('void')
+glCompileShader.add( Input( 'shader','GLuint' ))
+glCompileShader.version = '2.0'
+glCompileShader.category = 'GL_VERSION_2_0'
+glCompileShader.esVersions = [2.0]
+glCompileShader.trace = True
+glCompileShader.play = True
+gl.add(glCompileShader)
+
+glCreateProgram = Function('glCreateProgram')
+glCreateProgram.ret = Return('GLuint')
+glCreateProgram.version = '2.0'
+glCreateProgram.category = 'GL_VERSION_2_0'
+glCreateProgram.esVersions = [2.0]
+glCreateProgram.trace = True
+glCreateProgram.play = True
+gl.add(glCreateProgram)
+
+glCreateShader = Function('glCreateShader')
+glCreateShader.ret = Return('GLuint')
+glCreateShader.add( Input( 'type','GLenum' ))
+glCreateShader.version = '2.0'
+glCreateShader.category = 'GL_VERSION_2_0'
+glCreateShader.esVersions = [2.0]
+glCreateShader.trace = True
+glCreateShader.play = True
+gl.add(glCreateShader)
+
+glDeleteProgram = Function('glDeleteProgram')
+glDeleteProgram.ret = Return('void')
+glDeleteProgram.add( Input( 'program','GLuint' ))
+glDeleteProgram.version = '2.0'
+glDeleteProgram.category = 'GL_VERSION_2_0'
+glDeleteProgram.esVersions = [2.0]
+glDeleteProgram.trace = True
+glDeleteProgram.play = True
+gl.add(glDeleteProgram)
+
+glDeleteShader = Function('glDeleteShader')
+glDeleteShader.ret = Return('void')
+glDeleteShader.add( Input( 'shader','GLuint' ))
+glDeleteShader.version = '2.0'
+glDeleteShader.category = 'GL_VERSION_2_0'
+glDeleteShader.esVersions = [2.0]
+glDeleteShader.trace = True
+glDeleteShader.play = True
+gl.add(glDeleteShader)
+
+glDetachShader = Function('glDetachShader')
+glDetachShader.ret = Return('void')
+glDetachShader.add( Input( 'program','GLuint' ))
+glDetachShader.add( Input( 'shader','GLuint' ))
+glDetachShader.version = '2.0'
+glDetachShader.category = 'GL_VERSION_2_0'
+glDetachShader.esVersions = [2.0]
+glDetachShader.trace = True
+glDetachShader.play = True
+gl.add(glDetachShader)
+
+glDisableVertexAttribArray = Function('glDisableVertexAttribArray')
+glDisableVertexAttribArray.ret = Return('void')
+glDisableVertexAttribArray.add( Input( 'index','GLuint' ))
+glDisableVertexAttribArray.version = '2.0'
+glDisableVertexAttribArray.category = 'GL_VERSION_2_0'
+glDisableVertexAttribArray.esVersions = [2.0]
+glDisableVertexAttribArray.trace = True
+glDisableVertexAttribArray.play = True
+gl.add(glDisableVertexAttribArray)
+
+glDrawBuffers = Function('glDrawBuffers')
+glDrawBuffers.ret = Return('void')
+glDrawBuffers.add( Input( 'n','GLsizei' ))
+glDrawBuffers.add( Input( 'bufs','const GLenum *' ,size = 'n' ))
+glDrawBuffers.version = '2.0'
+glDrawBuffers.category = 'GL_VERSION_2_0'
+glDrawBuffers.trace = True
+glDrawBuffers.play = True
+gl.add(glDrawBuffers)
+
+glEnableVertexAttribArray = Function('glEnableVertexAttribArray')
+glEnableVertexAttribArray.ret = Return('void')
+glEnableVertexAttribArray.add( Input( 'index','GLuint' ))
+glEnableVertexAttribArray.version = '2.0'
+glEnableVertexAttribArray.category = 'GL_VERSION_2_0'
+glEnableVertexAttribArray.esVersions = [2.0]
+glEnableVertexAttribArray.trace = True
+glEnableVertexAttribArray.play = True
+gl.add(glEnableVertexAttribArray)
+
+glGetActiveAttrib = Function('glGetActiveAttrib')
+glGetActiveAttrib.ret = Return('void')
+glGetActiveAttrib.add( Input( 'program','GLuint' ))
+glGetActiveAttrib.add( Input( 'index','GLuint' ))
+glGetActiveAttrib.add( Input( 'bufSize','GLsizei' ))
+glGetActiveAttrib.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetActiveAttrib.add( Output( 'size','GLint *' ,size = 1 ))
+glGetActiveAttrib.add( Output( 'type','GLenum *' ,size = 1 ))
+glGetActiveAttrib.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
+glGetActiveAttrib.version = '2.0'
+glGetActiveAttrib.category = 'GL_VERSION_2_0'
+glGetActiveAttrib.esVersions = [2.0]
+glGetActiveAttrib.trace = True
+glGetActiveAttrib.play = False
+gl.add(glGetActiveAttrib)
+
+glGetActiveUniform = Function('glGetActiveUniform')
+glGetActiveUniform.ret = Return('void')
+glGetActiveUniform.add( Input( 'program','GLuint' ))
+glGetActiveUniform.add( Input( 'index','GLuint' ))
+glGetActiveUniform.add( Input( 'bufSize','GLsizei' ))
+glGetActiveUniform.add( Output( 'length','GLsizei *' ,size = 1 ))
+glGetActiveUniform.add( Output( 'size','GLint *' ,size = 1 ))
+glGetActiveUniform.add( Output( 'type','GLenum *' ,size = 1 ))
+glGetActiveUniform.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
+glGetActiveUniform.version = '2.0'
+glGetActiveUniform.category = 'GL_VERSION_2_0'
+glGetActiveUniform.esVersions = [2.0]
+glGetActiveUniform.trace = True
+glGetActiveUniform.play = False
+gl.add(glGetActiveUniform)
+
+glGetAttachedShaders = Function('glGetAttachedShaders')
+glGetAttachedShaders.ret = Return('void')
+glGetAttachedShaders.add( Input( 'program','GLuint' ))
+glGetAttachedShaders.add( Input( 'maxCount','GLsizei' ))
+glGetAttachedShaders.add( Output( 'count','GLsizei *' ,size = 1 ))
+glGetAttachedShaders.add( Output( 'shaders','GLuint *' ,size = 'count ? *count : 0' ))
+glGetAttachedShaders.version = '2.0'
+glGetAttachedShaders.category = 'GL_VERSION_2_0'
+glGetAttachedShaders.esVersions = [2.0]
+glGetAttachedShaders.trace = True
+glGetAttachedShaders.play = False
+gl.add(glGetAttachedShaders)
+
+glGetAttribLocation = Function('glGetAttribLocation')
+glGetAttribLocation.ret = Return('GLint')
+glGetAttribLocation.add( Input( 'program','GLuint' ))
+glGetAttribLocation.add( Input( 'name','const GLchar *' ))
+glGetAttribLocation.version = '2.0'
+glGetAttribLocation.category = 'GL_VERSION_2_0'
+glGetAttribLocation.esVersions = [2.0]
+glGetAttribLocation.trace = True
+glGetAttribLocation.play = False
+gl.add(glGetAttribLocation)
+
+glGetProgramInfoLog = Function('glGetProgramInfoLog')
+glGetProgramInfoLog.ret = Return('void')
+glGetProgramInfoLog.add( Input( 'program','GLuint' ))
+glGetProgramInfoLog.add( Input( 'bufSize','GLsizei' ))
+glGetProgramInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
+glGetProgramInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
+glGetProgramInfoLog.version = '2.0'
+glGetProgramInfoLog.category = 'GL_VERSION_2_0'
+glGetProgramInfoLog.esVersions = [2.0]
+glGetProgramInfoLog.trace = True
+glGetProgramInfoLog.play = False
+gl.add(glGetProgramInfoLog)
+
+glGetProgramiv = Function('glGetProgramiv')
+glGetProgramiv.ret = Return('void')
+glGetProgramiv.add( Input( 'program','GLuint' ))
+glGetProgramiv.add( Input( 'pname','GLenum' ))
+glGetProgramiv.add( Output( 'params','GLint *' ,size = 1 ))
+glGetProgramiv.version = '2.0'
+glGetProgramiv.category = 'GL_VERSION_2_0'
+glGetProgramiv.esVersions = [2.0]
+glGetProgramiv.trace = True
+glGetProgramiv.play = False
+gl.add(glGetProgramiv)
+
+glGetShaderInfoLog = Function('glGetShaderInfoLog')
+glGetShaderInfoLog.ret = Return('void')
+glGetShaderInfoLog.add( Input( 'shader','GLuint' ))
+glGetShaderInfoLog.add( Input( 'bufSize','GLsizei' ))
+glGetShaderInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
+glGetShaderInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
+glGetShaderInfoLog.version = '2.0'
+glGetShaderInfoLog.category = 'GL_VERSION_2_0'
+glGetShaderInfoLog.esVersions = [2.0]
+glGetShaderInfoLog.trace = True
+glGetShaderInfoLog.play = False
+gl.add(glGetShaderInfoLog)
+
+glGetShaderSource = Function('glGetShaderSource')
+glGetShaderSource.ret = Return('void')
+glGetShaderSource.add( Input( 'shader','GLuint' ))
+glGetShaderSource.add( Input( 'bufSize','GLsizei' ))
+glGetShaderSource.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
+glGetShaderSource.add( Output( 'source','GLchar *' ,maxSize = 'bufSize' ))
+glGetShaderSource.version = '2.0'
+glGetShaderSource.category = 'GL_VERSION_2_0'
+glGetShaderSource.esVersions = [2.0]
+glGetShaderSource.trace = True
+glGetShaderSource.play = False
+gl.add(glGetShaderSource)
+
+glGetShaderiv = Function('glGetShaderiv')
+glGetShaderiv.ret = Return('void')
+glGetShaderiv.add( Input( 'shader','GLuint' ))
+glGetShaderiv.add( Input( 'pname','GLenum' ))
+glGetShaderiv.add( Output( 'params','GLint *' ,size = 1 ))
+glGetShaderiv.version = '2.0'
+glGetShaderiv.category = 'GL_VERSION_2_0'
+glGetShaderiv.esVersions = [2.0]
+glGetShaderiv.trace = True
+glGetShaderiv.play = False
+gl.add(glGetShaderiv)
+
+glGetUniformLocation = Function('glGetUniformLocation')
+glGetUniformLocation.ret = Return('GLint')
+glGetUniformLocation.add( Input( 'program','GLuint' ))
+glGetUniformLocation.add( Input( 'name','const GLchar *' ,cast = 'const char *' ))
+glGetUniformLocation.version = '2.0'
+glGetUniformLocation.category = 'GL_VERSION_2_0'
+glGetUniformLocation.esVersions = [2.0]
+glGetUniformLocation.trace = True
+glGetUniformLocation.play = False
+gl.add(glGetUniformLocation)
+
+glGetUniformfv = Function('glGetUniformfv')
+glGetUniformfv.ret = Return('void')
+glGetUniformfv.add( Input( 'program','GLuint' ))
+glGetUniformfv.add( Input( 'location','GLint' ))
+glGetUniformfv.add( Output( 'params','GLfloat *' ))
+glGetUniformfv.version = '2.0'
+glGetUniformfv.category = 'GL_VERSION_2_0'
+glGetUniformfv.esVersions = [2.0]
+glGetUniformfv.trace = True
+glGetUniformfv.play = False
+gl.add(glGetUniformfv)
+
+glGetUniformiv = Function('glGetUniformiv')
+glGetUniformiv.ret = Return('void')
+glGetUniformiv.add( Input( 'program','GLuint' ))
+glGetUniformiv.add( Input( 'location','GLint' ))
+glGetUniformiv.add( Output( 'params','GLint *' ))
+glGetUniformiv.version = '2.0'
+glGetUniformiv.category = 'GL_VERSION_2_0'
+glGetUniformiv.esVersions = [2.0]
+glGetUniformiv.trace = True
+glGetUniformiv.play = False
+gl.add(glGetUniformiv)
+
+glGetVertexAttribPointerv = Function('glGetVertexAttribPointerv')
+glGetVertexAttribPointerv.ret = Return('void')
+glGetVertexAttribPointerv.add( Input( 'index','GLuint' ))
+glGetVertexAttribPointerv.add( Input( 'pname','GLenum' ))
+glGetVertexAttribPointerv.add( Output( 'pointer','GLvoid **' ,size = 1 ))
+glGetVertexAttribPointerv.version = '2.0'
+glGetVertexAttribPointerv.category = 'GL_VERSION_2_0'
+glGetVertexAttribPointerv.esVersions = [2.0]
+glGetVertexAttribPointerv.trace = True
+glGetVertexAttribPointerv.play = False
+gl.add(glGetVertexAttribPointerv)
+
+glGetVertexAttribdv = Function('glGetVertexAttribdv')
+glGetVertexAttribdv.ret = Return('void')
+glGetVertexAttribdv.add( Input( 'index','GLuint' ))
+glGetVertexAttribdv.add( Input( 'pname','GLenum' ))
+glGetVertexAttribdv.add( Output( 'params','GLdouble *' ,size = 4 ))
+glGetVertexAttribdv.version = '2.0'
+glGetVertexAttribdv.category = 'GL_VERSION_2_0'
+glGetVertexAttribdv.trace = True
+glGetVertexAttribdv.play = False
+gl.add(glGetVertexAttribdv)
+
+glGetVertexAttribfv = Function('glGetVertexAttribfv')
+glGetVertexAttribfv.ret = Return('void')
+glGetVertexAttribfv.add( Input( 'index','GLuint' ))
+glGetVertexAttribfv.add( Input( 'pname','GLenum' ))
+glGetVertexAttribfv.add( Output( 'params','GLfloat *' ,size = 4 ))
+glGetVertexAttribfv.version = '2.0'
+glGetVertexAttribfv.category = 'GL_VERSION_2_0'
+glGetVertexAttribfv.esVersions = [2.0]
+glGetVertexAttribfv.trace = True
+glGetVertexAttribfv.play = False
+gl.add(glGetVertexAttribfv)
+
+glGetVertexAttribiv = Function('glGetVertexAttribiv')
+glGetVertexAttribiv.ret = Return('void')
+glGetVertexAttribiv.add( Input( 'index','GLuint' ))
+glGetVertexAttribiv.add( Input( 'pname','GLenum' ))
+glGetVertexAttribiv.add( Output( 'params','GLint *' ,size = 4 ))
+glGetVertexAttribiv.version = '2.0'
+glGetVertexAttribiv.category = 'GL_VERSION_2_0'
+glGetVertexAttribiv.esVersions = [2.0]
+glGetVertexAttribiv.trace = True
+glGetVertexAttribiv.play = False
+gl.add(glGetVertexAttribiv)
+
+glIsProgram = Function('glIsProgram')
+glIsProgram.ret = Return('GLboolean')
+glIsProgram.add( Input( 'program','GLuint' ))
+glIsProgram.version = '2.0'
+glIsProgram.category = 'GL_VERSION_2_0'
+glIsProgram.esVersions = [2.0]
+glIsProgram.trace = True
+glIsProgram.play = True
+gl.add(glIsProgram)
+
+glIsShader = Function('glIsShader')
+glIsShader.ret = Return('GLboolean')
+glIsShader.add( Input( 'shader','GLuint' ))
+glIsShader.version = '2.0'
+glIsShader.category = 'GL_VERSION_2_0'
+glIsShader.esVersions = [2.0]
+glIsShader.trace = True
+glIsShader.play = True
+gl.add(glIsShader)
+
+glLinkProgram = Function('glLinkProgram')
+glLinkProgram.ret = Return('void')
+glLinkProgram.add( Input( 'program','GLuint' ))
+glLinkProgram.version = '2.0'
+glLinkProgram.category = 'GL_VERSION_2_0'
+glLinkProgram.esVersions = [2.0]
+glLinkProgram.trace = True
+glLinkProgram.play = True
+gl.add(glLinkProgram)
+
+glShaderSource = Function('glShaderSource')
+glShaderSource.ret = Return('void')
+glShaderSource.add( Input( 'shader','GLuint' ))
+glShaderSource.add( Input( 'count','GLsizei' ))
+glShaderSource.add( Input( 'string','const GLchar **' ,size = 'string ? count : 0' ,cast = 'const char **' ))
+glShaderSource.add( Input( 'length','const GLint *' ,size = 'length ? count : 0' ))
+glShaderSource.version = '2.0'
+glShaderSource.category = 'GL_VERSION_2_0'
+glShaderSource.esVersions = [2.0]
+glShaderSource.trace = True
+glShaderSource.play = False
+gl.add(glShaderSource)
+
+glStencilFuncSeparate = Function('glStencilFuncSeparate')
+glStencilFuncSeparate.ret = Return('void')
+glStencilFuncSeparate.add( Input( 'face','GLenum' ))
+glStencilFuncSeparate.add( Input( 'func','GLenum' ))
+glStencilFuncSeparate.add( Input( 'ref','GLint' ))
+glStencilFuncSeparate.add( Input( 'mask','GLuint' ))
+glStencilFuncSeparate.version = '2.0'
+glStencilFuncSeparate.category = 'GL_VERSION_2_0'
+glStencilFuncSeparate.esVersions = [2.0]
+glStencilFuncSeparate.trace = True
+glStencilFuncSeparate.play = True
+gl.add(glStencilFuncSeparate)
+
+glStencilMaskSeparate = Function('glStencilMaskSeparate')
+glStencilMaskSeparate.ret = Return('void')
+glStencilMaskSeparate.add( Input( 'face','GLenum' ))
+glStencilMaskSeparate.add( Input( 'mask','GLuint' ))
+glStencilMaskSeparate.version = '2.0'
+glStencilMaskSeparate.category = 'GL_VERSION_2_0'
+glStencilMaskSeparate.esVersions = [2.0]
+glStencilMaskSeparate.trace = True
+glStencilMaskSeparate.play = True
+gl.add(glStencilMaskSeparate)
+
+glStencilOpSeparate = Function('glStencilOpSeparate')
+glStencilOpSeparate.ret = Return('void')
+glStencilOpSeparate.add( Input( 'face','GLenum' ))
+glStencilOpSeparate.add( Input( 'fail','GLenum' ))
+glStencilOpSeparate.add( Input( 'zfail','GLenum' ))
+glStencilOpSeparate.add( Input( 'zpass','GLenum' ))
+glStencilOpSeparate.version = '2.0'
+glStencilOpSeparate.category = 'GL_VERSION_2_0'
+glStencilOpSeparate.esVersions = [2.0]
+glStencilOpSeparate.trace = True
+glStencilOpSeparate.play = True
+gl.add(glStencilOpSeparate)
+
+glUniform1f = Function('glUniform1f')
+glUniform1f.ret = Return('void')
+glUniform1f.add( Input( 'location','GLint' ))
+glUniform1f.add( Input( 'v0','GLfloat' ))
+glUniform1f.version = '2.0'
+glUniform1f.category = 'GL_VERSION_2_0'
+glUniform1f.esVersions = [2.0]
+glUniform1f.trace = True
+glUniform1f.play = True
+gl.add(glUniform1f)
+
+glUniform1fv = Function('glUniform1fv')
+glUniform1fv.ret = Return('void')
+glUniform1fv.add( Input( 'location','GLint' ))
+glUniform1fv.add( Input( 'count','GLsizei' ))
+glUniform1fv.add( Input( 'value','const GLfloat *' ,size = '1 * count' ))
+glUniform1fv.version = '2.0'
+glUniform1fv.category = 'GL_VERSION_2_0'
+glUniform1fv.esVersions = [2.0]
+glUniform1fv.trace = True
+glUniform1fv.play = True
+gl.add(glUniform1fv)
+
+glUniform1i = Function('glUniform1i')
+glUniform1i.ret = Return('void')
+glUniform1i.add( Input( 'location','GLint' ))
+glUniform1i.add( Input( 'v0','GLint' ))
+glUniform1i.version = '2.0'
+glUniform1i.category = 'GL_VERSION_2_0'
+glUniform1i.esVersions = [2.0]
+glUniform1i.trace = True
+glUniform1i.play = True
+gl.add(glUniform1i)
+
+glUniform1iv = Function('glUniform1iv')
+glUniform1iv.ret = Return('void')
+glUniform1iv.add( Input( 'location','GLint' ))
+glUniform1iv.add( Input( 'count','GLsizei' ))
+glUniform1iv.add( Input( 'value','const GLint *' ,size = 'count' ))
+glUniform1iv.version = '2.0'
+glUniform1iv.category = 'GL_VERSION_2_0'
+glUniform1iv.esVersions = [2.0]
+glUniform1iv.trace = True
+glUniform1iv.play = True
+gl.add(glUniform1iv)
+
+glUniform2f = Function('glUniform2f')
+glUniform2f.ret = Return('void')
+glUniform2f.add( Input( 'location','GLint' ))
+glUniform2f.add( Input( 'v0','GLfloat' ))
+glUniform2f.add( Input( 'v1','GLfloat' ))
+glUniform2f.version = '2.0'
+glUniform2f.category = 'GL_VERSION_2_0'
+glUniform2f.esVersions = [2.0]
+glUniform2f.trace = True
+glUniform2f.play = True
+gl.add(glUniform2f)
+
+glUniform2fv = Function('glUniform2fv')
+glUniform2fv.ret = Return('void')
+glUniform2fv.add( Input( 'location','GLint' ))
+glUniform2fv.add( Input( 'count','GLsizei' ))
+glUniform2fv.add( Input( 'value','const GLfloat *' ,size = 'count' ))
+glUniform2fv.version = '2.0'
+glUniform2fv.category = 'GL_VERSION_2_0'
+glUniform2fv.esVersions = [2.0]
+glUniform2fv.trace = True
+glUniform2fv.play = True
+gl.add(glUniform2fv)
+
+glUniform2i = Function('glUniform2i')
+glUniform2i.ret = Return('void')
+glUniform2i.add( Input( 'location','GLint' ))
+glUniform2i.add( Input( 'v0','GLint' ))
+glUniform2i.add( Input( 'v1','GLint' ))
+glUniform2i.version = '2.0'
+glUniform2i.category = 'GL_VERSION_2_0'
+glUniform2i.esVersions = [2.0]
+glUniform2i.trace = True
+glUniform2i.play = True
+gl.add(glUniform2i)
+
+glUniform2iv = Function('glUniform2iv')
+glUniform2iv.ret = Return('void')
+glUniform2iv.add( Input( 'location','GLint' ))
+glUniform2iv.add( Input( 'count','GLsizei' ))
+glUniform2iv.add( Input( 'value','const GLint *' ,size = '2 * count' ))
+glUniform2iv.version = '2.0'
+glUniform2iv.category = 'GL_VERSION_2_0'
+glUniform2iv.esVersions = [2.0]
+glUniform2iv.trace = True
+glUniform2iv.play = True
+gl.add(glUniform2iv)
+
+glUniform3f = Function('glUniform3f')
+glUniform3f.ret = Return('void')
+glUniform3f.add( Input( 'location','GLint' ))
+glUniform3f.add( Input( 'v0','GLfloat' ))
+glUniform3f.add( Input( 'v1','GLfloat' ))
+glUniform3f.add( Input( 'v2','GLfloat' ))
+glUniform3f.version = '2.0'
+glUniform3f.category = 'GL_VERSION_2_0'
+glUniform3f.esVersions = [2.0]
+glUniform3f.trace = True
+glUniform3f.play = True
+gl.add(glUniform3f)
+
+glUniform3fv = Function('glUniform3fv')
+glUniform3fv.ret = Return('void')
+glUniform3fv.add( Input( 'location','GLint' ))
+glUniform3fv.add( Input( 'count','GLsizei' ))
+glUniform3fv.add( Input( 'value','const GLfloat *' ,size = '3 * count' ))
+glUniform3fv.version = '2.0'
+glUniform3fv.category = 'GL_VERSION_2_0'
+glUniform3fv.esVersions = [2.0]
+glUniform3fv.trace = True
+glUniform3fv.play = True
+gl.add(glUniform3fv)
+
+glUniform3i = Function('glUniform3i')
+glUniform3i.ret = Return('void')
+glUniform3i.add( Input( 'location','GLint' ))
+glUniform3i.add( Input( 'v0','GLint' ))
+glUniform3i.add( Input( 'v1','GLint' ))
+glUniform3i.add( Input( 'v2','GLint' ))
+glUniform3i.version = '2.0'
+glUniform3i.category = 'GL_VERSION_2_0'
+glUniform3i.esVersions = [2.0]
+glUniform3i.trace = True
+glUniform3i.play = True
+gl.add(glUniform3i)
+
+glUniform3iv = Function('glUniform3iv')
+glUniform3iv.ret = Return('void')
+glUniform3iv.add( Input( 'location','GLint' ))
+glUniform3iv.add( Input( 'count','GLsizei' ))
+glUniform3iv.add( Input( 'value','const GLint *' ,size = '3 * count' ))
+glUniform3iv.version = '2.0'
+glUniform3iv.category = 'GL_VERSION_2_0'
+glUniform3iv.esVersions = [2.0]
+glUniform3iv.trace = True
+glUniform3iv.play = True
+gl.add(glUniform3iv)
+
+glUniform4f = Function('glUniform4f')
+glUniform4f.ret = Return('void')
+glUniform4f.add( Input( 'location','GLint' ))
+glUniform4f.add( Input( 'v0','GLfloat' ))
+glUniform4f.add( Input( 'v1','GLfloat' ))
+glUniform4f.add( Input( 'v2','GLfloat' ))
+glUniform4f.add( Input( 'v3','GLfloat' ))
+glUniform4f.version = '2.0'
+glUniform4f.category = 'GL_VERSION_2_0'
+glUniform4f.esVersions = [2.0]
+glUniform4f.trace = True
+glUniform4f.play = True
+gl.add(glUniform4f)
+
+glUniform4fv = Function('glUniform4fv')
+glUniform4fv.ret = Return('void')
+glUniform4fv.add( Input( 'location','GLint' ))
+glUniform4fv.add( Input( 'count','GLsizei' ))
+glUniform4fv.add( Input( 'value','const GLfloat *' ,size = '4 * count' ))
+glUniform4fv.version = '2.0'
+glUniform4fv.category = 'GL_VERSION_2_0'
+glUniform4fv.esVersions = [2.0]
+glUniform4fv.trace = True
+glUniform4fv.play = True
+gl.add(glUniform4fv)
+
+glUniform4i = Function('glUniform4i')
+glUniform4i.ret = Return('void')
+glUniform4i.add( Input( 'location','GLint' ))
+glUniform4i.add( Input( 'v0','GLint' ))
+glUniform4i.add( Input( 'v1','GLint' ))
+glUniform4i.add( Input( 'v2','GLint' ))
+glUniform4i.add( Input( 'v3','GLint' ))
+glUniform4i.version = '2.0'
+glUniform4i.category = 'GL_VERSION_2_0'
+glUniform4i.esVersions = [2.0]
+glUniform4i.trace = True
+glUniform4i.play = True
+gl.add(glUniform4i)
+
+glUniform4iv = Function('glUniform4iv')
+glUniform4iv.ret = Return('void')
+glUniform4iv.add( Input( 'location','GLint' ))
+glUniform4iv.add( Input( 'count','GLsizei' ))
+glUniform4iv.add( Input( 'value','const GLint *' ,size = '4 * count' ))
+glUniform4iv.version = '2.0'
+glUniform4iv.category = 'GL_VERSION_2_0'
+glUniform4iv.esVersions = [2.0]
+glUniform4iv.trace = True
+glUniform4iv.play = True
+gl.add(glUniform4iv)
+
+glUniformMatrix2fv = Function('glUniformMatrix2fv')
+glUniformMatrix2fv.ret = Return('void')
+glUniformMatrix2fv.add( Input( 'location','GLint' ))
+glUniformMatrix2fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix2fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix2fv.add( Input( 'value','const GLfloat *' ,size = '2 * 2 * count' ))
+glUniformMatrix2fv.version = '2.0'
+glUniformMatrix2fv.category = 'GL_VERSION_2_0'
+glUniformMatrix2fv.esVersions = [2.0]
+glUniformMatrix2fv.trace = True
+glUniformMatrix2fv.play = True
+gl.add(glUniformMatrix2fv)
+
+glUniformMatrix3fv = Function('glUniformMatrix3fv')
+glUniformMatrix3fv.ret = Return('void')
+glUniformMatrix3fv.add( Input( 'location','GLint' ))
+glUniformMatrix3fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix3fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix3fv.add( Input( 'value','const GLfloat *' ,size = '3 * 3 * count' ))
+glUniformMatrix3fv.version = '2.0'
+glUniformMatrix3fv.category = 'GL_VERSION_2_0'
+glUniformMatrix3fv.esVersions = [2.0]
+glUniformMatrix3fv.trace = True
+glUniformMatrix3fv.play = True
+gl.add(glUniformMatrix3fv)
+
+glUniformMatrix4fv = Function('glUniformMatrix4fv')
+glUniformMatrix4fv.ret = Return('void')
+glUniformMatrix4fv.add( Input( 'location','GLint' ))
+glUniformMatrix4fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix4fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix4fv.add( Input( 'value','const GLfloat *' ,size = '4 * 4 * count' ))
+glUniformMatrix4fv.version = '2.0'
+glUniformMatrix4fv.category = 'GL_VERSION_2_0'
+glUniformMatrix4fv.esVersions = [2.0]
+glUniformMatrix4fv.trace = True
+glUniformMatrix4fv.play = True
+gl.add(glUniformMatrix4fv)
+
+glUseProgram = Function('glUseProgram')
+glUseProgram.ret = Return('void')
+glUseProgram.add( Input( 'program','GLuint' ))
+glUseProgram.version = '2.0'
+glUseProgram.category = 'GL_VERSION_2_0'
+glUseProgram.esVersions = [2.0]
+glUseProgram.trace = True
+glUseProgram.play = True
+gl.add(glUseProgram)
+
+glValidateProgram = Function('glValidateProgram')
+glValidateProgram.ret = Return('void')
+glValidateProgram.add( Input( 'program','GLuint' ))
+glValidateProgram.version = '2.0'
+glValidateProgram.category = 'GL_VERSION_2_0'
+glValidateProgram.esVersions = [2.0]
+glValidateProgram.trace = True
+glValidateProgram.play = True
+gl.add(glValidateProgram)
+
+glVertexAttrib1d = Function('glVertexAttrib1d')
+glVertexAttrib1d.ret = Return('void')
+glVertexAttrib1d.add( Input( 'index','GLuint' ))
+glVertexAttrib1d.add( Input( 'x','GLdouble' ))
+glVertexAttrib1d.version = '2.0'
+glVertexAttrib1d.category = 'GL_VERSION_2_0'
+glVertexAttrib1d.trace = True
+glVertexAttrib1d.play = True
+gl.add(glVertexAttrib1d)
+
+glVertexAttrib1dv = Function('glVertexAttrib1dv')
+glVertexAttrib1dv.ret = Return('void')
+glVertexAttrib1dv.add( Input( 'index','GLuint' ))
+glVertexAttrib1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
+glVertexAttrib1dv.version = '2.0'
+glVertexAttrib1dv.category = 'GL_VERSION_2_0'
+glVertexAttrib1dv.trace = True
+glVertexAttrib1dv.play = True
+gl.add(glVertexAttrib1dv)
+
+glVertexAttrib1f = Function('glVertexAttrib1f')
+glVertexAttrib1f.ret = Return('void')
+glVertexAttrib1f.add( Input( 'index','GLuint' ))
+glVertexAttrib1f.add( Input( 'x','GLfloat' ))
+glVertexAttrib1f.version = '2.0'
+glVertexAttrib1f.category = 'GL_VERSION_2_0'
+glVertexAttrib1f.esVersions = [2.0]
+glVertexAttrib1f.trace = True
+glVertexAttrib1f.play = True
+gl.add(glVertexAttrib1f)
+
+glVertexAttrib1fv = Function('glVertexAttrib1fv')
+glVertexAttrib1fv.ret = Return('void')
+glVertexAttrib1fv.add( Input( 'index','GLuint' ))
+glVertexAttrib1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
+glVertexAttrib1fv.version = '2.0'
+glVertexAttrib1fv.category = 'GL_VERSION_2_0'
+glVertexAttrib1fv.esVersions = [2.0]
+glVertexAttrib1fv.trace = True
+glVertexAttrib1fv.play = True
+gl.add(glVertexAttrib1fv)
+
+glVertexAttrib1s = Function('glVertexAttrib1s')
+glVertexAttrib1s.ret = Return('void')
+glVertexAttrib1s.add( Input( 'index','GLuint' ))
+glVertexAttrib1s.add( Input( 'x','GLshort' ))
+glVertexAttrib1s.version = '2.0'
+glVertexAttrib1s.category = 'GL_VERSION_2_0'
+glVertexAttrib1s.trace = True
+glVertexAttrib1s.play = True
+gl.add(glVertexAttrib1s)
+
+glVertexAttrib1sv = Function('glVertexAttrib1sv')
+glVertexAttrib1sv.ret = Return('void')
+glVertexAttrib1sv.add( Input( 'index','GLuint' ))
+glVertexAttrib1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
+glVertexAttrib1sv.version = '2.0'
+glVertexAttrib1sv.category = 'GL_VERSION_2_0'
+glVertexAttrib1sv.trace = True
+glVertexAttrib1sv.play = True
+gl.add(glVertexAttrib1sv)
+
+glVertexAttrib2d = Function('glVertexAttrib2d')
+glVertexAttrib2d.ret = Return('void')
+glVertexAttrib2d.add( Input( 'index','GLuint' ))
+glVertexAttrib2d.add( Input( 'x','GLdouble' ))
+glVertexAttrib2d.add( Input( 'y','GLdouble' ))
+glVertexAttrib2d.version = '2.0'
+glVertexAttrib2d.category = 'GL_VERSION_2_0'
+glVertexAttrib2d.trace = True
+glVertexAttrib2d.play = True
+gl.add(glVertexAttrib2d)
+
+glVertexAttrib2dv = Function('glVertexAttrib2dv')
+glVertexAttrib2dv.ret = Return('void')
+glVertexAttrib2dv.add( Input( 'index','GLuint' ))
+glVertexAttrib2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
+glVertexAttrib2dv.version = '2.0'
+glVertexAttrib2dv.category = 'GL_VERSION_2_0'
+glVertexAttrib2dv.trace = True
+glVertexAttrib2dv.play = True
+gl.add(glVertexAttrib2dv)
+
+glVertexAttrib2f = Function('glVertexAttrib2f')
+glVertexAttrib2f.ret = Return('void')
+glVertexAttrib2f.add( Input( 'index','GLuint' ))
+glVertexAttrib2f.add( Input( 'x','GLfloat' ))
+glVertexAttrib2f.add( Input( 'y','GLfloat' ))
+glVertexAttrib2f.version = '2.0'
+glVertexAttrib2f.category = 'GL_VERSION_2_0'
+glVertexAttrib2f.esVersions = [2.0]
+glVertexAttrib2f.trace = True
+glVertexAttrib2f.play = True
+gl.add(glVertexAttrib2f)
+
+glVertexAttrib2fv = Function('glVertexAttrib2fv')
+glVertexAttrib2fv.ret = Return('void')
+glVertexAttrib2fv.add( Input( 'index','GLuint' ))
+glVertexAttrib2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
+glVertexAttrib2fv.version = '2.0'
+glVertexAttrib2fv.category = 'GL_VERSION_2_0'
+glVertexAttrib2fv.esVersions = [2.0]
+glVertexAttrib2fv.trace = True
+glVertexAttrib2fv.play = True
+gl.add(glVertexAttrib2fv)
+
+glVertexAttrib2s = Function('glVertexAttrib2s')
+glVertexAttrib2s.ret = Return('void')
+glVertexAttrib2s.add( Input( 'index','GLuint' ))
+glVertexAttrib2s.add( Input( 'x','GLshort' ))
+glVertexAttrib2s.add( Input( 'y','GLshort' ))
+glVertexAttrib2s.version = '2.0'
+glVertexAttrib2s.category = 'GL_VERSION_2_0'
+glVertexAttrib2s.trace = True
+glVertexAttrib2s.play = True
+gl.add(glVertexAttrib2s)
+
+glVertexAttrib2sv = Function('glVertexAttrib2sv')
+glVertexAttrib2sv.ret = Return('void')
+glVertexAttrib2sv.add( Input( 'index','GLuint' ))
+glVertexAttrib2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
+glVertexAttrib2sv.version = '2.0'
+glVertexAttrib2sv.category = 'GL_VERSION_2_0'
+glVertexAttrib2sv.trace = True
+glVertexAttrib2sv.play = True
+gl.add(glVertexAttrib2sv)
+
+glVertexAttrib3d = Function('glVertexAttrib3d')
+glVertexAttrib3d.ret = Return('void')
+glVertexAttrib3d.add( Input( 'index','GLuint' ))
+glVertexAttrib3d.add( Input( 'x','GLdouble' ))
+glVertexAttrib3d.add( Input( 'y','GLdouble' ))
+glVertexAttrib3d.add( Input( 'z','GLdouble' ))
+glVertexAttrib3d.version = '2.0'
+glVertexAttrib3d.category = 'GL_VERSION_2_0'
+glVertexAttrib3d.trace = True
+glVertexAttrib3d.play = True
+gl.add(glVertexAttrib3d)
+
+glVertexAttrib3dv = Function('glVertexAttrib3dv')
+glVertexAttrib3dv.ret = Return('void')
+glVertexAttrib3dv.add( Input( 'index','GLuint' ))
+glVertexAttrib3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glVertexAttrib3dv.version = '2.0'
+glVertexAttrib3dv.category = 'GL_VERSION_2_0'
+glVertexAttrib3dv.trace = True
+glVertexAttrib3dv.play = True
+gl.add(glVertexAttrib3dv)
+
+glVertexAttrib3f = Function('glVertexAttrib3f')
+glVertexAttrib3f.ret = Return('void')
+glVertexAttrib3f.add( Input( 'index','GLuint' ))
+glVertexAttrib3f.add( Input( 'x','GLfloat' ))
+glVertexAttrib3f.add( Input( 'y','GLfloat' ))
+glVertexAttrib3f.add( Input( 'z','GLfloat' ))
+glVertexAttrib3f.version = '2.0'
+glVertexAttrib3f.category = 'GL_VERSION_2_0'
+glVertexAttrib3f.esVersions = [2.0]
+glVertexAttrib3f.trace = True
+glVertexAttrib3f.play = True
+gl.add(glVertexAttrib3f)
+
+glVertexAttrib3fv = Function('glVertexAttrib3fv')
+glVertexAttrib3fv.ret = Return('void')
+glVertexAttrib3fv.add( Input( 'index','GLuint' ))
+glVertexAttrib3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glVertexAttrib3fv.version = '2.0'
+glVertexAttrib3fv.category = 'GL_VERSION_2_0'
+glVertexAttrib3fv.esVersions = [2.0]
+glVertexAttrib3fv.trace = True
+glVertexAttrib3fv.play = True
+gl.add(glVertexAttrib3fv)
+
+glVertexAttrib3s = Function('glVertexAttrib3s')
+glVertexAttrib3s.ret = Return('void')
+glVertexAttrib3s.add( Input( 'index','GLuint' ))
+glVertexAttrib3s.add( Input( 'x','GLshort' ))
+glVertexAttrib3s.add( Input( 'y','GLshort' ))
+glVertexAttrib3s.add( Input( 'z','GLshort' ))
+glVertexAttrib3s.version = '2.0'
+glVertexAttrib3s.category = 'GL_VERSION_2_0'
+glVertexAttrib3s.trace = True
+glVertexAttrib3s.play = True
+gl.add(glVertexAttrib3s)
+
+glVertexAttrib3sv = Function('glVertexAttrib3sv')
+glVertexAttrib3sv.ret = Return('void')
+glVertexAttrib3sv.add( Input( 'index','GLuint' ))
+glVertexAttrib3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glVertexAttrib3sv.version = '2.0'
+glVertexAttrib3sv.category = 'GL_VERSION_2_0'
+glVertexAttrib3sv.trace = True
+glVertexAttrib3sv.play = True
+gl.add(glVertexAttrib3sv)
+
+glVertexAttrib4Nbv = Function('glVertexAttrib4Nbv')
+glVertexAttrib4Nbv.ret = Return('void')
+glVertexAttrib4Nbv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nbv.add( Input( 'v','const GLbyte *' ,size = 4 ))
+glVertexAttrib4Nbv.version = '2.0'
+glVertexAttrib4Nbv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nbv.trace = True
+glVertexAttrib4Nbv.play = True
+gl.add(glVertexAttrib4Nbv)
+
+glVertexAttrib4Niv = Function('glVertexAttrib4Niv')
+glVertexAttrib4Niv.ret = Return('void')
+glVertexAttrib4Niv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Niv.add( Input( 'v','const GLint *' ,size = 4 ))
+glVertexAttrib4Niv.version = '2.0'
+glVertexAttrib4Niv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Niv.trace = True
+glVertexAttrib4Niv.play = True
+gl.add(glVertexAttrib4Niv)
+
+glVertexAttrib4Nsv = Function('glVertexAttrib4Nsv')
+glVertexAttrib4Nsv.ret = Return('void')
+glVertexAttrib4Nsv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nsv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glVertexAttrib4Nsv.version = '2.0'
+glVertexAttrib4Nsv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nsv.trace = True
+glVertexAttrib4Nsv.play = True
+gl.add(glVertexAttrib4Nsv)
+
+glVertexAttrib4Nub = Function('glVertexAttrib4Nub')
+glVertexAttrib4Nub.ret = Return('void')
+glVertexAttrib4Nub.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nub.add( Input( 'x','GLubyte' ))
+glVertexAttrib4Nub.add( Input( 'y','GLubyte' ))
+glVertexAttrib4Nub.add( Input( 'z','GLubyte' ))
+glVertexAttrib4Nub.add( Input( 'w','GLubyte' ))
+glVertexAttrib4Nub.version = '2.0'
+glVertexAttrib4Nub.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nub.trace = True
+glVertexAttrib4Nub.play = True
+gl.add(glVertexAttrib4Nub)
+
+glVertexAttrib4Nubv = Function('glVertexAttrib4Nubv')
+glVertexAttrib4Nubv.ret = Return('void')
+glVertexAttrib4Nubv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
+glVertexAttrib4Nubv.version = '2.0'
+glVertexAttrib4Nubv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nubv.trace = True
+glVertexAttrib4Nubv.play = True
+gl.add(glVertexAttrib4Nubv)
+
+glVertexAttrib4Nuiv = Function('glVertexAttrib4Nuiv')
+glVertexAttrib4Nuiv.ret = Return('void')
+glVertexAttrib4Nuiv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nuiv.add( Input( 'v','const GLuint *' ,size = 4 ))
+glVertexAttrib4Nuiv.version = '2.0'
+glVertexAttrib4Nuiv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nuiv.trace = True
+glVertexAttrib4Nuiv.play = True
+gl.add(glVertexAttrib4Nuiv)
+
+glVertexAttrib4Nusv = Function('glVertexAttrib4Nusv')
+glVertexAttrib4Nusv.ret = Return('void')
+glVertexAttrib4Nusv.add( Input( 'index','GLuint' ))
+glVertexAttrib4Nusv.add( Input( 'v','const GLushort *' ,size = 4 ))
+glVertexAttrib4Nusv.version = '2.0'
+glVertexAttrib4Nusv.category = 'GL_VERSION_2_0'
+glVertexAttrib4Nusv.trace = True
+glVertexAttrib4Nusv.play = True
+gl.add(glVertexAttrib4Nusv)
+
+glVertexAttrib4bv = Function('glVertexAttrib4bv')
+glVertexAttrib4bv.ret = Return('void')
+glVertexAttrib4bv.add( Input( 'index','GLuint' ))
+glVertexAttrib4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
+glVertexAttrib4bv.version = '2.0'
+glVertexAttrib4bv.category = 'GL_VERSION_2_0'
+glVertexAttrib4bv.trace = True
+glVertexAttrib4bv.play = True
+gl.add(glVertexAttrib4bv)
+
+glVertexAttrib4d = Function('glVertexAttrib4d')
+glVertexAttrib4d.ret = Return('void')
+glVertexAttrib4d.add( Input( 'index','GLuint' ))
+glVertexAttrib4d.add( Input( 'x','GLdouble' ))
+glVertexAttrib4d.add( Input( 'y','GLdouble' ))
+glVertexAttrib4d.add( Input( 'z','GLdouble' ))
+glVertexAttrib4d.add( Input( 'w','GLdouble' ))
+glVertexAttrib4d.version = '2.0'
+glVertexAttrib4d.category = 'GL_VERSION_2_0'
+glVertexAttrib4d.trace = True
+glVertexAttrib4d.play = True
+gl.add(glVertexAttrib4d)
+
+glVertexAttrib4dv = Function('glVertexAttrib4dv')
+glVertexAttrib4dv.ret = Return('void')
+glVertexAttrib4dv.add( Input( 'index','GLuint' ))
+glVertexAttrib4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
+glVertexAttrib4dv.version = '2.0'
+glVertexAttrib4dv.category = 'GL_VERSION_2_0'
+glVertexAttrib4dv.trace = True
+glVertexAttrib4dv.play = True
+gl.add(glVertexAttrib4dv)
+
+glVertexAttrib4f = Function('glVertexAttrib4f')
+glVertexAttrib4f.ret = Return('void')
+glVertexAttrib4f.add( Input( 'index','GLuint' ))
+glVertexAttrib4f.add( Input( 'x','GLfloat' ))
+glVertexAttrib4f.add( Input( 'y','GLfloat' ))
+glVertexAttrib4f.add( Input( 'z','GLfloat' ))
+glVertexAttrib4f.add( Input( 'w','GLfloat' ))
+glVertexAttrib4f.version = '2.0'
+glVertexAttrib4f.category = 'GL_VERSION_2_0'
+glVertexAttrib4f.esVersions = [2.0]
+glVertexAttrib4f.trace = True
+glVertexAttrib4f.play = True
+gl.add(glVertexAttrib4f)
+
+glVertexAttrib4fv = Function('glVertexAttrib4fv')
+glVertexAttrib4fv.ret = Return('void')
+glVertexAttrib4fv.add( Input( 'index','GLuint' ))
+glVertexAttrib4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
+glVertexAttrib4fv.version = '2.0'
+glVertexAttrib4fv.category = 'GL_VERSION_2_0'
+glVertexAttrib4fv.esVersions = [2.0]
+glVertexAttrib4fv.trace = True
+glVertexAttrib4fv.play = True
+gl.add(glVertexAttrib4fv)
+
+glVertexAttrib4iv = Function('glVertexAttrib4iv')
+glVertexAttrib4iv.ret = Return('void')
+glVertexAttrib4iv.add( Input( 'index','GLuint' ))
+glVertexAttrib4iv.add( Input( 'v','const GLint *' ,size = 4 ))
+glVertexAttrib4iv.version = '2.0'
+glVertexAttrib4iv.category = 'GL_VERSION_2_0'
+glVertexAttrib4iv.trace = True
+glVertexAttrib4iv.play = True
+gl.add(glVertexAttrib4iv)
+
+glVertexAttrib4s = Function('glVertexAttrib4s')
+glVertexAttrib4s.ret = Return('void')
+glVertexAttrib4s.add( Input( 'index','GLuint' ))
+glVertexAttrib4s.add( Input( 'x','GLshort' ))
+glVertexAttrib4s.add( Input( 'y','GLshort' ))
+glVertexAttrib4s.add( Input( 'z','GLshort' ))
+glVertexAttrib4s.add( Input( 'w','GLshort' ))
+glVertexAttrib4s.version = '2.0'
+glVertexAttrib4s.category = 'GL_VERSION_2_0'
+glVertexAttrib4s.trace = True
+glVertexAttrib4s.play = True
+gl.add(glVertexAttrib4s)
+
+glVertexAttrib4sv = Function('glVertexAttrib4sv')
+glVertexAttrib4sv.ret = Return('void')
+glVertexAttrib4sv.add( Input( 'index','GLuint' ))
+glVertexAttrib4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glVertexAttrib4sv.version = '2.0'
+glVertexAttrib4sv.category = 'GL_VERSION_2_0'
+glVertexAttrib4sv.trace = True
+glVertexAttrib4sv.play = True
+gl.add(glVertexAttrib4sv)
+
+glVertexAttrib4ubv = Function('glVertexAttrib4ubv')
+glVertexAttrib4ubv.ret = Return('void')
+glVertexAttrib4ubv.add( Input( 'index','GLuint' ))
+glVertexAttrib4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
+glVertexAttrib4ubv.version = '2.0'
+glVertexAttrib4ubv.category = 'GL_VERSION_2_0'
+glVertexAttrib4ubv.trace = True
+glVertexAttrib4ubv.play = True
+gl.add(glVertexAttrib4ubv)
+
+glVertexAttrib4uiv = Function('glVertexAttrib4uiv')
+glVertexAttrib4uiv.ret = Return('void')
+glVertexAttrib4uiv.add( Input( 'index','GLuint' ))
+glVertexAttrib4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
+glVertexAttrib4uiv.version = '2.0'
+glVertexAttrib4uiv.category = 'GL_VERSION_2_0'
+glVertexAttrib4uiv.trace = True
+glVertexAttrib4uiv.play = True
+gl.add(glVertexAttrib4uiv)
+
+glVertexAttrib4usv = Function('glVertexAttrib4usv')
+glVertexAttrib4usv.ret = Return('void')
+glVertexAttrib4usv.add( Input( 'index','GLuint' ))
+glVertexAttrib4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
+glVertexAttrib4usv.version = '2.0'
+glVertexAttrib4usv.category = 'GL_VERSION_2_0'
+glVertexAttrib4usv.trace = True
+glVertexAttrib4usv.play = True
+gl.add(glVertexAttrib4usv)
+
+glVertexAttribPointer = Function('glVertexAttribPointer')
+glVertexAttribPointer.ret = Return('void')
+glVertexAttribPointer.add( Input( 'index','GLuint' ))
+glVertexAttribPointer.add( Input( 'size','GLint' ))
+glVertexAttribPointer.add( Input( 'type','GLenum' ))
+glVertexAttribPointer.add( Input( 'normalized','GLboolean' ))
+glVertexAttribPointer.add( Input( 'stride','GLsizei' ))
+glVertexAttribPointer.add( Input( 'pointer','const GLvoid *' ))
+glVertexAttribPointer.version = '2.0'
+glVertexAttribPointer.category = 'GL_VERSION_2_0'
+glVertexAttribPointer.esVersions = [2.0]
+glVertexAttribPointer.trace = True
+glVertexAttribPointer.play = True
+gl.add(glVertexAttribPointer)
+
 #
 
 glActiveTexture = Function('glActiveTexture')
@@ -16053,17 +17123,6 @@ glActiveTexture.esVersions = [1.0, 1.1, 2.0]
 glActiveTexture.trace = True
 glActiveTexture.play = True
 gl.add(glActiveTexture)
-
-glAttachShader = Function('glAttachShader')
-glAttachShader.ret = Return('void')
-glAttachShader.add( Input( 'program','GLuint' ))
-glAttachShader.add( Input( 'shader','GLuint' ))
-glAttachShader.version = '2.0'
-glAttachShader.category = ''
-glAttachShader.esVersions = [2.0]
-glAttachShader.trace = True
-glAttachShader.play = True
-gl.add(glAttachShader)
 
 glBeginConditionalRender = Function('glBeginConditionalRender')
 glBeginConditionalRender.ret = Return('void')
@@ -16093,18 +17152,6 @@ glBeginTransformFeedback.category = ''
 glBeginTransformFeedback.trace = True
 glBeginTransformFeedback.play = True
 gl.add(glBeginTransformFeedback)
-
-glBindAttribLocation = Function('glBindAttribLocation')
-glBindAttribLocation.ret = Return('void')
-glBindAttribLocation.add( Input( 'program','GLuint' ))
-glBindAttribLocation.add( Input( 'index','GLuint' ))
-glBindAttribLocation.add( Input( 'name','const GLchar *' ))
-glBindAttribLocation.version = '2.0'
-glBindAttribLocation.category = ''
-glBindAttribLocation.esVersions = [2.0]
-glBindAttribLocation.trace = True
-glBindAttribLocation.play = True
-gl.add(glBindAttribLocation)
 
 glBindBuffer = Function('glBindBuffer')
 glBindBuffer.ret = Return('void')
@@ -16150,17 +17197,6 @@ glBlendEquation.esVersions = [2.0]
 glBlendEquation.trace = True
 glBlendEquation.play = True
 gl.add(glBlendEquation)
-
-glBlendEquationSeparate = Function('glBlendEquationSeparate')
-glBlendEquationSeparate.ret = Return('void')
-glBlendEquationSeparate.add( Input( 'modeRGB','GLenum' ))
-glBlendEquationSeparate.add( Input( 'modeAlpha','GLenum' ))
-glBlendEquationSeparate.version = '2.0'
-glBlendEquationSeparate.category = ''
-glBlendEquationSeparate.esVersions = [2.0]
-glBlendEquationSeparate.trace = True
-glBlendEquationSeparate.play = True
-gl.add(glBlendEquationSeparate)
 
 glBlendEquationSeparatei = Function('glBlendEquationSeparatei')
 glBlendEquationSeparatei.ret = Return('void')
@@ -16314,16 +17350,6 @@ glColorMaski.trace = True
 glColorMaski.play = True
 gl.add(glColorMaski)
 
-glCompileShader = Function('glCompileShader')
-glCompileShader.ret = Return('void')
-glCompileShader.add( Input( 'shader','GLuint' ))
-glCompileShader.version = '2.0'
-glCompileShader.category = ''
-glCompileShader.esVersions = [2.0]
-glCompileShader.trace = True
-glCompileShader.play = True
-gl.add(glCompileShader)
-
 glCompressedTexImage1D = Function('glCompressedTexImage1D')
 glCompressedTexImage1D.ret = Return('void')
 glCompressedTexImage1D.add( Input( 'target','GLenum' ))
@@ -16442,25 +17468,6 @@ glCopyTexSubImage3D.trace = True
 glCopyTexSubImage3D.play = True
 gl.add(glCopyTexSubImage3D)
 
-glCreateProgram = Function('glCreateProgram')
-glCreateProgram.ret = Return('GLuint')
-glCreateProgram.version = '2.0'
-glCreateProgram.category = ''
-glCreateProgram.esVersions = [2.0]
-glCreateProgram.trace = True
-glCreateProgram.play = True
-gl.add(glCreateProgram)
-
-glCreateShader = Function('glCreateShader')
-glCreateShader.ret = Return('GLuint')
-glCreateShader.add( Input( 'type','GLenum' ))
-glCreateShader.version = '2.0'
-glCreateShader.category = ''
-glCreateShader.esVersions = [2.0]
-glCreateShader.trace = True
-glCreateShader.play = True
-gl.add(glCreateShader)
-
 glDeleteBuffers = Function('glDeleteBuffers')
 glDeleteBuffers.ret = Return('void')
 glDeleteBuffers.add( Input( 'n','GLsizei' ))
@@ -16472,16 +17479,6 @@ glDeleteBuffers.trace = True
 glDeleteBuffers.play = True
 gl.add(glDeleteBuffers)
 
-glDeleteProgram = Function('glDeleteProgram')
-glDeleteProgram.ret = Return('void')
-glDeleteProgram.add( Input( 'program','GLuint' ))
-glDeleteProgram.version = '2.0'
-glDeleteProgram.category = ''
-glDeleteProgram.esVersions = [2.0]
-glDeleteProgram.trace = True
-glDeleteProgram.play = True
-gl.add(glDeleteProgram)
-
 glDeleteQueries = Function('glDeleteQueries')
 glDeleteQueries.ret = Return('void')
 glDeleteQueries.add( Input( 'n','GLsizei' ))
@@ -16491,37 +17488,6 @@ glDeleteQueries.category = ''
 glDeleteQueries.trace = True
 glDeleteQueries.play = True
 gl.add(glDeleteQueries)
-
-glDeleteShader = Function('glDeleteShader')
-glDeleteShader.ret = Return('void')
-glDeleteShader.add( Input( 'shader','GLuint' ))
-glDeleteShader.version = '2.0'
-glDeleteShader.category = ''
-glDeleteShader.esVersions = [2.0]
-glDeleteShader.trace = True
-glDeleteShader.play = True
-gl.add(glDeleteShader)
-
-glDetachShader = Function('glDetachShader')
-glDetachShader.ret = Return('void')
-glDetachShader.add( Input( 'program','GLuint' ))
-glDetachShader.add( Input( 'shader','GLuint' ))
-glDetachShader.version = '2.0'
-glDetachShader.category = ''
-glDetachShader.esVersions = [2.0]
-glDetachShader.trace = True
-glDetachShader.play = True
-gl.add(glDetachShader)
-
-glDisableVertexAttribArray = Function('glDisableVertexAttribArray')
-glDisableVertexAttribArray.ret = Return('void')
-glDisableVertexAttribArray.add( Input( 'index','GLuint' ))
-glDisableVertexAttribArray.version = '2.0'
-glDisableVertexAttribArray.category = ''
-glDisableVertexAttribArray.esVersions = [2.0]
-glDisableVertexAttribArray.trace = True
-glDisableVertexAttribArray.play = True
-gl.add(glDisableVertexAttribArray)
 
 glDisablei = Function('glDisablei')
 glDisablei.ret = Return('void')
@@ -16544,16 +17510,6 @@ glDrawArraysInstanced.category = ''
 glDrawArraysInstanced.trace = True
 glDrawArraysInstanced.play = True
 gl.add(glDrawArraysInstanced)
-
-glDrawBuffers = Function('glDrawBuffers')
-glDrawBuffers.ret = Return('void')
-glDrawBuffers.add( Input( 'n','GLsizei' ))
-glDrawBuffers.add( Input( 'bufs','const GLenum *' ,size = 'n' ))
-glDrawBuffers.version = '2.0'
-glDrawBuffers.category = ''
-glDrawBuffers.trace = True
-glDrawBuffers.play = True
-gl.add(glDrawBuffers)
 
 glDrawElementsInstanced = Function('glDrawElementsInstanced')
 glDrawElementsInstanced.ret = Return('void')
@@ -16581,16 +17537,6 @@ glDrawRangeElements.category = ''
 glDrawRangeElements.trace = True
 glDrawRangeElements.play = True
 gl.add(glDrawRangeElements)
-
-glEnableVertexAttribArray = Function('glEnableVertexAttribArray')
-glEnableVertexAttribArray.ret = Return('void')
-glEnableVertexAttribArray.add( Input( 'index','GLuint' ))
-glEnableVertexAttribArray.version = '2.0'
-glEnableVertexAttribArray.category = ''
-glEnableVertexAttribArray.esVersions = [2.0]
-glEnableVertexAttribArray.trace = True
-glEnableVertexAttribArray.play = True
-gl.add(glEnableVertexAttribArray)
 
 glEnablei = Function('glEnablei')
 glEnablei.ret = Return('void')
@@ -16672,62 +17618,6 @@ glGenQueries.category = ''
 glGenQueries.trace = True
 glGenQueries.play = True
 gl.add(glGenQueries)
-
-glGetActiveAttrib = Function('glGetActiveAttrib')
-glGetActiveAttrib.ret = Return('void')
-glGetActiveAttrib.add( Input( 'program','GLuint' ))
-glGetActiveAttrib.add( Input( 'index','GLuint' ))
-glGetActiveAttrib.add( Input( 'bufSize','GLsizei' ))
-glGetActiveAttrib.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveAttrib.add( Output( 'size','GLint *' ,size = 1 ))
-glGetActiveAttrib.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveAttrib.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
-glGetActiveAttrib.version = '2.0'
-glGetActiveAttrib.category = ''
-glGetActiveAttrib.esVersions = [2.0]
-glGetActiveAttrib.trace = True
-glGetActiveAttrib.play = False
-gl.add(glGetActiveAttrib)
-
-glGetActiveUniform = Function('glGetActiveUniform')
-glGetActiveUniform.ret = Return('void')
-glGetActiveUniform.add( Input( 'program','GLuint' ))
-glGetActiveUniform.add( Input( 'index','GLuint' ))
-glGetActiveUniform.add( Input( 'bufSize','GLsizei' ))
-glGetActiveUniform.add( Output( 'length','GLsizei *' ,size = 1 ))
-glGetActiveUniform.add( Output( 'size','GLint *' ,size = 1 ))
-glGetActiveUniform.add( Output( 'type','GLenum *' ,size = 1 ))
-glGetActiveUniform.add( Output( 'name','GLchar *' ,maxSize = 'bufSize' ))
-glGetActiveUniform.version = '2.0'
-glGetActiveUniform.category = ''
-glGetActiveUniform.esVersions = [2.0]
-glGetActiveUniform.trace = True
-glGetActiveUniform.play = False
-gl.add(glGetActiveUniform)
-
-glGetAttachedShaders = Function('glGetAttachedShaders')
-glGetAttachedShaders.ret = Return('void')
-glGetAttachedShaders.add( Input( 'program','GLuint' ))
-glGetAttachedShaders.add( Input( 'maxCount','GLsizei' ))
-glGetAttachedShaders.add( Output( 'count','GLsizei *' ,size = 1 ))
-glGetAttachedShaders.add( Output( 'shaders','GLuint *' ,size = 'count ? *count : 0' ))
-glGetAttachedShaders.version = '2.0'
-glGetAttachedShaders.category = ''
-glGetAttachedShaders.esVersions = [2.0]
-glGetAttachedShaders.trace = True
-glGetAttachedShaders.play = False
-gl.add(glGetAttachedShaders)
-
-glGetAttribLocation = Function('glGetAttribLocation')
-glGetAttribLocation.ret = Return('GLint')
-glGetAttribLocation.add( Input( 'program','GLuint' ))
-glGetAttribLocation.add( Input( 'name','const GLchar *' ))
-glGetAttribLocation.version = '2.0'
-glGetAttribLocation.category = ''
-glGetAttribLocation.esVersions = [2.0]
-glGetAttribLocation.trace = True
-glGetAttribLocation.play = False
-gl.add(glGetAttribLocation)
 
 glGetBooleani_v = Function('glGetBooleani_v')
 glGetBooleani_v.ret = Return('void')
@@ -16818,31 +17708,6 @@ glGetInteger64i_v.trace = True
 glGetInteger64i_v.play = False
 gl.add(glGetInteger64i_v)
 
-glGetProgramInfoLog = Function('glGetProgramInfoLog')
-glGetProgramInfoLog.ret = Return('void')
-glGetProgramInfoLog.add( Input( 'program','GLuint' ))
-glGetProgramInfoLog.add( Input( 'bufSize','GLsizei' ))
-glGetProgramInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetProgramInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
-glGetProgramInfoLog.version = '2.0'
-glGetProgramInfoLog.category = ''
-glGetProgramInfoLog.esVersions = [2.0]
-glGetProgramInfoLog.trace = True
-glGetProgramInfoLog.play = False
-gl.add(glGetProgramInfoLog)
-
-glGetProgramiv = Function('glGetProgramiv')
-glGetProgramiv.ret = Return('void')
-glGetProgramiv.add( Input( 'program','GLuint' ))
-glGetProgramiv.add( Input( 'pname','GLenum' ))
-glGetProgramiv.add( Output( 'params','GLint *' ,size = 1 ))
-glGetProgramiv.version = '2.0'
-glGetProgramiv.category = ''
-glGetProgramiv.esVersions = [2.0]
-glGetProgramiv.trace = True
-glGetProgramiv.play = False
-gl.add(glGetProgramiv)
-
 glGetQueryObjectiv = Function('glGetQueryObjectiv')
 glGetQueryObjectiv.ret = Return('void')
 glGetQueryObjectiv.add( Input( 'id','GLuint' ))
@@ -16875,44 +17740,6 @@ glGetQueryiv.category = ''
 glGetQueryiv.trace = True
 glGetQueryiv.play = False
 gl.add(glGetQueryiv)
-
-glGetShaderInfoLog = Function('glGetShaderInfoLog')
-glGetShaderInfoLog.ret = Return('void')
-glGetShaderInfoLog.add( Input( 'shader','GLuint' ))
-glGetShaderInfoLog.add( Input( 'bufSize','GLsizei' ))
-glGetShaderInfoLog.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetShaderInfoLog.add( Output( 'infoLog','GLchar *' ,maxSize = 'bufSize' ))
-glGetShaderInfoLog.version = '2.0'
-glGetShaderInfoLog.category = ''
-glGetShaderInfoLog.esVersions = [2.0]
-glGetShaderInfoLog.trace = True
-glGetShaderInfoLog.play = False
-gl.add(glGetShaderInfoLog)
-
-glGetShaderSource = Function('glGetShaderSource')
-glGetShaderSource.ret = Return('void')
-glGetShaderSource.add( Input( 'shader','GLuint' ))
-glGetShaderSource.add( Input( 'bufSize','GLsizei' ))
-glGetShaderSource.add( Output( 'length','GLsizei *' ,size = 'length ? 1 : 0' ))
-glGetShaderSource.add( Output( 'source','GLchar *' ,maxSize = 'bufSize' ))
-glGetShaderSource.version = '2.0'
-glGetShaderSource.category = ''
-glGetShaderSource.esVersions = [2.0]
-glGetShaderSource.trace = True
-glGetShaderSource.play = False
-gl.add(glGetShaderSource)
-
-glGetShaderiv = Function('glGetShaderiv')
-glGetShaderiv.ret = Return('void')
-glGetShaderiv.add( Input( 'shader','GLuint' ))
-glGetShaderiv.add( Input( 'pname','GLenum' ))
-glGetShaderiv.add( Output( 'params','GLint *' ,size = 1 ))
-glGetShaderiv.version = '2.0'
-glGetShaderiv.category = ''
-glGetShaderiv.esVersions = [2.0]
-glGetShaderiv.trace = True
-glGetShaderiv.play = False
-gl.add(glGetShaderiv)
 
 glGetStringi = Function('glGetStringi')
 glGetStringi.ret = Return('const GLubyte *')
@@ -16962,41 +17789,6 @@ glGetTransformFeedbackVarying.trace = True
 glGetTransformFeedbackVarying.play = True
 gl.add(glGetTransformFeedbackVarying)
 
-glGetUniformLocation = Function('glGetUniformLocation')
-glGetUniformLocation.ret = Return('GLint')
-glGetUniformLocation.add( Input( 'program','GLuint' ))
-glGetUniformLocation.add( Input( 'name','const GLchar *' ,cast = 'const char *' ))
-glGetUniformLocation.version = '2.0'
-glGetUniformLocation.category = ''
-glGetUniformLocation.esVersions = [2.0]
-glGetUniformLocation.trace = True
-glGetUniformLocation.play = False
-gl.add(glGetUniformLocation)
-
-glGetUniformfv = Function('glGetUniformfv')
-glGetUniformfv.ret = Return('void')
-glGetUniformfv.add( Input( 'program','GLuint' ))
-glGetUniformfv.add( Input( 'location','GLint' ))
-glGetUniformfv.add( Output( 'params','GLfloat *' ))
-glGetUniformfv.version = '2.0'
-glGetUniformfv.category = ''
-glGetUniformfv.esVersions = [2.0]
-glGetUniformfv.trace = True
-glGetUniformfv.play = False
-gl.add(glGetUniformfv)
-
-glGetUniformiv = Function('glGetUniformiv')
-glGetUniformiv.ret = Return('void')
-glGetUniformiv.add( Input( 'program','GLuint' ))
-glGetUniformiv.add( Input( 'location','GLint' ))
-glGetUniformiv.add( Output( 'params','GLint *' ))
-glGetUniformiv.version = '2.0'
-glGetUniformiv.category = ''
-glGetUniformiv.esVersions = [2.0]
-glGetUniformiv.trace = True
-glGetUniformiv.play = False
-gl.add(glGetUniformiv)
-
 glGetUniformuiv = Function('glGetUniformuiv')
 glGetUniformuiv.ret = Return('void')
 glGetUniformuiv.add( Input( 'program','GLuint' ))
@@ -17030,53 +17822,6 @@ glGetVertexAttribIuiv.trace = True
 glGetVertexAttribIuiv.play = True
 gl.add(glGetVertexAttribIuiv)
 
-glGetVertexAttribPointerv = Function('glGetVertexAttribPointerv')
-glGetVertexAttribPointerv.ret = Return('void')
-glGetVertexAttribPointerv.add( Input( 'index','GLuint' ))
-glGetVertexAttribPointerv.add( Input( 'pname','GLenum' ))
-glGetVertexAttribPointerv.add( Output( 'pointer','GLvoid **' ,size = 1 ))
-glGetVertexAttribPointerv.version = '2.0'
-glGetVertexAttribPointerv.category = ''
-glGetVertexAttribPointerv.esVersions = [2.0]
-glGetVertexAttribPointerv.trace = True
-glGetVertexAttribPointerv.play = False
-gl.add(glGetVertexAttribPointerv)
-
-glGetVertexAttribdv = Function('glGetVertexAttribdv')
-glGetVertexAttribdv.ret = Return('void')
-glGetVertexAttribdv.add( Input( 'index','GLuint' ))
-glGetVertexAttribdv.add( Input( 'pname','GLenum' ))
-glGetVertexAttribdv.add( Output( 'params','GLdouble *' ,size = 4 ))
-glGetVertexAttribdv.version = '2.0'
-glGetVertexAttribdv.category = ''
-glGetVertexAttribdv.trace = True
-glGetVertexAttribdv.play = False
-gl.add(glGetVertexAttribdv)
-
-glGetVertexAttribfv = Function('glGetVertexAttribfv')
-glGetVertexAttribfv.ret = Return('void')
-glGetVertexAttribfv.add( Input( 'index','GLuint' ))
-glGetVertexAttribfv.add( Input( 'pname','GLenum' ))
-glGetVertexAttribfv.add( Output( 'params','GLfloat *' ,size = 4 ))
-glGetVertexAttribfv.version = '2.0'
-glGetVertexAttribfv.category = ''
-glGetVertexAttribfv.esVersions = [2.0]
-glGetVertexAttribfv.trace = True
-glGetVertexAttribfv.play = False
-gl.add(glGetVertexAttribfv)
-
-glGetVertexAttribiv = Function('glGetVertexAttribiv')
-glGetVertexAttribiv.ret = Return('void')
-glGetVertexAttribiv.add( Input( 'index','GLuint' ))
-glGetVertexAttribiv.add( Input( 'pname','GLenum' ))
-glGetVertexAttribiv.add( Output( 'params','GLint *' ,size = 4 ))
-glGetVertexAttribiv.version = '2.0'
-glGetVertexAttribiv.category = ''
-glGetVertexAttribiv.esVersions = [2.0]
-glGetVertexAttribiv.trace = True
-glGetVertexAttribiv.play = False
-gl.add(glGetVertexAttribiv)
-
 glIsBuffer = Function('glIsBuffer')
 glIsBuffer.ret = Return('GLboolean')
 glIsBuffer.add( Input( 'buffer','GLuint' ))
@@ -17097,16 +17842,6 @@ glIsEnabledi.trace = True
 glIsEnabledi.play = True
 gl.add(glIsEnabledi)
 
-glIsProgram = Function('glIsProgram')
-glIsProgram.ret = Return('GLboolean')
-glIsProgram.add( Input( 'program','GLuint' ))
-glIsProgram.version = '2.0'
-glIsProgram.category = ''
-glIsProgram.esVersions = [2.0]
-glIsProgram.trace = True
-glIsProgram.play = True
-gl.add(glIsProgram)
-
 glIsQuery = Function('glIsQuery')
 glIsQuery.ret = Return('GLboolean')
 glIsQuery.add( Input( 'id','GLuint' ))
@@ -17115,26 +17850,6 @@ glIsQuery.category = ''
 glIsQuery.trace = True
 glIsQuery.play = True
 gl.add(glIsQuery)
-
-glIsShader = Function('glIsShader')
-glIsShader.ret = Return('GLboolean')
-glIsShader.add( Input( 'shader','GLuint' ))
-glIsShader.version = '2.0'
-glIsShader.category = ''
-glIsShader.esVersions = [2.0]
-glIsShader.trace = True
-glIsShader.play = True
-gl.add(glIsShader)
-
-glLinkProgram = Function('glLinkProgram')
-glLinkProgram.ret = Return('void')
-glLinkProgram.add( Input( 'program','GLuint' ))
-glLinkProgram.version = '2.0'
-glLinkProgram.category = ''
-glLinkProgram.esVersions = [2.0]
-glLinkProgram.trace = True
-glLinkProgram.play = True
-gl.add(glLinkProgram)
 
 glMapBuffer = Function('glMapBuffer')
 glMapBuffer.ret = Return('GLvoid *')
@@ -17233,56 +17948,6 @@ glSampleCoverage.trace = True
 glSampleCoverage.play = True
 gl.add(glSampleCoverage)
 
-glShaderSource = Function('glShaderSource')
-glShaderSource.ret = Return('void')
-glShaderSource.add( Input( 'shader','GLuint' ))
-glShaderSource.add( Input( 'count','GLsizei' ))
-glShaderSource.add( Input( 'string','const GLchar **' ,size = 'string ? count : 0' ,cast = 'const char **' ))
-glShaderSource.add( Input( 'length','const GLint *' ,size = 'length ? count : 0' ))
-glShaderSource.version = '2.0'
-glShaderSource.category = ''
-glShaderSource.esVersions = [2.0]
-glShaderSource.trace = True
-glShaderSource.play = False
-gl.add(glShaderSource)
-
-glStencilFuncSeparate = Function('glStencilFuncSeparate')
-glStencilFuncSeparate.ret = Return('void')
-glStencilFuncSeparate.add( Input( 'face','GLenum' ))
-glStencilFuncSeparate.add( Input( 'func','GLenum' ))
-glStencilFuncSeparate.add( Input( 'ref','GLint' ))
-glStencilFuncSeparate.add( Input( 'mask','GLuint' ))
-glStencilFuncSeparate.version = '2.0'
-glStencilFuncSeparate.category = ''
-glStencilFuncSeparate.esVersions = [2.0]
-glStencilFuncSeparate.trace = True
-glStencilFuncSeparate.play = True
-gl.add(glStencilFuncSeparate)
-
-glStencilMaskSeparate = Function('glStencilMaskSeparate')
-glStencilMaskSeparate.ret = Return('void')
-glStencilMaskSeparate.add( Input( 'face','GLenum' ))
-glStencilMaskSeparate.add( Input( 'mask','GLuint' ))
-glStencilMaskSeparate.version = '2.0'
-glStencilMaskSeparate.category = ''
-glStencilMaskSeparate.esVersions = [2.0]
-glStencilMaskSeparate.trace = True
-glStencilMaskSeparate.play = True
-gl.add(glStencilMaskSeparate)
-
-glStencilOpSeparate = Function('glStencilOpSeparate')
-glStencilOpSeparate.ret = Return('void')
-glStencilOpSeparate.add( Input( 'face','GLenum' ))
-glStencilOpSeparate.add( Input( 'fail','GLenum' ))
-glStencilOpSeparate.add( Input( 'zfail','GLenum' ))
-glStencilOpSeparate.add( Input( 'zpass','GLenum' ))
-glStencilOpSeparate.version = '2.0'
-glStencilOpSeparate.category = ''
-glStencilOpSeparate.esVersions = [2.0]
-glStencilOpSeparate.trace = True
-glStencilOpSeparate.play = True
-gl.add(glStencilOpSeparate)
-
 glTexBuffer = Function('glTexBuffer')
 glTexBuffer.ret = Return('void')
 glTexBuffer.add( Input( 'target','GLenum' ))
@@ -17365,52 +18030,6 @@ glTransformFeedbackVaryings.trace = True
 glTransformFeedbackVaryings.play = True
 gl.add(glTransformFeedbackVaryings)
 
-glUniform1f = Function('glUniform1f')
-glUniform1f.ret = Return('void')
-glUniform1f.add( Input( 'location','GLint' ))
-glUniform1f.add( Input( 'v0','GLfloat' ))
-glUniform1f.version = '2.0'
-glUniform1f.category = ''
-glUniform1f.esVersions = [2.0]
-glUniform1f.trace = True
-glUniform1f.play = True
-gl.add(glUniform1f)
-
-glUniform1fv = Function('glUniform1fv')
-glUniform1fv.ret = Return('void')
-glUniform1fv.add( Input( 'location','GLint' ))
-glUniform1fv.add( Input( 'count','GLsizei' ))
-glUniform1fv.add( Input( 'value','const GLfloat *' ,size = '1 * count' ))
-glUniform1fv.version = '2.0'
-glUniform1fv.category = ''
-glUniform1fv.esVersions = [2.0]
-glUniform1fv.trace = True
-glUniform1fv.play = True
-gl.add(glUniform1fv)
-
-glUniform1i = Function('glUniform1i')
-glUniform1i.ret = Return('void')
-glUniform1i.add( Input( 'location','GLint' ))
-glUniform1i.add( Input( 'v0','GLint' ))
-glUniform1i.version = '2.0'
-glUniform1i.category = ''
-glUniform1i.esVersions = [2.0]
-glUniform1i.trace = True
-glUniform1i.play = True
-gl.add(glUniform1i)
-
-glUniform1iv = Function('glUniform1iv')
-glUniform1iv.ret = Return('void')
-glUniform1iv.add( Input( 'location','GLint' ))
-glUniform1iv.add( Input( 'count','GLsizei' ))
-glUniform1iv.add( Input( 'value','const GLint *' ,size = 'count' ))
-glUniform1iv.version = '2.0'
-glUniform1iv.category = ''
-glUniform1iv.esVersions = [2.0]
-glUniform1iv.trace = True
-glUniform1iv.play = True
-gl.add(glUniform1iv)
-
 glUniform1ui = Function('glUniform1ui')
 glUniform1ui.ret = Return('void')
 glUniform1ui.add( Input( 'location','GLint' ))
@@ -17431,54 +18050,6 @@ glUniform1uiv.category = ''
 glUniform1uiv.trace = True
 glUniform1uiv.play = True
 gl.add(glUniform1uiv)
-
-glUniform2f = Function('glUniform2f')
-glUniform2f.ret = Return('void')
-glUniform2f.add( Input( 'location','GLint' ))
-glUniform2f.add( Input( 'v0','GLfloat' ))
-glUniform2f.add( Input( 'v1','GLfloat' ))
-glUniform2f.version = '2.0'
-glUniform2f.category = ''
-glUniform2f.esVersions = [2.0]
-glUniform2f.trace = True
-glUniform2f.play = True
-gl.add(glUniform2f)
-
-glUniform2fv = Function('glUniform2fv')
-glUniform2fv.ret = Return('void')
-glUniform2fv.add( Input( 'location','GLint' ))
-glUniform2fv.add( Input( 'count','GLsizei' ))
-glUniform2fv.add( Input( 'value','const GLfloat *' ,size = 'count' ))
-glUniform2fv.version = '2.0'
-glUniform2fv.category = ''
-glUniform2fv.esVersions = [2.0]
-glUniform2fv.trace = True
-glUniform2fv.play = True
-gl.add(glUniform2fv)
-
-glUniform2i = Function('glUniform2i')
-glUniform2i.ret = Return('void')
-glUniform2i.add( Input( 'location','GLint' ))
-glUniform2i.add( Input( 'v0','GLint' ))
-glUniform2i.add( Input( 'v1','GLint' ))
-glUniform2i.version = '2.0'
-glUniform2i.category = ''
-glUniform2i.esVersions = [2.0]
-glUniform2i.trace = True
-glUniform2i.play = True
-gl.add(glUniform2i)
-
-glUniform2iv = Function('glUniform2iv')
-glUniform2iv.ret = Return('void')
-glUniform2iv.add( Input( 'location','GLint' ))
-glUniform2iv.add( Input( 'count','GLsizei' ))
-glUniform2iv.add( Input( 'value','const GLint *' ,size = '2 * count' ))
-glUniform2iv.version = '2.0'
-glUniform2iv.category = ''
-glUniform2iv.esVersions = [2.0]
-glUniform2iv.trace = True
-glUniform2iv.play = True
-gl.add(glUniform2iv)
 
 glUniform2ui = Function('glUniform2ui')
 glUniform2ui.ret = Return('void')
@@ -17502,56 +18073,6 @@ glUniform2uiv.trace = True
 glUniform2uiv.play = True
 gl.add(glUniform2uiv)
 
-glUniform3f = Function('glUniform3f')
-glUniform3f.ret = Return('void')
-glUniform3f.add( Input( 'location','GLint' ))
-glUniform3f.add( Input( 'v0','GLfloat' ))
-glUniform3f.add( Input( 'v1','GLfloat' ))
-glUniform3f.add( Input( 'v2','GLfloat' ))
-glUniform3f.version = '2.0'
-glUniform3f.category = ''
-glUniform3f.esVersions = [2.0]
-glUniform3f.trace = True
-glUniform3f.play = True
-gl.add(glUniform3f)
-
-glUniform3fv = Function('glUniform3fv')
-glUniform3fv.ret = Return('void')
-glUniform3fv.add( Input( 'location','GLint' ))
-glUniform3fv.add( Input( 'count','GLsizei' ))
-glUniform3fv.add( Input( 'value','const GLfloat *' ,size = '3 * count' ))
-glUniform3fv.version = '2.0'
-glUniform3fv.category = ''
-glUniform3fv.esVersions = [2.0]
-glUniform3fv.trace = True
-glUniform3fv.play = True
-gl.add(glUniform3fv)
-
-glUniform3i = Function('glUniform3i')
-glUniform3i.ret = Return('void')
-glUniform3i.add( Input( 'location','GLint' ))
-glUniform3i.add( Input( 'v0','GLint' ))
-glUniform3i.add( Input( 'v1','GLint' ))
-glUniform3i.add( Input( 'v2','GLint' ))
-glUniform3i.version = '2.0'
-glUniform3i.category = ''
-glUniform3i.esVersions = [2.0]
-glUniform3i.trace = True
-glUniform3i.play = True
-gl.add(glUniform3i)
-
-glUniform3iv = Function('glUniform3iv')
-glUniform3iv.ret = Return('void')
-glUniform3iv.add( Input( 'location','GLint' ))
-glUniform3iv.add( Input( 'count','GLsizei' ))
-glUniform3iv.add( Input( 'value','const GLint *' ,size = '3 * count' ))
-glUniform3iv.version = '2.0'
-glUniform3iv.category = ''
-glUniform3iv.esVersions = [2.0]
-glUniform3iv.trace = True
-glUniform3iv.play = True
-gl.add(glUniform3iv)
-
 glUniform3ui = Function('glUniform3ui')
 glUniform3ui.ret = Return('void')
 glUniform3ui.add( Input( 'location','GLint' ))
@@ -17574,58 +18095,6 @@ glUniform3uiv.category = ''
 glUniform3uiv.trace = True
 glUniform3uiv.play = True
 gl.add(glUniform3uiv)
-
-glUniform4f = Function('glUniform4f')
-glUniform4f.ret = Return('void')
-glUniform4f.add( Input( 'location','GLint' ))
-glUniform4f.add( Input( 'v0','GLfloat' ))
-glUniform4f.add( Input( 'v1','GLfloat' ))
-glUniform4f.add( Input( 'v2','GLfloat' ))
-glUniform4f.add( Input( 'v3','GLfloat' ))
-glUniform4f.version = '2.0'
-glUniform4f.category = ''
-glUniform4f.esVersions = [2.0]
-glUniform4f.trace = True
-glUniform4f.play = True
-gl.add(glUniform4f)
-
-glUniform4fv = Function('glUniform4fv')
-glUniform4fv.ret = Return('void')
-glUniform4fv.add( Input( 'location','GLint' ))
-glUniform4fv.add( Input( 'count','GLsizei' ))
-glUniform4fv.add( Input( 'value','const GLfloat *' ,size = '4 * count' ))
-glUniform4fv.version = '2.0'
-glUniform4fv.category = ''
-glUniform4fv.esVersions = [2.0]
-glUniform4fv.trace = True
-glUniform4fv.play = True
-gl.add(glUniform4fv)
-
-glUniform4i = Function('glUniform4i')
-glUniform4i.ret = Return('void')
-glUniform4i.add( Input( 'location','GLint' ))
-glUniform4i.add( Input( 'v0','GLint' ))
-glUniform4i.add( Input( 'v1','GLint' ))
-glUniform4i.add( Input( 'v2','GLint' ))
-glUniform4i.add( Input( 'v3','GLint' ))
-glUniform4i.version = '2.0'
-glUniform4i.category = ''
-glUniform4i.esVersions = [2.0]
-glUniform4i.trace = True
-glUniform4i.play = True
-gl.add(glUniform4i)
-
-glUniform4iv = Function('glUniform4iv')
-glUniform4iv.ret = Return('void')
-glUniform4iv.add( Input( 'location','GLint' ))
-glUniform4iv.add( Input( 'count','GLsizei' ))
-glUniform4iv.add( Input( 'value','const GLint *' ,size = '4 * count' ))
-glUniform4iv.version = '2.0'
-glUniform4iv.category = ''
-glUniform4iv.esVersions = [2.0]
-glUniform4iv.trace = True
-glUniform4iv.play = True
-gl.add(glUniform4iv)
 
 glUniform4ui = Function('glUniform4ui')
 glUniform4ui.ret = Return('void')
@@ -17651,19 +18120,6 @@ glUniform4uiv.trace = True
 glUniform4uiv.play = True
 gl.add(glUniform4uiv)
 
-glUniformMatrix2fv = Function('glUniformMatrix2fv')
-glUniformMatrix2fv.ret = Return('void')
-glUniformMatrix2fv.add( Input( 'location','GLint' ))
-glUniformMatrix2fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix2fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix2fv.add( Input( 'value','const GLfloat *' ,size = '2 * 2 * count' ))
-glUniformMatrix2fv.version = '2.0'
-glUniformMatrix2fv.category = ''
-glUniformMatrix2fv.esVersions = [2.0]
-glUniformMatrix2fv.trace = True
-glUniformMatrix2fv.play = True
-gl.add(glUniformMatrix2fv)
-
 glUniformMatrix2x3fv = Function('glUniformMatrix2x3fv')
 glUniformMatrix2x3fv.ret = Return('void')
 glUniformMatrix2x3fv.add( Input( 'location','GLint' ))
@@ -17688,19 +18144,6 @@ glUniformMatrix2x4fv.trace = True
 glUniformMatrix2x4fv.play = True
 gl.add(glUniformMatrix2x4fv)
 
-glUniformMatrix3fv = Function('glUniformMatrix3fv')
-glUniformMatrix3fv.ret = Return('void')
-glUniformMatrix3fv.add( Input( 'location','GLint' ))
-glUniformMatrix3fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix3fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix3fv.add( Input( 'value','const GLfloat *' ,size = '3 * 3 * count' ))
-glUniformMatrix3fv.version = '2.0'
-glUniformMatrix3fv.category = ''
-glUniformMatrix3fv.esVersions = [2.0]
-glUniformMatrix3fv.trace = True
-glUniformMatrix3fv.play = True
-gl.add(glUniformMatrix3fv)
-
 glUniformMatrix3x2fv = Function('glUniformMatrix3x2fv')
 glUniformMatrix3x2fv.ret = Return('void')
 glUniformMatrix3x2fv.add( Input( 'location','GLint' ))
@@ -17724,19 +18167,6 @@ glUniformMatrix3x4fv.category = ''
 glUniformMatrix3x4fv.trace = True
 glUniformMatrix3x4fv.play = True
 gl.add(glUniformMatrix3x4fv)
-
-glUniformMatrix4fv = Function('glUniformMatrix4fv')
-glUniformMatrix4fv.ret = Return('void')
-glUniformMatrix4fv.add( Input( 'location','GLint' ))
-glUniformMatrix4fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix4fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix4fv.add( Input( 'value','const GLfloat *' ,size = '4 * 4 * count' ))
-glUniformMatrix4fv.version = '2.0'
-glUniformMatrix4fv.category = ''
-glUniformMatrix4fv.esVersions = [2.0]
-glUniformMatrix4fv.trace = True
-glUniformMatrix4fv.play = True
-gl.add(glUniformMatrix4fv)
 
 glUniformMatrix4x2fv = Function('glUniformMatrix4x2fv')
 glUniformMatrix4x2fv.ret = Return('void')
@@ -17770,415 +18200,6 @@ glUnmapBuffer.category = ''
 glUnmapBuffer.trace = True
 glUnmapBuffer.play = True
 gl.add(glUnmapBuffer)
-
-glUseProgram = Function('glUseProgram')
-glUseProgram.ret = Return('void')
-glUseProgram.add( Input( 'program','GLuint' ))
-glUseProgram.version = '2.0'
-glUseProgram.category = ''
-glUseProgram.esVersions = [2.0]
-glUseProgram.trace = True
-glUseProgram.play = True
-gl.add(glUseProgram)
-
-glValidateProgram = Function('glValidateProgram')
-glValidateProgram.ret = Return('void')
-glValidateProgram.add( Input( 'program','GLuint' ))
-glValidateProgram.version = '2.0'
-glValidateProgram.category = ''
-glValidateProgram.esVersions = [2.0]
-glValidateProgram.trace = True
-glValidateProgram.play = True
-gl.add(glValidateProgram)
-
-glVertexAttrib1d = Function('glVertexAttrib1d')
-glVertexAttrib1d.ret = Return('void')
-glVertexAttrib1d.add( Input( 'index','GLuint' ))
-glVertexAttrib1d.add( Input( 'x','GLdouble' ))
-glVertexAttrib1d.version = '2.0'
-glVertexAttrib1d.category = ''
-glVertexAttrib1d.trace = True
-glVertexAttrib1d.play = True
-gl.add(glVertexAttrib1d)
-
-glVertexAttrib1dv = Function('glVertexAttrib1dv')
-glVertexAttrib1dv.ret = Return('void')
-glVertexAttrib1dv.add( Input( 'index','GLuint' ))
-glVertexAttrib1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
-glVertexAttrib1dv.version = '2.0'
-glVertexAttrib1dv.category = ''
-glVertexAttrib1dv.trace = True
-glVertexAttrib1dv.play = True
-gl.add(glVertexAttrib1dv)
-
-glVertexAttrib1f = Function('glVertexAttrib1f')
-glVertexAttrib1f.ret = Return('void')
-glVertexAttrib1f.add( Input( 'index','GLuint' ))
-glVertexAttrib1f.add( Input( 'x','GLfloat' ))
-glVertexAttrib1f.version = '2.0'
-glVertexAttrib1f.category = ''
-glVertexAttrib1f.esVersions = [2.0]
-glVertexAttrib1f.trace = True
-glVertexAttrib1f.play = True
-gl.add(glVertexAttrib1f)
-
-glVertexAttrib1fv = Function('glVertexAttrib1fv')
-glVertexAttrib1fv.ret = Return('void')
-glVertexAttrib1fv.add( Input( 'index','GLuint' ))
-glVertexAttrib1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
-glVertexAttrib1fv.version = '2.0'
-glVertexAttrib1fv.category = ''
-glVertexAttrib1fv.esVersions = [2.0]
-glVertexAttrib1fv.trace = True
-glVertexAttrib1fv.play = True
-gl.add(glVertexAttrib1fv)
-
-glVertexAttrib1s = Function('glVertexAttrib1s')
-glVertexAttrib1s.ret = Return('void')
-glVertexAttrib1s.add( Input( 'index','GLuint' ))
-glVertexAttrib1s.add( Input( 'x','GLshort' ))
-glVertexAttrib1s.version = '2.0'
-glVertexAttrib1s.category = ''
-glVertexAttrib1s.trace = True
-glVertexAttrib1s.play = True
-gl.add(glVertexAttrib1s)
-
-glVertexAttrib1sv = Function('glVertexAttrib1sv')
-glVertexAttrib1sv.ret = Return('void')
-glVertexAttrib1sv.add( Input( 'index','GLuint' ))
-glVertexAttrib1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
-glVertexAttrib1sv.version = '2.0'
-glVertexAttrib1sv.category = ''
-glVertexAttrib1sv.trace = True
-glVertexAttrib1sv.play = True
-gl.add(glVertexAttrib1sv)
-
-glVertexAttrib2d = Function('glVertexAttrib2d')
-glVertexAttrib2d.ret = Return('void')
-glVertexAttrib2d.add( Input( 'index','GLuint' ))
-glVertexAttrib2d.add( Input( 'x','GLdouble' ))
-glVertexAttrib2d.add( Input( 'y','GLdouble' ))
-glVertexAttrib2d.version = '2.0'
-glVertexAttrib2d.category = ''
-glVertexAttrib2d.trace = True
-glVertexAttrib2d.play = True
-gl.add(glVertexAttrib2d)
-
-glVertexAttrib2dv = Function('glVertexAttrib2dv')
-glVertexAttrib2dv.ret = Return('void')
-glVertexAttrib2dv.add( Input( 'index','GLuint' ))
-glVertexAttrib2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
-glVertexAttrib2dv.version = '2.0'
-glVertexAttrib2dv.category = ''
-glVertexAttrib2dv.trace = True
-glVertexAttrib2dv.play = True
-gl.add(glVertexAttrib2dv)
-
-glVertexAttrib2f = Function('glVertexAttrib2f')
-glVertexAttrib2f.ret = Return('void')
-glVertexAttrib2f.add( Input( 'index','GLuint' ))
-glVertexAttrib2f.add( Input( 'x','GLfloat' ))
-glVertexAttrib2f.add( Input( 'y','GLfloat' ))
-glVertexAttrib2f.version = '2.0'
-glVertexAttrib2f.category = ''
-glVertexAttrib2f.esVersions = [2.0]
-glVertexAttrib2f.trace = True
-glVertexAttrib2f.play = True
-gl.add(glVertexAttrib2f)
-
-glVertexAttrib2fv = Function('glVertexAttrib2fv')
-glVertexAttrib2fv.ret = Return('void')
-glVertexAttrib2fv.add( Input( 'index','GLuint' ))
-glVertexAttrib2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
-glVertexAttrib2fv.version = '2.0'
-glVertexAttrib2fv.category = ''
-glVertexAttrib2fv.esVersions = [2.0]
-glVertexAttrib2fv.trace = True
-glVertexAttrib2fv.play = True
-gl.add(glVertexAttrib2fv)
-
-glVertexAttrib2s = Function('glVertexAttrib2s')
-glVertexAttrib2s.ret = Return('void')
-glVertexAttrib2s.add( Input( 'index','GLuint' ))
-glVertexAttrib2s.add( Input( 'x','GLshort' ))
-glVertexAttrib2s.add( Input( 'y','GLshort' ))
-glVertexAttrib2s.version = '2.0'
-glVertexAttrib2s.category = ''
-glVertexAttrib2s.trace = True
-glVertexAttrib2s.play = True
-gl.add(glVertexAttrib2s)
-
-glVertexAttrib2sv = Function('glVertexAttrib2sv')
-glVertexAttrib2sv.ret = Return('void')
-glVertexAttrib2sv.add( Input( 'index','GLuint' ))
-glVertexAttrib2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
-glVertexAttrib2sv.version = '2.0'
-glVertexAttrib2sv.category = ''
-glVertexAttrib2sv.trace = True
-glVertexAttrib2sv.play = True
-gl.add(glVertexAttrib2sv)
-
-glVertexAttrib3d = Function('glVertexAttrib3d')
-glVertexAttrib3d.ret = Return('void')
-glVertexAttrib3d.add( Input( 'index','GLuint' ))
-glVertexAttrib3d.add( Input( 'x','GLdouble' ))
-glVertexAttrib3d.add( Input( 'y','GLdouble' ))
-glVertexAttrib3d.add( Input( 'z','GLdouble' ))
-glVertexAttrib3d.version = '2.0'
-glVertexAttrib3d.category = ''
-glVertexAttrib3d.trace = True
-glVertexAttrib3d.play = True
-gl.add(glVertexAttrib3d)
-
-glVertexAttrib3dv = Function('glVertexAttrib3dv')
-glVertexAttrib3dv.ret = Return('void')
-glVertexAttrib3dv.add( Input( 'index','GLuint' ))
-glVertexAttrib3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glVertexAttrib3dv.version = '2.0'
-glVertexAttrib3dv.category = ''
-glVertexAttrib3dv.trace = True
-glVertexAttrib3dv.play = True
-gl.add(glVertexAttrib3dv)
-
-glVertexAttrib3f = Function('glVertexAttrib3f')
-glVertexAttrib3f.ret = Return('void')
-glVertexAttrib3f.add( Input( 'index','GLuint' ))
-glVertexAttrib3f.add( Input( 'x','GLfloat' ))
-glVertexAttrib3f.add( Input( 'y','GLfloat' ))
-glVertexAttrib3f.add( Input( 'z','GLfloat' ))
-glVertexAttrib3f.version = '2.0'
-glVertexAttrib3f.category = ''
-glVertexAttrib3f.esVersions = [2.0]
-glVertexAttrib3f.trace = True
-glVertexAttrib3f.play = True
-gl.add(glVertexAttrib3f)
-
-glVertexAttrib3fv = Function('glVertexAttrib3fv')
-glVertexAttrib3fv.ret = Return('void')
-glVertexAttrib3fv.add( Input( 'index','GLuint' ))
-glVertexAttrib3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glVertexAttrib3fv.version = '2.0'
-glVertexAttrib3fv.category = ''
-glVertexAttrib3fv.esVersions = [2.0]
-glVertexAttrib3fv.trace = True
-glVertexAttrib3fv.play = True
-gl.add(glVertexAttrib3fv)
-
-glVertexAttrib3s = Function('glVertexAttrib3s')
-glVertexAttrib3s.ret = Return('void')
-glVertexAttrib3s.add( Input( 'index','GLuint' ))
-glVertexAttrib3s.add( Input( 'x','GLshort' ))
-glVertexAttrib3s.add( Input( 'y','GLshort' ))
-glVertexAttrib3s.add( Input( 'z','GLshort' ))
-glVertexAttrib3s.version = '2.0'
-glVertexAttrib3s.category = ''
-glVertexAttrib3s.trace = True
-glVertexAttrib3s.play = True
-gl.add(glVertexAttrib3s)
-
-glVertexAttrib3sv = Function('glVertexAttrib3sv')
-glVertexAttrib3sv.ret = Return('void')
-glVertexAttrib3sv.add( Input( 'index','GLuint' ))
-glVertexAttrib3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glVertexAttrib3sv.version = '2.0'
-glVertexAttrib3sv.category = ''
-glVertexAttrib3sv.trace = True
-glVertexAttrib3sv.play = True
-gl.add(glVertexAttrib3sv)
-
-glVertexAttrib4Nbv = Function('glVertexAttrib4Nbv')
-glVertexAttrib4Nbv.ret = Return('void')
-glVertexAttrib4Nbv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nbv.add( Input( 'v','const GLbyte *' ,size = 4 ))
-glVertexAttrib4Nbv.version = '2.0'
-glVertexAttrib4Nbv.category = ''
-glVertexAttrib4Nbv.trace = True
-glVertexAttrib4Nbv.play = True
-gl.add(glVertexAttrib4Nbv)
-
-glVertexAttrib4Niv = Function('glVertexAttrib4Niv')
-glVertexAttrib4Niv.ret = Return('void')
-glVertexAttrib4Niv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Niv.add( Input( 'v','const GLint *' ,size = 4 ))
-glVertexAttrib4Niv.version = '2.0'
-glVertexAttrib4Niv.category = ''
-glVertexAttrib4Niv.trace = True
-glVertexAttrib4Niv.play = True
-gl.add(glVertexAttrib4Niv)
-
-glVertexAttrib4Nsv = Function('glVertexAttrib4Nsv')
-glVertexAttrib4Nsv.ret = Return('void')
-glVertexAttrib4Nsv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nsv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glVertexAttrib4Nsv.version = '2.0'
-glVertexAttrib4Nsv.category = ''
-glVertexAttrib4Nsv.trace = True
-glVertexAttrib4Nsv.play = True
-gl.add(glVertexAttrib4Nsv)
-
-glVertexAttrib4Nub = Function('glVertexAttrib4Nub')
-glVertexAttrib4Nub.ret = Return('void')
-glVertexAttrib4Nub.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nub.add( Input( 'x','GLubyte' ))
-glVertexAttrib4Nub.add( Input( 'y','GLubyte' ))
-glVertexAttrib4Nub.add( Input( 'z','GLubyte' ))
-glVertexAttrib4Nub.add( Input( 'w','GLubyte' ))
-glVertexAttrib4Nub.version = '2.0'
-glVertexAttrib4Nub.category = ''
-glVertexAttrib4Nub.trace = True
-glVertexAttrib4Nub.play = True
-gl.add(glVertexAttrib4Nub)
-
-glVertexAttrib4Nubv = Function('glVertexAttrib4Nubv')
-glVertexAttrib4Nubv.ret = Return('void')
-glVertexAttrib4Nubv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
-glVertexAttrib4Nubv.version = '2.0'
-glVertexAttrib4Nubv.category = ''
-glVertexAttrib4Nubv.trace = True
-glVertexAttrib4Nubv.play = True
-gl.add(glVertexAttrib4Nubv)
-
-glVertexAttrib4Nuiv = Function('glVertexAttrib4Nuiv')
-glVertexAttrib4Nuiv.ret = Return('void')
-glVertexAttrib4Nuiv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nuiv.add( Input( 'v','const GLuint *' ,size = 4 ))
-glVertexAttrib4Nuiv.version = '2.0'
-glVertexAttrib4Nuiv.category = ''
-glVertexAttrib4Nuiv.trace = True
-glVertexAttrib4Nuiv.play = True
-gl.add(glVertexAttrib4Nuiv)
-
-glVertexAttrib4Nusv = Function('glVertexAttrib4Nusv')
-glVertexAttrib4Nusv.ret = Return('void')
-glVertexAttrib4Nusv.add( Input( 'index','GLuint' ))
-glVertexAttrib4Nusv.add( Input( 'v','const GLushort *' ,size = 4 ))
-glVertexAttrib4Nusv.version = '2.0'
-glVertexAttrib4Nusv.category = ''
-glVertexAttrib4Nusv.trace = True
-glVertexAttrib4Nusv.play = True
-gl.add(glVertexAttrib4Nusv)
-
-glVertexAttrib4bv = Function('glVertexAttrib4bv')
-glVertexAttrib4bv.ret = Return('void')
-glVertexAttrib4bv.add( Input( 'index','GLuint' ))
-glVertexAttrib4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
-glVertexAttrib4bv.version = '2.0'
-glVertexAttrib4bv.category = ''
-glVertexAttrib4bv.trace = True
-glVertexAttrib4bv.play = True
-gl.add(glVertexAttrib4bv)
-
-glVertexAttrib4d = Function('glVertexAttrib4d')
-glVertexAttrib4d.ret = Return('void')
-glVertexAttrib4d.add( Input( 'index','GLuint' ))
-glVertexAttrib4d.add( Input( 'x','GLdouble' ))
-glVertexAttrib4d.add( Input( 'y','GLdouble' ))
-glVertexAttrib4d.add( Input( 'z','GLdouble' ))
-glVertexAttrib4d.add( Input( 'w','GLdouble' ))
-glVertexAttrib4d.version = '2.0'
-glVertexAttrib4d.category = ''
-glVertexAttrib4d.trace = True
-glVertexAttrib4d.play = True
-gl.add(glVertexAttrib4d)
-
-glVertexAttrib4dv = Function('glVertexAttrib4dv')
-glVertexAttrib4dv.ret = Return('void')
-glVertexAttrib4dv.add( Input( 'index','GLuint' ))
-glVertexAttrib4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
-glVertexAttrib4dv.version = '2.0'
-glVertexAttrib4dv.category = ''
-glVertexAttrib4dv.trace = True
-glVertexAttrib4dv.play = True
-gl.add(glVertexAttrib4dv)
-
-glVertexAttrib4f = Function('glVertexAttrib4f')
-glVertexAttrib4f.ret = Return('void')
-glVertexAttrib4f.add( Input( 'index','GLuint' ))
-glVertexAttrib4f.add( Input( 'x','GLfloat' ))
-glVertexAttrib4f.add( Input( 'y','GLfloat' ))
-glVertexAttrib4f.add( Input( 'z','GLfloat' ))
-glVertexAttrib4f.add( Input( 'w','GLfloat' ))
-glVertexAttrib4f.version = '2.0'
-glVertexAttrib4f.category = ''
-glVertexAttrib4f.esVersions = [2.0]
-glVertexAttrib4f.trace = True
-glVertexAttrib4f.play = True
-gl.add(glVertexAttrib4f)
-
-glVertexAttrib4fv = Function('glVertexAttrib4fv')
-glVertexAttrib4fv.ret = Return('void')
-glVertexAttrib4fv.add( Input( 'index','GLuint' ))
-glVertexAttrib4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
-glVertexAttrib4fv.version = '2.0'
-glVertexAttrib4fv.category = ''
-glVertexAttrib4fv.esVersions = [2.0]
-glVertexAttrib4fv.trace = True
-glVertexAttrib4fv.play = True
-gl.add(glVertexAttrib4fv)
-
-glVertexAttrib4iv = Function('glVertexAttrib4iv')
-glVertexAttrib4iv.ret = Return('void')
-glVertexAttrib4iv.add( Input( 'index','GLuint' ))
-glVertexAttrib4iv.add( Input( 'v','const GLint *' ,size = 4 ))
-glVertexAttrib4iv.version = '2.0'
-glVertexAttrib4iv.category = ''
-glVertexAttrib4iv.trace = True
-glVertexAttrib4iv.play = True
-gl.add(glVertexAttrib4iv)
-
-glVertexAttrib4s = Function('glVertexAttrib4s')
-glVertexAttrib4s.ret = Return('void')
-glVertexAttrib4s.add( Input( 'index','GLuint' ))
-glVertexAttrib4s.add( Input( 'x','GLshort' ))
-glVertexAttrib4s.add( Input( 'y','GLshort' ))
-glVertexAttrib4s.add( Input( 'z','GLshort' ))
-glVertexAttrib4s.add( Input( 'w','GLshort' ))
-glVertexAttrib4s.version = '2.0'
-glVertexAttrib4s.category = ''
-glVertexAttrib4s.trace = True
-glVertexAttrib4s.play = True
-gl.add(glVertexAttrib4s)
-
-glVertexAttrib4sv = Function('glVertexAttrib4sv')
-glVertexAttrib4sv.ret = Return('void')
-glVertexAttrib4sv.add( Input( 'index','GLuint' ))
-glVertexAttrib4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glVertexAttrib4sv.version = '2.0'
-glVertexAttrib4sv.category = ''
-glVertexAttrib4sv.trace = True
-glVertexAttrib4sv.play = True
-gl.add(glVertexAttrib4sv)
-
-glVertexAttrib4ubv = Function('glVertexAttrib4ubv')
-glVertexAttrib4ubv.ret = Return('void')
-glVertexAttrib4ubv.add( Input( 'index','GLuint' ))
-glVertexAttrib4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
-glVertexAttrib4ubv.version = '2.0'
-glVertexAttrib4ubv.category = ''
-glVertexAttrib4ubv.trace = True
-glVertexAttrib4ubv.play = True
-gl.add(glVertexAttrib4ubv)
-
-glVertexAttrib4uiv = Function('glVertexAttrib4uiv')
-glVertexAttrib4uiv.ret = Return('void')
-glVertexAttrib4uiv.add( Input( 'index','GLuint' ))
-glVertexAttrib4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
-glVertexAttrib4uiv.version = '2.0'
-glVertexAttrib4uiv.category = ''
-glVertexAttrib4uiv.trace = True
-glVertexAttrib4uiv.play = True
-gl.add(glVertexAttrib4uiv)
-
-glVertexAttrib4usv = Function('glVertexAttrib4usv')
-glVertexAttrib4usv.ret = Return('void')
-glVertexAttrib4usv.add( Input( 'index','GLuint' ))
-glVertexAttrib4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
-glVertexAttrib4usv.version = '2.0'
-glVertexAttrib4usv.category = ''
-glVertexAttrib4usv.trace = True
-glVertexAttrib4usv.play = True
-gl.add(glVertexAttrib4usv)
 
 glVertexAttribDivisor = Function('glVertexAttribDivisor')
 glVertexAttribDivisor.ret = Return('void')
@@ -18414,21 +18435,6 @@ glVertexAttribIPointer.category = ''
 glVertexAttribIPointer.trace = True
 glVertexAttribIPointer.play = True
 gl.add(glVertexAttribIPointer)
-
-glVertexAttribPointer = Function('glVertexAttribPointer')
-glVertexAttribPointer.ret = Return('void')
-glVertexAttribPointer.add( Input( 'index','GLuint' ))
-glVertexAttribPointer.add( Input( 'size','GLint' ))
-glVertexAttribPointer.add( Input( 'type','GLenum' ))
-glVertexAttribPointer.add( Input( 'normalized','GLboolean' ))
-glVertexAttribPointer.add( Input( 'stride','GLsizei' ))
-glVertexAttribPointer.add( Input( 'pointer','const GLvoid *' ))
-glVertexAttribPointer.version = '2.0'
-glVertexAttribPointer.category = ''
-glVertexAttribPointer.esVersions = [2.0]
-glVertexAttribPointer.trace = True
-glVertexAttribPointer.play = True
-gl.add(glVertexAttribPointer)
 
 # GL_3DFX_tbuffer
 

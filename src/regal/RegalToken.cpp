@@ -670,6 +670,8 @@ namespace Token {
       case 0x00003003: return "GL_CLIP_PLANE3";
       case 0x00003004: return "GL_CLIP_PLANE4";
       case 0x00003005: return "GL_CLIP_PLANE5";
+      case 0x00003006: return "GL_CLIP_PLANE6";
+      case 0x00003007: return "GL_CLIP_PLANE7";
       case 0x000030e0: return "GL_EGL_COVERAGE_BUFFERS_NV";
       case 0x000030e1: return "GL_EGL_COVERAGE_SAMPLES_NV";
       case 0x000030e2: return "GL_EGL_DEPTH_ENCODING_NV";

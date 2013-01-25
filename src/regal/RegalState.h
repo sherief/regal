@@ -43,6 +43,7 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/print_string.hpp>
 #include <boost/print/string_list.hpp>
 
+#include "RegalIff.h"
 #include "RegalToken.h"
 #include "RegalDispatch.h"
 
@@ -814,8 +815,7 @@ namespace State {
 
   struct Transform
   {
-    enum CLIP_PLANE_INFO { CLIP_PLANE_COUNT = 6 };
-    ClipPlane   clipPlane[6];
+    ClipPlane   clipPlane[REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES];
     GLenum      matrixMode;
     GLboolean   normalize;
     GLboolean   rescaleNormal;
@@ -825,9 +825,14 @@ namespace State {
     {
     }
 
+    inline size_t maxPlanes() const
+    {
+      return sizeof(clipPlane)/sizeof(ClipPlane);
+    }
+
     inline Transform &swap(Transform &other)
     {
-      std::swap_ranges(clipPlane,clipPlane+CLIP_PLANE_COUNT,other.clipPlane);
+      std::swap_ranges(clipPlane,clipPlane+REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES,other.clipPlane);
       std::swap(matrixMode,other.matrixMode);
       std::swap(normalize,other.normalize);
       std::swap(rescaleNormal,other.rescaleNormal);
@@ -841,9 +846,9 @@ namespace State {
 
     inline void glClipPlane(GLenum plane, const GLdouble* equation)
     {
-      RegalAssert((GL_CLIP_PLANE0 <= plane) && (plane <= GL_CLIP_PLANE5 ));
       GLuint planeIndex = plane - GL_CLIP_PLANE0;
-      if (planeIndex < CLIP_PLANE_COUNT)
+      RegalAssert(planeIndex < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES);
+      if (planeIndex < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES)
       {
         clipPlane[planeIndex].equation.data[0] = equation[0];
         clipPlane[planeIndex].equation.data[1] = equation[1];
@@ -859,7 +864,7 @@ namespace State {
       RegalAssert(dt.glMatrixMode);
       RegalAssert(dt.glClipPlane);
 
-      for (GLint i = 0; i < CLIP_PLANE_COUNT; i++)
+      for (GLint i = 0; i < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES; i++)
       {
         if (current.clipPlane[i].enabled != clipPlane[i].enabled)
           Enable::setEnable(dt, GL_CLIP_PLANE0 + i, clipPlane[i].enabled);
@@ -883,7 +888,7 @@ namespace State {
     inline std::string toString(const char *delim = "\n") const
     {
       string_list tmp;
-      for (GLint i = 0; i < CLIP_PLANE_COUNT; i++)
+      for (GLint i = 0; i < REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES; i++)
       {
         GLenum plane = GL_CLIP_PLANE0 + i;
         tmp << print_string(clipPlane[i].enabled ? "glEnable(" : "glDisable(",Token::toString(plane),")",delim);
