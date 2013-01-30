@@ -33382,8 +33382,9 @@ static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->dispatcher.emulation.glPushClientAttrib( mask );
-        _context->dsa->ClientAttribDefault( _context, mask );
+        DispatchTable &tbl = _context->dispatcher.emulation;
+        tbl.call(&tbl.glPushClientAttrib)(mask);
+        _context->dsa->ClientAttribDefault(_context, mask);
         return;
       }
       #endif

@@ -324,8 +324,9 @@ dsaFormulae = {
     'PushClientAttribDefault' : {
         'entries' : ['glPushClientAttribDefaultEXT'],
         'impl' : [
-            '_context->dispatcher.emulation.glPushClientAttrib( ${arg0} );',
-            '_context->dsa->ClientAttribDefault( _context, ${arg0} );',
+            'DispatchTable &tbl = _context->dispatcher.emulation;',
+            'tbl.call(&tbl.glPushClientAttrib)(${arg0});',
+            '_context->dsa->ClientAttribDefault(_context, ${arg0});',
         ],
     },
     'BindVertexArray' : {

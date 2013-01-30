@@ -79,7 +79,7 @@ namespace helper {
         /* Each unsigned value contains all the components per element. */
     
         case GL_UNSIGNED_BYTE_3_3_2:
-        case GL_UNSIGNED_BYTE_2_3_3_REV:     return sizeof(GLbyte);
+        case GL_UNSIGNED_BYTE_2_3_3_REV:     return sizeof(GLubyte);
     
         case GL_UNSIGNED_SHORT_5_6_5:
         case GL_UNSIGNED_SHORT_5_6_5_REV:
@@ -103,6 +103,7 @@ namespace helper {
       {
         case GL_COLOR_INDEX:
         case GL_STENCIL_INDEX:
+        case GL_R:
         case GL_DEPTH_COMPONENT:
         case GL_DEPTH_COMPONENT16:
         case GL_RED:

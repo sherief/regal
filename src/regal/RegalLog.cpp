@@ -304,12 +304,23 @@ namespace Logging {
 
     RegalContext *rCtx = REGAL_GET_CONTEXT();
 
+    // Clamp indentation to avoid underflow situation (more pops than pushes)
+    // If size_t depthBeginEnd wraps around to a huge number, we probably won't have
+    // enough RAM for all those spaces...
+
+    const size_t indentMax = size_t(128);
+
     size_t indent = 0;
+
     if (rCtx)
     {
-      indent += (rCtx->depthBeginEnd + rCtx->depthPushMatrix + rCtx->depthPushAttrib + rCtx->depthNewList)*2;
-      indent += rCtx->marker ? rCtx->marker->indent() : 0;
+      indent += std::min(indentMax,rCtx->depthBeginEnd  *2);
+      indent += std::min(indentMax,rCtx->depthPushMatrix*2);
+      indent += std::min(indentMax,rCtx->depthPushAttrib*2);
+      indent += std::min(indentMax,rCtx->depthNewList   *2);
+      indent += std::min(indentMax,rCtx->marker ? rCtx->marker->indent() : 0);
     }
+
     return indent;
   }
 

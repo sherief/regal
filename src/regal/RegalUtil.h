@@ -156,11 +156,7 @@
 #endif
 
 #ifndef REGAL_LOG
-#ifdef NDEBUG
-#define REGAL_LOG 0
-#else
 #define REGAL_LOG 1
-#endif
 #endif
 
 #ifndef REGAL_EMU_PPA

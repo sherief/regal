@@ -239,7 +239,7 @@ template<typename T, typename C> size_t length(const right<T,C>  &val) { return 
 
 // Quoting
 
-template<typename T, typename C> size_t length(const quote<T,C>  &val) { return length(*val._val) + 2*length(val._q); }
+template<typename T, typename C> size_t length(const quote<T,C>  &val) { return *val._val ? length(*val._val) + 2*length(val._q) : 4; /* NULL */ }
 
 // Optional
 
@@ -249,6 +249,9 @@ template<typename T>             size_t length(const optional<T> &val) { return 
 
 template<typename T, typename U> size_t length(const array<T,U> &val)
 {
+  if (!val._data)
+      return 4;   // NULL
+
   size_t len = length(val._open) + length(val._close) + length(val._quote)*val._size*2;
 
   if (val._size)
@@ -483,9 +486,14 @@ inline void write(Iterator &i, const right<T,C> &val)
 template<typename Iterator, typename T, typename C>
 inline void write(Iterator &i, const quote<T,C> &val)
 {
-  write(i,val._q);
-  write(i,*val._val);
-  write(i,val._q);
+  if (*val._val)
+  {
+    write(i,val._q);
+    write(i,*val._val);
+    write(i,val._q);
+  }
+  else
+    write(i,"NULL");
 }
 
 // Optional
