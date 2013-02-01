@@ -53,21 +53,22 @@ template <typename T, size_t N> size_t arraysize( const T( & )[ N ] ) {
 // ====================================
 
 TEST( RegalClientStatePixelStore, SizesAndMappings ) {
+  using namespace ClientState::PixelStore;
   using ClientState::PixelStore::State;
   using ClientState::PixelStore::PNameToIndex;
 
   // The arrays for the state data and mapping must match the number of
   // named attributes the state supports.
-  ASSERT_EQ( State::STATE_COUNT, arraysize( static_cast<const State *>( NULL )->data ) );
-  ASSERT_EQ( State::STATE_COUNT, arraysize( State::indexToPName ) );
+  ASSERT_EQ( STATE_COUNT, arraysize( static_cast<const State *>( NULL )->data ) );
+  ASSERT_EQ( STATE_COUNT, arraysize( State::indexToPName ) );
 
   // Test the round trip mapping from index to name and back)
-  for ( size_t i = 0; i < State::STATE_COUNT; ++i ) {
+  for ( size_t i = 0; i < STATE_COUNT; ++i ) {
     EXPECT_EQ( i, PNameToIndex( State::indexToPName[ i ] ) );
   }
 
   // Unexpected names should return an invalid index.
-  EXPECT_EQ( State::INVALID_INDEX, PNameToIndex( GL_PACK_SWAP_BYTES - 1 ) );
+  EXPECT_EQ( INVALID_INDEX, PNameToIndex( GL_PACK_SWAP_BYTES - 1 ) );
 }
 
 TEST( RegalClientStatePixelStore, BasicOperations ) {
@@ -214,40 +215,42 @@ TEST( RegalClientStatePixelStore, Transition ) {
 // ====================================
 
 TEST( RegalClientStateVertexArrayFixedState, SizesAndMappings ) {
+  using namespace ClientState::VertexArray::Fixed;
   using ClientState::VertexArray::Fixed::State;
   using ClientState::VertexArray::Fixed::ArrayNameToAttribIndex;
   using ClientState::VertexArray::Fixed::IndexedArrayNameToAttribIndex;
 
-  ASSERT_EQ( State::COUNT_ATTRIBS, arraysize( static_cast<State *>( NULL )->attrib ) );
+  ASSERT_EQ( COUNT_ATTRIBS, arraysize( static_cast<State *>( NULL )->attrib ) );
 
   // An expected attribute name returns the expected index
   // (note: the full range of names effectively tested elsewhere)
-  EXPECT_EQ( State::BASE_NAMED_ATTRIBS, ArrayNameToAttribIndex( GL_VERTEX_ARRAY ) );
+  EXPECT_EQ( BASE_NAMED_ATTRIBS, ArrayNameToAttribIndex( GL_VERTEX_ARRAY ) );
   // For most attributes that do not use it, passing in non-default texture unit makes no difference.
-  EXPECT_EQ( State::BASE_NAMED_ATTRIBS, ArrayNameToAttribIndex( GL_VERTEX_ARRAY, GL_TEXTURE5 ) );
+  EXPECT_EQ( BASE_NAMED_ATTRIBS, ArrayNameToAttribIndex( GL_VERTEX_ARRAY, GL_TEXTURE5 ) );
   // An unexpected name should give an invalid index
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_PACK_SWAP_BYTES ) );
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_PACK_SWAP_BYTES, GL_TEXTURE5 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_PACK_SWAP_BYTES ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_PACK_SWAP_BYTES, GL_TEXTURE5 ) );
   // Texture coordinate attributes do use the texture unit.
-  EXPECT_EQ( State::BASE_TEXTURE_COORD_ATTRIBS + 5u, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE5 ) );
+  EXPECT_EQ( BASE_TEXTURE_COORD_ATTRIBS + 5u, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE5 ) );
   // Passing in a bad texture unit gives an invalid index
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE0 - 1 ) );
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE0 + State::COUNT_TEXTURE_COORD_ATTRIBS ) );
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, 0 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE0 - 1 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, GL_TEXTURE0 + COUNT_TEXTURE_COORD_ATTRIBS ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, ArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, 0 ) );
 
   // Most attribute names are not indexed, and should return an invalid index.
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_VERTEX_ARRAY, 0 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_VERTEX_ARRAY, 0 ) );
   // Unexpected names should also give an invalid index.
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_PACK_SWAP_BYTES, 0 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_PACK_SWAP_BYTES, 0 ) );
   // Texture coordinates are indexed, and should return valid output indices for valid input indices.
-  EXPECT_EQ( State::BASE_TEXTURE_COORD_ATTRIBS, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, 0 ) );
-  EXPECT_EQ( State::BASE_TEXTURE_COORD_ATTRIBS + State::COUNT_TEXTURE_COORD_ATTRIBS - 1, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, State::COUNT_TEXTURE_COORD_ATTRIBS - 1 ) );
+  EXPECT_EQ( BASE_TEXTURE_COORD_ATTRIBS, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, 0 ) );
+  EXPECT_EQ( BASE_TEXTURE_COORD_ATTRIBS + COUNT_TEXTURE_COORD_ATTRIBS - 1, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, COUNT_TEXTURE_COORD_ATTRIBS - 1 ) );
   // But even for texture coordinates, input indices outside the valid range return an invalid index.
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, -1 ) );
-  EXPECT_EQ( State::INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, State::COUNT_TEXTURE_COORD_ATTRIBS ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, -1 ) );
+  EXPECT_EQ( INVALID_ATTRIB_INDEX, IndexedArrayNameToAttribIndex( GL_TEXTURE_COORD_ARRAY, COUNT_TEXTURE_COORD_ATTRIBS ) );
 }
 
 TEST( RegalClientStateVertexArrayFixedState, BasicOperations ) {
+  using namespace ClientState::VertexArray::Fixed;
   using ClientState::VertexArray::Fixed::State;
   using ClientState::VertexArray::Fixed::ArrayNameToAttribIndex;
 
@@ -267,23 +270,23 @@ TEST( RegalClientStateVertexArrayFixedState, BasicOperations ) {
   state.SetEnable( 4, true );
 
   // Set unique data for the array source for all attributes.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     state.SetData( i, i * 10 + 1, i * 10 + 2, i * 10 + 3, i * 10 + 4 );
   }
 
   // Calls with out-of-bound values should silently return as a no-op.
   // This is done here so if we affect the explicitly set state it will be
   // detected soon.
-  state.SetEnable( State::INVALID_ATTRIB_INDEX, true );
-  state.SetEnable( State::COUNT_ATTRIBS, true );
-  state.SetData( State::INVALID_ATTRIB_INDEX, 0xdead, 0xdead, 0xdead, 0xdead );
-  state.SetData( State::COUNT_ATTRIBS, 0xdead, 0xdead, 0xdead, 0xdead );
+  state.SetEnable( INVALID_ATTRIB_INDEX, true );
+  state.SetEnable( COUNT_ATTRIBS, true );
+  state.SetData( INVALID_ATTRIB_INDEX, 0xdead, 0xdead, 0xdead, 0xdead );
+  state.SetData( COUNT_ATTRIBS, 0xdead, 0xdead, 0xdead, 0xdead );
 
   // Peform a swap, so that it is effectively tested too
   swap( state, other );
 
   // Verify the unique data that was set is in the swapped state.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     const State::Attrib& attrib = other.attrib[ i ];
 
     if ( i == 4 ) {
@@ -300,7 +303,7 @@ TEST( RegalClientStateVertexArrayFixedState, BasicOperations ) {
 
   // Verify the expected default state set previously ended up in the swapped
   // state.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     const State::Attrib& attrib = state.attrib[ i ];
     EXPECT_FALSE( attrib.enabled ) << "index " << i;
     if ( ( i == indexAttribIndex ) || ( i == fogCoordAttribIndex ) || ( i == edgeFlagAttribIndex ) ) {
@@ -455,13 +458,15 @@ TEST( RegalClientStateVertexArrayFixedState, Transition ) {
 // ====================================
 
 TEST( RegalClientStateVertexArrayGenericState, Sizes ) {
+  using namespace ClientState::VertexArray::Generic;
   using ClientState::VertexArray::Generic::State;
 
-  ASSERT_EQ( State::COUNT_ATTRIBS, arraysize( static_cast<State *>( NULL )->attrib ) );
-  ASSERT_EQ( State::COUNT_BUFFERS, arraysize( static_cast<State *>( NULL )->buffer ) );
+  ASSERT_EQ( COUNT_ATTRIBS, arraysize( static_cast<State *>( NULL )->attrib ) );
+  ASSERT_EQ( COUNT_BUFFERS, arraysize( static_cast<State *>( NULL )->buffer ) );
 }
 
 TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
+  using namespace ClientState::VertexArray::Generic;
   using ClientState::VertexArray::Generic::State;
 
   State state;
@@ -474,13 +479,13 @@ TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
   state.SetEnable( 4, true );
 
   // Set unique data for the array source and binding for all attributes.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     state.SetAttribSource( i, i * 10 + 1, i * 10 + 2, i == 1, i == 2, i * 10 + 3 );
-    state.SetAttribBinding( i, ( i + 1 ) % State::COUNT_BUFFERS );
+    state.SetAttribBinding( i, ( i + 1 ) % COUNT_BUFFERS );
   }
 
   // Set unique data for the array buffers.
-  for ( size_t i = 0; i < State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < COUNT_BUFFERS; ++i ) {
     state.SetBuffer( i, 1000 + i * 10 + 1, 1000 + i * 10 + 2, 1000 + i * 10 + 3 );
     state.SetBufferDivisor( i, 1000 + i * 10 + 4 );
   }
@@ -488,28 +493,28 @@ TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
   // Calls with out-of-bound values should silently return as a no-op.
   // This is done here so if we affect the explicitly set state it will be
   // detected soon.
-  state.SetEnable( State::INVALID_INDEX, true );
-  state.SetEnable( State::COUNT_ATTRIBS, true );
+  state.SetEnable( INVALID_INDEX, true );
+  state.SetEnable( COUNT_ATTRIBS, true );
 
-  state.SetAttribSource( State::INVALID_INDEX, 0xdead, 0xdead, false, false, 0xdead );
-  state.SetAttribSource( State::COUNT_ATTRIBS, 0xdead, 0xdead, false, false, 0xdead );
+  state.SetAttribSource( INVALID_INDEX, 0xdead, 0xdead, false, false, 0xdead );
+  state.SetAttribSource( COUNT_ATTRIBS, 0xdead, 0xdead, false, false, 0xdead );
 
-  state.SetAttribBinding( State::INVALID_INDEX, 5 );
-  state.SetAttribBinding( State::COUNT_ATTRIBS, 5 );
-  state.SetAttribBinding( 0, State::INVALID_INDEX );
-  state.SetAttribBinding( 0, State::COUNT_BUFFERS );
+  state.SetAttribBinding( INVALID_INDEX, 5 );
+  state.SetAttribBinding( COUNT_ATTRIBS, 5 );
+  state.SetAttribBinding( 0, INVALID_INDEX );
+  state.SetAttribBinding( 0, COUNT_BUFFERS );
 
-  state.SetBuffer( State::INVALID_INDEX, 0xdead, 0xdead, 0xdead );
-  state.SetBuffer( State::COUNT_BUFFERS, 0xdead, 0xdead, 0xdead );
+  state.SetBuffer( INVALID_INDEX, 0xdead, 0xdead, 0xdead );
+  state.SetBuffer( COUNT_BUFFERS, 0xdead, 0xdead, 0xdead );
 
-  state.SetBufferDivisor( State::INVALID_INDEX, 0xdead );
-  state.SetBufferDivisor( State::COUNT_BUFFERS, 0xdead );
+  state.SetBufferDivisor( INVALID_INDEX, 0xdead );
+  state.SetBufferDivisor( COUNT_BUFFERS, 0xdead );
 
   // Peform a swap, so that it is effectively tested too.
   swap( state, other );
 
   // Verify the unique data that was set is in the swapped state.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     const State::Attrib& attrib = other.attrib[ i ];
 
     if ( i == 4 ) {
@@ -534,10 +539,10 @@ TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
       EXPECT_FALSE( attrib.source.pureInteger );
     }
 
-    EXPECT_EQ( ( i + 1 ) % State::COUNT_BUFFERS, attrib.bindingIndex );
+    EXPECT_EQ( ( i + 1 ) % COUNT_BUFFERS, attrib.bindingIndex );
   }
 
-  for ( size_t i = 0; i < State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < COUNT_BUFFERS; ++i ) {
     const State::Buffer& buffer = other.buffer[ i ];
     EXPECT_EQ( 1000 + i * 10 + 1, buffer.buffer );
     EXPECT_EQ( static_cast<GLint> ( 1000 + i * 10 + 2 ), buffer.offset );
@@ -547,7 +552,7 @@ TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
 
   // Verify the expected default state set previously ended up in the swapped
   // state.
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     const State::Attrib& attrib = state.attrib[ i ];
 
     EXPECT_FALSE( attrib.enabled ) << "index " << i;
@@ -561,7 +566,7 @@ TEST( RegalClientStateVertexArrayGenericState, BasicOperations ) {
     EXPECT_EQ( i, attrib.bindingIndex ) << "index " << i;
   }
 
-  for ( size_t i = 0; i < State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < COUNT_BUFFERS; ++i ) {
     const State::Buffer& buffer = state.buffer[ i ];
     EXPECT_EQ( 0u, buffer.buffer );
     EXPECT_EQ( 0, buffer.offset );
@@ -1039,6 +1044,7 @@ TEST ( RegalPpca, ClientVertexArrayStateGenericShadowing ) {
 }
 
 TEST ( RegalPpca, ClientVertexArrayStateFFShadowing ) {
+  using namespace ClientState::VertexArray::Fixed;
   using ClientState::VertexArray::Fixed::State;
   using ClientState::VertexArray::Fixed::ArrayNameToAttribIndex;
 
@@ -1090,7 +1096,7 @@ TEST ( RegalPpca, ClientVertexArrayStateFFShadowing ) {
   ppca.ShadowDisableClientStateIndexedDSA( GL_TEXTURE_COORD_ARRAY, 5 );
   EXPECT_FALSE( state.attrib[ texture0AttribIndex + 5 ].enabled );
 
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     state.attrib[ i ].source.size = 0;
     state.attrib[ i ].source.type = 0;
     state.attrib[ i ].source.stride = 0;
@@ -1252,6 +1258,7 @@ TEST ( RegalPpca, ClientVertexArrayStateBindBuffer ) {
 }
 
 TEST ( RegalPpca, ClientVertexArrayStateInterleavedArrays ) {
+  using namespace ClientState::VertexArray::Fixed;
   using ClientState::VertexArray::Fixed::State;
   using ClientState::VertexArray::Fixed::ArrayNameToAttribIndex;
 
@@ -1273,7 +1280,7 @@ TEST ( RegalPpca, ClientVertexArrayStateInterleavedArrays ) {
   // Do a comprehensive test on all settings for GL_T4F_C4F_N3F_V4F
 
   state.Reset();
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     state.attrib[ i ].enabled       = ( i & 1 ) == 0;
     state.attrib[ i ].source.size   = 987;
     state.attrib[ i ].source.type   = 987;
@@ -1339,10 +1346,10 @@ TEST ( RegalPpca, ClientVertexArrayStateInterleavedArrays ) {
 
   // Verify other texture coordinate settings unaffected.
 
-  for ( size_t i = 0; i < State::COUNT_TEXTURE_COORD_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_TEXTURE_COORD_ATTRIBS; ++i ) {
     if ( i == 5 ) continue;
-    State::Attrib& attrib = state.attrib[ State::BASE_TEXTURE_COORD_ATTRIBS + i ];
-    if ( ( ( State::BASE_TEXTURE_COORD_ATTRIBS + i ) & 1 ) == 0 ) {
+    State::Attrib& attrib = state.attrib[ BASE_TEXTURE_COORD_ATTRIBS + i ];
+    if ( ( ( BASE_TEXTURE_COORD_ATTRIBS + i ) & 1 ) == 0 ) {
       EXPECT_TRUE( attrib.enabled ) << "Index " << i;
     } else {
       EXPECT_FALSE( attrib.enabled ) << "Index " << i;
@@ -1593,7 +1600,7 @@ TEST ( RegalPpca, ClientVertexArrayStateInterleavedArrays ) {
   // Pass in an unsupported "format", which should do nothing.
 
   state.Reset();
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     state.attrib[ i ].enabled       = ( i & 1 ) == 0;
     state.attrib[ i ].source.size   = 987;
     state.attrib[ i ].source.type   = 987;
@@ -1603,7 +1610,7 @@ TEST ( RegalPpca, ClientVertexArrayStateInterleavedArrays ) {
 
   ppca.ShadowInterleavedArrays( GL_RGBA, 0, NULL );
 
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     if ( i == 5 ) continue;
     State::Attrib& attrib = state.attrib[ i ];
     if ( ( i & 1 ) == 0 ) {
@@ -1626,7 +1633,7 @@ TEST ( RegalPpca, ShadowDeleteBuffers ) {
 
   GLuint buffers[ 2 ] = { 0, 123 };
 
-  for ( size_t i = 0; i < ClientState::VertexArray::Generic::State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < ClientState::VertexArray::Generic::COUNT_BUFFERS; ++i ) {
     ppca.vas.vertexArrayObjectZero.generic.buffer[ i ].buffer = 123;
   }
   ppca.vas.vertexArrayObjectZero.elementArrayBufferBinding = 123;
@@ -1637,7 +1644,7 @@ TEST ( RegalPpca, ShadowDeleteBuffers ) {
 
   ppca.ShadowDeleteBuffers( 2, buffers );
 
-  for ( size_t i = 0; i < ClientState::VertexArray::Generic::State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < ClientState::VertexArray::Generic::COUNT_BUFFERS; ++i ) {
     EXPECT_EQ( 0u, ppca.vas.vertexArrayObjectZero.generic.buffer[ i ].buffer ) << "Index " << i;
   }
   EXPECT_EQ( 0u, ppca.vas.vertexArrayObjectZero.elementArrayBufferBinding );
@@ -1646,7 +1653,7 @@ TEST ( RegalPpca, ShadowDeleteBuffers ) {
   EXPECT_EQ( 0u, ppca.pss.pixelPackBufferBinding );
   EXPECT_EQ( 0u, ppca.pss.pixelUnpackBufferBinding );
 
-  for ( size_t i = 0; i < ClientState::VertexArray::Generic::State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < ClientState::VertexArray::Generic::COUNT_BUFFERS; ++i ) {
     ppca.vas.vertexArrayObjectZero.generic.buffer[ i ].buffer = 456;
   }
   ppca.vas.vertexArrayObjectZero.elementArrayBufferBinding = 456;
@@ -1657,7 +1664,7 @@ TEST ( RegalPpca, ShadowDeleteBuffers ) {
 
   ppca.ShadowDeleteBuffers( 2, buffers );
 
-  for ( size_t i = 0; i < ClientState::VertexArray::Generic::State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < ClientState::VertexArray::Generic::COUNT_BUFFERS; ++i ) {
     EXPECT_EQ( 456u, ppca.vas.vertexArrayObjectZero.generic.buffer[ i ].buffer ) << "Index " << i;
   }
   EXPECT_EQ( 456u, ppca.vas.vertexArrayObjectZero.elementArrayBufferBinding );

@@ -284,6 +284,8 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalPixelConversions.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPpa.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPpc.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalPpca.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalPpca.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPrecompile.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPrivate.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPush.h" />

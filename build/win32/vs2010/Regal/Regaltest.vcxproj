@@ -233,6 +233,7 @@
     <ClCompile Include="..\..\..\..\tests\RegalDispatchGMock.cpp" />
     <ClCompile Include="..\..\..\..\tests\testRegalPixelConversions.cpp" />
     <ClCompile Include="..\..\..\..\tests\testRegalPpa.cpp" />
+    <ClCompile Include="..\..\..\..\tests\testRegalPpca.cpp" />
     <ClCompile Include="..\..\..\..\tests\testRegalState.cpp" />
     <ClCompile Include="..\..\..\..\tests\testRegalTexC.cpp" />
     <ClCompile Include="..\..\..\..\tests\testStringList.cpp" />

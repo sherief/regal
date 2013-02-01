@@ -66,7 +66,7 @@ template <typename T, size_t N> void swap_array( T( &lhs )[ N ], T( &rhs )[ N ] 
 namespace ClientState {
 namespace PixelStore {
 
-const GLenum State::indexToPName[ State::STATE_COUNT ] = {
+const GLenum State::indexToPName[ STATE_COUNT ] = {
   GL_PACK_SWAP_BYTES,
   GL_PACK_LSB_FIRST,
   GL_PACK_ROW_LENGTH,
@@ -125,7 +125,7 @@ void swap( State& lhs, State& rhs ) {
 
 size_t PNameToIndex( GLenum pname ) {
   switch ( pname ) {
-    default:                     return State::INVALID_INDEX;
+    default:                     return INVALID_INDEX;
 
     case GL_PACK_SWAP_BYTES:     return 0;
     case GL_PACK_LSB_FIRST:      return 1;
@@ -150,7 +150,7 @@ size_t PNameToIndex( GLenum pname ) {
 void Transition( const DispatchTable& dt, const State& current, const State& target ) {
   RegalAssert( dt.glPixelStorei );
 
-  for ( size_t i = 0; i < State::STATE_COUNT; ++i ) {
+  for ( size_t i = 0; i < STATE_COUNT; ++i ) {
     if ( current.data[ i ] != target.data[ i ] ) {
       dt.glPixelStorei( State::indexToPName[ i ], target.data[ i ] );
     }
@@ -181,15 +181,15 @@ bool operator != ( const State::Source& lhs, const State::Source& rhs ) {
   return ( lhs.size != rhs.size ) || ( lhs.type != rhs.type ) || ( lhs.stride != rhs.stride ) || ( lhs.offset != rhs.offset );
 }
 
-void ApplyAttribPointer( const State::Source& target, void ( *dispatchAttribPointer )( GLint, GLenum, GLsizei, const GLvoid* ) ) {
+void ApplyAttribPointer( const State::Source& target, void (REGAL_CALL *dispatchAttribPointer )( GLint, GLenum, GLsizei, const GLvoid* ) ) {
   dispatchAttribPointer( target.size, target.type, target.stride, reinterpret_cast<const GLvoid*>( target.offset ) );
 }
 
-void ApplyAttribPointer( const State::Source& target, void ( *dispatchAttribPointer )( GLenum, GLsizei, const GLvoid* ) ) {
+void ApplyAttribPointer( const State::Source& target, void (REGAL_CALL *dispatchAttribPointer )( GLenum, GLsizei, const GLvoid* ) ) {
   dispatchAttribPointer( target.type, target.stride, reinterpret_cast<const GLvoid*>( target.offset ) );
 }
 
-void ApplyAttribPointer( const State::Source& target, void ( *dispatchAttribPointer )( GLsizei, const GLvoid* ) ) {
+void ApplyAttribPointer( const State::Source& target, void (REGAL_CALL *dispatchAttribPointer )( GLsizei, const GLvoid* ) ) {
   dispatchAttribPointer( target.stride, reinterpret_cast<const GLvoid*>( target.offset ) );
 }
 
@@ -293,23 +293,23 @@ void swap( State& lhs, State& rhs ) {
 
 size_t ArrayNameToAttribIndex( GLenum array, GLenum texunit ) {
   switch ( array ) {
-    default:                        return State::INVALID_ATTRIB_INDEX;
+    default:                        return INVALID_ATTRIB_INDEX;
 
-    case GL_VERTEX_ARRAY:           return State::BASE_NAMED_ATTRIBS + 0;
-    case GL_NORMAL_ARRAY:           return State::BASE_NAMED_ATTRIBS + 1;
-    case GL_COLOR_ARRAY:            return State::BASE_NAMED_ATTRIBS + 2;
-    case GL_SECONDARY_COLOR_ARRAY:  return State::BASE_NAMED_ATTRIBS + 3;
-    case GL_INDEX_ARRAY:            return State::BASE_NAMED_ATTRIBS + 4;
-    case GL_EDGE_FLAG_ARRAY:        return State::BASE_NAMED_ATTRIBS + 5;
-    case GL_FOG_COORD_ARRAY:        return State::BASE_NAMED_ATTRIBS + 6;
+    case GL_VERTEX_ARRAY:           return BASE_NAMED_ATTRIBS + 0;
+    case GL_NORMAL_ARRAY:           return BASE_NAMED_ATTRIBS + 1;
+    case GL_COLOR_ARRAY:            return BASE_NAMED_ATTRIBS + 2;
+    case GL_SECONDARY_COLOR_ARRAY:  return BASE_NAMED_ATTRIBS + 3;
+    case GL_INDEX_ARRAY:            return BASE_NAMED_ATTRIBS + 4;
+    case GL_EDGE_FLAG_ARRAY:        return BASE_NAMED_ATTRIBS + 5;
+    case GL_FOG_COORD_ARRAY:        return BASE_NAMED_ATTRIBS + 6;
 
     case GL_TEXTURE_COORD_ARRAY:
       {
         size_t index = texunit - GL_TEXTURE0;
-        if ( index < State::COUNT_TEXTURE_COORD_ATTRIBS ) {
-          return State::BASE_TEXTURE_COORD_ATTRIBS + index;
+        if ( index < COUNT_TEXTURE_COORD_ATTRIBS ) {
+          return BASE_TEXTURE_COORD_ATTRIBS + index;
         }
-        return State::INVALID_ATTRIB_INDEX;
+        return INVALID_ATTRIB_INDEX;
       }
   }
 }
@@ -317,14 +317,14 @@ size_t ArrayNameToAttribIndex( GLenum array, GLenum texunit ) {
 size_t IndexedArrayNameToAttribIndex( GLenum array, GLuint index ) {
   switch ( array ) {
     default:
-      return State::INVALID_ATTRIB_INDEX;
+      return INVALID_ATTRIB_INDEX;
 
     case GL_TEXTURE_COORD_ARRAY:
       {
-        if ( index < State::COUNT_TEXTURE_COORD_ATTRIBS ) {
-          return State::BASE_TEXTURE_COORD_ATTRIBS + index;
+        if ( index < COUNT_TEXTURE_COORD_ATTRIBS ) {
+          return BASE_TEXTURE_COORD_ATTRIBS + index;
         }
-        return State::INVALID_ATTRIB_INDEX;
+        return INVALID_ATTRIB_INDEX;
       }
   }
 }
@@ -352,8 +352,8 @@ void Transition( const DispatchTable& dt, const State& current, const State& tar
   Transition( dt, current.attrib[ 5 ], target.attrib [ 5 ], GL_EDGE_FLAG_ARRAY,       dt.glEdgeFlagPointer );
   Transition( dt, current.attrib[ 6 ], target.attrib [ 6 ], GL_FOG_COORD_ARRAY,       dt.glFogCoordPointer );
 
-  for ( size_t i = 0; i < State::COUNT_TEXTURE_COORD_ATTRIBS; ++i ) {
-    TransitionTextureCoords( dt, current.attrib[ 7 + i ], target.attrib[ 7 + i ], GL_TEXTURE0 + i, inoutClientActiveTexture );
+  for ( size_t i = 0; i < COUNT_TEXTURE_COORD_ATTRIBS; ++i ) {
+    TransitionTextureCoords( dt, current.attrib[ 7 + i ], target.attrib[ 7 + i ], static_cast<GLenum>(GL_TEXTURE0 + i), inoutClientActiveTexture );
   }
 }
 
@@ -432,10 +432,10 @@ void Transition( const DispatchTable& dt, const State::Buffer& current, const St
 } // namespace
 
 void State::Reset() {
-  for ( size_t i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( size_t i = 0; i < COUNT_ATTRIBS; ++i ) {
     State::Attrib& attrib = this->attrib[ i ];
     attrib.enabled = false;
-    attrib.bindingIndex = i;
+    attrib.bindingIndex = static_cast<GLuint>(i);
 
     State::Source& source = attrib.source;
     source.size = 4;
@@ -445,7 +445,7 @@ void State::Reset() {
     source.relativeOffset = 0;
   }
 
-  for ( size_t i = 0; i < State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < COUNT_BUFFERS; ++i ) {
     State::Buffer& buffer = this->buffer[ i ];
     buffer.buffer = 0;
     buffer.offset = 0;
@@ -509,10 +509,10 @@ void swap( State& lhs, State& rhs ) {
 }
 
 void Transition( const DispatchTable& dt, const State& current, const State& target ) {
-  for ( GLuint i = 0; i < State::COUNT_ATTRIBS; ++i ) {
+  for ( GLuint i = 0; i < COUNT_ATTRIBS; ++i ) {
     Transition( dt, current.attrib[ i ], target.attrib[ i ], i );
   }
-  for ( GLuint i = 0; i < State::COUNT_BUFFERS; ++i ) {
+  for ( GLuint i = 0; i < COUNT_BUFFERS; ++i ) {
     Transition( dt, current.buffer[ i ], target.buffer[ i ], i );
   }
 }
@@ -731,9 +731,9 @@ void Ppca::Init( RegalContext& ctx )
     ctx.dispatcher.driver.glGetIntegerv( GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>( &maxClientAttribStackDepth ) );
   }
 
-  maxVertexTextureImageUnits = std::min ( maxVertexTextureImageUnits, static_cast<GLuint>( ClientState::VertexArray::Fixed::State::COUNT_TEXTURE_COORD_ATTRIBS ) );
-  maxVertexAttribs           = std::min ( maxVertexAttribs,           static_cast<GLuint>( ClientState::VertexArray::Generic::State::COUNT_ATTRIBS ) );
-  maxVertexAttribBindings    = std::min ( maxVertexAttribBindings,    static_cast<GLuint>( ClientState::VertexArray::Generic::State::COUNT_BUFFERS ) );
+  maxVertexTextureImageUnits = std::min ( maxVertexTextureImageUnits, static_cast<GLuint>( ClientState::VertexArray::Fixed::COUNT_TEXTURE_COORD_ATTRIBS ) );
+  maxVertexAttribs           = std::min ( maxVertexAttribs,           static_cast<GLuint>( ClientState::VertexArray::Generic::COUNT_ATTRIBS ) );
+  maxVertexAttribBindings    = std::min ( maxVertexAttribBindings,    static_cast<GLuint>( ClientState::VertexArray::Generic::COUNT_BUFFERS ) );
   maxClientAttribStackDepth  = std::min ( maxClientAttribStackDepth,  static_cast<GLuint>( REGAL_PPCA_MAX_CLIENT_ATTRIB_STACK_DEPTH ) );
 
   maxVertexAttribBindings    = std::min ( maxVertexAttribBindings,    maxVertexAttribs );
@@ -741,9 +741,9 @@ void Ppca::Init( RegalContext& ctx )
 
 void Ppca::Reset() {
   maxVertexAttribRelativeOffset = ~0u;
-  maxVertexTextureImageUnits    = ClientState::VertexArray::Fixed::State::COUNT_TEXTURE_COORD_ATTRIBS;
-  maxVertexAttribs              = ClientState::VertexArray::Generic::State::COUNT_ATTRIBS;
-  maxVertexAttribBindings       = ClientState::VertexArray::Generic::State::COUNT_BUFFERS;
+  maxVertexTextureImageUnits    = ClientState::VertexArray::Fixed::COUNT_TEXTURE_COORD_ATTRIBS;
+  maxVertexAttribs              = ClientState::VertexArray::Generic::COUNT_ATTRIBS;
+  maxVertexAttribBindings       = ClientState::VertexArray::Generic::COUNT_BUFFERS;
   maxClientAttribStackDepth     = REGAL_PPCA_MAX_CLIENT_ATTRIB_STACK_DEPTH;
 
   pss.Reset();
@@ -2233,7 +2233,7 @@ void Ppca::ShadowDeleteBuffer_( GLuint buffer ) {
     pss.pixelUnpackBufferBinding = 0;
   }
 
-  for ( size_t i = 0; i < ClientState::VertexArray::Generic::State::COUNT_BUFFERS; ++i ) {
+  for ( size_t i = 0; i < ClientState::VertexArray::Generic::COUNT_BUFFERS; ++i ) {
     ClientState::VertexArray::Generic::State::Buffer& gsbuffer = vas.vertexArrayObjectZero.generic.buffer[ i ];
     if ( gsbuffer.buffer == buffer ) {
       gsbuffer.buffer = 0;
@@ -2330,7 +2330,7 @@ void Ppca::PopClientAttrib( RegalContext* ctx ) {
 
 
 template <typename T>
-bool GetImpl( const Ppca& ppca, RegalContext* ctx, GLenum pname, T params ) {
+bool GetImpl( const Ppca& ppca, RegalContext* ctx, GLenum pname, T *params ) {
   RegalAssert( ctx );
 
   if ( ctx->info->core || ctx->info->gles )
@@ -2339,19 +2339,19 @@ bool GetImpl( const Ppca& ppca, RegalContext* ctx, GLenum pname, T params ) {
     {
       case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
         if ( params )
-          params[ 0 ] = ppca.maxClientAttribStackDepth;
+          params[ 0 ] = static_cast<T>(ppca.maxClientAttribStackDepth);
         return true;
       case GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS:
         if ( params )
-          params[ 0 ] = ppca.maxVertexTextureImageUnits;
+          params[ 0 ] = static_cast<T>(ppca.maxVertexTextureImageUnits);
         return true;
       case GL_MAX_VERTEX_ATTRIBS:
         if ( params )
-          params[ 0 ] = ppca.maxVertexAttribs;
+          params[ 0 ] = static_cast<T>(ppca.maxVertexAttribs);
         return true;
       case GL_MAX_VERTEX_ATTRIB_BINDINGS:
         if ( params )
-          params[ 0 ] = ppca.maxVertexAttribBindings;
+          params[ 0 ] = static_cast<T>(ppca.maxVertexAttribBindings);
         return true;
       default:
         return false;

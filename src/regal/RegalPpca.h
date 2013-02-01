@@ -58,7 +58,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-class DispatchTable;
+struct DispatchTable;
 
 // ====================================
 // ClientState::PixelStore
@@ -67,12 +67,11 @@ class DispatchTable;
 namespace ClientState {
 namespace PixelStore {
 
-struct State {
-  enum Constants {
-    STATE_COUNT = 16,
-    INVALID_INDEX = ~0u,
-  };
+const size_t STATE_COUNT   = 16;
+const size_t INVALID_INDEX = ~0u;
 
+struct State
+{
   static const GLenum indexToPName[ STATE_COUNT ];
 
   void Reset();
@@ -101,18 +100,17 @@ namespace ClientState {
 namespace VertexArray {
 namespace Fixed {
 
-struct State {
-  enum Constants {
-    COUNT_NAMED_ATTRIBS = 7,
-    COUNT_TEXTURE_COORD_ATTRIBS = 16,
-    COUNT_ATTRIBS = COUNT_NAMED_ATTRIBS + COUNT_TEXTURE_COORD_ATTRIBS,
+const size_t COUNT_NAMED_ATTRIBS = 7;
+const size_t COUNT_TEXTURE_COORD_ATTRIBS = 16;
+const size_t COUNT_ATTRIBS = COUNT_NAMED_ATTRIBS + COUNT_TEXTURE_COORD_ATTRIBS;
 
-    BASE_NAMED_ATTRIBS = 0,
-    BASE_TEXTURE_COORD_ATTRIBS = BASE_NAMED_ATTRIBS + COUNT_NAMED_ATTRIBS,
+const size_t BASE_NAMED_ATTRIBS = 0;
+const size_t BASE_TEXTURE_COORD_ATTRIBS = BASE_NAMED_ATTRIBS + COUNT_NAMED_ATTRIBS;
 
-    INVALID_ATTRIB_INDEX = ~0u,
-  };
+const size_t INVALID_ATTRIB_INDEX = ~0u;
 
+struct State
+{
   struct Source {
     GLint size;
     GLenum type;
@@ -152,13 +150,12 @@ namespace ClientState {
 namespace VertexArray {
 namespace Generic {
 
-struct State {
-  enum Constants {
-    COUNT_ATTRIBS = 16,
-    COUNT_BUFFERS = 16,
-    INVALID_INDEX = ~0u,
-  };
+const size_t COUNT_ATTRIBS = 16;
+const size_t COUNT_BUFFERS = 16;
+const size_t INVALID_INDEX = ~0u;
 
+struct State
+{
   struct Source {
     GLint size;
     GLenum type;
