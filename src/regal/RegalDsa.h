@@ -52,12 +52,15 @@ REGAL_NAMESPACE_BEGIN
 #define REGAL_DSA_NUM_BUFFER_TYPES 2
 #define REGAL_DSA_INVALID 0xffffffff
 
+namespace Emu {
+
 template<typename T> inline void DsaGetv( DispatchTable & tbl, GLenum pname, T * params ) { UNUSED_PARAMETER(tbl); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);}
 template<> inline void DsaGetv( DispatchTable & tbl, GLenum pname, GLfloat * params ) { tbl.glGetFloatv( pname, params ); }
 template<> inline void DsaGetv( DispatchTable & tbl, GLenum pname, GLdouble * params ) { tbl.glGetDoublev( pname, params ); }
 
 
-struct RegalDsa : public RegalEmu {
+struct Dsa : public RegalEmu
+{
     int callDepth;
     struct Cache {
         GLenum matrixMode;
@@ -631,6 +634,8 @@ struct RegalDsa : public RegalEmu {
     }
 
 };
+
+}
 
 REGAL_NAMESPACE_END
 

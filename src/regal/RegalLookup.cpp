@@ -53,7 +53,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Lookup {
 
-const char * const gl_Name[2632] = {
+const char * const gl_Name[2633] = {
   "glAccum",
   "glActiveProgramEXT",
   "glActiveShaderProgram",
@@ -180,6 +180,7 @@ const char * const gl_Name[2632] = {
   "glBlitFramebuffer",
   "glBlitFramebufferANGLE",
   "glBlitFramebufferEXT",
+  "glBlitFramebufferNV",
   "glBufferAddressRangeNV",
   "glBufferData",
   "glBufferDataARB",
@@ -2688,7 +2689,7 @@ const char * const gl_Name[2632] = {
   NULL
 };
 
-const void *gl_Value[2632] = {
+const void *gl_Value[2633] = {
   (void *)(glAccum),
   (void *)(glActiveProgramEXT),
   (void *)(glActiveShaderProgram),
@@ -2815,6 +2816,7 @@ const void *gl_Value[2632] = {
   (void *)(glBlitFramebuffer),
   (void *)(glBlitFramebufferANGLE),
   (void *)(glBlitFramebufferEXT),
+  (void *)(glBlitFramebufferNV),
   (void *)(glBufferAddressRangeNV),
   (void *)(glBufferData),
   (void *)(glBufferDataARB),
@@ -5323,7 +5325,7 @@ const void *gl_Value[2632] = {
   NULL
 };
 
-const size_t gl_Offset[2632] = {
+const size_t gl_Offset[2633] = {
   offsetof(DispatchTable,glAccum)/sizeof(void *),
   offsetof(DispatchTable,glActiveProgramEXT)/sizeof(void *),
   offsetof(DispatchTable,glActiveShaderProgram)/sizeof(void *),
@@ -5450,6 +5452,7 @@ const size_t gl_Offset[2632] = {
   offsetof(DispatchTable,glBlitFramebuffer)/sizeof(void *),
   offsetof(DispatchTable,glBlitFramebufferANGLE)/sizeof(void *),
   offsetof(DispatchTable,glBlitFramebufferEXT)/sizeof(void *),
+  offsetof(DispatchTable,glBlitFramebufferNV)/sizeof(void *),
   offsetof(DispatchTable,glBufferAddressRangeNV)/sizeof(void *),
   offsetof(DispatchTable,glBufferData)/sizeof(void *),
   offsetof(DispatchTable,glBufferDataARB)/sizeof(void *),

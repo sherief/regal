@@ -434,6 +434,7 @@ ContextInfo::ContextInfo()
   gl_nv_fog_distance(false),
   gl_nv_fragment_program(false),
   gl_nv_fragment_program2(false),
+  gl_nv_framebuffer_blit(false),
   gl_nv_framebuffer_multisample_coverage(false),
   gl_nv_geometry_program4(false),
   gl_nv_gpu_program4(false),
@@ -1276,6 +1277,7 @@ ContextInfo::init(const RegalContext &context)
   gl_nv_fog_distance = e.find("GL_NV_fog_distance")!=e.end();
   gl_nv_fragment_program = e.find("GL_NV_fragment_program")!=e.end();
   gl_nv_fragment_program2 = e.find("GL_NV_fragment_program2")!=e.end();
+  gl_nv_framebuffer_blit = e.find("GL_NV_framebuffer_blit")!=e.end();
   gl_nv_framebuffer_multisample_coverage = e.find("GL_NV_framebuffer_multisample_coverage")!=e.end();
   gl_nv_geometry_program4 = e.find("GL_NV_geometry_program4")!=e.end();
   gl_nv_gpu_program4 = e.find("GL_NV_gpu_program4")!=e.end();
@@ -1928,6 +1930,7 @@ ContextInfo::getExtension(const char *ext) const
   if (!strcmp(ext,"GL_NV_fog_distance")) return gl_nv_fog_distance;
   if (!strcmp(ext,"GL_NV_fragment_program")) return gl_nv_fragment_program;
   if (!strcmp(ext,"GL_NV_fragment_program2")) return gl_nv_fragment_program2;
+  if (!strcmp(ext,"GL_NV_framebuffer_blit")) return gl_nv_framebuffer_blit;
   if (!strcmp(ext,"GL_NV_framebuffer_multisample_coverage")) return gl_nv_framebuffer_multisample_coverage;
   if (!strcmp(ext,"GL_NV_geometry_program4")) return gl_nv_geometry_program4;
   if (!strcmp(ext,"GL_NV_gpu_program4")) return gl_nv_gpu_program4;

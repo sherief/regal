@@ -38565,6 +38565,8 @@ static void REGAL_CALL emu_glTexRenderbufferNV(GLenum target, GLuint renderbuffe
 
 // GL_NV_fragment_program
 
+// GL_NV_framebuffer_blit
+
 // GL_NV_framebuffer_multisample_coverage
 
 static void REGAL_CALL emu_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)

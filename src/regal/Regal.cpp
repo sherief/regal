@@ -20992,6 +20992,18 @@ extern "C" {
     _next->call(&_next->glProgramNamedParameter4fvNV)(id, len, name, v);
   }
 
+  /* GL_NV_framebuffer_blit */
+
+  REGAL_DECL void REGAL_CALL glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+  {
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    App("glBlitFramebufferNV","(", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ", ", mask, ")");
+    if (!_context) return;
+    DispatchTable *_next = &_context->dispatcher.front();
+    RegalAssert(_next);
+    _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+  }
+
   /* GL_NV_framebuffer_multisample_coverage */
 
   REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)

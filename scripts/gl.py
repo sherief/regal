@@ -9134,6 +9134,18 @@ defines.add(GL_MAX_PROGRAM_IF_DEPTH_NV)
 defines.add(GL_MAX_PROGRAM_LOOP_COUNT_NV)
 defines.add(GL_MAX_PROGRAM_LOOP_DEPTH_NV)
 
+# GL_NV_framebuffer_blit
+
+GL_DRAW_FRAMEBUFFER_BINDING_NV = Enumerant('GL_DRAW_FRAMEBUFFER_BINDING_NV', 0x8ca6, 'GL_NV_framebuffer_blit')
+GL_DRAW_FRAMEBUFFER_NV = Enumerant('GL_DRAW_FRAMEBUFFER_NV', 0x8ca9, 'GL_NV_framebuffer_blit')
+GL_READ_FRAMEBUFFER_BINDING_NV = Enumerant('GL_READ_FRAMEBUFFER_BINDING_NV', 0x8caa, 'GL_NV_framebuffer_blit')
+GL_READ_FRAMEBUFFER_NV = Enumerant('GL_READ_FRAMEBUFFER_NV', 0x8ca8, 'GL_NV_framebuffer_blit')
+
+defines.add(GL_DRAW_FRAMEBUFFER_BINDING_NV)
+defines.add(GL_DRAW_FRAMEBUFFER_NV)
+defines.add(GL_READ_FRAMEBUFFER_BINDING_NV)
+defines.add(GL_READ_FRAMEBUFFER_NV)
+
 # GL_NV_framebuffer_multisample_coverage
 
 GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = Enumerant('GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV', 0x8e11, 'GL_NV_framebuffer_multisample_coverage')
@@ -35039,6 +35051,26 @@ glProgramNamedParameter4fvNV.category = 'GL_NV_fragment_program'
 glProgramNamedParameter4fvNV.trace = True
 glProgramNamedParameter4fvNV.play = True
 gl.add(glProgramNamedParameter4fvNV)
+
+# GL_NV_framebuffer_blit
+
+glBlitFramebufferNV = Function('glBlitFramebufferNV')
+glBlitFramebufferNV.ret = Return('void')
+glBlitFramebufferNV.add( Input( 'srcX0','GLint' ))
+glBlitFramebufferNV.add( Input( 'srcY0','GLint' ))
+glBlitFramebufferNV.add( Input( 'srcX1','GLint' ))
+glBlitFramebufferNV.add( Input( 'srcY1','GLint' ))
+glBlitFramebufferNV.add( Input( 'dstX0','GLint' ))
+glBlitFramebufferNV.add( Input( 'dstY0','GLint' ))
+glBlitFramebufferNV.add( Input( 'dstX1','GLint' ))
+glBlitFramebufferNV.add( Input( 'dstY1','GLint' ))
+glBlitFramebufferNV.add( Input( 'mask','GLbitfield' ))
+glBlitFramebufferNV.add( Input( 'filter','GLenum' ))
+glBlitFramebufferNV.version = ''
+glBlitFramebufferNV.category = 'GL_NV_framebuffer_blit'
+glBlitFramebufferNV.trace = True
+glBlitFramebufferNV.play = True
+gl.add(glBlitFramebufferNV)
 
 # GL_NV_framebuffer_multisample_coverage
 

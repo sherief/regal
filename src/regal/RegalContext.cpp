@@ -158,7 +158,7 @@ RegalContext::Init()
     #if REGAL_EMU_VAO
     if (Config::enableEmuVao && Config::enableEmuIff)
     {
-      vao = new RegalVao;
+      vao = new Emu::Vao;
       emuLevel = 2;
       vao->Init(*this);
     }
@@ -186,7 +186,7 @@ RegalContext::Init()
       info->regal_ext_direct_state_access = true;
       info->regalExtensionsSet.insert("GL_EXT_direct_state_access");
       info->regalExtensions = ::boost::print::detail::join(info->regalExtensionsSet,std::string(" "));
-      dsa = new RegalDsa;
+      dsa = new Emu::Dsa;
       emuLevel = 5;
       dsa->Init(*this);
     }
@@ -194,7 +194,7 @@ RegalContext::Init()
     #if REGAL_EMU_BIN
     if (Config::enableEmuBin)
     {
-      bin = new RegalBin;
+      bin = new Emu::Bin;
       emuLevel = 6;
       bin->Init(*this);
     }
@@ -218,7 +218,7 @@ RegalContext::Init()
     #if REGAL_EMU_OBJ
     if (Config::enableEmuObj)
     {
-      obj = new RegalObj;
+      obj = new Emu::Obj;
       emuLevel = 9;
       obj->Init(*this);
     }

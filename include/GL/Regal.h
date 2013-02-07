@@ -17936,6 +17936,49 @@ REGAL_DECL void REGAL_CALL glProgramNamedParameter4fvNV(GLuint id, GLsizei len, 
 #endif
 
 /**
+ ** GL_NV_framebuffer_blit
+ **/
+
+#if (defined(GL_NV_FRAMEBUFFER_BLIT) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_FRAMEBUFFER_BLIT)) && !defined(REGAL_NO_ENUM_GL_NV_FRAMEBUFFER_BLIT)
+#define REGAL_NO_ENUM_GL_NV_FRAMEBUFFER_BLIT
+#endif
+
+#if (defined(GL_NV_FRAMEBUFFER_BLIT) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_FRAMEBUFFER_BLIT)) && !defined(REGAL_NO_TYPEDEF_GL_NV_FRAMEBUFFER_BLIT)
+#define REGAL_NO_TYPEDEF_GL_NV_FRAMEBUFFER_BLIT
+#endif
+
+#if (defined(GL_NV_FRAMEBUFFER_BLIT) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_FRAMEBUFFER_BLIT)) && !defined(REGAL_NO_NAMESPACE_GL_NV_FRAMEBUFFER_BLIT)
+#define REGAL_NO_NAMESPACE_GL_NV_FRAMEBUFFER_BLIT
+#endif
+
+#if (defined(GL_NV_FRAMEBUFFER_BLIT) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_FRAMEBUFFER_BLIT)) && !defined(REGAL_NO_DECLARATION_GL_NV_FRAMEBUFFER_BLIT)
+#define REGAL_NO_DECLARATION_GL_NV_FRAMEBUFFER_BLIT
+#endif
+
+#ifndef GL_NV_framebuffer_blit
+#define GL_NV_framebuffer_blit 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_FRAMEBUFFER_BLIT
+#define GL_DRAW_FRAMEBUFFER_BINDING_NV 0x8ca6     /* 36006 */
+#define GL_READ_FRAMEBUFFER_NV         0x8ca8     /* 36008 */
+#define GL_DRAW_FRAMEBUFFER_NV         0x8ca9     /* 36009 */
+#define GL_READ_FRAMEBUFFER_BINDING_NV 0x8caa     /* 36010 */
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_NV_FRAMEBUFFER_BLIT
+typedef void (REGAL_CALL *PFNGLBLITFRAMEBUFFERNVPROC)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_NV_FRAMEBUFFER_BLIT
+#define glBlitFramebufferNV                 rglBlitFramebufferNV
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_NV_FRAMEBUFFER_BLIT
+REGAL_DECL void REGAL_CALL glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
+
+/**
  ** GL_NV_framebuffer_multisample_coverage
  **/
 

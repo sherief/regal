@@ -3404,6 +3404,10 @@ struct DispatchTable {
     void (REGAL_CALL *glProgramNamedParameter4fNV)(GLuint id, GLsizei len, const GLubyte *name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
     void (REGAL_CALL *glProgramNamedParameter4fvNV)(GLuint id, GLsizei len, const GLubyte *name, const GLfloat *v);
 
+    // GL_NV_framebuffer_blit
+
+    void (REGAL_CALL *glBlitFramebufferNV)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+
     // GL_NV_framebuffer_multisample_coverage
 
     void (REGAL_CALL *glRenderbufferStorageMultisampleCoverageNV)(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);

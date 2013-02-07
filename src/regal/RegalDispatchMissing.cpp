@@ -17222,6 +17222,23 @@ void REGAL_CALL missing_glProgramNamedParameter4fvNV(GLuint id, GLsizei len, con
   Warning( "glProgramNamedParameter4fvNV not available." );
 }
 
+// GL_NV_framebuffer_blit
+
+void REGAL_CALL missing_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  UNUSED_PARAMETER(srcX0);
+  UNUSED_PARAMETER(srcY0);
+  UNUSED_PARAMETER(srcX1);
+  UNUSED_PARAMETER(srcY1);
+  UNUSED_PARAMETER(dstX0);
+  UNUSED_PARAMETER(dstY0);
+  UNUSED_PARAMETER(dstX1);
+  UNUSED_PARAMETER(dstY1);
+  UNUSED_PARAMETER(mask);
+  UNUSED_PARAMETER(filter);
+  Warning( "glBlitFramebufferNV not available." );
+}
+
 // GL_NV_framebuffer_multisample_coverage
 
 void REGAL_CALL missing_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -24628,6 +24645,10 @@ void InitDispatchTableMissing(DispatchTable &tbl)
   tbl.glProgramNamedParameter4dvNV = missing_glProgramNamedParameter4dvNV;
   tbl.glProgramNamedParameter4fNV = missing_glProgramNamedParameter4fNV;
   tbl.glProgramNamedParameter4fvNV = missing_glProgramNamedParameter4fvNV;
+
+  // GL_NV_framebuffer_blit
+
+  tbl.glBlitFramebufferNV = missing_glBlitFramebufferNV;
 
   // GL_NV_framebuffer_multisample_coverage
 

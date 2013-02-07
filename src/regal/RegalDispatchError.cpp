@@ -45272,6 +45272,30 @@ static void REGAL_CALL error_glProgramNamedParameter4fvNV(GLuint id, GLsizei len
   }
 }
 
+// GL_NV_framebuffer_blit
+
+static void REGAL_CALL error_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  Internal("error_glBlitFramebufferNV","()");
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable *_next = _context->dispatcher.error._next;
+  RegalAssert(_next);
+  GLenum _error = GL_NO_ERROR;
+  if (!_context->err.inBeginEnd)
+    _error = _next->call(&_next->glGetError)();
+  RegalAssert(_error==GL_NO_ERROR);
+  _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+  if (!_context->err.inBeginEnd) {
+    _error = _next->call(&_next->glGetError)();
+    if (_error!=GL_NO_ERROR) {
+      Error("glBlitFramebufferNV : ",Token::GLerrorToString(_error));
+      if (_context->err.callback)
+        _context->err.callback( _error );
+    }
+  }
+}
+
 // GL_NV_framebuffer_multisample_coverage
 
 static void REGAL_CALL error_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -60267,6 +60291,10 @@ void InitDispatchTableError(DispatchTable &tbl)
   tbl.glProgramNamedParameter4dvNV = error_glProgramNamedParameter4dvNV;
   tbl.glProgramNamedParameter4fNV = error_glProgramNamedParameter4fNV;
   tbl.glProgramNamedParameter4fvNV = error_glProgramNamedParameter4fvNV;
+
+  // GL_NV_framebuffer_blit
+
+  tbl.glBlitFramebufferNV = error_glBlitFramebufferNV;
 
   // GL_NV_framebuffer_multisample_coverage
 

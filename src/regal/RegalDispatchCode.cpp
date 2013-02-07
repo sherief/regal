@@ -36287,6 +36287,30 @@ static void REGAL_CALL code_glProgramNamedParameter4fvNV(GLuint id, GLsizei len,
     printf("%s",_code.str().c_str());
 }
 
+static void REGAL_CALL code_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glBlitFramebufferNV(";
+                   _code << srcX0;
+    _code << ", "; _code << srcY0;
+    _code << ", "; _code << srcX1;
+    _code << ", "; _code << srcY1;
+    _code << ", "; _code << dstX0;
+    _code << ", "; _code << dstY0;
+    _code << ", "; _code << dstX1;
+    _code << ", "; _code << dstY1;
+    _code << ", "; _code << mask;
+    _code << ", "; _code << toString(filter);
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
 static void REGAL_CALL code_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
     RegalContext *_context = REGAL_GET_CONTEXT();
@@ -48276,6 +48300,7 @@ void InitDispatchTableCode(DispatchTable &tbl)
   tbl.glProgramNamedParameter4dvNV = code_glProgramNamedParameter4dvNV;
   tbl.glProgramNamedParameter4fNV = code_glProgramNamedParameter4fNV;
   tbl.glProgramNamedParameter4fvNV = code_glProgramNamedParameter4fvNV;
+  tbl.glBlitFramebufferNV = code_glBlitFramebufferNV;
   tbl.glRenderbufferStorageMultisampleCoverageNV = code_glRenderbufferStorageMultisampleCoverageNV;
   tbl.glProgramVertexLimitNV = code_glProgramVertexLimitNV;
   tbl.glGetProgramEnvParameterIivNV = code_glGetProgramEnvParameterIivNV;

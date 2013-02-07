@@ -30848,6 +30848,23 @@ static void REGAL_CALL loader_glProgramNamedParameter4fvNV(GLuint id, GLsizei le
   _next->call(&_next->glProgramNamedParameter4fvNV)(id, len, name, v);
 }
 
+// GL_NV_framebuffer_blit
+
+static void REGAL_CALL loader_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  RegalContext * _context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+  DispatchTable &_driver = _context->dispatcher.driver;
+  GetProcAddress(_driver.glBlitFramebufferNV, "glBlitFramebufferNV");
+  if (_driver.glBlitFramebufferNV) {
+    _driver.glBlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    return;
+  }
+  DispatchTable *_next = _driver._next;
+  RegalAssert(_next);
+  _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+}
+
 // GL_NV_framebuffer_multisample_coverage
 
 static void REGAL_CALL loader_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -41912,6 +41929,10 @@ void InitDispatchTableLoader(DispatchTable &tbl)
   tbl.glProgramNamedParameter4dvNV = loader_glProgramNamedParameter4dvNV;
   tbl.glProgramNamedParameter4fNV = loader_glProgramNamedParameter4fNV;
   tbl.glProgramNamedParameter4fvNV = loader_glProgramNamedParameter4fvNV;
+
+  // GL_NV_framebuffer_blit
+
+  tbl.glBlitFramebufferNV = loader_glBlitFramebufferNV;
 
   // GL_NV_framebuffer_multisample_coverage
 

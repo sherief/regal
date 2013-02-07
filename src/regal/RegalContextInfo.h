@@ -464,6 +464,7 @@ struct ContextInfo
   GLboolean gl_nv_fog_distance : 1;
   GLboolean gl_nv_fragment_program : 1;
   GLboolean gl_nv_fragment_program2 : 1;
+  GLboolean gl_nv_framebuffer_blit : 1;
   GLboolean gl_nv_framebuffer_multisample_coverage : 1;
   GLboolean gl_nv_geometry_program4 : 1;
   GLboolean gl_nv_gpu_program4 : 1;
