@@ -73,12 +73,12 @@
 # ifndef REGAL_SYS_EGL
 #  define REGAL_SYS_EGL 1
 # endif
-#elif !defined(_WIN32) && !defined(__APPLE__) && !REGAL_SYS_PPAPI
-# ifndef REGAL_SYS_GLX
-#  define REGAL_SYS_GLX 1
-# endif
+#elif !REGAL_SYS_PPAPI
 # ifndef REGAL_SYS_X11
 #  define REGAL_SYS_X11 1
+# endif
+# ifndef REGAL_SYS_GLX
+#  define REGAL_SYS_GLX REGAL_SYS_X11
 # endif
 #endif
 

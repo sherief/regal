@@ -39,6 +39,10 @@
 
 #include "RegalSystem.h"
 
+#if REGAL_SYS_X11
+#include <X11/Xlib.h>
+#endif
+
 // Visual Studio with /W4 complains about unused function
 // parameters.
 
@@ -356,11 +360,17 @@ extern void  fileClose (FILE **file);
 
 //
 
-extern std::string makePath(const std::string &dir, const std::string &filename);
+extern std::string fileRead(FILE *file);
 
 //
 
-extern std::string fileRead(FILE *file);
+extern std::string makePath(const std::string &dir, const std::string &filename);
+
+// X11 stuff
+
+#if REGAL_SYS_X11
+extern std::string windowManagerStateDescription(Display *display, Window w);
+#endif
 
 // ToFloat for integer -> float
 

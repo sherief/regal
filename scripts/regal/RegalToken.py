@@ -119,11 +119,11 @@ namespace Token {
 
       case GL_TEXTURE_SWIZZLE_RGBA:
         return print_string(
-          GLenumToString(static_cast<GLenum>(params[0])), " ", 
-          GLenumToString(static_cast<GLenum>(params[1])), " ", 
-          GLenumToString(static_cast<GLenum>(params[2])), " ", 
+          GLenumToString(static_cast<GLenum>(params[0])), " ",
+          GLenumToString(static_cast<GLenum>(params[1])), " ",
+          GLenumToString(static_cast<GLenum>(params[2])), " ",
           GLenumToString(static_cast<GLenum>(params[3])));
-          
+
       default:
         return print_string(params[0]);
     }
@@ -149,11 +149,11 @@ namespace Token {
 
       case GL_TEXTURE_SWIZZLE_RGBA:
         return print_string(
-          GLenumToString(static_cast<GLenum>(params[0])), " ", 
-          GLenumToString(static_cast<GLenum>(params[1])), " ", 
-          GLenumToString(static_cast<GLenum>(params[2])), " ", 
+          GLenumToString(static_cast<GLenum>(params[0])), " ",
+          GLenumToString(static_cast<GLenum>(params[1])), " ",
+          GLenumToString(static_cast<GLenum>(params[2])), " ",
           GLenumToString(static_cast<GLenum>(params[3])));
-          
+
       default:
         return print_string(params[0]);
     }
@@ -179,11 +179,11 @@ namespace Token {
 
       case GL_TEXTURE_SWIZZLE_RGBA:
         return print_string(
-          GLenumToString(static_cast<GLenum>(params[0])), " ", 
-          GLenumToString(static_cast<GLenum>(params[1])), " ", 
-          GLenumToString(static_cast<GLenum>(params[2])), " ", 
+          GLenumToString(static_cast<GLenum>(params[0])), " ",
+          GLenumToString(static_cast<GLenum>(params[1])), " ",
+          GLenumToString(static_cast<GLenum>(params[2])), " ",
           GLenumToString(static_cast<GLenum>(params[3])));
-          
+
       default:
         return print_string(params[0]);
     }
@@ -205,7 +205,7 @@ def filterTokens(tokens):
   suffixes2 = ['_BIT','_BITS','_BIT_NV','_BITS_NV','_BIT_PGI','_BITS_PGI','_BIT_EXT','_BITS_EXT','_BIT_SGIX','_BITS_SGIX']
 
   def suffixCompare(i,j):
-  
+
     # Prefer anything to _BIT, _BITS
 
     im = [ 1 for k in suffixes2 if i.endswith(k) ]
@@ -218,7 +218,7 @@ def filterTokens(tokens):
         return -1
 
     # prefer the string with none of the above suffixes
-    
+
     im = [ 1 for k in suffixes if i.endswith(k) ]
     jm = [ 1 for k in suffixes if j.endswith(k) ]
 
@@ -239,15 +239,15 @@ def filterTokens(tokens):
       else:
         if j.endswith(k):
           return 1
-  
+
     return 0
-      
+
   # Sort names into preferred suffix order
-  
+
   tokens = [ (j[0], sorted(j[1],cmp=suffixCompare)) for j in tokens ]
 
   u = tokens
-  
+
   for i in suffixes:
     u = [ (j[0], [ k for k in j[1] if not k.endswith(i)  ]) for j in u ]
 
@@ -451,7 +451,7 @@ namespace Token {
   std::string GLTexParameterToString(GLenum pname, const GLfloat *params);
   std::string GLTexParameterToString(GLenum pname, const GLint   *params);
   std::string GLTexParameterToString(GLenum pname, const GLuint  *params);
-  
+
   #if REGAL_SYS_GLX
   const char * GLXenumToString       (int        v);
   #endif

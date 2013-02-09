@@ -1418,8 +1418,8 @@ egl.add(eglGetProcAddress)
 eglInitialize = Function('eglInitialize')
 eglInitialize.ret = Return('EGLBoolean')
 eglInitialize.add( Input( 'dpy','EGLDisplay' ))
-eglInitialize.add( Input( 'major','EGLint *' ))
-eglInitialize.add( Input( 'minor','EGLint *' ))
+eglInitialize.add( Output( 'major','EGLint *' ))
+eglInitialize.add( Output( 'minor','EGLint *' ))
 eglInitialize.version = ''
 eglInitialize.category = 'EGL_VERSION_1_0'
 eglInitialize.trace = True
@@ -1443,7 +1443,7 @@ eglQueryContext.ret = Return('EGLBoolean')
 eglQueryContext.add( Input( 'dpy','EGLDisplay' ))
 eglQueryContext.add( Input( 'ctx','EGLContext' ))
 eglQueryContext.add( Input( 'attribute','EGLint' ))
-eglQueryContext.add( Input( 'value','EGLint *' ))
+eglQueryContext.add( Output( 'value','EGLint *' ))
 eglQueryContext.version = ''
 eglQueryContext.category = 'EGL_VERSION_1_0'
 eglQueryContext.trace = True
@@ -1465,7 +1465,7 @@ eglQuerySurface.ret = Return('EGLBoolean')
 eglQuerySurface.add( Input( 'dpy','EGLDisplay' ))
 eglQuerySurface.add( Input( 'surface','EGLSurface' ))
 eglQuerySurface.add( Input( 'attribute','EGLint' ))
-eglQuerySurface.add( Input( 'value','EGLint *' ))
+eglQuerySurface.add( Output( 'value','EGLint *' ))
 eglQuerySurface.version = ''
 eglQuerySurface.category = 'EGL_VERSION_1_0'
 eglQuerySurface.trace = True

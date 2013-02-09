@@ -608,7 +608,7 @@ GLEWINFO.SRCS.NAMES := $(notdir $(GLEWINFO.SRCS))
 GLEWINFO.OBJS       := $(addprefix tmp/$(SYSTEM)/glewinfo/static/,$(GLEWINFO.SRCS.NAMES))
 GLEWINFO.OBJS       := $(GLEWINFO.OBJS:.c=.o)
 GLEWINFO.CFLAGS     := -Iinclude -Isrc/glew/include -DGLEW_REGAL -DGLEW_NO_GLU
-GLEWINFO.LIBS       += -Llib -lRegal -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) $(LDFLAGS.AGL)
+GLEWINFO.LIBS       += -Llib -lRegal $(LDFLAGS.X11) -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) $(LDFLAGS.AGL)
 
 ifneq ($(filter linux%,$(SYSTEM)),)
 GLEWINFO.LIBS       += -lX11
@@ -643,7 +643,7 @@ DREAMTORUS.SRCS.NAMES := $(notdir $(DREAMTORUS.SRCS))
 DREAMTORUS.OBJS       := $(addprefix tmp/$(SYSTEM)/dreamtorus/static/,$(DREAMTORUS.SRCS.NAMES))
 DREAMTORUS.OBJS       := $(DREAMTORUS.OBJS:.cpp=.o)
 DREAMTORUS.CFLAGS     := -Iinclude -Iexamples/dreamtorus/src
-DREAMTORUS.LIBS       += -Llib $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal 
+DREAMTORUS.LIBS       += -Llib $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal $(LDFLAGS.X11)
 DREAMTORUS.LIBS       += -lm -lpthread
 
 tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/src/%.cpp
@@ -705,7 +705,7 @@ TIGER.SRCS.NAMES := $(notdir $(TIGER.SRCS))
 TIGER.OBJS       := $(addprefix tmp/$(SYSTEM)/tiger/static/,$(TIGER.SRCS.NAMES))
 TIGER.OBJS       := $(TIGER.OBJS:.c=.o)
 TIGER.CFLAGS     := -Iinclude -DGLEW_NO_GLU
-TIGER.LIBS       += -Llib -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal
+TIGER.LIBS       += -Llib -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal $(LDFLAGS.X11)
 TIGER.LIBS       += -lm -lpthread
 
 tmp/$(SYSTEM)/tiger/static/%.o: examples/tiger/%.c
@@ -772,7 +772,7 @@ REGALTEST.SRCS.NAMES := $(notdir $(REGALTEST.SRCS))
 REGALTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTEST.SRCS.NAMES))
 REGALTEST.OBJS       := $(REGALTEST.OBJS:.cpp=.o)
 REGALTEST.CFLAGS     := -Isrc/googletest/include -Isrc/googlemock/include -Isrc/regal -Isrc/boost
-REGALTEST.LIBS       := -Llib -lgtest lib/$(LIB.STATIC) -lm -ldl
+REGALTEST.LIBS       := -Llib -lgtest lib/$(LIB.STATIC) $(LDFLAGS.X11) -lm -ldl 
 
 tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)

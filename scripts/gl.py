@@ -11722,6 +11722,51 @@ defines.add(GL_FOG_SPECULAR_TEXTURE_WIN)
 
 # GL_VERSION_1_0
 
+glAccum = Function('glAccum')
+glAccum.ret = Return('void')
+glAccum.add( Input( 'op','GLenum' ))
+glAccum.add( Input( 'value','GLfloat' ))
+glAccum.version = '1.0'
+glAccum.category = 'GL_VERSION_1_0'
+glAccum.trace = True
+glAccum.play = True
+gl.add(glAccum)
+
+glAlphaFunc = Function('glAlphaFunc')
+glAlphaFunc.ret = Return('void')
+glAlphaFunc.add( Input( 'func','GLenum' ))
+glAlphaFunc.add( Input( 'ref','GLclampf' ))
+glAlphaFunc.version = '1.0'
+glAlphaFunc.category = 'GL_VERSION_1_0'
+glAlphaFunc.esVersions = [1.0, 1.1]
+glAlphaFunc.trace = True
+glAlphaFunc.play = True
+gl.add(glAlphaFunc)
+
+glBegin = Function('glBegin')
+glBegin.ret = Return('void')
+glBegin.add( Input( 'mode','GLenum' ))
+glBegin.version = '1.0'
+glBegin.category = 'GL_VERSION_1_0'
+glBegin.trace = True
+glBegin.play = True
+gl.add(glBegin)
+
+glBitmap = Function('glBitmap')
+glBitmap.ret = Return('void')
+glBitmap.add( Input( 'width','GLsizei' ))
+glBitmap.add( Input( 'height','GLsizei' ))
+glBitmap.add( Input( 'xorig','GLfloat' ))
+glBitmap.add( Input( 'yorig','GLfloat' ))
+glBitmap.add( Input( 'xmove','GLfloat' ))
+glBitmap.add( Input( 'ymove','GLfloat' ))
+glBitmap.add( Input( 'bitmap','const GLubyte *' ,size = 'helperGLPixelImageSize(width, height, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
+glBitmap.version = '1.0'
+glBitmap.category = 'GL_VERSION_1_0'
+glBitmap.trace = True
+glBitmap.play = True
+gl.add(glBitmap)
+
 glBlendFunc = Function('glBlendFunc')
 glBlendFunc.ret = Return('void')
 glBlendFunc.add( Input( 'sfactor','GLenum' ))
@@ -11733,6 +11778,26 @@ glBlendFunc.trace = True
 glBlendFunc.play = True
 gl.add(glBlendFunc)
 
+glCallList = Function('glCallList')
+glCallList.ret = Return('void')
+glCallList.add( Input( 'list','GLuint' ))
+glCallList.version = '1.0'
+glCallList.category = 'GL_VERSION_1_0'
+glCallList.trace = True
+glCallList.play = True
+gl.add(glCallList)
+
+glCallLists = Function('glCallLists')
+glCallLists.ret = Return('void')
+glCallLists.add( Input( 'n','GLsizei' ))
+glCallLists.add( Input( 'type','GLenum' ))
+glCallLists.add( Input( 'lists','const GLvoid *' ,size = 'helperGLCallListsSize(n, type)' ,cast = 'const GLubyte *' ))
+glCallLists.version = '1.0'
+glCallLists.category = 'GL_VERSION_1_0'
+glCallLists.trace = True
+glCallLists.play = True
+gl.add(glCallLists)
+
 glClear = Function('glClear')
 glClear.ret = Return('void')
 glClear.add( Input( 'mask','GLbitfield' ,regalLog = 'GLclearToString(mask)' ))
@@ -11742,6 +11807,18 @@ glClear.esVersions = [1.0, 1.1, 2.0]
 glClear.trace = True
 glClear.play = True
 gl.add(glClear)
+
+glClearAccum = Function('glClearAccum')
+glClearAccum.ret = Return('void')
+glClearAccum.add( Input( 'red','GLfloat' ))
+glClearAccum.add( Input( 'green','GLfloat' ))
+glClearAccum.add( Input( 'blue','GLfloat' ))
+glClearAccum.add( Input( 'alpha','GLfloat' ))
+glClearAccum.version = '1.0'
+glClearAccum.category = 'GL_VERSION_1_0'
+glClearAccum.trace = True
+glClearAccum.play = True
+gl.add(glClearAccum)
 
 glClearColor = Function('glClearColor')
 glClearColor.ret = Return('void')
@@ -11795,6 +11872,336 @@ glClipPlane.trace = True
 glClipPlane.play = True
 gl.add(glClipPlane)
 
+glColor3b = Function('glColor3b')
+glColor3b.ret = Return('void')
+glColor3b.add( Input( 'red','GLbyte' ))
+glColor3b.add( Input( 'green','GLbyte' ))
+glColor3b.add( Input( 'blue','GLbyte' ))
+glColor3b.version = '1.0'
+glColor3b.category = 'GL_VERSION_1_0'
+glColor3b.trace = True
+glColor3b.play = True
+gl.add(glColor3b)
+
+glColor3bv = Function('glColor3bv')
+glColor3bv.ret = Return('void')
+glColor3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
+glColor3bv.version = '1.0'
+glColor3bv.category = 'GL_VERSION_1_0'
+glColor3bv.trace = True
+glColor3bv.play = True
+gl.add(glColor3bv)
+
+glColor3d = Function('glColor3d')
+glColor3d.ret = Return('void')
+glColor3d.add( Input( 'red','GLdouble' ))
+glColor3d.add( Input( 'green','GLdouble' ))
+glColor3d.add( Input( 'blue','GLdouble' ))
+glColor3d.version = '1.0'
+glColor3d.category = 'GL_VERSION_1_0'
+glColor3d.trace = True
+glColor3d.play = True
+gl.add(glColor3d)
+
+glColor3dv = Function('glColor3dv')
+glColor3dv.ret = Return('void')
+glColor3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glColor3dv.version = '1.0'
+glColor3dv.category = 'GL_VERSION_1_0'
+glColor3dv.trace = True
+glColor3dv.play = True
+gl.add(glColor3dv)
+
+glColor3f = Function('glColor3f')
+glColor3f.ret = Return('void')
+glColor3f.add( Input( 'red','GLfloat' ))
+glColor3f.add( Input( 'green','GLfloat' ))
+glColor3f.add( Input( 'blue','GLfloat' ))
+glColor3f.version = '1.0'
+glColor3f.category = 'GL_VERSION_1_0'
+glColor3f.trace = True
+glColor3f.play = True
+gl.add(glColor3f)
+
+glColor3fv = Function('glColor3fv')
+glColor3fv.ret = Return('void')
+glColor3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glColor3fv.version = '1.0'
+glColor3fv.category = 'GL_VERSION_1_0'
+glColor3fv.trace = True
+glColor3fv.play = True
+gl.add(glColor3fv)
+
+glColor3i = Function('glColor3i')
+glColor3i.ret = Return('void')
+glColor3i.add( Input( 'red','GLint' ))
+glColor3i.add( Input( 'green','GLint' ))
+glColor3i.add( Input( 'blue','GLint' ))
+glColor3i.version = '1.0'
+glColor3i.category = 'GL_VERSION_1_0'
+glColor3i.trace = True
+glColor3i.play = True
+gl.add(glColor3i)
+
+glColor3iv = Function('glColor3iv')
+glColor3iv.ret = Return('void')
+glColor3iv.add( Input( 'v','const GLint *' ,size = 3 ))
+glColor3iv.version = '1.0'
+glColor3iv.category = 'GL_VERSION_1_0'
+glColor3iv.trace = True
+glColor3iv.play = True
+gl.add(glColor3iv)
+
+glColor3s = Function('glColor3s')
+glColor3s.ret = Return('void')
+glColor3s.add( Input( 'red','GLshort' ))
+glColor3s.add( Input( 'green','GLshort' ))
+glColor3s.add( Input( 'blue','GLshort' ))
+glColor3s.version = '1.0'
+glColor3s.category = 'GL_VERSION_1_0'
+glColor3s.trace = True
+glColor3s.play = True
+gl.add(glColor3s)
+
+glColor3sv = Function('glColor3sv')
+glColor3sv.ret = Return('void')
+glColor3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glColor3sv.version = '1.0'
+glColor3sv.category = 'GL_VERSION_1_0'
+glColor3sv.trace = True
+glColor3sv.play = True
+gl.add(glColor3sv)
+
+glColor3ub = Function('glColor3ub')
+glColor3ub.ret = Return('void')
+glColor3ub.add( Input( 'red','GLubyte' ))
+glColor3ub.add( Input( 'green','GLubyte' ))
+glColor3ub.add( Input( 'blue','GLubyte' ))
+glColor3ub.version = '1.0'
+glColor3ub.category = 'GL_VERSION_1_0'
+glColor3ub.trace = True
+glColor3ub.play = True
+gl.add(glColor3ub)
+
+glColor3ubv = Function('glColor3ubv')
+glColor3ubv.ret = Return('void')
+glColor3ubv.add( Input( 'v','const GLubyte *' ,size = 3 ))
+glColor3ubv.version = '1.0'
+glColor3ubv.category = 'GL_VERSION_1_0'
+glColor3ubv.trace = True
+glColor3ubv.play = True
+gl.add(glColor3ubv)
+
+glColor3ui = Function('glColor3ui')
+glColor3ui.ret = Return('void')
+glColor3ui.add( Input( 'red','GLuint' ))
+glColor3ui.add( Input( 'green','GLuint' ))
+glColor3ui.add( Input( 'blue','GLuint' ))
+glColor3ui.version = '1.0'
+glColor3ui.category = 'GL_VERSION_1_0'
+glColor3ui.trace = True
+glColor3ui.play = True
+gl.add(glColor3ui)
+
+glColor3uiv = Function('glColor3uiv')
+glColor3uiv.ret = Return('void')
+glColor3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
+glColor3uiv.version = '1.0'
+glColor3uiv.category = 'GL_VERSION_1_0'
+glColor3uiv.trace = True
+glColor3uiv.play = True
+gl.add(glColor3uiv)
+
+glColor3us = Function('glColor3us')
+glColor3us.ret = Return('void')
+glColor3us.add( Input( 'red','GLushort' ))
+glColor3us.add( Input( 'green','GLushort' ))
+glColor3us.add( Input( 'blue','GLushort' ))
+glColor3us.version = '1.0'
+glColor3us.category = 'GL_VERSION_1_0'
+glColor3us.trace = True
+glColor3us.play = True
+gl.add(glColor3us)
+
+glColor3usv = Function('glColor3usv')
+glColor3usv.ret = Return('void')
+glColor3usv.add( Input( 'v','const GLushort *' ,size = 3 ))
+glColor3usv.version = '1.0'
+glColor3usv.category = 'GL_VERSION_1_0'
+glColor3usv.trace = True
+glColor3usv.play = True
+gl.add(glColor3usv)
+
+glColor4b = Function('glColor4b')
+glColor4b.ret = Return('void')
+glColor4b.add( Input( 'red','GLbyte' ))
+glColor4b.add( Input( 'green','GLbyte' ))
+glColor4b.add( Input( 'blue','GLbyte' ))
+glColor4b.add( Input( 'alpha','GLbyte' ))
+glColor4b.version = '1.0'
+glColor4b.category = 'GL_VERSION_1_0'
+glColor4b.trace = True
+glColor4b.play = True
+gl.add(glColor4b)
+
+glColor4bv = Function('glColor4bv')
+glColor4bv.ret = Return('void')
+glColor4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
+glColor4bv.version = '1.0'
+glColor4bv.category = 'GL_VERSION_1_0'
+glColor4bv.trace = True
+glColor4bv.play = True
+gl.add(glColor4bv)
+
+glColor4d = Function('glColor4d')
+glColor4d.ret = Return('void')
+glColor4d.add( Input( 'red','GLdouble' ))
+glColor4d.add( Input( 'green','GLdouble' ))
+glColor4d.add( Input( 'blue','GLdouble' ))
+glColor4d.add( Input( 'alpha','GLdouble' ))
+glColor4d.version = '1.0'
+glColor4d.category = 'GL_VERSION_1_0'
+glColor4d.trace = True
+glColor4d.play = True
+gl.add(glColor4d)
+
+glColor4dv = Function('glColor4dv')
+glColor4dv.ret = Return('void')
+glColor4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
+glColor4dv.version = '1.0'
+glColor4dv.category = 'GL_VERSION_1_0'
+glColor4dv.trace = True
+glColor4dv.play = True
+gl.add(glColor4dv)
+
+glColor4f = Function('glColor4f')
+glColor4f.ret = Return('void')
+glColor4f.add( Input( 'red','GLfloat' ))
+glColor4f.add( Input( 'green','GLfloat' ))
+glColor4f.add( Input( 'blue','GLfloat' ))
+glColor4f.add( Input( 'alpha','GLfloat' ))
+glColor4f.version = '1.0'
+glColor4f.category = 'GL_VERSION_1_0'
+glColor4f.esVersions = [1.0, 1.1]
+glColor4f.trace = True
+glColor4f.play = True
+gl.add(glColor4f)
+
+glColor4fv = Function('glColor4fv')
+glColor4fv.ret = Return('void')
+glColor4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
+glColor4fv.version = '1.0'
+glColor4fv.category = 'GL_VERSION_1_0'
+glColor4fv.trace = True
+glColor4fv.play = True
+gl.add(glColor4fv)
+
+glColor4i = Function('glColor4i')
+glColor4i.ret = Return('void')
+glColor4i.add( Input( 'red','GLint' ))
+glColor4i.add( Input( 'green','GLint' ))
+glColor4i.add( Input( 'blue','GLint' ))
+glColor4i.add( Input( 'alpha','GLint' ))
+glColor4i.version = '1.0'
+glColor4i.category = 'GL_VERSION_1_0'
+glColor4i.trace = True
+glColor4i.play = True
+gl.add(glColor4i)
+
+glColor4iv = Function('glColor4iv')
+glColor4iv.ret = Return('void')
+glColor4iv.add( Input( 'v','const GLint *' ,size = 4 ))
+glColor4iv.version = '1.0'
+glColor4iv.category = 'GL_VERSION_1_0'
+glColor4iv.trace = True
+glColor4iv.play = True
+gl.add(glColor4iv)
+
+glColor4s = Function('glColor4s')
+glColor4s.ret = Return('void')
+glColor4s.add( Input( 'red','GLshort' ))
+glColor4s.add( Input( 'green','GLshort' ))
+glColor4s.add( Input( 'blue','GLshort' ))
+glColor4s.add( Input( 'alpha','GLshort' ))
+glColor4s.version = '1.0'
+glColor4s.category = 'GL_VERSION_1_0'
+glColor4s.trace = True
+glColor4s.play = True
+gl.add(glColor4s)
+
+glColor4sv = Function('glColor4sv')
+glColor4sv.ret = Return('void')
+glColor4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glColor4sv.version = '1.0'
+glColor4sv.category = 'GL_VERSION_1_0'
+glColor4sv.trace = True
+glColor4sv.play = True
+gl.add(glColor4sv)
+
+glColor4ub = Function('glColor4ub')
+glColor4ub.ret = Return('void')
+glColor4ub.add( Input( 'red','GLubyte' ))
+glColor4ub.add( Input( 'green','GLubyte' ))
+glColor4ub.add( Input( 'blue','GLubyte' ))
+glColor4ub.add( Input( 'alpha','GLubyte' ))
+glColor4ub.version = '1.0'
+glColor4ub.category = 'GL_VERSION_1_0'
+glColor4ub.esVersions = [1.1]
+glColor4ub.trace = True
+glColor4ub.play = True
+gl.add(glColor4ub)
+
+glColor4ubv = Function('glColor4ubv')
+glColor4ubv.ret = Return('void')
+glColor4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
+glColor4ubv.version = '1.0'
+glColor4ubv.category = 'GL_VERSION_1_0'
+glColor4ubv.trace = True
+glColor4ubv.play = True
+gl.add(glColor4ubv)
+
+glColor4ui = Function('glColor4ui')
+glColor4ui.ret = Return('void')
+glColor4ui.add( Input( 'red','GLuint' ))
+glColor4ui.add( Input( 'green','GLuint' ))
+glColor4ui.add( Input( 'blue','GLuint' ))
+glColor4ui.add( Input( 'alpha','GLuint' ))
+glColor4ui.version = '1.0'
+glColor4ui.category = 'GL_VERSION_1_0'
+glColor4ui.trace = True
+glColor4ui.play = True
+gl.add(glColor4ui)
+
+glColor4uiv = Function('glColor4uiv')
+glColor4uiv.ret = Return('void')
+glColor4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
+glColor4uiv.version = '1.0'
+glColor4uiv.category = 'GL_VERSION_1_0'
+glColor4uiv.trace = True
+glColor4uiv.play = True
+gl.add(glColor4uiv)
+
+glColor4us = Function('glColor4us')
+glColor4us.ret = Return('void')
+glColor4us.add( Input( 'red','GLushort' ))
+glColor4us.add( Input( 'green','GLushort' ))
+glColor4us.add( Input( 'blue','GLushort' ))
+glColor4us.add( Input( 'alpha','GLushort' ))
+glColor4us.version = '1.0'
+glColor4us.category = 'GL_VERSION_1_0'
+glColor4us.trace = True
+glColor4us.play = True
+gl.add(glColor4us)
+
+glColor4usv = Function('glColor4usv')
+glColor4usv.ret = Return('void')
+glColor4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
+glColor4usv.version = '1.0'
+glColor4usv.category = 'GL_VERSION_1_0'
+glColor4usv.trace = True
+glColor4usv.play = True
+gl.add(glColor4usv)
+
 glColorMask = Function('glColorMask')
 glColorMask.ret = Return('void')
 glColorMask.add( Input( 'red','GLboolean' ))
@@ -11807,6 +12214,16 @@ glColorMask.esVersions = [1.0, 1.1, 2.0]
 glColorMask.trace = True
 glColorMask.play = True
 gl.add(glColorMask)
+
+glColorMaterial = Function('glColorMaterial')
+glColorMaterial.ret = Return('void')
+glColorMaterial.add( Input( 'face','GLenum' ))
+glColorMaterial.add( Input( 'mode','GLenum' ))
+glColorMaterial.version = '1.0'
+glColorMaterial.category = 'GL_VERSION_1_0'
+glColorMaterial.trace = True
+glColorMaterial.play = True
+gl.add(glColorMaterial)
 
 glCopyPixels = Function('glCopyPixels')
 glCopyPixels.ret = Return('void')
@@ -11830,6 +12247,16 @@ glCullFace.esVersions = [1.0, 1.1, 2.0]
 glCullFace.trace = True
 glCullFace.play = True
 gl.add(glCullFace)
+
+glDeleteLists = Function('glDeleteLists')
+glDeleteLists.ret = Return('void')
+glDeleteLists.add( Input( 'list','GLuint' ))
+glDeleteLists.add( Input( 'range','GLsizei' ))
+glDeleteLists.version = '1.0'
+glDeleteLists.category = 'GL_VERSION_1_0'
+glDeleteLists.trace = True
+glDeleteLists.play = True
+gl.add(glDeleteLists)
 
 glDepthFunc = Function('glDepthFunc')
 glDepthFunc.ret = Return('void')
@@ -11881,6 +12308,37 @@ glDrawBuffer.trace = True
 glDrawBuffer.play = True
 gl.add(glDrawBuffer)
 
+glDrawPixels = Function('glDrawPixels')
+glDrawPixels.ret = Return('void')
+glDrawPixels.add( Input( 'width','GLsizei' ))
+glDrawPixels.add( Input( 'height','GLsizei' ))
+glDrawPixels.add( Input( 'format','GLenum' ))
+glDrawPixels.add( Input( 'type','GLenum' ))
+glDrawPixels.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, 0, format, type, 0, 0)' ,cast = 'const GLubyte *' ))
+glDrawPixels.version = '1.0'
+glDrawPixels.category = 'GL_VERSION_1_0'
+glDrawPixels.trace = True
+glDrawPixels.play = True
+gl.add(glDrawPixels)
+
+glEdgeFlag = Function('glEdgeFlag')
+glEdgeFlag.ret = Return('void')
+glEdgeFlag.add( Input( 'flag','GLboolean' ))
+glEdgeFlag.version = '1.0'
+glEdgeFlag.category = 'GL_VERSION_1_0'
+glEdgeFlag.trace = True
+glEdgeFlag.play = True
+gl.add(glEdgeFlag)
+
+glEdgeFlagv = Function('glEdgeFlagv')
+glEdgeFlagv.ret = Return('void')
+glEdgeFlagv.add( Input( 'flag','const GLboolean *' ,size = 1 ))
+glEdgeFlagv.version = '1.0'
+glEdgeFlagv.category = 'GL_VERSION_1_0'
+glEdgeFlagv.trace = True
+glEdgeFlagv.play = True
+gl.add(glEdgeFlagv)
+
 glEnable = Function('glEnable')
 glEnable.ret = Return('void')
 glEnable.add( Input( 'cap','GLenum' ))
@@ -11890,6 +12348,150 @@ glEnable.esVersions = [1.0, 1.1, 2.0]
 glEnable.trace = True
 glEnable.play = True
 gl.add(glEnable)
+
+glEnd = Function('glEnd')
+glEnd.ret = Return('void')
+glEnd.version = '1.0'
+glEnd.category = 'GL_VERSION_1_0'
+glEnd.trace = True
+glEnd.play = True
+gl.add(glEnd)
+
+glEndList = Function('glEndList')
+glEndList.ret = Return('void')
+glEndList.version = '1.0'
+glEndList.category = 'GL_VERSION_1_0'
+glEndList.trace = True
+glEndList.play = True
+gl.add(glEndList)
+
+glEvalCoord1d = Function('glEvalCoord1d')
+glEvalCoord1d.ret = Return('void')
+glEvalCoord1d.add( Input( 'u','GLdouble' ))
+glEvalCoord1d.version = '1.0'
+glEvalCoord1d.category = 'GL_VERSION_1_0'
+glEvalCoord1d.trace = True
+glEvalCoord1d.play = True
+gl.add(glEvalCoord1d)
+
+glEvalCoord1dv = Function('glEvalCoord1dv')
+glEvalCoord1dv.ret = Return('void')
+glEvalCoord1dv.add( Input( 'u','const GLdouble *' ,size = 1 ))
+glEvalCoord1dv.version = '1.0'
+glEvalCoord1dv.category = 'GL_VERSION_1_0'
+glEvalCoord1dv.trace = True
+glEvalCoord1dv.play = True
+gl.add(glEvalCoord1dv)
+
+glEvalCoord1f = Function('glEvalCoord1f')
+glEvalCoord1f.ret = Return('void')
+glEvalCoord1f.add( Input( 'u','GLfloat' ))
+glEvalCoord1f.version = '1.0'
+glEvalCoord1f.category = 'GL_VERSION_1_0'
+glEvalCoord1f.trace = True
+glEvalCoord1f.play = True
+gl.add(glEvalCoord1f)
+
+glEvalCoord1fv = Function('glEvalCoord1fv')
+glEvalCoord1fv.ret = Return('void')
+glEvalCoord1fv.add( Input( 'u','const GLfloat *' ,size = 1 ))
+glEvalCoord1fv.version = '1.0'
+glEvalCoord1fv.category = 'GL_VERSION_1_0'
+glEvalCoord1fv.trace = True
+glEvalCoord1fv.play = True
+gl.add(glEvalCoord1fv)
+
+glEvalCoord2d = Function('glEvalCoord2d')
+glEvalCoord2d.ret = Return('void')
+glEvalCoord2d.add( Input( 'u','GLdouble' ))
+glEvalCoord2d.add( Input( 'v','GLdouble' ))
+glEvalCoord2d.version = '1.0'
+glEvalCoord2d.category = 'GL_VERSION_1_0'
+glEvalCoord2d.trace = True
+glEvalCoord2d.play = True
+gl.add(glEvalCoord2d)
+
+glEvalCoord2dv = Function('glEvalCoord2dv')
+glEvalCoord2dv.ret = Return('void')
+glEvalCoord2dv.add( Input( 'u','const GLdouble *' ,size = 2 ))
+glEvalCoord2dv.version = '1.0'
+glEvalCoord2dv.category = 'GL_VERSION_1_0'
+glEvalCoord2dv.trace = True
+glEvalCoord2dv.play = True
+gl.add(glEvalCoord2dv)
+
+glEvalCoord2f = Function('glEvalCoord2f')
+glEvalCoord2f.ret = Return('void')
+glEvalCoord2f.add( Input( 'u','GLfloat' ))
+glEvalCoord2f.add( Input( 'v','GLfloat' ))
+glEvalCoord2f.version = '1.0'
+glEvalCoord2f.category = 'GL_VERSION_1_0'
+glEvalCoord2f.trace = True
+glEvalCoord2f.play = True
+gl.add(glEvalCoord2f)
+
+glEvalCoord2fv = Function('glEvalCoord2fv')
+glEvalCoord2fv.ret = Return('void')
+glEvalCoord2fv.add( Input( 'u','const GLfloat *' ,size = 2 ))
+glEvalCoord2fv.version = '1.0'
+glEvalCoord2fv.category = 'GL_VERSION_1_0'
+glEvalCoord2fv.trace = True
+glEvalCoord2fv.play = True
+gl.add(glEvalCoord2fv)
+
+glEvalMesh1 = Function('glEvalMesh1')
+glEvalMesh1.ret = Return('void')
+glEvalMesh1.add( Input( 'mode','GLenum' ))
+glEvalMesh1.add( Input( 'i1','GLint' ))
+glEvalMesh1.add( Input( 'i2','GLint' ))
+glEvalMesh1.version = '1.0'
+glEvalMesh1.category = 'GL_VERSION_1_0'
+glEvalMesh1.trace = True
+glEvalMesh1.play = True
+gl.add(glEvalMesh1)
+
+glEvalMesh2 = Function('glEvalMesh2')
+glEvalMesh2.ret = Return('void')
+glEvalMesh2.add( Input( 'mode','GLenum' ))
+glEvalMesh2.add( Input( 'i1','GLint' ))
+glEvalMesh2.add( Input( 'i2','GLint' ))
+glEvalMesh2.add( Input( 'j1','GLint' ))
+glEvalMesh2.add( Input( 'j2','GLint' ))
+glEvalMesh2.version = '1.0'
+glEvalMesh2.category = 'GL_VERSION_1_0'
+glEvalMesh2.trace = True
+glEvalMesh2.play = True
+gl.add(glEvalMesh2)
+
+glEvalPoint1 = Function('glEvalPoint1')
+glEvalPoint1.ret = Return('void')
+glEvalPoint1.add( Input( 'i','GLint' ))
+glEvalPoint1.version = '1.0'
+glEvalPoint1.category = 'GL_VERSION_1_0'
+glEvalPoint1.trace = True
+glEvalPoint1.play = True
+gl.add(glEvalPoint1)
+
+glEvalPoint2 = Function('glEvalPoint2')
+glEvalPoint2.ret = Return('void')
+glEvalPoint2.add( Input( 'i','GLint' ))
+glEvalPoint2.add( Input( 'j','GLint' ))
+glEvalPoint2.version = '1.0'
+glEvalPoint2.category = 'GL_VERSION_1_0'
+glEvalPoint2.trace = True
+glEvalPoint2.play = True
+gl.add(glEvalPoint2)
+
+glFeedbackBuffer = Function('glFeedbackBuffer')
+glFeedbackBuffer.ret = Return('void')
+glFeedbackBuffer.add( Input( 'size','GLsizei' ))
+glFeedbackBuffer.add( Input( 'type','GLenum' ))
+glFeedbackBuffer.add( Output( 'buffer','GLfloat *' ))
+glFeedbackBuffer.version = '1.0'
+glFeedbackBuffer.category = 'GL_VERSION_1_0'
+glFeedbackBuffer.trace = True
+glFeedbackBuffer.play = True
+gl.add(glFeedbackBuffer)
 
 glFinish = Function('glFinish')
 glFinish.ret = Return('void')
@@ -11960,6 +12562,29 @@ glFrontFace.esVersions = [1.0, 1.1, 2.0]
 glFrontFace.trace = True
 glFrontFace.play = True
 gl.add(glFrontFace)
+
+glFrustum = Function('glFrustum')
+glFrustum.ret = Return('void')
+glFrustum.add( Input( 'left','GLdouble' ))
+glFrustum.add( Input( 'right','GLdouble' ))
+glFrustum.add( Input( 'bottom','GLdouble' ))
+glFrustum.add( Input( 'top','GLdouble' ))
+glFrustum.add( Input( 'zNear','GLdouble' ))
+glFrustum.add( Input( 'zFar','GLdouble' ))
+glFrustum.version = '1.0'
+glFrustum.category = 'GL_VERSION_1_0'
+glFrustum.trace = True
+glFrustum.play = True
+gl.add(glFrustum)
+
+glGenLists = Function('glGenLists')
+glGenLists.ret = Return('GLuint')
+glGenLists.add( Input( 'range','GLsizei' ))
+glGenLists.version = '1.0'
+glGenLists.category = 'GL_VERSION_1_0'
+glGenLists.trace = True
+glGenLists.play = True
+gl.add(glGenLists)
 
 glGetBooleanv = Function('glGetBooleanv')
 glGetBooleanv.ret = Return('void')
@@ -12176,6 +12801,39 @@ glGetTexEnviv.trace = True
 glGetTexEnviv.play = False
 gl.add(glGetTexEnviv)
 
+glGetTexGendv = Function('glGetTexGendv')
+glGetTexGendv.ret = Return('void')
+glGetTexGendv.add( Input( 'coord','GLenum' ))
+glGetTexGendv.add( Input( 'pname','GLenum' ))
+glGetTexGendv.add( Output( 'params','GLdouble *' ))
+glGetTexGendv.version = '1.0'
+glGetTexGendv.category = 'GL_VERSION_1_0'
+glGetTexGendv.trace = True
+glGetTexGendv.play = False
+gl.add(glGetTexGendv)
+
+glGetTexGenfv = Function('glGetTexGenfv')
+glGetTexGenfv.ret = Return('void')
+glGetTexGenfv.add( Input( 'coord','GLenum' ))
+glGetTexGenfv.add( Input( 'pname','GLenum' ))
+glGetTexGenfv.add( Output( 'params','GLfloat *' ))
+glGetTexGenfv.version = '1.0'
+glGetTexGenfv.category = 'GL_VERSION_1_0'
+glGetTexGenfv.trace = True
+glGetTexGenfv.play = False
+gl.add(glGetTexGenfv)
+
+glGetTexGeniv = Function('glGetTexGeniv')
+glGetTexGeniv.ret = Return('void')
+glGetTexGeniv.add( Input( 'coord','GLenum' ))
+glGetTexGeniv.add( Input( 'pname','GLenum' ))
+glGetTexGeniv.add( Output( 'params','GLint *' ))
+glGetTexGeniv.version = '1.0'
+glGetTexGeniv.category = 'GL_VERSION_1_0'
+glGetTexGeniv.trace = True
+glGetTexGeniv.play = False
+gl.add(glGetTexGeniv)
+
 glGetTexImage = Function('glGetTexImage')
 glGetTexImage.ret = Return('void')
 glGetTexImage.add( Input( 'target','GLenum' ))
@@ -12257,6 +12915,86 @@ glIndexMask.trace = True
 glIndexMask.play = True
 gl.add(glIndexMask)
 
+glIndexd = Function('glIndexd')
+glIndexd.ret = Return('void')
+glIndexd.add( Input( 'c','GLdouble' ))
+glIndexd.version = '1.0'
+glIndexd.category = 'GL_VERSION_1_0'
+glIndexd.trace = True
+glIndexd.play = True
+gl.add(glIndexd)
+
+glIndexdv = Function('glIndexdv')
+glIndexdv.ret = Return('void')
+glIndexdv.add( Input( 'c','const GLdouble *' ,size = 1 ))
+glIndexdv.version = '1.0'
+glIndexdv.category = 'GL_VERSION_1_0'
+glIndexdv.trace = True
+glIndexdv.play = True
+gl.add(glIndexdv)
+
+glIndexf = Function('glIndexf')
+glIndexf.ret = Return('void')
+glIndexf.add( Input( 'c','GLfloat' ))
+glIndexf.version = '1.0'
+glIndexf.category = 'GL_VERSION_1_0'
+glIndexf.trace = True
+glIndexf.play = True
+gl.add(glIndexf)
+
+glIndexfv = Function('glIndexfv')
+glIndexfv.ret = Return('void')
+glIndexfv.add( Input( 'c','const GLfloat *' ,size = 1 ))
+glIndexfv.version = '1.0'
+glIndexfv.category = 'GL_VERSION_1_0'
+glIndexfv.trace = True
+glIndexfv.play = True
+gl.add(glIndexfv)
+
+glIndexi = Function('glIndexi')
+glIndexi.ret = Return('void')
+glIndexi.add( Input( 'c','GLint' ))
+glIndexi.version = '1.0'
+glIndexi.category = 'GL_VERSION_1_0'
+glIndexi.trace = True
+glIndexi.play = True
+gl.add(glIndexi)
+
+glIndexiv = Function('glIndexiv')
+glIndexiv.ret = Return('void')
+glIndexiv.add( Input( 'c','const GLint *' ,size = 1 ))
+glIndexiv.version = '1.0'
+glIndexiv.category = 'GL_VERSION_1_0'
+glIndexiv.trace = True
+glIndexiv.play = True
+gl.add(glIndexiv)
+
+glIndexs = Function('glIndexs')
+glIndexs.ret = Return('void')
+glIndexs.add( Input( 'c','GLshort' ))
+glIndexs.version = '1.0'
+glIndexs.category = 'GL_VERSION_1_0'
+glIndexs.trace = True
+glIndexs.play = True
+gl.add(glIndexs)
+
+glIndexsv = Function('glIndexsv')
+glIndexsv.ret = Return('void')
+glIndexsv.add( Input( 'c','const GLshort *' ,size = 1 ))
+glIndexsv.version = '1.0'
+glIndexsv.category = 'GL_VERSION_1_0'
+glIndexsv.trace = True
+glIndexsv.play = True
+gl.add(glIndexsv)
+
+glInitNames = Function('glInitNames')
+glInitNames.ret = Return('void')
+glInitNames.version = '1.0'
+glInitNames.category = 'GL_VERSION_1_0'
+glInitNames.trace = True
+glInitNames.play = True
+gl.add(glInitNames)
+
 glIsEnabled = Function('glIsEnabled')
 glIsEnabled.ret = Return('GLboolean')
 glIsEnabled.add( Input( 'cap','GLenum' ))
@@ -12266,6 +13004,113 @@ glIsEnabled.esVersions = [1.1, 2.0]
 glIsEnabled.trace = True
 glIsEnabled.play = True
 gl.add(glIsEnabled)
+
+glIsList = Function('glIsList')
+glIsList.ret = Return('GLboolean')
+glIsList.add( Input( 'list','GLuint' ))
+glIsList.version = '1.0'
+glIsList.category = 'GL_VERSION_1_0'
+glIsList.trace = True
+glIsList.play = True
+gl.add(glIsList)
+
+glLightModelf = Function('glLightModelf')
+glLightModelf.ret = Return('void')
+glLightModelf.add( Input( 'pname','GLenum' ))
+glLightModelf.add( Input( 'param','GLfloat' ))
+glLightModelf.version = '1.0'
+glLightModelf.category = 'GL_VERSION_1_0'
+glLightModelf.esVersions = [1.0, 1.1]
+glLightModelf.trace = True
+glLightModelf.play = True
+gl.add(glLightModelf)
+
+glLightModelfv = Function('glLightModelfv')
+glLightModelfv.ret = Return('void')
+glLightModelfv.add( Input( 'pname','GLenum' ))
+glLightModelfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightModelvSize(pname)' ))
+glLightModelfv.version = '1.0'
+glLightModelfv.category = 'GL_VERSION_1_0'
+glLightModelfv.esVersions = [1.0, 1.1]
+glLightModelfv.trace = True
+glLightModelfv.play = True
+gl.add(glLightModelfv)
+
+glLightModeli = Function('glLightModeli')
+glLightModeli.ret = Return('void')
+glLightModeli.add( Input( 'pname','GLenum' ))
+glLightModeli.add( Input( 'param','GLint' ))
+glLightModeli.version = '1.0'
+glLightModeli.category = 'GL_VERSION_1_0'
+glLightModeli.trace = True
+glLightModeli.play = True
+gl.add(glLightModeli)
+
+glLightModeliv = Function('glLightModeliv')
+glLightModeliv.ret = Return('void')
+glLightModeliv.add( Input( 'pname','GLenum' ))
+glLightModeliv.add( Input( 'params','const GLint *' ,size = 'helperGLLightModelvSize(pname)' ))
+glLightModeliv.version = '1.0'
+glLightModeliv.category = 'GL_VERSION_1_0'
+glLightModeliv.trace = True
+glLightModeliv.play = True
+gl.add(glLightModeliv)
+
+glLightf = Function('glLightf')
+glLightf.ret = Return('void')
+glLightf.add( Input( 'light','GLenum' ))
+glLightf.add( Input( 'pname','GLenum' ))
+glLightf.add( Input( 'param','GLfloat' ))
+glLightf.version = '1.0'
+glLightf.category = 'GL_VERSION_1_0'
+glLightf.esVersions = [1.0, 1.1]
+glLightf.trace = True
+glLightf.play = True
+gl.add(glLightf)
+
+glLightfv = Function('glLightfv')
+glLightfv.ret = Return('void')
+glLightfv.add( Input( 'light','GLenum' ))
+glLightfv.add( Input( 'pname','GLenum' ))
+glLightfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightvSize(pname)' ))
+glLightfv.version = '1.0'
+glLightfv.category = 'GL_VERSION_1_0'
+glLightfv.esVersions = [1.0, 1.1]
+glLightfv.trace = True
+glLightfv.play = True
+gl.add(glLightfv)
+
+glLighti = Function('glLighti')
+glLighti.ret = Return('void')
+glLighti.add( Input( 'light','GLenum' ))
+glLighti.add( Input( 'pname','GLenum' ))
+glLighti.add( Input( 'param','GLint' ))
+glLighti.version = '1.0'
+glLighti.category = 'GL_VERSION_1_0'
+glLighti.trace = True
+glLighti.play = True
+gl.add(glLighti)
+
+glLightiv = Function('glLightiv')
+glLightiv.ret = Return('void')
+glLightiv.add( Input( 'light','GLenum' ))
+glLightiv.add( Input( 'pname','GLenum' ))
+glLightiv.add( Input( 'params','const GLint *' ,size = 'helperGLLightvSize(pname)' ))
+glLightiv.version = '1.0'
+glLightiv.category = 'GL_VERSION_1_0'
+glLightiv.trace = True
+glLightiv.play = True
+gl.add(glLightiv)
+
+glLineStipple = Function('glLineStipple')
+glLineStipple.ret = Return('void')
+glLineStipple.add( Input( 'factor','GLint' ))
+glLineStipple.add( Input( 'pattern','GLushort' ))
+glLineStipple.version = '1.0'
+glLineStipple.category = 'GL_VERSION_1_0'
+glLineStipple.trace = True
+glLineStipple.play = True
+gl.add(glLineStipple)
 
 glLineWidth = Function('glLineWidth')
 glLineWidth.ret = Return('void')
@@ -12277,6 +13122,52 @@ glLineWidth.trace = True
 glLineWidth.play = True
 gl.add(glLineWidth)
 
+glListBase = Function('glListBase')
+glListBase.ret = Return('void')
+glListBase.add( Input( 'base','GLuint' ))
+glListBase.version = '1.0'
+glListBase.category = 'GL_VERSION_1_0'
+glListBase.trace = True
+glListBase.play = True
+gl.add(glListBase)
+
+glLoadIdentity = Function('glLoadIdentity')
+glLoadIdentity.ret = Return('void')
+glLoadIdentity.version = '1.0'
+glLoadIdentity.category = 'GL_VERSION_1_0'
+glLoadIdentity.esVersions = [1.0, 1.1]
+glLoadIdentity.trace = True
+glLoadIdentity.play = True
+gl.add(glLoadIdentity)
+
+glLoadMatrixd = Function('glLoadMatrixd')
+glLoadMatrixd.ret = Return('void')
+glLoadMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
+glLoadMatrixd.version = '1.0'
+glLoadMatrixd.category = 'GL_VERSION_1_0'
+glLoadMatrixd.trace = True
+glLoadMatrixd.play = True
+gl.add(glLoadMatrixd)
+
+glLoadMatrixf = Function('glLoadMatrixf')
+glLoadMatrixf.ret = Return('void')
+glLoadMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
+glLoadMatrixf.version = '1.0'
+glLoadMatrixf.category = 'GL_VERSION_1_0'
+glLoadMatrixf.esVersions = [1.0, 1.1]
+glLoadMatrixf.trace = True
+glLoadMatrixf.play = True
+gl.add(glLoadMatrixf)
+
+glLoadName = Function('glLoadName')
+glLoadName.ret = Return('void')
+glLoadName.add( Input( 'name','GLuint' ))
+glLoadName.version = '1.0'
+glLoadName.category = 'GL_VERSION_1_0'
+glLoadName.trace = True
+glLoadName.play = True
+gl.add(glLoadName)
+
 glLogicOp = Function('glLogicOp')
 glLogicOp.ret = Return('void')
 glLogicOp.add( Input( 'opcode','GLenum' ))
@@ -12286,6 +13177,362 @@ glLogicOp.esVersions = [1.0, 1.1]
 glLogicOp.trace = True
 glLogicOp.play = True
 gl.add(glLogicOp)
+
+glMap1d = Function('glMap1d')
+glMap1d.ret = Return('void')
+glMap1d.add( Input( 'target','GLenum' ))
+glMap1d.add( Input( 'u1','GLdouble' ))
+glMap1d.add( Input( 'u2','GLdouble' ))
+glMap1d.add( Input( 'stride','GLint' ))
+glMap1d.add( Input( 'order','GLint' ))
+glMap1d.add( Input( 'points','const GLdouble *' ))
+glMap1d.version = '1.0'
+glMap1d.category = 'GL_VERSION_1_0'
+glMap1d.trace = True
+glMap1d.play = True
+gl.add(glMap1d)
+
+glMap1f = Function('glMap1f')
+glMap1f.ret = Return('void')
+glMap1f.add( Input( 'target','GLenum' ))
+glMap1f.add( Input( 'u1','GLfloat' ))
+glMap1f.add( Input( 'u2','GLfloat' ))
+glMap1f.add( Input( 'stride','GLint' ))
+glMap1f.add( Input( 'order','GLint' ))
+glMap1f.add( Input( 'points','const GLfloat *' ))
+glMap1f.version = '1.0'
+glMap1f.category = 'GL_VERSION_1_0'
+glMap1f.trace = True
+glMap1f.play = True
+gl.add(glMap1f)
+
+glMap2d = Function('glMap2d')
+glMap2d.ret = Return('void')
+glMap2d.add( Input( 'target','GLenum' ))
+glMap2d.add( Input( 'u1','GLdouble' ))
+glMap2d.add( Input( 'u2','GLdouble' ))
+glMap2d.add( Input( 'ustride','GLint' ))
+glMap2d.add( Input( 'uorder','GLint' ))
+glMap2d.add( Input( 'v1','GLdouble' ))
+glMap2d.add( Input( 'v2','GLdouble' ))
+glMap2d.add( Input( 'vstride','GLint' ))
+glMap2d.add( Input( 'vorder','GLint' ))
+glMap2d.add( Input( 'points','const GLdouble *' ))
+glMap2d.version = '1.0'
+glMap2d.category = 'GL_VERSION_1_0'
+glMap2d.trace = True
+glMap2d.play = True
+gl.add(glMap2d)
+
+glMap2f = Function('glMap2f')
+glMap2f.ret = Return('void')
+glMap2f.add( Input( 'target','GLenum' ))
+glMap2f.add( Input( 'u1','GLfloat' ))
+glMap2f.add( Input( 'u2','GLfloat' ))
+glMap2f.add( Input( 'ustride','GLint' ))
+glMap2f.add( Input( 'uorder','GLint' ))
+glMap2f.add( Input( 'v1','GLfloat' ))
+glMap2f.add( Input( 'v2','GLfloat' ))
+glMap2f.add( Input( 'vstride','GLint' ))
+glMap2f.add( Input( 'vorder','GLint' ))
+glMap2f.add( Input( 'points','const GLfloat *' ))
+glMap2f.version = '1.0'
+glMap2f.category = 'GL_VERSION_1_0'
+glMap2f.trace = True
+glMap2f.play = True
+gl.add(glMap2f)
+
+glMapGrid1d = Function('glMapGrid1d')
+glMapGrid1d.ret = Return('void')
+glMapGrid1d.add( Input( 'un','GLint' ))
+glMapGrid1d.add( Input( 'u1','GLdouble' ))
+glMapGrid1d.add( Input( 'u2','GLdouble' ))
+glMapGrid1d.version = '1.0'
+glMapGrid1d.category = 'GL_VERSION_1_0'
+glMapGrid1d.trace = True
+glMapGrid1d.play = True
+gl.add(glMapGrid1d)
+
+glMapGrid1f = Function('glMapGrid1f')
+glMapGrid1f.ret = Return('void')
+glMapGrid1f.add( Input( 'un','GLint' ))
+glMapGrid1f.add( Input( 'u1','GLfloat' ))
+glMapGrid1f.add( Input( 'u2','GLfloat' ))
+glMapGrid1f.version = '1.0'
+glMapGrid1f.category = 'GL_VERSION_1_0'
+glMapGrid1f.trace = True
+glMapGrid1f.play = True
+gl.add(glMapGrid1f)
+
+glMapGrid2d = Function('glMapGrid2d')
+glMapGrid2d.ret = Return('void')
+glMapGrid2d.add( Input( 'un','GLint' ))
+glMapGrid2d.add( Input( 'u1','GLdouble' ))
+glMapGrid2d.add( Input( 'u2','GLdouble' ))
+glMapGrid2d.add( Input( 'vn','GLint' ))
+glMapGrid2d.add( Input( 'v1','GLdouble' ))
+glMapGrid2d.add( Input( 'v2','GLdouble' ))
+glMapGrid2d.version = '1.0'
+glMapGrid2d.category = 'GL_VERSION_1_0'
+glMapGrid2d.trace = True
+glMapGrid2d.play = True
+gl.add(glMapGrid2d)
+
+glMapGrid2f = Function('glMapGrid2f')
+glMapGrid2f.ret = Return('void')
+glMapGrid2f.add( Input( 'un','GLint' ))
+glMapGrid2f.add( Input( 'u1','GLfloat' ))
+glMapGrid2f.add( Input( 'u2','GLfloat' ))
+glMapGrid2f.add( Input( 'vn','GLint' ))
+glMapGrid2f.add( Input( 'v1','GLfloat' ))
+glMapGrid2f.add( Input( 'v2','GLfloat' ))
+glMapGrid2f.version = '1.0'
+glMapGrid2f.category = 'GL_VERSION_1_0'
+glMapGrid2f.trace = True
+glMapGrid2f.play = True
+gl.add(glMapGrid2f)
+
+glMaterialf = Function('glMaterialf')
+glMaterialf.ret = Return('void')
+glMaterialf.add( Input( 'face','GLenum' ))
+glMaterialf.add( Input( 'pname','GLenum' ))
+glMaterialf.add( Input( 'param','GLfloat' ))
+glMaterialf.version = '1.0'
+glMaterialf.category = 'GL_VERSION_1_0'
+glMaterialf.esVersions = [1.0, 1.1]
+glMaterialf.trace = True
+glMaterialf.play = True
+gl.add(glMaterialf)
+
+glMaterialfv = Function('glMaterialfv')
+glMaterialfv.ret = Return('void')
+glMaterialfv.add( Input( 'face','GLenum' ))
+glMaterialfv.add( Input( 'pname','GLenum' ))
+glMaterialfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLMaterialvSize(pname)' ))
+glMaterialfv.version = '1.0'
+glMaterialfv.category = 'GL_VERSION_1_0'
+glMaterialfv.esVersions = [1.0, 1.1]
+glMaterialfv.trace = True
+glMaterialfv.play = True
+gl.add(glMaterialfv)
+
+glMateriali = Function('glMateriali')
+glMateriali.ret = Return('void')
+glMateriali.add( Input( 'face','GLenum' ))
+glMateriali.add( Input( 'pname','GLenum' ))
+glMateriali.add( Input( 'param','GLint' ))
+glMateriali.version = '1.0'
+glMateriali.category = 'GL_VERSION_1_0'
+glMateriali.trace = True
+glMateriali.play = True
+gl.add(glMateriali)
+
+glMaterialiv = Function('glMaterialiv')
+glMaterialiv.ret = Return('void')
+glMaterialiv.add( Input( 'face','GLenum' ))
+glMaterialiv.add( Input( 'pname','GLenum' ))
+glMaterialiv.add( Input( 'params','const GLint *' ,size = 'helperGLMaterialvSize(pname)' ))
+glMaterialiv.version = '1.0'
+glMaterialiv.category = 'GL_VERSION_1_0'
+glMaterialiv.trace = True
+glMaterialiv.play = True
+gl.add(glMaterialiv)
+
+glMatrixMode = Function('glMatrixMode')
+glMatrixMode.ret = Return('void')
+glMatrixMode.add( Input( 'mode','GLenum' ))
+glMatrixMode.version = '1.0'
+glMatrixMode.category = 'GL_VERSION_1_0'
+glMatrixMode.esVersions = [1.0, 1.1]
+glMatrixMode.trace = True
+glMatrixMode.play = True
+gl.add(glMatrixMode)
+
+glMultMatrixd = Function('glMultMatrixd')
+glMultMatrixd.ret = Return('void')
+glMultMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
+glMultMatrixd.version = '1.0'
+glMultMatrixd.category = 'GL_VERSION_1_0'
+glMultMatrixd.trace = True
+glMultMatrixd.play = True
+gl.add(glMultMatrixd)
+
+glMultMatrixf = Function('glMultMatrixf')
+glMultMatrixf.ret = Return('void')
+glMultMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
+glMultMatrixf.version = '1.0'
+glMultMatrixf.category = 'GL_VERSION_1_0'
+glMultMatrixf.esVersions = [1.0, 1.1]
+glMultMatrixf.trace = True
+glMultMatrixf.play = True
+gl.add(glMultMatrixf)
+
+glNewList = Function('glNewList')
+glNewList.ret = Return('void')
+glNewList.add( Input( 'list','GLuint' ))
+glNewList.add( Input( 'mode','GLenum' ))
+glNewList.version = '1.0'
+glNewList.category = 'GL_VERSION_1_0'
+glNewList.trace = True
+glNewList.play = True
+gl.add(glNewList)
+
+glNormal3b = Function('glNormal3b')
+glNormal3b.ret = Return('void')
+glNormal3b.add( Input( 'nx','GLbyte' ))
+glNormal3b.add( Input( 'ny','GLbyte' ))
+glNormal3b.add( Input( 'nz','GLbyte' ))
+glNormal3b.version = '1.0'
+glNormal3b.category = 'GL_VERSION_1_0'
+glNormal3b.trace = True
+glNormal3b.play = True
+gl.add(glNormal3b)
+
+glNormal3bv = Function('glNormal3bv')
+glNormal3bv.ret = Return('void')
+glNormal3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
+glNormal3bv.version = '1.0'
+glNormal3bv.category = 'GL_VERSION_1_0'
+glNormal3bv.trace = True
+glNormal3bv.play = True
+gl.add(glNormal3bv)
+
+glNormal3d = Function('glNormal3d')
+glNormal3d.ret = Return('void')
+glNormal3d.add( Input( 'nx','GLdouble' ))
+glNormal3d.add( Input( 'ny','GLdouble' ))
+glNormal3d.add( Input( 'nz','GLdouble' ))
+glNormal3d.version = '1.0'
+glNormal3d.category = 'GL_VERSION_1_0'
+glNormal3d.trace = True
+glNormal3d.play = True
+gl.add(glNormal3d)
+
+glNormal3dv = Function('glNormal3dv')
+glNormal3dv.ret = Return('void')
+glNormal3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glNormal3dv.version = '1.0'
+glNormal3dv.category = 'GL_VERSION_1_0'
+glNormal3dv.trace = True
+glNormal3dv.play = True
+gl.add(glNormal3dv)
+
+glNormal3f = Function('glNormal3f')
+glNormal3f.ret = Return('void')
+glNormal3f.add( Input( 'nx','GLfloat' ))
+glNormal3f.add( Input( 'ny','GLfloat' ))
+glNormal3f.add( Input( 'nz','GLfloat' ))
+glNormal3f.version = '1.0'
+glNormal3f.category = 'GL_VERSION_1_0'
+glNormal3f.esVersions = [1.0, 1.1]
+glNormal3f.trace = True
+glNormal3f.play = True
+gl.add(glNormal3f)
+
+glNormal3fv = Function('glNormal3fv')
+glNormal3fv.ret = Return('void')
+glNormal3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glNormal3fv.version = '1.0'
+glNormal3fv.category = 'GL_VERSION_1_0'
+glNormal3fv.trace = True
+glNormal3fv.play = True
+gl.add(glNormal3fv)
+
+glNormal3i = Function('glNormal3i')
+glNormal3i.ret = Return('void')
+glNormal3i.add( Input( 'nx','GLint' ))
+glNormal3i.add( Input( 'ny','GLint' ))
+glNormal3i.add( Input( 'nz','GLint' ))
+glNormal3i.version = '1.0'
+glNormal3i.category = 'GL_VERSION_1_0'
+glNormal3i.trace = True
+glNormal3i.play = True
+gl.add(glNormal3i)
+
+glNormal3iv = Function('glNormal3iv')
+glNormal3iv.ret = Return('void')
+glNormal3iv.add( Input( 'v','const GLint *' ,size = 3 ))
+glNormal3iv.version = '1.0'
+glNormal3iv.category = 'GL_VERSION_1_0'
+glNormal3iv.trace = True
+glNormal3iv.play = True
+gl.add(glNormal3iv)
+
+glNormal3s = Function('glNormal3s')
+glNormal3s.ret = Return('void')
+glNormal3s.add( Input( 'nx','GLshort' ))
+glNormal3s.add( Input( 'ny','GLshort' ))
+glNormal3s.add( Input( 'nz','GLshort' ))
+glNormal3s.version = '1.0'
+glNormal3s.category = 'GL_VERSION_1_0'
+glNormal3s.trace = True
+glNormal3s.play = True
+gl.add(glNormal3s)
+
+glNormal3sv = Function('glNormal3sv')
+glNormal3sv.ret = Return('void')
+glNormal3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glNormal3sv.version = '1.0'
+glNormal3sv.category = 'GL_VERSION_1_0'
+glNormal3sv.trace = True
+glNormal3sv.play = True
+gl.add(glNormal3sv)
+
+glOrtho = Function('glOrtho')
+glOrtho.ret = Return('void')
+glOrtho.add( Input( 'left','GLdouble' ))
+glOrtho.add( Input( 'right','GLdouble' ))
+glOrtho.add( Input( 'bottom','GLdouble' ))
+glOrtho.add( Input( 'top','GLdouble' ))
+glOrtho.add( Input( 'zNear','GLdouble' ))
+glOrtho.add( Input( 'zFar','GLdouble' ))
+glOrtho.version = '1.0'
+glOrtho.category = 'GL_VERSION_1_0'
+glOrtho.trace = True
+glOrtho.play = True
+gl.add(glOrtho)
+
+glPassThrough = Function('glPassThrough')
+glPassThrough.ret = Return('void')
+glPassThrough.add( Input( 'token','GLfloat' ))
+glPassThrough.version = '1.0'
+glPassThrough.category = 'GL_VERSION_1_0'
+glPassThrough.trace = True
+glPassThrough.play = True
+gl.add(glPassThrough)
+
+glPixelMapfv = Function('glPixelMapfv')
+glPixelMapfv.ret = Return('void')
+glPixelMapfv.add( Input( 'map','GLenum' ))
+glPixelMapfv.add( Input( 'mapsize','GLsizei' ))
+glPixelMapfv.add( Input( 'values','const GLfloat *' ,size = 'mapsize' ))
+glPixelMapfv.version = '1.0'
+glPixelMapfv.category = 'GL_VERSION_1_0'
+glPixelMapfv.trace = True
+glPixelMapfv.play = True
+gl.add(glPixelMapfv)
+
+glPixelMapuiv = Function('glPixelMapuiv')
+glPixelMapuiv.ret = Return('void')
+glPixelMapuiv.add( Input( 'map','GLenum' ))
+glPixelMapuiv.add( Input( 'mapsize','GLsizei' ))
+glPixelMapuiv.add( Input( 'values','const GLuint *' ,size = 'mapsize' ))
+glPixelMapuiv.version = '1.0'
+glPixelMapuiv.category = 'GL_VERSION_1_0'
+glPixelMapuiv.trace = True
+glPixelMapuiv.play = True
+gl.add(glPixelMapuiv)
+
+glPixelMapusv = Function('glPixelMapusv')
+glPixelMapusv.ret = Return('void')
+glPixelMapusv.add( Input( 'map','GLenum' ))
+glPixelMapusv.add( Input( 'mapsize','GLsizei' ))
+glPixelMapusv.add( Input( 'values','const GLushort *' ,size = 'mapsize' ))
+glPixelMapusv.version = '1.0'
+glPixelMapusv.category = 'GL_VERSION_1_0'
+glPixelMapusv.trace = True
+glPixelMapusv.play = True
+gl.add(glPixelMapusv)
 
 glPixelStoref = Function('glPixelStoref')
 glPixelStoref.ret = Return('void')
@@ -12308,6 +13555,36 @@ glPixelStorei.trace = True
 glPixelStorei.play = True
 gl.add(glPixelStorei)
 
+glPixelTransferf = Function('glPixelTransferf')
+glPixelTransferf.ret = Return('void')
+glPixelTransferf.add( Input( 'pname','GLenum' ))
+glPixelTransferf.add( Input( 'param','GLfloat' ))
+glPixelTransferf.version = '1.0'
+glPixelTransferf.category = 'GL_VERSION_1_0'
+glPixelTransferf.trace = True
+glPixelTransferf.play = True
+gl.add(glPixelTransferf)
+
+glPixelTransferi = Function('glPixelTransferi')
+glPixelTransferi.ret = Return('void')
+glPixelTransferi.add( Input( 'pname','GLenum' ))
+glPixelTransferi.add( Input( 'param','GLint' ))
+glPixelTransferi.version = '1.0'
+glPixelTransferi.category = 'GL_VERSION_1_0'
+glPixelTransferi.trace = True
+glPixelTransferi.play = True
+gl.add(glPixelTransferi)
+
+glPixelZoom = Function('glPixelZoom')
+glPixelZoom.ret = Return('void')
+glPixelZoom.add( Input( 'xfactor','GLfloat' ))
+glPixelZoom.add( Input( 'yfactor','GLfloat' ))
+glPixelZoom.version = '1.0'
+glPixelZoom.category = 'GL_VERSION_1_0'
+glPixelZoom.trace = True
+glPixelZoom.play = True
+gl.add(glPixelZoom)
+
 glPointSize = Function('glPointSize')
 glPointSize.ret = Return('void')
 glPointSize.add( Input( 'size','GLfloat' ))
@@ -12327,6 +13604,307 @@ glPolygonMode.category = 'GL_VERSION_1_0'
 glPolygonMode.trace = True
 glPolygonMode.play = True
 gl.add(glPolygonMode)
+
+glPolygonStipple = Function('glPolygonStipple')
+glPolygonStipple.ret = Return('void')
+glPolygonStipple.add( Input( 'mask','const GLubyte *' ,size = 'helperGLPixelImageSize(32, 32, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
+glPolygonStipple.version = '1.0'
+glPolygonStipple.category = 'GL_VERSION_1_0'
+glPolygonStipple.trace = True
+glPolygonStipple.play = True
+gl.add(glPolygonStipple)
+
+glPopAttrib = Function('glPopAttrib')
+glPopAttrib.ret = Return('void')
+glPopAttrib.version = '1.0'
+glPopAttrib.category = 'GL_VERSION_1_0'
+glPopAttrib.trace = True
+glPopAttrib.play = True
+gl.add(glPopAttrib)
+
+glPopMatrix = Function('glPopMatrix')
+glPopMatrix.ret = Return('void')
+glPopMatrix.version = '1.0'
+glPopMatrix.category = 'GL_VERSION_1_0'
+glPopMatrix.esVersions = [1.0, 1.1]
+glPopMatrix.trace = True
+glPopMatrix.play = True
+gl.add(glPopMatrix)
+
+glPopName = Function('glPopName')
+glPopName.ret = Return('void')
+glPopName.version = '1.0'
+glPopName.category = 'GL_VERSION_1_0'
+glPopName.trace = True
+glPopName.play = True
+gl.add(glPopName)
+
+glPushAttrib = Function('glPushAttrib')
+glPushAttrib.ret = Return('void')
+glPushAttrib.add( Input( 'mask','GLbitfield' ))
+glPushAttrib.version = '1.0'
+glPushAttrib.category = 'GL_VERSION_1_0'
+glPushAttrib.trace = True
+glPushAttrib.play = True
+gl.add(glPushAttrib)
+
+glPushMatrix = Function('glPushMatrix')
+glPushMatrix.ret = Return('void')
+glPushMatrix.version = '1.0'
+glPushMatrix.category = 'GL_VERSION_1_0'
+glPushMatrix.esVersions = [1.0, 1.1]
+glPushMatrix.trace = True
+glPushMatrix.play = True
+gl.add(glPushMatrix)
+
+glPushName = Function('glPushName')
+glPushName.ret = Return('void')
+glPushName.add( Input( 'name','GLuint' ))
+glPushName.version = '1.0'
+glPushName.category = 'GL_VERSION_1_0'
+glPushName.trace = True
+glPushName.play = True
+gl.add(glPushName)
+
+glRasterPos2d = Function('glRasterPos2d')
+glRasterPos2d.ret = Return('void')
+glRasterPos2d.add( Input( 'x','GLdouble' ))
+glRasterPos2d.add( Input( 'y','GLdouble' ))
+glRasterPos2d.version = '1.0'
+glRasterPos2d.category = 'GL_VERSION_1_0'
+glRasterPos2d.trace = True
+glRasterPos2d.play = True
+gl.add(glRasterPos2d)
+
+glRasterPos2dv = Function('glRasterPos2dv')
+glRasterPos2dv.ret = Return('void')
+glRasterPos2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
+glRasterPos2dv.version = '1.0'
+glRasterPos2dv.category = 'GL_VERSION_1_0'
+glRasterPos2dv.trace = True
+glRasterPos2dv.play = True
+gl.add(glRasterPos2dv)
+
+glRasterPos2f = Function('glRasterPos2f')
+glRasterPos2f.ret = Return('void')
+glRasterPos2f.add( Input( 'x','GLfloat' ))
+glRasterPos2f.add( Input( 'y','GLfloat' ))
+glRasterPos2f.version = '1.0'
+glRasterPos2f.category = 'GL_VERSION_1_0'
+glRasterPos2f.trace = True
+glRasterPos2f.play = True
+gl.add(glRasterPos2f)
+
+glRasterPos2fv = Function('glRasterPos2fv')
+glRasterPos2fv.ret = Return('void')
+glRasterPos2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
+glRasterPos2fv.version = '1.0'
+glRasterPos2fv.category = 'GL_VERSION_1_0'
+glRasterPos2fv.trace = True
+glRasterPos2fv.play = True
+gl.add(glRasterPos2fv)
+
+glRasterPos2i = Function('glRasterPos2i')
+glRasterPos2i.ret = Return('void')
+glRasterPos2i.add( Input( 'x','GLint' ))
+glRasterPos2i.add( Input( 'y','GLint' ))
+glRasterPos2i.version = '1.0'
+glRasterPos2i.category = 'GL_VERSION_1_0'
+glRasterPos2i.trace = True
+glRasterPos2i.play = True
+gl.add(glRasterPos2i)
+
+glRasterPos2iv = Function('glRasterPos2iv')
+glRasterPos2iv.ret = Return('void')
+glRasterPos2iv.add( Input( 'v','const GLint *' ,size = 2 ))
+glRasterPos2iv.version = '1.0'
+glRasterPos2iv.category = 'GL_VERSION_1_0'
+glRasterPos2iv.trace = True
+glRasterPos2iv.play = True
+gl.add(glRasterPos2iv)
+
+glRasterPos2s = Function('glRasterPos2s')
+glRasterPos2s.ret = Return('void')
+glRasterPos2s.add( Input( 'x','GLshort' ))
+glRasterPos2s.add( Input( 'y','GLshort' ))
+glRasterPos2s.version = '1.0'
+glRasterPos2s.category = 'GL_VERSION_1_0'
+glRasterPos2s.trace = True
+glRasterPos2s.play = True
+gl.add(glRasterPos2s)
+
+glRasterPos2sv = Function('glRasterPos2sv')
+glRasterPos2sv.ret = Return('void')
+glRasterPos2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
+glRasterPos2sv.version = '1.0'
+glRasterPos2sv.category = 'GL_VERSION_1_0'
+glRasterPos2sv.trace = True
+glRasterPos2sv.play = True
+gl.add(glRasterPos2sv)
+
+glRasterPos3d = Function('glRasterPos3d')
+glRasterPos3d.ret = Return('void')
+glRasterPos3d.add( Input( 'x','GLdouble' ))
+glRasterPos3d.add( Input( 'y','GLdouble' ))
+glRasterPos3d.add( Input( 'z','GLdouble' ))
+glRasterPos3d.version = '1.0'
+glRasterPos3d.category = 'GL_VERSION_1_0'
+glRasterPos3d.trace = True
+glRasterPos3d.play = True
+gl.add(glRasterPos3d)
+
+glRasterPos3dv = Function('glRasterPos3dv')
+glRasterPos3dv.ret = Return('void')
+glRasterPos3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glRasterPos3dv.version = '1.0'
+glRasterPos3dv.category = 'GL_VERSION_1_0'
+glRasterPos3dv.trace = True
+glRasterPos3dv.play = True
+gl.add(glRasterPos3dv)
+
+glRasterPos3f = Function('glRasterPos3f')
+glRasterPos3f.ret = Return('void')
+glRasterPos3f.add( Input( 'x','GLfloat' ))
+glRasterPos3f.add( Input( 'y','GLfloat' ))
+glRasterPos3f.add( Input( 'z','GLfloat' ))
+glRasterPos3f.version = '1.0'
+glRasterPos3f.category = 'GL_VERSION_1_0'
+glRasterPos3f.trace = True
+glRasterPos3f.play = True
+gl.add(glRasterPos3f)
+
+glRasterPos3fv = Function('glRasterPos3fv')
+glRasterPos3fv.ret = Return('void')
+glRasterPos3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glRasterPos3fv.version = '1.0'
+glRasterPos3fv.category = 'GL_VERSION_1_0'
+glRasterPos3fv.trace = True
+glRasterPos3fv.play = True
+gl.add(glRasterPos3fv)
+
+glRasterPos3i = Function('glRasterPos3i')
+glRasterPos3i.ret = Return('void')
+glRasterPos3i.add( Input( 'x','GLint' ))
+glRasterPos3i.add( Input( 'y','GLint' ))
+glRasterPos3i.add( Input( 'z','GLint' ))
+glRasterPos3i.version = '1.0'
+glRasterPos3i.category = 'GL_VERSION_1_0'
+glRasterPos3i.trace = True
+glRasterPos3i.play = True
+gl.add(glRasterPos3i)
+
+glRasterPos3iv = Function('glRasterPos3iv')
+glRasterPos3iv.ret = Return('void')
+glRasterPos3iv.add( Input( 'v','const GLint *' ,size = 3 ))
+glRasterPos3iv.version = '1.0'
+glRasterPos3iv.category = 'GL_VERSION_1_0'
+glRasterPos3iv.trace = True
+glRasterPos3iv.play = True
+gl.add(glRasterPos3iv)
+
+glRasterPos3s = Function('glRasterPos3s')
+glRasterPos3s.ret = Return('void')
+glRasterPos3s.add( Input( 'x','GLshort' ))
+glRasterPos3s.add( Input( 'y','GLshort' ))
+glRasterPos3s.add( Input( 'z','GLshort' ))
+glRasterPos3s.version = '1.0'
+glRasterPos3s.category = 'GL_VERSION_1_0'
+glRasterPos3s.trace = True
+glRasterPos3s.play = True
+gl.add(glRasterPos3s)
+
+glRasterPos3sv = Function('glRasterPos3sv')
+glRasterPos3sv.ret = Return('void')
+glRasterPos3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glRasterPos3sv.version = '1.0'
+glRasterPos3sv.category = 'GL_VERSION_1_0'
+glRasterPos3sv.trace = True
+glRasterPos3sv.play = True
+gl.add(glRasterPos3sv)
+
+glRasterPos4d = Function('glRasterPos4d')
+glRasterPos4d.ret = Return('void')
+glRasterPos4d.add( Input( 'x','GLdouble' ))
+glRasterPos4d.add( Input( 'y','GLdouble' ))
+glRasterPos4d.add( Input( 'z','GLdouble' ))
+glRasterPos4d.add( Input( 'w','GLdouble' ))
+glRasterPos4d.version = '1.0'
+glRasterPos4d.category = 'GL_VERSION_1_0'
+glRasterPos4d.trace = True
+glRasterPos4d.play = True
+gl.add(glRasterPos4d)
+
+glRasterPos4dv = Function('glRasterPos4dv')
+glRasterPos4dv.ret = Return('void')
+glRasterPos4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
+glRasterPos4dv.version = '1.0'
+glRasterPos4dv.category = 'GL_VERSION_1_0'
+glRasterPos4dv.trace = True
+glRasterPos4dv.play = True
+gl.add(glRasterPos4dv)
+
+glRasterPos4f = Function('glRasterPos4f')
+glRasterPos4f.ret = Return('void')
+glRasterPos4f.add( Input( 'x','GLfloat' ))
+glRasterPos4f.add( Input( 'y','GLfloat' ))
+glRasterPos4f.add( Input( 'z','GLfloat' ))
+glRasterPos4f.add( Input( 'w','GLfloat' ))
+glRasterPos4f.version = '1.0'
+glRasterPos4f.category = 'GL_VERSION_1_0'
+glRasterPos4f.trace = True
+glRasterPos4f.play = True
+gl.add(glRasterPos4f)
+
+glRasterPos4fv = Function('glRasterPos4fv')
+glRasterPos4fv.ret = Return('void')
+glRasterPos4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
+glRasterPos4fv.version = '1.0'
+glRasterPos4fv.category = 'GL_VERSION_1_0'
+glRasterPos4fv.trace = True
+glRasterPos4fv.play = True
+gl.add(glRasterPos4fv)
+
+glRasterPos4i = Function('glRasterPos4i')
+glRasterPos4i.ret = Return('void')
+glRasterPos4i.add( Input( 'x','GLint' ))
+glRasterPos4i.add( Input( 'y','GLint' ))
+glRasterPos4i.add( Input( 'z','GLint' ))
+glRasterPos4i.add( Input( 'w','GLint' ))
+glRasterPos4i.version = '1.0'
+glRasterPos4i.category = 'GL_VERSION_1_0'
+glRasterPos4i.trace = True
+glRasterPos4i.play = True
+gl.add(glRasterPos4i)
+
+glRasterPos4iv = Function('glRasterPos4iv')
+glRasterPos4iv.ret = Return('void')
+glRasterPos4iv.add( Input( 'v','const GLint *' ,size = 4 ))
+glRasterPos4iv.version = '1.0'
+glRasterPos4iv.category = 'GL_VERSION_1_0'
+glRasterPos4iv.trace = True
+glRasterPos4iv.play = True
+gl.add(glRasterPos4iv)
+
+glRasterPos4s = Function('glRasterPos4s')
+glRasterPos4s.ret = Return('void')
+glRasterPos4s.add( Input( 'x','GLshort' ))
+glRasterPos4s.add( Input( 'y','GLshort' ))
+glRasterPos4s.add( Input( 'z','GLshort' ))
+glRasterPos4s.add( Input( 'w','GLshort' ))
+glRasterPos4s.version = '1.0'
+glRasterPos4s.category = 'GL_VERSION_1_0'
+glRasterPos4s.trace = True
+glRasterPos4s.play = True
+gl.add(glRasterPos4s)
+
+glRasterPos4sv = Function('glRasterPos4sv')
+glRasterPos4sv.ret = Return('void')
+glRasterPos4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glRasterPos4sv.version = '1.0'
+glRasterPos4sv.category = 'GL_VERSION_1_0'
+glRasterPos4sv.trace = True
+glRasterPos4sv.play = True
+gl.add(glRasterPos4sv)
 
 glReadBuffer = Function('glReadBuffer')
 glReadBuffer.ret = Return('void')
@@ -12353,6 +13931,151 @@ glReadPixels.trace = True
 glReadPixels.play = True
 gl.add(glReadPixels)
 
+glRectd = Function('glRectd')
+glRectd.ret = Return('void')
+glRectd.add( Input( 'x1','GLdouble' ))
+glRectd.add( Input( 'y1','GLdouble' ))
+glRectd.add( Input( 'x2','GLdouble' ))
+glRectd.add( Input( 'y2','GLdouble' ))
+glRectd.version = '1.0'
+glRectd.category = 'GL_VERSION_1_0'
+glRectd.trace = True
+glRectd.play = True
+gl.add(glRectd)
+
+glRectdv = Function('glRectdv')
+glRectdv.ret = Return('void')
+glRectdv.add( Input( 'v1','const GLdouble *' ,size = 2 ))
+glRectdv.add( Input( 'v2','const GLdouble *' ,size = 2 ))
+glRectdv.version = '1.0'
+glRectdv.category = 'GL_VERSION_1_0'
+glRectdv.trace = True
+glRectdv.play = True
+gl.add(glRectdv)
+
+glRectf = Function('glRectf')
+glRectf.ret = Return('void')
+glRectf.add( Input( 'x1','GLfloat' ))
+glRectf.add( Input( 'y1','GLfloat' ))
+glRectf.add( Input( 'x2','GLfloat' ))
+glRectf.add( Input( 'y2','GLfloat' ))
+glRectf.version = '1.0'
+glRectf.category = 'GL_VERSION_1_0'
+glRectf.trace = True
+glRectf.play = True
+gl.add(glRectf)
+
+glRectfv = Function('glRectfv')
+glRectfv.ret = Return('void')
+glRectfv.add( Input( 'v1','const GLfloat *' ,size = 2 ))
+glRectfv.add( Input( 'v2','const GLfloat *' ,size = 2 ))
+glRectfv.version = '1.0'
+glRectfv.category = 'GL_VERSION_1_0'
+glRectfv.trace = True
+glRectfv.play = True
+gl.add(glRectfv)
+
+glRecti = Function('glRecti')
+glRecti.ret = Return('void')
+glRecti.add( Input( 'x1','GLint' ))
+glRecti.add( Input( 'y1','GLint' ))
+glRecti.add( Input( 'x2','GLint' ))
+glRecti.add( Input( 'y2','GLint' ))
+glRecti.version = '1.0'
+glRecti.category = 'GL_VERSION_1_0'
+glRecti.trace = True
+glRecti.play = True
+gl.add(glRecti)
+
+glRectiv = Function('glRectiv')
+glRectiv.ret = Return('void')
+glRectiv.add( Input( 'v1','const GLint *' ,size = 2 ))
+glRectiv.add( Input( 'v2','const GLint *' ,size = 2 ))
+glRectiv.version = '1.0'
+glRectiv.category = 'GL_VERSION_1_0'
+glRectiv.trace = True
+glRectiv.play = True
+gl.add(glRectiv)
+
+glRects = Function('glRects')
+glRects.ret = Return('void')
+glRects.add( Input( 'x1','GLshort' ))
+glRects.add( Input( 'y1','GLshort' ))
+glRects.add( Input( 'x2','GLshort' ))
+glRects.add( Input( 'y2','GLshort' ))
+glRects.version = '1.0'
+glRects.category = 'GL_VERSION_1_0'
+glRects.trace = True
+glRects.play = True
+gl.add(glRects)
+
+glRectsv = Function('glRectsv')
+glRectsv.ret = Return('void')
+glRectsv.add( Input( 'v1','const GLshort *' ,size = 2 ))
+glRectsv.add( Input( 'v2','const GLshort *' ,size = 2 ))
+glRectsv.version = '1.0'
+glRectsv.category = 'GL_VERSION_1_0'
+glRectsv.trace = True
+glRectsv.play = True
+gl.add(glRectsv)
+
+glRenderMode = Function('glRenderMode')
+glRenderMode.ret = Return('GLint')
+glRenderMode.add( Input( 'mode','GLenum' ))
+glRenderMode.version = '1.0'
+glRenderMode.category = 'GL_VERSION_1_0'
+glRenderMode.trace = True
+glRenderMode.play = True
+gl.add(glRenderMode)
+
+glRotated = Function('glRotated')
+glRotated.ret = Return('void')
+glRotated.add( Input( 'angle','GLdouble' ))
+glRotated.add( Input( 'x','GLdouble' ))
+glRotated.add( Input( 'y','GLdouble' ))
+glRotated.add( Input( 'z','GLdouble' ))
+glRotated.version = '1.0'
+glRotated.category = 'GL_VERSION_1_0'
+glRotated.trace = True
+glRotated.play = True
+gl.add(glRotated)
+
+glRotatef = Function('glRotatef')
+glRotatef.ret = Return('void')
+glRotatef.add( Input( 'angle','GLfloat' ))
+glRotatef.add( Input( 'x','GLfloat' ))
+glRotatef.add( Input( 'y','GLfloat' ))
+glRotatef.add( Input( 'z','GLfloat' ))
+glRotatef.version = '1.0'
+glRotatef.category = 'GL_VERSION_1_0'
+glRotatef.esVersions = [1.0, 1.1]
+glRotatef.trace = True
+glRotatef.play = True
+gl.add(glRotatef)
+
+glScaled = Function('glScaled')
+glScaled.ret = Return('void')
+glScaled.add( Input( 'x','GLdouble' ))
+glScaled.add( Input( 'y','GLdouble' ))
+glScaled.add( Input( 'z','GLdouble' ))
+glScaled.version = '1.0'
+glScaled.category = 'GL_VERSION_1_0'
+glScaled.trace = True
+glScaled.play = True
+gl.add(glScaled)
+
+glScalef = Function('glScalef')
+glScalef.ret = Return('void')
+glScalef.add( Input( 'x','GLfloat' ))
+glScalef.add( Input( 'y','GLfloat' ))
+glScalef.add( Input( 'z','GLfloat' ))
+glScalef.version = '1.0'
+glScalef.category = 'GL_VERSION_1_0'
+glScalef.esVersions = [1.0, 1.1]
+glScalef.trace = True
+glScalef.play = True
+gl.add(glScalef)
+
 glScissor = Function('glScissor')
 glScissor.ret = Return('void')
 glScissor.add( Input( 'x','GLint' ))
@@ -12365,6 +14088,16 @@ glScissor.esVersions = [1.0, 1.1, 2.0]
 glScissor.trace = True
 glScissor.play = True
 gl.add(glScissor)
+
+glSelectBuffer = Function('glSelectBuffer')
+glSelectBuffer.ret = Return('void')
+glSelectBuffer.add( Input( 'size','GLsizei' ))
+glSelectBuffer.add( Output( 'buffer','GLuint *' ,size = 'size' ))
+glSelectBuffer.version = '1.0'
+glSelectBuffer.category = 'GL_VERSION_1_0'
+glSelectBuffer.trace = True
+glSelectBuffer.play = True
+gl.add(glSelectBuffer)
 
 glShadeModel = Function('glShadeModel')
 glShadeModel.ret = Return('void')
@@ -12409,6 +14142,318 @@ glStencilOp.esVersions = [1.0, 1.1, 2.0]
 glStencilOp.trace = True
 glStencilOp.play = True
 gl.add(glStencilOp)
+
+glTexCoord1d = Function('glTexCoord1d')
+glTexCoord1d.ret = Return('void')
+glTexCoord1d.add( Input( 's','GLdouble' ))
+glTexCoord1d.version = '1.0'
+glTexCoord1d.category = 'GL_VERSION_1_0'
+glTexCoord1d.trace = True
+glTexCoord1d.play = True
+gl.add(glTexCoord1d)
+
+glTexCoord1dv = Function('glTexCoord1dv')
+glTexCoord1dv.ret = Return('void')
+glTexCoord1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
+glTexCoord1dv.version = '1.0'
+glTexCoord1dv.category = 'GL_VERSION_1_0'
+glTexCoord1dv.trace = True
+glTexCoord1dv.play = True
+gl.add(glTexCoord1dv)
+
+glTexCoord1f = Function('glTexCoord1f')
+glTexCoord1f.ret = Return('void')
+glTexCoord1f.add( Input( 's','GLfloat' ))
+glTexCoord1f.version = '1.0'
+glTexCoord1f.category = 'GL_VERSION_1_0'
+glTexCoord1f.trace = True
+glTexCoord1f.play = True
+gl.add(glTexCoord1f)
+
+glTexCoord1fv = Function('glTexCoord1fv')
+glTexCoord1fv.ret = Return('void')
+glTexCoord1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
+glTexCoord1fv.version = '1.0'
+glTexCoord1fv.category = 'GL_VERSION_1_0'
+glTexCoord1fv.trace = True
+glTexCoord1fv.play = True
+gl.add(glTexCoord1fv)
+
+glTexCoord1i = Function('glTexCoord1i')
+glTexCoord1i.ret = Return('void')
+glTexCoord1i.add( Input( 's','GLint' ))
+glTexCoord1i.version = '1.0'
+glTexCoord1i.category = 'GL_VERSION_1_0'
+glTexCoord1i.trace = True
+glTexCoord1i.play = True
+gl.add(glTexCoord1i)
+
+glTexCoord1iv = Function('glTexCoord1iv')
+glTexCoord1iv.ret = Return('void')
+glTexCoord1iv.add( Input( 'v','const GLint *' ,size = 1 ))
+glTexCoord1iv.version = '1.0'
+glTexCoord1iv.category = 'GL_VERSION_1_0'
+glTexCoord1iv.trace = True
+glTexCoord1iv.play = True
+gl.add(glTexCoord1iv)
+
+glTexCoord1s = Function('glTexCoord1s')
+glTexCoord1s.ret = Return('void')
+glTexCoord1s.add( Input( 's','GLshort' ))
+glTexCoord1s.version = '1.0'
+glTexCoord1s.category = 'GL_VERSION_1_0'
+glTexCoord1s.trace = True
+glTexCoord1s.play = True
+gl.add(glTexCoord1s)
+
+glTexCoord1sv = Function('glTexCoord1sv')
+glTexCoord1sv.ret = Return('void')
+glTexCoord1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
+glTexCoord1sv.version = '1.0'
+glTexCoord1sv.category = 'GL_VERSION_1_0'
+glTexCoord1sv.trace = True
+glTexCoord1sv.play = True
+gl.add(glTexCoord1sv)
+
+glTexCoord2d = Function('glTexCoord2d')
+glTexCoord2d.ret = Return('void')
+glTexCoord2d.add( Input( 's','GLdouble' ))
+glTexCoord2d.add( Input( 't','GLdouble' ))
+glTexCoord2d.version = '1.0'
+glTexCoord2d.category = 'GL_VERSION_1_0'
+glTexCoord2d.trace = True
+glTexCoord2d.play = True
+gl.add(glTexCoord2d)
+
+glTexCoord2dv = Function('glTexCoord2dv')
+glTexCoord2dv.ret = Return('void')
+glTexCoord2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
+glTexCoord2dv.version = '1.0'
+glTexCoord2dv.category = 'GL_VERSION_1_0'
+glTexCoord2dv.trace = True
+glTexCoord2dv.play = True
+gl.add(glTexCoord2dv)
+
+glTexCoord2f = Function('glTexCoord2f')
+glTexCoord2f.ret = Return('void')
+glTexCoord2f.add( Input( 's','GLfloat' ))
+glTexCoord2f.add( Input( 't','GLfloat' ))
+glTexCoord2f.version = '1.0'
+glTexCoord2f.category = 'GL_VERSION_1_0'
+glTexCoord2f.trace = True
+glTexCoord2f.play = True
+gl.add(glTexCoord2f)
+
+glTexCoord2fv = Function('glTexCoord2fv')
+glTexCoord2fv.ret = Return('void')
+glTexCoord2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
+glTexCoord2fv.version = '1.0'
+glTexCoord2fv.category = 'GL_VERSION_1_0'
+glTexCoord2fv.trace = True
+glTexCoord2fv.play = True
+gl.add(glTexCoord2fv)
+
+glTexCoord2i = Function('glTexCoord2i')
+glTexCoord2i.ret = Return('void')
+glTexCoord2i.add( Input( 's','GLint' ))
+glTexCoord2i.add( Input( 't','GLint' ))
+glTexCoord2i.version = '1.0'
+glTexCoord2i.category = 'GL_VERSION_1_0'
+glTexCoord2i.trace = True
+glTexCoord2i.play = True
+gl.add(glTexCoord2i)
+
+glTexCoord2iv = Function('glTexCoord2iv')
+glTexCoord2iv.ret = Return('void')
+glTexCoord2iv.add( Input( 'v','const GLint *' ,size = 2 ))
+glTexCoord2iv.version = '1.0'
+glTexCoord2iv.category = 'GL_VERSION_1_0'
+glTexCoord2iv.trace = True
+glTexCoord2iv.play = True
+gl.add(glTexCoord2iv)
+
+glTexCoord2s = Function('glTexCoord2s')
+glTexCoord2s.ret = Return('void')
+glTexCoord2s.add( Input( 's','GLshort' ))
+glTexCoord2s.add( Input( 't','GLshort' ))
+glTexCoord2s.version = '1.0'
+glTexCoord2s.category = 'GL_VERSION_1_0'
+glTexCoord2s.trace = True
+glTexCoord2s.play = True
+gl.add(glTexCoord2s)
+
+glTexCoord2sv = Function('glTexCoord2sv')
+glTexCoord2sv.ret = Return('void')
+glTexCoord2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
+glTexCoord2sv.version = '1.0'
+glTexCoord2sv.category = 'GL_VERSION_1_0'
+glTexCoord2sv.trace = True
+glTexCoord2sv.play = True
+gl.add(glTexCoord2sv)
+
+glTexCoord3d = Function('glTexCoord3d')
+glTexCoord3d.ret = Return('void')
+glTexCoord3d.add( Input( 's','GLdouble' ))
+glTexCoord3d.add( Input( 't','GLdouble' ))
+glTexCoord3d.add( Input( 'r','GLdouble' ))
+glTexCoord3d.version = '1.0'
+glTexCoord3d.category = 'GL_VERSION_1_0'
+glTexCoord3d.trace = True
+glTexCoord3d.play = True
+gl.add(glTexCoord3d)
+
+glTexCoord3dv = Function('glTexCoord3dv')
+glTexCoord3dv.ret = Return('void')
+glTexCoord3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glTexCoord3dv.version = '1.0'
+glTexCoord3dv.category = 'GL_VERSION_1_0'
+glTexCoord3dv.trace = True
+glTexCoord3dv.play = True
+gl.add(glTexCoord3dv)
+
+glTexCoord3f = Function('glTexCoord3f')
+glTexCoord3f.ret = Return('void')
+glTexCoord3f.add( Input( 's','GLfloat' ))
+glTexCoord3f.add( Input( 't','GLfloat' ))
+glTexCoord3f.add( Input( 'r','GLfloat' ))
+glTexCoord3f.version = '1.0'
+glTexCoord3f.category = 'GL_VERSION_1_0'
+glTexCoord3f.trace = True
+glTexCoord3f.play = True
+gl.add(glTexCoord3f)
+
+glTexCoord3fv = Function('glTexCoord3fv')
+glTexCoord3fv.ret = Return('void')
+glTexCoord3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glTexCoord3fv.version = '1.0'
+glTexCoord3fv.category = 'GL_VERSION_1_0'
+glTexCoord3fv.trace = True
+glTexCoord3fv.play = True
+gl.add(glTexCoord3fv)
+
+glTexCoord3i = Function('glTexCoord3i')
+glTexCoord3i.ret = Return('void')
+glTexCoord3i.add( Input( 's','GLint' ))
+glTexCoord3i.add( Input( 't','GLint' ))
+glTexCoord3i.add( Input( 'r','GLint' ))
+glTexCoord3i.version = '1.0'
+glTexCoord3i.category = 'GL_VERSION_1_0'
+glTexCoord3i.trace = True
+glTexCoord3i.play = True
+gl.add(glTexCoord3i)
+
+glTexCoord3iv = Function('glTexCoord3iv')
+glTexCoord3iv.ret = Return('void')
+glTexCoord3iv.add( Input( 'v','const GLint *' ,size = 3 ))
+glTexCoord3iv.version = '1.0'
+glTexCoord3iv.category = 'GL_VERSION_1_0'
+glTexCoord3iv.trace = True
+glTexCoord3iv.play = True
+gl.add(glTexCoord3iv)
+
+glTexCoord3s = Function('glTexCoord3s')
+glTexCoord3s.ret = Return('void')
+glTexCoord3s.add( Input( 's','GLshort' ))
+glTexCoord3s.add( Input( 't','GLshort' ))
+glTexCoord3s.add( Input( 'r','GLshort' ))
+glTexCoord3s.version = '1.0'
+glTexCoord3s.category = 'GL_VERSION_1_0'
+glTexCoord3s.trace = True
+glTexCoord3s.play = True
+gl.add(glTexCoord3s)
+
+glTexCoord3sv = Function('glTexCoord3sv')
+glTexCoord3sv.ret = Return('void')
+glTexCoord3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glTexCoord3sv.version = '1.0'
+glTexCoord3sv.category = 'GL_VERSION_1_0'
+glTexCoord3sv.trace = True
+glTexCoord3sv.play = True
+gl.add(glTexCoord3sv)
+
+glTexCoord4d = Function('glTexCoord4d')
+glTexCoord4d.ret = Return('void')
+glTexCoord4d.add( Input( 's','GLdouble' ))
+glTexCoord4d.add( Input( 't','GLdouble' ))
+glTexCoord4d.add( Input( 'r','GLdouble' ))
+glTexCoord4d.add( Input( 'q','GLdouble' ))
+glTexCoord4d.version = '1.0'
+glTexCoord4d.category = 'GL_VERSION_1_0'
+glTexCoord4d.trace = True
+glTexCoord4d.play = True
+gl.add(glTexCoord4d)
+
+glTexCoord4dv = Function('glTexCoord4dv')
+glTexCoord4dv.ret = Return('void')
+glTexCoord4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
+glTexCoord4dv.version = '1.0'
+glTexCoord4dv.category = 'GL_VERSION_1_0'
+glTexCoord4dv.trace = True
+glTexCoord4dv.play = True
+gl.add(glTexCoord4dv)
+
+glTexCoord4f = Function('glTexCoord4f')
+glTexCoord4f.ret = Return('void')
+glTexCoord4f.add( Input( 's','GLfloat' ))
+glTexCoord4f.add( Input( 't','GLfloat' ))
+glTexCoord4f.add( Input( 'r','GLfloat' ))
+glTexCoord4f.add( Input( 'q','GLfloat' ))
+glTexCoord4f.version = '1.0'
+glTexCoord4f.category = 'GL_VERSION_1_0'
+glTexCoord4f.trace = True
+glTexCoord4f.play = True
+gl.add(glTexCoord4f)
+
+glTexCoord4fv = Function('glTexCoord4fv')
+glTexCoord4fv.ret = Return('void')
+glTexCoord4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
+glTexCoord4fv.version = '1.0'
+glTexCoord4fv.category = 'GL_VERSION_1_0'
+glTexCoord4fv.trace = True
+glTexCoord4fv.play = True
+gl.add(glTexCoord4fv)
+
+glTexCoord4i = Function('glTexCoord4i')
+glTexCoord4i.ret = Return('void')
+glTexCoord4i.add( Input( 's','GLint' ))
+glTexCoord4i.add( Input( 't','GLint' ))
+glTexCoord4i.add( Input( 'r','GLint' ))
+glTexCoord4i.add( Input( 'q','GLint' ))
+glTexCoord4i.version = '1.0'
+glTexCoord4i.category = 'GL_VERSION_1_0'
+glTexCoord4i.trace = True
+glTexCoord4i.play = True
+gl.add(glTexCoord4i)
+
+glTexCoord4iv = Function('glTexCoord4iv')
+glTexCoord4iv.ret = Return('void')
+glTexCoord4iv.add( Input( 'v','const GLint *' ,size = 4 ))
+glTexCoord4iv.version = '1.0'
+glTexCoord4iv.category = 'GL_VERSION_1_0'
+glTexCoord4iv.trace = True
+glTexCoord4iv.play = True
+gl.add(glTexCoord4iv)
+
+glTexCoord4s = Function('glTexCoord4s')
+glTexCoord4s.ret = Return('void')
+glTexCoord4s.add( Input( 's','GLshort' ))
+glTexCoord4s.add( Input( 't','GLshort' ))
+glTexCoord4s.add( Input( 'r','GLshort' ))
+glTexCoord4s.add( Input( 'q','GLshort' ))
+glTexCoord4s.version = '1.0'
+glTexCoord4s.category = 'GL_VERSION_1_0'
+glTexCoord4s.trace = True
+glTexCoord4s.play = True
+gl.add(glTexCoord4s)
+
+glTexCoord4sv = Function('glTexCoord4sv')
+glTexCoord4sv.ret = Return('void')
+glTexCoord4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glTexCoord4sv.version = '1.0'
+glTexCoord4sv.category = 'GL_VERSION_1_0'
+glTexCoord4sv.trace = True
+glTexCoord4sv.play = True
+gl.add(glTexCoord4sv)
 
 glTexEnvf = Function('glTexEnvf')
 glTexEnvf.ret = Return('void')
@@ -12457,6 +14502,72 @@ glTexEnviv.esVersions = [1.1]
 glTexEnviv.trace = True
 glTexEnviv.play = True
 gl.add(glTexEnviv)
+
+glTexGend = Function('glTexGend')
+glTexGend.ret = Return('void')
+glTexGend.add( Input( 'coord','GLenum' ))
+glTexGend.add( Input( 'pname','GLenum' ))
+glTexGend.add( Input( 'param','GLdouble' ))
+glTexGend.version = '1.0'
+glTexGend.category = 'GL_VERSION_1_0'
+glTexGend.trace = True
+glTexGend.play = True
+gl.add(glTexGend)
+
+glTexGendv = Function('glTexGendv')
+glTexGendv.ret = Return('void')
+glTexGendv.add( Input( 'coord','GLenum' ))
+glTexGendv.add( Input( 'pname','GLenum' ))
+glTexGendv.add( Input( 'params','const GLdouble *' ,size = 'helperGLTexGenvSize(pname)' ))
+glTexGendv.version = '1.0'
+glTexGendv.category = 'GL_VERSION_1_0'
+glTexGendv.trace = True
+glTexGendv.play = True
+gl.add(glTexGendv)
+
+glTexGenf = Function('glTexGenf')
+glTexGenf.ret = Return('void')
+glTexGenf.add( Input( 'coord','GLenum' ))
+glTexGenf.add( Input( 'pname','GLenum' ))
+glTexGenf.add( Input( 'param','GLfloat' ))
+glTexGenf.version = '1.0'
+glTexGenf.category = 'GL_VERSION_1_0'
+glTexGenf.trace = True
+glTexGenf.play = True
+gl.add(glTexGenf)
+
+glTexGenfv = Function('glTexGenfv')
+glTexGenfv.ret = Return('void')
+glTexGenfv.add( Input( 'coord','GLenum' ))
+glTexGenfv.add( Input( 'pname','GLenum' ))
+glTexGenfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLTexGenvSize(pname)' ))
+glTexGenfv.version = '1.0'
+glTexGenfv.category = 'GL_VERSION_1_0'
+glTexGenfv.trace = True
+glTexGenfv.play = True
+gl.add(glTexGenfv)
+
+glTexGeni = Function('glTexGeni')
+glTexGeni.ret = Return('void')
+glTexGeni.add( Input( 'coord','GLenum' ))
+glTexGeni.add( Input( 'pname','GLenum' ))
+glTexGeni.add( Input( 'param','GLint' ,regalLog = 'GLenumToString(static_cast<GLenum>(param))' ))
+glTexGeni.version = '1.0'
+glTexGeni.category = 'GL_VERSION_1_0'
+glTexGeni.trace = True
+glTexGeni.play = True
+gl.add(glTexGeni)
+
+glTexGeniv = Function('glTexGeniv')
+glTexGeniv.ret = Return('void')
+glTexGeniv.add( Input( 'coord','GLenum' ))
+glTexGeniv.add( Input( 'pname','GLenum' ))
+glTexGeniv.add( Input( 'params','const GLint *' ,size = 'helperGLTexGenvSize(pname)' ))
+glTexGeniv.version = '1.0'
+glTexGeniv.category = 'GL_VERSION_1_0'
+glTexGeniv.trace = True
+glTexGeniv.play = True
+gl.add(glTexGeniv)
 
 glTexImage1D = Function('glTexImage1D')
 glTexImage1D.ret = Return('void')
@@ -12540,6 +14651,269 @@ glTexParameteriv.trace = True
 glTexParameteriv.play = True
 gl.add(glTexParameteriv)
 
+glTranslated = Function('glTranslated')
+glTranslated.ret = Return('void')
+glTranslated.add( Input( 'x','GLdouble' ))
+glTranslated.add( Input( 'y','GLdouble' ))
+glTranslated.add( Input( 'z','GLdouble' ))
+glTranslated.version = '1.0'
+glTranslated.category = 'GL_VERSION_1_0'
+glTranslated.trace = True
+glTranslated.play = True
+gl.add(glTranslated)
+
+glTranslatef = Function('glTranslatef')
+glTranslatef.ret = Return('void')
+glTranslatef.add( Input( 'x','GLfloat' ))
+glTranslatef.add( Input( 'y','GLfloat' ))
+glTranslatef.add( Input( 'z','GLfloat' ))
+glTranslatef.version = '1.0'
+glTranslatef.category = 'GL_VERSION_1_0'
+glTranslatef.esVersions = [1.0, 1.1]
+glTranslatef.trace = True
+glTranslatef.play = True
+gl.add(glTranslatef)
+
+glVertex2d = Function('glVertex2d')
+glVertex2d.ret = Return('void')
+glVertex2d.add( Input( 'x','GLdouble' ))
+glVertex2d.add( Input( 'y','GLdouble' ))
+glVertex2d.version = '1.0'
+glVertex2d.category = 'GL_VERSION_1_0'
+glVertex2d.trace = True
+glVertex2d.play = True
+gl.add(glVertex2d)
+
+glVertex2dv = Function('glVertex2dv')
+glVertex2dv.ret = Return('void')
+glVertex2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
+glVertex2dv.version = '1.0'
+glVertex2dv.category = 'GL_VERSION_1_0'
+glVertex2dv.trace = True
+glVertex2dv.play = True
+gl.add(glVertex2dv)
+
+glVertex2f = Function('glVertex2f')
+glVertex2f.ret = Return('void')
+glVertex2f.add( Input( 'x','GLfloat' ))
+glVertex2f.add( Input( 'y','GLfloat' ))
+glVertex2f.version = '1.0'
+glVertex2f.category = 'GL_VERSION_1_0'
+glVertex2f.trace = True
+glVertex2f.play = True
+gl.add(glVertex2f)
+
+glVertex2fv = Function('glVertex2fv')
+glVertex2fv.ret = Return('void')
+glVertex2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
+glVertex2fv.version = '1.0'
+glVertex2fv.category = 'GL_VERSION_1_0'
+glVertex2fv.trace = True
+glVertex2fv.play = True
+gl.add(glVertex2fv)
+
+glVertex2i = Function('glVertex2i')
+glVertex2i.ret = Return('void')
+glVertex2i.add( Input( 'x','GLint' ))
+glVertex2i.add( Input( 'y','GLint' ))
+glVertex2i.version = '1.0'
+glVertex2i.category = 'GL_VERSION_1_0'
+glVertex2i.trace = True
+glVertex2i.play = True
+gl.add(glVertex2i)
+
+glVertex2iv = Function('glVertex2iv')
+glVertex2iv.ret = Return('void')
+glVertex2iv.add( Input( 'v','const GLint *' ,size = 2 ))
+glVertex2iv.version = '1.0'
+glVertex2iv.category = 'GL_VERSION_1_0'
+glVertex2iv.trace = True
+glVertex2iv.play = True
+gl.add(glVertex2iv)
+
+glVertex2s = Function('glVertex2s')
+glVertex2s.ret = Return('void')
+glVertex2s.add( Input( 'x','GLshort' ))
+glVertex2s.add( Input( 'y','GLshort' ))
+glVertex2s.version = '1.0'
+glVertex2s.category = 'GL_VERSION_1_0'
+glVertex2s.trace = True
+glVertex2s.play = True
+gl.add(glVertex2s)
+
+glVertex2sv = Function('glVertex2sv')
+glVertex2sv.ret = Return('void')
+glVertex2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
+glVertex2sv.version = '1.0'
+glVertex2sv.category = 'GL_VERSION_1_0'
+glVertex2sv.trace = True
+glVertex2sv.play = True
+gl.add(glVertex2sv)
+
+glVertex3d = Function('glVertex3d')
+glVertex3d.ret = Return('void')
+glVertex3d.add( Input( 'x','GLdouble' ))
+glVertex3d.add( Input( 'y','GLdouble' ))
+glVertex3d.add( Input( 'z','GLdouble' ))
+glVertex3d.version = '1.0'
+glVertex3d.category = 'GL_VERSION_1_0'
+glVertex3d.trace = True
+glVertex3d.play = True
+gl.add(glVertex3d)
+
+glVertex3dv = Function('glVertex3dv')
+glVertex3dv.ret = Return('void')
+glVertex3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
+glVertex3dv.version = '1.0'
+glVertex3dv.category = 'GL_VERSION_1_0'
+glVertex3dv.trace = True
+glVertex3dv.play = True
+gl.add(glVertex3dv)
+
+glVertex3f = Function('glVertex3f')
+glVertex3f.ret = Return('void')
+glVertex3f.add( Input( 'x','GLfloat' ))
+glVertex3f.add( Input( 'y','GLfloat' ))
+glVertex3f.add( Input( 'z','GLfloat' ))
+glVertex3f.version = '1.0'
+glVertex3f.category = 'GL_VERSION_1_0'
+glVertex3f.trace = True
+glVertex3f.play = True
+gl.add(glVertex3f)
+
+glVertex3fv = Function('glVertex3fv')
+glVertex3fv.ret = Return('void')
+glVertex3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
+glVertex3fv.version = '1.0'
+glVertex3fv.category = 'GL_VERSION_1_0'
+glVertex3fv.trace = True
+glVertex3fv.play = True
+gl.add(glVertex3fv)
+
+glVertex3i = Function('glVertex3i')
+glVertex3i.ret = Return('void')
+glVertex3i.add( Input( 'x','GLint' ))
+glVertex3i.add( Input( 'y','GLint' ))
+glVertex3i.add( Input( 'z','GLint' ))
+glVertex3i.version = '1.0'
+glVertex3i.category = 'GL_VERSION_1_0'
+glVertex3i.trace = True
+glVertex3i.play = True
+gl.add(glVertex3i)
+
+glVertex3iv = Function('glVertex3iv')
+glVertex3iv.ret = Return('void')
+glVertex3iv.add( Input( 'v','const GLint *' ,size = 3 ))
+glVertex3iv.version = '1.0'
+glVertex3iv.category = 'GL_VERSION_1_0'
+glVertex3iv.trace = True
+glVertex3iv.play = True
+gl.add(glVertex3iv)
+
+glVertex3s = Function('glVertex3s')
+glVertex3s.ret = Return('void')
+glVertex3s.add( Input( 'x','GLshort' ))
+glVertex3s.add( Input( 'y','GLshort' ))
+glVertex3s.add( Input( 'z','GLshort' ))
+glVertex3s.version = '1.0'
+glVertex3s.category = 'GL_VERSION_1_0'
+glVertex3s.trace = True
+glVertex3s.play = True
+gl.add(glVertex3s)
+
+glVertex3sv = Function('glVertex3sv')
+glVertex3sv.ret = Return('void')
+glVertex3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
+glVertex3sv.version = '1.0'
+glVertex3sv.category = 'GL_VERSION_1_0'
+glVertex3sv.trace = True
+glVertex3sv.play = True
+gl.add(glVertex3sv)
+
+glVertex4d = Function('glVertex4d')
+glVertex4d.ret = Return('void')
+glVertex4d.add( Input( 'x','GLdouble' ))
+glVertex4d.add( Input( 'y','GLdouble' ))
+glVertex4d.add( Input( 'z','GLdouble' ))
+glVertex4d.add( Input( 'w','GLdouble' ))
+glVertex4d.version = '1.0'
+glVertex4d.category = 'GL_VERSION_1_0'
+glVertex4d.trace = True
+glVertex4d.play = True
+gl.add(glVertex4d)
+
+glVertex4dv = Function('glVertex4dv')
+glVertex4dv.ret = Return('void')
+glVertex4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
+glVertex4dv.version = '1.0'
+glVertex4dv.category = 'GL_VERSION_1_0'
+glVertex4dv.trace = True
+glVertex4dv.play = True
+gl.add(glVertex4dv)
+
+glVertex4f = Function('glVertex4f')
+glVertex4f.ret = Return('void')
+glVertex4f.add( Input( 'x','GLfloat' ))
+glVertex4f.add( Input( 'y','GLfloat' ))
+glVertex4f.add( Input( 'z','GLfloat' ))
+glVertex4f.add( Input( 'w','GLfloat' ))
+glVertex4f.version = '1.0'
+glVertex4f.category = 'GL_VERSION_1_0'
+glVertex4f.trace = True
+glVertex4f.play = True
+gl.add(glVertex4f)
+
+glVertex4fv = Function('glVertex4fv')
+glVertex4fv.ret = Return('void')
+glVertex4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
+glVertex4fv.version = '1.0'
+glVertex4fv.category = 'GL_VERSION_1_0'
+glVertex4fv.trace = True
+glVertex4fv.play = True
+gl.add(glVertex4fv)
+
+glVertex4i = Function('glVertex4i')
+glVertex4i.ret = Return('void')
+glVertex4i.add( Input( 'x','GLint' ))
+glVertex4i.add( Input( 'y','GLint' ))
+glVertex4i.add( Input( 'z','GLint' ))
+glVertex4i.add( Input( 'w','GLint' ))
+glVertex4i.version = '1.0'
+glVertex4i.category = 'GL_VERSION_1_0'
+glVertex4i.trace = True
+glVertex4i.play = True
+gl.add(glVertex4i)
+
+glVertex4iv = Function('glVertex4iv')
+glVertex4iv.ret = Return('void')
+glVertex4iv.add( Input( 'v','const GLint *' ,size = 4 ))
+glVertex4iv.version = '1.0'
+glVertex4iv.category = 'GL_VERSION_1_0'
+glVertex4iv.trace = True
+glVertex4iv.play = True
+gl.add(glVertex4iv)
+
+glVertex4s = Function('glVertex4s')
+glVertex4s.ret = Return('void')
+glVertex4s.add( Input( 'x','GLshort' ))
+glVertex4s.add( Input( 'y','GLshort' ))
+glVertex4s.add( Input( 'z','GLshort' ))
+glVertex4s.add( Input( 'w','GLshort' ))
+glVertex4s.version = '1.0'
+glVertex4s.category = 'GL_VERSION_1_0'
+glVertex4s.trace = True
+glVertex4s.play = True
+gl.add(glVertex4s)
+
+glVertex4sv = Function('glVertex4sv')
+glVertex4sv.ret = Return('void')
+glVertex4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
+glVertex4sv.version = '1.0'
+glVertex4sv.category = 'GL_VERSION_1_0'
+glVertex4sv.trace = True
+glVertex4sv.play = True
+gl.add(glVertex4sv)
+
 glViewport = Function('glViewport')
 glViewport.ret = Return('void')
 glViewport.add( Input( 'x','GLint' ))
@@ -12553,2383 +14927,18 @@ glViewport.trace = True
 glViewport.play = True
 gl.add(glViewport)
 
-# GL_VERSION_1_0_DEPRECATED
-
-glAccum = Function('glAccum')
-glAccum.ret = Return('void')
-glAccum.add( Input( 'op','GLenum' ))
-glAccum.add( Input( 'value','GLfloat' ))
-glAccum.version = '1.0'
-glAccum.category = 'GL_VERSION_1_0_DEPRECATED'
-glAccum.trace = True
-glAccum.play = True
-gl.add(glAccum)
-
-glAlphaFunc = Function('glAlphaFunc')
-glAlphaFunc.ret = Return('void')
-glAlphaFunc.add( Input( 'func','GLenum' ))
-glAlphaFunc.add( Input( 'ref','GLclampf' ))
-glAlphaFunc.version = '1.0'
-glAlphaFunc.category = 'GL_VERSION_1_0_DEPRECATED'
-glAlphaFunc.esVersions = [1.0, 1.1]
-glAlphaFunc.trace = True
-glAlphaFunc.play = True
-gl.add(glAlphaFunc)
-
-glBegin = Function('glBegin')
-glBegin.ret = Return('void')
-glBegin.add( Input( 'mode','GLenum' ))
-glBegin.version = '1.0'
-glBegin.category = 'GL_VERSION_1_0_DEPRECATED'
-glBegin.trace = True
-glBegin.play = True
-gl.add(glBegin)
-
-glBitmap = Function('glBitmap')
-glBitmap.ret = Return('void')
-glBitmap.add( Input( 'width','GLsizei' ))
-glBitmap.add( Input( 'height','GLsizei' ))
-glBitmap.add( Input( 'xorig','GLfloat' ))
-glBitmap.add( Input( 'yorig','GLfloat' ))
-glBitmap.add( Input( 'xmove','GLfloat' ))
-glBitmap.add( Input( 'ymove','GLfloat' ))
-glBitmap.add( Input( 'bitmap','const GLubyte *' ,size = 'helperGLPixelImageSize(width, height, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
-glBitmap.version = '1.0'
-glBitmap.category = 'GL_VERSION_1_0_DEPRECATED'
-glBitmap.trace = True
-glBitmap.play = True
-gl.add(glBitmap)
-
-glCallList = Function('glCallList')
-glCallList.ret = Return('void')
-glCallList.add( Input( 'list','GLuint' ))
-glCallList.version = '1.0'
-glCallList.category = 'GL_VERSION_1_0_DEPRECATED'
-glCallList.trace = True
-glCallList.play = True
-gl.add(glCallList)
-
-glCallLists = Function('glCallLists')
-glCallLists.ret = Return('void')
-glCallLists.add( Input( 'n','GLsizei' ))
-glCallLists.add( Input( 'type','GLenum' ))
-glCallLists.add( Input( 'lists','const GLvoid *' ,size = 'helperGLCallListsSize(n, type)' ,cast = 'const GLubyte *' ))
-glCallLists.version = '1.0'
-glCallLists.category = 'GL_VERSION_1_0_DEPRECATED'
-glCallLists.trace = True
-glCallLists.play = True
-gl.add(glCallLists)
-
-glClearAccum = Function('glClearAccum')
-glClearAccum.ret = Return('void')
-glClearAccum.add( Input( 'red','GLfloat' ))
-glClearAccum.add( Input( 'green','GLfloat' ))
-glClearAccum.add( Input( 'blue','GLfloat' ))
-glClearAccum.add( Input( 'alpha','GLfloat' ))
-glClearAccum.version = '1.0'
-glClearAccum.category = 'GL_VERSION_1_0_DEPRECATED'
-glClearAccum.trace = True
-glClearAccum.play = True
-gl.add(glClearAccum)
-
-glColor3b = Function('glColor3b')
-glColor3b.ret = Return('void')
-glColor3b.add( Input( 'red','GLbyte' ))
-glColor3b.add( Input( 'green','GLbyte' ))
-glColor3b.add( Input( 'blue','GLbyte' ))
-glColor3b.version = '1.0'
-glColor3b.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3b.trace = True
-glColor3b.play = True
-gl.add(glColor3b)
-
-glColor3bv = Function('glColor3bv')
-glColor3bv.ret = Return('void')
-glColor3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
-glColor3bv.version = '1.0'
-glColor3bv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3bv.trace = True
-glColor3bv.play = True
-gl.add(glColor3bv)
-
-glColor3d = Function('glColor3d')
-glColor3d.ret = Return('void')
-glColor3d.add( Input( 'red','GLdouble' ))
-glColor3d.add( Input( 'green','GLdouble' ))
-glColor3d.add( Input( 'blue','GLdouble' ))
-glColor3d.version = '1.0'
-glColor3d.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3d.trace = True
-glColor3d.play = True
-gl.add(glColor3d)
-
-glColor3dv = Function('glColor3dv')
-glColor3dv.ret = Return('void')
-glColor3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glColor3dv.version = '1.0'
-glColor3dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3dv.trace = True
-glColor3dv.play = True
-gl.add(glColor3dv)
-
-glColor3f = Function('glColor3f')
-glColor3f.ret = Return('void')
-glColor3f.add( Input( 'red','GLfloat' ))
-glColor3f.add( Input( 'green','GLfloat' ))
-glColor3f.add( Input( 'blue','GLfloat' ))
-glColor3f.version = '1.0'
-glColor3f.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3f.trace = True
-glColor3f.play = True
-gl.add(glColor3f)
-
-glColor3fv = Function('glColor3fv')
-glColor3fv.ret = Return('void')
-glColor3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glColor3fv.version = '1.0'
-glColor3fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3fv.trace = True
-glColor3fv.play = True
-gl.add(glColor3fv)
-
-glColor3i = Function('glColor3i')
-glColor3i.ret = Return('void')
-glColor3i.add( Input( 'red','GLint' ))
-glColor3i.add( Input( 'green','GLint' ))
-glColor3i.add( Input( 'blue','GLint' ))
-glColor3i.version = '1.0'
-glColor3i.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3i.trace = True
-glColor3i.play = True
-gl.add(glColor3i)
-
-glColor3iv = Function('glColor3iv')
-glColor3iv.ret = Return('void')
-glColor3iv.add( Input( 'v','const GLint *' ,size = 3 ))
-glColor3iv.version = '1.0'
-glColor3iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3iv.trace = True
-glColor3iv.play = True
-gl.add(glColor3iv)
-
-glColor3s = Function('glColor3s')
-glColor3s.ret = Return('void')
-glColor3s.add( Input( 'red','GLshort' ))
-glColor3s.add( Input( 'green','GLshort' ))
-glColor3s.add( Input( 'blue','GLshort' ))
-glColor3s.version = '1.0'
-glColor3s.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3s.trace = True
-glColor3s.play = True
-gl.add(glColor3s)
-
-glColor3sv = Function('glColor3sv')
-glColor3sv.ret = Return('void')
-glColor3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glColor3sv.version = '1.0'
-glColor3sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3sv.trace = True
-glColor3sv.play = True
-gl.add(glColor3sv)
-
-glColor3ub = Function('glColor3ub')
-glColor3ub.ret = Return('void')
-glColor3ub.add( Input( 'red','GLubyte' ))
-glColor3ub.add( Input( 'green','GLubyte' ))
-glColor3ub.add( Input( 'blue','GLubyte' ))
-glColor3ub.version = '1.0'
-glColor3ub.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3ub.trace = True
-glColor3ub.play = True
-gl.add(glColor3ub)
-
-glColor3ubv = Function('glColor3ubv')
-glColor3ubv.ret = Return('void')
-glColor3ubv.add( Input( 'v','const GLubyte *' ,size = 3 ))
-glColor3ubv.version = '1.0'
-glColor3ubv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3ubv.trace = True
-glColor3ubv.play = True
-gl.add(glColor3ubv)
-
-glColor3ui = Function('glColor3ui')
-glColor3ui.ret = Return('void')
-glColor3ui.add( Input( 'red','GLuint' ))
-glColor3ui.add( Input( 'green','GLuint' ))
-glColor3ui.add( Input( 'blue','GLuint' ))
-glColor3ui.version = '1.0'
-glColor3ui.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3ui.trace = True
-glColor3ui.play = True
-gl.add(glColor3ui)
-
-glColor3uiv = Function('glColor3uiv')
-glColor3uiv.ret = Return('void')
-glColor3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
-glColor3uiv.version = '1.0'
-glColor3uiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3uiv.trace = True
-glColor3uiv.play = True
-gl.add(glColor3uiv)
-
-glColor3us = Function('glColor3us')
-glColor3us.ret = Return('void')
-glColor3us.add( Input( 'red','GLushort' ))
-glColor3us.add( Input( 'green','GLushort' ))
-glColor3us.add( Input( 'blue','GLushort' ))
-glColor3us.version = '1.0'
-glColor3us.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3us.trace = True
-glColor3us.play = True
-gl.add(glColor3us)
-
-glColor3usv = Function('glColor3usv')
-glColor3usv.ret = Return('void')
-glColor3usv.add( Input( 'v','const GLushort *' ,size = 3 ))
-glColor3usv.version = '1.0'
-glColor3usv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor3usv.trace = True
-glColor3usv.play = True
-gl.add(glColor3usv)
-
-glColor4b = Function('glColor4b')
-glColor4b.ret = Return('void')
-glColor4b.add( Input( 'red','GLbyte' ))
-glColor4b.add( Input( 'green','GLbyte' ))
-glColor4b.add( Input( 'blue','GLbyte' ))
-glColor4b.add( Input( 'alpha','GLbyte' ))
-glColor4b.version = '1.0'
-glColor4b.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4b.trace = True
-glColor4b.play = True
-gl.add(glColor4b)
-
-glColor4bv = Function('glColor4bv')
-glColor4bv.ret = Return('void')
-glColor4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
-glColor4bv.version = '1.0'
-glColor4bv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4bv.trace = True
-glColor4bv.play = True
-gl.add(glColor4bv)
-
-glColor4d = Function('glColor4d')
-glColor4d.ret = Return('void')
-glColor4d.add( Input( 'red','GLdouble' ))
-glColor4d.add( Input( 'green','GLdouble' ))
-glColor4d.add( Input( 'blue','GLdouble' ))
-glColor4d.add( Input( 'alpha','GLdouble' ))
-glColor4d.version = '1.0'
-glColor4d.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4d.trace = True
-glColor4d.play = True
-gl.add(glColor4d)
-
-glColor4dv = Function('glColor4dv')
-glColor4dv.ret = Return('void')
-glColor4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
-glColor4dv.version = '1.0'
-glColor4dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4dv.trace = True
-glColor4dv.play = True
-gl.add(glColor4dv)
-
-glColor4f = Function('glColor4f')
-glColor4f.ret = Return('void')
-glColor4f.add( Input( 'red','GLfloat' ))
-glColor4f.add( Input( 'green','GLfloat' ))
-glColor4f.add( Input( 'blue','GLfloat' ))
-glColor4f.add( Input( 'alpha','GLfloat' ))
-glColor4f.version = '1.0'
-glColor4f.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4f.esVersions = [1.0, 1.1]
-glColor4f.trace = True
-glColor4f.play = True
-gl.add(glColor4f)
-
-glColor4fv = Function('glColor4fv')
-glColor4fv.ret = Return('void')
-glColor4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
-glColor4fv.version = '1.0'
-glColor4fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4fv.trace = True
-glColor4fv.play = True
-gl.add(glColor4fv)
-
-glColor4i = Function('glColor4i')
-glColor4i.ret = Return('void')
-glColor4i.add( Input( 'red','GLint' ))
-glColor4i.add( Input( 'green','GLint' ))
-glColor4i.add( Input( 'blue','GLint' ))
-glColor4i.add( Input( 'alpha','GLint' ))
-glColor4i.version = '1.0'
-glColor4i.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4i.trace = True
-glColor4i.play = True
-gl.add(glColor4i)
-
-glColor4iv = Function('glColor4iv')
-glColor4iv.ret = Return('void')
-glColor4iv.add( Input( 'v','const GLint *' ,size = 4 ))
-glColor4iv.version = '1.0'
-glColor4iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4iv.trace = True
-glColor4iv.play = True
-gl.add(glColor4iv)
-
-glColor4s = Function('glColor4s')
-glColor4s.ret = Return('void')
-glColor4s.add( Input( 'red','GLshort' ))
-glColor4s.add( Input( 'green','GLshort' ))
-glColor4s.add( Input( 'blue','GLshort' ))
-glColor4s.add( Input( 'alpha','GLshort' ))
-glColor4s.version = '1.0'
-glColor4s.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4s.trace = True
-glColor4s.play = True
-gl.add(glColor4s)
-
-glColor4sv = Function('glColor4sv')
-glColor4sv.ret = Return('void')
-glColor4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glColor4sv.version = '1.0'
-glColor4sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4sv.trace = True
-glColor4sv.play = True
-gl.add(glColor4sv)
-
-glColor4ub = Function('glColor4ub')
-glColor4ub.ret = Return('void')
-glColor4ub.add( Input( 'red','GLubyte' ))
-glColor4ub.add( Input( 'green','GLubyte' ))
-glColor4ub.add( Input( 'blue','GLubyte' ))
-glColor4ub.add( Input( 'alpha','GLubyte' ))
-glColor4ub.version = '1.0'
-glColor4ub.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4ub.esVersions = [1.1]
-glColor4ub.trace = True
-glColor4ub.play = True
-gl.add(glColor4ub)
-
-glColor4ubv = Function('glColor4ubv')
-glColor4ubv.ret = Return('void')
-glColor4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
-glColor4ubv.version = '1.0'
-glColor4ubv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4ubv.trace = True
-glColor4ubv.play = True
-gl.add(glColor4ubv)
-
-glColor4ui = Function('glColor4ui')
-glColor4ui.ret = Return('void')
-glColor4ui.add( Input( 'red','GLuint' ))
-glColor4ui.add( Input( 'green','GLuint' ))
-glColor4ui.add( Input( 'blue','GLuint' ))
-glColor4ui.add( Input( 'alpha','GLuint' ))
-glColor4ui.version = '1.0'
-glColor4ui.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4ui.trace = True
-glColor4ui.play = True
-gl.add(glColor4ui)
-
-glColor4uiv = Function('glColor4uiv')
-glColor4uiv.ret = Return('void')
-glColor4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
-glColor4uiv.version = '1.0'
-glColor4uiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4uiv.trace = True
-glColor4uiv.play = True
-gl.add(glColor4uiv)
-
-glColor4us = Function('glColor4us')
-glColor4us.ret = Return('void')
-glColor4us.add( Input( 'red','GLushort' ))
-glColor4us.add( Input( 'green','GLushort' ))
-glColor4us.add( Input( 'blue','GLushort' ))
-glColor4us.add( Input( 'alpha','GLushort' ))
-glColor4us.version = '1.0'
-glColor4us.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4us.trace = True
-glColor4us.play = True
-gl.add(glColor4us)
-
-glColor4usv = Function('glColor4usv')
-glColor4usv.ret = Return('void')
-glColor4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
-glColor4usv.version = '1.0'
-glColor4usv.category = 'GL_VERSION_1_0_DEPRECATED'
-glColor4usv.trace = True
-glColor4usv.play = True
-gl.add(glColor4usv)
-
-glColorMaterial = Function('glColorMaterial')
-glColorMaterial.ret = Return('void')
-glColorMaterial.add( Input( 'face','GLenum' ))
-glColorMaterial.add( Input( 'mode','GLenum' ))
-glColorMaterial.version = '1.0'
-glColorMaterial.category = 'GL_VERSION_1_0_DEPRECATED'
-glColorMaterial.trace = True
-glColorMaterial.play = True
-gl.add(glColorMaterial)
-
-glDeleteLists = Function('glDeleteLists')
-glDeleteLists.ret = Return('void')
-glDeleteLists.add( Input( 'list','GLuint' ))
-glDeleteLists.add( Input( 'range','GLsizei' ))
-glDeleteLists.version = '1.0'
-glDeleteLists.category = 'GL_VERSION_1_0_DEPRECATED'
-glDeleteLists.trace = True
-glDeleteLists.play = True
-gl.add(glDeleteLists)
-
-glDrawPixels = Function('glDrawPixels')
-glDrawPixels.ret = Return('void')
-glDrawPixels.add( Input( 'width','GLsizei' ))
-glDrawPixels.add( Input( 'height','GLsizei' ))
-glDrawPixels.add( Input( 'format','GLenum' ))
-glDrawPixels.add( Input( 'type','GLenum' ))
-glDrawPixels.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, 0, format, type, 0, 0)' ,cast = 'const GLubyte *' ))
-glDrawPixels.version = '1.0'
-glDrawPixels.category = 'GL_VERSION_1_0_DEPRECATED'
-glDrawPixels.trace = True
-glDrawPixels.play = True
-gl.add(glDrawPixels)
-
-glEdgeFlag = Function('glEdgeFlag')
-glEdgeFlag.ret = Return('void')
-glEdgeFlag.add( Input( 'flag','GLboolean' ))
-glEdgeFlag.version = '1.0'
-glEdgeFlag.category = 'GL_VERSION_1_0_DEPRECATED'
-glEdgeFlag.trace = True
-glEdgeFlag.play = True
-gl.add(glEdgeFlag)
-
-glEdgeFlagv = Function('glEdgeFlagv')
-glEdgeFlagv.ret = Return('void')
-glEdgeFlagv.add( Input( 'flag','const GLboolean *' ,size = 1 ))
-glEdgeFlagv.version = '1.0'
-glEdgeFlagv.category = 'GL_VERSION_1_0_DEPRECATED'
-glEdgeFlagv.trace = True
-glEdgeFlagv.play = True
-gl.add(glEdgeFlagv)
-
-glEnd = Function('glEnd')
-glEnd.ret = Return('void')
-glEnd.version = '1.0'
-glEnd.category = 'GL_VERSION_1_0_DEPRECATED'
-glEnd.trace = True
-glEnd.play = True
-gl.add(glEnd)
-
-glEndList = Function('glEndList')
-glEndList.ret = Return('void')
-glEndList.version = '1.0'
-glEndList.category = 'GL_VERSION_1_0_DEPRECATED'
-glEndList.trace = True
-glEndList.play = True
-gl.add(glEndList)
-
-glEvalCoord1d = Function('glEvalCoord1d')
-glEvalCoord1d.ret = Return('void')
-glEvalCoord1d.add( Input( 'u','GLdouble' ))
-glEvalCoord1d.version = '1.0'
-glEvalCoord1d.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord1d.trace = True
-glEvalCoord1d.play = True
-gl.add(glEvalCoord1d)
-
-glEvalCoord1dv = Function('glEvalCoord1dv')
-glEvalCoord1dv.ret = Return('void')
-glEvalCoord1dv.add( Input( 'u','const GLdouble *' ,size = 1 ))
-glEvalCoord1dv.version = '1.0'
-glEvalCoord1dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord1dv.trace = True
-glEvalCoord1dv.play = True
-gl.add(glEvalCoord1dv)
-
-glEvalCoord1f = Function('glEvalCoord1f')
-glEvalCoord1f.ret = Return('void')
-glEvalCoord1f.add( Input( 'u','GLfloat' ))
-glEvalCoord1f.version = '1.0'
-glEvalCoord1f.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord1f.trace = True
-glEvalCoord1f.play = True
-gl.add(glEvalCoord1f)
-
-glEvalCoord1fv = Function('glEvalCoord1fv')
-glEvalCoord1fv.ret = Return('void')
-glEvalCoord1fv.add( Input( 'u','const GLfloat *' ,size = 1 ))
-glEvalCoord1fv.version = '1.0'
-glEvalCoord1fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord1fv.trace = True
-glEvalCoord1fv.play = True
-gl.add(glEvalCoord1fv)
-
-glEvalCoord2d = Function('glEvalCoord2d')
-glEvalCoord2d.ret = Return('void')
-glEvalCoord2d.add( Input( 'u','GLdouble' ))
-glEvalCoord2d.add( Input( 'v','GLdouble' ))
-glEvalCoord2d.version = '1.0'
-glEvalCoord2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord2d.trace = True
-glEvalCoord2d.play = True
-gl.add(glEvalCoord2d)
-
-glEvalCoord2dv = Function('glEvalCoord2dv')
-glEvalCoord2dv.ret = Return('void')
-glEvalCoord2dv.add( Input( 'u','const GLdouble *' ,size = 2 ))
-glEvalCoord2dv.version = '1.0'
-glEvalCoord2dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord2dv.trace = True
-glEvalCoord2dv.play = True
-gl.add(glEvalCoord2dv)
-
-glEvalCoord2f = Function('glEvalCoord2f')
-glEvalCoord2f.ret = Return('void')
-glEvalCoord2f.add( Input( 'u','GLfloat' ))
-glEvalCoord2f.add( Input( 'v','GLfloat' ))
-glEvalCoord2f.version = '1.0'
-glEvalCoord2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord2f.trace = True
-glEvalCoord2f.play = True
-gl.add(glEvalCoord2f)
-
-glEvalCoord2fv = Function('glEvalCoord2fv')
-glEvalCoord2fv.ret = Return('void')
-glEvalCoord2fv.add( Input( 'u','const GLfloat *' ,size = 2 ))
-glEvalCoord2fv.version = '1.0'
-glEvalCoord2fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalCoord2fv.trace = True
-glEvalCoord2fv.play = True
-gl.add(glEvalCoord2fv)
-
-glEvalMesh1 = Function('glEvalMesh1')
-glEvalMesh1.ret = Return('void')
-glEvalMesh1.add( Input( 'mode','GLenum' ))
-glEvalMesh1.add( Input( 'i1','GLint' ))
-glEvalMesh1.add( Input( 'i2','GLint' ))
-glEvalMesh1.version = '1.0'
-glEvalMesh1.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalMesh1.trace = True
-glEvalMesh1.play = True
-gl.add(glEvalMesh1)
-
-glEvalMesh2 = Function('glEvalMesh2')
-glEvalMesh2.ret = Return('void')
-glEvalMesh2.add( Input( 'mode','GLenum' ))
-glEvalMesh2.add( Input( 'i1','GLint' ))
-glEvalMesh2.add( Input( 'i2','GLint' ))
-glEvalMesh2.add( Input( 'j1','GLint' ))
-glEvalMesh2.add( Input( 'j2','GLint' ))
-glEvalMesh2.version = '1.0'
-glEvalMesh2.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalMesh2.trace = True
-glEvalMesh2.play = True
-gl.add(glEvalMesh2)
-
-glEvalPoint1 = Function('glEvalPoint1')
-glEvalPoint1.ret = Return('void')
-glEvalPoint1.add( Input( 'i','GLint' ))
-glEvalPoint1.version = '1.0'
-glEvalPoint1.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalPoint1.trace = True
-glEvalPoint1.play = True
-gl.add(glEvalPoint1)
-
-glEvalPoint2 = Function('glEvalPoint2')
-glEvalPoint2.ret = Return('void')
-glEvalPoint2.add( Input( 'i','GLint' ))
-glEvalPoint2.add( Input( 'j','GLint' ))
-glEvalPoint2.version = '1.0'
-glEvalPoint2.category = 'GL_VERSION_1_0_DEPRECATED'
-glEvalPoint2.trace = True
-glEvalPoint2.play = True
-gl.add(glEvalPoint2)
-
-glFeedbackBuffer = Function('glFeedbackBuffer')
-glFeedbackBuffer.ret = Return('void')
-glFeedbackBuffer.add( Input( 'size','GLsizei' ))
-glFeedbackBuffer.add( Input( 'type','GLenum' ))
-glFeedbackBuffer.add( Output( 'buffer','GLfloat *' ))
-glFeedbackBuffer.version = '1.0'
-glFeedbackBuffer.category = 'GL_VERSION_1_0_DEPRECATED'
-glFeedbackBuffer.trace = True
-glFeedbackBuffer.play = True
-gl.add(glFeedbackBuffer)
-
-glFrustum = Function('glFrustum')
-glFrustum.ret = Return('void')
-glFrustum.add( Input( 'left','GLdouble' ))
-glFrustum.add( Input( 'right','GLdouble' ))
-glFrustum.add( Input( 'bottom','GLdouble' ))
-glFrustum.add( Input( 'top','GLdouble' ))
-glFrustum.add( Input( 'zNear','GLdouble' ))
-glFrustum.add( Input( 'zFar','GLdouble' ))
-glFrustum.version = '1.0'
-glFrustum.category = 'GL_VERSION_1_0_DEPRECATED'
-glFrustum.trace = True
-glFrustum.play = True
-gl.add(glFrustum)
-
-glGenLists = Function('glGenLists')
-glGenLists.ret = Return('GLuint')
-glGenLists.add( Input( 'range','GLsizei' ))
-glGenLists.version = '1.0'
-glGenLists.category = 'GL_VERSION_1_0_DEPRECATED'
-glGenLists.trace = True
-glGenLists.play = True
-gl.add(glGenLists)
-
-glGetTexGendv = Function('glGetTexGendv')
-glGetTexGendv.ret = Return('void')
-glGetTexGendv.add( Input( 'coord','GLenum' ))
-glGetTexGendv.add( Input( 'pname','GLenum' ))
-glGetTexGendv.add( Output( 'params','GLdouble *' ))
-glGetTexGendv.version = '1.0'
-glGetTexGendv.category = 'GL_VERSION_1_0_DEPRECATED'
-glGetTexGendv.trace = True
-glGetTexGendv.play = False
-gl.add(glGetTexGendv)
-
-glGetTexGenfv = Function('glGetTexGenfv')
-glGetTexGenfv.ret = Return('void')
-glGetTexGenfv.add( Input( 'coord','GLenum' ))
-glGetTexGenfv.add( Input( 'pname','GLenum' ))
-glGetTexGenfv.add( Output( 'params','GLfloat *' ))
-glGetTexGenfv.version = '1.0'
-glGetTexGenfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glGetTexGenfv.trace = True
-glGetTexGenfv.play = False
-gl.add(glGetTexGenfv)
-
-glGetTexGeniv = Function('glGetTexGeniv')
-glGetTexGeniv.ret = Return('void')
-glGetTexGeniv.add( Input( 'coord','GLenum' ))
-glGetTexGeniv.add( Input( 'pname','GLenum' ))
-glGetTexGeniv.add( Output( 'params','GLint *' ))
-glGetTexGeniv.version = '1.0'
-glGetTexGeniv.category = 'GL_VERSION_1_0_DEPRECATED'
-glGetTexGeniv.trace = True
-glGetTexGeniv.play = False
-gl.add(glGetTexGeniv)
-
-glIndexd = Function('glIndexd')
-glIndexd.ret = Return('void')
-glIndexd.add( Input( 'c','GLdouble' ))
-glIndexd.version = '1.0'
-glIndexd.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexd.trace = True
-glIndexd.play = True
-gl.add(glIndexd)
-
-glIndexdv = Function('glIndexdv')
-glIndexdv.ret = Return('void')
-glIndexdv.add( Input( 'c','const GLdouble *' ,size = 1 ))
-glIndexdv.version = '1.0'
-glIndexdv.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexdv.trace = True
-glIndexdv.play = True
-gl.add(glIndexdv)
-
-glIndexf = Function('glIndexf')
-glIndexf.ret = Return('void')
-glIndexf.add( Input( 'c','GLfloat' ))
-glIndexf.version = '1.0'
-glIndexf.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexf.trace = True
-glIndexf.play = True
-gl.add(glIndexf)
-
-glIndexfv = Function('glIndexfv')
-glIndexfv.ret = Return('void')
-glIndexfv.add( Input( 'c','const GLfloat *' ,size = 1 ))
-glIndexfv.version = '1.0'
-glIndexfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexfv.trace = True
-glIndexfv.play = True
-gl.add(glIndexfv)
-
-glIndexi = Function('glIndexi')
-glIndexi.ret = Return('void')
-glIndexi.add( Input( 'c','GLint' ))
-glIndexi.version = '1.0'
-glIndexi.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexi.trace = True
-glIndexi.play = True
-gl.add(glIndexi)
-
-glIndexiv = Function('glIndexiv')
-glIndexiv.ret = Return('void')
-glIndexiv.add( Input( 'c','const GLint *' ,size = 1 ))
-glIndexiv.version = '1.0'
-glIndexiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexiv.trace = True
-glIndexiv.play = True
-gl.add(glIndexiv)
-
-glIndexs = Function('glIndexs')
-glIndexs.ret = Return('void')
-glIndexs.add( Input( 'c','GLshort' ))
-glIndexs.version = '1.0'
-glIndexs.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexs.trace = True
-glIndexs.play = True
-gl.add(glIndexs)
-
-glIndexsv = Function('glIndexsv')
-glIndexsv.ret = Return('void')
-glIndexsv.add( Input( 'c','const GLshort *' ,size = 1 ))
-glIndexsv.version = '1.0'
-glIndexsv.category = 'GL_VERSION_1_0_DEPRECATED'
-glIndexsv.trace = True
-glIndexsv.play = True
-gl.add(glIndexsv)
-
-glInitNames = Function('glInitNames')
-glInitNames.ret = Return('void')
-glInitNames.version = '1.0'
-glInitNames.category = 'GL_VERSION_1_0_DEPRECATED'
-glInitNames.trace = True
-glInitNames.play = True
-gl.add(glInitNames)
-
-glIsList = Function('glIsList')
-glIsList.ret = Return('GLboolean')
-glIsList.add( Input( 'list','GLuint' ))
-glIsList.version = '1.0'
-glIsList.category = 'GL_VERSION_1_0_DEPRECATED'
-glIsList.trace = True
-glIsList.play = True
-gl.add(glIsList)
-
-glLightModelf = Function('glLightModelf')
-glLightModelf.ret = Return('void')
-glLightModelf.add( Input( 'pname','GLenum' ))
-glLightModelf.add( Input( 'param','GLfloat' ))
-glLightModelf.version = '1.0'
-glLightModelf.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightModelf.esVersions = [1.0, 1.1]
-glLightModelf.trace = True
-glLightModelf.play = True
-gl.add(glLightModelf)
-
-glLightModelfv = Function('glLightModelfv')
-glLightModelfv.ret = Return('void')
-glLightModelfv.add( Input( 'pname','GLenum' ))
-glLightModelfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightModelvSize(pname)' ))
-glLightModelfv.version = '1.0'
-glLightModelfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightModelfv.esVersions = [1.0, 1.1]
-glLightModelfv.trace = True
-glLightModelfv.play = True
-gl.add(glLightModelfv)
-
-glLightModeli = Function('glLightModeli')
-glLightModeli.ret = Return('void')
-glLightModeli.add( Input( 'pname','GLenum' ))
-glLightModeli.add( Input( 'param','GLint' ))
-glLightModeli.version = '1.0'
-glLightModeli.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightModeli.trace = True
-glLightModeli.play = True
-gl.add(glLightModeli)
-
-glLightModeliv = Function('glLightModeliv')
-glLightModeliv.ret = Return('void')
-glLightModeliv.add( Input( 'pname','GLenum' ))
-glLightModeliv.add( Input( 'params','const GLint *' ,size = 'helperGLLightModelvSize(pname)' ))
-glLightModeliv.version = '1.0'
-glLightModeliv.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightModeliv.trace = True
-glLightModeliv.play = True
-gl.add(glLightModeliv)
-
-glLightf = Function('glLightf')
-glLightf.ret = Return('void')
-glLightf.add( Input( 'light','GLenum' ))
-glLightf.add( Input( 'pname','GLenum' ))
-glLightf.add( Input( 'param','GLfloat' ))
-glLightf.version = '1.0'
-glLightf.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightf.esVersions = [1.0, 1.1]
-glLightf.trace = True
-glLightf.play = True
-gl.add(glLightf)
-
-glLightfv = Function('glLightfv')
-glLightfv.ret = Return('void')
-glLightfv.add( Input( 'light','GLenum' ))
-glLightfv.add( Input( 'pname','GLenum' ))
-glLightfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightvSize(pname)' ))
-glLightfv.version = '1.0'
-glLightfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightfv.esVersions = [1.0, 1.1]
-glLightfv.trace = True
-glLightfv.play = True
-gl.add(glLightfv)
-
-glLighti = Function('glLighti')
-glLighti.ret = Return('void')
-glLighti.add( Input( 'light','GLenum' ))
-glLighti.add( Input( 'pname','GLenum' ))
-glLighti.add( Input( 'param','GLint' ))
-glLighti.version = '1.0'
-glLighti.category = 'GL_VERSION_1_0_DEPRECATED'
-glLighti.trace = True
-glLighti.play = True
-gl.add(glLighti)
-
-glLightiv = Function('glLightiv')
-glLightiv.ret = Return('void')
-glLightiv.add( Input( 'light','GLenum' ))
-glLightiv.add( Input( 'pname','GLenum' ))
-glLightiv.add( Input( 'params','const GLint *' ,size = 'helperGLLightvSize(pname)' ))
-glLightiv.version = '1.0'
-glLightiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glLightiv.trace = True
-glLightiv.play = True
-gl.add(glLightiv)
-
-glLineStipple = Function('glLineStipple')
-glLineStipple.ret = Return('void')
-glLineStipple.add( Input( 'factor','GLint' ))
-glLineStipple.add( Input( 'pattern','GLushort' ))
-glLineStipple.version = '1.0'
-glLineStipple.category = 'GL_VERSION_1_0_DEPRECATED'
-glLineStipple.trace = True
-glLineStipple.play = True
-gl.add(glLineStipple)
-
-glListBase = Function('glListBase')
-glListBase.ret = Return('void')
-glListBase.add( Input( 'base','GLuint' ))
-glListBase.version = '1.0'
-glListBase.category = 'GL_VERSION_1_0_DEPRECATED'
-glListBase.trace = True
-glListBase.play = True
-gl.add(glListBase)
-
-glLoadIdentity = Function('glLoadIdentity')
-glLoadIdentity.ret = Return('void')
-glLoadIdentity.version = '1.0'
-glLoadIdentity.category = 'GL_VERSION_1_0_DEPRECATED'
-glLoadIdentity.esVersions = [1.0, 1.1]
-glLoadIdentity.trace = True
-glLoadIdentity.play = True
-gl.add(glLoadIdentity)
-
-glLoadMatrixd = Function('glLoadMatrixd')
-glLoadMatrixd.ret = Return('void')
-glLoadMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
-glLoadMatrixd.version = '1.0'
-glLoadMatrixd.category = 'GL_VERSION_1_0_DEPRECATED'
-glLoadMatrixd.trace = True
-glLoadMatrixd.play = True
-gl.add(glLoadMatrixd)
-
-glLoadMatrixf = Function('glLoadMatrixf')
-glLoadMatrixf.ret = Return('void')
-glLoadMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
-glLoadMatrixf.version = '1.0'
-glLoadMatrixf.category = 'GL_VERSION_1_0_DEPRECATED'
-glLoadMatrixf.esVersions = [1.0, 1.1]
-glLoadMatrixf.trace = True
-glLoadMatrixf.play = True
-gl.add(glLoadMatrixf)
-
-glLoadName = Function('glLoadName')
-glLoadName.ret = Return('void')
-glLoadName.add( Input( 'name','GLuint' ))
-glLoadName.version = '1.0'
-glLoadName.category = 'GL_VERSION_1_0_DEPRECATED'
-glLoadName.trace = True
-glLoadName.play = True
-gl.add(glLoadName)
-
-glMap1d = Function('glMap1d')
-glMap1d.ret = Return('void')
-glMap1d.add( Input( 'target','GLenum' ))
-glMap1d.add( Input( 'u1','GLdouble' ))
-glMap1d.add( Input( 'u2','GLdouble' ))
-glMap1d.add( Input( 'stride','GLint' ))
-glMap1d.add( Input( 'order','GLint' ))
-glMap1d.add( Input( 'points','const GLdouble *' ))
-glMap1d.version = '1.0'
-glMap1d.category = 'GL_VERSION_1_0_DEPRECATED'
-glMap1d.trace = True
-glMap1d.play = True
-gl.add(glMap1d)
-
-glMap1f = Function('glMap1f')
-glMap1f.ret = Return('void')
-glMap1f.add( Input( 'target','GLenum' ))
-glMap1f.add( Input( 'u1','GLfloat' ))
-glMap1f.add( Input( 'u2','GLfloat' ))
-glMap1f.add( Input( 'stride','GLint' ))
-glMap1f.add( Input( 'order','GLint' ))
-glMap1f.add( Input( 'points','const GLfloat *' ))
-glMap1f.version = '1.0'
-glMap1f.category = 'GL_VERSION_1_0_DEPRECATED'
-glMap1f.trace = True
-glMap1f.play = True
-gl.add(glMap1f)
-
-glMap2d = Function('glMap2d')
-glMap2d.ret = Return('void')
-glMap2d.add( Input( 'target','GLenum' ))
-glMap2d.add( Input( 'u1','GLdouble' ))
-glMap2d.add( Input( 'u2','GLdouble' ))
-glMap2d.add( Input( 'ustride','GLint' ))
-glMap2d.add( Input( 'uorder','GLint' ))
-glMap2d.add( Input( 'v1','GLdouble' ))
-glMap2d.add( Input( 'v2','GLdouble' ))
-glMap2d.add( Input( 'vstride','GLint' ))
-glMap2d.add( Input( 'vorder','GLint' ))
-glMap2d.add( Input( 'points','const GLdouble *' ))
-glMap2d.version = '1.0'
-glMap2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glMap2d.trace = True
-glMap2d.play = True
-gl.add(glMap2d)
-
-glMap2f = Function('glMap2f')
-glMap2f.ret = Return('void')
-glMap2f.add( Input( 'target','GLenum' ))
-glMap2f.add( Input( 'u1','GLfloat' ))
-glMap2f.add( Input( 'u2','GLfloat' ))
-glMap2f.add( Input( 'ustride','GLint' ))
-glMap2f.add( Input( 'uorder','GLint' ))
-glMap2f.add( Input( 'v1','GLfloat' ))
-glMap2f.add( Input( 'v2','GLfloat' ))
-glMap2f.add( Input( 'vstride','GLint' ))
-glMap2f.add( Input( 'vorder','GLint' ))
-glMap2f.add( Input( 'points','const GLfloat *' ))
-glMap2f.version = '1.0'
-glMap2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glMap2f.trace = True
-glMap2f.play = True
-gl.add(glMap2f)
-
-glMapGrid1d = Function('glMapGrid1d')
-glMapGrid1d.ret = Return('void')
-glMapGrid1d.add( Input( 'un','GLint' ))
-glMapGrid1d.add( Input( 'u1','GLdouble' ))
-glMapGrid1d.add( Input( 'u2','GLdouble' ))
-glMapGrid1d.version = '1.0'
-glMapGrid1d.category = 'GL_VERSION_1_0_DEPRECATED'
-glMapGrid1d.trace = True
-glMapGrid1d.play = True
-gl.add(glMapGrid1d)
-
-glMapGrid1f = Function('glMapGrid1f')
-glMapGrid1f.ret = Return('void')
-glMapGrid1f.add( Input( 'un','GLint' ))
-glMapGrid1f.add( Input( 'u1','GLfloat' ))
-glMapGrid1f.add( Input( 'u2','GLfloat' ))
-glMapGrid1f.version = '1.0'
-glMapGrid1f.category = 'GL_VERSION_1_0_DEPRECATED'
-glMapGrid1f.trace = True
-glMapGrid1f.play = True
-gl.add(glMapGrid1f)
-
-glMapGrid2d = Function('glMapGrid2d')
-glMapGrid2d.ret = Return('void')
-glMapGrid2d.add( Input( 'un','GLint' ))
-glMapGrid2d.add( Input( 'u1','GLdouble' ))
-glMapGrid2d.add( Input( 'u2','GLdouble' ))
-glMapGrid2d.add( Input( 'vn','GLint' ))
-glMapGrid2d.add( Input( 'v1','GLdouble' ))
-glMapGrid2d.add( Input( 'v2','GLdouble' ))
-glMapGrid2d.version = '1.0'
-glMapGrid2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glMapGrid2d.trace = True
-glMapGrid2d.play = True
-gl.add(glMapGrid2d)
-
-glMapGrid2f = Function('glMapGrid2f')
-glMapGrid2f.ret = Return('void')
-glMapGrid2f.add( Input( 'un','GLint' ))
-glMapGrid2f.add( Input( 'u1','GLfloat' ))
-glMapGrid2f.add( Input( 'u2','GLfloat' ))
-glMapGrid2f.add( Input( 'vn','GLint' ))
-glMapGrid2f.add( Input( 'v1','GLfloat' ))
-glMapGrid2f.add( Input( 'v2','GLfloat' ))
-glMapGrid2f.version = '1.0'
-glMapGrid2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glMapGrid2f.trace = True
-glMapGrid2f.play = True
-gl.add(glMapGrid2f)
-
-glMaterialf = Function('glMaterialf')
-glMaterialf.ret = Return('void')
-glMaterialf.add( Input( 'face','GLenum' ))
-glMaterialf.add( Input( 'pname','GLenum' ))
-glMaterialf.add( Input( 'param','GLfloat' ))
-glMaterialf.version = '1.0'
-glMaterialf.category = 'GL_VERSION_1_0_DEPRECATED'
-glMaterialf.esVersions = [1.0, 1.1]
-glMaterialf.trace = True
-glMaterialf.play = True
-gl.add(glMaterialf)
-
-glMaterialfv = Function('glMaterialfv')
-glMaterialfv.ret = Return('void')
-glMaterialfv.add( Input( 'face','GLenum' ))
-glMaterialfv.add( Input( 'pname','GLenum' ))
-glMaterialfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLMaterialvSize(pname)' ))
-glMaterialfv.version = '1.0'
-glMaterialfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glMaterialfv.esVersions = [1.0, 1.1]
-glMaterialfv.trace = True
-glMaterialfv.play = True
-gl.add(glMaterialfv)
-
-glMateriali = Function('glMateriali')
-glMateriali.ret = Return('void')
-glMateriali.add( Input( 'face','GLenum' ))
-glMateriali.add( Input( 'pname','GLenum' ))
-glMateriali.add( Input( 'param','GLint' ))
-glMateriali.version = '1.0'
-glMateriali.category = 'GL_VERSION_1_0_DEPRECATED'
-glMateriali.trace = True
-glMateriali.play = True
-gl.add(glMateriali)
-
-glMaterialiv = Function('glMaterialiv')
-glMaterialiv.ret = Return('void')
-glMaterialiv.add( Input( 'face','GLenum' ))
-glMaterialiv.add( Input( 'pname','GLenum' ))
-glMaterialiv.add( Input( 'params','const GLint *' ,size = 'helperGLMaterialvSize(pname)' ))
-glMaterialiv.version = '1.0'
-glMaterialiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glMaterialiv.trace = True
-glMaterialiv.play = True
-gl.add(glMaterialiv)
-
-glMatrixMode = Function('glMatrixMode')
-glMatrixMode.ret = Return('void')
-glMatrixMode.add( Input( 'mode','GLenum' ))
-glMatrixMode.version = '1.0'
-glMatrixMode.category = 'GL_VERSION_1_0_DEPRECATED'
-glMatrixMode.esVersions = [1.0, 1.1]
-glMatrixMode.trace = True
-glMatrixMode.play = True
-gl.add(glMatrixMode)
-
-glMultMatrixd = Function('glMultMatrixd')
-glMultMatrixd.ret = Return('void')
-glMultMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
-glMultMatrixd.version = '1.0'
-glMultMatrixd.category = 'GL_VERSION_1_0_DEPRECATED'
-glMultMatrixd.trace = True
-glMultMatrixd.play = True
-gl.add(glMultMatrixd)
-
-glMultMatrixf = Function('glMultMatrixf')
-glMultMatrixf.ret = Return('void')
-glMultMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
-glMultMatrixf.version = '1.0'
-glMultMatrixf.category = 'GL_VERSION_1_0_DEPRECATED'
-glMultMatrixf.esVersions = [1.0, 1.1]
-glMultMatrixf.trace = True
-glMultMatrixf.play = True
-gl.add(glMultMatrixf)
-
-glNewList = Function('glNewList')
-glNewList.ret = Return('void')
-glNewList.add( Input( 'list','GLuint' ))
-glNewList.add( Input( 'mode','GLenum' ))
-glNewList.version = '1.0'
-glNewList.category = 'GL_VERSION_1_0_DEPRECATED'
-glNewList.trace = True
-glNewList.play = True
-gl.add(glNewList)
-
-glNormal3b = Function('glNormal3b')
-glNormal3b.ret = Return('void')
-glNormal3b.add( Input( 'nx','GLbyte' ))
-glNormal3b.add( Input( 'ny','GLbyte' ))
-glNormal3b.add( Input( 'nz','GLbyte' ))
-glNormal3b.version = '1.0'
-glNormal3b.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3b.trace = True
-glNormal3b.play = True
-gl.add(glNormal3b)
-
-glNormal3bv = Function('glNormal3bv')
-glNormal3bv.ret = Return('void')
-glNormal3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
-glNormal3bv.version = '1.0'
-glNormal3bv.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3bv.trace = True
-glNormal3bv.play = True
-gl.add(glNormal3bv)
-
-glNormal3d = Function('glNormal3d')
-glNormal3d.ret = Return('void')
-glNormal3d.add( Input( 'nx','GLdouble' ))
-glNormal3d.add( Input( 'ny','GLdouble' ))
-glNormal3d.add( Input( 'nz','GLdouble' ))
-glNormal3d.version = '1.0'
-glNormal3d.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3d.trace = True
-glNormal3d.play = True
-gl.add(glNormal3d)
-
-glNormal3dv = Function('glNormal3dv')
-glNormal3dv.ret = Return('void')
-glNormal3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glNormal3dv.version = '1.0'
-glNormal3dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3dv.trace = True
-glNormal3dv.play = True
-gl.add(glNormal3dv)
-
-glNormal3f = Function('glNormal3f')
-glNormal3f.ret = Return('void')
-glNormal3f.add( Input( 'nx','GLfloat' ))
-glNormal3f.add( Input( 'ny','GLfloat' ))
-glNormal3f.add( Input( 'nz','GLfloat' ))
-glNormal3f.version = '1.0'
-glNormal3f.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3f.esVersions = [1.0, 1.1]
-glNormal3f.trace = True
-glNormal3f.play = True
-gl.add(glNormal3f)
-
-glNormal3fv = Function('glNormal3fv')
-glNormal3fv.ret = Return('void')
-glNormal3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glNormal3fv.version = '1.0'
-glNormal3fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3fv.trace = True
-glNormal3fv.play = True
-gl.add(glNormal3fv)
-
-glNormal3i = Function('glNormal3i')
-glNormal3i.ret = Return('void')
-glNormal3i.add( Input( 'nx','GLint' ))
-glNormal3i.add( Input( 'ny','GLint' ))
-glNormal3i.add( Input( 'nz','GLint' ))
-glNormal3i.version = '1.0'
-glNormal3i.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3i.trace = True
-glNormal3i.play = True
-gl.add(glNormal3i)
-
-glNormal3iv = Function('glNormal3iv')
-glNormal3iv.ret = Return('void')
-glNormal3iv.add( Input( 'v','const GLint *' ,size = 3 ))
-glNormal3iv.version = '1.0'
-glNormal3iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3iv.trace = True
-glNormal3iv.play = True
-gl.add(glNormal3iv)
-
-glNormal3s = Function('glNormal3s')
-glNormal3s.ret = Return('void')
-glNormal3s.add( Input( 'nx','GLshort' ))
-glNormal3s.add( Input( 'ny','GLshort' ))
-glNormal3s.add( Input( 'nz','GLshort' ))
-glNormal3s.version = '1.0'
-glNormal3s.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3s.trace = True
-glNormal3s.play = True
-gl.add(glNormal3s)
-
-glNormal3sv = Function('glNormal3sv')
-glNormal3sv.ret = Return('void')
-glNormal3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glNormal3sv.version = '1.0'
-glNormal3sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glNormal3sv.trace = True
-glNormal3sv.play = True
-gl.add(glNormal3sv)
-
-glOrtho = Function('glOrtho')
-glOrtho.ret = Return('void')
-glOrtho.add( Input( 'left','GLdouble' ))
-glOrtho.add( Input( 'right','GLdouble' ))
-glOrtho.add( Input( 'bottom','GLdouble' ))
-glOrtho.add( Input( 'top','GLdouble' ))
-glOrtho.add( Input( 'zNear','GLdouble' ))
-glOrtho.add( Input( 'zFar','GLdouble' ))
-glOrtho.version = '1.0'
-glOrtho.category = 'GL_VERSION_1_0_DEPRECATED'
-glOrtho.trace = True
-glOrtho.play = True
-gl.add(glOrtho)
-
-glPassThrough = Function('glPassThrough')
-glPassThrough.ret = Return('void')
-glPassThrough.add( Input( 'token','GLfloat' ))
-glPassThrough.version = '1.0'
-glPassThrough.category = 'GL_VERSION_1_0_DEPRECATED'
-glPassThrough.trace = True
-glPassThrough.play = True
-gl.add(glPassThrough)
-
-glPixelMapfv = Function('glPixelMapfv')
-glPixelMapfv.ret = Return('void')
-glPixelMapfv.add( Input( 'map','GLenum' ))
-glPixelMapfv.add( Input( 'mapsize','GLsizei' ))
-glPixelMapfv.add( Input( 'values','const GLfloat *' ,size = 'mapsize' ))
-glPixelMapfv.version = '1.0'
-glPixelMapfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelMapfv.trace = True
-glPixelMapfv.play = True
-gl.add(glPixelMapfv)
-
-glPixelMapuiv = Function('glPixelMapuiv')
-glPixelMapuiv.ret = Return('void')
-glPixelMapuiv.add( Input( 'map','GLenum' ))
-glPixelMapuiv.add( Input( 'mapsize','GLsizei' ))
-glPixelMapuiv.add( Input( 'values','const GLuint *' ,size = 'mapsize' ))
-glPixelMapuiv.version = '1.0'
-glPixelMapuiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelMapuiv.trace = True
-glPixelMapuiv.play = True
-gl.add(glPixelMapuiv)
-
-glPixelMapusv = Function('glPixelMapusv')
-glPixelMapusv.ret = Return('void')
-glPixelMapusv.add( Input( 'map','GLenum' ))
-glPixelMapusv.add( Input( 'mapsize','GLsizei' ))
-glPixelMapusv.add( Input( 'values','const GLushort *' ,size = 'mapsize' ))
-glPixelMapusv.version = '1.0'
-glPixelMapusv.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelMapusv.trace = True
-glPixelMapusv.play = True
-gl.add(glPixelMapusv)
-
-glPixelTransferf = Function('glPixelTransferf')
-glPixelTransferf.ret = Return('void')
-glPixelTransferf.add( Input( 'pname','GLenum' ))
-glPixelTransferf.add( Input( 'param','GLfloat' ))
-glPixelTransferf.version = '1.0'
-glPixelTransferf.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelTransferf.trace = True
-glPixelTransferf.play = True
-gl.add(glPixelTransferf)
-
-glPixelTransferi = Function('glPixelTransferi')
-glPixelTransferi.ret = Return('void')
-glPixelTransferi.add( Input( 'pname','GLenum' ))
-glPixelTransferi.add( Input( 'param','GLint' ))
-glPixelTransferi.version = '1.0'
-glPixelTransferi.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelTransferi.trace = True
-glPixelTransferi.play = True
-gl.add(glPixelTransferi)
-
-glPixelZoom = Function('glPixelZoom')
-glPixelZoom.ret = Return('void')
-glPixelZoom.add( Input( 'xfactor','GLfloat' ))
-glPixelZoom.add( Input( 'yfactor','GLfloat' ))
-glPixelZoom.version = '1.0'
-glPixelZoom.category = 'GL_VERSION_1_0_DEPRECATED'
-glPixelZoom.trace = True
-glPixelZoom.play = True
-gl.add(glPixelZoom)
-
-glPolygonStipple = Function('glPolygonStipple')
-glPolygonStipple.ret = Return('void')
-glPolygonStipple.add( Input( 'mask','const GLubyte *' ,size = 'helperGLPixelImageSize(32, 32, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
-glPolygonStipple.version = '1.0'
-glPolygonStipple.category = 'GL_VERSION_1_0_DEPRECATED'
-glPolygonStipple.trace = True
-glPolygonStipple.play = True
-gl.add(glPolygonStipple)
-
-glPopAttrib = Function('glPopAttrib')
-glPopAttrib.ret = Return('void')
-glPopAttrib.version = '1.0'
-glPopAttrib.category = 'GL_VERSION_1_0_DEPRECATED'
-glPopAttrib.trace = True
-glPopAttrib.play = True
-gl.add(glPopAttrib)
-
-glPopMatrix = Function('glPopMatrix')
-glPopMatrix.ret = Return('void')
-glPopMatrix.version = '1.0'
-glPopMatrix.category = 'GL_VERSION_1_0_DEPRECATED'
-glPopMatrix.esVersions = [1.0, 1.1]
-glPopMatrix.trace = True
-glPopMatrix.play = True
-gl.add(glPopMatrix)
-
-glPopName = Function('glPopName')
-glPopName.ret = Return('void')
-glPopName.version = '1.0'
-glPopName.category = 'GL_VERSION_1_0_DEPRECATED'
-glPopName.trace = True
-glPopName.play = True
-gl.add(glPopName)
-
-glPushAttrib = Function('glPushAttrib')
-glPushAttrib.ret = Return('void')
-glPushAttrib.add( Input( 'mask','GLbitfield' ))
-glPushAttrib.version = '1.0'
-glPushAttrib.category = 'GL_VERSION_1_0_DEPRECATED'
-glPushAttrib.trace = True
-glPushAttrib.play = True
-gl.add(glPushAttrib)
-
-glPushMatrix = Function('glPushMatrix')
-glPushMatrix.ret = Return('void')
-glPushMatrix.version = '1.0'
-glPushMatrix.category = 'GL_VERSION_1_0_DEPRECATED'
-glPushMatrix.esVersions = [1.0, 1.1]
-glPushMatrix.trace = True
-glPushMatrix.play = True
-gl.add(glPushMatrix)
-
-glPushName = Function('glPushName')
-glPushName.ret = Return('void')
-glPushName.add( Input( 'name','GLuint' ))
-glPushName.version = '1.0'
-glPushName.category = 'GL_VERSION_1_0_DEPRECATED'
-glPushName.trace = True
-glPushName.play = True
-gl.add(glPushName)
-
-glRasterPos2d = Function('glRasterPos2d')
-glRasterPos2d.ret = Return('void')
-glRasterPos2d.add( Input( 'x','GLdouble' ))
-glRasterPos2d.add( Input( 'y','GLdouble' ))
-glRasterPos2d.version = '1.0'
-glRasterPos2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2d.trace = True
-glRasterPos2d.play = True
-gl.add(glRasterPos2d)
-
-glRasterPos2dv = Function('glRasterPos2dv')
-glRasterPos2dv.ret = Return('void')
-glRasterPos2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
-glRasterPos2dv.version = '1.0'
-glRasterPos2dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2dv.trace = True
-glRasterPos2dv.play = True
-gl.add(glRasterPos2dv)
-
-glRasterPos2f = Function('glRasterPos2f')
-glRasterPos2f.ret = Return('void')
-glRasterPos2f.add( Input( 'x','GLfloat' ))
-glRasterPos2f.add( Input( 'y','GLfloat' ))
-glRasterPos2f.version = '1.0'
-glRasterPos2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2f.trace = True
-glRasterPos2f.play = True
-gl.add(glRasterPos2f)
-
-glRasterPos2fv = Function('glRasterPos2fv')
-glRasterPos2fv.ret = Return('void')
-glRasterPos2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
-glRasterPos2fv.version = '1.0'
-glRasterPos2fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2fv.trace = True
-glRasterPos2fv.play = True
-gl.add(glRasterPos2fv)
-
-glRasterPos2i = Function('glRasterPos2i')
-glRasterPos2i.ret = Return('void')
-glRasterPos2i.add( Input( 'x','GLint' ))
-glRasterPos2i.add( Input( 'y','GLint' ))
-glRasterPos2i.version = '1.0'
-glRasterPos2i.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2i.trace = True
-glRasterPos2i.play = True
-gl.add(glRasterPos2i)
-
-glRasterPos2iv = Function('glRasterPos2iv')
-glRasterPos2iv.ret = Return('void')
-glRasterPos2iv.add( Input( 'v','const GLint *' ,size = 2 ))
-glRasterPos2iv.version = '1.0'
-glRasterPos2iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2iv.trace = True
-glRasterPos2iv.play = True
-gl.add(glRasterPos2iv)
-
-glRasterPos2s = Function('glRasterPos2s')
-glRasterPos2s.ret = Return('void')
-glRasterPos2s.add( Input( 'x','GLshort' ))
-glRasterPos2s.add( Input( 'y','GLshort' ))
-glRasterPos2s.version = '1.0'
-glRasterPos2s.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2s.trace = True
-glRasterPos2s.play = True
-gl.add(glRasterPos2s)
-
-glRasterPos2sv = Function('glRasterPos2sv')
-glRasterPos2sv.ret = Return('void')
-glRasterPos2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
-glRasterPos2sv.version = '1.0'
-glRasterPos2sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos2sv.trace = True
-glRasterPos2sv.play = True
-gl.add(glRasterPos2sv)
-
-glRasterPos3d = Function('glRasterPos3d')
-glRasterPos3d.ret = Return('void')
-glRasterPos3d.add( Input( 'x','GLdouble' ))
-glRasterPos3d.add( Input( 'y','GLdouble' ))
-glRasterPos3d.add( Input( 'z','GLdouble' ))
-glRasterPos3d.version = '1.0'
-glRasterPos3d.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3d.trace = True
-glRasterPos3d.play = True
-gl.add(glRasterPos3d)
-
-glRasterPos3dv = Function('glRasterPos3dv')
-glRasterPos3dv.ret = Return('void')
-glRasterPos3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glRasterPos3dv.version = '1.0'
-glRasterPos3dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3dv.trace = True
-glRasterPos3dv.play = True
-gl.add(glRasterPos3dv)
-
-glRasterPos3f = Function('glRasterPos3f')
-glRasterPos3f.ret = Return('void')
-glRasterPos3f.add( Input( 'x','GLfloat' ))
-glRasterPos3f.add( Input( 'y','GLfloat' ))
-glRasterPos3f.add( Input( 'z','GLfloat' ))
-glRasterPos3f.version = '1.0'
-glRasterPos3f.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3f.trace = True
-glRasterPos3f.play = True
-gl.add(glRasterPos3f)
-
-glRasterPos3fv = Function('glRasterPos3fv')
-glRasterPos3fv.ret = Return('void')
-glRasterPos3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glRasterPos3fv.version = '1.0'
-glRasterPos3fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3fv.trace = True
-glRasterPos3fv.play = True
-gl.add(glRasterPos3fv)
-
-glRasterPos3i = Function('glRasterPos3i')
-glRasterPos3i.ret = Return('void')
-glRasterPos3i.add( Input( 'x','GLint' ))
-glRasterPos3i.add( Input( 'y','GLint' ))
-glRasterPos3i.add( Input( 'z','GLint' ))
-glRasterPos3i.version = '1.0'
-glRasterPos3i.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3i.trace = True
-glRasterPos3i.play = True
-gl.add(glRasterPos3i)
-
-glRasterPos3iv = Function('glRasterPos3iv')
-glRasterPos3iv.ret = Return('void')
-glRasterPos3iv.add( Input( 'v','const GLint *' ,size = 3 ))
-glRasterPos3iv.version = '1.0'
-glRasterPos3iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3iv.trace = True
-glRasterPos3iv.play = True
-gl.add(glRasterPos3iv)
-
-glRasterPos3s = Function('glRasterPos3s')
-glRasterPos3s.ret = Return('void')
-glRasterPos3s.add( Input( 'x','GLshort' ))
-glRasterPos3s.add( Input( 'y','GLshort' ))
-glRasterPos3s.add( Input( 'z','GLshort' ))
-glRasterPos3s.version = '1.0'
-glRasterPos3s.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3s.trace = True
-glRasterPos3s.play = True
-gl.add(glRasterPos3s)
-
-glRasterPos3sv = Function('glRasterPos3sv')
-glRasterPos3sv.ret = Return('void')
-glRasterPos3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glRasterPos3sv.version = '1.0'
-glRasterPos3sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos3sv.trace = True
-glRasterPos3sv.play = True
-gl.add(glRasterPos3sv)
-
-glRasterPos4d = Function('glRasterPos4d')
-glRasterPos4d.ret = Return('void')
-glRasterPos4d.add( Input( 'x','GLdouble' ))
-glRasterPos4d.add( Input( 'y','GLdouble' ))
-glRasterPos4d.add( Input( 'z','GLdouble' ))
-glRasterPos4d.add( Input( 'w','GLdouble' ))
-glRasterPos4d.version = '1.0'
-glRasterPos4d.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4d.trace = True
-glRasterPos4d.play = True
-gl.add(glRasterPos4d)
-
-glRasterPos4dv = Function('glRasterPos4dv')
-glRasterPos4dv.ret = Return('void')
-glRasterPos4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
-glRasterPos4dv.version = '1.0'
-glRasterPos4dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4dv.trace = True
-glRasterPos4dv.play = True
-gl.add(glRasterPos4dv)
-
-glRasterPos4f = Function('glRasterPos4f')
-glRasterPos4f.ret = Return('void')
-glRasterPos4f.add( Input( 'x','GLfloat' ))
-glRasterPos4f.add( Input( 'y','GLfloat' ))
-glRasterPos4f.add( Input( 'z','GLfloat' ))
-glRasterPos4f.add( Input( 'w','GLfloat' ))
-glRasterPos4f.version = '1.0'
-glRasterPos4f.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4f.trace = True
-glRasterPos4f.play = True
-gl.add(glRasterPos4f)
-
-glRasterPos4fv = Function('glRasterPos4fv')
-glRasterPos4fv.ret = Return('void')
-glRasterPos4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
-glRasterPos4fv.version = '1.0'
-glRasterPos4fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4fv.trace = True
-glRasterPos4fv.play = True
-gl.add(glRasterPos4fv)
-
-glRasterPos4i = Function('glRasterPos4i')
-glRasterPos4i.ret = Return('void')
-glRasterPos4i.add( Input( 'x','GLint' ))
-glRasterPos4i.add( Input( 'y','GLint' ))
-glRasterPos4i.add( Input( 'z','GLint' ))
-glRasterPos4i.add( Input( 'w','GLint' ))
-glRasterPos4i.version = '1.0'
-glRasterPos4i.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4i.trace = True
-glRasterPos4i.play = True
-gl.add(glRasterPos4i)
-
-glRasterPos4iv = Function('glRasterPos4iv')
-glRasterPos4iv.ret = Return('void')
-glRasterPos4iv.add( Input( 'v','const GLint *' ,size = 4 ))
-glRasterPos4iv.version = '1.0'
-glRasterPos4iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4iv.trace = True
-glRasterPos4iv.play = True
-gl.add(glRasterPos4iv)
-
-glRasterPos4s = Function('glRasterPos4s')
-glRasterPos4s.ret = Return('void')
-glRasterPos4s.add( Input( 'x','GLshort' ))
-glRasterPos4s.add( Input( 'y','GLshort' ))
-glRasterPos4s.add( Input( 'z','GLshort' ))
-glRasterPos4s.add( Input( 'w','GLshort' ))
-glRasterPos4s.version = '1.0'
-glRasterPos4s.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4s.trace = True
-glRasterPos4s.play = True
-gl.add(glRasterPos4s)
-
-glRasterPos4sv = Function('glRasterPos4sv')
-glRasterPos4sv.ret = Return('void')
-glRasterPos4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glRasterPos4sv.version = '1.0'
-glRasterPos4sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRasterPos4sv.trace = True
-glRasterPos4sv.play = True
-gl.add(glRasterPos4sv)
-
-glRectd = Function('glRectd')
-glRectd.ret = Return('void')
-glRectd.add( Input( 'x1','GLdouble' ))
-glRectd.add( Input( 'y1','GLdouble' ))
-glRectd.add( Input( 'x2','GLdouble' ))
-glRectd.add( Input( 'y2','GLdouble' ))
-glRectd.version = '1.0'
-glRectd.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectd.trace = True
-glRectd.play = True
-gl.add(glRectd)
-
-glRectdv = Function('glRectdv')
-glRectdv.ret = Return('void')
-glRectdv.add( Input( 'v1','const GLdouble *' ,size = 2 ))
-glRectdv.add( Input( 'v2','const GLdouble *' ,size = 2 ))
-glRectdv.version = '1.0'
-glRectdv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectdv.trace = True
-glRectdv.play = True
-gl.add(glRectdv)
-
-glRectf = Function('glRectf')
-glRectf.ret = Return('void')
-glRectf.add( Input( 'x1','GLfloat' ))
-glRectf.add( Input( 'y1','GLfloat' ))
-glRectf.add( Input( 'x2','GLfloat' ))
-glRectf.add( Input( 'y2','GLfloat' ))
-glRectf.version = '1.0'
-glRectf.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectf.trace = True
-glRectf.play = True
-gl.add(glRectf)
-
-glRectfv = Function('glRectfv')
-glRectfv.ret = Return('void')
-glRectfv.add( Input( 'v1','const GLfloat *' ,size = 2 ))
-glRectfv.add( Input( 'v2','const GLfloat *' ,size = 2 ))
-glRectfv.version = '1.0'
-glRectfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectfv.trace = True
-glRectfv.play = True
-gl.add(glRectfv)
-
-glRecti = Function('glRecti')
-glRecti.ret = Return('void')
-glRecti.add( Input( 'x1','GLint' ))
-glRecti.add( Input( 'y1','GLint' ))
-glRecti.add( Input( 'x2','GLint' ))
-glRecti.add( Input( 'y2','GLint' ))
-glRecti.version = '1.0'
-glRecti.category = 'GL_VERSION_1_0_DEPRECATED'
-glRecti.trace = True
-glRecti.play = True
-gl.add(glRecti)
-
-glRectiv = Function('glRectiv')
-glRectiv.ret = Return('void')
-glRectiv.add( Input( 'v1','const GLint *' ,size = 2 ))
-glRectiv.add( Input( 'v2','const GLint *' ,size = 2 ))
-glRectiv.version = '1.0'
-glRectiv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectiv.trace = True
-glRectiv.play = True
-gl.add(glRectiv)
-
-glRects = Function('glRects')
-glRects.ret = Return('void')
-glRects.add( Input( 'x1','GLshort' ))
-glRects.add( Input( 'y1','GLshort' ))
-glRects.add( Input( 'x2','GLshort' ))
-glRects.add( Input( 'y2','GLshort' ))
-glRects.version = '1.0'
-glRects.category = 'GL_VERSION_1_0_DEPRECATED'
-glRects.trace = True
-glRects.play = True
-gl.add(glRects)
-
-glRectsv = Function('glRectsv')
-glRectsv.ret = Return('void')
-glRectsv.add( Input( 'v1','const GLshort *' ,size = 2 ))
-glRectsv.add( Input( 'v2','const GLshort *' ,size = 2 ))
-glRectsv.version = '1.0'
-glRectsv.category = 'GL_VERSION_1_0_DEPRECATED'
-glRectsv.trace = True
-glRectsv.play = True
-gl.add(glRectsv)
-
-glRenderMode = Function('glRenderMode')
-glRenderMode.ret = Return('GLint')
-glRenderMode.add( Input( 'mode','GLenum' ))
-glRenderMode.version = '1.0'
-glRenderMode.category = 'GL_VERSION_1_0_DEPRECATED'
-glRenderMode.trace = True
-glRenderMode.play = True
-gl.add(glRenderMode)
-
-glRotated = Function('glRotated')
-glRotated.ret = Return('void')
-glRotated.add( Input( 'angle','GLdouble' ))
-glRotated.add( Input( 'x','GLdouble' ))
-glRotated.add( Input( 'y','GLdouble' ))
-glRotated.add( Input( 'z','GLdouble' ))
-glRotated.version = '1.0'
-glRotated.category = 'GL_VERSION_1_0_DEPRECATED'
-glRotated.trace = True
-glRotated.play = True
-gl.add(glRotated)
-
-glRotatef = Function('glRotatef')
-glRotatef.ret = Return('void')
-glRotatef.add( Input( 'angle','GLfloat' ))
-glRotatef.add( Input( 'x','GLfloat' ))
-glRotatef.add( Input( 'y','GLfloat' ))
-glRotatef.add( Input( 'z','GLfloat' ))
-glRotatef.version = '1.0'
-glRotatef.category = 'GL_VERSION_1_0_DEPRECATED'
-glRotatef.esVersions = [1.0, 1.1]
-glRotatef.trace = True
-glRotatef.play = True
-gl.add(glRotatef)
-
-glScaled = Function('glScaled')
-glScaled.ret = Return('void')
-glScaled.add( Input( 'x','GLdouble' ))
-glScaled.add( Input( 'y','GLdouble' ))
-glScaled.add( Input( 'z','GLdouble' ))
-glScaled.version = '1.0'
-glScaled.category = 'GL_VERSION_1_0_DEPRECATED'
-glScaled.trace = True
-glScaled.play = True
-gl.add(glScaled)
-
-glScalef = Function('glScalef')
-glScalef.ret = Return('void')
-glScalef.add( Input( 'x','GLfloat' ))
-glScalef.add( Input( 'y','GLfloat' ))
-glScalef.add( Input( 'z','GLfloat' ))
-glScalef.version = '1.0'
-glScalef.category = 'GL_VERSION_1_0_DEPRECATED'
-glScalef.esVersions = [1.0, 1.1]
-glScalef.trace = True
-glScalef.play = True
-gl.add(glScalef)
-
-glSelectBuffer = Function('glSelectBuffer')
-glSelectBuffer.ret = Return('void')
-glSelectBuffer.add( Input( 'size','GLsizei' ))
-glSelectBuffer.add( Output( 'buffer','GLuint *' ,size = 'size' ))
-glSelectBuffer.version = '1.0'
-glSelectBuffer.category = 'GL_VERSION_1_0_DEPRECATED'
-glSelectBuffer.trace = True
-glSelectBuffer.play = True
-gl.add(glSelectBuffer)
-
-glTexCoord1d = Function('glTexCoord1d')
-glTexCoord1d.ret = Return('void')
-glTexCoord1d.add( Input( 's','GLdouble' ))
-glTexCoord1d.version = '1.0'
-glTexCoord1d.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1d.trace = True
-glTexCoord1d.play = True
-gl.add(glTexCoord1d)
-
-glTexCoord1dv = Function('glTexCoord1dv')
-glTexCoord1dv.ret = Return('void')
-glTexCoord1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
-glTexCoord1dv.version = '1.0'
-glTexCoord1dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1dv.trace = True
-glTexCoord1dv.play = True
-gl.add(glTexCoord1dv)
-
-glTexCoord1f = Function('glTexCoord1f')
-glTexCoord1f.ret = Return('void')
-glTexCoord1f.add( Input( 's','GLfloat' ))
-glTexCoord1f.version = '1.0'
-glTexCoord1f.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1f.trace = True
-glTexCoord1f.play = True
-gl.add(glTexCoord1f)
-
-glTexCoord1fv = Function('glTexCoord1fv')
-glTexCoord1fv.ret = Return('void')
-glTexCoord1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
-glTexCoord1fv.version = '1.0'
-glTexCoord1fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1fv.trace = True
-glTexCoord1fv.play = True
-gl.add(glTexCoord1fv)
-
-glTexCoord1i = Function('glTexCoord1i')
-glTexCoord1i.ret = Return('void')
-glTexCoord1i.add( Input( 's','GLint' ))
-glTexCoord1i.version = '1.0'
-glTexCoord1i.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1i.trace = True
-glTexCoord1i.play = True
-gl.add(glTexCoord1i)
-
-glTexCoord1iv = Function('glTexCoord1iv')
-glTexCoord1iv.ret = Return('void')
-glTexCoord1iv.add( Input( 'v','const GLint *' ,size = 1 ))
-glTexCoord1iv.version = '1.0'
-glTexCoord1iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1iv.trace = True
-glTexCoord1iv.play = True
-gl.add(glTexCoord1iv)
-
-glTexCoord1s = Function('glTexCoord1s')
-glTexCoord1s.ret = Return('void')
-glTexCoord1s.add( Input( 's','GLshort' ))
-glTexCoord1s.version = '1.0'
-glTexCoord1s.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1s.trace = True
-glTexCoord1s.play = True
-gl.add(glTexCoord1s)
-
-glTexCoord1sv = Function('glTexCoord1sv')
-glTexCoord1sv.ret = Return('void')
-glTexCoord1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
-glTexCoord1sv.version = '1.0'
-glTexCoord1sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord1sv.trace = True
-glTexCoord1sv.play = True
-gl.add(glTexCoord1sv)
-
-glTexCoord2d = Function('glTexCoord2d')
-glTexCoord2d.ret = Return('void')
-glTexCoord2d.add( Input( 's','GLdouble' ))
-glTexCoord2d.add( Input( 't','GLdouble' ))
-glTexCoord2d.version = '1.0'
-glTexCoord2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2d.trace = True
-glTexCoord2d.play = True
-gl.add(glTexCoord2d)
-
-glTexCoord2dv = Function('glTexCoord2dv')
-glTexCoord2dv.ret = Return('void')
-glTexCoord2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
-glTexCoord2dv.version = '1.0'
-glTexCoord2dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2dv.trace = True
-glTexCoord2dv.play = True
-gl.add(glTexCoord2dv)
-
-glTexCoord2f = Function('glTexCoord2f')
-glTexCoord2f.ret = Return('void')
-glTexCoord2f.add( Input( 's','GLfloat' ))
-glTexCoord2f.add( Input( 't','GLfloat' ))
-glTexCoord2f.version = '1.0'
-glTexCoord2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2f.trace = True
-glTexCoord2f.play = True
-gl.add(glTexCoord2f)
-
-glTexCoord2fv = Function('glTexCoord2fv')
-glTexCoord2fv.ret = Return('void')
-glTexCoord2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
-glTexCoord2fv.version = '1.0'
-glTexCoord2fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2fv.trace = True
-glTexCoord2fv.play = True
-gl.add(glTexCoord2fv)
-
-glTexCoord2i = Function('glTexCoord2i')
-glTexCoord2i.ret = Return('void')
-glTexCoord2i.add( Input( 's','GLint' ))
-glTexCoord2i.add( Input( 't','GLint' ))
-glTexCoord2i.version = '1.0'
-glTexCoord2i.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2i.trace = True
-glTexCoord2i.play = True
-gl.add(glTexCoord2i)
-
-glTexCoord2iv = Function('glTexCoord2iv')
-glTexCoord2iv.ret = Return('void')
-glTexCoord2iv.add( Input( 'v','const GLint *' ,size = 2 ))
-glTexCoord2iv.version = '1.0'
-glTexCoord2iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2iv.trace = True
-glTexCoord2iv.play = True
-gl.add(glTexCoord2iv)
-
-glTexCoord2s = Function('glTexCoord2s')
-glTexCoord2s.ret = Return('void')
-glTexCoord2s.add( Input( 's','GLshort' ))
-glTexCoord2s.add( Input( 't','GLshort' ))
-glTexCoord2s.version = '1.0'
-glTexCoord2s.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2s.trace = True
-glTexCoord2s.play = True
-gl.add(glTexCoord2s)
-
-glTexCoord2sv = Function('glTexCoord2sv')
-glTexCoord2sv.ret = Return('void')
-glTexCoord2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
-glTexCoord2sv.version = '1.0'
-glTexCoord2sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord2sv.trace = True
-glTexCoord2sv.play = True
-gl.add(glTexCoord2sv)
-
-glTexCoord3d = Function('glTexCoord3d')
-glTexCoord3d.ret = Return('void')
-glTexCoord3d.add( Input( 's','GLdouble' ))
-glTexCoord3d.add( Input( 't','GLdouble' ))
-glTexCoord3d.add( Input( 'r','GLdouble' ))
-glTexCoord3d.version = '1.0'
-glTexCoord3d.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3d.trace = True
-glTexCoord3d.play = True
-gl.add(glTexCoord3d)
-
-glTexCoord3dv = Function('glTexCoord3dv')
-glTexCoord3dv.ret = Return('void')
-glTexCoord3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glTexCoord3dv.version = '1.0'
-glTexCoord3dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3dv.trace = True
-glTexCoord3dv.play = True
-gl.add(glTexCoord3dv)
-
-glTexCoord3f = Function('glTexCoord3f')
-glTexCoord3f.ret = Return('void')
-glTexCoord3f.add( Input( 's','GLfloat' ))
-glTexCoord3f.add( Input( 't','GLfloat' ))
-glTexCoord3f.add( Input( 'r','GLfloat' ))
-glTexCoord3f.version = '1.0'
-glTexCoord3f.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3f.trace = True
-glTexCoord3f.play = True
-gl.add(glTexCoord3f)
-
-glTexCoord3fv = Function('glTexCoord3fv')
-glTexCoord3fv.ret = Return('void')
-glTexCoord3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glTexCoord3fv.version = '1.0'
-glTexCoord3fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3fv.trace = True
-glTexCoord3fv.play = True
-gl.add(glTexCoord3fv)
-
-glTexCoord3i = Function('glTexCoord3i')
-glTexCoord3i.ret = Return('void')
-glTexCoord3i.add( Input( 's','GLint' ))
-glTexCoord3i.add( Input( 't','GLint' ))
-glTexCoord3i.add( Input( 'r','GLint' ))
-glTexCoord3i.version = '1.0'
-glTexCoord3i.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3i.trace = True
-glTexCoord3i.play = True
-gl.add(glTexCoord3i)
-
-glTexCoord3iv = Function('glTexCoord3iv')
-glTexCoord3iv.ret = Return('void')
-glTexCoord3iv.add( Input( 'v','const GLint *' ,size = 3 ))
-glTexCoord3iv.version = '1.0'
-glTexCoord3iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3iv.trace = True
-glTexCoord3iv.play = True
-gl.add(glTexCoord3iv)
-
-glTexCoord3s = Function('glTexCoord3s')
-glTexCoord3s.ret = Return('void')
-glTexCoord3s.add( Input( 's','GLshort' ))
-glTexCoord3s.add( Input( 't','GLshort' ))
-glTexCoord3s.add( Input( 'r','GLshort' ))
-glTexCoord3s.version = '1.0'
-glTexCoord3s.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3s.trace = True
-glTexCoord3s.play = True
-gl.add(glTexCoord3s)
-
-glTexCoord3sv = Function('glTexCoord3sv')
-glTexCoord3sv.ret = Return('void')
-glTexCoord3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glTexCoord3sv.version = '1.0'
-glTexCoord3sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord3sv.trace = True
-glTexCoord3sv.play = True
-gl.add(glTexCoord3sv)
-
-glTexCoord4d = Function('glTexCoord4d')
-glTexCoord4d.ret = Return('void')
-glTexCoord4d.add( Input( 's','GLdouble' ))
-glTexCoord4d.add( Input( 't','GLdouble' ))
-glTexCoord4d.add( Input( 'r','GLdouble' ))
-glTexCoord4d.add( Input( 'q','GLdouble' ))
-glTexCoord4d.version = '1.0'
-glTexCoord4d.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4d.trace = True
-glTexCoord4d.play = True
-gl.add(glTexCoord4d)
-
-glTexCoord4dv = Function('glTexCoord4dv')
-glTexCoord4dv.ret = Return('void')
-glTexCoord4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
-glTexCoord4dv.version = '1.0'
-glTexCoord4dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4dv.trace = True
-glTexCoord4dv.play = True
-gl.add(glTexCoord4dv)
-
-glTexCoord4f = Function('glTexCoord4f')
-glTexCoord4f.ret = Return('void')
-glTexCoord4f.add( Input( 's','GLfloat' ))
-glTexCoord4f.add( Input( 't','GLfloat' ))
-glTexCoord4f.add( Input( 'r','GLfloat' ))
-glTexCoord4f.add( Input( 'q','GLfloat' ))
-glTexCoord4f.version = '1.0'
-glTexCoord4f.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4f.trace = True
-glTexCoord4f.play = True
-gl.add(glTexCoord4f)
-
-glTexCoord4fv = Function('glTexCoord4fv')
-glTexCoord4fv.ret = Return('void')
-glTexCoord4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
-glTexCoord4fv.version = '1.0'
-glTexCoord4fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4fv.trace = True
-glTexCoord4fv.play = True
-gl.add(glTexCoord4fv)
-
-glTexCoord4i = Function('glTexCoord4i')
-glTexCoord4i.ret = Return('void')
-glTexCoord4i.add( Input( 's','GLint' ))
-glTexCoord4i.add( Input( 't','GLint' ))
-glTexCoord4i.add( Input( 'r','GLint' ))
-glTexCoord4i.add( Input( 'q','GLint' ))
-glTexCoord4i.version = '1.0'
-glTexCoord4i.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4i.trace = True
-glTexCoord4i.play = True
-gl.add(glTexCoord4i)
-
-glTexCoord4iv = Function('glTexCoord4iv')
-glTexCoord4iv.ret = Return('void')
-glTexCoord4iv.add( Input( 'v','const GLint *' ,size = 4 ))
-glTexCoord4iv.version = '1.0'
-glTexCoord4iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4iv.trace = True
-glTexCoord4iv.play = True
-gl.add(glTexCoord4iv)
-
-glTexCoord4s = Function('glTexCoord4s')
-glTexCoord4s.ret = Return('void')
-glTexCoord4s.add( Input( 's','GLshort' ))
-glTexCoord4s.add( Input( 't','GLshort' ))
-glTexCoord4s.add( Input( 'r','GLshort' ))
-glTexCoord4s.add( Input( 'q','GLshort' ))
-glTexCoord4s.version = '1.0'
-glTexCoord4s.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4s.trace = True
-glTexCoord4s.play = True
-gl.add(glTexCoord4s)
-
-glTexCoord4sv = Function('glTexCoord4sv')
-glTexCoord4sv.ret = Return('void')
-glTexCoord4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glTexCoord4sv.version = '1.0'
-glTexCoord4sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexCoord4sv.trace = True
-glTexCoord4sv.play = True
-gl.add(glTexCoord4sv)
-
-glTexGend = Function('glTexGend')
-glTexGend.ret = Return('void')
-glTexGend.add( Input( 'coord','GLenum' ))
-glTexGend.add( Input( 'pname','GLenum' ))
-glTexGend.add( Input( 'param','GLdouble' ))
-glTexGend.version = '1.0'
-glTexGend.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGend.trace = True
-glTexGend.play = True
-gl.add(glTexGend)
-
-glTexGendv = Function('glTexGendv')
-glTexGendv.ret = Return('void')
-glTexGendv.add( Input( 'coord','GLenum' ))
-glTexGendv.add( Input( 'pname','GLenum' ))
-glTexGendv.add( Input( 'params','const GLdouble *' ,size = 'helperGLTexGenvSize(pname)' ))
-glTexGendv.version = '1.0'
-glTexGendv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGendv.trace = True
-glTexGendv.play = True
-gl.add(glTexGendv)
-
-glTexGenf = Function('glTexGenf')
-glTexGenf.ret = Return('void')
-glTexGenf.add( Input( 'coord','GLenum' ))
-glTexGenf.add( Input( 'pname','GLenum' ))
-glTexGenf.add( Input( 'param','GLfloat' ))
-glTexGenf.version = '1.0'
-glTexGenf.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGenf.trace = True
-glTexGenf.play = True
-gl.add(glTexGenf)
-
-glTexGenfv = Function('glTexGenfv')
-glTexGenfv.ret = Return('void')
-glTexGenfv.add( Input( 'coord','GLenum' ))
-glTexGenfv.add( Input( 'pname','GLenum' ))
-glTexGenfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLTexGenvSize(pname)' ))
-glTexGenfv.version = '1.0'
-glTexGenfv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGenfv.trace = True
-glTexGenfv.play = True
-gl.add(glTexGenfv)
-
-glTexGeni = Function('glTexGeni')
-glTexGeni.ret = Return('void')
-glTexGeni.add( Input( 'coord','GLenum' ))
-glTexGeni.add( Input( 'pname','GLenum' ))
-glTexGeni.add( Input( 'param','GLint' ,regalLog = 'GLenumToString(static_cast<GLenum>(param))' ))
-glTexGeni.version = '1.0'
-glTexGeni.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGeni.trace = True
-glTexGeni.play = True
-gl.add(glTexGeni)
-
-glTexGeniv = Function('glTexGeniv')
-glTexGeniv.ret = Return('void')
-glTexGeniv.add( Input( 'coord','GLenum' ))
-glTexGeniv.add( Input( 'pname','GLenum' ))
-glTexGeniv.add( Input( 'params','const GLint *' ,size = 'helperGLTexGenvSize(pname)' ))
-glTexGeniv.version = '1.0'
-glTexGeniv.category = 'GL_VERSION_1_0_DEPRECATED'
-glTexGeniv.trace = True
-glTexGeniv.play = True
-gl.add(glTexGeniv)
-
-glTranslated = Function('glTranslated')
-glTranslated.ret = Return('void')
-glTranslated.add( Input( 'x','GLdouble' ))
-glTranslated.add( Input( 'y','GLdouble' ))
-glTranslated.add( Input( 'z','GLdouble' ))
-glTranslated.version = '1.0'
-glTranslated.category = 'GL_VERSION_1_0_DEPRECATED'
-glTranslated.trace = True
-glTranslated.play = True
-gl.add(glTranslated)
-
-glTranslatef = Function('glTranslatef')
-glTranslatef.ret = Return('void')
-glTranslatef.add( Input( 'x','GLfloat' ))
-glTranslatef.add( Input( 'y','GLfloat' ))
-glTranslatef.add( Input( 'z','GLfloat' ))
-glTranslatef.version = '1.0'
-glTranslatef.category = 'GL_VERSION_1_0_DEPRECATED'
-glTranslatef.esVersions = [1.0, 1.1]
-glTranslatef.trace = True
-glTranslatef.play = True
-gl.add(glTranslatef)
-
-glVertex2d = Function('glVertex2d')
-glVertex2d.ret = Return('void')
-glVertex2d.add( Input( 'x','GLdouble' ))
-glVertex2d.add( Input( 'y','GLdouble' ))
-glVertex2d.version = '1.0'
-glVertex2d.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2d.trace = True
-glVertex2d.play = True
-gl.add(glVertex2d)
-
-glVertex2dv = Function('glVertex2dv')
-glVertex2dv.ret = Return('void')
-glVertex2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
-glVertex2dv.version = '1.0'
-glVertex2dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2dv.trace = True
-glVertex2dv.play = True
-gl.add(glVertex2dv)
-
-glVertex2f = Function('glVertex2f')
-glVertex2f.ret = Return('void')
-glVertex2f.add( Input( 'x','GLfloat' ))
-glVertex2f.add( Input( 'y','GLfloat' ))
-glVertex2f.version = '1.0'
-glVertex2f.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2f.trace = True
-glVertex2f.play = True
-gl.add(glVertex2f)
-
-glVertex2fv = Function('glVertex2fv')
-glVertex2fv.ret = Return('void')
-glVertex2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
-glVertex2fv.version = '1.0'
-glVertex2fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2fv.trace = True
-glVertex2fv.play = True
-gl.add(glVertex2fv)
-
-glVertex2i = Function('glVertex2i')
-glVertex2i.ret = Return('void')
-glVertex2i.add( Input( 'x','GLint' ))
-glVertex2i.add( Input( 'y','GLint' ))
-glVertex2i.version = '1.0'
-glVertex2i.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2i.trace = True
-glVertex2i.play = True
-gl.add(glVertex2i)
-
-glVertex2iv = Function('glVertex2iv')
-glVertex2iv.ret = Return('void')
-glVertex2iv.add( Input( 'v','const GLint *' ,size = 2 ))
-glVertex2iv.version = '1.0'
-glVertex2iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2iv.trace = True
-glVertex2iv.play = True
-gl.add(glVertex2iv)
-
-glVertex2s = Function('glVertex2s')
-glVertex2s.ret = Return('void')
-glVertex2s.add( Input( 'x','GLshort' ))
-glVertex2s.add( Input( 'y','GLshort' ))
-glVertex2s.version = '1.0'
-glVertex2s.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2s.trace = True
-glVertex2s.play = True
-gl.add(glVertex2s)
-
-glVertex2sv = Function('glVertex2sv')
-glVertex2sv.ret = Return('void')
-glVertex2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
-glVertex2sv.version = '1.0'
-glVertex2sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex2sv.trace = True
-glVertex2sv.play = True
-gl.add(glVertex2sv)
-
-glVertex3d = Function('glVertex3d')
-glVertex3d.ret = Return('void')
-glVertex3d.add( Input( 'x','GLdouble' ))
-glVertex3d.add( Input( 'y','GLdouble' ))
-glVertex3d.add( Input( 'z','GLdouble' ))
-glVertex3d.version = '1.0'
-glVertex3d.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3d.trace = True
-glVertex3d.play = True
-gl.add(glVertex3d)
-
-glVertex3dv = Function('glVertex3dv')
-glVertex3dv.ret = Return('void')
-glVertex3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
-glVertex3dv.version = '1.0'
-glVertex3dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3dv.trace = True
-glVertex3dv.play = True
-gl.add(glVertex3dv)
-
-glVertex3f = Function('glVertex3f')
-glVertex3f.ret = Return('void')
-glVertex3f.add( Input( 'x','GLfloat' ))
-glVertex3f.add( Input( 'y','GLfloat' ))
-glVertex3f.add( Input( 'z','GLfloat' ))
-glVertex3f.version = '1.0'
-glVertex3f.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3f.trace = True
-glVertex3f.play = True
-gl.add(glVertex3f)
-
-glVertex3fv = Function('glVertex3fv')
-glVertex3fv.ret = Return('void')
-glVertex3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
-glVertex3fv.version = '1.0'
-glVertex3fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3fv.trace = True
-glVertex3fv.play = True
-gl.add(glVertex3fv)
-
-glVertex3i = Function('glVertex3i')
-glVertex3i.ret = Return('void')
-glVertex3i.add( Input( 'x','GLint' ))
-glVertex3i.add( Input( 'y','GLint' ))
-glVertex3i.add( Input( 'z','GLint' ))
-glVertex3i.version = '1.0'
-glVertex3i.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3i.trace = True
-glVertex3i.play = True
-gl.add(glVertex3i)
-
-glVertex3iv = Function('glVertex3iv')
-glVertex3iv.ret = Return('void')
-glVertex3iv.add( Input( 'v','const GLint *' ,size = 3 ))
-glVertex3iv.version = '1.0'
-glVertex3iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3iv.trace = True
-glVertex3iv.play = True
-gl.add(glVertex3iv)
-
-glVertex3s = Function('glVertex3s')
-glVertex3s.ret = Return('void')
-glVertex3s.add( Input( 'x','GLshort' ))
-glVertex3s.add( Input( 'y','GLshort' ))
-glVertex3s.add( Input( 'z','GLshort' ))
-glVertex3s.version = '1.0'
-glVertex3s.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3s.trace = True
-glVertex3s.play = True
-gl.add(glVertex3s)
-
-glVertex3sv = Function('glVertex3sv')
-glVertex3sv.ret = Return('void')
-glVertex3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
-glVertex3sv.version = '1.0'
-glVertex3sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex3sv.trace = True
-glVertex3sv.play = True
-gl.add(glVertex3sv)
-
-glVertex4d = Function('glVertex4d')
-glVertex4d.ret = Return('void')
-glVertex4d.add( Input( 'x','GLdouble' ))
-glVertex4d.add( Input( 'y','GLdouble' ))
-glVertex4d.add( Input( 'z','GLdouble' ))
-glVertex4d.add( Input( 'w','GLdouble' ))
-glVertex4d.version = '1.0'
-glVertex4d.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4d.trace = True
-glVertex4d.play = True
-gl.add(glVertex4d)
-
-glVertex4dv = Function('glVertex4dv')
-glVertex4dv.ret = Return('void')
-glVertex4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
-glVertex4dv.version = '1.0'
-glVertex4dv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4dv.trace = True
-glVertex4dv.play = True
-gl.add(glVertex4dv)
-
-glVertex4f = Function('glVertex4f')
-glVertex4f.ret = Return('void')
-glVertex4f.add( Input( 'x','GLfloat' ))
-glVertex4f.add( Input( 'y','GLfloat' ))
-glVertex4f.add( Input( 'z','GLfloat' ))
-glVertex4f.add( Input( 'w','GLfloat' ))
-glVertex4f.version = '1.0'
-glVertex4f.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4f.trace = True
-glVertex4f.play = True
-gl.add(glVertex4f)
-
-glVertex4fv = Function('glVertex4fv')
-glVertex4fv.ret = Return('void')
-glVertex4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
-glVertex4fv.version = '1.0'
-glVertex4fv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4fv.trace = True
-glVertex4fv.play = True
-gl.add(glVertex4fv)
-
-glVertex4i = Function('glVertex4i')
-glVertex4i.ret = Return('void')
-glVertex4i.add( Input( 'x','GLint' ))
-glVertex4i.add( Input( 'y','GLint' ))
-glVertex4i.add( Input( 'z','GLint' ))
-glVertex4i.add( Input( 'w','GLint' ))
-glVertex4i.version = '1.0'
-glVertex4i.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4i.trace = True
-glVertex4i.play = True
-gl.add(glVertex4i)
-
-glVertex4iv = Function('glVertex4iv')
-glVertex4iv.ret = Return('void')
-glVertex4iv.add( Input( 'v','const GLint *' ,size = 4 ))
-glVertex4iv.version = '1.0'
-glVertex4iv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4iv.trace = True
-glVertex4iv.play = True
-gl.add(glVertex4iv)
-
-glVertex4s = Function('glVertex4s')
-glVertex4s.ret = Return('void')
-glVertex4s.add( Input( 'x','GLshort' ))
-glVertex4s.add( Input( 'y','GLshort' ))
-glVertex4s.add( Input( 'z','GLshort' ))
-glVertex4s.add( Input( 'w','GLshort' ))
-glVertex4s.version = '1.0'
-glVertex4s.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4s.trace = True
-glVertex4s.play = True
-gl.add(glVertex4s)
-
-glVertex4sv = Function('glVertex4sv')
-glVertex4sv.ret = Return('void')
-glVertex4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
-glVertex4sv.version = '1.0'
-glVertex4sv.category = 'GL_VERSION_1_0_DEPRECATED'
-glVertex4sv.trace = True
-glVertex4sv.play = True
-gl.add(glVertex4sv)
-
 # GL_VERSION_1_1
+
+glAreTexturesResident = Function('glAreTexturesResident')
+glAreTexturesResident.ret = Return('GLboolean')
+glAreTexturesResident.add( Input( 'n','GLsizei' ))
+glAreTexturesResident.add( Input( 'textures','const GLuint *' ,size = 'n' ))
+glAreTexturesResident.add( Output( 'residences','GLboolean *' ,size = 'n' ))
+glAreTexturesResident.version = '1.1'
+glAreTexturesResident.category = 'GL_VERSION_1_1'
+glAreTexturesResident.trace = True
+glAreTexturesResident.play = True
+gl.add(glAreTexturesResident)
 
 glArrayElement = Function('glArrayElement')
 glArrayElement.ret = Return('void')
@@ -14950,6 +14959,19 @@ glBindTexture.esVersions = [1.0, 1.1, 2.0]
 glBindTexture.trace = True
 glBindTexture.play = True
 gl.add(glBindTexture)
+
+glColorPointer = Function('glColorPointer')
+glColorPointer.ret = Return('void')
+glColorPointer.add( Input( 'size','GLint' ))
+glColorPointer.add( Input( 'type','GLenum' ))
+glColorPointer.add( Input( 'stride','GLsizei' ))
+glColorPointer.add( Input( 'pointer','const GLvoid *' ))
+glColorPointer.version = '1.1'
+glColorPointer.category = 'GL_VERSION_1_1'
+glColorPointer.esVersions = [1.0, 1.1]
+glColorPointer.trace = True
+glColorPointer.play = True
+gl.add(glColorPointer)
 
 glCopyTexImage1D = Function('glCopyTexImage1D')
 glCopyTexImage1D.ret = Return('void')
@@ -15060,6 +15082,16 @@ glDrawElements.trace = True
 glDrawElements.play = True
 gl.add(glDrawElements)
 
+glEdgeFlagPointer = Function('glEdgeFlagPointer')
+glEdgeFlagPointer.ret = Return('void')
+glEdgeFlagPointer.add( Input( 'stride','GLsizei' ))
+glEdgeFlagPointer.add( Input( 'pointer','const GLvoid *' ))
+glEdgeFlagPointer.version = '1.1'
+glEdgeFlagPointer.category = 'GL_VERSION_1_1'
+glEdgeFlagPointer.trace = True
+glEdgeFlagPointer.play = True
+gl.add(glEdgeFlagPointer)
+
 glEnableClientState = Function('glEnableClientState')
 glEnableClientState.ret = Return('void')
 glEnableClientState.add( Input( 'cap','GLenum' ))
@@ -15092,6 +15124,35 @@ glGetPointerv.trace = True
 glGetPointerv.play = False
 gl.add(glGetPointerv)
 
+glIndexPointer = Function('glIndexPointer')
+glIndexPointer.ret = Return('void')
+glIndexPointer.add( Input( 'type','GLenum' ))
+glIndexPointer.add( Input( 'stride','GLsizei' ))
+glIndexPointer.add( Input( 'pointer','const GLvoid *' ))
+glIndexPointer.version = '1.1'
+glIndexPointer.category = 'GL_VERSION_1_1'
+glIndexPointer.trace = True
+glIndexPointer.play = True
+gl.add(glIndexPointer)
+
+glIndexub = Function('glIndexub')
+glIndexub.ret = Return('void')
+glIndexub.add( Input( 'c','GLubyte' ))
+glIndexub.version = '1.1'
+glIndexub.category = 'GL_VERSION_1_1'
+glIndexub.trace = True
+glIndexub.play = True
+gl.add(glIndexub)
+
+glIndexubv = Function('glIndexubv')
+glIndexubv.ret = Return('void')
+glIndexubv.add( Input( 'c','const GLubyte *' ,size = 1 ))
+glIndexubv.version = '1.1'
+glIndexubv.category = 'GL_VERSION_1_1'
+glIndexubv.trace = True
+glIndexubv.play = True
+gl.add(glIndexubv)
+
 glInterleavedArrays = Function('glInterleavedArrays')
 glInterleavedArrays.ret = Return('void')
 glInterleavedArrays.add( Input( 'format','GLenum' ))
@@ -15113,6 +15174,18 @@ glIsTexture.trace = True
 glIsTexture.play = True
 gl.add(glIsTexture)
 
+glNormalPointer = Function('glNormalPointer')
+glNormalPointer.ret = Return('void')
+glNormalPointer.add( Input( 'type','GLenum' ))
+glNormalPointer.add( Input( 'stride','GLsizei' ))
+glNormalPointer.add( Input( 'pointer','const GLvoid *' ))
+glNormalPointer.version = '1.1'
+glNormalPointer.category = 'GL_VERSION_1_1'
+glNormalPointer.esVersions = [1.0, 1.1]
+glNormalPointer.trace = True
+glNormalPointer.play = True
+gl.add(glNormalPointer)
+
 glPolygonOffset = Function('glPolygonOffset')
 glPolygonOffset.ret = Return('void')
 glPolygonOffset.add( Input( 'factor','GLfloat' ))
@@ -15123,6 +15196,47 @@ glPolygonOffset.esVersions = [1.0, 1.1, 2.0]
 glPolygonOffset.trace = True
 glPolygonOffset.play = True
 gl.add(glPolygonOffset)
+
+glPopClientAttrib = Function('glPopClientAttrib')
+glPopClientAttrib.ret = Return('void')
+glPopClientAttrib.version = '1.1'
+glPopClientAttrib.category = 'GL_VERSION_1_1'
+glPopClientAttrib.trace = True
+glPopClientAttrib.play = True
+gl.add(glPopClientAttrib)
+
+glPrioritizeTextures = Function('glPrioritizeTextures')
+glPrioritizeTextures.ret = Return('void')
+glPrioritizeTextures.add( Input( 'n','GLsizei' ))
+glPrioritizeTextures.add( Input( 'textures','const GLuint *' ,size = 'n' ))
+glPrioritizeTextures.add( Input( 'priorities','const GLclampf *' ,size = 'n' ))
+glPrioritizeTextures.version = '1.1'
+glPrioritizeTextures.category = 'GL_VERSION_1_1'
+glPrioritizeTextures.trace = True
+glPrioritizeTextures.play = True
+gl.add(glPrioritizeTextures)
+
+glPushClientAttrib = Function('glPushClientAttrib')
+glPushClientAttrib.ret = Return('void')
+glPushClientAttrib.add( Input( 'mask','GLbitfield' ))
+glPushClientAttrib.version = '1.1'
+glPushClientAttrib.category = 'GL_VERSION_1_1'
+glPushClientAttrib.trace = True
+glPushClientAttrib.play = True
+gl.add(glPushClientAttrib)
+
+glTexCoordPointer = Function('glTexCoordPointer')
+glTexCoordPointer.ret = Return('void')
+glTexCoordPointer.add( Input( 'size','GLint' ))
+glTexCoordPointer.add( Input( 'type','GLenum' ))
+glTexCoordPointer.add( Input( 'stride','GLsizei' ))
+glTexCoordPointer.add( Input( 'pointer','const GLvoid *' ))
+glTexCoordPointer.version = '1.1'
+glTexCoordPointer.category = 'GL_VERSION_1_1'
+glTexCoordPointer.esVersions = [1.0, 1.1]
+glTexCoordPointer.trace = True
+glTexCoordPointer.play = True
+gl.add(glTexCoordPointer)
 
 glTexSubImage1D = Function('glTexSubImage1D')
 glTexSubImage1D.ret = Return('void')
@@ -15157,124 +15271,6 @@ glTexSubImage2D.trace = True
 glTexSubImage2D.play = True
 gl.add(glTexSubImage2D)
 
-# GL_VERSION_1_1_DEPRECATED
-
-glAreTexturesResident = Function('glAreTexturesResident')
-glAreTexturesResident.ret = Return('GLboolean')
-glAreTexturesResident.add( Input( 'n','GLsizei' ))
-glAreTexturesResident.add( Input( 'textures','const GLuint *' ,size = 'n' ))
-glAreTexturesResident.add( Output( 'residences','GLboolean *' ,size = 'n' ))
-glAreTexturesResident.version = '1.1'
-glAreTexturesResident.category = 'GL_VERSION_1_1_DEPRECATED'
-glAreTexturesResident.trace = True
-glAreTexturesResident.play = True
-gl.add(glAreTexturesResident)
-
-glColorPointer = Function('glColorPointer')
-glColorPointer.ret = Return('void')
-glColorPointer.add( Input( 'size','GLint' ))
-glColorPointer.add( Input( 'type','GLenum' ))
-glColorPointer.add( Input( 'stride','GLsizei' ))
-glColorPointer.add( Input( 'pointer','const GLvoid *' ))
-glColorPointer.version = '1.1'
-glColorPointer.category = 'GL_VERSION_1_1_DEPRECATED'
-glColorPointer.esVersions = [1.0, 1.1]
-glColorPointer.trace = True
-glColorPointer.play = True
-gl.add(glColorPointer)
-
-glEdgeFlagPointer = Function('glEdgeFlagPointer')
-glEdgeFlagPointer.ret = Return('void')
-glEdgeFlagPointer.add( Input( 'stride','GLsizei' ))
-glEdgeFlagPointer.add( Input( 'pointer','const GLvoid *' ))
-glEdgeFlagPointer.version = '1.1'
-glEdgeFlagPointer.category = 'GL_VERSION_1_1_DEPRECATED'
-glEdgeFlagPointer.trace = True
-glEdgeFlagPointer.play = True
-gl.add(glEdgeFlagPointer)
-
-glIndexPointer = Function('glIndexPointer')
-glIndexPointer.ret = Return('void')
-glIndexPointer.add( Input( 'type','GLenum' ))
-glIndexPointer.add( Input( 'stride','GLsizei' ))
-glIndexPointer.add( Input( 'pointer','const GLvoid *' ))
-glIndexPointer.version = '1.1'
-glIndexPointer.category = 'GL_VERSION_1_1_DEPRECATED'
-glIndexPointer.trace = True
-glIndexPointer.play = True
-gl.add(glIndexPointer)
-
-glIndexub = Function('glIndexub')
-glIndexub.ret = Return('void')
-glIndexub.add( Input( 'c','GLubyte' ))
-glIndexub.version = '1.1'
-glIndexub.category = 'GL_VERSION_1_1_DEPRECATED'
-glIndexub.trace = True
-glIndexub.play = True
-gl.add(glIndexub)
-
-glIndexubv = Function('glIndexubv')
-glIndexubv.ret = Return('void')
-glIndexubv.add( Input( 'c','const GLubyte *' ,size = 1 ))
-glIndexubv.version = '1.1'
-glIndexubv.category = 'GL_VERSION_1_1_DEPRECATED'
-glIndexubv.trace = True
-glIndexubv.play = True
-gl.add(glIndexubv)
-
-glNormalPointer = Function('glNormalPointer')
-glNormalPointer.ret = Return('void')
-glNormalPointer.add( Input( 'type','GLenum' ))
-glNormalPointer.add( Input( 'stride','GLsizei' ))
-glNormalPointer.add( Input( 'pointer','const GLvoid *' ))
-glNormalPointer.version = '1.1'
-glNormalPointer.category = 'GL_VERSION_1_1_DEPRECATED'
-glNormalPointer.esVersions = [1.0, 1.1]
-glNormalPointer.trace = True
-glNormalPointer.play = True
-gl.add(glNormalPointer)
-
-glPopClientAttrib = Function('glPopClientAttrib')
-glPopClientAttrib.ret = Return('void')
-glPopClientAttrib.version = '1.1'
-glPopClientAttrib.category = 'GL_VERSION_1_1_DEPRECATED'
-glPopClientAttrib.trace = True
-glPopClientAttrib.play = True
-gl.add(glPopClientAttrib)
-
-glPrioritizeTextures = Function('glPrioritizeTextures')
-glPrioritizeTextures.ret = Return('void')
-glPrioritizeTextures.add( Input( 'n','GLsizei' ))
-glPrioritizeTextures.add( Input( 'textures','const GLuint *' ,size = 'n' ))
-glPrioritizeTextures.add( Input( 'priorities','const GLclampf *' ,size = 'n' ))
-glPrioritizeTextures.version = '1.1'
-glPrioritizeTextures.category = 'GL_VERSION_1_1_DEPRECATED'
-glPrioritizeTextures.trace = True
-glPrioritizeTextures.play = True
-gl.add(glPrioritizeTextures)
-
-glPushClientAttrib = Function('glPushClientAttrib')
-glPushClientAttrib.ret = Return('void')
-glPushClientAttrib.add( Input( 'mask','GLbitfield' ))
-glPushClientAttrib.version = '1.1'
-glPushClientAttrib.category = 'GL_VERSION_1_1_DEPRECATED'
-glPushClientAttrib.trace = True
-glPushClientAttrib.play = True
-gl.add(glPushClientAttrib)
-
-glTexCoordPointer = Function('glTexCoordPointer')
-glTexCoordPointer.ret = Return('void')
-glTexCoordPointer.add( Input( 'size','GLint' ))
-glTexCoordPointer.add( Input( 'type','GLenum' ))
-glTexCoordPointer.add( Input( 'stride','GLsizei' ))
-glTexCoordPointer.add( Input( 'pointer','const GLvoid *' ))
-glTexCoordPointer.version = '1.1'
-glTexCoordPointer.category = 'GL_VERSION_1_1_DEPRECATED'
-glTexCoordPointer.esVersions = [1.0, 1.1]
-glTexCoordPointer.trace = True
-glTexCoordPointer.play = True
-gl.add(glTexCoordPointer)
-
 glVertexPointer = Function('glVertexPointer')
 glVertexPointer.ret = Return('void')
 glVertexPointer.add( Input( 'size','GLint' ))
@@ -15282,29 +15278,244 @@ glVertexPointer.add( Input( 'type','GLenum' ))
 glVertexPointer.add( Input( 'stride','GLsizei' ))
 glVertexPointer.add( Input( 'pointer','const GLvoid *' ))
 glVertexPointer.version = '1.1'
-glVertexPointer.category = 'GL_VERSION_1_1_DEPRECATED'
+glVertexPointer.category = 'GL_VERSION_1_1'
 glVertexPointer.esVersions = [1.0, 1.1]
 glVertexPointer.trace = True
 glVertexPointer.play = False
 gl.add(glVertexPointer)
 
-# GL_VERSION_1_3_DEPRECATED
+# GL_VERSION_1_2
+
+glBlendColor = Function('glBlendColor')
+glBlendColor.ret = Return('void')
+glBlendColor.add( Input( 'red','GLclampf' ))
+glBlendColor.add( Input( 'green','GLclampf' ))
+glBlendColor.add( Input( 'blue','GLclampf' ))
+glBlendColor.add( Input( 'alpha','GLclampf' ))
+glBlendColor.version = '1.2'
+glBlendColor.category = 'GL_VERSION_1_2'
+glBlendColor.esVersions = [2.0]
+glBlendColor.trace = True
+glBlendColor.play = True
+gl.add(glBlendColor)
+
+glBlendEquation = Function('glBlendEquation')
+glBlendEquation.ret = Return('void')
+glBlendEquation.add( Input( 'mode','GLenum' ))
+glBlendEquation.version = '1.2'
+glBlendEquation.category = 'GL_VERSION_1_2'
+glBlendEquation.esVersions = [2.0]
+glBlendEquation.trace = True
+glBlendEquation.play = True
+gl.add(glBlendEquation)
+
+glCopyTexSubImage3D = Function('glCopyTexSubImage3D')
+glCopyTexSubImage3D.ret = Return('void')
+glCopyTexSubImage3D.add( Input( 'target','GLenum' ))
+glCopyTexSubImage3D.add( Input( 'level','GLint' ))
+glCopyTexSubImage3D.add( Input( 'xoffset','GLint' ))
+glCopyTexSubImage3D.add( Input( 'yoffset','GLint' ))
+glCopyTexSubImage3D.add( Input( 'zoffset','GLint' ))
+glCopyTexSubImage3D.add( Input( 'x','GLint' ))
+glCopyTexSubImage3D.add( Input( 'y','GLint' ))
+glCopyTexSubImage3D.add( Input( 'width','GLsizei' ))
+glCopyTexSubImage3D.add( Input( 'height','GLsizei' ))
+glCopyTexSubImage3D.version = '1.2'
+glCopyTexSubImage3D.category = 'GL_VERSION_1_2'
+glCopyTexSubImage3D.trace = True
+glCopyTexSubImage3D.play = True
+gl.add(glCopyTexSubImage3D)
+
+glDrawRangeElements = Function('glDrawRangeElements')
+glDrawRangeElements.ret = Return('void')
+glDrawRangeElements.add( Input( 'mode','GLenum' ))
+glDrawRangeElements.add( Input( 'start','GLuint' ))
+glDrawRangeElements.add( Input( 'end','GLuint' ))
+glDrawRangeElements.add( Input( 'count','GLsizei' ))
+glDrawRangeElements.add( Input( 'type','GLenum' ))
+glDrawRangeElements.add( Input( 'indices','const GLvoid *' ))
+glDrawRangeElements.version = '1.2'
+glDrawRangeElements.category = 'GL_VERSION_1_2'
+glDrawRangeElements.trace = True
+glDrawRangeElements.play = True
+gl.add(glDrawRangeElements)
+
+glTexImage3D = Function('glTexImage3D')
+glTexImage3D.ret = Return('void')
+glTexImage3D.add( Input( 'target','GLenum' ))
+glTexImage3D.add( Input( 'level','GLint' ))
+glTexImage3D.add( Input( 'internalformat','GLint' ,regalLog = 'internalFormatToString(internalformat)' ))
+glTexImage3D.add( Input( 'width','GLsizei' ))
+glTexImage3D.add( Input( 'height','GLsizei' ))
+glTexImage3D.add( Input( 'depth','GLsizei' ))
+glTexImage3D.add( Input( 'border','GLint' ))
+glTexImage3D.add( Input( 'format','GLenum' ))
+glTexImage3D.add( Input( 'type','GLenum' ))
+glTexImage3D.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, depth, format, type, 0, target)' ,cast = 'const GLubyte *' ))
+glTexImage3D.version = '1.2'
+glTexImage3D.category = 'GL_VERSION_1_2'
+glTexImage3D.trace = True
+glTexImage3D.play = True
+gl.add(glTexImage3D)
+
+glTexSubImage3D = Function('glTexSubImage3D')
+glTexSubImage3D.ret = Return('void')
+glTexSubImage3D.add( Input( 'target','GLenum' ))
+glTexSubImage3D.add( Input( 'level','GLint' ))
+glTexSubImage3D.add( Input( 'xoffset','GLint' ))
+glTexSubImage3D.add( Input( 'yoffset','GLint' ))
+glTexSubImage3D.add( Input( 'zoffset','GLint' ))
+glTexSubImage3D.add( Input( 'width','GLsizei' ))
+glTexSubImage3D.add( Input( 'height','GLsizei' ))
+glTexSubImage3D.add( Input( 'depth','GLsizei' ))
+glTexSubImage3D.add( Input( 'format','GLenum' ))
+glTexSubImage3D.add( Input( 'type','GLenum' ))
+glTexSubImage3D.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, depth, format, type, 0, target)' ,cast = 'const GLubyte *' ))
+glTexSubImage3D.version = '1.2'
+glTexSubImage3D.category = 'GL_VERSION_1_2'
+glTexSubImage3D.trace = True
+glTexSubImage3D.play = True
+gl.add(glTexSubImage3D)
+
+# GL_VERSION_1_3
+
+glActiveTexture = Function('glActiveTexture')
+glActiveTexture.ret = Return('void')
+glActiveTexture.add( Input( 'texture','GLenum' ))
+glActiveTexture.version = '1.3'
+glActiveTexture.category = 'GL_VERSION_1_3'
+glActiveTexture.esVersions = [1.0, 1.1, 2.0]
+glActiveTexture.trace = True
+glActiveTexture.play = True
+gl.add(glActiveTexture)
 
 glClientActiveTexture = Function('glClientActiveTexture')
 glClientActiveTexture.ret = Return('void')
 glClientActiveTexture.add( Input( 'texture','GLenum' ))
 glClientActiveTexture.version = '1.3'
-glClientActiveTexture.category = 'GL_VERSION_1_3_DEPRECATED'
+glClientActiveTexture.category = 'GL_VERSION_1_3'
 glClientActiveTexture.esVersions = [1.0, 1.1]
 glClientActiveTexture.trace = True
 glClientActiveTexture.play = True
 gl.add(glClientActiveTexture)
 
+glCompressedTexImage1D = Function('glCompressedTexImage1D')
+glCompressedTexImage1D.ret = Return('void')
+glCompressedTexImage1D.add( Input( 'target','GLenum' ))
+glCompressedTexImage1D.add( Input( 'level','GLint' ))
+glCompressedTexImage1D.add( Input( 'internalformat','GLenum' ))
+glCompressedTexImage1D.add( Input( 'width','GLsizei' ))
+glCompressedTexImage1D.add( Input( 'border','GLint' ))
+glCompressedTexImage1D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexImage1D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexImage1D.version = '1.3'
+glCompressedTexImage1D.category = 'GL_VERSION_1_3'
+glCompressedTexImage1D.trace = True
+glCompressedTexImage1D.play = True
+gl.add(glCompressedTexImage1D)
+
+glCompressedTexImage2D = Function('glCompressedTexImage2D')
+glCompressedTexImage2D.ret = Return('void')
+glCompressedTexImage2D.add( Input( 'target','GLenum' ))
+glCompressedTexImage2D.add( Input( 'level','GLint' ))
+glCompressedTexImage2D.add( Input( 'internalformat','GLenum' ))
+glCompressedTexImage2D.add( Input( 'width','GLsizei' ))
+glCompressedTexImage2D.add( Input( 'height','GLsizei' ))
+glCompressedTexImage2D.add( Input( 'border','GLint' ))
+glCompressedTexImage2D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexImage2D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexImage2D.version = '1.3'
+glCompressedTexImage2D.category = 'GL_VERSION_1_3'
+glCompressedTexImage2D.esVersions = [1.0, 1.1, 2.0]
+glCompressedTexImage2D.trace = True
+glCompressedTexImage2D.play = True
+gl.add(glCompressedTexImage2D)
+
+glCompressedTexImage3D = Function('glCompressedTexImage3D')
+glCompressedTexImage3D.ret = Return('void')
+glCompressedTexImage3D.add( Input( 'target','GLenum' ))
+glCompressedTexImage3D.add( Input( 'level','GLint' ))
+glCompressedTexImage3D.add( Input( 'internalformat','GLenum' ))
+glCompressedTexImage3D.add( Input( 'width','GLsizei' ))
+glCompressedTexImage3D.add( Input( 'height','GLsizei' ))
+glCompressedTexImage3D.add( Input( 'depth','GLsizei' ))
+glCompressedTexImage3D.add( Input( 'border','GLint' ))
+glCompressedTexImage3D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexImage3D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexImage3D.version = '1.3'
+glCompressedTexImage3D.category = 'GL_VERSION_1_3'
+glCompressedTexImage3D.trace = True
+glCompressedTexImage3D.play = True
+gl.add(glCompressedTexImage3D)
+
+glCompressedTexSubImage1D = Function('glCompressedTexSubImage1D')
+glCompressedTexSubImage1D.ret = Return('void')
+glCompressedTexSubImage1D.add( Input( 'target','GLenum' ))
+glCompressedTexSubImage1D.add( Input( 'level','GLint' ))
+glCompressedTexSubImage1D.add( Input( 'xoffset','GLint' ))
+glCompressedTexSubImage1D.add( Input( 'width','GLsizei' ))
+glCompressedTexSubImage1D.add( Input( 'format','GLenum' ))
+glCompressedTexSubImage1D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexSubImage1D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexSubImage1D.version = '1.3'
+glCompressedTexSubImage1D.category = 'GL_VERSION_1_3'
+glCompressedTexSubImage1D.trace = True
+glCompressedTexSubImage1D.play = True
+gl.add(glCompressedTexSubImage1D)
+
+glCompressedTexSubImage2D = Function('glCompressedTexSubImage2D')
+glCompressedTexSubImage2D.ret = Return('void')
+glCompressedTexSubImage2D.add( Input( 'target','GLenum' ))
+glCompressedTexSubImage2D.add( Input( 'level','GLint' ))
+glCompressedTexSubImage2D.add( Input( 'xoffset','GLint' ))
+glCompressedTexSubImage2D.add( Input( 'yoffset','GLint' ))
+glCompressedTexSubImage2D.add( Input( 'width','GLsizei' ))
+glCompressedTexSubImage2D.add( Input( 'height','GLsizei' ))
+glCompressedTexSubImage2D.add( Input( 'format','GLenum' ))
+glCompressedTexSubImage2D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexSubImage2D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexSubImage2D.version = '1.3'
+glCompressedTexSubImage2D.category = 'GL_VERSION_1_3'
+glCompressedTexSubImage2D.esVersions = [1.0, 1.1, 2.0]
+glCompressedTexSubImage2D.trace = True
+glCompressedTexSubImage2D.play = True
+gl.add(glCompressedTexSubImage2D)
+
+glCompressedTexSubImage3D = Function('glCompressedTexSubImage3D')
+glCompressedTexSubImage3D.ret = Return('void')
+glCompressedTexSubImage3D.add( Input( 'target','GLenum' ))
+glCompressedTexSubImage3D.add( Input( 'level','GLint' ))
+glCompressedTexSubImage3D.add( Input( 'xoffset','GLint' ))
+glCompressedTexSubImage3D.add( Input( 'yoffset','GLint' ))
+glCompressedTexSubImage3D.add( Input( 'zoffset','GLint' ))
+glCompressedTexSubImage3D.add( Input( 'width','GLsizei' ))
+glCompressedTexSubImage3D.add( Input( 'height','GLsizei' ))
+glCompressedTexSubImage3D.add( Input( 'depth','GLsizei' ))
+glCompressedTexSubImage3D.add( Input( 'format','GLenum' ))
+glCompressedTexSubImage3D.add( Input( 'imageSize','GLsizei' ))
+glCompressedTexSubImage3D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
+glCompressedTexSubImage3D.version = '1.3'
+glCompressedTexSubImage3D.category = 'GL_VERSION_1_3'
+glCompressedTexSubImage3D.trace = True
+glCompressedTexSubImage3D.play = True
+gl.add(glCompressedTexSubImage3D)
+
+glGetCompressedTexImage = Function('glGetCompressedTexImage')
+glGetCompressedTexImage.ret = Return('void')
+glGetCompressedTexImage.add( Input( 'target','GLenum' ))
+glGetCompressedTexImage.add( Input( 'lod','GLint' ))
+glGetCompressedTexImage.add( Output( 'img','GLvoid *' ))
+glGetCompressedTexImage.version = '1.3'
+glGetCompressedTexImage.category = 'GL_VERSION_1_3'
+glGetCompressedTexImage.trace = True
+glGetCompressedTexImage.play = True
+gl.add(glGetCompressedTexImage)
+
 glLoadTransposeMatrixd = Function('glLoadTransposeMatrixd')
 glLoadTransposeMatrixd.ret = Return('void')
 glLoadTransposeMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glLoadTransposeMatrixd.version = '1.3'
-glLoadTransposeMatrixd.category = 'GL_VERSION_1_3_DEPRECATED'
+glLoadTransposeMatrixd.category = 'GL_VERSION_1_3'
 glLoadTransposeMatrixd.trace = True
 glLoadTransposeMatrixd.play = True
 gl.add(glLoadTransposeMatrixd)
@@ -15313,7 +15524,7 @@ glLoadTransposeMatrixf = Function('glLoadTransposeMatrixf')
 glLoadTransposeMatrixf.ret = Return('void')
 glLoadTransposeMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glLoadTransposeMatrixf.version = '1.3'
-glLoadTransposeMatrixf.category = 'GL_VERSION_1_3_DEPRECATED'
+glLoadTransposeMatrixf.category = 'GL_VERSION_1_3'
 glLoadTransposeMatrixf.trace = True
 glLoadTransposeMatrixf.play = True
 gl.add(glLoadTransposeMatrixf)
@@ -15322,7 +15533,7 @@ glMultTransposeMatrixd = Function('glMultTransposeMatrixd')
 glMultTransposeMatrixd.ret = Return('void')
 glMultTransposeMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glMultTransposeMatrixd.version = '1.3'
-glMultTransposeMatrixd.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultTransposeMatrixd.category = 'GL_VERSION_1_3'
 glMultTransposeMatrixd.trace = True
 glMultTransposeMatrixd.play = True
 gl.add(glMultTransposeMatrixd)
@@ -15331,7 +15542,7 @@ glMultTransposeMatrixf = Function('glMultTransposeMatrixf')
 glMultTransposeMatrixf.ret = Return('void')
 glMultTransposeMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glMultTransposeMatrixf.version = '1.3'
-glMultTransposeMatrixf.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultTransposeMatrixf.category = 'GL_VERSION_1_3'
 glMultTransposeMatrixf.trace = True
 glMultTransposeMatrixf.play = True
 gl.add(glMultTransposeMatrixf)
@@ -15341,7 +15552,7 @@ glMultiTexCoord1d.ret = Return('void')
 glMultiTexCoord1d.add( Input( 'target','GLenum' ))
 glMultiTexCoord1d.add( Input( 's','GLdouble' ))
 glMultiTexCoord1d.version = '1.3'
-glMultiTexCoord1d.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1d.category = 'GL_VERSION_1_3'
 glMultiTexCoord1d.trace = True
 glMultiTexCoord1d.play = True
 gl.add(glMultiTexCoord1d)
@@ -15351,7 +15562,7 @@ glMultiTexCoord1dv.ret = Return('void')
 glMultiTexCoord1dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
 glMultiTexCoord1dv.version = '1.3'
-glMultiTexCoord1dv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1dv.trace = True
 glMultiTexCoord1dv.play = True
 gl.add(glMultiTexCoord1dv)
@@ -15361,7 +15572,7 @@ glMultiTexCoord1f.ret = Return('void')
 glMultiTexCoord1f.add( Input( 'target','GLenum' ))
 glMultiTexCoord1f.add( Input( 's','GLfloat' ))
 glMultiTexCoord1f.version = '1.3'
-glMultiTexCoord1f.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1f.category = 'GL_VERSION_1_3'
 glMultiTexCoord1f.trace = True
 glMultiTexCoord1f.play = True
 gl.add(glMultiTexCoord1f)
@@ -15371,7 +15582,7 @@ glMultiTexCoord1fv.ret = Return('void')
 glMultiTexCoord1fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
 glMultiTexCoord1fv.version = '1.3'
-glMultiTexCoord1fv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1fv.trace = True
 glMultiTexCoord1fv.play = True
 gl.add(glMultiTexCoord1fv)
@@ -15381,7 +15592,7 @@ glMultiTexCoord1i.ret = Return('void')
 glMultiTexCoord1i.add( Input( 'target','GLenum' ))
 glMultiTexCoord1i.add( Input( 's','GLint' ))
 glMultiTexCoord1i.version = '1.3'
-glMultiTexCoord1i.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1i.category = 'GL_VERSION_1_3'
 glMultiTexCoord1i.trace = True
 glMultiTexCoord1i.play = True
 gl.add(glMultiTexCoord1i)
@@ -15391,7 +15602,7 @@ glMultiTexCoord1iv.ret = Return('void')
 glMultiTexCoord1iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1iv.add( Input( 'v','const GLint *' ,size = 1 ))
 glMultiTexCoord1iv.version = '1.3'
-glMultiTexCoord1iv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1iv.trace = True
 glMultiTexCoord1iv.play = True
 gl.add(glMultiTexCoord1iv)
@@ -15401,7 +15612,7 @@ glMultiTexCoord1s.ret = Return('void')
 glMultiTexCoord1s.add( Input( 'target','GLenum' ))
 glMultiTexCoord1s.add( Input( 's','GLshort' ))
 glMultiTexCoord1s.version = '1.3'
-glMultiTexCoord1s.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1s.category = 'GL_VERSION_1_3'
 glMultiTexCoord1s.trace = True
 glMultiTexCoord1s.play = True
 gl.add(glMultiTexCoord1s)
@@ -15411,7 +15622,7 @@ glMultiTexCoord1sv.ret = Return('void')
 glMultiTexCoord1sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
 glMultiTexCoord1sv.version = '1.3'
-glMultiTexCoord1sv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord1sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1sv.trace = True
 glMultiTexCoord1sv.play = True
 gl.add(glMultiTexCoord1sv)
@@ -15422,7 +15633,7 @@ glMultiTexCoord2d.add( Input( 'target','GLenum' ))
 glMultiTexCoord2d.add( Input( 's','GLdouble' ))
 glMultiTexCoord2d.add( Input( 't','GLdouble' ))
 glMultiTexCoord2d.version = '1.3'
-glMultiTexCoord2d.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2d.category = 'GL_VERSION_1_3'
 glMultiTexCoord2d.trace = True
 glMultiTexCoord2d.play = True
 gl.add(glMultiTexCoord2d)
@@ -15432,7 +15643,7 @@ glMultiTexCoord2dv.ret = Return('void')
 glMultiTexCoord2dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
 glMultiTexCoord2dv.version = '1.3'
-glMultiTexCoord2dv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2dv.trace = True
 glMultiTexCoord2dv.play = True
 gl.add(glMultiTexCoord2dv)
@@ -15443,7 +15654,7 @@ glMultiTexCoord2f.add( Input( 'target','GLenum' ))
 glMultiTexCoord2f.add( Input( 's','GLfloat' ))
 glMultiTexCoord2f.add( Input( 't','GLfloat' ))
 glMultiTexCoord2f.version = '1.3'
-glMultiTexCoord2f.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2f.category = 'GL_VERSION_1_3'
 glMultiTexCoord2f.trace = True
 glMultiTexCoord2f.play = True
 gl.add(glMultiTexCoord2f)
@@ -15453,7 +15664,7 @@ glMultiTexCoord2fv.ret = Return('void')
 glMultiTexCoord2fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
 glMultiTexCoord2fv.version = '1.3'
-glMultiTexCoord2fv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2fv.trace = True
 glMultiTexCoord2fv.play = True
 gl.add(glMultiTexCoord2fv)
@@ -15464,7 +15675,7 @@ glMultiTexCoord2i.add( Input( 'target','GLenum' ))
 glMultiTexCoord2i.add( Input( 's','GLint' ))
 glMultiTexCoord2i.add( Input( 't','GLint' ))
 glMultiTexCoord2i.version = '1.3'
-glMultiTexCoord2i.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2i.category = 'GL_VERSION_1_3'
 glMultiTexCoord2i.trace = True
 glMultiTexCoord2i.play = True
 gl.add(glMultiTexCoord2i)
@@ -15474,7 +15685,7 @@ glMultiTexCoord2iv.ret = Return('void')
 glMultiTexCoord2iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glMultiTexCoord2iv.version = '1.3'
-glMultiTexCoord2iv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2iv.trace = True
 glMultiTexCoord2iv.play = True
 gl.add(glMultiTexCoord2iv)
@@ -15485,7 +15696,7 @@ glMultiTexCoord2s.add( Input( 'target','GLenum' ))
 glMultiTexCoord2s.add( Input( 's','GLshort' ))
 glMultiTexCoord2s.add( Input( 't','GLshort' ))
 glMultiTexCoord2s.version = '1.3'
-glMultiTexCoord2s.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2s.category = 'GL_VERSION_1_3'
 glMultiTexCoord2s.trace = True
 glMultiTexCoord2s.play = True
 gl.add(glMultiTexCoord2s)
@@ -15495,7 +15706,7 @@ glMultiTexCoord2sv.ret = Return('void')
 glMultiTexCoord2sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
 glMultiTexCoord2sv.version = '1.3'
-glMultiTexCoord2sv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord2sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2sv.trace = True
 glMultiTexCoord2sv.play = True
 gl.add(glMultiTexCoord2sv)
@@ -15507,7 +15718,7 @@ glMultiTexCoord3d.add( Input( 's','GLdouble' ))
 glMultiTexCoord3d.add( Input( 't','GLdouble' ))
 glMultiTexCoord3d.add( Input( 'r','GLdouble' ))
 glMultiTexCoord3d.version = '1.3'
-glMultiTexCoord3d.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3d.category = 'GL_VERSION_1_3'
 glMultiTexCoord3d.trace = True
 glMultiTexCoord3d.play = True
 gl.add(glMultiTexCoord3d)
@@ -15517,7 +15728,7 @@ glMultiTexCoord3dv.ret = Return('void')
 glMultiTexCoord3dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glMultiTexCoord3dv.version = '1.3'
-glMultiTexCoord3dv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3dv.trace = True
 glMultiTexCoord3dv.play = True
 gl.add(glMultiTexCoord3dv)
@@ -15529,7 +15740,7 @@ glMultiTexCoord3f.add( Input( 's','GLfloat' ))
 glMultiTexCoord3f.add( Input( 't','GLfloat' ))
 glMultiTexCoord3f.add( Input( 'r','GLfloat' ))
 glMultiTexCoord3f.version = '1.3'
-glMultiTexCoord3f.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3f.category = 'GL_VERSION_1_3'
 glMultiTexCoord3f.trace = True
 glMultiTexCoord3f.play = True
 gl.add(glMultiTexCoord3f)
@@ -15539,7 +15750,7 @@ glMultiTexCoord3fv.ret = Return('void')
 glMultiTexCoord3fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glMultiTexCoord3fv.version = '1.3'
-glMultiTexCoord3fv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3fv.trace = True
 glMultiTexCoord3fv.play = True
 gl.add(glMultiTexCoord3fv)
@@ -15551,7 +15762,7 @@ glMultiTexCoord3i.add( Input( 's','GLint' ))
 glMultiTexCoord3i.add( Input( 't','GLint' ))
 glMultiTexCoord3i.add( Input( 'r','GLint' ))
 glMultiTexCoord3i.version = '1.3'
-glMultiTexCoord3i.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3i.category = 'GL_VERSION_1_3'
 glMultiTexCoord3i.trace = True
 glMultiTexCoord3i.play = True
 gl.add(glMultiTexCoord3i)
@@ -15561,7 +15772,7 @@ glMultiTexCoord3iv.ret = Return('void')
 glMultiTexCoord3iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glMultiTexCoord3iv.version = '1.3'
-glMultiTexCoord3iv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3iv.trace = True
 glMultiTexCoord3iv.play = True
 gl.add(glMultiTexCoord3iv)
@@ -15573,7 +15784,7 @@ glMultiTexCoord3s.add( Input( 's','GLshort' ))
 glMultiTexCoord3s.add( Input( 't','GLshort' ))
 glMultiTexCoord3s.add( Input( 'r','GLshort' ))
 glMultiTexCoord3s.version = '1.3'
-glMultiTexCoord3s.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3s.category = 'GL_VERSION_1_3'
 glMultiTexCoord3s.trace = True
 glMultiTexCoord3s.play = True
 gl.add(glMultiTexCoord3s)
@@ -15583,7 +15794,7 @@ glMultiTexCoord3sv.ret = Return('void')
 glMultiTexCoord3sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glMultiTexCoord3sv.version = '1.3'
-glMultiTexCoord3sv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord3sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3sv.trace = True
 glMultiTexCoord3sv.play = True
 gl.add(glMultiTexCoord3sv)
@@ -15596,7 +15807,7 @@ glMultiTexCoord4d.add( Input( 't','GLdouble' ))
 glMultiTexCoord4d.add( Input( 'r','GLdouble' ))
 glMultiTexCoord4d.add( Input( 'q','GLdouble' ))
 glMultiTexCoord4d.version = '1.3'
-glMultiTexCoord4d.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4d.category = 'GL_VERSION_1_3'
 glMultiTexCoord4d.trace = True
 glMultiTexCoord4d.play = True
 gl.add(glMultiTexCoord4d)
@@ -15606,7 +15817,7 @@ glMultiTexCoord4dv.ret = Return('void')
 glMultiTexCoord4dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glMultiTexCoord4dv.version = '1.3'
-glMultiTexCoord4dv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4dv.trace = True
 glMultiTexCoord4dv.play = True
 gl.add(glMultiTexCoord4dv)
@@ -15619,7 +15830,7 @@ glMultiTexCoord4f.add( Input( 't','GLfloat' ))
 glMultiTexCoord4f.add( Input( 'r','GLfloat' ))
 glMultiTexCoord4f.add( Input( 'q','GLfloat' ))
 glMultiTexCoord4f.version = '1.3'
-glMultiTexCoord4f.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4f.category = 'GL_VERSION_1_3'
 glMultiTexCoord4f.esVersions = [1.0, 1.1]
 glMultiTexCoord4f.trace = True
 glMultiTexCoord4f.play = True
@@ -15630,7 +15841,7 @@ glMultiTexCoord4fv.ret = Return('void')
 glMultiTexCoord4fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glMultiTexCoord4fv.version = '1.3'
-glMultiTexCoord4fv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4fv.trace = True
 glMultiTexCoord4fv.play = True
 gl.add(glMultiTexCoord4fv)
@@ -15643,7 +15854,7 @@ glMultiTexCoord4i.add( Input( 't','GLint' ))
 glMultiTexCoord4i.add( Input( 'r','GLint' ))
 glMultiTexCoord4i.add( Input( 'q','GLint' ))
 glMultiTexCoord4i.version = '1.3'
-glMultiTexCoord4i.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4i.category = 'GL_VERSION_1_3'
 glMultiTexCoord4i.trace = True
 glMultiTexCoord4i.play = True
 gl.add(glMultiTexCoord4i)
@@ -15653,7 +15864,7 @@ glMultiTexCoord4iv.ret = Return('void')
 glMultiTexCoord4iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glMultiTexCoord4iv.version = '1.3'
-glMultiTexCoord4iv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4iv.trace = True
 glMultiTexCoord4iv.play = True
 gl.add(glMultiTexCoord4iv)
@@ -15666,7 +15877,7 @@ glMultiTexCoord4s.add( Input( 't','GLshort' ))
 glMultiTexCoord4s.add( Input( 'r','GLshort' ))
 glMultiTexCoord4s.add( Input( 'q','GLshort' ))
 glMultiTexCoord4s.version = '1.3'
-glMultiTexCoord4s.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4s.category = 'GL_VERSION_1_3'
 glMultiTexCoord4s.trace = True
 glMultiTexCoord4s.play = True
 gl.add(glMultiTexCoord4s)
@@ -15676,12 +15887,25 @@ glMultiTexCoord4sv.ret = Return('void')
 glMultiTexCoord4sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glMultiTexCoord4sv.version = '1.3'
-glMultiTexCoord4sv.category = 'GL_VERSION_1_3_DEPRECATED'
+glMultiTexCoord4sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4sv.trace = True
 glMultiTexCoord4sv.play = True
 gl.add(glMultiTexCoord4sv)
 
-# GL_VERSION_1_4_DEPRECATED
+# GL_VERSION_1_4
+
+glBlendFuncSeparate = Function('glBlendFuncSeparate')
+glBlendFuncSeparate.ret = Return('void')
+glBlendFuncSeparate.add( Input( 'sfactorRGB','GLenum' ))
+glBlendFuncSeparate.add( Input( 'dfactorRGB','GLenum' ))
+glBlendFuncSeparate.add( Input( 'sfactorAlpha','GLenum' ))
+glBlendFuncSeparate.add( Input( 'dfactorAlpha','GLenum' ))
+glBlendFuncSeparate.version = '1.4'
+glBlendFuncSeparate.category = 'GL_VERSION_1_4'
+glBlendFuncSeparate.esVersions = [2.0]
+glBlendFuncSeparate.trace = True
+glBlendFuncSeparate.play = True
+gl.add(glBlendFuncSeparate)
 
 glFogCoordPointer = Function('glFogCoordPointer')
 glFogCoordPointer.ret = Return('void')
@@ -15689,7 +15913,7 @@ glFogCoordPointer.add( Input( 'type','GLenum' ))
 glFogCoordPointer.add( Input( 'stride','GLsizei' ))
 glFogCoordPointer.add( Input( 'pointer','const GLvoid *' ))
 glFogCoordPointer.version = '1.4'
-glFogCoordPointer.category = 'GL_VERSION_1_4_DEPRECATED'
+glFogCoordPointer.category = 'GL_VERSION_1_4'
 glFogCoordPointer.trace = True
 glFogCoordPointer.play = True
 gl.add(glFogCoordPointer)
@@ -15698,7 +15922,7 @@ glFogCoordd = Function('glFogCoordd')
 glFogCoordd.ret = Return('void')
 glFogCoordd.add( Input( 'coord','GLdouble' ))
 glFogCoordd.version = '1.4'
-glFogCoordd.category = 'GL_VERSION_1_4_DEPRECATED'
+glFogCoordd.category = 'GL_VERSION_1_4'
 glFogCoordd.trace = True
 glFogCoordd.play = True
 gl.add(glFogCoordd)
@@ -15707,7 +15931,7 @@ glFogCoorddv = Function('glFogCoorddv')
 glFogCoorddv.ret = Return('void')
 glFogCoorddv.add( Input( 'coord','const GLdouble *' ,size = 1 ))
 glFogCoorddv.version = '1.4'
-glFogCoorddv.category = 'GL_VERSION_1_4_DEPRECATED'
+glFogCoorddv.category = 'GL_VERSION_1_4'
 glFogCoorddv.trace = True
 glFogCoorddv.play = True
 gl.add(glFogCoorddv)
@@ -15716,7 +15940,7 @@ glFogCoordf = Function('glFogCoordf')
 glFogCoordf.ret = Return('void')
 glFogCoordf.add( Input( 'coord','GLfloat' ))
 glFogCoordf.version = '1.4'
-glFogCoordf.category = 'GL_VERSION_1_4_DEPRECATED'
+glFogCoordf.category = 'GL_VERSION_1_4'
 glFogCoordf.trace = True
 glFogCoordf.play = True
 gl.add(glFogCoordf)
@@ -15725,10 +15949,77 @@ glFogCoordfv = Function('glFogCoordfv')
 glFogCoordfv.ret = Return('void')
 glFogCoordfv.add( Input( 'coord','const GLfloat *' ,size = 1 ))
 glFogCoordfv.version = '1.4'
-glFogCoordfv.category = 'GL_VERSION_1_4_DEPRECATED'
+glFogCoordfv.category = 'GL_VERSION_1_4'
 glFogCoordfv.trace = True
 glFogCoordfv.play = True
 gl.add(glFogCoordfv)
+
+glMultiDrawArrays = Function('glMultiDrawArrays')
+glMultiDrawArrays.ret = Return('void')
+glMultiDrawArrays.add( Input( 'mode','GLenum' ))
+glMultiDrawArrays.add( Input( 'first','const GLint *' ,size = 'primcount' ))
+glMultiDrawArrays.add( Input( 'count','const GLsizei *' ,size = 'primcount' ))
+glMultiDrawArrays.add( Input( 'primcount','GLsizei' ))
+glMultiDrawArrays.version = '1.4'
+glMultiDrawArrays.category = 'GL_VERSION_1_4'
+glMultiDrawArrays.trace = True
+glMultiDrawArrays.play = True
+gl.add(glMultiDrawArrays)
+
+glMultiDrawElements = Function('glMultiDrawElements')
+glMultiDrawElements.ret = Return('void')
+glMultiDrawElements.add( Input( 'mode','GLenum' ))
+glMultiDrawElements.add( Input( 'count','const GLsizei *' ,size = 'primcount' ))
+glMultiDrawElements.add( Input( 'type','GLenum' ))
+glMultiDrawElements.add( Input( 'indices','const GLvoid **' ,size = 'primcount' ))
+glMultiDrawElements.add( Input( 'primcount','GLsizei' ))
+glMultiDrawElements.version = '1.4'
+glMultiDrawElements.category = 'GL_VERSION_1_4'
+glMultiDrawElements.trace = True
+glMultiDrawElements.play = True
+gl.add(glMultiDrawElements)
+
+glPointParameterf = Function('glPointParameterf')
+glPointParameterf.ret = Return('void')
+glPointParameterf.add( Input( 'pname','GLenum' ))
+glPointParameterf.add( Input( 'param','GLfloat' ))
+glPointParameterf.version = '1.4'
+glPointParameterf.category = 'GL_VERSION_1_4'
+glPointParameterf.esVersions = [1.1]
+glPointParameterf.trace = True
+glPointParameterf.play = True
+gl.add(glPointParameterf)
+
+glPointParameterfv = Function('glPointParameterfv')
+glPointParameterfv.ret = Return('void')
+glPointParameterfv.add( Input( 'pname','GLenum' ))
+glPointParameterfv.add( Input( 'params','const GLfloat *' ))
+glPointParameterfv.version = '1.4'
+glPointParameterfv.category = 'GL_VERSION_1_4'
+glPointParameterfv.esVersions = [1.1]
+glPointParameterfv.trace = True
+glPointParameterfv.play = True
+gl.add(glPointParameterfv)
+
+glPointParameteri = Function('glPointParameteri')
+glPointParameteri.ret = Return('void')
+glPointParameteri.add( Input( 'pname','GLenum' ))
+glPointParameteri.add( Input( 'param','GLint' ))
+glPointParameteri.version = '1.4'
+glPointParameteri.category = 'GL_VERSION_1_4'
+glPointParameteri.trace = True
+glPointParameteri.play = True
+gl.add(glPointParameteri)
+
+glPointParameteriv = Function('glPointParameteriv')
+glPointParameteriv.ret = Return('void')
+glPointParameteriv.add( Input( 'pname','GLenum' ))
+glPointParameteriv.add( Input( 'params','const GLint *' ))
+glPointParameteriv.version = '1.4'
+glPointParameteriv.category = 'GL_VERSION_1_4'
+glPointParameteriv.trace = True
+glPointParameteriv.play = True
+gl.add(glPointParameteriv)
 
 glSecondaryColor3b = Function('glSecondaryColor3b')
 glSecondaryColor3b.ret = Return('void')
@@ -15736,7 +16027,7 @@ glSecondaryColor3b.add( Input( 'red','GLbyte' ))
 glSecondaryColor3b.add( Input( 'green','GLbyte' ))
 glSecondaryColor3b.add( Input( 'blue','GLbyte' ))
 glSecondaryColor3b.version = '1.4'
-glSecondaryColor3b.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3b.category = 'GL_VERSION_1_4'
 glSecondaryColor3b.trace = True
 glSecondaryColor3b.play = True
 gl.add(glSecondaryColor3b)
@@ -15745,7 +16036,7 @@ glSecondaryColor3bv = Function('glSecondaryColor3bv')
 glSecondaryColor3bv.ret = Return('void')
 glSecondaryColor3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
 glSecondaryColor3bv.version = '1.4'
-glSecondaryColor3bv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3bv.category = 'GL_VERSION_1_4'
 glSecondaryColor3bv.trace = True
 glSecondaryColor3bv.play = True
 gl.add(glSecondaryColor3bv)
@@ -15756,7 +16047,7 @@ glSecondaryColor3d.add( Input( 'red','GLdouble' ))
 glSecondaryColor3d.add( Input( 'green','GLdouble' ))
 glSecondaryColor3d.add( Input( 'blue','GLdouble' ))
 glSecondaryColor3d.version = '1.4'
-glSecondaryColor3d.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3d.category = 'GL_VERSION_1_4'
 glSecondaryColor3d.trace = True
 glSecondaryColor3d.play = True
 gl.add(glSecondaryColor3d)
@@ -15765,7 +16056,7 @@ glSecondaryColor3dv = Function('glSecondaryColor3dv')
 glSecondaryColor3dv.ret = Return('void')
 glSecondaryColor3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glSecondaryColor3dv.version = '1.4'
-glSecondaryColor3dv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3dv.category = 'GL_VERSION_1_4'
 glSecondaryColor3dv.trace = True
 glSecondaryColor3dv.play = True
 gl.add(glSecondaryColor3dv)
@@ -15776,7 +16067,7 @@ glSecondaryColor3f.add( Input( 'red','GLfloat' ))
 glSecondaryColor3f.add( Input( 'green','GLfloat' ))
 glSecondaryColor3f.add( Input( 'blue','GLfloat' ))
 glSecondaryColor3f.version = '1.4'
-glSecondaryColor3f.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3f.category = 'GL_VERSION_1_4'
 glSecondaryColor3f.trace = True
 glSecondaryColor3f.play = True
 gl.add(glSecondaryColor3f)
@@ -15785,7 +16076,7 @@ glSecondaryColor3fv = Function('glSecondaryColor3fv')
 glSecondaryColor3fv.ret = Return('void')
 glSecondaryColor3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glSecondaryColor3fv.version = '1.4'
-glSecondaryColor3fv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3fv.category = 'GL_VERSION_1_4'
 glSecondaryColor3fv.trace = True
 glSecondaryColor3fv.play = True
 gl.add(glSecondaryColor3fv)
@@ -15796,7 +16087,7 @@ glSecondaryColor3i.add( Input( 'red','GLint' ))
 glSecondaryColor3i.add( Input( 'green','GLint' ))
 glSecondaryColor3i.add( Input( 'blue','GLint' ))
 glSecondaryColor3i.version = '1.4'
-glSecondaryColor3i.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3i.category = 'GL_VERSION_1_4'
 glSecondaryColor3i.trace = True
 glSecondaryColor3i.play = True
 gl.add(glSecondaryColor3i)
@@ -15805,7 +16096,7 @@ glSecondaryColor3iv = Function('glSecondaryColor3iv')
 glSecondaryColor3iv.ret = Return('void')
 glSecondaryColor3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glSecondaryColor3iv.version = '1.4'
-glSecondaryColor3iv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3iv.category = 'GL_VERSION_1_4'
 glSecondaryColor3iv.trace = True
 glSecondaryColor3iv.play = True
 gl.add(glSecondaryColor3iv)
@@ -15816,7 +16107,7 @@ glSecondaryColor3s.add( Input( 'red','GLshort' ))
 glSecondaryColor3s.add( Input( 'green','GLshort' ))
 glSecondaryColor3s.add( Input( 'blue','GLshort' ))
 glSecondaryColor3s.version = '1.4'
-glSecondaryColor3s.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3s.category = 'GL_VERSION_1_4'
 glSecondaryColor3s.trace = True
 glSecondaryColor3s.play = True
 gl.add(glSecondaryColor3s)
@@ -15825,7 +16116,7 @@ glSecondaryColor3sv = Function('glSecondaryColor3sv')
 glSecondaryColor3sv.ret = Return('void')
 glSecondaryColor3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glSecondaryColor3sv.version = '1.4'
-glSecondaryColor3sv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3sv.category = 'GL_VERSION_1_4'
 glSecondaryColor3sv.trace = True
 glSecondaryColor3sv.play = True
 gl.add(glSecondaryColor3sv)
@@ -15836,7 +16127,7 @@ glSecondaryColor3ub.add( Input( 'red','GLubyte' ))
 glSecondaryColor3ub.add( Input( 'green','GLubyte' ))
 glSecondaryColor3ub.add( Input( 'blue','GLubyte' ))
 glSecondaryColor3ub.version = '1.4'
-glSecondaryColor3ub.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3ub.category = 'GL_VERSION_1_4'
 glSecondaryColor3ub.trace = True
 glSecondaryColor3ub.play = True
 gl.add(glSecondaryColor3ub)
@@ -15845,7 +16136,7 @@ glSecondaryColor3ubv = Function('glSecondaryColor3ubv')
 glSecondaryColor3ubv.ret = Return('void')
 glSecondaryColor3ubv.add( Input( 'v','const GLubyte *' ,size = 3 ))
 glSecondaryColor3ubv.version = '1.4'
-glSecondaryColor3ubv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3ubv.category = 'GL_VERSION_1_4'
 glSecondaryColor3ubv.trace = True
 glSecondaryColor3ubv.play = True
 gl.add(glSecondaryColor3ubv)
@@ -15856,7 +16147,7 @@ glSecondaryColor3ui.add( Input( 'red','GLuint' ))
 glSecondaryColor3ui.add( Input( 'green','GLuint' ))
 glSecondaryColor3ui.add( Input( 'blue','GLuint' ))
 glSecondaryColor3ui.version = '1.4'
-glSecondaryColor3ui.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3ui.category = 'GL_VERSION_1_4'
 glSecondaryColor3ui.trace = True
 glSecondaryColor3ui.play = True
 gl.add(glSecondaryColor3ui)
@@ -15865,7 +16156,7 @@ glSecondaryColor3uiv = Function('glSecondaryColor3uiv')
 glSecondaryColor3uiv.ret = Return('void')
 glSecondaryColor3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
 glSecondaryColor3uiv.version = '1.4'
-glSecondaryColor3uiv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3uiv.category = 'GL_VERSION_1_4'
 glSecondaryColor3uiv.trace = True
 glSecondaryColor3uiv.play = True
 gl.add(glSecondaryColor3uiv)
@@ -15876,7 +16167,7 @@ glSecondaryColor3us.add( Input( 'red','GLushort' ))
 glSecondaryColor3us.add( Input( 'green','GLushort' ))
 glSecondaryColor3us.add( Input( 'blue','GLushort' ))
 glSecondaryColor3us.version = '1.4'
-glSecondaryColor3us.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3us.category = 'GL_VERSION_1_4'
 glSecondaryColor3us.trace = True
 glSecondaryColor3us.play = True
 gl.add(glSecondaryColor3us)
@@ -15885,7 +16176,7 @@ glSecondaryColor3usv = Function('glSecondaryColor3usv')
 glSecondaryColor3usv.ret = Return('void')
 glSecondaryColor3usv.add( Input( 'v','const GLushort *' ,size = 3 ))
 glSecondaryColor3usv.version = '1.4'
-glSecondaryColor3usv.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColor3usv.category = 'GL_VERSION_1_4'
 glSecondaryColor3usv.trace = True
 glSecondaryColor3usv.play = True
 gl.add(glSecondaryColor3usv)
@@ -15897,7 +16188,7 @@ glSecondaryColorPointer.add( Input( 'type','GLenum' ))
 glSecondaryColorPointer.add( Input( 'stride','GLsizei' ))
 glSecondaryColorPointer.add( Input( 'pointer','const GLvoid *' ))
 glSecondaryColorPointer.version = '1.4'
-glSecondaryColorPointer.category = 'GL_VERSION_1_4_DEPRECATED'
+glSecondaryColorPointer.category = 'GL_VERSION_1_4'
 glSecondaryColorPointer.trace = True
 glSecondaryColorPointer.play = True
 gl.add(glSecondaryColorPointer)
@@ -15907,7 +16198,7 @@ glWindowPos2d.ret = Return('void')
 glWindowPos2d.add( Input( 'x','GLdouble' ))
 glWindowPos2d.add( Input( 'y','GLdouble' ))
 glWindowPos2d.version = '1.4'
-glWindowPos2d.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2d.category = 'GL_VERSION_1_4'
 glWindowPos2d.trace = True
 glWindowPos2d.play = True
 gl.add(glWindowPos2d)
@@ -15916,7 +16207,7 @@ glWindowPos2dv = Function('glWindowPos2dv')
 glWindowPos2dv.ret = Return('void')
 glWindowPos2dv.add( Input( 'p','const GLdouble *' ,size = 2 ))
 glWindowPos2dv.version = '1.4'
-glWindowPos2dv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2dv.category = 'GL_VERSION_1_4'
 glWindowPos2dv.trace = True
 glWindowPos2dv.play = True
 gl.add(glWindowPos2dv)
@@ -15926,7 +16217,7 @@ glWindowPos2f.ret = Return('void')
 glWindowPos2f.add( Input( 'x','GLfloat' ))
 glWindowPos2f.add( Input( 'y','GLfloat' ))
 glWindowPos2f.version = '1.4'
-glWindowPos2f.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2f.category = 'GL_VERSION_1_4'
 glWindowPos2f.trace = True
 glWindowPos2f.play = True
 gl.add(glWindowPos2f)
@@ -15935,7 +16226,7 @@ glWindowPos2fv = Function('glWindowPos2fv')
 glWindowPos2fv.ret = Return('void')
 glWindowPos2fv.add( Input( 'p','const GLfloat *' ,size = 2 ))
 glWindowPos2fv.version = '1.4'
-glWindowPos2fv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2fv.category = 'GL_VERSION_1_4'
 glWindowPos2fv.trace = True
 glWindowPos2fv.play = True
 gl.add(glWindowPos2fv)
@@ -15945,7 +16236,7 @@ glWindowPos2i.ret = Return('void')
 glWindowPos2i.add( Input( 'x','GLint' ))
 glWindowPos2i.add( Input( 'y','GLint' ))
 glWindowPos2i.version = '1.4'
-glWindowPos2i.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2i.category = 'GL_VERSION_1_4'
 glWindowPos2i.trace = True
 glWindowPos2i.play = True
 gl.add(glWindowPos2i)
@@ -15954,7 +16245,7 @@ glWindowPos2iv = Function('glWindowPos2iv')
 glWindowPos2iv.ret = Return('void')
 glWindowPos2iv.add( Input( 'p','const GLint *' ,size = 2 ))
 glWindowPos2iv.version = '1.4'
-glWindowPos2iv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2iv.category = 'GL_VERSION_1_4'
 glWindowPos2iv.trace = True
 glWindowPos2iv.play = True
 gl.add(glWindowPos2iv)
@@ -15964,7 +16255,7 @@ glWindowPos2s.ret = Return('void')
 glWindowPos2s.add( Input( 'x','GLshort' ))
 glWindowPos2s.add( Input( 'y','GLshort' ))
 glWindowPos2s.version = '1.4'
-glWindowPos2s.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2s.category = 'GL_VERSION_1_4'
 glWindowPos2s.trace = True
 glWindowPos2s.play = True
 gl.add(glWindowPos2s)
@@ -15973,7 +16264,7 @@ glWindowPos2sv = Function('glWindowPos2sv')
 glWindowPos2sv.ret = Return('void')
 glWindowPos2sv.add( Input( 'p','const GLshort *' ,size = 2 ))
 glWindowPos2sv.version = '1.4'
-glWindowPos2sv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos2sv.category = 'GL_VERSION_1_4'
 glWindowPos2sv.trace = True
 glWindowPos2sv.play = True
 gl.add(glWindowPos2sv)
@@ -15984,7 +16275,7 @@ glWindowPos3d.add( Input( 'x','GLdouble' ))
 glWindowPos3d.add( Input( 'y','GLdouble' ))
 glWindowPos3d.add( Input( 'z','GLdouble' ))
 glWindowPos3d.version = '1.4'
-glWindowPos3d.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3d.category = 'GL_VERSION_1_4'
 glWindowPos3d.trace = True
 glWindowPos3d.play = True
 gl.add(glWindowPos3d)
@@ -15993,7 +16284,7 @@ glWindowPos3dv = Function('glWindowPos3dv')
 glWindowPos3dv.ret = Return('void')
 glWindowPos3dv.add( Input( 'p','const GLdouble *' ,size = 3 ))
 glWindowPos3dv.version = '1.4'
-glWindowPos3dv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3dv.category = 'GL_VERSION_1_4'
 glWindowPos3dv.trace = True
 glWindowPos3dv.play = True
 gl.add(glWindowPos3dv)
@@ -16004,7 +16295,7 @@ glWindowPos3f.add( Input( 'x','GLfloat' ))
 glWindowPos3f.add( Input( 'y','GLfloat' ))
 glWindowPos3f.add( Input( 'z','GLfloat' ))
 glWindowPos3f.version = '1.4'
-glWindowPos3f.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3f.category = 'GL_VERSION_1_4'
 glWindowPos3f.trace = True
 glWindowPos3f.play = True
 gl.add(glWindowPos3f)
@@ -16013,7 +16304,7 @@ glWindowPos3fv = Function('glWindowPos3fv')
 glWindowPos3fv.ret = Return('void')
 glWindowPos3fv.add( Input( 'p','const GLfloat *' ,size = 3 ))
 glWindowPos3fv.version = '1.4'
-glWindowPos3fv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3fv.category = 'GL_VERSION_1_4'
 glWindowPos3fv.trace = True
 glWindowPos3fv.play = True
 gl.add(glWindowPos3fv)
@@ -16024,7 +16315,7 @@ glWindowPos3i.add( Input( 'x','GLint' ))
 glWindowPos3i.add( Input( 'y','GLint' ))
 glWindowPos3i.add( Input( 'z','GLint' ))
 glWindowPos3i.version = '1.4'
-glWindowPos3i.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3i.category = 'GL_VERSION_1_4'
 glWindowPos3i.trace = True
 glWindowPos3i.play = True
 gl.add(glWindowPos3i)
@@ -16033,7 +16324,7 @@ glWindowPos3iv = Function('glWindowPos3iv')
 glWindowPos3iv.ret = Return('void')
 glWindowPos3iv.add( Input( 'p','const GLint *' ,size = 3 ))
 glWindowPos3iv.version = '1.4'
-glWindowPos3iv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3iv.category = 'GL_VERSION_1_4'
 glWindowPos3iv.trace = True
 glWindowPos3iv.play = True
 gl.add(glWindowPos3iv)
@@ -16044,7 +16335,7 @@ glWindowPos3s.add( Input( 'x','GLshort' ))
 glWindowPos3s.add( Input( 'y','GLshort' ))
 glWindowPos3s.add( Input( 'z','GLshort' ))
 glWindowPos3s.version = '1.4'
-glWindowPos3s.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3s.category = 'GL_VERSION_1_4'
 glWindowPos3s.trace = True
 glWindowPos3s.play = True
 gl.add(glWindowPos3s)
@@ -16053,10 +16344,216 @@ glWindowPos3sv = Function('glWindowPos3sv')
 glWindowPos3sv.ret = Return('void')
 glWindowPos3sv.add( Input( 'p','const GLshort *' ,size = 3 ))
 glWindowPos3sv.version = '1.4'
-glWindowPos3sv.category = 'GL_VERSION_1_4_DEPRECATED'
+glWindowPos3sv.category = 'GL_VERSION_1_4'
 glWindowPos3sv.trace = True
 glWindowPos3sv.play = True
 gl.add(glWindowPos3sv)
+
+# GL_VERSION_1_5
+
+glBeginQuery = Function('glBeginQuery')
+glBeginQuery.ret = Return('void')
+glBeginQuery.add( Input( 'target','GLenum' ))
+glBeginQuery.add( Input( 'id','GLuint' ))
+glBeginQuery.version = '1.5'
+glBeginQuery.category = 'GL_VERSION_1_5'
+glBeginQuery.trace = True
+glBeginQuery.play = True
+gl.add(glBeginQuery)
+
+glBindBuffer = Function('glBindBuffer')
+glBindBuffer.ret = Return('void')
+glBindBuffer.add( Input( 'target','GLenum' ))
+glBindBuffer.add( Input( 'buffer','GLuint' ))
+glBindBuffer.version = '1.5'
+glBindBuffer.category = 'GL_VERSION_1_5'
+glBindBuffer.esVersions = [1.1, 2.0]
+glBindBuffer.trace = True
+glBindBuffer.play = True
+gl.add(glBindBuffer)
+
+glBufferData = Function('glBufferData')
+glBufferData.ret = Return('void')
+glBufferData.add( Input( 'target','GLenum' ))
+glBufferData.add( Input( 'size','GLsizeiptr' ))
+glBufferData.add( Input( 'data','const GLvoid *' ))
+glBufferData.add( Input( 'usage','GLenum' ))
+glBufferData.version = '1.5'
+glBufferData.category = 'GL_VERSION_1_5'
+glBufferData.esVersions = [1.1, 2.0]
+glBufferData.trace = True
+glBufferData.play = True
+gl.add(glBufferData)
+
+glBufferSubData = Function('glBufferSubData')
+glBufferSubData.ret = Return('void')
+glBufferSubData.add( Input( 'target','GLenum' ))
+glBufferSubData.add( Input( 'offset','GLintptr' ))
+glBufferSubData.add( Input( 'size','GLsizeiptr' ))
+glBufferSubData.add( Input( 'data','const GLvoid *' ))
+glBufferSubData.version = '1.5'
+glBufferSubData.category = 'GL_VERSION_1_5'
+glBufferSubData.esVersions = [1.1, 2.0]
+glBufferSubData.trace = True
+glBufferSubData.play = True
+gl.add(glBufferSubData)
+
+glDeleteBuffers = Function('glDeleteBuffers')
+glDeleteBuffers.ret = Return('void')
+glDeleteBuffers.add( Input( 'n','GLsizei' ))
+glDeleteBuffers.add( Input( 'buffers','const GLuint *' ,size = 'n' ))
+glDeleteBuffers.version = '1.5'
+glDeleteBuffers.category = 'GL_VERSION_1_5'
+glDeleteBuffers.esVersions = [1.1, 2.0]
+glDeleteBuffers.trace = True
+glDeleteBuffers.play = True
+gl.add(glDeleteBuffers)
+
+glDeleteQueries = Function('glDeleteQueries')
+glDeleteQueries.ret = Return('void')
+glDeleteQueries.add( Input( 'n','GLsizei' ))
+glDeleteQueries.add( Input( 'ids','const GLuint *' ,size = 'n' ))
+glDeleteQueries.version = '1.5'
+glDeleteQueries.category = 'GL_VERSION_1_5'
+glDeleteQueries.trace = True
+glDeleteQueries.play = True
+gl.add(glDeleteQueries)
+
+glEndQuery = Function('glEndQuery')
+glEndQuery.ret = Return('void')
+glEndQuery.add( Input( 'target','GLenum' ))
+glEndQuery.version = '1.5'
+glEndQuery.category = 'GL_VERSION_1_5'
+glEndQuery.trace = True
+glEndQuery.play = True
+gl.add(glEndQuery)
+
+glGenBuffers = Function('glGenBuffers')
+glGenBuffers.ret = Return('void')
+glGenBuffers.add( Input( 'n','GLsizei' ))
+glGenBuffers.add( Output( 'buffers','GLuint *' ,size = 'n' ))
+glGenBuffers.version = '1.5'
+glGenBuffers.category = 'GL_VERSION_1_5'
+glGenBuffers.esVersions = [1.1, 2.0]
+glGenBuffers.trace = True
+glGenBuffers.play = True
+gl.add(glGenBuffers)
+
+glGenQueries = Function('glGenQueries')
+glGenQueries.ret = Return('void')
+glGenQueries.add( Input( 'n','GLsizei' ))
+glGenQueries.add( Output( 'ids','GLuint *' ,size = 'n' ))
+glGenQueries.version = '1.5'
+glGenQueries.category = 'GL_VERSION_1_5'
+glGenQueries.trace = True
+glGenQueries.play = True
+gl.add(glGenQueries)
+
+glGetBufferParameteriv = Function('glGetBufferParameteriv')
+glGetBufferParameteriv.ret = Return('void')
+glGetBufferParameteriv.add( Input( 'target','GLenum' ))
+glGetBufferParameteriv.add( Input( 'pname','GLenum' ))
+glGetBufferParameteriv.add( Output( 'params','GLint *' ))
+glGetBufferParameteriv.version = '1.5'
+glGetBufferParameteriv.category = 'GL_VERSION_1_5'
+glGetBufferParameteriv.esVersions = [1.1, 2.0]
+glGetBufferParameteriv.trace = True
+glGetBufferParameteriv.play = True
+gl.add(glGetBufferParameteriv)
+
+glGetBufferPointerv = Function('glGetBufferPointerv')
+glGetBufferPointerv.ret = Return('void')
+glGetBufferPointerv.add( Input( 'target','GLenum' ))
+glGetBufferPointerv.add( Input( 'pname','GLenum' ))
+glGetBufferPointerv.add( Output( 'params','GLvoid **' ,size = 1 ))
+glGetBufferPointerv.version = '1.5'
+glGetBufferPointerv.category = 'GL_VERSION_1_5'
+glGetBufferPointerv.trace = True
+glGetBufferPointerv.play = True
+gl.add(glGetBufferPointerv)
+
+glGetBufferSubData = Function('glGetBufferSubData')
+glGetBufferSubData.ret = Return('void')
+glGetBufferSubData.add( Input( 'target','GLenum' ))
+glGetBufferSubData.add( Input( 'offset','GLintptr' ))
+glGetBufferSubData.add( Input( 'size','GLsizeiptr' ))
+glGetBufferSubData.add( Output( 'data','GLvoid *' ))
+glGetBufferSubData.version = '1.5'
+glGetBufferSubData.category = 'GL_VERSION_1_5'
+glGetBufferSubData.trace = True
+glGetBufferSubData.play = True
+gl.add(glGetBufferSubData)
+
+glGetQueryObjectiv = Function('glGetQueryObjectiv')
+glGetQueryObjectiv.ret = Return('void')
+glGetQueryObjectiv.add( Input( 'id','GLuint' ))
+glGetQueryObjectiv.add( Input( 'pname','GLenum' ))
+glGetQueryObjectiv.add( Output( 'params','GLint *' ))
+glGetQueryObjectiv.version = '1.5'
+glGetQueryObjectiv.category = 'GL_VERSION_1_5'
+glGetQueryObjectiv.trace = True
+glGetQueryObjectiv.play = False
+gl.add(glGetQueryObjectiv)
+
+glGetQueryObjectuiv = Function('glGetQueryObjectuiv')
+glGetQueryObjectuiv.ret = Return('void')
+glGetQueryObjectuiv.add( Input( 'id','GLuint' ))
+glGetQueryObjectuiv.add( Input( 'pname','GLenum' ))
+glGetQueryObjectuiv.add( Output( 'params','GLuint *' ))
+glGetQueryObjectuiv.version = '1.5'
+glGetQueryObjectuiv.category = 'GL_VERSION_1_5'
+glGetQueryObjectuiv.trace = True
+glGetQueryObjectuiv.play = False
+gl.add(glGetQueryObjectuiv)
+
+glGetQueryiv = Function('glGetQueryiv')
+glGetQueryiv.ret = Return('void')
+glGetQueryiv.add( Input( 'target','GLenum' ))
+glGetQueryiv.add( Input( 'pname','GLenum' ))
+glGetQueryiv.add( Output( 'params','GLint *' ))
+glGetQueryiv.version = '1.5'
+glGetQueryiv.category = 'GL_VERSION_1_5'
+glGetQueryiv.trace = True
+glGetQueryiv.play = False
+gl.add(glGetQueryiv)
+
+glIsBuffer = Function('glIsBuffer')
+glIsBuffer.ret = Return('GLboolean')
+glIsBuffer.add( Input( 'buffer','GLuint' ))
+glIsBuffer.version = '1.5'
+glIsBuffer.category = 'GL_VERSION_1_5'
+glIsBuffer.esVersions = [1.1, 2.0]
+glIsBuffer.trace = True
+glIsBuffer.play = True
+gl.add(glIsBuffer)
+
+glIsQuery = Function('glIsQuery')
+glIsQuery.ret = Return('GLboolean')
+glIsQuery.add( Input( 'id','GLuint' ))
+glIsQuery.version = '1.5'
+glIsQuery.category = 'GL_VERSION_1_5'
+glIsQuery.trace = True
+glIsQuery.play = True
+gl.add(glIsQuery)
+
+glMapBuffer = Function('glMapBuffer')
+glMapBuffer.ret = Return('GLvoid *')
+glMapBuffer.add( Input( 'target','GLenum' ))
+glMapBuffer.add( Input( 'access','GLenum' ))
+glMapBuffer.version = '1.5'
+glMapBuffer.category = 'GL_VERSION_1_5'
+glMapBuffer.trace = True
+glMapBuffer.play = True
+gl.add(glMapBuffer)
+
+glUnmapBuffer = Function('glUnmapBuffer')
+glUnmapBuffer.ret = Return('GLboolean')
+glUnmapBuffer.add( Input( 'target','GLenum' ))
+glUnmapBuffer.version = '1.5'
+glUnmapBuffer.category = 'GL_VERSION_1_5'
+glUnmapBuffer.trace = True
+glUnmapBuffer.play = True
+gl.add(glUnmapBuffer)
 
 # GL_VERSION_2_0
 
@@ -17124,57 +17621,100 @@ glVertexAttribPointer.trace = True
 glVertexAttribPointer.play = True
 gl.add(glVertexAttribPointer)
 
-#
+# GL_VERSION_2_1
 
-glActiveTexture = Function('glActiveTexture')
-glActiveTexture.ret = Return('void')
-glActiveTexture.add( Input( 'texture','GLenum' ))
-glActiveTexture.version = '1.3'
-glActiveTexture.category = ''
-glActiveTexture.esVersions = [1.0, 1.1, 2.0]
-glActiveTexture.trace = True
-glActiveTexture.play = True
-gl.add(glActiveTexture)
+glUniformMatrix2x3fv = Function('glUniformMatrix2x3fv')
+glUniformMatrix2x3fv.ret = Return('void')
+glUniformMatrix2x3fv.add( Input( 'location','GLint' ))
+glUniformMatrix2x3fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix2x3fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix2x3fv.add( Input( 'value','const GLfloat *' ,size = '2 * 3 * count' ))
+glUniformMatrix2x3fv.version = '2.1'
+glUniformMatrix2x3fv.category = 'GL_VERSION_2_1'
+glUniformMatrix2x3fv.trace = True
+glUniformMatrix2x3fv.play = True
+gl.add(glUniformMatrix2x3fv)
+
+glUniformMatrix2x4fv = Function('glUniformMatrix2x4fv')
+glUniformMatrix2x4fv.ret = Return('void')
+glUniformMatrix2x4fv.add( Input( 'location','GLint' ))
+glUniformMatrix2x4fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix2x4fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix2x4fv.add( Input( 'value','const GLfloat *' ,size = '2 * 4 * count' ))
+glUniformMatrix2x4fv.version = '2.1'
+glUniformMatrix2x4fv.category = 'GL_VERSION_2_1'
+glUniformMatrix2x4fv.trace = True
+glUniformMatrix2x4fv.play = True
+gl.add(glUniformMatrix2x4fv)
+
+glUniformMatrix3x2fv = Function('glUniformMatrix3x2fv')
+glUniformMatrix3x2fv.ret = Return('void')
+glUniformMatrix3x2fv.add( Input( 'location','GLint' ))
+glUniformMatrix3x2fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix3x2fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix3x2fv.add( Input( 'value','const GLfloat *' ,size = '3 * 2 * count' ))
+glUniformMatrix3x2fv.version = '2.1'
+glUniformMatrix3x2fv.category = 'GL_VERSION_2_1'
+glUniformMatrix3x2fv.trace = True
+glUniformMatrix3x2fv.play = True
+gl.add(glUniformMatrix3x2fv)
+
+glUniformMatrix3x4fv = Function('glUniformMatrix3x4fv')
+glUniformMatrix3x4fv.ret = Return('void')
+glUniformMatrix3x4fv.add( Input( 'location','GLint' ))
+glUniformMatrix3x4fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix3x4fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix3x4fv.add( Input( 'value','const GLfloat *' ,size = '3 * 4 * count' ))
+glUniformMatrix3x4fv.version = '2.1'
+glUniformMatrix3x4fv.category = 'GL_VERSION_2_1'
+glUniformMatrix3x4fv.trace = True
+glUniformMatrix3x4fv.play = True
+gl.add(glUniformMatrix3x4fv)
+
+glUniformMatrix4x2fv = Function('glUniformMatrix4x2fv')
+glUniformMatrix4x2fv.ret = Return('void')
+glUniformMatrix4x2fv.add( Input( 'location','GLint' ))
+glUniformMatrix4x2fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix4x2fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix4x2fv.add( Input( 'value','const GLfloat *' ,size = '4 * 2 * count' ))
+glUniformMatrix4x2fv.version = '2.1'
+glUniformMatrix4x2fv.category = 'GL_VERSION_2_1'
+glUniformMatrix4x2fv.trace = True
+glUniformMatrix4x2fv.play = True
+gl.add(glUniformMatrix4x2fv)
+
+glUniformMatrix4x3fv = Function('glUniformMatrix4x3fv')
+glUniformMatrix4x3fv.ret = Return('void')
+glUniformMatrix4x3fv.add( Input( 'location','GLint' ))
+glUniformMatrix4x3fv.add( Input( 'count','GLsizei' ))
+glUniformMatrix4x3fv.add( Input( 'transpose','GLboolean' ))
+glUniformMatrix4x3fv.add( Input( 'value','const GLfloat *' ,size = '4 * 3 * count' ))
+glUniformMatrix4x3fv.version = '2.1'
+glUniformMatrix4x3fv.category = 'GL_VERSION_2_1'
+glUniformMatrix4x3fv.trace = True
+glUniformMatrix4x3fv.play = True
+gl.add(glUniformMatrix4x3fv)
+
+# GL_VERSION_3_0
 
 glBeginConditionalRender = Function('glBeginConditionalRender')
 glBeginConditionalRender.ret = Return('void')
 glBeginConditionalRender.add( Input( 'id','GLuint' ))
 glBeginConditionalRender.add( Input( 'mode','GLenum' ))
 glBeginConditionalRender.version = '3.0'
-glBeginConditionalRender.category = ''
+glBeginConditionalRender.category = 'GL_VERSION_3_0'
 glBeginConditionalRender.trace = True
 glBeginConditionalRender.play = True
 gl.add(glBeginConditionalRender)
-
-glBeginQuery = Function('glBeginQuery')
-glBeginQuery.ret = Return('void')
-glBeginQuery.add( Input( 'target','GLenum' ))
-glBeginQuery.add( Input( 'id','GLuint' ))
-glBeginQuery.version = '1.5'
-glBeginQuery.category = ''
-glBeginQuery.trace = True
-glBeginQuery.play = True
-gl.add(glBeginQuery)
 
 glBeginTransformFeedback = Function('glBeginTransformFeedback')
 glBeginTransformFeedback.ret = Return('void')
 glBeginTransformFeedback.add( Input( 'primitiveMode','GLenum' ))
 glBeginTransformFeedback.version = '3.0'
-glBeginTransformFeedback.category = ''
+glBeginTransformFeedback.category = 'GL_VERSION_3_0'
 glBeginTransformFeedback.trace = True
 glBeginTransformFeedback.play = True
 gl.add(glBeginTransformFeedback)
-
-glBindBuffer = Function('glBindBuffer')
-glBindBuffer.ret = Return('void')
-glBindBuffer.add( Input( 'target','GLenum' ))
-glBindBuffer.add( Input( 'buffer','GLuint' ))
-glBindBuffer.version = '1.5'
-glBindBuffer.category = ''
-glBindBuffer.esVersions = [1.1, 2.0]
-glBindBuffer.trace = True
-glBindBuffer.play = True
-gl.add(glBindBuffer)
 
 glBindFragDataLocation = Function('glBindFragDataLocation')
 glBindFragDataLocation.ret = Return('void')
@@ -17182,124 +17722,17 @@ glBindFragDataLocation.add( Input( 'program','GLuint' ))
 glBindFragDataLocation.add( Input( 'color','GLuint' ))
 glBindFragDataLocation.add( Input( 'name','const GLchar *' ))
 glBindFragDataLocation.version = '3.0'
-glBindFragDataLocation.category = ''
+glBindFragDataLocation.category = 'GL_VERSION_3_0'
 glBindFragDataLocation.trace = True
 glBindFragDataLocation.play = True
 gl.add(glBindFragDataLocation)
-
-glBlendColor = Function('glBlendColor')
-glBlendColor.ret = Return('void')
-glBlendColor.add( Input( 'red','GLclampf' ))
-glBlendColor.add( Input( 'green','GLclampf' ))
-glBlendColor.add( Input( 'blue','GLclampf' ))
-glBlendColor.add( Input( 'alpha','GLclampf' ))
-glBlendColor.version = '1.2'
-glBlendColor.category = ''
-glBlendColor.esVersions = [2.0]
-glBlendColor.trace = True
-glBlendColor.play = True
-gl.add(glBlendColor)
-
-glBlendEquation = Function('glBlendEquation')
-glBlendEquation.ret = Return('void')
-glBlendEquation.add( Input( 'mode','GLenum' ))
-glBlendEquation.version = '1.2'
-glBlendEquation.category = ''
-glBlendEquation.esVersions = [2.0]
-glBlendEquation.trace = True
-glBlendEquation.play = True
-gl.add(glBlendEquation)
-
-glBlendEquationSeparatei = Function('glBlendEquationSeparatei')
-glBlendEquationSeparatei.ret = Return('void')
-glBlendEquationSeparatei.add( Input( 'buf','GLuint' ))
-glBlendEquationSeparatei.add( Input( 'modeRGB','GLenum' ))
-glBlendEquationSeparatei.add( Input( 'modeAlpha','GLenum' ))
-glBlendEquationSeparatei.version = '4.0'
-glBlendEquationSeparatei.category = ''
-glBlendEquationSeparatei.trace = True
-glBlendEquationSeparatei.play = True
-gl.add(glBlendEquationSeparatei)
-
-glBlendEquationi = Function('glBlendEquationi')
-glBlendEquationi.ret = Return('void')
-glBlendEquationi.add( Input( 'buf','GLuint' ))
-glBlendEquationi.add( Input( 'mode','GLenum' ))
-glBlendEquationi.version = '4.0'
-glBlendEquationi.category = ''
-glBlendEquationi.trace = True
-glBlendEquationi.play = True
-gl.add(glBlendEquationi)
-
-glBlendFuncSeparate = Function('glBlendFuncSeparate')
-glBlendFuncSeparate.ret = Return('void')
-glBlendFuncSeparate.add( Input( 'sfactorRGB','GLenum' ))
-glBlendFuncSeparate.add( Input( 'dfactorRGB','GLenum' ))
-glBlendFuncSeparate.add( Input( 'sfactorAlpha','GLenum' ))
-glBlendFuncSeparate.add( Input( 'dfactorAlpha','GLenum' ))
-glBlendFuncSeparate.version = '1.4'
-glBlendFuncSeparate.category = ''
-glBlendFuncSeparate.esVersions = [2.0]
-glBlendFuncSeparate.trace = True
-glBlendFuncSeparate.play = True
-gl.add(glBlendFuncSeparate)
-
-glBlendFuncSeparatei = Function('glBlendFuncSeparatei')
-glBlendFuncSeparatei.ret = Return('void')
-glBlendFuncSeparatei.add( Input( 'buf','GLuint' ))
-glBlendFuncSeparatei.add( Input( 'srcRGB','GLenum' ))
-glBlendFuncSeparatei.add( Input( 'dstRGB','GLenum' ))
-glBlendFuncSeparatei.add( Input( 'srcAlpha','GLenum' ))
-glBlendFuncSeparatei.add( Input( 'dstAlpha','GLenum' ))
-glBlendFuncSeparatei.version = '4.0'
-glBlendFuncSeparatei.category = ''
-glBlendFuncSeparatei.trace = True
-glBlendFuncSeparatei.play = True
-gl.add(glBlendFuncSeparatei)
-
-glBlendFunci = Function('glBlendFunci')
-glBlendFunci.ret = Return('void')
-glBlendFunci.add( Input( 'buf','GLuint' ))
-glBlendFunci.add( Input( 'src','GLenum' ))
-glBlendFunci.add( Input( 'dst','GLenum' ))
-glBlendFunci.version = '4.0'
-glBlendFunci.category = ''
-glBlendFunci.trace = True
-glBlendFunci.play = True
-gl.add(glBlendFunci)
-
-glBufferData = Function('glBufferData')
-glBufferData.ret = Return('void')
-glBufferData.add( Input( 'target','GLenum' ))
-glBufferData.add( Input( 'size','GLsizeiptr' ))
-glBufferData.add( Input( 'data','const GLvoid *' ))
-glBufferData.add( Input( 'usage','GLenum' ))
-glBufferData.version = '1.5'
-glBufferData.category = ''
-glBufferData.esVersions = [1.1, 2.0]
-glBufferData.trace = True
-glBufferData.play = True
-gl.add(glBufferData)
-
-glBufferSubData = Function('glBufferSubData')
-glBufferSubData.ret = Return('void')
-glBufferSubData.add( Input( 'target','GLenum' ))
-glBufferSubData.add( Input( 'offset','GLintptr' ))
-glBufferSubData.add( Input( 'size','GLsizeiptr' ))
-glBufferSubData.add( Input( 'data','const GLvoid *' ))
-glBufferSubData.version = '1.5'
-glBufferSubData.category = ''
-glBufferSubData.esVersions = [1.1, 2.0]
-glBufferSubData.trace = True
-glBufferSubData.play = True
-gl.add(glBufferSubData)
 
 glClampColor = Function('glClampColor')
 glClampColor.ret = Return('void')
 glClampColor.add( Input( 'target','GLenum' ))
 glClampColor.add( Input( 'clamp','GLenum' ))
 glClampColor.version = '3.0'
-glClampColor.category = ''
+glClampColor.category = 'GL_VERSION_3_0'
 glClampColor.trace = True
 glClampColor.play = True
 gl.add(glClampColor)
@@ -17311,7 +17744,7 @@ glClearBufferfi.add( Input( 'drawbuffer','GLint' ))
 glClearBufferfi.add( Input( 'depth','GLfloat' ))
 glClearBufferfi.add( Input( 'stencil','GLint' ))
 glClearBufferfi.version = '3.0'
-glClearBufferfi.category = ''
+glClearBufferfi.category = 'GL_VERSION_3_0'
 glClearBufferfi.trace = True
 glClearBufferfi.play = True
 gl.add(glClearBufferfi)
@@ -17322,7 +17755,7 @@ glClearBufferfv.add( Input( 'buffer','GLenum' ))
 glClearBufferfv.add( Input( 'drawbuffer','GLint' ))
 glClearBufferfv.add( Input( 'value','const GLfloat *' ))
 glClearBufferfv.version = '3.0'
-glClearBufferfv.category = ''
+glClearBufferfv.category = 'GL_VERSION_3_0'
 glClearBufferfv.trace = True
 glClearBufferfv.play = True
 gl.add(glClearBufferfv)
@@ -17333,7 +17766,7 @@ glClearBufferiv.add( Input( 'buffer','GLenum' ))
 glClearBufferiv.add( Input( 'drawbuffer','GLint' ))
 glClearBufferiv.add( Input( 'value','const GLint *' ))
 glClearBufferiv.version = '3.0'
-glClearBufferiv.category = ''
+glClearBufferiv.category = 'GL_VERSION_3_0'
 glClearBufferiv.trace = True
 glClearBufferiv.play = True
 gl.add(glClearBufferiv)
@@ -17344,7 +17777,7 @@ glClearBufferuiv.add( Input( 'buffer','GLenum' ))
 glClearBufferuiv.add( Input( 'drawbuffer','GLint' ))
 glClearBufferuiv.add( Input( 'value','const GLuint *' ))
 glClearBufferuiv.version = '3.0'
-glClearBufferuiv.category = ''
+glClearBufferuiv.category = 'GL_VERSION_3_0'
 glClearBufferuiv.trace = True
 glClearBufferuiv.play = True
 gl.add(glClearBufferuiv)
@@ -17357,205 +17790,27 @@ glColorMaski.add( Input( 'g','GLboolean' ))
 glColorMaski.add( Input( 'b','GLboolean' ))
 glColorMaski.add( Input( 'a','GLboolean' ))
 glColorMaski.version = '3.0'
-glColorMaski.category = ''
+glColorMaski.category = 'GL_VERSION_3_0'
 glColorMaski.trace = True
 glColorMaski.play = True
 gl.add(glColorMaski)
-
-glCompressedTexImage1D = Function('glCompressedTexImage1D')
-glCompressedTexImage1D.ret = Return('void')
-glCompressedTexImage1D.add( Input( 'target','GLenum' ))
-glCompressedTexImage1D.add( Input( 'level','GLint' ))
-glCompressedTexImage1D.add( Input( 'internalformat','GLenum' ))
-glCompressedTexImage1D.add( Input( 'width','GLsizei' ))
-glCompressedTexImage1D.add( Input( 'border','GLint' ))
-glCompressedTexImage1D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexImage1D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexImage1D.version = '1.3'
-glCompressedTexImage1D.category = ''
-glCompressedTexImage1D.trace = True
-glCompressedTexImage1D.play = True
-gl.add(glCompressedTexImage1D)
-
-glCompressedTexImage2D = Function('glCompressedTexImage2D')
-glCompressedTexImage2D.ret = Return('void')
-glCompressedTexImage2D.add( Input( 'target','GLenum' ))
-glCompressedTexImage2D.add( Input( 'level','GLint' ))
-glCompressedTexImage2D.add( Input( 'internalformat','GLenum' ))
-glCompressedTexImage2D.add( Input( 'width','GLsizei' ))
-glCompressedTexImage2D.add( Input( 'height','GLsizei' ))
-glCompressedTexImage2D.add( Input( 'border','GLint' ))
-glCompressedTexImage2D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexImage2D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexImage2D.version = '1.3'
-glCompressedTexImage2D.category = ''
-glCompressedTexImage2D.esVersions = [1.0, 1.1, 2.0]
-glCompressedTexImage2D.trace = True
-glCompressedTexImage2D.play = True
-gl.add(glCompressedTexImage2D)
-
-glCompressedTexImage3D = Function('glCompressedTexImage3D')
-glCompressedTexImage3D.ret = Return('void')
-glCompressedTexImage3D.add( Input( 'target','GLenum' ))
-glCompressedTexImage3D.add( Input( 'level','GLint' ))
-glCompressedTexImage3D.add( Input( 'internalformat','GLenum' ))
-glCompressedTexImage3D.add( Input( 'width','GLsizei' ))
-glCompressedTexImage3D.add( Input( 'height','GLsizei' ))
-glCompressedTexImage3D.add( Input( 'depth','GLsizei' ))
-glCompressedTexImage3D.add( Input( 'border','GLint' ))
-glCompressedTexImage3D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexImage3D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexImage3D.version = '1.3'
-glCompressedTexImage3D.category = ''
-glCompressedTexImage3D.trace = True
-glCompressedTexImage3D.play = True
-gl.add(glCompressedTexImage3D)
-
-glCompressedTexSubImage1D = Function('glCompressedTexSubImage1D')
-glCompressedTexSubImage1D.ret = Return('void')
-glCompressedTexSubImage1D.add( Input( 'target','GLenum' ))
-glCompressedTexSubImage1D.add( Input( 'level','GLint' ))
-glCompressedTexSubImage1D.add( Input( 'xoffset','GLint' ))
-glCompressedTexSubImage1D.add( Input( 'width','GLsizei' ))
-glCompressedTexSubImage1D.add( Input( 'format','GLenum' ))
-glCompressedTexSubImage1D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexSubImage1D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexSubImage1D.version = '1.3'
-glCompressedTexSubImage1D.category = ''
-glCompressedTexSubImage1D.trace = True
-glCompressedTexSubImage1D.play = True
-gl.add(glCompressedTexSubImage1D)
-
-glCompressedTexSubImage2D = Function('glCompressedTexSubImage2D')
-glCompressedTexSubImage2D.ret = Return('void')
-glCompressedTexSubImage2D.add( Input( 'target','GLenum' ))
-glCompressedTexSubImage2D.add( Input( 'level','GLint' ))
-glCompressedTexSubImage2D.add( Input( 'xoffset','GLint' ))
-glCompressedTexSubImage2D.add( Input( 'yoffset','GLint' ))
-glCompressedTexSubImage2D.add( Input( 'width','GLsizei' ))
-glCompressedTexSubImage2D.add( Input( 'height','GLsizei' ))
-glCompressedTexSubImage2D.add( Input( 'format','GLenum' ))
-glCompressedTexSubImage2D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexSubImage2D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexSubImage2D.version = '1.3'
-glCompressedTexSubImage2D.category = ''
-glCompressedTexSubImage2D.esVersions = [1.0, 1.1, 2.0]
-glCompressedTexSubImage2D.trace = True
-glCompressedTexSubImage2D.play = True
-gl.add(glCompressedTexSubImage2D)
-
-glCompressedTexSubImage3D = Function('glCompressedTexSubImage3D')
-glCompressedTexSubImage3D.ret = Return('void')
-glCompressedTexSubImage3D.add( Input( 'target','GLenum' ))
-glCompressedTexSubImage3D.add( Input( 'level','GLint' ))
-glCompressedTexSubImage3D.add( Input( 'xoffset','GLint' ))
-glCompressedTexSubImage3D.add( Input( 'yoffset','GLint' ))
-glCompressedTexSubImage3D.add( Input( 'zoffset','GLint' ))
-glCompressedTexSubImage3D.add( Input( 'width','GLsizei' ))
-glCompressedTexSubImage3D.add( Input( 'height','GLsizei' ))
-glCompressedTexSubImage3D.add( Input( 'depth','GLsizei' ))
-glCompressedTexSubImage3D.add( Input( 'format','GLenum' ))
-glCompressedTexSubImage3D.add( Input( 'imageSize','GLsizei' ))
-glCompressedTexSubImage3D.add( Input( 'data','const GLvoid *' ,size = 'imageSize' ))
-glCompressedTexSubImage3D.version = '1.3'
-glCompressedTexSubImage3D.category = ''
-glCompressedTexSubImage3D.trace = True
-glCompressedTexSubImage3D.play = True
-gl.add(glCompressedTexSubImage3D)
-
-glCopyTexSubImage3D = Function('glCopyTexSubImage3D')
-glCopyTexSubImage3D.ret = Return('void')
-glCopyTexSubImage3D.add( Input( 'target','GLenum' ))
-glCopyTexSubImage3D.add( Input( 'level','GLint' ))
-glCopyTexSubImage3D.add( Input( 'xoffset','GLint' ))
-glCopyTexSubImage3D.add( Input( 'yoffset','GLint' ))
-glCopyTexSubImage3D.add( Input( 'zoffset','GLint' ))
-glCopyTexSubImage3D.add( Input( 'x','GLint' ))
-glCopyTexSubImage3D.add( Input( 'y','GLint' ))
-glCopyTexSubImage3D.add( Input( 'width','GLsizei' ))
-glCopyTexSubImage3D.add( Input( 'height','GLsizei' ))
-glCopyTexSubImage3D.version = '1.2'
-glCopyTexSubImage3D.category = ''
-glCopyTexSubImage3D.trace = True
-glCopyTexSubImage3D.play = True
-gl.add(glCopyTexSubImage3D)
-
-glDeleteBuffers = Function('glDeleteBuffers')
-glDeleteBuffers.ret = Return('void')
-glDeleteBuffers.add( Input( 'n','GLsizei' ))
-glDeleteBuffers.add( Input( 'buffers','const GLuint *' ,size = 'n' ))
-glDeleteBuffers.version = '1.5'
-glDeleteBuffers.category = ''
-glDeleteBuffers.esVersions = [1.1, 2.0]
-glDeleteBuffers.trace = True
-glDeleteBuffers.play = True
-gl.add(glDeleteBuffers)
-
-glDeleteQueries = Function('glDeleteQueries')
-glDeleteQueries.ret = Return('void')
-glDeleteQueries.add( Input( 'n','GLsizei' ))
-glDeleteQueries.add( Input( 'ids','const GLuint *' ,size = 'n' ))
-glDeleteQueries.version = '1.5'
-glDeleteQueries.category = ''
-glDeleteQueries.trace = True
-glDeleteQueries.play = True
-gl.add(glDeleteQueries)
 
 glDisablei = Function('glDisablei')
 glDisablei.ret = Return('void')
 glDisablei.add( Input( 'cap','GLenum' ))
 glDisablei.add( Input( 'index','GLuint' ))
 glDisablei.version = '3.0'
-glDisablei.category = ''
+glDisablei.category = 'GL_VERSION_3_0'
 glDisablei.trace = True
 glDisablei.play = True
 gl.add(glDisablei)
-
-glDrawArraysInstanced = Function('glDrawArraysInstanced')
-glDrawArraysInstanced.ret = Return('void')
-glDrawArraysInstanced.add( Input( 'mode','GLenum' ))
-glDrawArraysInstanced.add( Input( 'start','GLint' ))
-glDrawArraysInstanced.add( Input( 'count','GLsizei' ))
-glDrawArraysInstanced.add( Input( 'primcount','GLsizei' ))
-glDrawArraysInstanced.version = '3.1'
-glDrawArraysInstanced.category = ''
-glDrawArraysInstanced.trace = True
-glDrawArraysInstanced.play = True
-gl.add(glDrawArraysInstanced)
-
-glDrawElementsInstanced = Function('glDrawElementsInstanced')
-glDrawElementsInstanced.ret = Return('void')
-glDrawElementsInstanced.add( Input( 'mode','GLenum' ))
-glDrawElementsInstanced.add( Input( 'count','GLsizei' ))
-glDrawElementsInstanced.add( Input( 'type','GLenum' ))
-glDrawElementsInstanced.add( Input( 'indices','const GLvoid *' ))
-glDrawElementsInstanced.add( Input( 'primcount','GLsizei' ))
-glDrawElementsInstanced.version = '3.1'
-glDrawElementsInstanced.category = ''
-glDrawElementsInstanced.trace = True
-glDrawElementsInstanced.play = True
-gl.add(glDrawElementsInstanced)
-
-glDrawRangeElements = Function('glDrawRangeElements')
-glDrawRangeElements.ret = Return('void')
-glDrawRangeElements.add( Input( 'mode','GLenum' ))
-glDrawRangeElements.add( Input( 'start','GLuint' ))
-glDrawRangeElements.add( Input( 'end','GLuint' ))
-glDrawRangeElements.add( Input( 'count','GLsizei' ))
-glDrawRangeElements.add( Input( 'type','GLenum' ))
-glDrawRangeElements.add( Input( 'indices','const GLvoid *' ))
-glDrawRangeElements.version = '1.2'
-glDrawRangeElements.category = ''
-glDrawRangeElements.trace = True
-glDrawRangeElements.play = True
-gl.add(glDrawRangeElements)
 
 glEnablei = Function('glEnablei')
 glEnablei.ret = Return('void')
 glEnablei.add( Input( 'cap','GLenum' ))
 glEnablei.add( Input( 'index','GLuint' ))
 glEnablei.version = '3.0'
-glEnablei.category = ''
+glEnablei.category = 'GL_VERSION_3_0'
 glEnablei.trace = True
 glEnablei.play = True
 gl.add(glEnablei)
@@ -17563,73 +17818,18 @@ gl.add(glEnablei)
 glEndConditionalRender = Function('glEndConditionalRender')
 glEndConditionalRender.ret = Return('void')
 glEndConditionalRender.version = '3.0'
-glEndConditionalRender.category = ''
+glEndConditionalRender.category = 'GL_VERSION_3_0'
 glEndConditionalRender.trace = True
 glEndConditionalRender.play = True
 gl.add(glEndConditionalRender)
 
-glEndQuery = Function('glEndQuery')
-glEndQuery.ret = Return('void')
-glEndQuery.add( Input( 'target','GLenum' ))
-glEndQuery.version = '1.5'
-glEndQuery.category = ''
-glEndQuery.trace = True
-glEndQuery.play = True
-gl.add(glEndQuery)
-
 glEndTransformFeedback = Function('glEndTransformFeedback')
 glEndTransformFeedback.ret = Return('void')
 glEndTransformFeedback.version = '3.0'
-glEndTransformFeedback.category = ''
+glEndTransformFeedback.category = 'GL_VERSION_3_0'
 glEndTransformFeedback.trace = True
 glEndTransformFeedback.play = True
 gl.add(glEndTransformFeedback)
-
-glFramebufferTexture = Function('glFramebufferTexture')
-glFramebufferTexture.ret = Return('void')
-glFramebufferTexture.add( Input( 'target','GLenum' ))
-glFramebufferTexture.add( Input( 'attachment','GLenum' ))
-glFramebufferTexture.add( Input( 'texture','GLuint' ))
-glFramebufferTexture.add( Input( 'level','GLint' ))
-glFramebufferTexture.version = '3.2'
-glFramebufferTexture.category = ''
-glFramebufferTexture.trace = True
-glFramebufferTexture.play = True
-gl.add(glFramebufferTexture)
-
-glFramebufferTextureFace = Function('glFramebufferTextureFace')
-glFramebufferTextureFace.ret = Return('void')
-glFramebufferTextureFace.add( Input( 'target','GLenum' ))
-glFramebufferTextureFace.add( Input( 'attachment','GLenum' ))
-glFramebufferTextureFace.add( Input( 'texture','GLuint' ))
-glFramebufferTextureFace.add( Input( 'level','GLint' ))
-glFramebufferTextureFace.add( Input( 'face','GLenum' ))
-glFramebufferTextureFace.version = '3.2'
-glFramebufferTextureFace.category = ''
-glFramebufferTextureFace.trace = True
-glFramebufferTextureFace.play = True
-gl.add(glFramebufferTextureFace)
-
-glGenBuffers = Function('glGenBuffers')
-glGenBuffers.ret = Return('void')
-glGenBuffers.add( Input( 'n','GLsizei' ))
-glGenBuffers.add( Output( 'buffers','GLuint *' ,size = 'n' ))
-glGenBuffers.version = '1.5'
-glGenBuffers.category = ''
-glGenBuffers.esVersions = [1.1, 2.0]
-glGenBuffers.trace = True
-glGenBuffers.play = True
-gl.add(glGenBuffers)
-
-glGenQueries = Function('glGenQueries')
-glGenQueries.ret = Return('void')
-glGenQueries.add( Input( 'n','GLsizei' ))
-glGenQueries.add( Output( 'ids','GLuint *' ,size = 'n' ))
-glGenQueries.version = '1.5'
-glGenQueries.category = ''
-glGenQueries.trace = True
-glGenQueries.play = True
-gl.add(glGenQueries)
 
 glGetBooleani_v = Function('glGetBooleani_v')
 glGetBooleani_v.ret = Return('void')
@@ -17637,121 +17837,20 @@ glGetBooleani_v.add( Input( 'target','GLenum' ))
 glGetBooleani_v.add( Input( 'index','GLuint' ))
 glGetBooleani_v.add( Output( 'data','GLboolean *' ))
 glGetBooleani_v.version = '3.0'
-glGetBooleani_v.category = ''
+glGetBooleani_v.category = 'GL_VERSION_3_0'
 glGetBooleani_v.trace = True
 glGetBooleani_v.play = False
 gl.add(glGetBooleani_v)
-
-glGetBufferParameteri64v = Function('glGetBufferParameteri64v')
-glGetBufferParameteri64v.ret = Return('void')
-glGetBufferParameteri64v.add( Input( 'target','GLenum' ))
-glGetBufferParameteri64v.add( Input( 'pname','GLenum' ))
-glGetBufferParameteri64v.add( Output( 'params','GLint64 *' ))
-glGetBufferParameteri64v.version = '3.2'
-glGetBufferParameteri64v.category = ''
-glGetBufferParameteri64v.trace = True
-glGetBufferParameteri64v.play = False
-gl.add(glGetBufferParameteri64v)
-
-glGetBufferParameteriv = Function('glGetBufferParameteriv')
-glGetBufferParameteriv.ret = Return('void')
-glGetBufferParameteriv.add( Input( 'target','GLenum' ))
-glGetBufferParameteriv.add( Input( 'pname','GLenum' ))
-glGetBufferParameteriv.add( Output( 'params','GLint *' ))
-glGetBufferParameteriv.version = '1.5'
-glGetBufferParameteriv.category = ''
-glGetBufferParameteriv.esVersions = [1.1, 2.0]
-glGetBufferParameteriv.trace = True
-glGetBufferParameteriv.play = True
-gl.add(glGetBufferParameteriv)
-
-glGetBufferPointerv = Function('glGetBufferPointerv')
-glGetBufferPointerv.ret = Return('void')
-glGetBufferPointerv.add( Input( 'target','GLenum' ))
-glGetBufferPointerv.add( Input( 'pname','GLenum' ))
-glGetBufferPointerv.add( Output( 'params','GLvoid **' ,size = 1 ))
-glGetBufferPointerv.version = '1.5'
-glGetBufferPointerv.category = ''
-glGetBufferPointerv.trace = True
-glGetBufferPointerv.play = True
-gl.add(glGetBufferPointerv)
-
-glGetBufferSubData = Function('glGetBufferSubData')
-glGetBufferSubData.ret = Return('void')
-glGetBufferSubData.add( Input( 'target','GLenum' ))
-glGetBufferSubData.add( Input( 'offset','GLintptr' ))
-glGetBufferSubData.add( Input( 'size','GLsizeiptr' ))
-glGetBufferSubData.add( Output( 'data','GLvoid *' ))
-glGetBufferSubData.version = '1.5'
-glGetBufferSubData.category = ''
-glGetBufferSubData.trace = True
-glGetBufferSubData.play = True
-gl.add(glGetBufferSubData)
-
-glGetCompressedTexImage = Function('glGetCompressedTexImage')
-glGetCompressedTexImage.ret = Return('void')
-glGetCompressedTexImage.add( Input( 'target','GLenum' ))
-glGetCompressedTexImage.add( Input( 'lod','GLint' ))
-glGetCompressedTexImage.add( Output( 'img','GLvoid *' ))
-glGetCompressedTexImage.version = '1.3'
-glGetCompressedTexImage.category = ''
-glGetCompressedTexImage.trace = True
-glGetCompressedTexImage.play = True
-gl.add(glGetCompressedTexImage)
 
 glGetFragDataLocation = Function('glGetFragDataLocation')
 glGetFragDataLocation.ret = Return('GLint')
 glGetFragDataLocation.add( Input( 'program','GLuint' ))
 glGetFragDataLocation.add( Input( 'name','const GLchar *' ))
 glGetFragDataLocation.version = '3.0'
-glGetFragDataLocation.category = ''
+glGetFragDataLocation.category = 'GL_VERSION_3_0'
 glGetFragDataLocation.trace = True
 glGetFragDataLocation.play = True
 gl.add(glGetFragDataLocation)
-
-glGetInteger64i_v = Function('glGetInteger64i_v')
-glGetInteger64i_v.ret = Return('void')
-glGetInteger64i_v.add( Input( 'target','GLenum' ))
-glGetInteger64i_v.add( Input( 'index','GLuint' ))
-glGetInteger64i_v.add( Output( 'data','GLint64 *' ))
-glGetInteger64i_v.version = '3.2'
-glGetInteger64i_v.category = ''
-glGetInteger64i_v.trace = True
-glGetInteger64i_v.play = False
-gl.add(glGetInteger64i_v)
-
-glGetQueryObjectiv = Function('glGetQueryObjectiv')
-glGetQueryObjectiv.ret = Return('void')
-glGetQueryObjectiv.add( Input( 'id','GLuint' ))
-glGetQueryObjectiv.add( Input( 'pname','GLenum' ))
-glGetQueryObjectiv.add( Output( 'params','GLint *' ))
-glGetQueryObjectiv.version = '1.5'
-glGetQueryObjectiv.category = ''
-glGetQueryObjectiv.trace = True
-glGetQueryObjectiv.play = False
-gl.add(glGetQueryObjectiv)
-
-glGetQueryObjectuiv = Function('glGetQueryObjectuiv')
-glGetQueryObjectuiv.ret = Return('void')
-glGetQueryObjectuiv.add( Input( 'id','GLuint' ))
-glGetQueryObjectuiv.add( Input( 'pname','GLenum' ))
-glGetQueryObjectuiv.add( Output( 'params','GLuint *' ))
-glGetQueryObjectuiv.version = '1.5'
-glGetQueryObjectuiv.category = ''
-glGetQueryObjectuiv.trace = True
-glGetQueryObjectuiv.play = False
-gl.add(glGetQueryObjectuiv)
-
-glGetQueryiv = Function('glGetQueryiv')
-glGetQueryiv.ret = Return('void')
-glGetQueryiv.add( Input( 'target','GLenum' ))
-glGetQueryiv.add( Input( 'pname','GLenum' ))
-glGetQueryiv.add( Output( 'params','GLint *' ))
-glGetQueryiv.version = '1.5'
-glGetQueryiv.category = ''
-glGetQueryiv.trace = True
-glGetQueryiv.play = False
-gl.add(glGetQueryiv)
 
 glGetStringi = Function('glGetStringi')
 glGetStringi.ret = Return('const GLubyte *')
@@ -17759,7 +17858,7 @@ glGetStringi.ret.cast = 'const GLchar *'
 glGetStringi.add( Input( 'name','GLenum' ))
 glGetStringi.add( Input( 'index','GLuint' ))
 glGetStringi.version = '3.0'
-glGetStringi.category = ''
+glGetStringi.category = 'GL_VERSION_3_0'
 glGetStringi.trace = True
 glGetStringi.play = True
 gl.add(glGetStringi)
@@ -17770,7 +17869,7 @@ glGetTexParameterIiv.add( Input( 'target','GLenum' ))
 glGetTexParameterIiv.add( Input( 'pname','GLenum' ))
 glGetTexParameterIiv.add( Output( 'params','GLint *' ))
 glGetTexParameterIiv.version = '3.0'
-glGetTexParameterIiv.category = ''
+glGetTexParameterIiv.category = 'GL_VERSION_3_0'
 glGetTexParameterIiv.trace = True
 glGetTexParameterIiv.play = True
 gl.add(glGetTexParameterIiv)
@@ -17781,7 +17880,7 @@ glGetTexParameterIuiv.add( Input( 'target','GLenum' ))
 glGetTexParameterIuiv.add( Input( 'pname','GLenum' ))
 glGetTexParameterIuiv.add( Output( 'params','GLuint *' ))
 glGetTexParameterIuiv.version = '3.0'
-glGetTexParameterIuiv.category = ''
+glGetTexParameterIuiv.category = 'GL_VERSION_3_0'
 glGetTexParameterIuiv.trace = True
 glGetTexParameterIuiv.play = True
 gl.add(glGetTexParameterIuiv)
@@ -17796,7 +17895,7 @@ glGetTransformFeedbackVarying.add( Output( 'size','GLsizei *' ,size = 1 ))
 glGetTransformFeedbackVarying.add( Output( 'type','GLenum *' ,size = 1 ))
 glGetTransformFeedbackVarying.add( Output( 'name','GLchar *' ,size = 'bufSize' ))
 glGetTransformFeedbackVarying.version = '3.0'
-glGetTransformFeedbackVarying.category = ''
+glGetTransformFeedbackVarying.category = 'GL_VERSION_3_0'
 glGetTransformFeedbackVarying.trace = True
 glGetTransformFeedbackVarying.play = True
 gl.add(glGetTransformFeedbackVarying)
@@ -17807,7 +17906,7 @@ glGetUniformuiv.add( Input( 'program','GLuint' ))
 glGetUniformuiv.add( Input( 'location','GLint' ))
 glGetUniformuiv.add( Output( 'params','GLuint *' ))
 glGetUniformuiv.version = '3.0'
-glGetUniformuiv.category = ''
+glGetUniformuiv.category = 'GL_VERSION_3_0'
 glGetUniformuiv.trace = True
 glGetUniformuiv.play = True
 gl.add(glGetUniformuiv)
@@ -17818,7 +17917,7 @@ glGetVertexAttribIiv.add( Input( 'index','GLuint' ))
 glGetVertexAttribIiv.add( Input( 'pname','GLenum' ))
 glGetVertexAttribIiv.add( Output( 'params','GLint *' ,size = 1 ))
 glGetVertexAttribIiv.version = '3.0'
-glGetVertexAttribIiv.category = ''
+glGetVertexAttribIiv.category = 'GL_VERSION_3_0'
 glGetVertexAttribIiv.trace = True
 glGetVertexAttribIiv.play = True
 gl.add(glGetVertexAttribIiv)
@@ -17829,165 +17928,20 @@ glGetVertexAttribIuiv.add( Input( 'index','GLuint' ))
 glGetVertexAttribIuiv.add( Input( 'pname','GLenum' ))
 glGetVertexAttribIuiv.add( Output( 'params','GLuint *' ,size = 1 ))
 glGetVertexAttribIuiv.version = '3.0'
-glGetVertexAttribIuiv.category = ''
+glGetVertexAttribIuiv.category = 'GL_VERSION_3_0'
 glGetVertexAttribIuiv.trace = True
 glGetVertexAttribIuiv.play = True
 gl.add(glGetVertexAttribIuiv)
-
-glIsBuffer = Function('glIsBuffer')
-glIsBuffer.ret = Return('GLboolean')
-glIsBuffer.add( Input( 'buffer','GLuint' ))
-glIsBuffer.version = '1.5'
-glIsBuffer.category = ''
-glIsBuffer.esVersions = [1.1, 2.0]
-glIsBuffer.trace = True
-glIsBuffer.play = True
-gl.add(glIsBuffer)
 
 glIsEnabledi = Function('glIsEnabledi')
 glIsEnabledi.ret = Return('GLboolean')
 glIsEnabledi.add( Input( 'target','GLenum' ))
 glIsEnabledi.add( Input( 'index','GLuint' ))
 glIsEnabledi.version = '3.0'
-glIsEnabledi.category = ''
+glIsEnabledi.category = 'GL_VERSION_3_0'
 glIsEnabledi.trace = True
 glIsEnabledi.play = True
 gl.add(glIsEnabledi)
-
-glIsQuery = Function('glIsQuery')
-glIsQuery.ret = Return('GLboolean')
-glIsQuery.add( Input( 'id','GLuint' ))
-glIsQuery.version = '1.5'
-glIsQuery.category = ''
-glIsQuery.trace = True
-glIsQuery.play = True
-gl.add(glIsQuery)
-
-glMapBuffer = Function('glMapBuffer')
-glMapBuffer.ret = Return('GLvoid *')
-glMapBuffer.add( Input( 'target','GLenum' ))
-glMapBuffer.add( Input( 'access','GLenum' ))
-glMapBuffer.version = '1.5'
-glMapBuffer.category = ''
-glMapBuffer.trace = True
-glMapBuffer.play = True
-gl.add(glMapBuffer)
-
-glMultiDrawArrays = Function('glMultiDrawArrays')
-glMultiDrawArrays.ret = Return('void')
-glMultiDrawArrays.add( Input( 'mode','GLenum' ))
-glMultiDrawArrays.add( Input( 'first','const GLint *' ,size = 'primcount' ))
-glMultiDrawArrays.add( Input( 'count','const GLsizei *' ,size = 'primcount' ))
-glMultiDrawArrays.add( Input( 'primcount','GLsizei' ))
-glMultiDrawArrays.version = '1.4'
-glMultiDrawArrays.category = ''
-glMultiDrawArrays.trace = True
-glMultiDrawArrays.play = True
-gl.add(glMultiDrawArrays)
-
-glMultiDrawElements = Function('glMultiDrawElements')
-glMultiDrawElements.ret = Return('void')
-glMultiDrawElements.add( Input( 'mode','GLenum' ))
-glMultiDrawElements.add( Input( 'count','const GLsizei *' ,size = 'primcount' ))
-glMultiDrawElements.add( Input( 'type','GLenum' ))
-glMultiDrawElements.add( Input( 'indices','const GLvoid **' ,size = 'primcount' ))
-glMultiDrawElements.add( Input( 'primcount','GLsizei' ))
-glMultiDrawElements.version = '1.4'
-glMultiDrawElements.category = ''
-glMultiDrawElements.trace = True
-glMultiDrawElements.play = True
-gl.add(glMultiDrawElements)
-
-glPointParameterf = Function('glPointParameterf')
-glPointParameterf.ret = Return('void')
-glPointParameterf.add( Input( 'pname','GLenum' ))
-glPointParameterf.add( Input( 'param','GLfloat' ))
-glPointParameterf.version = '1.4'
-glPointParameterf.category = ''
-glPointParameterf.esVersions = [1.1]
-glPointParameterf.trace = True
-glPointParameterf.play = True
-gl.add(glPointParameterf)
-
-glPointParameterfv = Function('glPointParameterfv')
-glPointParameterfv.ret = Return('void')
-glPointParameterfv.add( Input( 'pname','GLenum' ))
-glPointParameterfv.add( Input( 'params','const GLfloat *' ))
-glPointParameterfv.version = '1.4'
-glPointParameterfv.category = ''
-glPointParameterfv.esVersions = [1.1]
-glPointParameterfv.trace = True
-glPointParameterfv.play = True
-gl.add(glPointParameterfv)
-
-glPointParameteri = Function('glPointParameteri')
-glPointParameteri.ret = Return('void')
-glPointParameteri.add( Input( 'pname','GLenum' ))
-glPointParameteri.add( Input( 'param','GLint' ))
-glPointParameteri.version = '1.4'
-glPointParameteri.category = ''
-glPointParameteri.trace = True
-glPointParameteri.play = True
-gl.add(glPointParameteri)
-
-glPointParameteriv = Function('glPointParameteriv')
-glPointParameteriv.ret = Return('void')
-glPointParameteriv.add( Input( 'pname','GLenum' ))
-glPointParameteriv.add( Input( 'params','const GLint *' ))
-glPointParameteriv.version = '1.4'
-glPointParameteriv.category = ''
-glPointParameteriv.trace = True
-glPointParameteriv.play = True
-gl.add(glPointParameteriv)
-
-glPrimitiveRestartIndex = Function('glPrimitiveRestartIndex')
-glPrimitiveRestartIndex.ret = Return('void')
-glPrimitiveRestartIndex.add( Input( 'index','GLuint' ))
-glPrimitiveRestartIndex.version = '3.1'
-glPrimitiveRestartIndex.category = ''
-glPrimitiveRestartIndex.trace = True
-glPrimitiveRestartIndex.play = True
-gl.add(glPrimitiveRestartIndex)
-
-glSampleCoverage = Function('glSampleCoverage')
-glSampleCoverage.ret = Return('void')
-glSampleCoverage.add( Input( 'value','GLclampf' ))
-glSampleCoverage.add( Input( 'invert','GLboolean' ))
-glSampleCoverage.version = '1.3'
-glSampleCoverage.category = ''
-glSampleCoverage.esVersions = [1.0, 1.1, 2.0]
-glSampleCoverage.trace = True
-glSampleCoverage.play = True
-gl.add(glSampleCoverage)
-
-glTexBuffer = Function('glTexBuffer')
-glTexBuffer.ret = Return('void')
-glTexBuffer.add( Input( 'target','GLenum' ))
-glTexBuffer.add( Input( 'internalformat','GLenum' ))
-glTexBuffer.add( Input( 'buffer','GLuint' ))
-glTexBuffer.version = '3.1'
-glTexBuffer.category = ''
-glTexBuffer.trace = True
-glTexBuffer.play = True
-gl.add(glTexBuffer)
-
-glTexImage3D = Function('glTexImage3D')
-glTexImage3D.ret = Return('void')
-glTexImage3D.add( Input( 'target','GLenum' ))
-glTexImage3D.add( Input( 'level','GLint' ))
-glTexImage3D.add( Input( 'internalformat','GLint' ,regalLog = 'internalFormatToString(internalformat)' ))
-glTexImage3D.add( Input( 'width','GLsizei' ))
-glTexImage3D.add( Input( 'height','GLsizei' ))
-glTexImage3D.add( Input( 'depth','GLsizei' ))
-glTexImage3D.add( Input( 'border','GLint' ))
-glTexImage3D.add( Input( 'format','GLenum' ))
-glTexImage3D.add( Input( 'type','GLenum' ))
-glTexImage3D.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, depth, format, type, 0, target)' ,cast = 'const GLubyte *' ))
-glTexImage3D.version = '1.2'
-glTexImage3D.category = ''
-glTexImage3D.trace = True
-glTexImage3D.play = True
-gl.add(glTexImage3D)
 
 glTexParameterIiv = Function('glTexParameterIiv')
 glTexParameterIiv.ret = Return('void')
@@ -17995,7 +17949,7 @@ glTexParameterIiv.add( Input( 'target','GLenum' ))
 glTexParameterIiv.add( Input( 'pname','GLenum' ))
 glTexParameterIiv.add( Input( 'params','const GLint *' ,regalLog = 'GLTexParameterToString(pname,params)' ))
 glTexParameterIiv.version = '3.0'
-glTexParameterIiv.category = ''
+glTexParameterIiv.category = 'GL_VERSION_3_0'
 glTexParameterIiv.trace = True
 glTexParameterIiv.play = True
 gl.add(glTexParameterIiv)
@@ -18006,29 +17960,10 @@ glTexParameterIuiv.add( Input( 'target','GLenum' ))
 glTexParameterIuiv.add( Input( 'pname','GLenum' ))
 glTexParameterIuiv.add( Input( 'params','const GLuint *' ,regalLog = 'GLTexParameterToString(pname,params)' ))
 glTexParameterIuiv.version = '3.0'
-glTexParameterIuiv.category = ''
+glTexParameterIuiv.category = 'GL_VERSION_3_0'
 glTexParameterIuiv.trace = True
 glTexParameterIuiv.play = True
 gl.add(glTexParameterIuiv)
-
-glTexSubImage3D = Function('glTexSubImage3D')
-glTexSubImage3D.ret = Return('void')
-glTexSubImage3D.add( Input( 'target','GLenum' ))
-glTexSubImage3D.add( Input( 'level','GLint' ))
-glTexSubImage3D.add( Input( 'xoffset','GLint' ))
-glTexSubImage3D.add( Input( 'yoffset','GLint' ))
-glTexSubImage3D.add( Input( 'zoffset','GLint' ))
-glTexSubImage3D.add( Input( 'width','GLsizei' ))
-glTexSubImage3D.add( Input( 'height','GLsizei' ))
-glTexSubImage3D.add( Input( 'depth','GLsizei' ))
-glTexSubImage3D.add( Input( 'format','GLenum' ))
-glTexSubImage3D.add( Input( 'type','GLenum' ))
-glTexSubImage3D.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, depth, format, type, 0, target)' ,cast = 'const GLubyte *' ))
-glTexSubImage3D.version = '1.2'
-glTexSubImage3D.category = ''
-glTexSubImage3D.trace = True
-glTexSubImage3D.play = True
-gl.add(glTexSubImage3D)
 
 glTransformFeedbackVaryings = Function('glTransformFeedbackVaryings')
 glTransformFeedbackVaryings.ret = Return('void')
@@ -18037,7 +17972,7 @@ glTransformFeedbackVaryings.add( Input( 'count','GLsizei' ))
 glTransformFeedbackVaryings.add( Input( 'varyings','const GLchar **' ,size = 'count' ))
 glTransformFeedbackVaryings.add( Input( 'bufferMode','GLenum' ))
 glTransformFeedbackVaryings.version = '3.0'
-glTransformFeedbackVaryings.category = ''
+glTransformFeedbackVaryings.category = 'GL_VERSION_3_0'
 glTransformFeedbackVaryings.trace = True
 glTransformFeedbackVaryings.play = True
 gl.add(glTransformFeedbackVaryings)
@@ -18047,7 +17982,7 @@ glUniform1ui.ret = Return('void')
 glUniform1ui.add( Input( 'location','GLint' ))
 glUniform1ui.add( Input( 'v0','GLuint' ))
 glUniform1ui.version = '3.0'
-glUniform1ui.category = ''
+glUniform1ui.category = 'GL_VERSION_3_0'
 glUniform1ui.trace = True
 glUniform1ui.play = True
 gl.add(glUniform1ui)
@@ -18058,7 +17993,7 @@ glUniform1uiv.add( Input( 'location','GLint' ))
 glUniform1uiv.add( Input( 'count','GLsizei' ))
 glUniform1uiv.add( Input( 'value','const GLuint *' ,size = 'count' ))
 glUniform1uiv.version = '3.0'
-glUniform1uiv.category = ''
+glUniform1uiv.category = 'GL_VERSION_3_0'
 glUniform1uiv.trace = True
 glUniform1uiv.play = True
 gl.add(glUniform1uiv)
@@ -18069,7 +18004,7 @@ glUniform2ui.add( Input( 'location','GLint' ))
 glUniform2ui.add( Input( 'v0','GLuint' ))
 glUniform2ui.add( Input( 'v1','GLuint' ))
 glUniform2ui.version = '3.0'
-glUniform2ui.category = ''
+glUniform2ui.category = 'GL_VERSION_3_0'
 glUniform2ui.trace = True
 glUniform2ui.play = True
 gl.add(glUniform2ui)
@@ -18080,7 +18015,7 @@ glUniform2uiv.add( Input( 'location','GLint' ))
 glUniform2uiv.add( Input( 'count','GLsizei' ))
 glUniform2uiv.add( Input( 'value','const GLuint *' ,size = 'count * 2' ))
 glUniform2uiv.version = '3.0'
-glUniform2uiv.category = ''
+glUniform2uiv.category = 'GL_VERSION_3_0'
 glUniform2uiv.trace = True
 glUniform2uiv.play = True
 gl.add(glUniform2uiv)
@@ -18092,7 +18027,7 @@ glUniform3ui.add( Input( 'v0','GLuint' ))
 glUniform3ui.add( Input( 'v1','GLuint' ))
 glUniform3ui.add( Input( 'v2','GLuint' ))
 glUniform3ui.version = '3.0'
-glUniform3ui.category = ''
+glUniform3ui.category = 'GL_VERSION_3_0'
 glUniform3ui.trace = True
 glUniform3ui.play = True
 gl.add(glUniform3ui)
@@ -18103,7 +18038,7 @@ glUniform3uiv.add( Input( 'location','GLint' ))
 glUniform3uiv.add( Input( 'count','GLsizei' ))
 glUniform3uiv.add( Input( 'value','const GLuint *' ,size = 'count * 3' ))
 glUniform3uiv.version = '3.0'
-glUniform3uiv.category = ''
+glUniform3uiv.category = 'GL_VERSION_3_0'
 glUniform3uiv.trace = True
 glUniform3uiv.play = True
 gl.add(glUniform3uiv)
@@ -18116,7 +18051,7 @@ glUniform4ui.add( Input( 'v1','GLuint' ))
 glUniform4ui.add( Input( 'v2','GLuint' ))
 glUniform4ui.add( Input( 'v3','GLuint' ))
 glUniform4ui.version = '3.0'
-glUniform4ui.category = ''
+glUniform4ui.category = 'GL_VERSION_3_0'
 glUniform4ui.trace = True
 glUniform4ui.play = True
 gl.add(glUniform4ui)
@@ -18127,108 +18062,17 @@ glUniform4uiv.add( Input( 'location','GLint' ))
 glUniform4uiv.add( Input( 'count','GLsizei' ))
 glUniform4uiv.add( Input( 'value','const GLuint *' ,size = 'count * 4' ))
 glUniform4uiv.version = '3.0'
-glUniform4uiv.category = ''
+glUniform4uiv.category = 'GL_VERSION_3_0'
 glUniform4uiv.trace = True
 glUniform4uiv.play = True
 gl.add(glUniform4uiv)
-
-glUniformMatrix2x3fv = Function('glUniformMatrix2x3fv')
-glUniformMatrix2x3fv.ret = Return('void')
-glUniformMatrix2x3fv.add( Input( 'location','GLint' ))
-glUniformMatrix2x3fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix2x3fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix2x3fv.add( Input( 'value','const GLfloat *' ,size = '2 * 3 * count' ))
-glUniformMatrix2x3fv.version = '2.1'
-glUniformMatrix2x3fv.category = ''
-glUniformMatrix2x3fv.trace = True
-glUniformMatrix2x3fv.play = True
-gl.add(glUniformMatrix2x3fv)
-
-glUniformMatrix2x4fv = Function('glUniformMatrix2x4fv')
-glUniformMatrix2x4fv.ret = Return('void')
-glUniformMatrix2x4fv.add( Input( 'location','GLint' ))
-glUniformMatrix2x4fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix2x4fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix2x4fv.add( Input( 'value','const GLfloat *' ,size = '2 * 4 * count' ))
-glUniformMatrix2x4fv.version = '2.1'
-glUniformMatrix2x4fv.category = ''
-glUniformMatrix2x4fv.trace = True
-glUniformMatrix2x4fv.play = True
-gl.add(glUniformMatrix2x4fv)
-
-glUniformMatrix3x2fv = Function('glUniformMatrix3x2fv')
-glUniformMatrix3x2fv.ret = Return('void')
-glUniformMatrix3x2fv.add( Input( 'location','GLint' ))
-glUniformMatrix3x2fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix3x2fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix3x2fv.add( Input( 'value','const GLfloat *' ,size = '3 * 2 * count' ))
-glUniformMatrix3x2fv.version = '2.1'
-glUniformMatrix3x2fv.category = ''
-glUniformMatrix3x2fv.trace = True
-glUniformMatrix3x2fv.play = True
-gl.add(glUniformMatrix3x2fv)
-
-glUniformMatrix3x4fv = Function('glUniformMatrix3x4fv')
-glUniformMatrix3x4fv.ret = Return('void')
-glUniformMatrix3x4fv.add( Input( 'location','GLint' ))
-glUniformMatrix3x4fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix3x4fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix3x4fv.add( Input( 'value','const GLfloat *' ,size = '3 * 4 * count' ))
-glUniformMatrix3x4fv.version = '2.1'
-glUniformMatrix3x4fv.category = ''
-glUniformMatrix3x4fv.trace = True
-glUniformMatrix3x4fv.play = True
-gl.add(glUniformMatrix3x4fv)
-
-glUniformMatrix4x2fv = Function('glUniformMatrix4x2fv')
-glUniformMatrix4x2fv.ret = Return('void')
-glUniformMatrix4x2fv.add( Input( 'location','GLint' ))
-glUniformMatrix4x2fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix4x2fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix4x2fv.add( Input( 'value','const GLfloat *' ,size = '4 * 2 * count' ))
-glUniformMatrix4x2fv.version = '2.1'
-glUniformMatrix4x2fv.category = ''
-glUniformMatrix4x2fv.trace = True
-glUniformMatrix4x2fv.play = True
-gl.add(glUniformMatrix4x2fv)
-
-glUniformMatrix4x3fv = Function('glUniformMatrix4x3fv')
-glUniformMatrix4x3fv.ret = Return('void')
-glUniformMatrix4x3fv.add( Input( 'location','GLint' ))
-glUniformMatrix4x3fv.add( Input( 'count','GLsizei' ))
-glUniformMatrix4x3fv.add( Input( 'transpose','GLboolean' ))
-glUniformMatrix4x3fv.add( Input( 'value','const GLfloat *' ,size = '4 * 3 * count' ))
-glUniformMatrix4x3fv.version = '2.1'
-glUniformMatrix4x3fv.category = ''
-glUniformMatrix4x3fv.trace = True
-glUniformMatrix4x3fv.play = True
-gl.add(glUniformMatrix4x3fv)
-
-glUnmapBuffer = Function('glUnmapBuffer')
-glUnmapBuffer.ret = Return('GLboolean')
-glUnmapBuffer.add( Input( 'target','GLenum' ))
-glUnmapBuffer.version = '1.5'
-glUnmapBuffer.category = ''
-glUnmapBuffer.trace = True
-glUnmapBuffer.play = True
-gl.add(glUnmapBuffer)
-
-glVertexAttribDivisor = Function('glVertexAttribDivisor')
-glVertexAttribDivisor.ret = Return('void')
-glVertexAttribDivisor.add( Input( 'index','GLuint' ))
-glVertexAttribDivisor.add( Input( 'divisor','GLuint' ))
-glVertexAttribDivisor.version = '3.3'
-glVertexAttribDivisor.category = ''
-glVertexAttribDivisor.trace = True
-glVertexAttribDivisor.play = True
-gl.add(glVertexAttribDivisor)
 
 glVertexAttribI1i = Function('glVertexAttribI1i')
 glVertexAttribI1i.ret = Return('void')
 glVertexAttribI1i.add( Input( 'index','GLuint' ))
 glVertexAttribI1i.add( Input( 'x','GLint' ))
 glVertexAttribI1i.version = '3.0'
-glVertexAttribI1i.category = ''
+glVertexAttribI1i.category = 'GL_VERSION_3_0'
 glVertexAttribI1i.trace = True
 glVertexAttribI1i.play = True
 gl.add(glVertexAttribI1i)
@@ -18238,7 +18082,7 @@ glVertexAttribI1iv.ret = Return('void')
 glVertexAttribI1iv.add( Input( 'index','GLuint' ))
 glVertexAttribI1iv.add( Input( 'v','const GLint *' ,size = 1 ))
 glVertexAttribI1iv.version = '3.0'
-glVertexAttribI1iv.category = ''
+glVertexAttribI1iv.category = 'GL_VERSION_3_0'
 glVertexAttribI1iv.trace = True
 glVertexAttribI1iv.play = True
 gl.add(glVertexAttribI1iv)
@@ -18248,7 +18092,7 @@ glVertexAttribI1ui.ret = Return('void')
 glVertexAttribI1ui.add( Input( 'index','GLuint' ))
 glVertexAttribI1ui.add( Input( 'x','GLuint' ))
 glVertexAttribI1ui.version = '3.0'
-glVertexAttribI1ui.category = ''
+glVertexAttribI1ui.category = 'GL_VERSION_3_0'
 glVertexAttribI1ui.trace = True
 glVertexAttribI1ui.play = True
 gl.add(glVertexAttribI1ui)
@@ -18258,7 +18102,7 @@ glVertexAttribI1uiv.ret = Return('void')
 glVertexAttribI1uiv.add( Input( 'index','GLuint' ))
 glVertexAttribI1uiv.add( Input( 'v','const GLuint *' ,size = 1 ))
 glVertexAttribI1uiv.version = '3.0'
-glVertexAttribI1uiv.category = ''
+glVertexAttribI1uiv.category = 'GL_VERSION_3_0'
 glVertexAttribI1uiv.trace = True
 glVertexAttribI1uiv.play = True
 gl.add(glVertexAttribI1uiv)
@@ -18269,7 +18113,7 @@ glVertexAttribI2i.add( Input( 'index','GLuint' ))
 glVertexAttribI2i.add( Input( 'x','GLint' ))
 glVertexAttribI2i.add( Input( 'y','GLint' ))
 glVertexAttribI2i.version = '3.0'
-glVertexAttribI2i.category = ''
+glVertexAttribI2i.category = 'GL_VERSION_3_0'
 glVertexAttribI2i.trace = True
 glVertexAttribI2i.play = True
 gl.add(glVertexAttribI2i)
@@ -18279,7 +18123,7 @@ glVertexAttribI2iv.ret = Return('void')
 glVertexAttribI2iv.add( Input( 'index','GLuint' ))
 glVertexAttribI2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glVertexAttribI2iv.version = '3.0'
-glVertexAttribI2iv.category = ''
+glVertexAttribI2iv.category = 'GL_VERSION_3_0'
 glVertexAttribI2iv.trace = True
 glVertexAttribI2iv.play = True
 gl.add(glVertexAttribI2iv)
@@ -18290,7 +18134,7 @@ glVertexAttribI2ui.add( Input( 'index','GLuint' ))
 glVertexAttribI2ui.add( Input( 'x','GLuint' ))
 glVertexAttribI2ui.add( Input( 'y','GLuint' ))
 glVertexAttribI2ui.version = '3.0'
-glVertexAttribI2ui.category = ''
+glVertexAttribI2ui.category = 'GL_VERSION_3_0'
 glVertexAttribI2ui.trace = True
 glVertexAttribI2ui.play = True
 gl.add(glVertexAttribI2ui)
@@ -18300,7 +18144,7 @@ glVertexAttribI2uiv.ret = Return('void')
 glVertexAttribI2uiv.add( Input( 'index','GLuint' ))
 glVertexAttribI2uiv.add( Input( 'v','const GLuint *' ,size = 2 ))
 glVertexAttribI2uiv.version = '3.0'
-glVertexAttribI2uiv.category = ''
+glVertexAttribI2uiv.category = 'GL_VERSION_3_0'
 glVertexAttribI2uiv.trace = True
 glVertexAttribI2uiv.play = True
 gl.add(glVertexAttribI2uiv)
@@ -18312,7 +18156,7 @@ glVertexAttribI3i.add( Input( 'x','GLint' ))
 glVertexAttribI3i.add( Input( 'y','GLint' ))
 glVertexAttribI3i.add( Input( 'z','GLint' ))
 glVertexAttribI3i.version = '3.0'
-glVertexAttribI3i.category = ''
+glVertexAttribI3i.category = 'GL_VERSION_3_0'
 glVertexAttribI3i.trace = True
 glVertexAttribI3i.play = True
 gl.add(glVertexAttribI3i)
@@ -18322,7 +18166,7 @@ glVertexAttribI3iv.ret = Return('void')
 glVertexAttribI3iv.add( Input( 'index','GLuint' ))
 glVertexAttribI3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glVertexAttribI3iv.version = '3.0'
-glVertexAttribI3iv.category = ''
+glVertexAttribI3iv.category = 'GL_VERSION_3_0'
 glVertexAttribI3iv.trace = True
 glVertexAttribI3iv.play = True
 gl.add(glVertexAttribI3iv)
@@ -18334,7 +18178,7 @@ glVertexAttribI3ui.add( Input( 'x','GLuint' ))
 glVertexAttribI3ui.add( Input( 'y','GLuint' ))
 glVertexAttribI3ui.add( Input( 'z','GLuint' ))
 glVertexAttribI3ui.version = '3.0'
-glVertexAttribI3ui.category = ''
+glVertexAttribI3ui.category = 'GL_VERSION_3_0'
 glVertexAttribI3ui.trace = True
 glVertexAttribI3ui.play = True
 gl.add(glVertexAttribI3ui)
@@ -18344,7 +18188,7 @@ glVertexAttribI3uiv.ret = Return('void')
 glVertexAttribI3uiv.add( Input( 'index','GLuint' ))
 glVertexAttribI3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
 glVertexAttribI3uiv.version = '3.0'
-glVertexAttribI3uiv.category = ''
+glVertexAttribI3uiv.category = 'GL_VERSION_3_0'
 glVertexAttribI3uiv.trace = True
 glVertexAttribI3uiv.play = True
 gl.add(glVertexAttribI3uiv)
@@ -18354,7 +18198,7 @@ glVertexAttribI4bv.ret = Return('void')
 glVertexAttribI4bv.add( Input( 'index','GLuint' ))
 glVertexAttribI4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
 glVertexAttribI4bv.version = '3.0'
-glVertexAttribI4bv.category = ''
+glVertexAttribI4bv.category = 'GL_VERSION_3_0'
 glVertexAttribI4bv.trace = True
 glVertexAttribI4bv.play = True
 gl.add(glVertexAttribI4bv)
@@ -18367,7 +18211,7 @@ glVertexAttribI4i.add( Input( 'y','GLint' ))
 glVertexAttribI4i.add( Input( 'z','GLint' ))
 glVertexAttribI4i.add( Input( 'w','GLint' ))
 glVertexAttribI4i.version = '3.0'
-glVertexAttribI4i.category = ''
+glVertexAttribI4i.category = 'GL_VERSION_3_0'
 glVertexAttribI4i.trace = True
 glVertexAttribI4i.play = True
 gl.add(glVertexAttribI4i)
@@ -18377,7 +18221,7 @@ glVertexAttribI4iv.ret = Return('void')
 glVertexAttribI4iv.add( Input( 'index','GLuint' ))
 glVertexAttribI4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glVertexAttribI4iv.version = '3.0'
-glVertexAttribI4iv.category = ''
+glVertexAttribI4iv.category = 'GL_VERSION_3_0'
 glVertexAttribI4iv.trace = True
 glVertexAttribI4iv.play = True
 gl.add(glVertexAttribI4iv)
@@ -18387,7 +18231,7 @@ glVertexAttribI4sv.ret = Return('void')
 glVertexAttribI4sv.add( Input( 'index','GLuint' ))
 glVertexAttribI4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glVertexAttribI4sv.version = '3.0'
-glVertexAttribI4sv.category = ''
+glVertexAttribI4sv.category = 'GL_VERSION_3_0'
 glVertexAttribI4sv.trace = True
 glVertexAttribI4sv.play = True
 gl.add(glVertexAttribI4sv)
@@ -18397,7 +18241,7 @@ glVertexAttribI4ubv.ret = Return('void')
 glVertexAttribI4ubv.add( Input( 'index','GLuint' ))
 glVertexAttribI4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
 glVertexAttribI4ubv.version = '3.0'
-glVertexAttribI4ubv.category = ''
+glVertexAttribI4ubv.category = 'GL_VERSION_3_0'
 glVertexAttribI4ubv.trace = True
 glVertexAttribI4ubv.play = True
 gl.add(glVertexAttribI4ubv)
@@ -18410,7 +18254,7 @@ glVertexAttribI4ui.add( Input( 'y','GLuint' ))
 glVertexAttribI4ui.add( Input( 'z','GLuint' ))
 glVertexAttribI4ui.add( Input( 'w','GLuint' ))
 glVertexAttribI4ui.version = '3.0'
-glVertexAttribI4ui.category = ''
+glVertexAttribI4ui.category = 'GL_VERSION_3_0'
 glVertexAttribI4ui.trace = True
 glVertexAttribI4ui.play = True
 gl.add(glVertexAttribI4ui)
@@ -18420,7 +18264,7 @@ glVertexAttribI4uiv.ret = Return('void')
 glVertexAttribI4uiv.add( Input( 'index','GLuint' ))
 glVertexAttribI4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
 glVertexAttribI4uiv.version = '3.0'
-glVertexAttribI4uiv.category = ''
+glVertexAttribI4uiv.category = 'GL_VERSION_3_0'
 glVertexAttribI4uiv.trace = True
 glVertexAttribI4uiv.play = True
 gl.add(glVertexAttribI4uiv)
@@ -18430,7 +18274,7 @@ glVertexAttribI4usv.ret = Return('void')
 glVertexAttribI4usv.add( Input( 'index','GLuint' ))
 glVertexAttribI4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
 glVertexAttribI4usv.version = '3.0'
-glVertexAttribI4usv.category = ''
+glVertexAttribI4usv.category = 'GL_VERSION_3_0'
 glVertexAttribI4usv.trace = True
 glVertexAttribI4usv.play = True
 gl.add(glVertexAttribI4usv)
@@ -18443,10 +18287,178 @@ glVertexAttribIPointer.add( Input( 'type','GLenum' ))
 glVertexAttribIPointer.add( Input( 'stride','GLsizei' ))
 glVertexAttribIPointer.add( Input( 'pointer','const GLvoid *' ))
 glVertexAttribIPointer.version = '3.0'
-glVertexAttribIPointer.category = ''
+glVertexAttribIPointer.category = 'GL_VERSION_3_0'
 glVertexAttribIPointer.trace = True
 glVertexAttribIPointer.play = True
 gl.add(glVertexAttribIPointer)
+
+# GL_VERSION_3_1
+
+glDrawArraysInstanced = Function('glDrawArraysInstanced')
+glDrawArraysInstanced.ret = Return('void')
+glDrawArraysInstanced.add( Input( 'mode','GLenum' ))
+glDrawArraysInstanced.add( Input( 'start','GLint' ))
+glDrawArraysInstanced.add( Input( 'count','GLsizei' ))
+glDrawArraysInstanced.add( Input( 'primcount','GLsizei' ))
+glDrawArraysInstanced.version = '3.1'
+glDrawArraysInstanced.category = 'GL_VERSION_3_1'
+glDrawArraysInstanced.trace = True
+glDrawArraysInstanced.play = True
+gl.add(glDrawArraysInstanced)
+
+glDrawElementsInstanced = Function('glDrawElementsInstanced')
+glDrawElementsInstanced.ret = Return('void')
+glDrawElementsInstanced.add( Input( 'mode','GLenum' ))
+glDrawElementsInstanced.add( Input( 'count','GLsizei' ))
+glDrawElementsInstanced.add( Input( 'type','GLenum' ))
+glDrawElementsInstanced.add( Input( 'indices','const GLvoid *' ))
+glDrawElementsInstanced.add( Input( 'primcount','GLsizei' ))
+glDrawElementsInstanced.version = '3.1'
+glDrawElementsInstanced.category = 'GL_VERSION_3_1'
+glDrawElementsInstanced.trace = True
+glDrawElementsInstanced.play = True
+gl.add(glDrawElementsInstanced)
+
+glPrimitiveRestartIndex = Function('glPrimitiveRestartIndex')
+glPrimitiveRestartIndex.ret = Return('void')
+glPrimitiveRestartIndex.add( Input( 'index','GLuint' ))
+glPrimitiveRestartIndex.version = '3.1'
+glPrimitiveRestartIndex.category = 'GL_VERSION_3_1'
+glPrimitiveRestartIndex.trace = True
+glPrimitiveRestartIndex.play = True
+gl.add(glPrimitiveRestartIndex)
+
+glTexBuffer = Function('glTexBuffer')
+glTexBuffer.ret = Return('void')
+glTexBuffer.add( Input( 'target','GLenum' ))
+glTexBuffer.add( Input( 'internalformat','GLenum' ))
+glTexBuffer.add( Input( 'buffer','GLuint' ))
+glTexBuffer.version = '3.1'
+glTexBuffer.category = 'GL_VERSION_3_1'
+glTexBuffer.trace = True
+glTexBuffer.play = True
+gl.add(glTexBuffer)
+
+# GL_VERSION_3_2
+
+glFramebufferTexture = Function('glFramebufferTexture')
+glFramebufferTexture.ret = Return('void')
+glFramebufferTexture.add( Input( 'target','GLenum' ))
+glFramebufferTexture.add( Input( 'attachment','GLenum' ))
+glFramebufferTexture.add( Input( 'texture','GLuint' ))
+glFramebufferTexture.add( Input( 'level','GLint' ))
+glFramebufferTexture.version = '3.2'
+glFramebufferTexture.category = 'GL_VERSION_3_2'
+glFramebufferTexture.trace = True
+glFramebufferTexture.play = True
+gl.add(glFramebufferTexture)
+
+glFramebufferTextureFace = Function('glFramebufferTextureFace')
+glFramebufferTextureFace.ret = Return('void')
+glFramebufferTextureFace.add( Input( 'target','GLenum' ))
+glFramebufferTextureFace.add( Input( 'attachment','GLenum' ))
+glFramebufferTextureFace.add( Input( 'texture','GLuint' ))
+glFramebufferTextureFace.add( Input( 'level','GLint' ))
+glFramebufferTextureFace.add( Input( 'face','GLenum' ))
+glFramebufferTextureFace.version = '3.2'
+glFramebufferTextureFace.category = 'GL_VERSION_3_2'
+glFramebufferTextureFace.trace = True
+glFramebufferTextureFace.play = True
+gl.add(glFramebufferTextureFace)
+
+glGetBufferParameteri64v = Function('glGetBufferParameteri64v')
+glGetBufferParameteri64v.ret = Return('void')
+glGetBufferParameteri64v.add( Input( 'target','GLenum' ))
+glGetBufferParameteri64v.add( Input( 'pname','GLenum' ))
+glGetBufferParameteri64v.add( Output( 'params','GLint64 *' ))
+glGetBufferParameteri64v.version = '3.2'
+glGetBufferParameteri64v.category = 'GL_VERSION_3_2'
+glGetBufferParameteri64v.trace = True
+glGetBufferParameteri64v.play = False
+gl.add(glGetBufferParameteri64v)
+
+glGetInteger64i_v = Function('glGetInteger64i_v')
+glGetInteger64i_v.ret = Return('void')
+glGetInteger64i_v.add( Input( 'target','GLenum' ))
+glGetInteger64i_v.add( Input( 'index','GLuint' ))
+glGetInteger64i_v.add( Output( 'data','GLint64 *' ))
+glGetInteger64i_v.version = '3.2'
+glGetInteger64i_v.category = 'GL_VERSION_3_2'
+glGetInteger64i_v.trace = True
+glGetInteger64i_v.play = False
+gl.add(glGetInteger64i_v)
+
+# GL_VERSION_3_3
+
+glVertexAttribDivisor = Function('glVertexAttribDivisor')
+glVertexAttribDivisor.ret = Return('void')
+glVertexAttribDivisor.add( Input( 'index','GLuint' ))
+glVertexAttribDivisor.add( Input( 'divisor','GLuint' ))
+glVertexAttribDivisor.version = '3.3'
+glVertexAttribDivisor.category = 'GL_VERSION_3_3'
+glVertexAttribDivisor.trace = True
+glVertexAttribDivisor.play = True
+gl.add(glVertexAttribDivisor)
+
+# GL_VERSION_4_0
+
+glBlendEquationSeparatei = Function('glBlendEquationSeparatei')
+glBlendEquationSeparatei.ret = Return('void')
+glBlendEquationSeparatei.add( Input( 'buf','GLuint' ))
+glBlendEquationSeparatei.add( Input( 'modeRGB','GLenum' ))
+glBlendEquationSeparatei.add( Input( 'modeAlpha','GLenum' ))
+glBlendEquationSeparatei.version = '4.0'
+glBlendEquationSeparatei.category = 'GL_VERSION_4_0'
+glBlendEquationSeparatei.trace = True
+glBlendEquationSeparatei.play = True
+gl.add(glBlendEquationSeparatei)
+
+glBlendEquationi = Function('glBlendEquationi')
+glBlendEquationi.ret = Return('void')
+glBlendEquationi.add( Input( 'buf','GLuint' ))
+glBlendEquationi.add( Input( 'mode','GLenum' ))
+glBlendEquationi.version = '4.0'
+glBlendEquationi.category = 'GL_VERSION_4_0'
+glBlendEquationi.trace = True
+glBlendEquationi.play = True
+gl.add(glBlendEquationi)
+
+glBlendFuncSeparatei = Function('glBlendFuncSeparatei')
+glBlendFuncSeparatei.ret = Return('void')
+glBlendFuncSeparatei.add( Input( 'buf','GLuint' ))
+glBlendFuncSeparatei.add( Input( 'srcRGB','GLenum' ))
+glBlendFuncSeparatei.add( Input( 'dstRGB','GLenum' ))
+glBlendFuncSeparatei.add( Input( 'srcAlpha','GLenum' ))
+glBlendFuncSeparatei.add( Input( 'dstAlpha','GLenum' ))
+glBlendFuncSeparatei.version = '4.0'
+glBlendFuncSeparatei.category = 'GL_VERSION_4_0'
+glBlendFuncSeparatei.trace = True
+glBlendFuncSeparatei.play = True
+gl.add(glBlendFuncSeparatei)
+
+glBlendFunci = Function('glBlendFunci')
+glBlendFunci.ret = Return('void')
+glBlendFunci.add( Input( 'buf','GLuint' ))
+glBlendFunci.add( Input( 'src','GLenum' ))
+glBlendFunci.add( Input( 'dst','GLenum' ))
+glBlendFunci.version = '4.0'
+glBlendFunci.category = 'GL_VERSION_4_0'
+glBlendFunci.trace = True
+glBlendFunci.play = True
+gl.add(glBlendFunci)
+
+#
+
+glSampleCoverage = Function('glSampleCoverage')
+glSampleCoverage.ret = Return('void')
+glSampleCoverage.add( Input( 'value','GLclampf' ))
+glSampleCoverage.add( Input( 'invert','GLboolean' ))
+glSampleCoverage.version = '1.3'
+glSampleCoverage.category = ''
+glSampleCoverage.esVersions = [1.0, 1.1, 2.0]
+glSampleCoverage.trace = True
+glSampleCoverage.play = True
+gl.add(glSampleCoverage)
 
 # GL_3DFX_tbuffer
 

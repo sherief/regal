@@ -6,6 +6,7 @@ from ApiUtil import outputCode
 from ApiCodeGen import *
 
 from EmuInit           import formulae       as initFormulae
+from EmuInit           import formulaeGlobal as initFormulaeGlobal
 from EmuContextState   import formulae       as contextStateFormulae
 from EmuGetString      import formulae       as getStringFormulae
 from EmuForceCore      import formulae       as forceCoreFormulae
@@ -38,6 +39,7 @@ from EmuTexC   import texCFormulae
 
 emuRegal = [
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : initFormulae },
+    { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : initFormulaeGlobal },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'conditional' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
@@ -129,6 +131,14 @@ ${EMU_MEMBER_DECLARE}
   RegalSystemContext  sysCtx;
   Thread::Thread      thread;
 
+  #if REGAL_SYS_X11
+  Display            *x11Display;
+  #endif
+
+  #if REGAL_SYS_GLX
+  GLXDrawable         x11Drawable;
+  #endif
+
   GLLOGPROCREGAL      logCallback;
 
   //
@@ -201,6 +211,12 @@ ${EMU_MEMBER_CONSTRUCT}#endif
 #endif
   sysCtx(NULL),
   thread(0),
+#if REGAL_SYS_X11
+  x11Display(NULL),
+#endif
+#if REGAL_SYS_GLX
+  x11Drawable(0),
+#endif
   logCallback(NULL),
   depthBeginEnd(0),
   depthPushMatrix(0),

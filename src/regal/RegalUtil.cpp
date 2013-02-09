@@ -47,6 +47,10 @@ using boost::print::string_list;
 
 #include "RegalConfig.h"
 
+#if REGAL_SYS_X11
+#include <X11/Xatom.h>
+#endif
+
 // alloca for VC8
 
 #ifdef _MSC_VER
@@ -655,7 +659,7 @@ string fileRead(FILE *file)
   {
     size_t bytes = fread(buffer,1,bufferSize,file);
     buffer[bytes] = '\0';
-    
+
     if (feof(file))
     {
       if (tmp.size())
@@ -664,12 +668,58 @@ string fileRead(FILE *file)
         return tmp.str();
       }
       else
-        return string(buffer); 
+        return string(buffer);
     }
     else
         tmp.push_back(buffer);
   }
 }
+
+// X11 stuff
+
+#if REGAL_SYS_X11
+
+// See:
+//    http://tronche.com/gui/x/xlib/window-information/XGetWindowProperty.html
+//    http://standards.freedesktop.org/wm-spec/latest/ar01s05.html#id2760470
+
+std::string
+windowManagerStateDescription(Display *display, Window w)
+{
+  if (!display || !w)
+    return std::string();
+
+  const Atom _NET_WM_STATE = XInternAtom(display,"_NET_WM_STATE",True);
+  Atom type = 0;
+  int  format = 0;
+  unsigned long nitems = 0;
+  unsigned long bytes = 0;
+  Atom *list = NULL;
+
+  if (XGetWindowProperty(display,w,_NET_WM_STATE,0,1024,False,XA_ATOM,&type,&format,&nitems,&bytes,(unsigned char **) &list)==Success)
+  {
+    const Atom _NET_WM_STATE_MODAL      = XInternAtom(display,"_NET_WM_STATE_MODAL",True);
+    const Atom _NET_WM_STATE_HIDDEN     = XInternAtom(display,"_NET_WM_STATE_HIDDEN",True);
+    const Atom _NET_WM_STATE_FULLSCREEN = XInternAtom(display,"_NET_WM_STATE_FULLSCREEN",True);
+    const Atom _NET_WM_STATE_FOCUSED    = XInternAtom(display,"_NET_WM_STATE_FOCUSED",True);
+
+    string_list<std::string> tmp;
+
+    for (unsigned long i=0; i<nitems; ++i)
+    {
+      if (_NET_WM_STATE_MODAL     !=None && list[i]==_NET_WM_STATE_MODAL     ) tmp << "modal";
+      if (_NET_WM_STATE_HIDDEN    !=None && list[i]==_NET_WM_STATE_HIDDEN    ) tmp << "hidden";
+      if (_NET_WM_STATE_FULLSCREEN!=None && list[i]==_NET_WM_STATE_FULLSCREEN) tmp << "fullscreen";
+      if (_NET_WM_STATE_FOCUSED   !=None && list[i]==_NET_WM_STATE_FOCUSED   ) tmp << "focused";
+    }
+
+    XFree(list);
+    return tmp.join(", ");
+  }
+
+  return std::string();
+}
+#endif
 
 REGAL_NAMESPACE_END
 

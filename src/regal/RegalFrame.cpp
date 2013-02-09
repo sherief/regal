@@ -62,6 +62,11 @@ void Frame::capture(RegalContext &context)
     Timer::Value elapsed = frameTimer.restart();
     UNUSED_PARAMETER(elapsed); // Unused if info logging disabled at compile-time
     Info("Frame ",frame,' ',elapsed/1000," msec, ",1000000.0/elapsed," FPS.");
+
+#if REGAL_SYS_X11 && REGAL_SYS_GLX
+    if (context.x11Display && context.x11Drawable)
+      Info("X11 window manager state: ",windowManagerStateDescription(context.x11Display,context.x11Drawable));
+#endif
   }
 
   if
@@ -141,7 +146,7 @@ void Frame::capture(RegalContext &context)
         if (Config::frameMd5Color)
         {
           // Apply masking
-          
+
           for (GLint i=0; i<bufferSize; ++i)
             buffer[i] &= Config::frameMd5ColorMask;
 

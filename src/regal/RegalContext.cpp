@@ -94,6 +94,12 @@ RegalContext::RegalContext()
 #endif
   sysCtx(NULL),
   thread(0),
+#if REGAL_SYS_X11
+  x11Display(NULL),
+#endif
+#if REGAL_SYS_GLX
+  x11Drawable(0),
+#endif
   logCallback(NULL),
   depthBeginEnd(0),
   depthPushMatrix(0),

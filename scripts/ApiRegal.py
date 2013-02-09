@@ -90,6 +90,7 @@ def logParameter(function, parameter):
   elif t in [ 'void *', 'const void *', 'GLvoid *', 'const GLvoid *', 'GLubyte *', 'const GLubyte *'] or \
     t in [ 'int *', 'const int *', 'GLint *', 'const GLint *' ] or \
     t in [ 'XID', 'XVisualInfo *', 'Pixmap', 'Font', 'Display *', 'GLXDrawble', 'GLXPixmap', 'GLXContext', 'GLXVideoDeviceNV', 'GLXWindow', 'GLXPbuffer', 'GLXFBConfigID'] or \
+    t in [ 'PVOID', 'LPVOID', 'HDC', 'HGLRC', 'HPBUFFERARB', 'HPBUFFEREXT', 'HGPUNV', 'HPVIDEODEV', 'HVIDEOINPUTDEVICENV', 'HVIDEOOUTPUTDEVICENV', 'PGPU_DEVICE' ] or \
     t in [ 'EGLNativeWindowType', 'EGLNativePixmapType', 'EGLNativeDisplayType', 'EGLConfig', 'EGLContext', 'EGLDisplay', 'EGLSurface', 'EGLClientBuffer', 'EGLSyncKHR', 'EGLImageKHR', 'EGLStreamKHR', 'EGLSyncNV']:    
     return 'boost::print::optional(%s,Logging::pointers)'%n
 

@@ -19783,9 +19783,11 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFrameTerminatorGREMEDY","()");
     if (!_context) return;
+    // Notify Regal::Frame about the frame terminator event.
     if (_context && _context->frame)
       _context->frame->glFrameTerminatorGREMEDY(*_context);
     RegalAssert(_context->info);
+    // Return to application unless GL_GREMEDY_frame_terminator is supported by the driver.
     if (!_context->info->gl_gremedy_frame_terminator) return;
     DispatchTable *_next = &_context->dispatcher.front();
     RegalAssert(_next);
@@ -27109,7 +27111,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetStereoEmitterState3DL(HDC hDC, UINT uState)
   {
-    App("wglSetStereoEmitterState3DL","(", hDC, ", ", uState, ")");
+    App("wglSetStereoEmitterState3DL","(", boost::print::optional(hDC,Logging::pointers), ", ", uState, ")");
     if (!dispatchTableGlobal.wglSetStereoEmitterState3DL)
     {
       GetProcAddress( dispatchTableGlobal.wglSetStereoEmitterState3DL, "wglSetStereoEmitterState3DL" );
@@ -27120,7 +27122,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetStereoEmitterState3DL)
     {
-      Driver("wglSetStereoEmitterState3DL","(", hDC, ", ", uState, ")");
+      Driver("wglSetStereoEmitterState3DL","(", boost::print::optional(hDC,Logging::pointers), ", ", uState, ")");
       ret = dispatchTableGlobal.wglSetStereoEmitterState3DL(hDC, uState);
     }
     else
@@ -27132,7 +27134,7 @@ extern "C" {
 
   REGAL_DECL VOID REGAL_CALL wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
   {
-    App("wglBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+    App("wglBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
     if (!dispatchTableGlobal.wglBlitContextFramebufferAMD)
     {
       GetProcAddress( dispatchTableGlobal.wglBlitContextFramebufferAMD, "wglBlitContextFramebufferAMD" );
@@ -27142,7 +27144,7 @@ extern "C" {
     }
     if (dispatchTableGlobal.wglBlitContextFramebufferAMD)
     {
-      Driver("wglBlitContextFramebufferAMD","(", dstCtx, ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
+      Driver("wglBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ")");
       dispatchTableGlobal.wglBlitContextFramebufferAMD(dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     }
     else
@@ -27172,7 +27174,7 @@ extern "C" {
 
   REGAL_DECL HGLRC REGAL_CALL wglCreateAssociatedContextAttribsAMD(UINT id, HGLRC hShareContext, const int *attribList)
   {
-    App("wglCreateAssociatedContextAttribsAMD","(", id, ", ", hShareContext, ", ", boost::print::optional(attribList,Logging::pointers), ")");
+    App("wglCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(attribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD, "wglCreateAssociatedContextAttribsAMD" );
@@ -27183,7 +27185,7 @@ extern "C" {
     HGLRC  ret = (HGLRC )0;
     if (dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD)
     {
-      Driver("wglCreateAssociatedContextAttribsAMD","(", id, ", ", hShareContext, ", ", boost::print::optional(attribList,Logging::pointers), ")");
+      Driver("wglCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(attribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglCreateAssociatedContextAttribsAMD(id, hShareContext, attribList);
     }
     else
@@ -27193,7 +27195,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDeleteAssociatedContextAMD(HGLRC hglrc)
   {
-    App("wglDeleteAssociatedContextAMD","(", hglrc, ")");
+    App("wglDeleteAssociatedContextAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDeleteAssociatedContextAMD)
     {
       GetProcAddress( dispatchTableGlobal.wglDeleteAssociatedContextAMD, "wglDeleteAssociatedContextAMD" );
@@ -27204,7 +27206,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDeleteAssociatedContextAMD)
     {
-      Driver("wglDeleteAssociatedContextAMD","(", hglrc, ")");
+      Driver("wglDeleteAssociatedContextAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDeleteAssociatedContextAMD(hglrc);
     }
     else
@@ -27214,7 +27216,7 @@ extern "C" {
 
   REGAL_DECL UINT REGAL_CALL wglGetContextGPUIDAMD(HGLRC hglrc)
   {
-    App("wglGetContextGPUIDAMD","(", hglrc, ")");
+    App("wglGetContextGPUIDAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetContextGPUIDAMD)
     {
       GetProcAddress( dispatchTableGlobal.wglGetContextGPUIDAMD, "wglGetContextGPUIDAMD" );
@@ -27225,7 +27227,7 @@ extern "C" {
     UINT  ret = (UINT )0;
     if (dispatchTableGlobal.wglGetContextGPUIDAMD)
     {
-      Driver("wglGetContextGPUIDAMD","(", hglrc, ")");
+      Driver("wglGetContextGPUIDAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetContextGPUIDAMD(hglrc);
     }
     else
@@ -27298,7 +27300,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglMakeAssociatedContextCurrentAMD(HGLRC hglrc)
   {
-    App("wglMakeAssociatedContextCurrentAMD","(", hglrc, ")");
+    App("wglMakeAssociatedContextCurrentAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD)
     {
       GetProcAddress( dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD, "wglMakeAssociatedContextCurrentAMD" );
@@ -27309,7 +27311,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD)
     {
-      Driver("wglMakeAssociatedContextCurrentAMD","(", hglrc, ")");
+      Driver("wglMakeAssociatedContextCurrentAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglMakeAssociatedContextCurrentAMD(hglrc);
     }
     else
@@ -27321,7 +27323,7 @@ extern "C" {
 
   REGAL_DECL HANDLE REGAL_CALL wglCreateBufferRegionARB(HDC hDC, int iLayerPlane, UINT uType)
   {
-    App("wglCreateBufferRegionARB","(", hDC, ", ", iLayerPlane, ", ", uType, ")");
+    App("wglCreateBufferRegionARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", uType, ")");
     if (!dispatchTableGlobal.wglCreateBufferRegionARB)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateBufferRegionARB, "wglCreateBufferRegionARB" );
@@ -27332,7 +27334,7 @@ extern "C" {
     HANDLE  ret = (HANDLE )0;
     if (dispatchTableGlobal.wglCreateBufferRegionARB)
     {
-      Driver("wglCreateBufferRegionARB","(", hDC, ", ", iLayerPlane, ", ", uType, ")");
+      Driver("wglCreateBufferRegionARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", uType, ")");
       ret = dispatchTableGlobal.wglCreateBufferRegionARB(hDC, iLayerPlane, uType);
     }
     else
@@ -27405,7 +27407,7 @@ extern "C" {
 
   REGAL_DECL HGLRC REGAL_CALL wglCreateContextAttribsARB(HDC hDC, HGLRC hShareContext, const int *piAttribList)
   {
-    App("wglCreateContextAttribsARB","(", hDC, ", ", hShareContext, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+    App("wglCreateContextAttribsARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglCreateContextAttribsARB)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateContextAttribsARB, "wglCreateContextAttribsARB" );
@@ -27416,7 +27418,7 @@ extern "C" {
     HGLRC  ret = (HGLRC )0;
     if (dispatchTableGlobal.wglCreateContextAttribsARB)
     {
-      Driver("wglCreateContextAttribsARB","(", hDC, ", ", hShareContext, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+      Driver("wglCreateContextAttribsARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglCreateContextAttribsARB(hDC, hShareContext, piAttribList);
     }
     else
@@ -27428,7 +27430,7 @@ extern "C" {
 
   REGAL_DECL const char *REGAL_CALL wglGetExtensionsStringARB(HDC hDC)
   {
-    App("wglGetExtensionsStringARB","(", hDC, ")");
+    App("wglGetExtensionsStringARB","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetExtensionsStringARB)
     {
       GetProcAddress( dispatchTableGlobal.wglGetExtensionsStringARB, "wglGetExtensionsStringARB" );
@@ -27439,7 +27441,7 @@ extern "C" {
     const char * ret = NULL;
     if (dispatchTableGlobal.wglGetExtensionsStringARB)
     {
-      Driver("wglGetExtensionsStringARB","(", hDC, ")");
+      Driver("wglGetExtensionsStringARB","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetExtensionsStringARB(hDC);
     }
     else
@@ -27472,7 +27474,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglMakeContextCurrentARB(HDC hDrawDC, HDC hReadDC, HGLRC hglrc)
   {
-    App("wglMakeContextCurrentARB","(", hDrawDC, ", ", hReadDC, ", ", hglrc, ")");
+    App("wglMakeContextCurrentARB","(", boost::print::optional(hDrawDC,Logging::pointers), ", ", boost::print::optional(hReadDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglMakeContextCurrentARB)
     {
       GetProcAddress( dispatchTableGlobal.wglMakeContextCurrentARB, "wglMakeContextCurrentARB" );
@@ -27483,7 +27485,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglMakeContextCurrentARB)
     {
-      Driver("wglMakeContextCurrentARB","(", hDrawDC, ", ", hReadDC, ", ", hglrc, ")");
+      Driver("wglMakeContextCurrentARB","(", boost::print::optional(hDrawDC,Logging::pointers), ", ", boost::print::optional(hReadDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglMakeContextCurrentARB(hDrawDC, hReadDC, hglrc);
     }
     else
@@ -27495,7 +27497,7 @@ extern "C" {
 
   REGAL_DECL HPBUFFERARB REGAL_CALL wglCreatePbufferARB(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList)
   {
-    App("wglCreatePbufferARB","(", hDC, ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+    App("wglCreatePbufferARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglCreatePbufferARB)
     {
       GetProcAddress( dispatchTableGlobal.wglCreatePbufferARB, "wglCreatePbufferARB" );
@@ -27506,7 +27508,7 @@ extern "C" {
     HPBUFFERARB  ret = (HPBUFFERARB )0;
     if (dispatchTableGlobal.wglCreatePbufferARB)
     {
-      Driver("wglCreatePbufferARB","(", hDC, ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+      Driver("wglCreatePbufferARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglCreatePbufferARB(hDC, iPixelFormat, iWidth, iHeight, piAttribList);
     }
     else
@@ -27516,7 +27518,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDestroyPbufferARB(HPBUFFERARB hPbuffer)
   {
-    App("wglDestroyPbufferARB","(", hPbuffer, ")");
+    App("wglDestroyPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDestroyPbufferARB)
     {
       GetProcAddress( dispatchTableGlobal.wglDestroyPbufferARB, "wglDestroyPbufferARB" );
@@ -27527,7 +27529,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDestroyPbufferARB)
     {
-      Driver("wglDestroyPbufferARB","(", hPbuffer, ")");
+      Driver("wglDestroyPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDestroyPbufferARB(hPbuffer);
     }
     else
@@ -27537,7 +27539,7 @@ extern "C" {
 
   REGAL_DECL HDC REGAL_CALL wglGetPbufferDCARB(HPBUFFERARB hPbuffer)
   {
-    App("wglGetPbufferDCARB","(", hPbuffer, ")");
+    App("wglGetPbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetPbufferDCARB)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPbufferDCARB, "wglGetPbufferDCARB" );
@@ -27548,7 +27550,7 @@ extern "C" {
     HDC  ret = (HDC )0;
     if (dispatchTableGlobal.wglGetPbufferDCARB)
     {
-      Driver("wglGetPbufferDCARB","(", hPbuffer, ")");
+      Driver("wglGetPbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetPbufferDCARB(hPbuffer);
     }
     else
@@ -27558,7 +27560,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryPbufferARB(HPBUFFERARB hPbuffer, int iAttribute, int *piValue)
   {
-    App("wglQueryPbufferARB","(", hPbuffer, ", ", iAttribute, ")");
+    App("wglQueryPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
     if (!dispatchTableGlobal.wglQueryPbufferARB)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryPbufferARB, "wglQueryPbufferARB" );
@@ -27569,7 +27571,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryPbufferARB)
     {
-      Driver("wglQueryPbufferARB","(", hPbuffer, ", ", iAttribute, ")");
+      Driver("wglQueryPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
       ret = dispatchTableGlobal.wglQueryPbufferARB(hPbuffer, iAttribute, piValue);
     }
     else
@@ -27579,7 +27581,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC)
   {
-    App("wglReleasePbufferDCARB","(", hPbuffer, ", ", hDC, ")");
+    App("wglReleasePbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglReleasePbufferDCARB)
     {
       GetProcAddress( dispatchTableGlobal.wglReleasePbufferDCARB, "wglReleasePbufferDCARB" );
@@ -27590,7 +27592,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglReleasePbufferDCARB)
     {
-      Driver("wglReleasePbufferDCARB","(", hPbuffer, ", ", hDC, ")");
+      Driver("wglReleasePbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglReleasePbufferDCARB(hPbuffer, hDC);
     }
     else
@@ -27602,7 +27604,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglChoosePixelFormatARB(HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats)
   {
-    App("wglChoosePixelFormatARB","(", hDC, ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
+    App("wglChoosePixelFormatARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
     if (!dispatchTableGlobal.wglChoosePixelFormatARB)
     {
       GetProcAddress( dispatchTableGlobal.wglChoosePixelFormatARB, "wglChoosePixelFormatARB" );
@@ -27613,7 +27615,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglChoosePixelFormatARB)
     {
-      Driver("wglChoosePixelFormatARB","(", hDC, ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
+      Driver("wglChoosePixelFormatARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
       ret = dispatchTableGlobal.wglChoosePixelFormatARB(hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
     }
     else
@@ -27623,7 +27625,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribfvARB(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues)
   {
-    App("wglGetPixelFormatAttribfvARB","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+    App("wglGetPixelFormatAttribfvARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     if (!dispatchTableGlobal.wglGetPixelFormatAttribfvARB)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribfvARB, "wglGetPixelFormatAttribfvARB" );
@@ -27634,7 +27636,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetPixelFormatAttribfvARB)
     {
-      Driver("wglGetPixelFormatAttribfvARB","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+      Driver("wglGetPixelFormatAttribfvARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
       ret = dispatchTableGlobal.wglGetPixelFormatAttribfvARB(hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
     }
     else
@@ -27644,7 +27646,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivARB(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues)
   {
-    App("wglGetPixelFormatAttribivARB","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+    App("wglGetPixelFormatAttribivARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     if (!dispatchTableGlobal.wglGetPixelFormatAttribivARB)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribivARB, "wglGetPixelFormatAttribivARB" );
@@ -27655,7 +27657,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetPixelFormatAttribivARB)
     {
-      Driver("wglGetPixelFormatAttribivARB","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+      Driver("wglGetPixelFormatAttribivARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
       ret = dispatchTableGlobal.wglGetPixelFormatAttribivARB(hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
     }
     else
@@ -27667,7 +27669,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglBindTexImageARB(HPBUFFERARB hPbuffer, int iBuffer)
   {
-    App("wglBindTexImageARB","(", hPbuffer, ", ", iBuffer, ")");
+    App("wglBindTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
     if (!dispatchTableGlobal.wglBindTexImageARB)
     {
       GetProcAddress( dispatchTableGlobal.wglBindTexImageARB, "wglBindTexImageARB" );
@@ -27678,7 +27680,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglBindTexImageARB)
     {
-      Driver("wglBindTexImageARB","(", hPbuffer, ", ", iBuffer, ")");
+      Driver("wglBindTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
       ret = dispatchTableGlobal.wglBindTexImageARB(hPbuffer, iBuffer);
     }
     else
@@ -27688,7 +27690,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglReleaseTexImageARB(HPBUFFERARB hPbuffer, int iBuffer)
   {
-    App("wglReleaseTexImageARB","(", hPbuffer, ", ", iBuffer, ")");
+    App("wglReleaseTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
     if (!dispatchTableGlobal.wglReleaseTexImageARB)
     {
       GetProcAddress( dispatchTableGlobal.wglReleaseTexImageARB, "wglReleaseTexImageARB" );
@@ -27699,7 +27701,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglReleaseTexImageARB)
     {
-      Driver("wglReleaseTexImageARB","(", hPbuffer, ", ", iBuffer, ")");
+      Driver("wglReleaseTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
       ret = dispatchTableGlobal.wglReleaseTexImageARB(hPbuffer, iBuffer);
     }
     else
@@ -27709,7 +27711,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const int *piAttribList)
   {
-    App("wglSetPbufferAttribARB","(", hPbuffer, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+    App("wglSetPbufferAttribARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglSetPbufferAttribARB)
     {
       GetProcAddress( dispatchTableGlobal.wglSetPbufferAttribARB, "wglSetPbufferAttribARB" );
@@ -27720,7 +27722,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetPbufferAttribARB)
     {
-      Driver("wglSetPbufferAttribARB","(", hPbuffer, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+      Driver("wglSetPbufferAttribARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglSetPbufferAttribARB(hPbuffer, piAttribList);
     }
     else
@@ -27860,7 +27862,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglMakeContextCurrentEXT(HDC hDrawDC, HDC hReadDC, HGLRC hglrc)
   {
-    App("wglMakeContextCurrentEXT","(", hDrawDC, ", ", hReadDC, ", ", hglrc, ")");
+    App("wglMakeContextCurrentEXT","(", boost::print::optional(hDrawDC,Logging::pointers), ", ", boost::print::optional(hReadDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglMakeContextCurrentEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglMakeContextCurrentEXT, "wglMakeContextCurrentEXT" );
@@ -27871,7 +27873,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglMakeContextCurrentEXT)
     {
-      Driver("wglMakeContextCurrentEXT","(", hDrawDC, ", ", hReadDC, ", ", hglrc, ")");
+      Driver("wglMakeContextCurrentEXT","(", boost::print::optional(hDrawDC,Logging::pointers), ", ", boost::print::optional(hReadDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglMakeContextCurrentEXT(hDrawDC, hReadDC, hglrc);
     }
     else
@@ -27883,7 +27885,7 @@ extern "C" {
 
   REGAL_DECL HPBUFFEREXT REGAL_CALL wglCreatePbufferEXT(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList)
   {
-    App("wglCreatePbufferEXT","(", hDC, ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+    App("wglCreatePbufferEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglCreatePbufferEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglCreatePbufferEXT, "wglCreatePbufferEXT" );
@@ -27894,7 +27896,7 @@ extern "C" {
     HPBUFFEREXT  ret = (HPBUFFEREXT )0;
     if (dispatchTableGlobal.wglCreatePbufferEXT)
     {
-      Driver("wglCreatePbufferEXT","(", hDC, ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+      Driver("wglCreatePbufferEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglCreatePbufferEXT(hDC, iPixelFormat, iWidth, iHeight, piAttribList);
     }
     else
@@ -27904,7 +27906,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDestroyPbufferEXT(HPBUFFEREXT hPbuffer)
   {
-    App("wglDestroyPbufferEXT","(", hPbuffer, ")");
+    App("wglDestroyPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDestroyPbufferEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglDestroyPbufferEXT, "wglDestroyPbufferEXT" );
@@ -27915,7 +27917,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDestroyPbufferEXT)
     {
-      Driver("wglDestroyPbufferEXT","(", hPbuffer, ")");
+      Driver("wglDestroyPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDestroyPbufferEXT(hPbuffer);
     }
     else
@@ -27925,7 +27927,7 @@ extern "C" {
 
   REGAL_DECL HDC REGAL_CALL wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer)
   {
-    App("wglGetPbufferDCEXT","(", hPbuffer, ")");
+    App("wglGetPbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetPbufferDCEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPbufferDCEXT, "wglGetPbufferDCEXT" );
@@ -27936,7 +27938,7 @@ extern "C" {
     HDC  ret = (HDC )0;
     if (dispatchTableGlobal.wglGetPbufferDCEXT)
     {
-      Driver("wglGetPbufferDCEXT","(", hPbuffer, ")");
+      Driver("wglGetPbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetPbufferDCEXT(hPbuffer);
     }
     else
@@ -27946,7 +27948,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryPbufferEXT(HPBUFFEREXT hPbuffer, int iAttribute, int *piValue)
   {
-    App("wglQueryPbufferEXT","(", hPbuffer, ", ", iAttribute, ")");
+    App("wglQueryPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
     if (!dispatchTableGlobal.wglQueryPbufferEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryPbufferEXT, "wglQueryPbufferEXT" );
@@ -27957,7 +27959,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryPbufferEXT)
     {
-      Driver("wglQueryPbufferEXT","(", hPbuffer, ", ", iAttribute, ")");
+      Driver("wglQueryPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
       ret = dispatchTableGlobal.wglQueryPbufferEXT(hPbuffer, iAttribute, piValue);
     }
     else
@@ -27967,7 +27969,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC)
   {
-    App("wglReleasePbufferDCEXT","(", hPbuffer, ", ", hDC, ")");
+    App("wglReleasePbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglReleasePbufferDCEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglReleasePbufferDCEXT, "wglReleasePbufferDCEXT" );
@@ -27978,7 +27980,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglReleasePbufferDCEXT)
     {
-      Driver("wglReleasePbufferDCEXT","(", hPbuffer, ", ", hDC, ")");
+      Driver("wglReleasePbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglReleasePbufferDCEXT(hPbuffer, hDC);
     }
     else
@@ -27990,7 +27992,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglChoosePixelFormatEXT(HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats)
   {
-    App("wglChoosePixelFormatEXT","(", hDC, ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
+    App("wglChoosePixelFormatEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
     if (!dispatchTableGlobal.wglChoosePixelFormatEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglChoosePixelFormatEXT, "wglChoosePixelFormatEXT" );
@@ -28001,7 +28003,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglChoosePixelFormatEXT)
     {
-      Driver("wglChoosePixelFormatEXT","(", hDC, ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
+      Driver("wglChoosePixelFormatEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
       ret = dispatchTableGlobal.wglChoosePixelFormatEXT(hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
     }
     else
@@ -28011,7 +28013,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribfvEXT(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues)
   {
-    App("wglGetPixelFormatAttribfvEXT","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+    App("wglGetPixelFormatAttribfvEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     if (!dispatchTableGlobal.wglGetPixelFormatAttribfvEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribfvEXT, "wglGetPixelFormatAttribfvEXT" );
@@ -28022,7 +28024,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetPixelFormatAttribfvEXT)
     {
-      Driver("wglGetPixelFormatAttribfvEXT","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+      Driver("wglGetPixelFormatAttribfvEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
       ret = dispatchTableGlobal.wglGetPixelFormatAttribfvEXT(hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
     }
     else
@@ -28032,7 +28034,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivEXT(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues)
   {
-    App("wglGetPixelFormatAttribivEXT","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+    App("wglGetPixelFormatAttribivEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     if (!dispatchTableGlobal.wglGetPixelFormatAttribivEXT)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPixelFormatAttribivEXT, "wglGetPixelFormatAttribivEXT" );
@@ -28043,7 +28045,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetPixelFormatAttribivEXT)
     {
-      Driver("wglGetPixelFormatAttribivEXT","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
+      Driver("wglGetPixelFormatAttribivEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
       ret = dispatchTableGlobal.wglGetPixelFormatAttribivEXT(hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
     }
     else
@@ -28099,7 +28101,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
   {
-    App("wglChoosePixelFormat","(", hDC, ", ", ppfd, ")");
+    App("wglChoosePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", ppfd, ")");
     if (!dispatchTableGlobal.wglChoosePixelFormat)
     {
       GetProcAddress( dispatchTableGlobal.wglChoosePixelFormat, "wglChoosePixelFormat" );
@@ -28110,7 +28112,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglChoosePixelFormat)
     {
-      Driver("wglChoosePixelFormat","(", hDC, ", ", ppfd, ")");
+      Driver("wglChoosePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", ppfd, ")");
       ret = dispatchTableGlobal.wglChoosePixelFormat(hDC, ppfd);
     }
     else
@@ -28120,7 +28122,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglDescribePixelFormat(HDC hDC, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd)
   {
-    App("wglDescribePixelFormat","(", hDC, ", ", iPixelFormat, ", ", nBytes, ")");
+    App("wglDescribePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", nBytes, ")");
     if (!dispatchTableGlobal.wglDescribePixelFormat)
     {
       GetProcAddress( dispatchTableGlobal.wglDescribePixelFormat, "wglDescribePixelFormat" );
@@ -28131,7 +28133,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglDescribePixelFormat)
     {
-      Driver("wglDescribePixelFormat","(", hDC, ", ", iPixelFormat, ", ", nBytes, ")");
+      Driver("wglDescribePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", nBytes, ")");
       ret = dispatchTableGlobal.wglDescribePixelFormat(hDC, iPixelFormat, nBytes, ppfd);
     }
     else
@@ -28141,7 +28143,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglGetPixelFormat(HDC hDC)
   {
-    App("wglGetPixelFormat","(", hDC, ")");
+    App("wglGetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetPixelFormat)
     {
       GetProcAddress( dispatchTableGlobal.wglGetPixelFormat, "wglGetPixelFormat" );
@@ -28152,7 +28154,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglGetPixelFormat)
     {
-      Driver("wglGetPixelFormat","(", hDC, ")");
+      Driver("wglGetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetPixelFormat(hDC);
     }
     else
@@ -28162,7 +28164,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetPixelFormat(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd)
   {
-    App("wglSetPixelFormat","(", hDC, ", ", iPixelFormat, ", ", ppfd, ")");
+    App("wglSetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", ppfd, ")");
     if (!dispatchTableGlobal.wglSetPixelFormat)
     {
       GetProcAddress( dispatchTableGlobal.wglSetPixelFormat, "wglSetPixelFormat" );
@@ -28173,7 +28175,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetPixelFormat)
     {
-      Driver("wglSetPixelFormat","(", hDC, ", ", iPixelFormat, ", ", ppfd, ")");
+      Driver("wglSetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", ppfd, ")");
       ret = dispatchTableGlobal.wglSetPixelFormat(hDC, iPixelFormat, ppfd);
     }
     else
@@ -28183,7 +28185,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSwapBuffers(HDC hDC)
   {
-    App("wglSwapBuffers","(", hDC, ")");
+    App("wglSwapBuffers","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglSwapBuffers)
     {
       GetProcAddress( dispatchTableGlobal.wglSwapBuffers, "wglSwapBuffers" );
@@ -28193,11 +28195,12 @@ extern "C" {
     }
     BOOL  ret = (BOOL )0;
     RegalContext *_context = REGAL_GET_CONTEXT();
+    // Notify Regal::Frame about the swap buffers event.
     if (_context && _context->frame)
         _context->frame->wglSwapBuffers(*_context);
     if (dispatchTableGlobal.wglSwapBuffers)
     {
-      Driver("wglSwapBuffers","(", hDC, ")");
+      Driver("wglSwapBuffers","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglSwapBuffers(hDC);
     }
     else
@@ -28209,7 +28212,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribute, int *piValue)
   {
-    App("wglGetDigitalVideoParametersI3D","(", hDC, ", ", iAttribute, ")");
+    App("wglGetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
     if (!dispatchTableGlobal.wglGetDigitalVideoParametersI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetDigitalVideoParametersI3D, "wglGetDigitalVideoParametersI3D" );
@@ -28220,7 +28223,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetDigitalVideoParametersI3D)
     {
-      Driver("wglGetDigitalVideoParametersI3D","(", hDC, ", ", iAttribute, ")");
+      Driver("wglGetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
       ret = dispatchTableGlobal.wglGetDigitalVideoParametersI3D(hDC, iAttribute, piValue);
     }
     else
@@ -28230,7 +28233,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribute, const int *piValue)
   {
-    App("wglSetDigitalVideoParametersI3D","(", hDC, ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
+    App("wglSetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglSetDigitalVideoParametersI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglSetDigitalVideoParametersI3D, "wglSetDigitalVideoParametersI3D" );
@@ -28241,7 +28244,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetDigitalVideoParametersI3D)
     {
-      Driver("wglSetDigitalVideoParametersI3D","(", hDC, ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
+      Driver("wglSetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglSetDigitalVideoParametersI3D(hDC, iAttribute, piValue);
     }
     else
@@ -28253,7 +28256,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGammaTableI3D(HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue)
   {
-    App("wglGetGammaTableI3D","(", hDC, ")");
+    App("wglGetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetGammaTableI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGammaTableI3D, "wglGetGammaTableI3D" );
@@ -28264,7 +28267,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGammaTableI3D)
     {
-      Driver("wglGetGammaTableI3D","(", hDC, ")");
+      Driver("wglGetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetGammaTableI3D(hDC, iEntries, puRed, puGreen, puBlue);
     }
     else
@@ -28274,7 +28277,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGammaTableParametersI3D(HDC hDC, int iAttribute, int *piValue)
   {
-    App("wglGetGammaTableParametersI3D","(", hDC, ", ", iAttribute, ")");
+    App("wglGetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
     if (!dispatchTableGlobal.wglGetGammaTableParametersI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGammaTableParametersI3D, "wglGetGammaTableParametersI3D" );
@@ -28285,7 +28288,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGammaTableParametersI3D)
     {
-      Driver("wglGetGammaTableParametersI3D","(", hDC, ", ", iAttribute, ")");
+      Driver("wglGetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
       ret = dispatchTableGlobal.wglGetGammaTableParametersI3D(hDC, iAttribute, piValue);
     }
     else
@@ -28295,7 +28298,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetGammaTableI3D(HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue)
   {
-    App("wglSetGammaTableI3D","(", hDC, ", ", iEntries, ", ", boost::print::array(puRed,iEntries), ", ", boost::print::array(puGreen,iEntries), ", ", boost::print::array(puBlue,iEntries), ")");
+    App("wglSetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iEntries, ", ", boost::print::array(puRed,iEntries), ", ", boost::print::array(puGreen,iEntries), ", ", boost::print::array(puBlue,iEntries), ")");
     if (!dispatchTableGlobal.wglSetGammaTableI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglSetGammaTableI3D, "wglSetGammaTableI3D" );
@@ -28306,7 +28309,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetGammaTableI3D)
     {
-      Driver("wglSetGammaTableI3D","(", hDC, ", ", iEntries, ", ", boost::print::array(puRed,iEntries), ", ", boost::print::array(puGreen,iEntries), ", ", boost::print::array(puBlue,iEntries), ")");
+      Driver("wglSetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iEntries, ", ", boost::print::array(puRed,iEntries), ", ", boost::print::array(puGreen,iEntries), ", ", boost::print::array(puBlue,iEntries), ")");
       ret = dispatchTableGlobal.wglSetGammaTableI3D(hDC, iEntries, puRed, puGreen, puBlue);
     }
     else
@@ -28316,7 +28319,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSetGammaTableParametersI3D(HDC hDC, int iAttribute, const int *piValue)
   {
-    App("wglSetGammaTableParametersI3D","(", hDC, ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
+    App("wglSetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglSetGammaTableParametersI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglSetGammaTableParametersI3D, "wglSetGammaTableParametersI3D" );
@@ -28327,7 +28330,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSetGammaTableParametersI3D)
     {
-      Driver("wglSetGammaTableParametersI3D","(", hDC, ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
+      Driver("wglSetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglSetGammaTableParametersI3D(hDC, iAttribute, piValue);
     }
     else
@@ -28339,7 +28342,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDisableGenlockI3D(HDC hDC)
   {
-    App("wglDisableGenlockI3D","(", hDC, ")");
+    App("wglDisableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDisableGenlockI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglDisableGenlockI3D, "wglDisableGenlockI3D" );
@@ -28350,7 +28353,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDisableGenlockI3D)
     {
-      Driver("wglDisableGenlockI3D","(", hDC, ")");
+      Driver("wglDisableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDisableGenlockI3D(hDC);
     }
     else
@@ -28360,7 +28363,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglEnableGenlockI3D(HDC hDC)
   {
-    App("wglEnableGenlockI3D","(", hDC, ")");
+    App("wglEnableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglEnableGenlockI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglEnableGenlockI3D, "wglEnableGenlockI3D" );
@@ -28371,7 +28374,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglEnableGenlockI3D)
     {
-      Driver("wglEnableGenlockI3D","(", hDC, ")");
+      Driver("wglEnableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglEnableGenlockI3D(hDC);
     }
     else
@@ -28381,7 +28384,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGenlockSampleRateI3D(HDC hDC, UINT uRate)
   {
-    App("wglGenlockSampleRateI3D","(", hDC, ", ", uRate, ")");
+    App("wglGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uRate, ")");
     if (!dispatchTableGlobal.wglGenlockSampleRateI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGenlockSampleRateI3D, "wglGenlockSampleRateI3D" );
@@ -28392,7 +28395,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGenlockSampleRateI3D)
     {
-      Driver("wglGenlockSampleRateI3D","(", hDC, ", ", uRate, ")");
+      Driver("wglGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uRate, ")");
       ret = dispatchTableGlobal.wglGenlockSampleRateI3D(hDC, uRate);
     }
     else
@@ -28402,7 +28405,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGenlockSourceDelayI3D(HDC hDC, UINT uDelay)
   {
-    App("wglGenlockSourceDelayI3D","(", hDC, ", ", uDelay, ")");
+    App("wglGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uDelay, ")");
     if (!dispatchTableGlobal.wglGenlockSourceDelayI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGenlockSourceDelayI3D, "wglGenlockSourceDelayI3D" );
@@ -28413,7 +28416,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGenlockSourceDelayI3D)
     {
-      Driver("wglGenlockSourceDelayI3D","(", hDC, ", ", uDelay, ")");
+      Driver("wglGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uDelay, ")");
       ret = dispatchTableGlobal.wglGenlockSourceDelayI3D(hDC, uDelay);
     }
     else
@@ -28423,7 +28426,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGenlockSourceEdgeI3D(HDC hDC, UINT uEdge)
   {
-    App("wglGenlockSourceEdgeI3D","(", hDC, ", ", uEdge, ")");
+    App("wglGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uEdge, ")");
     if (!dispatchTableGlobal.wglGenlockSourceEdgeI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGenlockSourceEdgeI3D, "wglGenlockSourceEdgeI3D" );
@@ -28434,7 +28437,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGenlockSourceEdgeI3D)
     {
-      Driver("wglGenlockSourceEdgeI3D","(", hDC, ", ", uEdge, ")");
+      Driver("wglGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uEdge, ")");
       ret = dispatchTableGlobal.wglGenlockSourceEdgeI3D(hDC, uEdge);
     }
     else
@@ -28444,7 +28447,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGenlockSourceI3D(HDC hDC, UINT uSource)
   {
-    App("wglGenlockSourceI3D","(", hDC, ", ", uSource, ")");
+    App("wglGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uSource, ")");
     if (!dispatchTableGlobal.wglGenlockSourceI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGenlockSourceI3D, "wglGenlockSourceI3D" );
@@ -28455,7 +28458,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGenlockSourceI3D)
     {
-      Driver("wglGenlockSourceI3D","(", hDC, ", ", uSource, ")");
+      Driver("wglGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uSource, ")");
       ret = dispatchTableGlobal.wglGenlockSourceI3D(hDC, uSource);
     }
     else
@@ -28465,7 +28468,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGenlockSampleRateI3D(HDC hDC, UINT *uRate)
   {
-    App("wglGetGenlockSampleRateI3D","(", hDC, ")");
+    App("wglGetGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetGenlockSampleRateI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGenlockSampleRateI3D, "wglGetGenlockSampleRateI3D" );
@@ -28476,7 +28479,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGenlockSampleRateI3D)
     {
-      Driver("wglGetGenlockSampleRateI3D","(", hDC, ")");
+      Driver("wglGetGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetGenlockSampleRateI3D(hDC, uRate);
     }
     else
@@ -28486,7 +28489,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceDelayI3D(HDC hDC, UINT *uDelay)
   {
-    App("wglGetGenlockSourceDelayI3D","(", hDC, ")");
+    App("wglGetGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetGenlockSourceDelayI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceDelayI3D, "wglGetGenlockSourceDelayI3D" );
@@ -28497,7 +28500,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGenlockSourceDelayI3D)
     {
-      Driver("wglGetGenlockSourceDelayI3D","(", hDC, ")");
+      Driver("wglGetGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetGenlockSourceDelayI3D(hDC, uDelay);
     }
     else
@@ -28507,7 +28510,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceEdgeI3D(HDC hDC, UINT *uEdge)
   {
-    App("wglGetGenlockSourceEdgeI3D","(", hDC, ")");
+    App("wglGetGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetGenlockSourceEdgeI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceEdgeI3D, "wglGetGenlockSourceEdgeI3D" );
@@ -28518,7 +28521,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGenlockSourceEdgeI3D)
     {
-      Driver("wglGetGenlockSourceEdgeI3D","(", hDC, ")");
+      Driver("wglGetGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetGenlockSourceEdgeI3D(hDC, uEdge);
     }
     else
@@ -28528,7 +28531,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetGenlockSourceI3D(HDC hDC, UINT *uSource)
   {
-    App("wglGetGenlockSourceI3D","(", hDC, ")");
+    App("wglGetGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetGenlockSourceI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglGetGenlockSourceI3D, "wglGetGenlockSourceI3D" );
@@ -28539,7 +28542,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetGenlockSourceI3D)
     {
-      Driver("wglGetGenlockSourceI3D","(", hDC, ")");
+      Driver("wglGetGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetGenlockSourceI3D(hDC, uSource);
     }
     else
@@ -28549,7 +28552,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglIsEnabledGenlockI3D(HDC hDC, BOOL *pFlag)
   {
-    App("wglIsEnabledGenlockI3D","(", hDC, ")");
+    App("wglIsEnabledGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglIsEnabledGenlockI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglIsEnabledGenlockI3D, "wglIsEnabledGenlockI3D" );
@@ -28560,7 +28563,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglIsEnabledGenlockI3D)
     {
-      Driver("wglIsEnabledGenlockI3D","(", hDC, ")");
+      Driver("wglIsEnabledGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglIsEnabledGenlockI3D(hDC, pFlag);
     }
     else
@@ -28570,7 +28573,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay)
   {
-    App("wglQueryGenlockMaxSourceDelayI3D","(", hDC, ")");
+    App("wglQueryGenlockMaxSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D, "wglQueryGenlockMaxSourceDelayI3D" );
@@ -28581,7 +28584,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D)
     {
-      Driver("wglQueryGenlockMaxSourceDelayI3D","(", hDC, ")");
+      Driver("wglQueryGenlockMaxSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglQueryGenlockMaxSourceDelayI3D(hDC, uMaxLineDelay, uMaxPixelDelay);
     }
     else
@@ -28593,7 +28596,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglAssociateImageBufferEventsI3D(HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count)
   {
-    App("wglAssociateImageBufferEventsI3D","(", hDC, ", ", boost::print::array(pEvent,count), ", ", boost::print::array(pAddress,count), ", ", boost::print::array(pSize,count), ", ", count, ")");
+    App("wglAssociateImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pEvent,count), ", ", boost::print::array(pAddress,count), ", ", boost::print::array(pSize,count), ", ", count, ")");
     if (!dispatchTableGlobal.wglAssociateImageBufferEventsI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglAssociateImageBufferEventsI3D, "wglAssociateImageBufferEventsI3D" );
@@ -28604,7 +28607,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglAssociateImageBufferEventsI3D)
     {
-      Driver("wglAssociateImageBufferEventsI3D","(", hDC, ", ", boost::print::array(pEvent,count), ", ", boost::print::array(pAddress,count), ", ", boost::print::array(pSize,count), ", ", count, ")");
+      Driver("wglAssociateImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pEvent,count), ", ", boost::print::array(pAddress,count), ", ", boost::print::array(pSize,count), ", ", count, ")");
       ret = dispatchTableGlobal.wglAssociateImageBufferEventsI3D(hDC, pEvent, pAddress, pSize, count);
     }
     else
@@ -28614,7 +28617,7 @@ extern "C" {
 
   REGAL_DECL LPVOID REGAL_CALL wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT uFlags)
   {
-    App("wglCreateImageBufferI3D","(", hDC, ", ", dwSize, ", ", uFlags, ")");
+    App("wglCreateImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", dwSize, ", ", uFlags, ")");
     if (!dispatchTableGlobal.wglCreateImageBufferI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateImageBufferI3D, "wglCreateImageBufferI3D" );
@@ -28625,7 +28628,7 @@ extern "C" {
     LPVOID  ret = (LPVOID )0;
     if (dispatchTableGlobal.wglCreateImageBufferI3D)
     {
-      Driver("wglCreateImageBufferI3D","(", hDC, ", ", dwSize, ", ", uFlags, ")");
+      Driver("wglCreateImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", dwSize, ", ", uFlags, ")");
       ret = dispatchTableGlobal.wglCreateImageBufferI3D(hDC, dwSize, uFlags);
     }
     else
@@ -28635,7 +28638,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress)
   {
-    App("wglDestroyImageBufferI3D","(", hDC, ", ", pAddress, ")");
+    App("wglDestroyImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(pAddress,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDestroyImageBufferI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglDestroyImageBufferI3D, "wglDestroyImageBufferI3D" );
@@ -28646,7 +28649,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDestroyImageBufferI3D)
     {
-      Driver("wglDestroyImageBufferI3D","(", hDC, ", ", pAddress, ")");
+      Driver("wglDestroyImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(pAddress,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDestroyImageBufferI3D(hDC, pAddress);
     }
     else
@@ -28656,7 +28659,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglReleaseImageBufferEventsI3D(HDC hDC, const LPVOID *pAddress, UINT count)
   {
-    App("wglReleaseImageBufferEventsI3D","(", hDC, ", ", boost::print::array(pAddress,count), ", ", count, ")");
+    App("wglReleaseImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pAddress,count), ", ", count, ")");
     if (!dispatchTableGlobal.wglReleaseImageBufferEventsI3D)
     {
       GetProcAddress( dispatchTableGlobal.wglReleaseImageBufferEventsI3D, "wglReleaseImageBufferEventsI3D" );
@@ -28667,7 +28670,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglReleaseImageBufferEventsI3D)
     {
-      Driver("wglReleaseImageBufferEventsI3D","(", hDC, ", ", boost::print::array(pAddress,count), ", ", count, ")");
+      Driver("wglReleaseImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pAddress,count), ", ", count, ")");
       ret = dispatchTableGlobal.wglReleaseImageBufferEventsI3D(hDC, pAddress, count);
     }
     else
@@ -29021,7 +29024,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
   {
-    App("wglCopyImageSubDataNV","(", hSrcRC, ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", hDstRC, ", ", dstName, ")");
+    App("wglCopyImageSubDataNV","(", boost::print::optional(hSrcRC,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(hDstRC,Logging::pointers), ", ", dstName, ")");
     if (!dispatchTableGlobal.wglCopyImageSubDataNV)
     {
       GetProcAddress( dispatchTableGlobal.wglCopyImageSubDataNV, "wglCopyImageSubDataNV" );
@@ -29032,7 +29035,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglCopyImageSubDataNV)
     {
-      Driver("wglCopyImageSubDataNV","(", hSrcRC, ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", hDstRC, ", ", dstName, ")");
+      Driver("wglCopyImageSubDataNV","(", boost::print::optional(hSrcRC,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(hDstRC,Logging::pointers), ", ", dstName, ")");
       ret = dispatchTableGlobal.wglCopyImageSubDataNV(hSrcRC, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, hDstRC, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
     }
     else
@@ -29065,7 +29068,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDeleteDCNV(HDC hAffinityDC)
   {
-    App("wglDeleteDCNV","(", hAffinityDC, ")");
+    App("wglDeleteDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDeleteDCNV)
     {
       GetProcAddress( dispatchTableGlobal.wglDeleteDCNV, "wglDeleteDCNV" );
@@ -29076,7 +29079,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDeleteDCNV)
     {
-      Driver("wglDeleteDCNV","(", hAffinityDC, ")");
+      Driver("wglDeleteDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDeleteDCNV(hAffinityDC);
     }
     else
@@ -29086,7 +29089,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglEnumGpuDevicesNV(HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice)
   {
-    App("wglEnumGpuDevicesNV","(", hGpu, ", ", iDeviceIndex, ")");
+    App("wglEnumGpuDevicesNV","(", boost::print::optional(hGpu,Logging::pointers), ", ", iDeviceIndex, ")");
     if (!dispatchTableGlobal.wglEnumGpuDevicesNV)
     {
       GetProcAddress( dispatchTableGlobal.wglEnumGpuDevicesNV, "wglEnumGpuDevicesNV" );
@@ -29097,7 +29100,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglEnumGpuDevicesNV)
     {
-      Driver("wglEnumGpuDevicesNV","(", hGpu, ", ", iDeviceIndex, ")");
+      Driver("wglEnumGpuDevicesNV","(", boost::print::optional(hGpu,Logging::pointers), ", ", iDeviceIndex, ")");
       ret = dispatchTableGlobal.wglEnumGpuDevicesNV(hGpu, iDeviceIndex, lpGpuDevice);
     }
     else
@@ -29107,7 +29110,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglEnumGpusFromAffinityDCNV(HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu)
   {
-    App("wglEnumGpusFromAffinityDCNV","(", hAffinityDC, ", ", iGpuIndex, ")");
+    App("wglEnumGpusFromAffinityDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ", ", iGpuIndex, ")");
     if (!dispatchTableGlobal.wglEnumGpusFromAffinityDCNV)
     {
       GetProcAddress( dispatchTableGlobal.wglEnumGpusFromAffinityDCNV, "wglEnumGpusFromAffinityDCNV" );
@@ -29118,7 +29121,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglEnumGpusFromAffinityDCNV)
     {
-      Driver("wglEnumGpusFromAffinityDCNV","(", hAffinityDC, ", ", iGpuIndex, ")");
+      Driver("wglEnumGpusFromAffinityDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ", ", iGpuIndex, ")");
       ret = dispatchTableGlobal.wglEnumGpusFromAffinityDCNV(hAffinityDC, iGpuIndex, hGpu);
     }
     else
@@ -29151,7 +29154,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglBindVideoDeviceNV(HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList)
   {
-    App("wglBindVideoDeviceNV","(", hDC, ", ", uVideoSlot, ", ", hVideoDevice, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+    App("wglBindVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", uVideoSlot, ", ", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglBindVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglBindVideoDeviceNV, "wglBindVideoDeviceNV" );
@@ -29162,7 +29165,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglBindVideoDeviceNV)
     {
-      Driver("wglBindVideoDeviceNV","(", hDC, ", ", uVideoSlot, ", ", hVideoDevice, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
+      Driver("wglBindVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", uVideoSlot, ", ", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglBindVideoDeviceNV(hDC, uVideoSlot, hVideoDevice, piAttribList);
     }
     else
@@ -29172,7 +29175,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICENV *phDeviceList)
   {
-    App("wglEnumerateVideoDevicesNV","(", hDC, ")");
+    App("wglEnumerateVideoDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglEnumerateVideoDevicesNV)
     {
       GetProcAddress( dispatchTableGlobal.wglEnumerateVideoDevicesNV, "wglEnumerateVideoDevicesNV" );
@@ -29183,7 +29186,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglEnumerateVideoDevicesNV)
     {
-      Driver("wglEnumerateVideoDevicesNV","(", hDC, ")");
+      Driver("wglEnumerateVideoDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglEnumerateVideoDevicesNV(hDC, phDeviceList);
     }
     else
@@ -29237,7 +29240,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglJoinSwapGroupNV(HDC hDC, GLuint group)
   {
-    App("wglJoinSwapGroupNV","(", hDC, ", ", group, ")");
+    App("wglJoinSwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ", ", group, ")");
     if (!dispatchTableGlobal.wglJoinSwapGroupNV)
     {
       GetProcAddress( dispatchTableGlobal.wglJoinSwapGroupNV, "wglJoinSwapGroupNV" );
@@ -29248,7 +29251,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglJoinSwapGroupNV)
     {
-      Driver("wglJoinSwapGroupNV","(", hDC, ", ", group, ")");
+      Driver("wglJoinSwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ", ", group, ")");
       ret = dispatchTableGlobal.wglJoinSwapGroupNV(hDC, group);
     }
     else
@@ -29258,7 +29261,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryFrameCountNV(HDC hDC, GLuint *count)
   {
-    App("wglQueryFrameCountNV","(", hDC, ")");
+    App("wglQueryFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglQueryFrameCountNV)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryFrameCountNV, "wglQueryFrameCountNV" );
@@ -29269,7 +29272,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryFrameCountNV)
     {
-      Driver("wglQueryFrameCountNV","(", hDC, ")");
+      Driver("wglQueryFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglQueryFrameCountNV(hDC, count);
     }
     else
@@ -29279,7 +29282,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryMaxSwapGroupsNV(HDC hDC, GLuint *maxGroups, GLuint *maxBarriers)
   {
-    App("wglQueryMaxSwapGroupsNV","(", hDC, ")");
+    App("wglQueryMaxSwapGroupsNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglQueryMaxSwapGroupsNV)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryMaxSwapGroupsNV, "wglQueryMaxSwapGroupsNV" );
@@ -29290,7 +29293,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryMaxSwapGroupsNV)
     {
-      Driver("wglQueryMaxSwapGroupsNV","(", hDC, ")");
+      Driver("wglQueryMaxSwapGroupsNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglQueryMaxSwapGroupsNV(hDC, maxGroups, maxBarriers);
     }
     else
@@ -29300,7 +29303,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQuerySwapGroupNV(HDC hDC, GLuint *group, GLuint *barrier)
   {
-    App("wglQuerySwapGroupNV","(", hDC, ")");
+    App("wglQuerySwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglQuerySwapGroupNV)
     {
       GetProcAddress( dispatchTableGlobal.wglQuerySwapGroupNV, "wglQuerySwapGroupNV" );
@@ -29311,7 +29314,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQuerySwapGroupNV)
     {
-      Driver("wglQuerySwapGroupNV","(", hDC, ")");
+      Driver("wglQuerySwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglQuerySwapGroupNV(hDC, group, barrier);
     }
     else
@@ -29321,7 +29324,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglResetFrameCountNV(HDC hDC)
   {
-    App("wglResetFrameCountNV","(", hDC, ")");
+    App("wglResetFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglResetFrameCountNV)
     {
       GetProcAddress( dispatchTableGlobal.wglResetFrameCountNV, "wglResetFrameCountNV" );
@@ -29332,7 +29335,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglResetFrameCountNV)
     {
-      Driver("wglResetFrameCountNV","(", hDC, ")");
+      Driver("wglResetFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglResetFrameCountNV(hDC);
     }
     else
@@ -29386,7 +29389,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglBindVideoCaptureDeviceNV(UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice)
   {
-    App("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", hDevice, ")");
+    App("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglBindVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglBindVideoCaptureDeviceNV, "wglBindVideoCaptureDeviceNV" );
@@ -29397,7 +29400,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglBindVideoCaptureDeviceNV)
     {
-      Driver("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", hDevice, ")");
+      Driver("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", boost::print::optional(hDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglBindVideoCaptureDeviceNV(uVideoSlot, hDevice);
     }
     else
@@ -29407,7 +29410,7 @@ extern "C" {
 
   REGAL_DECL UINT REGAL_CALL wglEnumerateVideoCaptureDevicesNV(HDC hDC, HVIDEOINPUTDEVICENV *phDeviceList)
   {
-    App("wglEnumerateVideoCaptureDevicesNV","(", hDC, ")");
+    App("wglEnumerateVideoCaptureDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV)
     {
       GetProcAddress( dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV, "wglEnumerateVideoCaptureDevicesNV" );
@@ -29418,7 +29421,7 @@ extern "C" {
     UINT  ret = (UINT )0;
     if (dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV)
     {
-      Driver("wglEnumerateVideoCaptureDevicesNV","(", hDC, ")");
+      Driver("wglEnumerateVideoCaptureDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglEnumerateVideoCaptureDevicesNV(hDC, phDeviceList);
     }
     else
@@ -29428,7 +29431,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglLockVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice)
   {
-    App("wglLockVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ")");
+    App("wglLockVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglLockVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglLockVideoCaptureDeviceNV, "wglLockVideoCaptureDeviceNV" );
@@ -29439,7 +29442,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglLockVideoCaptureDeviceNV)
     {
-      Driver("wglLockVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ")");
+      Driver("wglLockVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglLockVideoCaptureDeviceNV(hDC, hDevice);
     }
     else
@@ -29449,7 +29452,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglQueryVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue)
   {
-    App("wglQueryVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ", ", iAttribute, ")");
+    App("wglQueryVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ", ", iAttribute, ")");
     if (!dispatchTableGlobal.wglQueryVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglQueryVideoCaptureDeviceNV, "wglQueryVideoCaptureDeviceNV" );
@@ -29460,7 +29463,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglQueryVideoCaptureDeviceNV)
     {
-      Driver("wglQueryVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ", ", iAttribute, ")");
+      Driver("wglQueryVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ", ", iAttribute, ")");
       ret = dispatchTableGlobal.wglQueryVideoCaptureDeviceNV(hDC, hDevice, iAttribute, piValue);
     }
     else
@@ -29470,7 +29473,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglReleaseVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice)
   {
-    App("wglReleaseVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ")");
+    App("wglReleaseVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV, "wglReleaseVideoCaptureDeviceNV" );
@@ -29481,7 +29484,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV)
     {
-      Driver("wglReleaseVideoCaptureDeviceNV","(", hDC, ", ", hDevice, ")");
+      Driver("wglReleaseVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglReleaseVideoCaptureDeviceNV(hDC, hDevice);
     }
     else
@@ -29493,7 +29496,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer)
   {
-    App("wglBindVideoImageNV","(", hVideoDevice, ", ", hPbuffer, ", ", iVideoBuffer, ")");
+    App("wglBindVideoImageNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
     if (!dispatchTableGlobal.wglBindVideoImageNV)
     {
       GetProcAddress( dispatchTableGlobal.wglBindVideoImageNV, "wglBindVideoImageNV" );
@@ -29504,7 +29507,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglBindVideoImageNV)
     {
-      Driver("wglBindVideoImageNV","(", hVideoDevice, ", ", hPbuffer, ", ", iVideoBuffer, ")");
+      Driver("wglBindVideoImageNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
       ret = dispatchTableGlobal.wglBindVideoImageNV(hVideoDevice, hPbuffer, iVideoBuffer);
     }
     else
@@ -29514,7 +29517,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetVideoDeviceNV(HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice)
   {
-    App("wglGetVideoDeviceNV","(", hDC, ", ", numDevices, ")");
+    App("wglGetVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", numDevices, ")");
     if (!dispatchTableGlobal.wglGetVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglGetVideoDeviceNV, "wglGetVideoDeviceNV" );
@@ -29525,7 +29528,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetVideoDeviceNV)
     {
-      Driver("wglGetVideoDeviceNV","(", hDC, ", ", numDevices, ")");
+      Driver("wglGetVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", numDevices, ")");
       ret = dispatchTableGlobal.wglGetVideoDeviceNV(hDC, numDevices, hVideoDevice);
     }
     else
@@ -29535,7 +29538,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetVideoInfoNV(HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo)
   {
-    App("wglGetVideoInfoNV","(", hpVideoDevice, ")");
+    App("wglGetVideoInfoNV","(", boost::print::optional(hpVideoDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetVideoInfoNV)
     {
       GetProcAddress( dispatchTableGlobal.wglGetVideoInfoNV, "wglGetVideoInfoNV" );
@@ -29546,7 +29549,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetVideoInfoNV)
     {
-      Driver("wglGetVideoInfoNV","(", hpVideoDevice, ")");
+      Driver("wglGetVideoInfoNV","(", boost::print::optional(hpVideoDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetVideoInfoNV(hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
     }
     else
@@ -29556,7 +29559,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglReleaseVideoDeviceNV(HPVIDEODEV hVideoDevice)
   {
-    App("wglReleaseVideoDeviceNV","(", hVideoDevice, ")");
+    App("wglReleaseVideoDeviceNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglReleaseVideoDeviceNV)
     {
       GetProcAddress( dispatchTableGlobal.wglReleaseVideoDeviceNV, "wglReleaseVideoDeviceNV" );
@@ -29567,7 +29570,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglReleaseVideoDeviceNV)
     {
-      Driver("wglReleaseVideoDeviceNV","(", hVideoDevice, ")");
+      Driver("wglReleaseVideoDeviceNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglReleaseVideoDeviceNV(hVideoDevice);
     }
     else
@@ -29577,7 +29580,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglReleaseVideoImageNV(HPBUFFERARB hPbuffer, int iVideoBuffer)
   {
-    App("wglReleaseVideoImageNV","(", hPbuffer, ", ", iVideoBuffer, ")");
+    App("wglReleaseVideoImageNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
     if (!dispatchTableGlobal.wglReleaseVideoImageNV)
     {
       GetProcAddress( dispatchTableGlobal.wglReleaseVideoImageNV, "wglReleaseVideoImageNV" );
@@ -29588,7 +29591,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglReleaseVideoImageNV)
     {
-      Driver("wglReleaseVideoImageNV","(", hPbuffer, ", ", iVideoBuffer, ")");
+      Driver("wglReleaseVideoImageNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
       ret = dispatchTableGlobal.wglReleaseVideoImageNV(hPbuffer, iVideoBuffer);
     }
     else
@@ -29598,7 +29601,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock)
   {
-    App("wglSendPbufferToVideoNV","(", hPbuffer, ", ", iBufferType, ", ", bBlock, ")");
+    App("wglSendPbufferToVideoNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBufferType, ", ", bBlock, ")");
     if (!dispatchTableGlobal.wglSendPbufferToVideoNV)
     {
       GetProcAddress( dispatchTableGlobal.wglSendPbufferToVideoNV, "wglSendPbufferToVideoNV" );
@@ -29609,7 +29612,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSendPbufferToVideoNV)
     {
-      Driver("wglSendPbufferToVideoNV","(", hPbuffer, ", ", iBufferType, ", ", bBlock, ")");
+      Driver("wglSendPbufferToVideoNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBufferType, ", ", bBlock, ")");
       ret = dispatchTableGlobal.wglSendPbufferToVideoNV(hPbuffer, iBufferType, pulCounterPbuffer, bBlock);
     }
     else
@@ -29621,7 +29624,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetMscRateOML(HDC hDC, INT32 *numerator, INT32 *denominator)
   {
-    App("wglGetMscRateOML","(", hDC, ")");
+    App("wglGetMscRateOML","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetMscRateOML)
     {
       GetProcAddress( dispatchTableGlobal.wglGetMscRateOML, "wglGetMscRateOML" );
@@ -29632,7 +29635,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetMscRateOML)
     {
-      Driver("wglGetMscRateOML","(", hDC, ")");
+      Driver("wglGetMscRateOML","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetMscRateOML(hDC, numerator, denominator);
     }
     else
@@ -29642,7 +29645,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglGetSyncValuesOML(HDC hDC, INT64 *ust, INT64 *msc, INT64 *sbc)
   {
-    App("wglGetSyncValuesOML","(", hDC, ")");
+    App("wglGetSyncValuesOML","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglGetSyncValuesOML)
     {
       GetProcAddress( dispatchTableGlobal.wglGetSyncValuesOML, "wglGetSyncValuesOML" );
@@ -29653,7 +29656,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglGetSyncValuesOML)
     {
-      Driver("wglGetSyncValuesOML","(", hDC, ")");
+      Driver("wglGetSyncValuesOML","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglGetSyncValuesOML(hDC, ust, msc, sbc);
     }
     else
@@ -29663,7 +29666,7 @@ extern "C" {
 
   REGAL_DECL INT64 REGAL_CALL wglSwapBuffersMscOML(HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder)
   {
-    App("wglSwapBuffersMscOML","(", hDC, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+    App("wglSwapBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     if (!dispatchTableGlobal.wglSwapBuffersMscOML)
     {
       GetProcAddress( dispatchTableGlobal.wglSwapBuffersMscOML, "wglSwapBuffersMscOML" );
@@ -29674,7 +29677,7 @@ extern "C" {
     INT64  ret = (INT64 )0;
     if (dispatchTableGlobal.wglSwapBuffersMscOML)
     {
-      Driver("wglSwapBuffersMscOML","(", hDC, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+      Driver("wglSwapBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
       ret = dispatchTableGlobal.wglSwapBuffersMscOML(hDC, target_msc, divisor, remainder);
     }
     else
@@ -29684,7 +29687,7 @@ extern "C" {
 
   REGAL_DECL INT64 REGAL_CALL wglSwapLayerBuffersMscOML(HDC hDC, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder)
   {
-    App("wglSwapLayerBuffersMscOML","(", hDC, ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+    App("wglSwapLayerBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     if (!dispatchTableGlobal.wglSwapLayerBuffersMscOML)
     {
       GetProcAddress( dispatchTableGlobal.wglSwapLayerBuffersMscOML, "wglSwapLayerBuffersMscOML" );
@@ -29695,7 +29698,7 @@ extern "C" {
     INT64  ret = (INT64 )0;
     if (dispatchTableGlobal.wglSwapLayerBuffersMscOML)
     {
-      Driver("wglSwapLayerBuffersMscOML","(", hDC, ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+      Driver("wglSwapLayerBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
       ret = dispatchTableGlobal.wglSwapLayerBuffersMscOML(hDC, fuPlanes, target_msc, divisor, remainder);
     }
     else
@@ -29705,7 +29708,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglWaitForMscOML(HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc)
   {
-    App("wglWaitForMscOML","(", hDC, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+    App("wglWaitForMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     if (!dispatchTableGlobal.wglWaitForMscOML)
     {
       GetProcAddress( dispatchTableGlobal.wglWaitForMscOML, "wglWaitForMscOML" );
@@ -29716,7 +29719,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglWaitForMscOML)
     {
-      Driver("wglWaitForMscOML","(", hDC, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
+      Driver("wglWaitForMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
       ret = dispatchTableGlobal.wglWaitForMscOML(hDC, target_msc, divisor, remainder, ust, msc, sbc);
     }
     else
@@ -29726,7 +29729,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglWaitForSbcOML(HDC hDC, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc)
   {
-    App("wglWaitForSbcOML","(", hDC, ", ", target_sbc, ")");
+    App("wglWaitForSbcOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_sbc, ")");
     if (!dispatchTableGlobal.wglWaitForSbcOML)
     {
       GetProcAddress( dispatchTableGlobal.wglWaitForSbcOML, "wglWaitForSbcOML" );
@@ -29737,7 +29740,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglWaitForSbcOML)
     {
-      Driver("wglWaitForSbcOML","(", hDC, ", ", target_sbc, ")");
+      Driver("wglWaitForSbcOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_sbc, ")");
       ret = dispatchTableGlobal.wglWaitForSbcOML(hDC, target_sbc, ust, msc, sbc);
     }
     else
@@ -29749,7 +29752,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask)
   {
-    App("wglCopyContext","(", hglrcSrc, ", ", hglrcDst, ", ", mask, ")");
+    App("wglCopyContext","(", boost::print::optional(hglrcSrc,Logging::pointers), ", ", boost::print::optional(hglrcDst,Logging::pointers), ", ", mask, ")");
     if (!dispatchTableGlobal.wglCopyContext)
     {
       GetProcAddress( dispatchTableGlobal.wglCopyContext, "wglCopyContext" );
@@ -29760,7 +29763,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglCopyContext)
     {
-      Driver("wglCopyContext","(", hglrcSrc, ", ", hglrcDst, ", ", mask, ")");
+      Driver("wglCopyContext","(", boost::print::optional(hglrcSrc,Logging::pointers), ", ", boost::print::optional(hglrcDst,Logging::pointers), ", ", mask, ")");
       ret = dispatchTableGlobal.wglCopyContext(hglrcSrc, hglrcDst, mask);
     }
     else
@@ -29770,7 +29773,7 @@ extern "C" {
 
   REGAL_DECL HGLRC REGAL_CALL wglCreateContext(HDC hDC)
   {
-    App("wglCreateContext","(", hDC, ")");
+    App("wglCreateContext","(", boost::print::optional(hDC,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglCreateContext)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateContext, "wglCreateContext" );
@@ -29781,7 +29784,7 @@ extern "C" {
     HGLRC  ret = (HGLRC )0;
     if (dispatchTableGlobal.wglCreateContext)
     {
-      Driver("wglCreateContext","(", hDC, ")");
+      Driver("wglCreateContext","(", boost::print::optional(hDC,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglCreateContext(hDC);
     }
     else
@@ -29791,7 +29794,7 @@ extern "C" {
 
   REGAL_DECL HGLRC REGAL_CALL wglCreateLayerContext(HDC hDC, int iLayerPlane)
   {
-    App("wglCreateLayerContext","(", hDC, ", ", iLayerPlane, ")");
+    App("wglCreateLayerContext","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ")");
     if (!dispatchTableGlobal.wglCreateLayerContext)
     {
       GetProcAddress( dispatchTableGlobal.wglCreateLayerContext, "wglCreateLayerContext" );
@@ -29802,7 +29805,7 @@ extern "C" {
     HGLRC  ret = (HGLRC )0;
     if (dispatchTableGlobal.wglCreateLayerContext)
     {
-      Driver("wglCreateLayerContext","(", hDC, ", ", iLayerPlane, ")");
+      Driver("wglCreateLayerContext","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ")");
       ret = dispatchTableGlobal.wglCreateLayerContext(hDC, iLayerPlane);
     }
     else
@@ -29812,7 +29815,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDeleteContext(HGLRC hglrc)
   {
-    App("wglDeleteContext","(", hglrc, ")");
+    App("wglDeleteContext","(", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglDeleteContext)
     {
       GetProcAddress( dispatchTableGlobal.wglDeleteContext, "wglDeleteContext" );
@@ -29823,9 +29826,9 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDeleteContext)
     {
-      Driver("wglDeleteContext","(", hglrc, ")");
+      Driver("wglDeleteContext","(", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglDeleteContext(hglrc);
-      Init::destroyContext( RegalSystemContext(hglrc) );
+      Init::destroyContext(RegalSystemContext(hglrc));
     }
     else
       Warning( "wglDeleteContext not available." );
@@ -29834,7 +29837,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglDescribeLayerPlane(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd)
   {
-    App("wglDescribeLayerPlane","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ")");
+    App("wglDescribeLayerPlane","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ")");
     if (!dispatchTableGlobal.wglDescribeLayerPlane)
     {
       GetProcAddress( dispatchTableGlobal.wglDescribeLayerPlane, "wglDescribeLayerPlane" );
@@ -29845,7 +29848,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglDescribeLayerPlane)
     {
-      Driver("wglDescribeLayerPlane","(", hDC, ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ")");
+      Driver("wglDescribeLayerPlane","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ")");
       ret = dispatchTableGlobal.wglDescribeLayerPlane(hDC, iPixelFormat, iLayerPlane, nBytes, plpd);
     }
     else
@@ -29918,7 +29921,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglGetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr)
   {
-    App("wglGetLayerPaletteEntries","(", hDC, ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ")");
+    App("wglGetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ")");
     if (!dispatchTableGlobal.wglGetLayerPaletteEntries)
     {
       GetProcAddress( dispatchTableGlobal.wglGetLayerPaletteEntries, "wglGetLayerPaletteEntries" );
@@ -29929,7 +29932,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglGetLayerPaletteEntries)
     {
-      Driver("wglGetLayerPaletteEntries","(", hDC, ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ")");
+      Driver("wglGetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ")");
       ret = dispatchTableGlobal.wglGetLayerPaletteEntries(hDC, iLayerPlane, iStart, nEntries, pcr);
     }
     else
@@ -29970,7 +29973,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglMakeCurrent(HDC hDC, HGLRC hglrc)
   {
-    App("wglMakeCurrent","(", hDC, ", ", hglrc, ")");
+    App("wglMakeCurrent","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglMakeCurrent)
     {
       GetProcAddress( dispatchTableGlobal.wglMakeCurrent, "wglMakeCurrent" );
@@ -29981,7 +29984,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglMakeCurrent)
     {
-      Driver("wglMakeCurrent","(", hDC, ", ", hglrc, ")");
+      Driver("wglMakeCurrent","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hglrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglMakeCurrent(hDC, hglrc);
       Init::makeCurrent(RegalSystemContext(hglrc));
     }
@@ -29992,7 +29995,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglRealizeLayerPalette(HDC hDC, int iLayerPlane, BOOL bRealize)
   {
-    App("wglRealizeLayerPalette","(", hDC, ", ", iLayerPlane, ", ", bRealize, ")");
+    App("wglRealizeLayerPalette","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", bRealize, ")");
     if (!dispatchTableGlobal.wglRealizeLayerPalette)
     {
       GetProcAddress( dispatchTableGlobal.wglRealizeLayerPalette, "wglRealizeLayerPalette" );
@@ -30003,7 +30006,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglRealizeLayerPalette)
     {
-      Driver("wglRealizeLayerPalette","(", hDC, ", ", iLayerPlane, ", ", bRealize, ")");
+      Driver("wglRealizeLayerPalette","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", bRealize, ")");
       ret = dispatchTableGlobal.wglRealizeLayerPalette(hDC, iLayerPlane, bRealize);
     }
     else
@@ -30013,7 +30016,7 @@ extern "C" {
 
   REGAL_DECL int REGAL_CALL wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr)
   {
-    App("wglSetLayerPaletteEntries","(", hDC, ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", boost::print::array(pcr,nEntries), ")");
+    App("wglSetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", boost::print::array(pcr,nEntries), ")");
     if (!dispatchTableGlobal.wglSetLayerPaletteEntries)
     {
       GetProcAddress( dispatchTableGlobal.wglSetLayerPaletteEntries, "wglSetLayerPaletteEntries" );
@@ -30024,7 +30027,7 @@ extern "C" {
     int  ret = (int )0;
     if (dispatchTableGlobal.wglSetLayerPaletteEntries)
     {
-      Driver("wglSetLayerPaletteEntries","(", hDC, ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", boost::print::array(pcr,nEntries), ")");
+      Driver("wglSetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", boost::print::array(pcr,nEntries), ")");
       ret = dispatchTableGlobal.wglSetLayerPaletteEntries(hDC, iLayerPlane, iStart, nEntries, pcr);
     }
     else
@@ -30034,7 +30037,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglShareLists(HGLRC hglrcShare, HGLRC hglrcSrc)
   {
-    App("wglShareLists","(", hglrcShare, ", ", hglrcSrc, ")");
+    App("wglShareLists","(", boost::print::optional(hglrcShare,Logging::pointers), ", ", boost::print::optional(hglrcSrc,Logging::pointers), ")");
     if (!dispatchTableGlobal.wglShareLists)
     {
       GetProcAddress( dispatchTableGlobal.wglShareLists, "wglShareLists" );
@@ -30045,7 +30048,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglShareLists)
     {
-      Driver("wglShareLists","(", hglrcShare, ", ", hglrcSrc, ")");
+      Driver("wglShareLists","(", boost::print::optional(hglrcShare,Logging::pointers), ", ", boost::print::optional(hglrcSrc,Logging::pointers), ")");
       ret = dispatchTableGlobal.wglShareLists(hglrcShare, hglrcSrc);
     }
     else
@@ -30055,7 +30058,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglSwapLayerBuffers(HDC hDC, UINT fuPlanes)
   {
-    App("wglSwapLayerBuffers","(", hDC, ", ", fuPlanes, ")");
+    App("wglSwapLayerBuffers","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ")");
     if (!dispatchTableGlobal.wglSwapLayerBuffers)
     {
       GetProcAddress( dispatchTableGlobal.wglSwapLayerBuffers, "wglSwapLayerBuffers" );
@@ -30066,7 +30069,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglSwapLayerBuffers)
     {
-      Driver("wglSwapLayerBuffers","(", hDC, ", ", fuPlanes, ")");
+      Driver("wglSwapLayerBuffers","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ")");
       ret = dispatchTableGlobal.wglSwapLayerBuffers(hDC, fuPlanes);
     }
     else
@@ -30097,7 +30100,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count, DWORD listBase)
   {
-    App("wglUseFontBitmapsA","(", hDC, ", ", first, ", ", count, ", ", listBase, ")");
+    App("wglUseFontBitmapsA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     if (!dispatchTableGlobal.wglUseFontBitmapsA)
     {
       GetProcAddress( dispatchTableGlobal.wglUseFontBitmapsA, "wglUseFontBitmapsA" );
@@ -30108,7 +30111,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglUseFontBitmapsA)
     {
-      Driver("wglUseFontBitmapsA","(", hDC, ", ", first, ", ", count, ", ", listBase, ")");
+      Driver("wglUseFontBitmapsA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
       ret = dispatchTableGlobal.wglUseFontBitmapsA(hDC, first, count, listBase);
     }
     else
@@ -30118,7 +30121,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count, DWORD listBase)
   {
-    App("wglUseFontBitmapsW","(", hDC, ", ", first, ", ", count, ", ", listBase, ")");
+    App("wglUseFontBitmapsW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     if (!dispatchTableGlobal.wglUseFontBitmapsW)
     {
       GetProcAddress( dispatchTableGlobal.wglUseFontBitmapsW, "wglUseFontBitmapsW" );
@@ -30129,7 +30132,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglUseFontBitmapsW)
     {
-      Driver("wglUseFontBitmapsW","(", hDC, ", ", first, ", ", count, ", ", listBase, ")");
+      Driver("wglUseFontBitmapsW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
       ret = dispatchTableGlobal.wglUseFontBitmapsW(hDC, first, count, listBase);
     }
     else
@@ -30139,7 +30142,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
   {
-    App("wglUseFontOutlinesA","(", hDC, ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
+    App("wglUseFontOutlinesA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
     if (!dispatchTableGlobal.wglUseFontOutlinesA)
     {
       GetProcAddress( dispatchTableGlobal.wglUseFontOutlinesA, "wglUseFontOutlinesA" );
@@ -30150,7 +30153,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglUseFontOutlinesA)
     {
-      Driver("wglUseFontOutlinesA","(", hDC, ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
+      Driver("wglUseFontOutlinesA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
       ret = dispatchTableGlobal.wglUseFontOutlinesA(hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
     }
     else
@@ -30160,7 +30163,7 @@ extern "C" {
 
   REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
   {
-    App("wglUseFontOutlinesW","(", hDC, ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
+    App("wglUseFontOutlinesW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
     if (!dispatchTableGlobal.wglUseFontOutlinesW)
     {
       GetProcAddress( dispatchTableGlobal.wglUseFontOutlinesW, "wglUseFontOutlinesW" );
@@ -30171,7 +30174,7 @@ extern "C" {
     BOOL  ret = (BOOL )0;
     if (dispatchTableGlobal.wglUseFontOutlinesW)
     {
-      Driver("wglUseFontOutlinesW","(", hDC, ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
+      Driver("wglUseFontOutlinesW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
       ret = dispatchTableGlobal.wglUseFontOutlinesW(hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
     }
     else
@@ -30280,7 +30283,7 @@ extern "C" {
     {
       Driver("glXDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       dispatchTableGlobal.glXDestroyContext(dpy, ctx);
-      Init::destroyContext( RegalSystemContext(ctx) );
+      Init::destroyContext(RegalSystemContext(ctx));
     }
     else
       Warning( "glXDestroyContext not available." );
@@ -30400,11 +30403,18 @@ extern "C" {
         dispatchTableGlobal.glXMakeCurrent = NULL;
     }
     Bool  ret = (Bool )0;
+    // Keep track of X11 Display and GLXDrawable for logging purposes.
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context)
+    {
+        _context->x11Display  = dpy;
+        _context->x11Drawable = drawable;
+    }
     if (dispatchTableGlobal.glXMakeCurrent)
     {
       Driver("glXMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.glXMakeCurrent(dpy, drawable, ctx);
-      Init::makeCurrent( RegalSystemContext(ctx) );
+      Init::makeCurrent(RegalSystemContext(ctx));
     }
     else
       Warning( "glXMakeCurrent not available." );
@@ -30463,7 +30473,14 @@ extern "C" {
       if (dispatchTableGlobal.glXSwapBuffers==glXSwapBuffers)
         dispatchTableGlobal.glXSwapBuffers = NULL;
     }
+    // Keep track of X11 Display and GLXDrawable for logging purposes.
     RegalContext *_context = REGAL_GET_CONTEXT();
+    if (_context)
+    {
+        _context->x11Display  = dpy;
+        _context->x11Drawable = drawable;
+    }
+    // Notify Regal::Frame about the swap buffers event.
     if (_context && _context->frame)
         _context->frame->glXSwapBuffers(*_context);
     if (dispatchTableGlobal.glXSwapBuffers)
@@ -32922,7 +32939,7 @@ extern "C" {
     {
       Driver("CGLDestroyContext","(", ctx, ")");
       ret = dispatchTableGlobal.CGLDestroyContext(ctx);
-      Init::destroyContext( RegalSystemContext(ctx) );
+      Init::destroyContext(RegalSystemContext(ctx));
     }
     else
       Warning( "CGLDestroyContext not available." );
@@ -33046,6 +33063,7 @@ extern "C" {
     }
     CGLError  ret = (CGLError )0;
     RegalContext *_context = REGAL_GET_CONTEXT();
+    // Notify Regal::Frame about the flush drawable event.
     if (_context && _context->frame)
         _context->frame->CGLFlushDrawable(*_context);
     if (dispatchTableGlobal.CGLFlushDrawable)
@@ -33808,7 +33826,7 @@ extern "C" {
     {
       Driver("CGLSetCurrentContext","(", ctx, ")");
       ret = dispatchTableGlobal.CGLSetCurrentContext(ctx);
-      Init::makeCurrent( ctx );
+      Init::makeCurrent(ctx);
     }
     else
       Warning( "CGLSetCurrentContext not available." );
@@ -34799,7 +34817,7 @@ extern "C" {
     {
       Driver("eglDestroyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglDestroyContext(dpy, ctx);
-      Init::destroyContext( RegalSystemContext(ctx) );
+      Init::destroyContext(RegalSystemContext(ctx));
     }
     else
       Warning( "eglDestroyContext not available." );
@@ -35040,7 +35058,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor)
   {
-    App("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ", ", major, ", ", minor, ")");
+    App("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglInitialize)
@@ -35055,7 +35073,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglInitialize)
     {
-      Driver("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ", ", major, ", ", minor, ")");
+      Driver("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglInitialize(dpy, major, minor);
     }
     else
@@ -35082,7 +35100,7 @@ extern "C" {
     {
       Driver("eglMakeCurrent","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(draw,Logging::pointers), ", ", boost::print::optional(read,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
       ret = dispatchTableGlobal.eglMakeCurrent(dpy, draw, read, ctx);
-      Init::makeCurrent( ctx );
+      Init::makeCurrent(ctx);
     }
     else
       Warning( "eglMakeCurrent not available." );
@@ -35091,7 +35109,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value)
   {
-    App("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ", ", value, ")");
+    App("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQueryContext)
@@ -35106,7 +35124,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglQueryContext)
     {
-      Driver("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ", ", value, ")");
+      Driver("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ")");
       ret = dispatchTableGlobal.eglQueryContext(dpy, ctx, attribute, value);
     }
     else
@@ -35141,7 +35159,7 @@ extern "C" {
 
   REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value)
   {
-    App("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
+    App("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ")");
 
     #if !REGAL_STATIC_EGL
     if (!dispatchTableGlobal.eglQuerySurface)
@@ -35156,7 +35174,7 @@ extern "C" {
     EGLBoolean  ret = (EGLBoolean )0;
     if (dispatchTableGlobal.eglQuerySurface)
     {
-      Driver("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
+      Driver("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ")");
       ret = dispatchTableGlobal.eglQuerySurface(dpy, surface, attribute, value);
     }
     else
@@ -35180,6 +35198,7 @@ extern "C" {
 
     EGLBoolean  ret = (EGLBoolean )0;
     RegalContext *_context = REGAL_GET_CONTEXT();
+    // Notify Regal::Frame about the swap buffers event.
     if (_context && _context->frame)
         _context->frame->eglSwapBuffers(*_context);
     if (dispatchTableGlobal.eglSwapBuffers)

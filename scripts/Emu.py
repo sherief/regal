@@ -74,12 +74,17 @@ def emuFindEntry( func, emuFormulae, member ) :
 
     name = func.name
 
-    #print "iff name = %s\n" % name
-    arglist = [ i.name.strip()           for i in func.parameters ]
-    #arg     = { 'arg%d' % i : arglist[i] for i in range(len(arglist)) }
-    arg     = {}
+    # the list of function parameter names
+
+    arglist = [ i.name.strip() for i in func.parameters ]
+
+    # arg is a mapping from arg0 to function parameter name...
+
+    arg = {}
     for i in range(len(arglist)):
         arg['arg%d' % i] = arglist[i]
+
+    # ... and mappings from arg0plus to lists of function parameters
 
     for i in range( 0, 3 ) :
         label = 'arg%dplus' % i;
@@ -89,6 +94,8 @@ def emuFindEntry( func, emuFormulae, member ) :
         else :
             arg[label] = ''
 
+    # Iterator over the formulae
+
     for k,i in emuFormulae.iteritems():
 
       # Cache the compiled regular expressions, as needed
@@ -96,23 +103,30 @@ def emuFindEntry( func, emuFormulae, member ) :
       if 'entries_re' not in i:
         i['entries_re'] = [ re.compile( '^%s$' % j ) for j in i['entries'] ]
 
-      for j in i['entries_re']:
-        m = j.match( name )
-        if m :
-          emue = { 'name' : name, 'member' : member }
-          subst = deepcopy( arg )
-          for l in range( len(m.groups()) + 1) :
-            subst['m%d' % l] = m.group( l )
-          subst['name'] = name
-          emuAddSubst( name, i, subst )
-          emuSubstitute( emue, i, 'impl', subst )
-          emuSubstitute( emue, i, 'prefix', subst )
-          emuSubstitute( emue, i, 'suffix', subst )
-          return emue
+      # Look for matches, ideally only one
+
+      m = [ j.match(name) for j in i['entries_re'] ]
+      m = [ j for j in m if j ]
+
+      assert len(m)<=1
+
+      if len(m):
+        m = m[0]
+        emue = { 'name' : name, 'member' : member }
+        subst = deepcopy( arg )
+        for l in range( len(m.groups()) + 1) :
+          subst['m%d' % l] = m.group( l )
+        subst['name'] = name
+        emuAddSubst( name, i, subst )
+        emuSubstitute( emue, i, 'impl', subst )
+        emuSubstitute( emue, i, 'init', subst )
+        emuSubstitute( emue, i, 'prefix', subst )
+        emuSubstitute( emue, i, 'suffix', subst )
+        return emue
 
     return None
 
-# Generate code for prefix, impl or suffix
+# Generate code for prefix, init, impl or suffix
 
 def emuCodeGen(emue,section):
 

@@ -50,7 +50,7 @@ def writeEnums(file,name,enums):
         print >>file, '%s = Enumerant(\'%s\','%(j.name,j.name),
         value = j.value
         try:
-          value = long(value)
+          value = long(value,base=0)
         except:
           pass
         if isinstance(value, str) or isinstance(value, unicode):
@@ -87,7 +87,7 @@ defines = Enum('defines')
       print >>file, '%s = Enumerant(\'%s\','%(j.name,j.name),
       value = j.value
       try:
-        value = long(value)
+        value = long(value,base=0)
       except:
         pass
       if isinstance(value, str) or isinstance(value, unicode):

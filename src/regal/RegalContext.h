@@ -119,6 +119,14 @@ struct RegalContext
   RegalSystemContext  sysCtx;
   Thread::Thread      thread;
 
+  #if REGAL_SYS_X11
+  Display            *x11Display;
+  #endif
+
+  #if REGAL_SYS_GLX
+  GLXDrawable         x11Drawable;
+  #endif
+
   GLLOGPROCREGAL      logCallback;
 
   //

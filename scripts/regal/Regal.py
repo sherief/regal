@@ -287,22 +287,9 @@ def apiFuncDefineCode(apis, args):
         if not typeIsVoid(rType):
           c += 'ret = '
         c += 'dispatchTableGlobal.%s(%s);\n' % ( name, callParams )
-        if name == 'wglMakeCurrent':
-          c += '    Init::makeCurrent(RegalSystemContext(hglrc));\n'
-        elif name == 'CGLSetCurrentContext':
-          c += '    Init::makeCurrent( ctx );\n'
-        elif name == 'glXMakeCurrent':
-          c += '    Init::makeCurrent( RegalSystemContext(ctx) );\n'
-        elif name == 'eglMakeCurrent':
-          c += '    Init::makeCurrent( ctx );\n'
-        elif name == 'wglDeleteContext':
-          c += '    Init::destroyContext( RegalSystemContext(hglrc) );\n'
-        elif name == 'CGLDestroyContext':
-          c += '    Init::destroyContext( RegalSystemContext(ctx) );\n'
-        elif name == 'glXDestroyContext':
-          c += '    Init::destroyContext( RegalSystemContext(ctx) );\n'
-        elif name == 'eglDestroyContext':
-          c += '    Init::destroyContext( RegalSystemContext(ctx) );\n'
+
+        c += listToString(indent(emuCodeGen(emue,'init'),'    '))
+
         c += '  }\n'
         c += '  else\n'
         c += '    Warning( "%s not available." );\n' % name

@@ -181,7 +181,7 @@ def generateDispatchCode(apis, args):
               if i.cast != None:
                 body += '_code << reinterpret_cast<%s>(%s);\n'%(i.cast,i.name)
               else:
-                body += '_code << %s;\n'%(i.name)                         
+                body += '_code << %s;\n'%(i.name)
             else:
                 body += '_code << %s;\n'%(p)
             delim = True
