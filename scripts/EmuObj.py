@@ -6,7 +6,7 @@ objFormulae = {
         'impl' : [ '_context->obj->${m1}( _context, ${arg0plus} );', ],
     },
     'VAOs' : {
-        'entries' : [ 'gl(GenVertexArrays|DeleteVertexArrays|BindVertexArray|IsVertexArray)(ARB|)' ],
+        'entries' : [ 'gl(GenVertexArrays|DeleteVertexArrays|BindVertexArray)(ARB|)' ],
         'impl' : [ '_context->obj->${m1}( _context, ${arg0plus} );', ],
     },
     'IsObj' : {

@@ -41,6 +41,7 @@ REGAL_GLOBAL_BEGIN
 using boost::print::print_string;
 
 #include "RegalLog.h"
+#include "RegalJson.h"
 #include "RegalConfig.h"
 #include "RegalSystem.h"
 
@@ -231,12 +232,12 @@ namespace Config {
     tmp = GetEnv( "REGAL_EMU_FILTER" );
     if (tmp) enableEmuFilter = atoi(tmp)!=0;
 
-  //
+    //
 
     tmp = GetEnv( "REGAL_FRAME_LIMIT" );
     if (tmp) frameLimit = atoi(tmp);
 
-  //
+    //
 
     tmp = GetEnv( "REGAL_MD5_COLOR" );
     if (tmp) frameMd5Color = atoi(tmp)!=0;
@@ -341,6 +342,62 @@ namespace Config {
     Info("REGAL_SAVE_DEPTH         ", frameSaveDepth   ? "enabled" : "disabled");
   }
 
+  void
+  writeJSON(Json::Output &jo)
+  {
+    jo.object("config");
+
+    jo.member("forceCoreProfile", forceCoreProfile);
+    jo.member("forceES2Profile",  forceES2Profile);
+
+    jo.object("system");
+    jo.member("GLX", sysGLX);
+    jo.member("EGL", sysEGL);
+    jo.end();
+
+    jo.member("forceEmulation",  forceEmulation);
+    jo.member("enableEmulation", enableEmulation);
+
+    jo.object("dispatch");
+    jo.member("debug",  enableDebug);
+    jo.member("error",  enableError);
+    jo.member("code",   enableCode);
+    jo.member("log",    enableLog);
+    jo.member("driver", enableDriver);
+    jo.end();
+
+    jo.object("emulation");
+    jo.member("ppa",    enableEmuPpa);
+    jo.member("obj",    enableEmuObj);
+    jo.member("bin",    enableEmuBin);
+    jo.member("dsa",    enableEmuDsa);
+    jo.member("iff",    enableEmuIff);
+    jo.member("so",     enableEmuSo);
+    jo.member("vao",    enableEmuVao);
+    jo.member("texc",   enableEmuTexC);
+    jo.member("filter", enableEmuFilter);
+    jo.end();
+
+    jo.object("frame");
+    jo.member("limit",       frameLimit);
+    jo.member("md5Color",    frameMd5Color);
+    jo.member("md5Stencil",  frameMd5Stencil);
+    jo.member("md5Depth",    frameMd5Depth);
+    jo.member("saveColor",   frameSaveColor);
+    jo.member("saveStencil", frameSaveStencil);
+    jo.member("saveDepth",   frameSaveDepth);
+    jo.end();
+
+    jo.object("cache");
+    jo.member("enable",      cache);
+    jo.member("shader",      cacheShader);
+    jo.member("shaderWrite", cacheShaderWrite);
+    jo.member("shaderRead",  cacheShaderRead);
+    jo.member("directory",   cacheDirectory);
+    jo.end();
+
+    jo.end();
+  }
 }
 
 REGAL_NAMESPACE_END

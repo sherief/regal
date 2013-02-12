@@ -4,11 +4,12 @@ class Api:
 
   def __init__(self):
 
-    self.functions = []
-    self.typedefs  = []
-    self.enums     = []
-    self.variables = []
-    self.states = []
+    self.functions  = []
+    self.typedefs   = []
+    self.enums      = []
+    self.variables  = []
+    self.extensions = []
+    self.states     = []
     self.stateTypes = []
     self.conditional = ''
 
@@ -22,12 +23,23 @@ class Api:
       self.enums.append(item)
     elif isinstance(item, Parameter):
       self.variables.append(item)
+    elif isinstance(item, Extension):
+      self.extensions.append(item)
     elif isinstance(item, StateType):
       self.stateTypes.append(item)
     elif isinstance(item, State):
       self.states.append(item)
     else:
       raise TypeError, 'Unsupported Api type'
+
+class Extension:
+
+  def __init__(self, name = '', url = ''):
+
+    self.name       = name
+    self.url        = url
+    self.functions  = []        # function names
+    self.enumerants = []        # enumerant names
 
 class Function:
 
@@ -37,6 +49,7 @@ class Function:
     self.ret        = None
     self.parameters = []
     self.version    = ''
+    self.extension  = ''
     self.deprecated = ''
     self.category   = ''
     self.public     = True
@@ -59,6 +72,7 @@ class Typedef:
     self.function   = ''
     self.parameters = []
     self.version    = ''
+    self.extension  = ''
     self.deprecated = ''
     self.category   = ''
 
@@ -136,6 +150,7 @@ class Enum:
     self.name       = name
     self.enumerants = []
     self.version    = ''
+    self.extension  = ''
     self.deprecated = ''
     self.category   = ''
     self.default    = None
@@ -154,6 +169,7 @@ class Enumerant:
     self.name       = name
     self.value      = value
     self.version    = ''
+    self.extension  = ''
     self.deprecated = ''
     self.category   = category
     self.public     = True

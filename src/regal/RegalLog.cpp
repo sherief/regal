@@ -40,6 +40,7 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/string_list.hpp>
 
 #include "RegalLog.h"
+#include "RegalJson.h"
 #include "RegalTimer.h"
 #include "RegalMarker.h"
 #include "RegalThread.h"
@@ -66,14 +67,14 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-using namespace ::std;
-
+using ::std::string;
+using ::std::list;
 using ::boost::print::trim;
 using ::boost::print::print_string;
 
 using namespace ::boost::print;
 
-typedef boost::print::string_list<string> string_list;
+typedef string_list<string> string_list;
 
 namespace Logging {
 
@@ -289,6 +290,40 @@ namespace Logging {
       fprintf(jsonOutput,"%s","{} ] }\n");
       fileClose(&jsonOutput);
     }
+  }
+
+  void
+  writeJSON(Json::Output &jo)
+  {
+    jo.object("logging");
+
+    jo.member("error",     enableError);
+    jo.member("warning",   enableWarning);
+    jo.member("info",      enableInfo);
+    jo.member("app",       enableApp);
+    jo.member("driver",    enableDriver);
+    jo.member("internal",  enableInternal);
+    jo.member("http",      enableHttp);
+
+    jo.member("maxLines",  maxLines);
+    jo.member("maxBytes",  maxBytes);
+
+#if REGAL_LOG_ONCE
+    jo.member("once",      once);
+#endif
+
+    jo.member("frameTime", frameTime);
+    jo.member("pointers",  pointers);
+    jo.member("thread",    thread);
+
+    jo.member("callback",    callback);
+    jo.member("log",         log);
+    jo.member("filename",    logFilename);
+    jo.member("json",        json);
+    jo.member("jsonFile",    jsonFilename);
+    jo.member("bufferLimit", bufferLimit);
+
+    jo.end();
   }
 
   inline size_t indent()

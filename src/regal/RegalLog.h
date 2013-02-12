@@ -46,6 +46,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+namespace Json { struct Output; }
+
 // Compile-time logging control
 
 #ifndef REGAL_LOG_ERROR
@@ -145,6 +147,8 @@ namespace Logging
 {
   extern void Init();
   extern void Cleanup();
+
+  extern void writeJSON(Json::Output &jo);
 
   // GL_REGAL_log
 

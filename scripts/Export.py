@@ -13,6 +13,11 @@ from copy import deepcopy
 import os
 import re
 
+import sys
+scripts = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, scripts+'/api')
+sys.path.insert(0, scripts+'/regal')
+
 from ApiUtil import validVersion
 from ApiUtil import outputCode
 from ApiUtil import importAttr
@@ -21,10 +26,6 @@ from ApiUtil import toLong
 from ApiUtil import typeIsVoid
 
 from ApiCodeGen import *
-
-import sys
-scripts = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, scripts+'/regal')
 
 from Regal                import *
 from RegalEnum            import *

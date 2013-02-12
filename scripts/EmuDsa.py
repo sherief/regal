@@ -168,7 +168,7 @@ dsaFormulae = {
         ],
     },
     'BindTexture' : {
-        'entries' : [ 'glBindTexture' ],
+        'entries' : [ 'glBindTexture(EXT|)' ],
         'impl' : [
             'if( false == _context->dsa->ShadowTexture( ${arg0}, ${arg1} ) ) {',
             '    _context->dispatcher.emulation.glBindTexture( ${arg0}, ${arg1} );',
@@ -267,7 +267,7 @@ dsaFormulae = {
     },
 
     'BindFramebuffer' : {
-        'entries' : [ 'glBindFramebuffer' ],
+        'entries' : [ 'glBindFramebuffer(EXT|)' ],
         'impl' : [
             'if( false == _context->dsa->ShadowFramebuffer( ${arg0}, ${arg1} ) ) {',
             '    _context->dispatcher.emulation.glBindFramebuffer( ${arg0}, ${arg1} );',
@@ -343,7 +343,7 @@ dsaFormulae = {
         'prefix' : [  '_context->dsa->Restore( _context );' ],
     },
     'BindBuffer' : {
-        'entries' : [ 'glBindBuffer' ],
+        'entries' : [ 'glBindBuffer(ARB|)' ],
         'impl' : [
             'if( false == _context->dsa->ShadowBuffer( ${arg0}, ${arg1} ) ) {',
             '    _context->dispatcher.emulation.glBindBuffer( ${arg0}, ${arg1} );',

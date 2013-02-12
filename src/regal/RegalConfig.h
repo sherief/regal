@@ -42,9 +42,13 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+namespace Json { struct Output; }
+
 namespace Config
 {
   void Init();
+
+  extern void writeJSON(Json::Output &jo);
 
   extern bool forceCoreProfile;
   extern bool forceES2Profile;

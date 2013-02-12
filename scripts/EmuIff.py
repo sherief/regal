@@ -71,7 +71,7 @@ iffFormulae = {
     'ImmRestore' : {
         'entries' : [
             'glBindBuffer',
-            'gl(Enable|Disable)ClientState',
+#           'gl(Enable|Disable)ClientState',
             'glVertexAttribPointer(ARB|)',
 #           'gl(Vertex|Normal|Color|SecondaryColor|FogCoord|TexCoord)Pointer',
             'glGetVertexAttrib(d|f|i|Pointer)v(ARB|)',

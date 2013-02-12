@@ -2296,6 +2296,22 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
         return;
       }
       #endif
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
+            return _next->call(&_next->glDrawBuffer)(mode);
+        }
+      #endif
     case 1 :
     default:
     {
@@ -3562,6 +3578,51 @@ static void REGAL_CALL emu_glGetTexGeniv(GLenum coord, GLenum pname, GLint *para
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glGetTexGeniv)(coord, pname, params);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glGetTexImage for ES 2.0 - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetTexImage)(target, level, format, type, pixels);
       break;
     }
 
@@ -5557,9 +5618,36 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glPolygonMode)(face, mode);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glPolygonMode for ES 2.0 - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glPolygonMode)(face, mode);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glPopAttrib(void)
@@ -5767,6 +5855,53 @@ static void REGAL_CALL emu_glPushMatrix(void)
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glPushMatrix)();
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glReadBuffer(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
+            return _next->call(&_next->glReadBuffer)(mode);
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glReadBuffer)(mode);
       break;
     }
 
@@ -11500,9 +11635,37 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glDrawRangeElements)(mode, start, end, count, type, indices);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          return _next->call(&_next->glDrawElements)(mode, count, type, indices);
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDrawRangeElements)(mode, start, end, count, type, indices);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -11532,9 +11695,36 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexImage3D)(target, level, internalformat, width, height, depth, border, format, type, pixels);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glTexImage3D for ES 2.0 - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexImage3D)(target, level, internalformat, width, height, depth, border, format, type, pixels);
+      break;
+    }
+
+  }
+
 }
 
 // GL_VERSION_1_3
@@ -11714,10 +11904,9 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        #if !REGAL_FORCE_ES2_PROFILE
-        if (_context->info->gles)
-        #endif
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
         {
+          Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
           return;
         }
       #endif
@@ -19664,6 +19853,51 @@ static void REGAL_CALL emu_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum ty
 
 // GL_ANGLE_framebuffer_blit
 
+static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glBlitFramebufferANGLE for ES 2.0 - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBlitFramebufferANGLE)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+      break;
+    }
+
+  }
+
+}
+
 // GL_ANGLE_framebuffer_multisample
 
 // GL_ANGLE_instanced_arrays
@@ -20014,6 +20248,53 @@ static void REGAL_CALL emu_glCopyBufferSubData(GLenum readtarget, GLenum writeta
 
 // GL_ARB_draw_buffers
 
+static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+      #if REGAL_EMU_PPA
+      if (_context->ppa) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+      #if REGAL_EMU_PPA
+      if (_context->ppa)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 8;
+        if( ! _context->info->core && !_context->info->gles ) {
+          _context->dispatcher.emulation.glDrawBuffers( n, bufs );
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDrawBuffersARB)(n, bufs);
+      break;
+    }
+
+  }
+
+}
+
 // GL_ARB_draw_buffers_blend
 
 // GL_ARB_draw_elements_base_vertex
@@ -20165,9 +20446,45 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glDrawRangeElementsBaseVertex)(mode, start, end, count, type, indices, basevertex);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)
+        {
+          if (basevertex==0)
+          {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            return _next->call(&_next->glDrawElements)(mode, count, type, indices);
+          }
+          else
+          {
+            Warning("Regal does not support glDrawRangeElementsBaseVertex (GL_ARB_draw_elements_base_vertex extension not available) for basevertex!=0 for ES 2.0 - skipping.");
+            return;
+          }
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDrawRangeElementsBaseVertex)(mode, start, end, count, type, indices, basevertex);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glMultiDrawElementsBaseVertex(GLenum mode, GLsizei *count, GLenum type, GLvoid **indices, GLsizei primcount, GLint *basevertex)
@@ -20513,12 +20830,70 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
         return;
       }
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
+          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+        }
+      #endif
     case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glBindFramebuffer)(target, framebuffer);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          if ( _context->info->gl_nv_framebuffer_blit ) return _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if ( _context->info->gl_ext_framebuffer_blit ) return _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBlitFramebuffer)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
       break;
     }
 
@@ -21655,7 +22030,13 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc) break;
+      #endif
     default:
       break;
   }
@@ -21680,7 +22061,20 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->texc->ShadowActiveTexture( texture );
+        _context->dispatcher.emulation.glActiveTexture( texture );
+        return;
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -21890,6 +22284,15 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
         _context->so->GenSamplers( count, samplers );
         return;
       }
+      #endif
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glGenSamplers for ES 2.0 - skipping.");
+          return;
+        }
       #endif
     case 1 :
     default:
@@ -22544,6 +22947,337 @@ static void REGAL_CALL emu_glSamplerParameteriv(GLuint sampler, GLenum pname, co
 // GL_ARB_shader_image_load_store
 
 // GL_ARB_shader_objects
+
+static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          _next->call(&_next->glAttachShader)(containerObj, obj);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glAttachObjectARB)(containerObj, obj);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          _next->call(&_next->glCompileShader)(shaderObj);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glCompileShaderARB)(shaderObj);
+      break;
+    }
+
+  }
+
+}
+
+static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          return _next->call(&_next->glCreateProgram)();
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glCreateProgramObjectARB)();
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          if (_next->call(&_next->glIsProgram)(obj))
+            _next->call(&_next->glGetProgramInfoLog)(obj, maxLength, length, infoLog);
+          else
+            _next->call(&_next->glGetShaderInfoLog)(obj, maxLength, length, infoLog);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetInfoLogARB)(obj, maxLength, length, infoLog);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          if (_next->call(&_next->glIsProgram)(obj))
+            _next->call(&_next->glGetProgramiv)(obj, pname, params);
+          else
+            _next->call(&_next->glGetShaderiv)(obj, pname, params);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetObjectParameterivARB)(obj, pname, params);
+      break;
+    }
+
+  }
+
+}
+
+static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          return _next->call(&_next->glGetUniformLocation)(programObj, name);
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glGetUniformLocationARB)(programObj, name);
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          _next->call(&_next->glUniform1i)(location, v0);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glUniform1iARB)(location, v0);
+      break;
+    }
+
+  }
+
+}
 
 // GL_ARB_shader_storage_buffer_object
 
@@ -23252,6 +23986,9 @@ static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
     case 8 :
     case 7 :
     case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa) break;
+      #endif
     case 5 :
     case 4 :
     case 3 :
@@ -23281,12 +24018,74 @@ static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
         return;
       }
       #endif
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 5;
+        if( false == _context->dsa->ShadowBuffer( target, buffer ) ) {
+            _context->dispatcher.emulation.glBindBuffer( target, buffer );
+        }
+        return;
+      }
+      #endif
     case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glBindBufferARB)(target, buffer);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          _next->call(&_next->glBufferData)(target, size, data, usage);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBufferDataARB)(target, size, data, usage);
       break;
     }
 
@@ -23447,9 +24246,36 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  return _next->call(& _next->glMapBufferARB)(target, access);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          return _next->call(&_next->glMapBufferOES)(target, access);
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glMapBufferARB)(target, access);
+    }
+
+  }
+
 }
 
 static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
@@ -23524,6 +24350,17 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
         }
         return;
       }
+      #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glBindProgramARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
+          return;
+        }
       #endif
     case 1 :
     default:
@@ -23668,6 +24505,51 @@ static void REGAL_CALL emu_glEnableVertexAttribArrayARB(GLuint index)
 
 }
 
+static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glGenProgramsARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGenProgramsARB)(n, programs);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -23790,6 +24672,51 @@ static void REGAL_CALL emu_glGetProgramLocalParameterfvARB(GLenum target, GLuint
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glGetProgramLocalParameterfvARB)(target, index, params);
+}
+
+static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glGetProgramivARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetProgramivARB)(target, pname, params);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glGetVertexAttribPointervARB(GLuint index, GLenum pname, GLvoid **pointer)
@@ -24300,6 +25227,51 @@ static void REGAL_CALL emu_glProgramLocalParameter4fvARB(GLenum target, GLuint i
   _next->call(& _next->glProgramLocalParameter4fvARB)(target, index, params);
 }
 
+static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const GLvoid *string)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glProgramStringARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glProgramStringARB)(target, format, len, string);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -24365,6 +25337,53 @@ static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GL
 }
 
 // GL_ARB_vertex_shader
+
+static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        {
+          DispatchTable *_next = _context->dispatcher.emulation._next;
+          RegalAssert(_next);
+          _next->call(&_next->glBindAttribLocation)(programObj, index, name);
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBindAttribLocationARB)(programObj, index, name);
+      break;
+    }
+
+  }
+
+}
 
 // GL_ARB_vertex_type_2_10_10_10_rev
 
@@ -36478,6 +37497,55 @@ static void REGAL_CALL emu_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buf
 
 // GL_EXT_draw_buffers2
 
+static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+        {
+          if (!buf)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            _next->call(&_next->glColorMask)(r, g, b, a);
+          }
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glColorMaskIndexedEXT)(buf, r, g, b, a);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -36530,6 +37598,20 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
         _context->iff->DisableIndexed( target, index );
         return;
       }
+      #endif
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
+        {
+          if (!index)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            _next->call(&_next->glDisable)(target);
+          }
+          return;
+        }
       #endif
     case 1 :
     default:
@@ -36597,12 +37679,124 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
+        {
+          if (!index)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            _next->call(&_next->glEnable)(target);
+          }
+          return;
+        }
+      #endif
     case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glEnableIndexedEXT)(target, index);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, GLboolean *data)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+        {
+          if (!index)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            _next->call(&_next->glGetBooleanv)(value,data);
+          }
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetBooleanIndexedvEXT)(value, index, data);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, GLint *data)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+        {
+          if (!index)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            _next->call(&_next->glGetIntegerv)(value,data);
+          }
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetIntegerIndexedvEXT)(value, index, data);
       break;
     }
 
@@ -36648,6 +37842,21 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
         ret = _context->dsa->IsEnabledIndexed( _context, target, index );
         return ret;
       }
+      #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
+        {
+          if (!index)  {
+            DispatchTable *_next = _context->dispatcher.emulation._next;
+            RegalAssert(_next);
+            return _next->call(&_next->glIsEnabled)(target);
+          }
+          return GL_FALSE;
+        }
       #endif
     case 1 :
     default:
@@ -36819,9 +38028,111 @@ static void REGAL_CALL emu_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLu
 
 // GL_EXT_fog_coord
 
+static void REGAL_CALL emu_glFogCoordPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->FogCoordPointer( _context, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glFogCoordPointerEXT)(type, stride, pointer);
+      break;
+    }
+
+  }
+
+}
+
 // GL_EXT_fragment_lighting
 
 // GL_EXT_framebuffer_blit
+
+static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          Warning("Regal does not support glBlitFramebufferEXT for ES 2.0 - skipping.");
+          return;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+      break;
+    }
+
+  }
+
+}
 
 // GL_EXT_framebuffer_multisample
 
@@ -36857,6 +38168,70 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleEXT(GLenum target, GL
 }
 
 // GL_EXT_framebuffer_object
+
+static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 5;
+        if( false == _context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
+            _context->dispatcher.emulation.glBindFramebuffer( target, framebuffer );
+        }
+        return;
+      }
+      #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
+          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBindFramebufferEXT)(target, framebuffer);
+      break;
+    }
+
+  }
+
+}
 
 static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
@@ -37004,14 +38379,51 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
         _context->dsa->RestoreActiveTexture( _context );
       }
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc) break;
+      #endif
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glGenerateMipmapEXT)(target);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->texc->ShadowGenerateMipmap( target );
+        _context->dispatcher.emulation.glGenerateMipmap( target );
+        return;
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGenerateMipmapEXT)(target);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
@@ -38177,6 +39589,63 @@ static void REGAL_CALL emu_glSecondaryColor3usvEXT(const GLushort *v)
 
 }
 
+static void REGAL_CALL emu_glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->SecondaryColorPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glSecondaryColorPointerEXT)(size, type, stride, pointer);
+      break;
+    }
+
+  }
+
+}
+
 // GL_EXT_separate_shader_objects
 
 // GL_EXT_shader_image_load_store
@@ -38389,6 +39858,9 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
     case 8 :
     case 7 :
     case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa) break;
+      #endif
     case 5 :
       #if REGAL_EMU_IFF
       if (_context->iff)
@@ -38398,14 +39870,181 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
         _context->iff->ShadowTexBinding( target, texture );
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc) break;
+      #endif
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glBindTextureEXT)(target, texture);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 5;
+        if( false == _context->dsa->ShadowTexture( target, texture ) ) {
+            _context->dispatcher.emulation.glBindTexture( target, texture );
+        }
+        return;
+      }
+      #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->texc->ShadowBindTexture( target, texture );
+        _context->dispatcher.emulation.glBindTexture( target, texture );
+        return;
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBindTextureEXT)(target, texture);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glDeleteTexturesEXT(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->texc->ShadowDeleteTextures( n, textures );
+        _context->dispatcher.emulation.glDeleteTextures( n, textures );
+        return;
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDeleteTexturesEXT)(n, textures);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->dispatcher.emulation.glGenTextures( n, textures );
+        _context->texc->ShadowGenTextures( n, textures );
+        return;
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGenTexturesEXT)(n, textures);
+      break;
+    }
+
+  }
+
 }
 
 // GL_EXT_texture_perturb_normal
@@ -38417,6 +40056,63 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
 // GL_EXT_transform_feedback
 
 // GL_EXT_vertex_array
+
+static void REGAL_CALL emu_glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->ColorPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glColorPointerEXT)(size, type, stride, count, pointer);
+      break;
+    }
+
+  }
+
+}
 
 static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
 {
@@ -38475,6 +40171,177 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glDrawArraysEXT)(mode, first, count);
+}
+
+static void REGAL_CALL emu_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->NormalPointer( _context, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glNormalPointerEXT)(type, stride, count, pointer);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->TexCoordPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexCoordPointerEXT)(size, type, stride, count, pointer);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->VertexPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexPointerEXT)(size, type, stride, count, pointer);
+      break;
+    }
+
+  }
+
 }
 
 // GL_EXT_vertex_attrib_64bit
@@ -39218,6 +41085,51 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 
 // GL_OES_framebuffer_object
 
+static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_FILTER
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        {
+          const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
+          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+        }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBindFramebufferOES)(target, framebuffer);
+      break;
+    }
+
+  }
+
+}
+
 // GL_OES_get_program_binary
 
 // GL_OES_mapbuffer
@@ -39440,6 +41352,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glGetTexGendv = emu_glGetTexGendv;
    tbl.glGetTexGenfv = emu_glGetTexGenfv;
    tbl.glGetTexGeniv = emu_glGetTexGeniv;
+   tbl.glGetTexImage = emu_glGetTexImage;
    tbl.glGetTexParameterfv = emu_glGetTexParameterfv;
    tbl.glGetTexParameteriv = emu_glGetTexParameteriv;
    tbl.glHint = emu_glHint;
@@ -39480,6 +41393,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glPopMatrix = emu_glPopMatrix;
    tbl.glPushAttrib = emu_glPushAttrib;
    tbl.glPushMatrix = emu_glPushMatrix;
+   tbl.glReadBuffer = emu_glReadBuffer;
    tbl.glRotated = emu_glRotated;
    tbl.glRotatef = emu_glRotatef;
    tbl.glScaled = emu_glScaled;
@@ -39786,6 +41700,10 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glMultiDrawArraysIndirectAMD = emu_glMultiDrawArraysIndirectAMD;
    tbl.glMultiDrawElementsIndirectAMD = emu_glMultiDrawElementsIndirectAMD;
 
+// GL_ANGLE_framebuffer_blit
+
+   tbl.glBlitFramebufferANGLE = emu_glBlitFramebufferANGLE;
+
 // GL_APPLE_element_array
 
    tbl.glDrawElementArrayAPPLE = emu_glDrawElementArrayAPPLE;
@@ -39804,6 +41722,10 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_ARB_copy_buffer
 
    tbl.glCopyBufferSubData = emu_glCopyBufferSubData;
+
+// GL_ARB_draw_buffers
+
+   tbl.glDrawBuffersARB = emu_glDrawBuffersARB;
 
 // GL_ARB_draw_elements_base_vertex
 
@@ -39825,6 +41747,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_ARB_framebuffer_object
 
    tbl.glBindFramebuffer = emu_glBindFramebuffer;
+   tbl.glBlitFramebuffer = emu_glBlitFramebuffer;
    tbl.glFramebufferRenderbuffer = emu_glFramebufferRenderbuffer;
    tbl.glFramebufferTexture1D = emu_glFramebufferTexture1D;
    tbl.glFramebufferTexture2D = emu_glFramebufferTexture2D;
@@ -39892,6 +41815,16 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glSamplerParameteri = emu_glSamplerParameteri;
    tbl.glSamplerParameteriv = emu_glSamplerParameteriv;
 
+// GL_ARB_shader_objects
+
+   tbl.glAttachObjectARB = emu_glAttachObjectARB;
+   tbl.glCompileShaderARB = emu_glCompileShaderARB;
+   tbl.glCreateProgramObjectARB = emu_glCreateProgramObjectARB;
+   tbl.glGetInfoLogARB = emu_glGetInfoLogARB;
+   tbl.glGetObjectParameterivARB = emu_glGetObjectParameterivARB;
+   tbl.glGetUniformLocationARB = emu_glGetUniformLocationARB;
+   tbl.glUniform1iARB = emu_glUniform1iARB;
+
 // GL_ARB_sync
 
    tbl.glGetInteger64v = emu_glGetInteger64v;
@@ -39920,6 +41853,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_ARB_vertex_buffer_object
 
    tbl.glBindBufferARB = emu_glBindBufferARB;
+   tbl.glBufferDataARB = emu_glBufferDataARB;
    tbl.glDeleteBuffersARB = emu_glDeleteBuffersARB;
    tbl.glGenBuffersARB = emu_glGenBuffersARB;
    tbl.glIsBufferARB = emu_glIsBufferARB;
@@ -39931,10 +41865,12 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glBindProgramARB = emu_glBindProgramARB;
    tbl.glDisableVertexAttribArrayARB = emu_glDisableVertexAttribArrayARB;
    tbl.glEnableVertexAttribArrayARB = emu_glEnableVertexAttribArrayARB;
+   tbl.glGenProgramsARB = emu_glGenProgramsARB;
    tbl.glGetProgramEnvParameterdvARB = emu_glGetProgramEnvParameterdvARB;
    tbl.glGetProgramEnvParameterfvARB = emu_glGetProgramEnvParameterfvARB;
    tbl.glGetProgramLocalParameterdvARB = emu_glGetProgramLocalParameterdvARB;
    tbl.glGetProgramLocalParameterfvARB = emu_glGetProgramLocalParameterfvARB;
+   tbl.glGetProgramivARB = emu_glGetProgramivARB;
    tbl.glGetVertexAttribPointervARB = emu_glGetVertexAttribPointervARB;
    tbl.glGetVertexAttribdvARB = emu_glGetVertexAttribdvARB;
    tbl.glGetVertexAttribfvARB = emu_glGetVertexAttribfvARB;
@@ -39947,7 +41883,12 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glProgramLocalParameter4dvARB = emu_glProgramLocalParameter4dvARB;
    tbl.glProgramLocalParameter4fARB = emu_glProgramLocalParameter4fARB;
    tbl.glProgramLocalParameter4fvARB = emu_glProgramLocalParameter4fvARB;
+   tbl.glProgramStringARB = emu_glProgramStringARB;
    tbl.glVertexAttribPointerARB = emu_glVertexAttribPointerARB;
+
+// GL_ARB_vertex_shader
+
+   tbl.glBindAttribLocationARB = emu_glBindAttribLocationARB;
 
 // GL_ARB_viewport_array
 
@@ -40189,8 +42130,11 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
 // GL_EXT_draw_buffers2
 
+   tbl.glColorMaskIndexedEXT = emu_glColorMaskIndexedEXT;
    tbl.glDisableIndexedEXT = emu_glDisableIndexedEXT;
    tbl.glEnableIndexedEXT = emu_glEnableIndexedEXT;
+   tbl.glGetBooleanIndexedvEXT = emu_glGetBooleanIndexedvEXT;
+   tbl.glGetIntegerIndexedvEXT = emu_glGetIntegerIndexedvEXT;
    tbl.glIsEnabledIndexedEXT = emu_glIsEnabledIndexedEXT;
 
 // GL_EXT_draw_instanced
@@ -40202,12 +42146,21 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glDrawRangeElementsEXT = emu_glDrawRangeElementsEXT;
 
+// GL_EXT_fog_coord
+
+   tbl.glFogCoordPointerEXT = emu_glFogCoordPointerEXT;
+
+// GL_EXT_framebuffer_blit
+
+   tbl.glBlitFramebufferEXT = emu_glBlitFramebufferEXT;
+
 // GL_EXT_framebuffer_multisample
 
    tbl.glRenderbufferStorageMultisampleEXT = emu_glRenderbufferStorageMultisampleEXT;
 
 // GL_EXT_framebuffer_object
 
+   tbl.glBindFramebufferEXT = emu_glBindFramebufferEXT;
    tbl.glFramebufferRenderbufferEXT = emu_glFramebufferRenderbufferEXT;
    tbl.glFramebufferTexture1DEXT = emu_glFramebufferTexture1DEXT;
    tbl.glFramebufferTexture2DEXT = emu_glFramebufferTexture2DEXT;
@@ -40248,6 +42201,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glSecondaryColor3uivEXT = emu_glSecondaryColor3uivEXT;
    tbl.glSecondaryColor3usEXT = emu_glSecondaryColor3usEXT;
    tbl.glSecondaryColor3usvEXT = emu_glSecondaryColor3usvEXT;
+   tbl.glSecondaryColorPointerEXT = emu_glSecondaryColorPointerEXT;
 
 // GL_EXT_texture3D
 
@@ -40265,10 +42219,16 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 // GL_EXT_texture_object
 
    tbl.glBindTextureEXT = emu_glBindTextureEXT;
+   tbl.glDeleteTexturesEXT = emu_glDeleteTexturesEXT;
+   tbl.glGenTexturesEXT = emu_glGenTexturesEXT;
 
 // GL_EXT_vertex_array
 
+   tbl.glColorPointerEXT = emu_glColorPointerEXT;
    tbl.glDrawArraysEXT = emu_glDrawArraysEXT;
+   tbl.glNormalPointerEXT = emu_glNormalPointerEXT;
+   tbl.glTexCoordPointerEXT = emu_glTexCoordPointerEXT;
+   tbl.glVertexPointerEXT = emu_glVertexPointerEXT;
 
 // GL_NV_explicit_multisample
 
@@ -40301,6 +42261,10 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glTexImage2DMultisampleCoverageNV = emu_glTexImage2DMultisampleCoverageNV;
    tbl.glTexImage3DMultisampleCoverageNV = emu_glTexImage3DMultisampleCoverageNV;
+
+// GL_OES_framebuffer_object
+
+   tbl.glBindFramebufferOES = emu_glBindFramebufferOES;
 
 // GL_OES_vertex_array_object
 

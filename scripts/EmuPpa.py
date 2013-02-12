@@ -38,7 +38,7 @@ ppaFormulae = {
     'prefix'     : [ '_context->ppa->${m1}( ${arg0plus} );', ],
   },
   'TrackDrawBuffer' : {
-    'entries'    : [ 'glDrawBuffer(s|)' ],
+    'entries'    : [ 'glDrawBuffer(s|)(ARB|)' ],
     'impl'    : [
       'if( ! _context->info->core && !_context->info->gles ) {',
       '  _context->dispatcher.emulation.glDrawBuffer${m1}( ${arg0plus} );',

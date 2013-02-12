@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from copy import deepcopy
+
 def cmpCategory(a,b):
   if a[0].category.startswith('GL_VERSION') and b[0].category.startswith('GL_VERSION'): return cmp(a[0].category,b[0].category)
   if a[0].category.startswith('GL_VERSION'):                                            return -1
@@ -14,6 +16,7 @@ from Api import Api
 from Api import Function, Typedef, Enum
 from Api import Return, Parameter, Input, Output, InputOutput
 from Api import Enumerant
+from Api import Extension
 from Api import StateType, State'''
 
   print >>file, '''
@@ -95,6 +98,8 @@ defines = Enum('defines')
       else:
         print >>file, '0x%04x,'%(value),
       print >>file, '\'%s\')'%(j.category)
+#      if len(j.extension):
+#        print >>file, '%s.extension = \'%s\''%(j.name,j.extension)
       if getattr(j,'esVersions',None) != None:
         print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
       if getattr(j,'enableCap',None) != None:
@@ -161,6 +166,8 @@ def writeFunctions(file,name,functions):
         print >>file, '))'
       print >>file, '%s.version = \'%s\''%(j.name,j.version)
       print >>file, '%s.category = \'%s\''%(j.name,j.category)
+#      if len(j.extension):
+#        print >>file, '%s.extension = \'%s\''%(j.name,j.extension)
 #      if getattr(j,'gles',None) != None:
 #        print >>file, '%s.gles = \'%s\''%(j.name,j.gles)
       if getattr(j,'esVersions',None) != None:
@@ -180,6 +187,24 @@ def writeFunctions(file,name,functions):
         print >>file, '%s.play = %s'%(j.name,j.play)
       print >>file, '%s.add(%s)'%(name,j.name)
       print >>file, ''
+
+# Write out extensions container
+
+def writeExtensions(file,name,extensions):
+
+  f = deepcopy(extensions)
+  f = sorted(f,key = lambda k : k.name)
+
+  for i in f:
+    print >>file, '%s = Extension(\'%s\')'%(i.name,i.name)
+    if len(i.url):
+      print >>file, '%s.url = \'%s\''%(i.name,i.url)
+    if len(i.enumerants):
+      print >>file, '%s.enumerants = [\'%s\']'%(i.name,'\',\''.join(i.enumerants))
+    if len(i.functions):
+      print >>file, '%s.functions = [\'%s\']'%(i.name,'\',\''.join(i.functions))
+    print >>file, '%s.add(%s)'%(name,i.name)
+    print >>file, ''
 
 # Write out state values
 

@@ -30,7 +30,7 @@ ppcaFormulae = {
   },
 
   'ShadowVertexAttribPointer' : {
-    'entries'  : [ 'glVertex(|I|L)Pointer' ],
+    'entries'  : [ 'glVertex(I|L)Pointer' ],
     'prefix'   : [ '_context->ppca->ShadowVertexAttrib${m1}Pointer( ${arg0plus} );', ],
   },
 
