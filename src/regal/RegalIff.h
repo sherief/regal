@@ -810,7 +810,7 @@ struct Iff
     if (immCurrent>0) {  // Do nothing for empty buffer
       DispatchTable &tbl = ctx->dispatcher.emulation;
       tbl.glBufferData( GL_ARRAY_BUFFER, immCurrent * sizeof( Attributes ), immArray, GL_DYNAMIC_DRAW );
-      if( ( ctx->info->core == true || ctx->info->gles ) && immPrim == GL_QUADS ) {
+      if( ( ctx->info->core == true || ctx->info->es2 ) && immPrim == GL_QUADS ) {
         tbl.glDrawElements( GL_TRIANGLES, immCurrent * 3 / 2, GL_UNSIGNED_SHORT, 0 );
       } else {
         tbl.glDrawArrays( immPrim, 0, immCurrent );
@@ -1583,7 +1583,7 @@ struct Iff
   GLuint currVao;
   std::map<GLuint, GLuint> vaoAttrMap;
 
-  bool gles;
+  bool gles;   // what about ES1?
   bool legacy; // 2.x mac
 
   void InitFixedFunction( RegalContext * ctx );

@@ -54,12 +54,12 @@ TEST( RegalPpa, Enable ) {
 
   RegalContext ctx;
   ctx.info = new ContextInfo();
-  ctx.info->gles = true;
+  ctx.info->es2 = true;
 
   EXPECT_TRUE ( ppa.Enable( &ctx, GL_POINT_SMOOTH ) );
   EXPECT_TRUE ( ppa.Enable( &ctx, GL_LINE_STIPPLE ) );
 
-  ctx.info->gles = ctx.info->core = false;
+  ctx.info->es2 = ctx.info->core = false;
 
   EXPECT_FALSE ( ppa.Enable( &ctx, GL_POINT_SMOOTH ) );
   EXPECT_FALSE ( ppa.Enable( &ctx, GL_LINE_STIPPLE ) );
@@ -88,7 +88,7 @@ TEST( RegalPpa, PushPopAttrib ) {
 
   RegalContext ctx;
   ctx.info = new ContextInfo();
-  ctx.info->gles = ctx.info->core = false;
+  ctx.info->es2 = ctx.info->core = false;
   InitDispatchTableMissing( ctx.dispatcher.emulation );
   InitDispatchTableGMock( ctx.dispatcher.emulation );
 

@@ -216,7 +216,7 @@ static void REGAL_CALL emu_glClearDepth(GLclampd depth)
 
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
-  if (_context->info->gles)
+  if (_context->info->es2)
     _next->call(& _next->glClearDepthf)((GLclampf)depth);
    else
      _next->call(& _next->glClearDepth)(depth);
@@ -2151,7 +2151,7 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
 
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
-  if (_context->info->gles)
+  if (_context->info->es2)
     _next->call(& _next->glDepthRangef)((GLclampf)zNear,(GLclampf)zFar);
    else
      _next->call(& _next->glDepthRange)(zNear, zFar);
@@ -2233,7 +2233,7 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (cap)
          {
@@ -2290,7 +2290,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->gles ) {
+        if( ! _context->info->core && !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffer( mode );
         }
         return;
@@ -2304,7 +2304,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -2401,7 +2401,7 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (cap)
          {
@@ -3611,7 +3611,7 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glGetTexImage for ES 2.0 - skipping.");
           return;
@@ -3793,7 +3793,7 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (target)
          {
@@ -3869,7 +3869,7 @@ static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (cap)
          {
@@ -5631,7 +5631,7 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glPolygonMode for ES 2.0 - skipping.");
           return;
@@ -5888,7 +5888,7 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -10415,7 +10415,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (target)
          {
@@ -11498,7 +11498,7 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
-       if (_context->info->gles)
+       if (_context->info->es2)
        #endif
          switch (target)
          {
@@ -11648,7 +11648,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -11708,7 +11708,7 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glTexImage3D for ES 2.0 - skipping.");
           return;
@@ -11904,7 +11904,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
           return;
@@ -15595,7 +15595,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->gles ) {
+        if( ! _context->info->core && !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffers( n, bufs );
         }
         return;
@@ -19879,7 +19879,7 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glBlitFramebufferANGLE for ES 2.0 - skipping.");
           return;
@@ -20276,7 +20276,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->gles ) {
+        if( ! _context->info->core && !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffers( n, bufs );
         }
         return;
@@ -20835,7 +20835,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
           if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
@@ -20880,7 +20880,7 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -22288,7 +22288,7 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glGenSamplers for ES 2.0 - skipping.");
           return;
@@ -22974,7 +22974,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23021,7 +23021,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23068,7 +23068,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23113,7 +23113,7 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23163,7 +23163,7 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23213,7 +23213,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -23258,7 +23258,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -24072,7 +24072,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -24259,7 +24259,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -24356,7 +24356,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glBindProgramARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
@@ -24531,7 +24531,7 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glGenProgramsARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
@@ -24700,7 +24700,7 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glGetProgramivARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
@@ -25253,7 +25253,7 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glProgramStringARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
@@ -25364,7 +25364,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
@@ -38115,7 +38115,7 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           Warning("Regal does not support glBlitFramebufferEXT for ES 2.0 - skipping.");
           return;
@@ -38214,7 +38214,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
           if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
@@ -41111,7 +41111,7 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
       #if REGAL_EMU_FILTER
-        if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)
+        if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
           if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;

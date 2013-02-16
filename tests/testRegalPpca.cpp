@@ -1890,7 +1890,7 @@ TEST ( RegalPpca, ClientAttribStackGeneral ) {
   RegalContext ctx;
   ctx.info = new ContextInfo();
   ctx.info->core = false;
-  ctx.info->gles = false;
+  ctx.info->es2 = false;
   InitDispatchTableGMock( ctx.dispatcher.emulation );
 
   const GLbitfield remainder = ~( GL_CLIENT_PIXEL_STORE_BIT | GL_CLIENT_VERTEX_ARRAY_BIT );
@@ -1933,10 +1933,10 @@ TEST ( RegalPpca, ClientAttribStackGeneral ) {
   EXPECT_EQ( 3u, ppca.pixelStoreStateStack_.size() );
   EXPECT_EQ( 3u, ppca.vertexArrayStateStack_.size() );
 
-  ctx.info->gles = true;
+  ctx.info->es2 = true;
   ppca.PushClientAttrib( &ctx, GL_CLIENT_ALL_ATTRIB_BITS );
   ppca.PopClientAttrib( &ctx );
-  ctx.info->gles = false;
+  ctx.info->es2 = false;
   Mock::VerifyAndClear( &mock );
 
   EXPECT_CALL( mock, glPopClientAttrib() );
@@ -1980,7 +1980,7 @@ TEST ( RegalPpca, Get ) {
 
   RegalContext ctx;
   ctx.info = new ContextInfo();
-  ctx.info->gles = true;
+  ctx.info->es2 = true;
 
   GLint resulti[ 1 ] = { 123 };
   GLint64 resulti64[ 1 ] = { 123 };
@@ -2025,7 +2025,7 @@ TEST ( RegalPpca, Get ) {
   // If the backend appears to be compatible with the request, the emulation
   // should just defer to the backend.
 
-  ctx.info->gles = ctx.info->core = false;
+  ctx.info->es2 = ctx.info->core = false;
   EXPECT_FALSE( ppca.Get( &ctx, GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, resulti ) );
 }
 

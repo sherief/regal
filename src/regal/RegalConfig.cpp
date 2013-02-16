@@ -53,6 +53,9 @@ namespace Config {
 
   bool forceCoreProfile = REGAL_FORCE_CORE_PROFILE;
   bool forceES2Profile  = REGAL_FORCE_ES2_PROFILE;
+  bool sysES1           = REGAL_SYS_ES1;
+  bool sysES2           = REGAL_SYS_ES2;
+  bool sysGL            = REGAL_SYS_GL;
   bool sysGLX           = REGAL_SYS_GLX;
   bool sysEGL           = REGAL_SYS_EGL && !REGAL_SYS_GLX;
   bool forceEmulation   = REGAL_FORCE_EMULATION;
@@ -304,6 +307,18 @@ namespace Config {
     Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
     Info("REGAL_FORCE_ES2_PROFILE  ", forceES2Profile  ? "enabled" : "disabled");
 
+#if REGAL_SYS_ES1
+    Info("REGAL_SYS_ES1            ", sysES1           ? "enabled" : "disabled");
+#endif
+
+#if REGAL_SYS_ES2
+    Info("REGAL_SYS_ES2            ", sysES2           ? "enabled" : "disabled");
+#endif
+
+#if REGAL_SYS_GL
+    Info("REGAL_SYS_GL             ", sysGL            ? "enabled" : "disabled");
+#endif
+
 #if REGAL_SYS_GLX
     Info("REGAL_SYS_GLX            ", sysGLX           ? "enabled" : "disabled");
 #endif
@@ -351,6 +366,9 @@ namespace Config {
     jo.member("forceES2Profile",  forceES2Profile);
 
     jo.object("system");
+    jo.member("ES1", sysES1);
+    jo.member("ES2", sysES2);
+    jo.member("GL",  sysGL);
     jo.member("GLX", sysGLX);
     jo.member("EGL", sysEGL);
     jo.end();

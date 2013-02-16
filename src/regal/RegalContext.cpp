@@ -143,7 +143,7 @@ RegalContext::Init()
       Config::enableEmulation &&
       (
         info->core ||
-        info->gles ||
+        info->es2  ||
         ( info->compat && !info->gl_ext_direct_state_access )
       )
     )

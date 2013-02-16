@@ -728,18 +728,18 @@ void Ppca::Init( RegalContext& ctx )
 
   RegalAssert( ctx.dispatcher.driver.glGetIntegerv );
 
-  if ( !ctx.info->gles ) {
+  if ( !ctx.info->es2 ) {
     ctx.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET, reinterpret_cast<GLint *>( &maxVertexAttribRelativeOffset ) );
   }
-  if ( !ctx.info->gles && !ctx.info->core ) {
+  if ( !ctx.info->es2 && !ctx.info->core ) {
     ctx.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, reinterpret_cast<GLint *>( &maxVertexTextureImageUnits ) );
   }
   maxVertexAttribs = 0;
   ctx.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>( &maxVertexAttribs ) );
-  if ( !ctx.info->gles ) {
+  if ( !ctx.info->es2 ) {
     ctx.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIB_BINDINGS, reinterpret_cast<GLint *>( &maxVertexAttribBindings ) );
   }
-  if ( !ctx.info->gles && !ctx.info->core ) {
+  if ( !ctx.info->es2 && !ctx.info->core ) {
     ctx.dispatcher.driver.glGetIntegerv( GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>( &maxClientAttribStackDepth ) );
   }
 
@@ -1675,7 +1675,7 @@ void Ppca::ClientAttribDefaultDSA( RegalContext* ctx, GLbitfield mask ) {
     mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
   }
 
-  if ( ctx->info->core || ctx->info->gles )
+  if ( ctx->info->core || ctx->info->es2 )
     return;
 
   if ( mask )
@@ -2283,7 +2283,7 @@ void Ppca::PushClientAttrib( RegalContext* ctx, GLbitfield mask ) {
     mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
   }
 
-  if ( ctx->info->core || ctx->info->gles )
+  if ( ctx->info->core || ctx->info->es2 )
     return;
 
   if ( mask )
@@ -2314,7 +2314,7 @@ void Ppca::PopClientAttrib( RegalContext* ctx ) {
     mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
   }
 
-  if ( ctx->info->core || ctx->info->gles )
+  if ( ctx->info->core || ctx->info->es2 )
     return;
 
   if ( mask )
@@ -2327,7 +2327,7 @@ template <typename T>
 bool GetImpl( const Ppca& ppca, RegalContext* ctx, GLenum pname, T *params ) {
   RegalAssert( ctx );
 
-  if ( ctx->info->core || ctx->info->gles )
+  if ( ctx->info->core || ctx->info->es2 )
   {
     switch ( pname )
     {

@@ -106,7 +106,7 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
 
     RegalAssert(ctx);
 
-    if (ctx->info->core || ctx->info->gles)
+    if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
       return;
 
     if (mask)
@@ -186,7 +186,7 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
 
       // Pass the rest through, for now
 
-      if (ctx->info->core || ctx->info->gles)
+      if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
         return;
 
       if (mask)
@@ -198,7 +198,7 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
   {
     RegalAssert(ctx);
 
-    if (ctx->info->core || ctx->info->gles)
+    if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
     {
       switch (pname)
       {
@@ -250,7 +250,7 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
       default:                                                                 break;
     }
 
-    if (ctx->info->core || ctx->info->gles)
+    if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
     {
       switch( cap )
       {

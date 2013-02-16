@@ -143,8 +143,8 @@ ContextInfo::init(const RegalContext &context)
 
   // Detect GL context version
 
-  gles = starts_with(version,"OpenGL ES ");
-  if (gles)
+  es2 = starts_with(version,"OpenGL ES ");
+  if (es2)
     sscanf(version.c_str(), "OpenGL ES %d.%d", &gles_version_major, &gles_version_minor);
   else
     sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
@@ -154,14 +154,15 @@ ContextInfo::init(const RegalContext &context)
 
   if (REGAL_SYS_EGL && Regal::Config::sysEGL)
   {
-    gles = true;
+    es1 = false;
+    es2 = true;
     gles_version_major = 2;
     gl_version_minor = 0;
   }
 
   // Detect core context
 
-  if (!gles && gl_version_major>=3)
+  if (!es1 && !es2 && gl_version_major>=3)
   {
     GLint flags = 0;
     RegalAssert(context.dispatcher.driver.glGetIntegerv);
@@ -169,20 +170,22 @@ ContextInfo::init(const RegalContext &context)
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
-  compat = !core && !gles;
+  compat = !core && !es1 && !es2;
 
   if (REGAL_FORCE_CORE_PROFILE || Config::forceCoreProfile)
   {
     compat = false;
     core   = true;
-    gles   = false;
+    es1    = false;
+    es2    = false;
   }
 
   if (REGAL_FORCE_ES2_PROFILE || Config::forceES2Profile)
   {
     compat = false;
     core   = false;
-    gles   = true;
+    es1    = false;
+    es2    = true;
   }
 
   // Detect driver extensions
@@ -295,7 +298,7 @@ ${EXT_INIT}
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
-  context.dispatcher.driver.glGetIntegerv( gles ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
+  context.dispatcher.driver.glGetIntegerv( es2 ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
 
   Info("OpenGL v attribs : ",maxVertexAttribs);
   Info("OpenGL varyings  : ",maxVaryings);
@@ -351,7 +354,8 @@ def versionDeclareCode(apis, args):
     if name == 'gl':
       code += '  GLboolean compat : 1;\n'
       code += '  GLboolean core   : 1;\n'
-      code += '  GLboolean gles   : 1;\n\n'
+      code += '  GLboolean es1    : 1;\n'
+      code += '  GLboolean es2    : 1;\n\n'
 
     if name in ['gl', 'glx', 'egl']:
       code += '  GLint     %s_version_major;\n' % name
@@ -392,7 +396,8 @@ def versionInitCode(apis, args):
     if name == 'gl':
       code += '  compat(false),\n'
       code += '  core(false),\n'
-      code += '  gles(false),\n'
+      code += '  es1(false),\n'
+      code += '  es2(false),\n'
 
     if name in ['gl', 'glx', 'egl']:
       code += '  %s_version_major(-1),\n' % name
@@ -431,7 +436,7 @@ def versionDetectCode(apis, args):
     indent = ''
     if api.name=='gl':
       indent = '  '
-      code += '  if (!gles)\n  {\n'
+      code += '  if (!es1 && !es2)\n  {\n'
 
     for i in range(len(api.versions)):
       version = api.versions[i]

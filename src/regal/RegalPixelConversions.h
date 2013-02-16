@@ -85,7 +85,7 @@ class IConversion
   virtual size_t GetPackedPixelAlignmentSize() = 0;
   virtual size_t GetPackedPixelComponents() = 0;
  protected:
-  ~IConversion() {};
+  virtual ~IConversion() {};
 };
 
 IConversion *GetConversionInterface(GLenum format, GLenum type);

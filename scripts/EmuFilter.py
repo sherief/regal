@@ -36,7 +36,7 @@ formulae = {
       'glBlitFramebufferEXT', 'glBlitFramebufferANGLE'   # Emulate glBlitFramebuffer?
     ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  Warning("Regal does not support ${name} for ES 2.0 - skipping.");',
        '  return;',
@@ -50,7 +50,7 @@ formulae = {
   'blitFBO' : {
     'entries' : [ 'glBlitFramebuffer' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -66,7 +66,7 @@ formulae = {
   'blitDrawRead' : {
     'entries' : [ 'glDrawBuffer', 'glReadBuffer' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -81,7 +81,7 @@ formulae = {
   'glDrawRangeElements' : {
     'entries' : [ 'glDrawRangeElements' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -121,7 +121,7 @@ formulae = {
   'GL_ARB_vertex_program' : {
     'entries' : [ 'glGenProgramsARB', 'glBindProgramARB', 'glProgramStringARB', 'glGetProgramivARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
       '{',
       '  Warning("Regal does not support ${name} (GL_ARB_vertex_program) for ES 2.0 context - skipping.");',
       '  return;',
@@ -138,7 +138,7 @@ formulae = {
 #        'entries' : [ 'glCreateShaderObjectARB' ],
 #        'impl' : [
 #           '#if !REGAL_FORCE_ES2_PROFILE',
-#           'if (_context->info->gles)',
+#           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
 #           '  DispatchTable *_next = _context->dispatcher.emulation._next;',
@@ -151,7 +151,7 @@ formulae = {
   'glCreateProgramObjectARB' : {
     'entries' : [ 'glCreateProgramObjectARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -164,7 +164,7 @@ formulae = {
 #        'entries' : [ 'glShaderSourceARB' ],
 #        'impl' : [
 #           '#if !REGAL_FORCE_ES2_PROFILE',
-#           'if (_context->info->gles)',
+#           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
 #           '  DispatchTable *_next = _context->dispatcher.emulation._next;',
@@ -178,7 +178,7 @@ formulae = {
   'glCompileShaderARB' : {
     'entries' : [ 'glCompileShaderARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -191,7 +191,7 @@ formulae = {
   'glAttachObjectARB' : {
     'entries' : [ 'glAttachObjectARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -204,7 +204,7 @@ formulae = {
   'glBindAttribLocationARB' : {
     'entries' : [ 'glBindAttribLocationARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -217,7 +217,7 @@ formulae = {
   'glGetUniformLocationARB' : {
     'entries' : [ 'glGetUniformLocationARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -229,7 +229,7 @@ formulae = {
   'glUniform1iARB' : {
     'entries' : [ 'glUniform1iARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
       '{',
       '  DispatchTable *_next = _context->dispatcher.emulation._next;',
       '  RegalAssert(_next);',
@@ -242,7 +242,7 @@ formulae = {
   'glGetObjectParameterivARB' : {
     'entries' : [ 'glGetObjectParameterivARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -258,7 +258,7 @@ formulae = {
   'glGetInfoLogARB' : {
     'entries' : [ 'glGetInfoLogARB' ],
     'impl' : [
-      'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles || !_context->info->gl_arb_shader_objects)',
+      'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2 || !_context->info->gl_arb_shader_objects)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -277,7 +277,7 @@ formulae = {
   'glMapBufferARB' : {
     'entries' : [ 'glMapBufferARB' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -289,7 +289,7 @@ formulae = {
   'glBufferDataARB' : {
     'entries' : [ 'glBufferDataARB' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
@@ -305,7 +305,7 @@ formulae = {
   'glBindFramebuffer' : {
     'entries' : [ 'glBindFramebuffer','glBindFramebufferEXT','glBindFramebufferOES' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || _context->info->gles)',
+       'if (REGAL_FORCE_ES2_PROFILE || _context->info->es2)',
        '{',
        '  const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;',
        '  if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;',

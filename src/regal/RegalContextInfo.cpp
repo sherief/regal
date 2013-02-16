@@ -69,7 +69,8 @@ ContextInfo::ContextInfo()
 : regal_ext_direct_state_access(false),
   compat(false),
   core(false),
-  gles(false),
+  es1(false),
+  es2(false),
   gl_version_major(-1),
   gl_version_minor(-1),
   gl_version_1_0(false),
@@ -771,8 +772,8 @@ ContextInfo::init(const RegalContext &context)
 
   // Detect GL context version
 
-  gles = starts_with(version,"OpenGL ES ");
-  if (gles)
+  es2 = starts_with(version,"OpenGL ES ");
+  if (es2)
     sscanf(version.c_str(), "OpenGL ES %d.%d", &gles_version_major, &gles_version_minor);
   else
     sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
@@ -782,14 +783,15 @@ ContextInfo::init(const RegalContext &context)
 
   if (REGAL_SYS_EGL && Regal::Config::sysEGL)
   {
-    gles = true;
+    es1 = false;
+    es2 = true;
     gles_version_major = 2;
     gl_version_minor = 0;
   }
 
   // Detect core context
 
-  if (!gles && gl_version_major>=3)
+  if (!es1 && !es2 && gl_version_major>=3)
   {
     GLint flags = 0;
     RegalAssert(context.dispatcher.driver.glGetIntegerv);
@@ -797,20 +799,22 @@ ContextInfo::init(const RegalContext &context)
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
-  compat = !core && !gles;
+  compat = !core && !es1 && !es2;
 
   if (REGAL_FORCE_CORE_PROFILE || Config::forceCoreProfile)
   {
     compat = false;
     core   = true;
-    gles   = false;
+    es1    = false;
+    es2    = false;
   }
 
   if (REGAL_FORCE_ES2_PROFILE || Config::forceES2Profile)
   {
     compat = false;
     core   = false;
-    gles   = true;
+    es1    = false;
+    es2    = true;
   }
 
   // Detect driver extensions
@@ -912,7 +916,7 @@ ContextInfo::init(const RegalContext &context)
   Info("Regal version    : ",regalVersion);
   Info("Regal extensions : ",regalExtensions);
 
-  if (!gles)
+  if (!es1 && !es2)
   {
     gl_version_4_2 = gl_version_major > 4 || (gl_version_major == 4 && gl_version_minor >= 2);
     gl_version_4_1 = gl_version_4_2 || (gl_version_major == 4 && gl_version_minor == 1);
@@ -1579,7 +1583,7 @@ ContextInfo::init(const RegalContext &context)
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
-  context.dispatcher.driver.glGetIntegerv( gles ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
+  context.dispatcher.driver.glGetIntegerv( es2 ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
 
   Info("OpenGL v attribs : ",maxVertexAttribs);
   Info("OpenGL varyings  : ",maxVaryings);

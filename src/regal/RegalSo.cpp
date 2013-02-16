@@ -304,7 +304,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     return sent;
   }
 
-  if (REGAL_FORCE_ES2_PROFILE || ctx.info->gles)
+  if (REGAL_FORCE_ES2_PROFILE || ctx.info->es2)
   {
     if (target != GL_TEXTURE_2D && target != GL_TEXTURE_CUBE_MAP)
     {

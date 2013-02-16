@@ -90,7 +90,8 @@ struct ContextInfo
 
   GLboolean compat : 1;
   GLboolean core   : 1;
-  GLboolean gles   : 1;
+  GLboolean es1    : 1;
+  GLboolean es2    : 1;
 
   GLint     gl_version_major;
   GLint     gl_version_minor;

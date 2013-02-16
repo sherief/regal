@@ -114,4 +114,16 @@
 # define REGAL_SYS_X11 0
 #endif
 
+#ifndef REGAL_SYS_ES1
+#define REGAL_SYS_ES1 0
+#endif
+
+#ifndef REGAL_SYS_ES2
+#define REGAL_SYS_ES2 (REGAL_SYS_PPAPI || REGAL_SYS_IOS || REGAL_SYS_ANDROID || REGAL_SYS_EGL)
+#endif
+
+#ifndef REGAL_SYS_GL
+#define REGAL_SYS_GL (REGAL_SYS_WGL || (!REGAL_SYS_PPAPI && !REGAL_SYS_IOS && !REGAL_SYS_ANDROID))
+#endif
+
 #endif // __REGAL_SYSTEM_H__

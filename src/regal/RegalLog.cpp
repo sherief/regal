@@ -531,7 +531,7 @@ namespace Logging {
       // ANDROID_LOG_INFO
       // ANDROID_LOG_WARN
       // ANDROID_LOG_ERROR
-      __android_log_print(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
+      __android_log_write(ANDROID_LOG_INFO, REGAL_LOG_TAG, m.c_str());
 #endif
 
 #if REGAL_LOG_JSON

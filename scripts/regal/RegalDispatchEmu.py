@@ -177,7 +177,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if name=='glEnable' or name=='glDisable' or name=='glIsEnabled':
                 code += '       #if !REGAL_FORCE_ES2_PROFILE\n'
-                code += '       if (_context->info->gles)\n'
+                code += '       if (_context->info->es2)\n'
                 code += '       #endif\n'
                 code += '         switch (cap)\n'
                 code += '         {\n'
@@ -200,7 +200,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if name=='glHint':
                 code += '       #if !REGAL_FORCE_ES2_PROFILE\n'
-                code += '       if (_context->info->gles)\n'
+                code += '       if (_context->info->es2)\n'
                 code += '       #endif\n'
                 code += '         switch (target)\n'
                 code += '         {\n'
@@ -224,7 +224,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if name=='glBindTexture':
                 code += '       #if !REGAL_FORCE_ES2_PROFILE\n'
-                code += '       if (_context->info->gles)\n'
+                code += '       if (_context->info->es2)\n'
                 code += '       #endif\n'
                 code += '         switch (target)\n'
                 code += '         {\n'
@@ -248,7 +248,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if name=='glTexSubImage2D':
                 code += '       #if !REGAL_FORCE_ES2_PROFILE\n'
-                code += '       if (_context->info->gles)\n'
+                code += '       if (_context->info->es2)\n'
                 code += '       #endif\n'
                 code += '         switch (target)\n'
                 code += '         {\n'
@@ -272,7 +272,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if es2Name != None:
                 code += '      '
-                code += 'if (_context->info->gles)\n'
+                code += 'if (_context->info->es2)\n'
                 code += '        '
                 if not typeIsVoid(rType):
                     code += 'return '
@@ -294,7 +294,7 @@ def apiEmuFuncDefineCode(apis, args):
 
               if name=='glTexImage2D':
                 code += '  #if !REGAL_FORCE_ES2_PROFILE\n'
-                code += '  if (_context->info->gles)\n'
+                code += '  if (_context->info->es2)\n'
                 code += '  #endif\n'
                 code += '  {\n'
                 code += '    switch (internalformat)\n'
@@ -325,7 +325,7 @@ def apiEmuFuncDefineCode(apis, args):
               code += '  '
 
               if es2Name != None:
-                code += 'if (_context->info->gles)\n'
+                code += 'if (_context->info->es2)\n'
                 code += '    '
                 if not typeIsVoid(rType):
                     code += 'return '

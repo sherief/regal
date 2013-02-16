@@ -1516,7 +1516,7 @@ void Iff::InitFixedFunction( RegalContext * ctx )
   RegalAssert(ctx);
   RegalAssert(ctx->info);
 
-  gles     = ctx->info->gles;
+  gles   = ctx->info->es2;
   legacy = ctx->info->compat && ctx->info->gl_version_major<=2;
 
   shadowMatrixMode = GL_MODELVIEW;

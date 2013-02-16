@@ -53,6 +53,12 @@ namespace Config
   extern bool forceCoreProfile;
   extern bool forceES2Profile;
 
+  //
+
+  extern bool sysES1;
+  extern bool sysES2;
+  extern bool sysGL;
+
   // Use GLX or EGL, but not both
 
   extern bool sysGLX;
