@@ -77,34 +77,23 @@ struct So : public RegalEmu
     {
         activeTextureUnit = 0;
         nextSamplerObjectId = 1;
-        
+
         // Enable or disable emulation for SRGB textures.
         //
         // Desktop - http://www.opengl.org/registry/specs/EXT/texture_sRGB_decode.txt
         // ES 2.0  - http://www.khronos.org/registry/gles/extensions/EXT/EXT_sRGB.txt
-        
+
         supportSrgb = ctx.info->gl_ext_texture_srgb_decode || ctx.info->gl_ext_srgb;
+        noSamplersInUse = true;
     }
 
     static GLenum TT_Index2Enum(GLuint index)
     {
-        switch (index)
-        {
-            case 0: return GL_TEXTURE_1D;
-            case 1: return GL_TEXTURE_2D;
-            case 2: return GL_TEXTURE_3D;
-            case 3: return GL_TEXTURE_1D_ARRAY;
-            case 4: return GL_TEXTURE_2D_ARRAY;
-            case 5: return GL_TEXTURE_RECTANGLE;
-            case 6: return GL_TEXTURE_CUBE_MAP;
-            case 7: return GL_TEXTURE_CUBE_MAP_ARRAY;
-            case 8: return GL_TEXTURE_2D_MULTISAMPLE;
-            case 9: return GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
-            default:
-                Warning( "Unhandled texture target index: index = ", index);
-                break;
-        }
-        return REGAL_NUM_TEXTURE_TARGETS;
+      if( index > 9 ) {
+        Warning( "Unhandled texture target index: index = ", index);
+        index = 10;
+      }
+      return index2Enum[index];
     }
 
     static GLuint TT_Enum2Index(GLenum texture)
@@ -192,7 +181,7 @@ struct So : public RegalEmu
 
     struct TextureState
     {
-        TextureState() 
+        TextureState()
         : name( 0 )
         , target( 0 )
         , samplerName( 0 )
@@ -600,9 +589,11 @@ struct So : public RegalEmu
     GLuint activeTextureUnit;
     GLuint nextSamplerObjectId;
     bool   supportSrgb;
+    bool   noSamplersInUse;
     TextureUnit textureUnits[REGAL_EMU_MAX_TEXTURE_UNITS];
     std::map<GLuint, SamplingState*> samplerObjects;
     std::map<GLuint, TextureState*> textureObjects;
+    static const GLenum index2Enum[11];
 };
 
 }

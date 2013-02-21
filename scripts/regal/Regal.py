@@ -234,6 +234,25 @@ def apiFuncDefineCode(apis, args):
         c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
 
         if getattr(function,'regalRemap',None)!=None and (isinstance(function.regalRemap, list) or isinstance(function.regalRemap, str) or isinstance(function.regalRemap, unicode)):
+
+          # For an ES1 context, pass the call into the dispatch layers...
+
+          if function.category in ['GL_REGAL_ES1_0_compatibility','GL_REGAL_ES1_1_compatibility']:
+            c += '  #if REGAL_SYS_ES1\n'
+            c += '  if (_context->isES1()) // Pass-through for ES1 only\n'
+            c += '  {\n'
+            c += '    DispatchTable *_next = &_context->dispatcher.front();\n'
+            c += '    RegalAssert(_next);\n    '
+            if not typeIsVoid(rType):
+              c += 'return '
+            c += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+            if typeIsVoid(rType):
+              c += '    return;\n'
+            c += '  }\n'
+            c += '  #endif\n'
+
+          # For ES2 or GL context, remap the ES1 call
+
           c += '  '
           if not typeIsVoid(rType):
             c += 'return '

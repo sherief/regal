@@ -137,7 +137,7 @@ def apiEmuFuncDefineCode(apis, args):
             # Remap, as necessary
             remap = getattr(function, 'regalRemap', None)
             es2Name = None
-            if remap != None:
+            if remap!=None and isinstance(remap, dict):
               es2Name = remap.get('ES2.0',None)
               es2Params = callParams
               if es2Name != None:

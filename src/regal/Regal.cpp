@@ -25229,6 +25229,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glAlphaFuncx","(", toString(func), ", ", ref, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glAlphaFuncx)(func, ref);
+      return;
+    }
+    #endif
     glAlphaFunc(func, fixedToFloat(ref));
   }
 
@@ -25237,6 +25246,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glClearColorx","(", red, ", ", green, ", ", blue, ", ", alpha, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glClearColorx)(red, green, blue, alpha);
+      return;
+    }
+    #endif
     glClearColor(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha));
   }
 
@@ -25245,6 +25263,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glClearDepthx","(", depth, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glClearDepthx)(depth);
+      return;
+    }
+    #endif
     glClearDepth(fixedToFloat(depth));
   }
 
@@ -25253,6 +25280,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glColor4x","(", red, ", ", green, ", ", blue, ", ", alpha, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glColor4x)(red, green, blue, alpha);
+      return;
+    }
+    #endif
     glColor4f(fixedToFloat(red), fixedToFloat(green), fixedToFloat(blue), fixedToFloat(alpha));
   }
 
@@ -25261,6 +25297,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glDepthRangex","(", zNear, ", ", zFar, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glDepthRangex)(zNear, zFar);
+      return;
+    }
+    #endif
     glDepthRange(fixedToFloat(zNear), fixedToFloat(zFar));
   }
 
@@ -25269,6 +25314,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFogx","(", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glFogx)(pname, param);
+      return;
+    }
+    #endif
     glFogf(pname, fixedToFloat(param));
   }
 
@@ -25277,6 +25331,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFogxv","(", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glFogxv)(pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     fixedToFloat(tmp,params,pname==GL_FOG_COLOR ? 4 : 1);
     glFogfv(pname,tmp);
@@ -25287,6 +25350,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFrustumf","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glFrustumf)(left, right, bottom, top, zNear, zFar);
+      return;
+    }
+    #endif
     glFrustum(left,right,bottom,top,zNear,zFar);
   }
 
@@ -25295,6 +25367,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glFrustumx","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glFrustumx)(left, right, bottom, top, zNear, zFar);
+      return;
+    }
+    #endif
     glFrustumf(fixedToFloat(left), fixedToFloat(right), fixedToFloat(bottom), fixedToFloat(top), fixedToFloat(zNear), fixedToFloat(zFar));
   }
 
@@ -25303,6 +25384,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLightModelx","(", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLightModelx)(pname, param);
+      return;
+    }
+    #endif
     glLightModelf(pname, fixedToFloat(param));
   }
 
@@ -25311,6 +25401,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLightModelxv","(", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLightModelxv)(pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     fixedToFloat(tmp,params,pname==GL_LIGHT_MODEL_AMBIENT ? 4 : 1);
     glLightModelfv(pname,tmp);
@@ -25321,6 +25420,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLightx","(", toString(light), ", ", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLightx)(light, pname, param);
+      return;
+    }
+    #endif
     glLightf(light, pname, fixedToFloat(param));
   }
 
@@ -25329,6 +25437,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLightxv","(", toString(light), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLightxv)(light, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     fixedToFloat(tmp,params,(pname==GL_AMBIENT || pname==GL_DIFFUSE || pname==GL_SPECULAR || pname==GL_POSITION) ? 4 : (pname==GL_SPOT_DIRECTION ? 3 : 1));
     glLightfv(light,pname,tmp);
@@ -25339,6 +25456,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLineWidthx","(", width, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLineWidthx)(width);
+      return;
+    }
+    #endif
     glLineWidth(fixedToFloat(width));
   }
 
@@ -25347,6 +25473,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glLoadMatrixx","(", m, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glLoadMatrixx)(m);
+      return;
+    }
+    #endif
     GLfloat tmp[16];
     fixedToFloat(tmp,m,16);
     glLoadMatrixf(tmp);
@@ -25357,6 +25492,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glMaterialx","(", toString(face), ", ", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glMaterialx)(face, pname, param);
+      return;
+    }
+    #endif
     glMaterialf(face,pname,fixedToFloat(param));
   }
 
@@ -25365,6 +25509,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glMaterialxv","(", toString(face), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glMaterialxv)(face, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[16];
     fixedToFloat(tmp,params,pname==GL_SHININESS ? 1 : 4);
     glMaterialfv(face,pname,tmp);
@@ -25375,6 +25528,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glMultMatrixx","(", m, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glMultMatrixx)(m);
+      return;
+    }
+    #endif
     GLfloat tmp[16];
     fixedToFloat(tmp,m,16);
     glMultMatrixf(tmp);
@@ -25385,6 +25547,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glMultiTexCoord4x","(", toString(target), ", ", s, ", ", t, ", ", r, ", ", q, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4x)(target, s, t, r, q);
+      return;
+    }
+    #endif
     glMultiTexCoord4f(target,fixedToFloat(s),fixedToFloat(t),fixedToFloat(r),fixedToFloat(q));
   }
 
@@ -25393,6 +25564,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glNormal3x","(", nx, ", ", ny, ", ", nz, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glNormal3x)(nx, ny, nz);
+      return;
+    }
+    #endif
     glNormal3f(fixedToFloat(nx),fixedToFloat(ny),fixedToFloat(nz));
   }
 
@@ -25401,6 +25581,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glOrthof","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glOrthof)(left, right, bottom, top, zNear, zFar);
+      return;
+    }
+    #endif
     glOrtho(left,right,bottom,top,zNear,zFar);
   }
 
@@ -25409,6 +25598,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glOrthox","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glOrthox)(left, right, bottom, top, zNear, zFar);
+      return;
+    }
+    #endif
     glOrthof(fixedToFloat(left),fixedToFloat(right),fixedToFloat(bottom),fixedToFloat(top),fixedToFloat(zNear),fixedToFloat(zFar));
   }
 
@@ -25417,6 +25615,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPointSizex","(", size, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glPointSizex)(size);
+      return;
+    }
+    #endif
     glPointSize(fixedToFloat(size));
   }
 
@@ -25425,6 +25632,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPolygonOffsetx","(", factor, ", ", units, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glPolygonOffsetx)(factor, units);
+      return;
+    }
+    #endif
     glPolygonOffset(fixedToFloat(factor),fixedToFloat(units));
   }
 
@@ -25433,6 +25649,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glRotatex","(", angle, ", ", x, ", ", y, ", ", z, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glRotatex)(angle, x, y, z);
+      return;
+    }
+    #endif
     glRotatef(fixedToFloat(angle),fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
   }
 
@@ -25441,6 +25666,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glSampleCoveragex","(", value, ", ", toString(invert), ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glSampleCoveragex)(value, invert);
+      return;
+    }
+    #endif
     glSampleCoverage(fixedToFloat(value),invert);
   }
 
@@ -25449,6 +25683,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glScalex","(", x, ", ", y, ", ", z, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glScalex)(x, y, z);
+      return;
+    }
+    #endif
     glScalef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
   }
 
@@ -25457,6 +25700,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glTexEnvx","(", toString(target), ", ", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glTexEnvx)(target, pname, param);
+      return;
+    }
+    #endif
     glTexEnvf(target,pname,fixedToFloat(param));
   }
 
@@ -25465,6 +25717,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glTexEnvxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glTexEnvxv)(target, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[16];
     fixedToFloat(tmp,params,pname==GL_TEXTURE_ENV_COLOR ? 4 : 1);
     glTexEnvfv(target,pname,tmp);
@@ -25475,6 +25736,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glTexParameterx","(", toString(target), ", ", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterx)(target, pname, param);
+      return;
+    }
+    #endif
     glTexParameterf(target,pname,fixedToFloat(param));
   }
 
@@ -25483,6 +25753,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glTranslatex","(", x, ", ", y, ", ", z, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glTranslatex)(x, y, z);
+      return;
+    }
+    #endif
     glTranslatef(fixedToFloat(x),fixedToFloat(y),fixedToFloat(z));
   }
 
@@ -25493,6 +25772,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glClipPlanef","(", toString(plane), ", ", equation, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glClipPlanef)(plane, equation);
+      return;
+    }
+    #endif
     GLdouble tmp[4];
     floatToDouble(tmp,equation,4);
     glClipPlane(plane,tmp);
@@ -25503,6 +25791,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glClipPlanex","(", toString(plane), ", ", equation, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glClipPlanex)(plane, equation);
+      return;
+    }
+    #endif
     GLdouble tmp[4];
     fixedToDouble(tmp,equation,4);
     glClipPlane(plane,tmp);
@@ -25513,6 +25810,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetClipPlanef","(", toString(pname), ", ", eqn, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetClipPlanef)(pname, eqn);
+      return;
+    }
+    #endif
     GLdouble tmp[4];
     glGetClipPlane(pname,tmp);
     doubleToFloat(eqn,tmp,4);
@@ -25523,6 +25829,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetClipPlanex","(", toString(pname), ", ", eqn, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetClipPlanex)(pname, eqn);
+      return;
+    }
+    #endif
     GLdouble tmp[4];
     glGetClipPlane(pname,tmp);
     doubleToFixed(eqn,tmp,4);
@@ -25533,6 +25848,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetFixedv","(", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetFixedv)(pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     glGetFloatv(pname,tmp);
     floatToFixed(params,tmp,helper::size::get(pname));
@@ -25543,6 +25867,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetLightxv","(", toString(light), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetLightxv)(light, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     glGetLightfv(light,pname,tmp);
     floatToFixed(params,tmp,helper::size::lightv(pname));
@@ -25553,6 +25886,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetMaterialxv","(", toString(face), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetMaterialxv)(face, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     glGetMaterialfv(face,pname,tmp);
     floatToFixed(params,tmp,helper::size::materialv(pname));
@@ -25563,6 +25905,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetTexEnvxv","(", toString(env), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetTexEnvxv)(env, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     glGetTexEnvfv(env,pname,tmp);
     floatToFixed(params,tmp,helper::size::texEnvv(env,pname));
@@ -25573,6 +25924,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glGetTexParameterxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glGetTexParameterxv)(target, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     glGetTexParameterfv(target,pname,tmp);
     floatToFixed(params,tmp,helper::size::texParameterv(pname));
@@ -25583,6 +25943,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPointParameterx","(", toString(pname), ", ", param, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glPointParameterx)(pname, param);
+      return;
+    }
+    #endif
     glPointParameterf(pname,fixedToFloat(param));
   }
 
@@ -25591,6 +25960,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glPointParameterxv","(", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glPointParameterxv)(pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     fixedToFloat(tmp,params,pname==GL_POINT_DISTANCE_ATTENUATION ? 3 : 1);
     glPointParameterfv(pname,tmp);
@@ -25611,6 +25989,15 @@ extern "C" {
     RegalContext *_context = REGAL_GET_CONTEXT();
     App("glTexParameterxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
     if (!_context) return;
+    #if REGAL_SYS_ES1
+    if (_context->isES1()) // Pass-through for ES1 only
+    {
+      DispatchTable *_next = &_context->dispatcher.front();
+      RegalAssert(_next);
+      _next->call(&_next->glTexParameterxv)(target, pname, params);
+      return;
+    }
+    #endif
     GLfloat tmp[4];
     fixedToFloat(tmp,params,helper::size::texParameterv(pname));
     glTexParameterfv(target,pname,tmp);

@@ -49,6 +49,9 @@ namespace Emu {
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
+const GLenum So::index2Enum[11] = { GL_TEXTURE_1D, GL_TEXTURE_2D, GL_TEXTURE_3D, GL_TEXTURE_1D_ARRAY, GL_TEXTURE_2D_ARRAY, GL_TEXTURE_RECTANGLE, GL_TEXTURE_CUBE_MAP, GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_2D_MULTISAMPLE, GL_TEXTURE_2D_MULTISAMPLE_ARRAY, REGAL_NUM_TEXTURE_TARGETS };
+
+
 void
 So::GenSamplers(GLsizei count, GLuint *samplers)
 {
@@ -103,6 +106,9 @@ So::BindSampler(GLuint unit, GLuint so)
         Warning("Unrecognized sampler object: so = ", so);
         return;
     }
+
+    if (so>0)
+        noSamplersInUse = false;
 
     SamplingState *pso = so != 0 ? samplerObjects[so] : NULL;
 
@@ -237,6 +243,9 @@ So::ActiveTexture( RegalContext &ctx, GLenum tex )
 void
 So::PreDraw( RegalContext &ctx )
 {
+  if (noSamplersInUse)
+    return;
+
   Internal("Regal::So::PreDraw",&ctx);
 
   GLuint originallyActiveUnit = activeTextureUnit;
@@ -251,7 +260,7 @@ So::PreDraw( RegalContext &ctx )
     {
       TextureState* ts = tu.boundTextureObjects[tt];
       GLenum target = TT_Index2Enum( tt );
-      if( target != GL_TEXTURE_2D ) 
+      if( target != GL_TEXTURE_2D )
         continue;
 
       //Internal( "RegalSo unit", unit, " texture ", ts ? ts->name : 0, " for sampler ", pSS ? pSS->name : 0 );

@@ -43703,6 +43703,712 @@ static void REGAL_CALL code_glStartTilingQCOM(GLuint x, GLuint y, GLuint width, 
     printf("%s",_code.str().c_str());
 }
 
+static void REGAL_CALL code_glAlphaFuncx(GLenum func, GLclampx ref)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glAlphaFuncx)(func, ref);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glAlphaFuncx(";
+                   _code << toString(func);
+    _code << ", "; _code << ref;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClearColorx)(red, green, blue, alpha);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glClearColorx(";
+                   _code << red;
+    _code << ", "; _code << green;
+    _code << ", "; _code << blue;
+    _code << ", "; _code << alpha;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glClearDepthx(GLclampx depth)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClearDepthx)(depth);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glClearDepthx(";
+                   _code << depth;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glColor4x)(red, green, blue, alpha);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glColor4x(";
+                   _code << red;
+    _code << ", "; _code << green;
+    _code << ", "; _code << blue;
+    _code << ", "; _code << alpha;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glDepthRangex(GLclampx zNear, GLclampx zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glDepthRangex)(zNear, zFar);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glDepthRangex(";
+                   _code << zNear;
+    _code << ", "; _code << zFar;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glFogx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFogx)(pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glFogx(";
+                   _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glFogxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFogxv)(pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glFogxv(";
+                   _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFrustumf)(left, right, bottom, top, zNear, zFar);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glFrustumf(";
+                   _code << left;
+    _code << ", "; _code << right;
+    _code << ", "; _code << bottom;
+    _code << ", "; _code << top;
+    _code << ", "; _code << zNear;
+    _code << ", "; _code << zFar;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFrustumx)(left, right, bottom, top, zNear, zFar);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glFrustumx(";
+                   _code << left;
+    _code << ", "; _code << right;
+    _code << ", "; _code << bottom;
+    _code << ", "; _code << top;
+    _code << ", "; _code << zNear;
+    _code << ", "; _code << zFar;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLightModelx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightModelx)(pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLightModelx(";
+                   _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLightModelxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightModelxv)(pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLightModelxv(";
+                   _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLightx(GLenum light, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightx)(light, pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLightx(";
+                   _code << toString(light);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightxv)(light, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLightxv(";
+                   _code << toString(light);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLineWidthx(GLfixed width)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLineWidthx)(width);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLineWidthx(";
+                   _code << width;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glLoadMatrixx(const GLfixed *m)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLoadMatrixx)(m);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glLoadMatrixx(";
+                   _code << m;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glMaterialx(GLenum face, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMaterialx)(face, pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glMaterialx(";
+                   _code << toString(face);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMaterialxv)(face, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glMaterialxv(";
+                   _code << toString(face);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glMultMatrixx(const GLfixed *m)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMultMatrixx)(m);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glMultMatrixx(";
+                   _code << m;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMultiTexCoord4x)(target, s, t, r, q);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glMultiTexCoord4x(";
+                   _code << toString(target);
+    _code << ", "; _code << s;
+    _code << ", "; _code << t;
+    _code << ", "; _code << r;
+    _code << ", "; _code << q;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glNormal3x)(nx, ny, nz);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glNormal3x(";
+                   _code << nx;
+    _code << ", "; _code << ny;
+    _code << ", "; _code << nz;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glOrthof)(left, right, bottom, top, zNear, zFar);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glOrthof(";
+                   _code << left;
+    _code << ", "; _code << right;
+    _code << ", "; _code << bottom;
+    _code << ", "; _code << top;
+    _code << ", "; _code << zNear;
+    _code << ", "; _code << zFar;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glOrthox)(left, right, bottom, top, zNear, zFar);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glOrthox(";
+                   _code << left;
+    _code << ", "; _code << right;
+    _code << ", "; _code << bottom;
+    _code << ", "; _code << top;
+    _code << ", "; _code << zNear;
+    _code << ", "; _code << zFar;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glPointSizex(GLfixed size)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointSizex)(size);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glPointSizex(";
+                   _code << size;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glPolygonOffsetx(GLfixed factor, GLfixed units)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPolygonOffsetx)(factor, units);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glPolygonOffsetx(";
+                   _code << factor;
+    _code << ", "; _code << units;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glRotatex)(angle, x, y, z);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glRotatex(";
+                   _code << angle;
+    _code << ", "; _code << x;
+    _code << ", "; _code << y;
+    _code << ", "; _code << z;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glSampleCoveragex(GLclampx value, GLboolean invert)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glSampleCoveragex)(value, invert);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glSampleCoveragex(";
+                   _code << value;
+    _code << ", "; _code << toString(invert);
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glScalex(GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glScalex)(x, y, z);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glScalex(";
+                   _code << x;
+    _code << ", "; _code << y;
+    _code << ", "; _code << z;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexEnvx)(target, pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glTexEnvx(";
+                   _code << toString(target);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexEnvxv)(target, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glTexEnvxv(";
+                   _code << toString(target);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexParameterx)(target, pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glTexParameterx(";
+                   _code << toString(target);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTranslatex)(x, y, z);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glTranslatex(";
+                   _code << x;
+    _code << ", "; _code << y;
+    _code << ", "; _code << z;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glClipPlanef(GLenum plane, const GLfloat *equation)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClipPlanef)(plane, equation);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glClipPlanef(";
+                   _code << toString(plane);
+    _code << ", "; _code << equation;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glClipPlanex(GLenum plane, const GLfixed *equation)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClipPlanex)(plane, equation);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glClipPlanex(";
+                   _code << toString(plane);
+    _code << ", "; _code << equation;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetClipPlanef(GLenum pname, GLfloat *eqn)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetClipPlanef)(pname, eqn);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetClipPlanef(";
+                   _code << toString(pname);
+    _code << ", "; _code << eqn;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetClipPlanex(GLenum pname, GLfixed *eqn)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetClipPlanex)(pname, eqn);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetClipPlanex(";
+                   _code << toString(pname);
+    _code << ", "; _code << eqn;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetFixedv(GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetFixedv)(pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetFixedv(";
+                   _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetLightxv)(light, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetLightxv(";
+                   _code << toString(light);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetMaterialxv)(face, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetMaterialxv(";
+                   _code << toString(face);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetTexEnvxv)(env, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetTexEnvxv(";
+                   _code << toString(env);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetTexParameterxv)(target, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glGetTexParameterxv(";
+                   _code << toString(target);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glPointParameterx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointParameterx)(pname, param);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glPointParameterx(";
+                   _code << toString(pname);
+    _code << ", "; _code << param;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glPointParameterxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointParameterxv)(pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glPointParameterxv(";
+                   _code << toString(pname);
+    _code << ", "; _code << params;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
 static void REGAL_CALL code_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
     RegalContext *_context = REGAL_GET_CONTEXT();
@@ -43716,6 +44422,23 @@ static void REGAL_CALL code_glPointSizePointerOES(GLenum type, GLsizei stride, c
                    _code << toString(type);
     _code << ", "; _code << stride;
     _code << ", "; _code << pointer;
+    _code << ");\n";
+    printf("%s",_code.str().c_str());
+}
+
+static void REGAL_CALL code_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.code._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexParameterxv)(target, pname, params);
+    std::string indent((_context->depthBeginEnd + _context->depthPushAttrib)*2,' ');
+    string_list< ::std::string > _code;
+    _code << indent << "glTexParameterxv(";
+                   _code << toString(target);
+    _code << ", "; _code << toString(pname);
+    _code << ", "; _code << params;
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -48714,7 +49437,50 @@ void InitDispatchTableCode(DispatchTable &tbl)
   tbl.glExtIsProgramBinaryQCOM = code_glExtIsProgramBinaryQCOM;
   tbl.glEndTilingQCOM = code_glEndTilingQCOM;
   tbl.glStartTilingQCOM = code_glStartTilingQCOM;
+  tbl.glAlphaFuncx = code_glAlphaFuncx;
+  tbl.glClearColorx = code_glClearColorx;
+  tbl.glClearDepthx = code_glClearDepthx;
+  tbl.glColor4x = code_glColor4x;
+  tbl.glDepthRangex = code_glDepthRangex;
+  tbl.glFogx = code_glFogx;
+  tbl.glFogxv = code_glFogxv;
+  tbl.glFrustumf = code_glFrustumf;
+  tbl.glFrustumx = code_glFrustumx;
+  tbl.glLightModelx = code_glLightModelx;
+  tbl.glLightModelxv = code_glLightModelxv;
+  tbl.glLightx = code_glLightx;
+  tbl.glLightxv = code_glLightxv;
+  tbl.glLineWidthx = code_glLineWidthx;
+  tbl.glLoadMatrixx = code_glLoadMatrixx;
+  tbl.glMaterialx = code_glMaterialx;
+  tbl.glMaterialxv = code_glMaterialxv;
+  tbl.glMultMatrixx = code_glMultMatrixx;
+  tbl.glMultiTexCoord4x = code_glMultiTexCoord4x;
+  tbl.glNormal3x = code_glNormal3x;
+  tbl.glOrthof = code_glOrthof;
+  tbl.glOrthox = code_glOrthox;
+  tbl.glPointSizex = code_glPointSizex;
+  tbl.glPolygonOffsetx = code_glPolygonOffsetx;
+  tbl.glRotatex = code_glRotatex;
+  tbl.glSampleCoveragex = code_glSampleCoveragex;
+  tbl.glScalex = code_glScalex;
+  tbl.glTexEnvx = code_glTexEnvx;
+  tbl.glTexEnvxv = code_glTexEnvxv;
+  tbl.glTexParameterx = code_glTexParameterx;
+  tbl.glTranslatex = code_glTranslatex;
+  tbl.glClipPlanef = code_glClipPlanef;
+  tbl.glClipPlanex = code_glClipPlanex;
+  tbl.glGetClipPlanef = code_glGetClipPlanef;
+  tbl.glGetClipPlanex = code_glGetClipPlanex;
+  tbl.glGetFixedv = code_glGetFixedv;
+  tbl.glGetLightxv = code_glGetLightxv;
+  tbl.glGetMaterialxv = code_glGetMaterialxv;
+  tbl.glGetTexEnvxv = code_glGetTexEnvxv;
+  tbl.glGetTexParameterxv = code_glGetTexParameterxv;
+  tbl.glPointParameterx = code_glPointParameterx;
+  tbl.glPointParameterxv = code_glPointParameterxv;
   tbl.glPointSizePointerOES = code_glPointSizePointerOES;
+  tbl.glTexParameterxv = code_glTexParameterxv;
   tbl.glLogMessageCallbackREGAL = code_glLogMessageCallbackREGAL;
   tbl.glDetailTexFuncSGIS = code_glDetailTexFuncSGIS;
   tbl.glGetDetailTexFuncSGIS = code_glGetDetailTexFuncSGIS;

@@ -225,6 +225,11 @@ LIB.INCLUDE        += -Isrc/mongoose
 LIB.INCLUDE        += -Isrc/md5/include
 LIB.INCLUDE        += -Isrc/lookup3
 
+# Optional flags
+
+# REGAL_SYS_ES1 for ES1 back-end support, disabled by default
+# LIB.CFLAGS     += -DREGAL_SYS_ES1=1
+
 #
 # Add debug-specific flags
 #

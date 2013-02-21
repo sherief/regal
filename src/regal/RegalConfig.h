@@ -50,8 +50,9 @@ namespace Config
 
   extern void writeJSON(Json::Output &jo);
 
-  extern bool forceCoreProfile;
+  extern bool forceES1Profile;
   extern bool forceES2Profile;
+  extern bool forceCoreProfile;
 
   //
 

@@ -772,22 +772,40 @@ ContextInfo::init(const RegalContext &context)
 
   // Detect GL context version
 
-  es2 = starts_with(version,"OpenGL ES ");
-  if (es2)
-    sscanf(version.c_str(), "OpenGL ES %d.%d", &gles_version_major, &gles_version_minor);
+  #if REGAL_SYS_ES1
+  es1 = starts_with(version, "OpenGL ES-CM");
+  if (es1)
+  {
+    sscanf(version.c_str(), "OpenGL ES-CM %d.%d", &gles_version_major, &gles_version_minor);
+  }
   else
-    sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
+  #endif
+  {
+    #if REGAL_SYS_ES2
+    es2 = starts_with(version,"OpenGL ES ");
+    if (es2)
+    {
+      sscanf(version.c_str(), "OpenGL ES %d.%d", &gles_version_major, &gles_version_minor);
+    }
+    else
+    #endif
+    {
+      sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
+    }
+  }
 
-  // For Mesa3D EGL/ES 2.0 the version string doesn't start with "OpenGL ES"
-  // Is that a Mesa3D bug? Perhaps...
+  // For Mesa3D EGL/ES 2.0 on desktop Linux the version string doesn't start with
+  // "OpenGL ES" Is that a Mesa3D bug? Perhaps...
 
-  if (REGAL_SYS_EGL && Regal::Config::sysEGL)
+  #if REGAL_SYS_ES2 && REGAL_SYS_EGL && !REGAL_SYS_ANDROID
+  if (Regal::Config::sysEGL)
   {
     es1 = false;
     es2 = true;
     gles_version_major = 2;
-    gl_version_minor = 0;
+    gles_version_minor = 0;
   }
+  #endif
 
   // Detect core context
 
@@ -809,6 +827,17 @@ ContextInfo::init(const RegalContext &context)
     es2    = false;
   }
 
+  #if REGAL_SYS_ES1
+  if (REGAL_FORCE_ES1_PROFILE || Config::forceES1Profile)
+  {
+    compat = false;
+    core   = false;
+    es1    = true;
+    es2    = false;
+  }
+  #endif
+
+  #if REGAL_SYS_ES2
   if (REGAL_FORCE_ES2_PROFILE || Config::forceES2Profile)
   {
     compat = false;
@@ -816,6 +845,7 @@ ContextInfo::init(const RegalContext &context)
     es1    = false;
     es2    = true;
   }
+  #endif
 
   // Detect driver extensions
 
@@ -1582,8 +1612,11 @@ ContextInfo::init(const RegalContext &context)
 #endif
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
-  context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
-  context.dispatcher.driver.glGetIntegerv( es2 ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
+  if (!es1)
+  {
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
+    context.dispatcher.driver.glGetIntegerv( es2 ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
+  }
 
   Info("OpenGL v attribs : ",maxVertexAttribs);
   Info("OpenGL varyings  : ",maxVaryings);

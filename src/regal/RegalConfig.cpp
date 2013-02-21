@@ -51,8 +51,9 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Config {
 
-  bool forceCoreProfile = REGAL_FORCE_CORE_PROFILE;
+  bool forceES1Profile  = REGAL_FORCE_ES1_PROFILE;
   bool forceES2Profile  = REGAL_FORCE_ES2_PROFILE;
+  bool forceCoreProfile = REGAL_FORCE_CORE_PROFILE;
   bool sysES1           = REGAL_SYS_ES1;
   bool sysES2           = REGAL_SYS_ES2;
   bool sysGL            = REGAL_SYS_GL;
@@ -104,14 +105,19 @@ namespace Config {
 #ifndef REGAL_NO_GETENV
     const char *tmp;
 
-#if !REGAL_FORCE_CORE_PROFILE
-    tmp = GetEnv( "REGAL_FORCE_CORE_PROFILE" );
-    if (tmp) forceCoreProfile = atoi(tmp)!=0;
+#if !REGAL_FORCE_ES1_PROFILE
+    tmp = GetEnv( "REGAL_FORCE_ES1_PROFILE" );
+    if (tmp) forceES1Profile = atoi(tmp)!=0;
 #endif
 
 #if !REGAL_FORCE_ES2_PROFILE
     tmp = GetEnv( "REGAL_FORCE_ES2_PROFILE" );
     if (tmp) forceES2Profile = atoi(tmp)!=0;
+#endif
+
+#if !REGAL_FORCE_CORE_PROFILE
+    tmp = GetEnv( "REGAL_FORCE_CORE_PROFILE" );
+    if (tmp) forceCoreProfile = atoi(tmp)!=0;
 #endif
 
   // With REGAL_SYS_GLX && REGAL_SYS_EGL
@@ -304,8 +310,15 @@ namespace Config {
     enableEmulation = false;
 #endif
 
-    Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
+#if REGAL_SYS_ES1
+    Info("REGAL_FORCE_ES1_PROFILE  ", forceES1Profile  ? "enabled" : "disabled");
+#endif
+
+#if REGAL_SYS_ES2
     Info("REGAL_FORCE_ES2_PROFILE  ", forceES2Profile  ? "enabled" : "disabled");
+#endif
+
+    Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
 
 #if REGAL_SYS_ES1
     Info("REGAL_SYS_ES1            ", sysES1           ? "enabled" : "disabled");
@@ -362,8 +375,9 @@ namespace Config {
   {
     jo.object("config");
 
-    jo.member("forceCoreProfile", forceCoreProfile);
+    jo.member("forceES1Profile",  forceES1Profile);
     jo.member("forceES2Profile",  forceES2Profile);
+    jo.member("forceCoreProfile", forceCoreProfile);
 
     jo.object("system");
     jo.member("ES1", sysES1);

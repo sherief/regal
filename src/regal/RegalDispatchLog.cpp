@@ -25161,7 +25161,429 @@ static void REGAL_CALL log_glStartTilingQCOM(GLuint x, GLuint y, GLuint width, G
     Driver("glStartTilingQCOM","(", x, ", ", y, ", ", width, ", ", height, ", ", preserveMask, ")");
 }
 
+// GL_REGAL_ES1_0_compatibility
+
+static void REGAL_CALL log_glAlphaFuncx(GLenum func, GLclampx ref)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glAlphaFuncx)(func, ref);
+    Driver("glAlphaFuncx","(", toString(func), ", ", ref, ")");
+}
+
+static void REGAL_CALL log_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClearColorx)(red, green, blue, alpha);
+    Driver("glClearColorx","(", red, ", ", green, ", ", blue, ", ", alpha, ")");
+}
+
+static void REGAL_CALL log_glClearDepthx(GLclampx depth)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClearDepthx)(depth);
+    Driver("glClearDepthx","(", depth, ")");
+}
+
+static void REGAL_CALL log_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glColor4x)(red, green, blue, alpha);
+    Driver("glColor4x","(", red, ", ", green, ", ", blue, ", ", alpha, ")");
+}
+
+static void REGAL_CALL log_glDepthRangex(GLclampx zNear, GLclampx zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glDepthRangex)(zNear, zFar);
+    Driver("glDepthRangex","(", zNear, ", ", zFar, ")");
+}
+
+static void REGAL_CALL log_glFogx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFogx)(pname, param);
+    Driver("glFogx","(", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glFogxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFogxv)(pname, params);
+    Driver("glFogxv","(", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFrustumf)(left, right, bottom, top, zNear, zFar);
+    Driver("glFrustumf","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+}
+
+static void REGAL_CALL log_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glFrustumx)(left, right, bottom, top, zNear, zFar);
+    Driver("glFrustumx","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+}
+
+static void REGAL_CALL log_glLightModelx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightModelx)(pname, param);
+    Driver("glLightModelx","(", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glLightModelxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightModelxv)(pname, params);
+    Driver("glLightModelxv","(", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glLightx(GLenum light, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightx)(light, pname, param);
+    Driver("glLightx","(", toString(light), ", ", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLightxv)(light, pname, params);
+    Driver("glLightxv","(", toString(light), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glLineWidthx(GLfixed width)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLineWidthx)(width);
+    Driver("glLineWidthx","(", width, ")");
+}
+
+static void REGAL_CALL log_glLoadMatrixx(const GLfixed *m)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glLoadMatrixx)(m);
+    Driver("glLoadMatrixx","(", m, ")");
+}
+
+static void REGAL_CALL log_glMaterialx(GLenum face, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMaterialx)(face, pname, param);
+    Driver("glMaterialx","(", toString(face), ", ", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMaterialxv)(face, pname, params);
+    Driver("glMaterialxv","(", toString(face), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glMultMatrixx(const GLfixed *m)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMultMatrixx)(m);
+    Driver("glMultMatrixx","(", m, ")");
+}
+
+static void REGAL_CALL log_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glMultiTexCoord4x)(target, s, t, r, q);
+    Driver("glMultiTexCoord4x","(", toString(target), ", ", s, ", ", t, ", ", r, ", ", q, ")");
+}
+
+static void REGAL_CALL log_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glNormal3x)(nx, ny, nz);
+    Driver("glNormal3x","(", nx, ", ", ny, ", ", nz, ")");
+}
+
+static void REGAL_CALL log_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glOrthof)(left, right, bottom, top, zNear, zFar);
+    Driver("glOrthof","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+}
+
+static void REGAL_CALL log_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glOrthox)(left, right, bottom, top, zNear, zFar);
+    Driver("glOrthox","(", left, ", ", right, ", ", bottom, ", ", top, ", ", zNear, ", ", zFar, ")");
+}
+
+static void REGAL_CALL log_glPointSizex(GLfixed size)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointSizex)(size);
+    Driver("glPointSizex","(", size, ")");
+}
+
+static void REGAL_CALL log_glPolygonOffsetx(GLfixed factor, GLfixed units)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPolygonOffsetx)(factor, units);
+    Driver("glPolygonOffsetx","(", factor, ", ", units, ")");
+}
+
+static void REGAL_CALL log_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glRotatex)(angle, x, y, z);
+    Driver("glRotatex","(", angle, ", ", x, ", ", y, ", ", z, ")");
+}
+
+static void REGAL_CALL log_glSampleCoveragex(GLclampx value, GLboolean invert)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glSampleCoveragex)(value, invert);
+    Driver("glSampleCoveragex","(", value, ", ", toString(invert), ")");
+}
+
+static void REGAL_CALL log_glScalex(GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glScalex)(x, y, z);
+    Driver("glScalex","(", x, ", ", y, ", ", z, ")");
+}
+
+static void REGAL_CALL log_glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexEnvx)(target, pname, param);
+    Driver("glTexEnvx","(", toString(target), ", ", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexEnvxv)(target, pname, params);
+    Driver("glTexEnvxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexParameterx)(target, pname, param);
+    Driver("glTexParameterx","(", toString(target), ", ", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTranslatex)(x, y, z);
+    Driver("glTranslatex","(", x, ", ", y, ", ", z, ")");
+}
+
 // GL_REGAL_ES1_1_compatibility
+
+static void REGAL_CALL log_glClipPlanef(GLenum plane, const GLfloat *equation)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClipPlanef)(plane, equation);
+    Driver("glClipPlanef","(", toString(plane), ", ", equation, ")");
+}
+
+static void REGAL_CALL log_glClipPlanex(GLenum plane, const GLfixed *equation)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glClipPlanex)(plane, equation);
+    Driver("glClipPlanex","(", toString(plane), ", ", equation, ")");
+}
+
+static void REGAL_CALL log_glGetClipPlanef(GLenum pname, GLfloat *eqn)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetClipPlanef)(pname, eqn);
+    Driver("glGetClipPlanef","(", toString(pname), ", ", eqn, ")");
+}
+
+static void REGAL_CALL log_glGetClipPlanex(GLenum pname, GLfixed *eqn)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetClipPlanex)(pname, eqn);
+    Driver("glGetClipPlanex","(", toString(pname), ", ", eqn, ")");
+}
+
+static void REGAL_CALL log_glGetFixedv(GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetFixedv)(pname, params);
+    Driver("glGetFixedv","(", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetLightxv)(light, pname, params);
+    Driver("glGetLightxv","(", toString(light), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetMaterialxv)(face, pname, params);
+    Driver("glGetMaterialxv","(", toString(face), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetTexEnvxv)(env, pname, params);
+    Driver("glGetTexEnvxv","(", toString(env), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glGetTexParameterxv)(target, pname, params);
+    Driver("glGetTexParameterxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
+}
+
+static void REGAL_CALL log_glPointParameterx(GLenum pname, GLfixed param)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointParameterx)(pname, param);
+    Driver("glPointParameterx","(", toString(pname), ", ", param, ")");
+}
+
+static void REGAL_CALL log_glPointParameterxv(GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glPointParameterxv)(pname, params);
+    Driver("glPointParameterxv","(", toString(pname), ", ", params, ")");
+}
 
 static void REGAL_CALL log_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
@@ -25171,6 +25593,16 @@ static void REGAL_CALL log_glPointSizePointerOES(GLenum type, GLsizei stride, co
     RegalAssert(_next);
     _next->call(&_next->glPointSizePointerOES)(type, stride, pointer);
     Driver("glPointSizePointerOES","(", toString(type), ", ", stride, ", ", boost::print::optional(pointer,Logging::pointers), ")");
+}
+
+static void REGAL_CALL log_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
+{
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    RegalAssert(_context);
+    DispatchTable *_next = _context->dispatcher.logging._next;
+    RegalAssert(_next);
+    _next->call(&_next->glTexParameterxv)(target, pname, params);
+    Driver("glTexParameterxv","(", toString(target), ", ", toString(pname), ", ", params, ")");
 }
 
 // GL_REGAL_log
@@ -29827,9 +30259,55 @@ void InitDispatchTableLog(DispatchTable &tbl)
   tbl.glEndTilingQCOM = log_glEndTilingQCOM;
   tbl.glStartTilingQCOM = log_glStartTilingQCOM;
 
+  // GL_REGAL_ES1_0_compatibility
+
+  tbl.glAlphaFuncx = log_glAlphaFuncx;
+  tbl.glClearColorx = log_glClearColorx;
+  tbl.glClearDepthx = log_glClearDepthx;
+  tbl.glColor4x = log_glColor4x;
+  tbl.glDepthRangex = log_glDepthRangex;
+  tbl.glFogx = log_glFogx;
+  tbl.glFogxv = log_glFogxv;
+  tbl.glFrustumf = log_glFrustumf;
+  tbl.glFrustumx = log_glFrustumx;
+  tbl.glLightModelx = log_glLightModelx;
+  tbl.glLightModelxv = log_glLightModelxv;
+  tbl.glLightx = log_glLightx;
+  tbl.glLightxv = log_glLightxv;
+  tbl.glLineWidthx = log_glLineWidthx;
+  tbl.glLoadMatrixx = log_glLoadMatrixx;
+  tbl.glMaterialx = log_glMaterialx;
+  tbl.glMaterialxv = log_glMaterialxv;
+  tbl.glMultMatrixx = log_glMultMatrixx;
+  tbl.glMultiTexCoord4x = log_glMultiTexCoord4x;
+  tbl.glNormal3x = log_glNormal3x;
+  tbl.glOrthof = log_glOrthof;
+  tbl.glOrthox = log_glOrthox;
+  tbl.glPointSizex = log_glPointSizex;
+  tbl.glPolygonOffsetx = log_glPolygonOffsetx;
+  tbl.glRotatex = log_glRotatex;
+  tbl.glSampleCoveragex = log_glSampleCoveragex;
+  tbl.glScalex = log_glScalex;
+  tbl.glTexEnvx = log_glTexEnvx;
+  tbl.glTexEnvxv = log_glTexEnvxv;
+  tbl.glTexParameterx = log_glTexParameterx;
+  tbl.glTranslatex = log_glTranslatex;
+
   // GL_REGAL_ES1_1_compatibility
 
+  tbl.glClipPlanef = log_glClipPlanef;
+  tbl.glClipPlanex = log_glClipPlanex;
+  tbl.glGetClipPlanef = log_glGetClipPlanef;
+  tbl.glGetClipPlanex = log_glGetClipPlanex;
+  tbl.glGetFixedv = log_glGetFixedv;
+  tbl.glGetLightxv = log_glGetLightxv;
+  tbl.glGetMaterialxv = log_glGetMaterialxv;
+  tbl.glGetTexEnvxv = log_glGetTexEnvxv;
+  tbl.glGetTexParameterxv = log_glGetTexParameterxv;
+  tbl.glPointParameterx = log_glPointParameterx;
+  tbl.glPointParameterxv = log_glPointParameterxv;
   tbl.glPointSizePointerOES = log_glPointSizePointerOES;
+  tbl.glTexParameterxv = log_glTexParameterxv;
 
   // GL_REGAL_log
 

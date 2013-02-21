@@ -103,8 +103,9 @@ inline const char * getEnvironment(const char * const var)
 
 enum Library
 {
+  LIBRARY_ES1,
+  LIBRARY_ES2,
   LIBRARY_GL,
-  LIBRARY_GLES,
   LIBRARY_WGL,
   LIBRARY_GLX,
   LIBRARY_CGL,
@@ -182,7 +183,25 @@ const char *libraryLocation(const Library &library)
     }
   }
 
-  // GLES
+  // ES1
+
+#if REGAL_SYS_ES1
+  if (library==LIBRARY_ES1)
+  {
+    // First, try ... variable
+
+    // Second, try default installation location
+
+    if (!ret)
+    {
+#if REGAL_SYS_ANDROID
+      return "/System/lib/libGLESv1_CM.so";
+#elif REGAL_SYS_EGL || REGAL_SYS_GLX
+      // TODO - ES1 for Linux?
+#endif
+    }
+  }
+#endif
 
   /* Ubuntu 12.04 x86
 
@@ -198,7 +217,9 @@ const char *libraryLocation(const Library &library)
 
   */
 
-  if (library==LIBRARY_GLES)
+  // ES2
+
+  if (library==LIBRARY_ES2)
   {
     // First, try ... variable
 
@@ -340,44 +361,70 @@ void *GetProcAddress(const char *entry)
   if (!entry)
     return NULL;
 
-  // GL ES 2.0
-  // REVISIT - Eventually we need REGAL_SYS_ES2
+  // GL ES 1.x
 
-#if REGAL_SYS_EGL
+#if REGAL_SYS_ES1
 
-  static void       *lib_GLES          = NULL;
-  static const char *lib_GLES_filename = NULL;
+  static void       *lib_ES1          = NULL;
+  static const char *lib_ES1_filename = NULL;
 
-  if (Regal::Config::sysEGL)  // REVISIT - Eventually we need REGAL_SYS_ES2
+  if (Regal::Config::sysES1)
   {
-    // Search for OpenGL ES library (libGLESv2.so usually) as necessary
+    // Search for OpenGL ES library as necessary
 
-    if (!lib_GLES_filename)
+    if (!lib_ES1_filename)
     {
-      lib_GLES_filename = libraryLocation(LIBRARY_GLES);
-      if (!lib_GLES_filename)
-        Warning("OpenGL ES library not found.");
+      lib_ES1_filename = libraryLocation(LIBRARY_ES1);
+      if (!lib_ES1_filename)
+        Warning("OpenGL ES 1.x library not found.");
     }
 
-    // Load the OpenGL ES library as necessary
+    // Load the OpenGL ES 1.x library as necessary
 
-    if (!lib_GLES && lib_GLES_filename)
+    if (!lib_ES1 && lib_ES1_filename)
     {
-      Info("Loading OpenGL ES from ",lib_GLES_filename);
-      lib_GLES = dlopen( lib_GLES_filename, RTLD_LAZY );
+      Info("Loading OpenGL ES 1.x from ",lib_ES1_filename);
+      lib_ES1 = dlopen( lib_ES1_filename, RTLD_LAZY );
     }
   }
 #endif
 
-  // GL
-  // REVISIT - Eventually we need REGAL_SYS_GL
+  // GL ES 2.0
 
-#if REGAL_SYS_GLX
+#if REGAL_SYS_ES2
+
+  static void       *lib_ES2          = NULL;
+  static const char *lib_ES2_filename = NULL;
+
+  if (Regal::Config::sysES2)
+  {
+    // Search for OpenGL ES library (libGLESv2.so usually) as necessary
+
+    if (!lib_ES2_filename)
+    {
+      lib_ES2_filename = libraryLocation(LIBRARY_ES2);
+      if (!lib_ES2_filename)
+        Warning("OpenGL ES 2.0 library not found.");
+    }
+
+    // Load the OpenGL ES library as necessary
+
+    if (!lib_ES2 && lib_ES2_filename)
+    {
+      Info("Loading OpenGL ES 2.0 from ",lib_ES2_filename);
+      lib_ES2 = dlopen( lib_ES2_filename, RTLD_LAZY );
+    }
+  }
+#endif
+
+  // Desktop GL
+
+#if REGAL_SYS_GL
 
   static void       *lib_GL           = NULL;
   static const char *lib_GL_filename  = NULL;
 
-  if (Regal::Config::sysGLX)  // REVISIT - Eventually we need REGAL_SYS_GL
+  if (Regal::Config::sysGL)
   {
     // Search for OpenGL library (libGL.so.1 usually) as necessary
 
@@ -456,18 +503,28 @@ void *GetProcAddress(const char *entry)
 
   // Load the entry-point by name, if possible
 
-#if REGAL_SYS_EGL
-  if (Regal::Config::sysEGL && lib_GLES)
+#if REGAL_SYS_ES1
+  if (Regal::Config::sysES1 && lib_ES1)
   {
-    void *sym = dlsym(lib_GLES,entry);
-    Internal("Regal::GetProcAddress","loading ",entry," from ",lib_GLES_filename,sym ? " succeeded." : " failed.");
+    void *sym = dlsym(lib_ES1,entry);
+    Internal("Regal::GetProcAddress","loading ",entry," from ",lib_ES1_filename,sym ? " succeeded." : " failed.");
     if (sym)
       return sym;
   }
 #endif
 
-#if REGAL_SYS_GLX
-  if (Regal::Config::sysGLX && lib_GL)
+#if REGAL_SYS_ES2
+  if (Regal::Config::sysES2 && lib_ES2)
+  {
+    void *sym = dlsym(lib_ES2,entry);
+    Internal("Regal::GetProcAddress","loading ",entry," from ",lib_ES2_filename,sym ? " succeeded." : " failed.");
+    if (sym)
+      return sym;
+  }
+#endif
+
+#if REGAL_SYS_GL
+  if (Regal::Config::sysGL && lib_GL)
   {
     void *sym = dlsym(lib_GL,entry);
     Internal("Regal::GetProcAddress","loading ",entry," from ",lib_GL_filename,sym ? " succeeded." : " failed.");
@@ -516,48 +573,6 @@ void *GetProcAddress(const char *entry)
 
 #if REGAL_SYS_GLX
 #endif
-
-  return NULL;
-}
-
-#elif REGAL_SYS_ANDROID
-
-#include <dlfcn.h>
-
-void *GetProcAddress(const char *entry)
-{
-  if (!entry)
-    return NULL;
-
-  static const char *lib_GLESv2_filename = "/system/lib/libGLESv2.so";
-  static void       *lib_GLESv2 = NULL;
-
-  if (!lib_GLESv2)
-  {
-    lib_GLESv2 = dlopen( lib_GLESv2_filename, RTLD_LAZY );
-    Info("Loading GLES from ",lib_GLESv2_filename,lib_GLESv2 ? " succeeded." : " failed.");
-  }
-
-  static const char *lib_EGL_filename = "/system/lib/libEGL.so";
-  static void       *lib_EGL = NULL;
-
-  if (!lib_EGL)
-  {
-    lib_EGL = dlopen( lib_EGL_filename, RTLD_LAZY );
-    Info("Loading EGL from ",lib_EGL_filename,lib_EGL ? " succeeded." : " failed.");
-  }
-
-  if (lib_GLESv2 && lib_EGL)
-  {
-    void *sym = dlsym( lib_GLESv2, entry );
-    Internal("Regal::GetProcAddress ",lib_GLESv2_filename," load of ",entry,sym ? " succeeded." : " failed.");
-    if (!sym)
-    {
-      sym = dlsym( lib_EGL, entry );
-      Internal("Regal::GetProcAddress ",lib_EGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
-    }
-    return sym;
-  }
 
   return NULL;
 }

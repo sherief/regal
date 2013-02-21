@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalThread.h"
 #include "RegalPrivate.h"
+#include "RegalContextInfo.h"
 #include "RegalDispatcher.h"
 #include "RegalDispatchError.h"
 #include "RegalSharedList.h"
@@ -62,7 +63,6 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 struct DebugInfo;
-struct ContextInfo;
 
 struct Marker;
 struct Frame;
@@ -84,6 +84,13 @@ struct RegalContext
   ~RegalContext();
 
   void Init();
+
+  // If profile is forced at build-time, no need to check runtime flag
+
+  inline bool isES1()    const { RegalAssert(info); return REGAL_SYS_ES1 && ( REGAL_FORCE_ES1_PROFILE  || info->es1  ); }
+  inline bool isES2()    const { RegalAssert(info); return REGAL_SYS_ES2 && ( REGAL_FORCE_ES2_PROFILE  || info->es2  ); }
+  inline bool isCore()   const { RegalAssert(info); return REGAL_SYS_GL  && ( REGAL_FORCE_CORE_PROFILE || info->core ); }
+  inline bool isCompat() const { RegalAssert(info); return REGAL_SYS_GL  &&                               info->compat; }
 
   bool                initialized;
   Dispatcher          dispatcher;
