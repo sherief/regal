@@ -2149,6 +2149,28 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->DepthRange( zNear, zFar );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   if (_context->info->es2)
@@ -5862,6 +5884,430 @@ static void REGAL_CALL emu_glPushMatrix(void)
 
 }
 
+static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2d)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2f)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2i)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2s)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3d)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3f)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3i)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->RasterPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3s)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glReadBuffer(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -6168,21 +6614,45 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
     case 6 :
     case 5 :
       #if REGAL_EMU_IFF
-      if (_context->iff)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 4;
-        _context->iff->ShadeModel( mode );
-      }
+      if (_context->iff) break;
       #endif
     case 1 :
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glShadeModel)(mode);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->ShadeModel( mode );
+        if( !_context->isCore() && !_context->isES2() ) {
+          _context->dispatcher.emulation.glShadeModel(mode);
+        }
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glShadeModel)(mode);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glStencilFunc(GLenum func, GLint ref, GLuint mask)
@@ -10325,6 +10795,38 @@ static void REGAL_CALL emu_glVertex4sv(const GLshort *v)
 
 }
 
+static void REGAL_CALL emu_glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Viewport( x, y, width, height );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTable *_next = _context->dispatcher.emulation._next;
+  RegalAssert(_next);
+  _next->call(& _next->glViewport)(x, y, width, height);
+}
+
 // GL_VERSION_1_1
 
 static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
@@ -11447,6 +11949,9 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
     case 2 :
@@ -11620,6 +12125,14 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -14986,6 +15499,430 @@ static void REGAL_CALL emu_glSecondaryColorPointer(GLint size, GLenum type, GLsi
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glSecondaryColorPointer)(size, type, stride, pointer);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2d)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2f)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2i)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2s)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3d)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3f)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3i)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->WindowPosition( _context, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3s)(x, y, z);
       break;
     }
 
@@ -19981,6 +20918,14 @@ static void REGAL_CALL emu_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint star
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -20074,6 +21019,14 @@ static void REGAL_CALL emu_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -20431,6 +21384,14 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -22119,6 +23080,1702 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
   _next->call(& _next->glClientActiveTextureARB)(texture);
 }
 
+static void REGAL_CALL emu_glMultiTexCoord1dARB(GLenum target, GLdouble s)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1dARB)(target, s);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1dvARB(GLenum target, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1dvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1fARB(GLenum target, GLfloat s)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1fARB)(target, s);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1fvARB(GLenum target, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1fvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1iARB(GLenum target, GLint s)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1iARB)(target, s);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1ivARB(GLenum target, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1ivARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1sARB(GLenum target, GLshort s)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1sARB)(target, s);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord1svARB(GLenum target, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord1svARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2dARB)(target, s, t);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2dvARB(GLenum target, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2dvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2fARB)(target, s, t);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2fvARB(GLenum target, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2fvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2iARB)(target, s, t);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2ivARB(GLenum target, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2ivARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2sARB)(target, s, t);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord2svARB(GLenum target, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord2svARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3dARB)(target, s, t, r);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3dvARB(GLenum target, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3dvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3fARB)(target, s, t, r);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3fvARB(GLenum target, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3fvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3iARB)(target, s, t, r);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3ivARB(GLenum target, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3ivARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3sARB)(target, s, t, r);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord3svARB(GLenum target, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord3svARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4dARB)(target, s, t, r, q);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4dvARB(GLenum target, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4dvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4fARB)(target, s, t, r, q);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4fvARB(GLenum target, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4fvARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4iARB)(target, s, t, r, q);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4ivARB(GLenum target, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4ivARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4sARB)(target, s, t, r, q);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultiTexCoord4svARB(GLenum target, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultiTexCoord4svARB)(target, v);
+      break;
+    }
+
+  }
+
+}
+
 // GL_ARB_occlusion_query
 
 // GL_ARB_point_parameters
@@ -23087,6 +25744,57 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
 
 }
 
+static GLhandleARB REGAL_CALL emu_glCreateShaderObjectARB(GLenum shaderType)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        return _context->iff->CreateShader( _context, shaderType );
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glCreateShaderObjectARB)(shaderType);
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -23226,6 +25934,112 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       return _next->call(&_next->glGetUniformLocationARB)(programObj, name);
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glLinkProgramARB(GLhandleARB programObj)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->LinkProgram( _context, programObj );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glLinkProgramARB)(programObj);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB **string, const GLint *length)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->ShaderSource( _context, shaderObj, count, string, length );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glShaderSourceARB)(shaderObj, count, string, length);
+      break;
     }
 
   }
@@ -23449,6 +26263,218 @@ static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei sample
 // GL_ARB_transform_feedback_instanced
 
 // GL_ARB_transpose_matrix
+
+static void REGAL_CALL emu_glLoadTransposeMatrixdARB(const GLdouble *m)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->LoadTransposeMatrix( m );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glLoadTransposeMatrixdARB)(m);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glLoadTransposeMatrixfARB(const GLfloat *m)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->LoadTransposeMatrix( m );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glLoadTransposeMatrixfARB)(m);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultTransposeMatrixdARB(const GLdouble *m)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->MultTransposeMatrix( m );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultTransposeMatrixdARB)(m);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMultTransposeMatrixfARB(const GLfloat *m)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->MultTransposeMatrix( m );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMultTransposeMatrixfARB)(m);
+      break;
+    }
+
+  }
+
+}
 
 // GL_ARB_uniform_buffer_object
 
@@ -25272,6 +28298,1808 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
 
 }
 
+static void REGAL_CALL emu_glVertexAttrib1dARB(GLuint index, GLdouble x)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, x );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1dARB)(index, x);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib1dvARB(GLuint index, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1dvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib1fARB(GLuint index, GLfloat x)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, x );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1fARB)(index, x);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib1fvARB(GLuint index, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1fvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib1sARB(GLuint index, GLshort x)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, x );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1sARB)(index, x);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib1svARB(GLuint index, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<1>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib1svARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2dARB)(index, x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2dvARB(GLuint index, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2dvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2fARB)(index, x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2fvARB(GLuint index, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2fvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, x, y );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2sARB)(index, x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib2svARB(GLuint index, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<2>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib2svARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3dARB)(index, x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3dvARB(GLuint index, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3dvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3fARB)(index, x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3fvARB(GLuint index, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3fvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, x, y, z );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3sARB)(index, x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib3svARB(GLuint index, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<3>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib3svARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NbvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NivARB(GLuint index, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NivARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NsvARB(GLuint index, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NsvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, x, y, z, w );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NubARB)(index, x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NubvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4NusvARB(GLuint index, const GLushort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->AttrN<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4NusvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4bvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, x, y, z, w );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4dARB)(index, x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4dvARB(GLuint index, const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4dvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, x, y, z, w );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4fARB)(index, x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4fvARB(GLuint index, const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4fvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4ivARB(GLuint index, const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4ivARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, x, y, z, w );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4sARB)(index, x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4svARB(GLuint index, const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4svARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4ubvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glVertexAttrib4usvARB(GLuint index, const GLushort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->Attr<4>( _context, index, v );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glVertexAttrib4usvARB)(index, v);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -25574,6 +30402,14 @@ static void REGAL_CALL emu_glDrawRangeElementArrayATI(GLenum mode, GLuint start,
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -38006,6 +42842,14 @@ static void REGAL_CALL emu_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLu
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->PreDraw( _context );
+      }
+      #endif
     case 4 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -38042,6 +42886,9 @@ static void REGAL_CALL emu_glFogCoordPointerEXT(GLenum type, GLsizei stride, con
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -38061,6 +42908,15 @@ static void REGAL_CALL emu_glFogCoordPointerEXT(GLenum type, GLsizei stride, con
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->FogCoordPointer( _context, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -39603,6 +44459,9 @@ static void REGAL_CALL emu_glSecondaryColorPointerEXT(GLint size, GLenum type, G
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -39622,6 +44481,15 @@ static void REGAL_CALL emu_glSecondaryColorPointerEXT(GLint size, GLenum type, G
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->SecondaryColorPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40071,6 +44939,9 @@ static void REGAL_CALL emu_glColorPointerEXT(GLint size, GLenum type, GLsizei st
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40090,6 +44961,15 @@ static void REGAL_CALL emu_glColorPointerEXT(GLint size, GLenum type, GLsizei st
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->ColorPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40173,6 +45053,59 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
   _next->call(& _next->glDrawArraysEXT)(mode, first, count);
 }
 
+static void REGAL_CALL emu_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean *pointer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->EdgeFlagPointer( _context, stride, pointer );
+        return;
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEdgeFlagPointerEXT)(stride, count, pointer);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -40187,6 +45120,9 @@ static void REGAL_CALL emu_glNormalPointerEXT(GLenum type, GLsizei stride, GLsiz
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40206,6 +45142,15 @@ static void REGAL_CALL emu_glNormalPointerEXT(GLenum type, GLsizei stride, GLsiz
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->NormalPointer( _context, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40244,6 +45189,9 @@ static void REGAL_CALL emu_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40263,6 +45211,15 @@ static void REGAL_CALL emu_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->TexCoordPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40301,6 +45258,9 @@ static void REGAL_CALL emu_glVertexPointerEXT(GLint size, GLenum type, GLsizei s
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff) break;
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -40320,6 +45280,15 @@ static void REGAL_CALL emu_glVertexPointerEXT(GLint size, GLenum type, GLsizei s
     case 7 :
     case 6 :
     case 5 :
+      #if REGAL_EMU_IFF
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 4;
+        _context->iff->VertexPointer( _context, size, type, stride, pointer );
+        return;
+      }
+      #endif
     case 4 :
     case 3 :
       #if REGAL_EMU_VAO
@@ -41585,6 +46554,14 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glPopMatrix = emu_glPopMatrix;
    tbl.glPushAttrib = emu_glPushAttrib;
    tbl.glPushMatrix = emu_glPushMatrix;
+   tbl.glRasterPos2d = emu_glRasterPos2d;
+   tbl.glRasterPos2f = emu_glRasterPos2f;
+   tbl.glRasterPos2i = emu_glRasterPos2i;
+   tbl.glRasterPos2s = emu_glRasterPos2s;
+   tbl.glRasterPos3d = emu_glRasterPos3d;
+   tbl.glRasterPos3f = emu_glRasterPos3f;
+   tbl.glRasterPos3i = emu_glRasterPos3i;
+   tbl.glRasterPos3s = emu_glRasterPos3s;
    tbl.glReadBuffer = emu_glReadBuffer;
    tbl.glRotated = emu_glRotated;
    tbl.glRotatef = emu_glRotatef;
@@ -41668,6 +46645,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glVertex4iv = emu_glVertex4iv;
    tbl.glVertex4s = emu_glVertex4s;
    tbl.glVertex4sv = emu_glVertex4sv;
+   tbl.glViewport = emu_glViewport;
 
 // GL_VERSION_1_1
 
@@ -41759,6 +46737,14 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glSecondaryColor3us = emu_glSecondaryColor3us;
    tbl.glSecondaryColor3usv = emu_glSecondaryColor3usv;
    tbl.glSecondaryColorPointer = emu_glSecondaryColorPointer;
+   tbl.glWindowPos2d = emu_glWindowPos2d;
+   tbl.glWindowPos2f = emu_glWindowPos2f;
+   tbl.glWindowPos2i = emu_glWindowPos2i;
+   tbl.glWindowPos2s = emu_glWindowPos2s;
+   tbl.glWindowPos3d = emu_glWindowPos3d;
+   tbl.glWindowPos3f = emu_glWindowPos3f;
+   tbl.glWindowPos3i = emu_glWindowPos3i;
+   tbl.glWindowPos3s = emu_glWindowPos3s;
 
 // GL_VERSION_1_5
 
@@ -41989,6 +46975,38 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glActiveTextureARB = emu_glActiveTextureARB;
    tbl.glClientActiveTextureARB = emu_glClientActiveTextureARB;
+   tbl.glMultiTexCoord1dARB = emu_glMultiTexCoord1dARB;
+   tbl.glMultiTexCoord1dvARB = emu_glMultiTexCoord1dvARB;
+   tbl.glMultiTexCoord1fARB = emu_glMultiTexCoord1fARB;
+   tbl.glMultiTexCoord1fvARB = emu_glMultiTexCoord1fvARB;
+   tbl.glMultiTexCoord1iARB = emu_glMultiTexCoord1iARB;
+   tbl.glMultiTexCoord1ivARB = emu_glMultiTexCoord1ivARB;
+   tbl.glMultiTexCoord1sARB = emu_glMultiTexCoord1sARB;
+   tbl.glMultiTexCoord1svARB = emu_glMultiTexCoord1svARB;
+   tbl.glMultiTexCoord2dARB = emu_glMultiTexCoord2dARB;
+   tbl.glMultiTexCoord2dvARB = emu_glMultiTexCoord2dvARB;
+   tbl.glMultiTexCoord2fARB = emu_glMultiTexCoord2fARB;
+   tbl.glMultiTexCoord2fvARB = emu_glMultiTexCoord2fvARB;
+   tbl.glMultiTexCoord2iARB = emu_glMultiTexCoord2iARB;
+   tbl.glMultiTexCoord2ivARB = emu_glMultiTexCoord2ivARB;
+   tbl.glMultiTexCoord2sARB = emu_glMultiTexCoord2sARB;
+   tbl.glMultiTexCoord2svARB = emu_glMultiTexCoord2svARB;
+   tbl.glMultiTexCoord3dARB = emu_glMultiTexCoord3dARB;
+   tbl.glMultiTexCoord3dvARB = emu_glMultiTexCoord3dvARB;
+   tbl.glMultiTexCoord3fARB = emu_glMultiTexCoord3fARB;
+   tbl.glMultiTexCoord3fvARB = emu_glMultiTexCoord3fvARB;
+   tbl.glMultiTexCoord3iARB = emu_glMultiTexCoord3iARB;
+   tbl.glMultiTexCoord3ivARB = emu_glMultiTexCoord3ivARB;
+   tbl.glMultiTexCoord3sARB = emu_glMultiTexCoord3sARB;
+   tbl.glMultiTexCoord3svARB = emu_glMultiTexCoord3svARB;
+   tbl.glMultiTexCoord4dARB = emu_glMultiTexCoord4dARB;
+   tbl.glMultiTexCoord4dvARB = emu_glMultiTexCoord4dvARB;
+   tbl.glMultiTexCoord4fARB = emu_glMultiTexCoord4fARB;
+   tbl.glMultiTexCoord4fvARB = emu_glMultiTexCoord4fvARB;
+   tbl.glMultiTexCoord4iARB = emu_glMultiTexCoord4iARB;
+   tbl.glMultiTexCoord4ivARB = emu_glMultiTexCoord4ivARB;
+   tbl.glMultiTexCoord4sARB = emu_glMultiTexCoord4sARB;
+   tbl.glMultiTexCoord4svARB = emu_glMultiTexCoord4svARB;
 
 // GL_ARB_sampler_objects
 
@@ -42012,9 +47030,12 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glAttachObjectARB = emu_glAttachObjectARB;
    tbl.glCompileShaderARB = emu_glCompileShaderARB;
    tbl.glCreateProgramObjectARB = emu_glCreateProgramObjectARB;
+   tbl.glCreateShaderObjectARB = emu_glCreateShaderObjectARB;
    tbl.glGetInfoLogARB = emu_glGetInfoLogARB;
    tbl.glGetObjectParameterivARB = emu_glGetObjectParameterivARB;
    tbl.glGetUniformLocationARB = emu_glGetUniformLocationARB;
+   tbl.glLinkProgramARB = emu_glLinkProgramARB;
+   tbl.glShaderSourceARB = emu_glShaderSourceARB;
    tbl.glUniform1iARB = emu_glUniform1iARB;
 
 // GL_ARB_sync
@@ -42025,6 +47046,13 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glTexImage2DMultisample = emu_glTexImage2DMultisample;
    tbl.glTexImage3DMultisample = emu_glTexImage3DMultisample;
+
+// GL_ARB_transpose_matrix
+
+   tbl.glLoadTransposeMatrixdARB = emu_glLoadTransposeMatrixdARB;
+   tbl.glLoadTransposeMatrixfARB = emu_glLoadTransposeMatrixfARB;
+   tbl.glMultTransposeMatrixdARB = emu_glMultTransposeMatrixdARB;
+   tbl.glMultTransposeMatrixfARB = emu_glMultTransposeMatrixfARB;
 
 // GL_ARB_vertex_array_object
 
@@ -42076,6 +47104,40 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glProgramLocalParameter4fARB = emu_glProgramLocalParameter4fARB;
    tbl.glProgramLocalParameter4fvARB = emu_glProgramLocalParameter4fvARB;
    tbl.glProgramStringARB = emu_glProgramStringARB;
+   tbl.glVertexAttrib1dARB = emu_glVertexAttrib1dARB;
+   tbl.glVertexAttrib1dvARB = emu_glVertexAttrib1dvARB;
+   tbl.glVertexAttrib1fARB = emu_glVertexAttrib1fARB;
+   tbl.glVertexAttrib1fvARB = emu_glVertexAttrib1fvARB;
+   tbl.glVertexAttrib1sARB = emu_glVertexAttrib1sARB;
+   tbl.glVertexAttrib1svARB = emu_glVertexAttrib1svARB;
+   tbl.glVertexAttrib2dARB = emu_glVertexAttrib2dARB;
+   tbl.glVertexAttrib2dvARB = emu_glVertexAttrib2dvARB;
+   tbl.glVertexAttrib2fARB = emu_glVertexAttrib2fARB;
+   tbl.glVertexAttrib2fvARB = emu_glVertexAttrib2fvARB;
+   tbl.glVertexAttrib2sARB = emu_glVertexAttrib2sARB;
+   tbl.glVertexAttrib2svARB = emu_glVertexAttrib2svARB;
+   tbl.glVertexAttrib3dARB = emu_glVertexAttrib3dARB;
+   tbl.glVertexAttrib3dvARB = emu_glVertexAttrib3dvARB;
+   tbl.glVertexAttrib3fARB = emu_glVertexAttrib3fARB;
+   tbl.glVertexAttrib3fvARB = emu_glVertexAttrib3fvARB;
+   tbl.glVertexAttrib3sARB = emu_glVertexAttrib3sARB;
+   tbl.glVertexAttrib3svARB = emu_glVertexAttrib3svARB;
+   tbl.glVertexAttrib4NbvARB = emu_glVertexAttrib4NbvARB;
+   tbl.glVertexAttrib4NivARB = emu_glVertexAttrib4NivARB;
+   tbl.glVertexAttrib4NsvARB = emu_glVertexAttrib4NsvARB;
+   tbl.glVertexAttrib4NubARB = emu_glVertexAttrib4NubARB;
+   tbl.glVertexAttrib4NubvARB = emu_glVertexAttrib4NubvARB;
+   tbl.glVertexAttrib4NusvARB = emu_glVertexAttrib4NusvARB;
+   tbl.glVertexAttrib4bvARB = emu_glVertexAttrib4bvARB;
+   tbl.glVertexAttrib4dARB = emu_glVertexAttrib4dARB;
+   tbl.glVertexAttrib4dvARB = emu_glVertexAttrib4dvARB;
+   tbl.glVertexAttrib4fARB = emu_glVertexAttrib4fARB;
+   tbl.glVertexAttrib4fvARB = emu_glVertexAttrib4fvARB;
+   tbl.glVertexAttrib4ivARB = emu_glVertexAttrib4ivARB;
+   tbl.glVertexAttrib4sARB = emu_glVertexAttrib4sARB;
+   tbl.glVertexAttrib4svARB = emu_glVertexAttrib4svARB;
+   tbl.glVertexAttrib4ubvARB = emu_glVertexAttrib4ubvARB;
+   tbl.glVertexAttrib4usvARB = emu_glVertexAttrib4usvARB;
    tbl.glVertexAttribPointerARB = emu_glVertexAttribPointerARB;
 
 // GL_ARB_vertex_shader
@@ -42418,6 +47480,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
    tbl.glColorPointerEXT = emu_glColorPointerEXT;
    tbl.glDrawArraysEXT = emu_glDrawArraysEXT;
+   tbl.glEdgeFlagPointerEXT = emu_glEdgeFlagPointerEXT;
    tbl.glNormalPointerEXT = emu_glNormalPointerEXT;
    tbl.glTexCoordPointerEXT = emu_glTexCoordPointerEXT;
    tbl.glVertexPointerEXT = emu_glVertexPointerEXT;

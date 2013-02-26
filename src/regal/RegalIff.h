@@ -811,9 +811,24 @@ struct Iff
       DispatchTable &tbl = ctx->dispatcher.emulation;
       tbl.glBufferData( GL_ARRAY_BUFFER, immCurrent * sizeof( Attributes ), immArray, GL_DYNAMIC_DRAW );
       if( ( ctx->info->core == true || ctx->info->es2 ) && immPrim == GL_QUADS ) {
-        tbl.glDrawElements( GL_TRIANGLES, immCurrent * 3 / 2, GL_UNSIGNED_SHORT, 0 );
+        tbl.glDrawElements( GL_TRIANGLES, ( immCurrent / 4 ) * 6, GL_UNSIGNED_SHORT, 0 );
       } else {
-        tbl.glDrawArrays( immPrim, 0, immCurrent );
+        GLenum derivedPrim = immPrim;
+        GLsizei derivedCount = immCurrent;
+        if( ( ctx->info->core == true || ctx->info->es2 ) ) {
+          switch( immPrim ) {
+            case GL_POLYGON:
+              derivedPrim = GL_TRIANGLE_FAN;
+              break;
+            case GL_QUAD_STRIP:
+              derivedPrim = GL_TRIANGLE_STRIP;
+              derivedCount = derivedCount & ~GLsizei(1);
+              break;
+            default:
+              break;
+          }
+        }
+        tbl.glDrawArrays( derivedPrim, 0, derivedCount );
       }
     }
   }
@@ -1544,9 +1559,9 @@ struct Iff
     State::Store store;
 
     void Init( RegalContext * ctx, const State::Store & sstore, const GLchar *vsSrc, const GLchar *fsSrc );
-    void Init( RegalContext * ctx, const State::Store & sstore );
     void Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src );
     void Attribs( RegalContext * ctx );
+    void UserShaderModeAttribs( RegalContext * ctx );
     void Samplers( RegalContext * ctx, DispatchTable & tbl );
     void Uniforms( RegalContext * ctx, DispatchTable & tbl );
   };
@@ -2168,6 +2183,61 @@ struct Iff
   template <typename T> void Frustum( T left, T right, T bottom, T top, T zNear, T zFar ) { MatrixFrustum( shadowMatrixMode, left, right, bottom, top, zNear, zFar ); }
   template <typename T> void Ortho( T left, T right, T bottom, T top, T zNear, T zFar ) { MatrixOrtho( shadowMatrixMode, left, right, bottom, top, zNear, zFar ); }
 
+
+  // cache viewport
+  struct Viewport {
+    Viewport() : zn( 0.0f ), zf( 1.0f ) {}
+    GLint x, y;
+    GLsizei w, h;
+    GLfloat zn, zf;
+  };
+  Viewport viewport;
+
+  void Viewport( GLint x, GLint y, GLsizei w, GLsizei h ) {
+    viewport.x = x;
+    viewport.y = y;
+    viewport.w = w;
+    viewport.h = h;
+  }
+
+  void DepthRange( GLfloat znear, GLfloat zfar ) {
+    viewport.zn = znear;
+    viewport.zf = zfar;
+  }
+
+  template <typename T> void RasterPosition( RegalContext * ctx, T x, T y, T z = 0 ) {
+    const GLdouble xd = ToDouble<true>(x);
+    const GLdouble yd = ToDouble<true>(y);
+    const GLdouble zd = ToDouble<true>(z);
+    RasterPos( ctx, xd, yd, zd );
+  }
+
+  template <typename T> void WindowPosition( RegalContext * ctx, T x, T y, T z = 0 ) {
+    const GLdouble xd = ToDouble<true>(x);
+    const GLdouble yd = ToDouble<true>(y);
+    const GLdouble zd = ToDouble<true>(z);
+    WindowPos( ctx, xd, yd, zd );
+  }
+
+  void RasterPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z ) {
+    r3::Vec3f pos( x, y, z );
+    r3::Vec3f s( 0.5f * viewport.w, 0.5f * viewport.h, 0.5f * ( viewport.zf - viewport.zn ) );
+    r3::Vec3f b( viewport.x, viewport.y, 0.5f + viewport.zn );
+    r3::Matrix4f sb;
+    sb.SetScale( s );
+    sb.SetTranslate( s + b );
+    r3::Matrix4f m = sb * projection.Top() * modelview.Top();
+    m.MultMatrixVec( pos );
+    WindowPos( ctx, pos.x, pos.y, pos.z );
+  }
+
+  void WindowPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z ) {
+    if( ctx->isCore() || ctx->isCompat() ) {
+      // todo - cache rasterpos and implement glDrawPixels and glBitmap
+      return;
+    }
+    ctx->dispatcher.emulation.glWindowPos3d( x, y, z );
+  }
 
   void BindVertexArray( RegalContext * ctx, GLuint vao ) {
     UNUSED_PARAMETER(ctx);

@@ -12630,7 +12630,7 @@ gl.add(glGetError)
 glGetFloatv = Function('glGetFloatv')
 glGetFloatv.ret = Return('void')
 glGetFloatv.add( Input( 'pname','GLenum' ))
-glGetFloatv.add( Output( 'params','GLfloat *' ))
+glGetFloatv.add( Output( 'params','GLfloat *' ,size = 'helperGLGetSize(pname)' ))
 glGetFloatv.version = '1.0'
 glGetFloatv.category = 'GL_VERSION_1_0'
 glGetFloatv.esVersions = [1.1, 2.0]
@@ -12641,7 +12641,7 @@ gl.add(glGetFloatv)
 glGetIntegerv = Function('glGetIntegerv')
 glGetIntegerv.ret = Return('void')
 glGetIntegerv.add( Input( 'pname','GLenum' ))
-glGetIntegerv.add( Output( 'params','GLint *' ))
+glGetIntegerv.add( Output( 'params','GLint *' ,size = 'helperGLGetSize(pname)' ))
 glGetIntegerv.version = '1.0'
 glGetIntegerv.category = 'GL_VERSION_1_0'
 glGetIntegerv.esVersions = [1.0, 1.1, 2.0]

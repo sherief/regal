@@ -379,11 +379,11 @@ struct Dsa : public RegalEmu
     {
         DispatchTable &tbl = ctx->dispatcher.emulation;
 
-        if (mask&GL_CLIENT_PIXEL_STORE_BIT) 
+        if (mask&GL_CLIENT_PIXEL_STORE_BIT)
         {
             PFNGLPIXELSTOREIPROC pixelStorei = tbl.call(&tbl.glPixelStorei);
             PFNGLPIXELSTOREFPROC pixelStoref = tbl.call(&tbl.glPixelStoref);
-            
+
             RegalAssert(pixelStorei);
             RegalAssert(pixelStoref);
 
@@ -409,7 +409,7 @@ struct Dsa : public RegalEmu
             pixelStorei( GL_MAP_STENCIL, 0 );
             pixelStorei( GL_INDEX_SHIFT, 0 );
             pixelStorei( GL_INDEX_OFFSET, 0 );
-            
+
             pixelStoref( GL_RED_SCALE, 1.0f );
             pixelStoref( GL_GREEN_SCALE, 1.0f );
             pixelStoref( GL_BLUE_SCALE, 1.0f );
@@ -421,7 +421,7 @@ struct Dsa : public RegalEmu
             pixelStoref( GL_ALPHA_BIAS, 0.0f );
             pixelStoref( GL_DEPTH_BIAS, 0.0f );
         }
-  
+
         if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
         {
             // FIXME: need number of texture units

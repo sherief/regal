@@ -122,7 +122,7 @@ struct NameTranslator {
     }
 };
 
-struct Obj : public RegalEmu 
+struct Obj : public RegalEmu
 {
   NameTranslator bufferNames;
 	NameTranslator vaoNames;

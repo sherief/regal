@@ -1404,22 +1404,6 @@ void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSr
   tbl.call(&tbl.glUseProgram)( ctx->iff->program );
 }
 
-void Program::Init( RegalContext * ctx, const Store & sstore )
-{
-  Internal("Regal::Program::Init","");
-
-  ver = 0;
-  progcount = 0;
-  DispatchTable & tbl = ctx->dispatcher.emulation;
-  store = sstore;
-  Attribs( ctx );
-  tbl.glLinkProgram( pg );
-  tbl.glUseProgram( pg );
-  Samplers( ctx, tbl );
-  Uniforms( ctx, tbl );
-  tbl.glUseProgram( ctx->iff->program );
-}
-
 void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src )
 {
   Internal("Regal::Program::Shader","");
@@ -1476,6 +1460,30 @@ void Program::Attribs( RegalContext * ctx )
     tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
   }
 }
+
+// seth: for user program mode just do all the bind attribs, aliasing is OK in GL
+void Program::UserShaderModeAttribs( RegalContext * ctx )
+{
+  Internal("Regal::Program::UserShaderModeAttribs","");
+
+  DispatchTable & tbl = ctx->dispatcher.emulation;
+
+  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+  GLuint units = std::min( /*(GLuint)ctx->iff->ffAttrNumTex*/(GLuint)16, (GLuint)REGAL_EMU_IFF_TEXTURE_UNITS );
+  for( GLuint i = 0; i < units; i++ ) {
+    if( store.tex[i].enables == 0 ) {
+      continue;
+    }
+    string_list ss;
+    ss << "rglMultiTexCoord" << i;
+    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
+  }
+}
+
 
 void Program::Samplers( RegalContext * ctx, DispatchTable & tbl )
 {
@@ -1582,10 +1590,17 @@ void Iff::InitFixedFunction( RegalContext * ctx )
   fmtmap[ GL_RGBA16 ] = GL_RGBA;
 
   fmtmap[ GL_RGBA16F ] = GL_RGBA16F;
+  fmtmap[ GL_SRGB ] = GL_SRGB;
+  fmtmap[ GL_SRGB8 ] = GL_SRGB;
   fmtmap[ GL_SRGB8_ALPHA8 ] = GL_SRGB8_ALPHA8;
+  fmtmap[ GL_SLUMINANCE ] = GL_SLUMINANCE;
+  fmtmap[ GL_SLUMINANCE8 ] = GL_SLUMINANCE;
 
   fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
   fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
+
+  fmtmap[ GL_DEPTH_COMPONENT16 ] = GL_DEPTH_COMPONENT16;
+
   fmtmap[ GL_INTENSITY16F_ARB ] = GL_INTENSITY;
 
   // GL_ARB_ES2_compatibility
@@ -1617,7 +1632,7 @@ void Iff::ShadowTextureInfo( GLuint obj, GLenum target, GLint internalFormat )
   UNUSED_PARAMETER(target);
   // assert( target == tip->tgt );
   if( fmtmap.count( internalFormat ) == 0 ) {
-    Warning( "Unknown internal format: ", internalFormat );
+    Warning( "Unknown internal format: ", GLenumToString(internalFormat) );
   }
   GLint fmt = fmtmap[ internalFormat ];
   textureObjToFmt[ obj ] = fmt;
@@ -2162,11 +2177,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
     return;
   }
   ffstate.Process( this );
-  if( shprogmap.count( program ) == 0 ) {
-    Program & p = shprogmap[ program ];
-    p.pg = program;
-    p.Init( ctx, ffstate.processed );
-  }
+  RegalAssert( shprogmap.count( program ) != 0 );
   currprog = & shprogmap[ program ];
   if( currprog->pg == 0 ) {
     Warning( "The program is 0. That can't be right.\n" );
@@ -2174,10 +2185,12 @@ void Iff::UseShaderProgram( RegalContext * ctx )
   UpdateUniforms( ctx );
 }
 
-static void stompVersion(GLchar *str)
+static int remove_version(GLchar *str)
 {
+  GLchar version[4];
+
   if (!str)
-    return;
+    return -1;
 
   GLchar *i = str;
   while ((i = strstr(i,"#version ")))
@@ -2186,57 +2199,220 @@ static void stompVersion(GLchar *str)
     {
       i[0] = '/';
       i[1] = '/';
+
+      // return version number
+      i+=9;
+      while (*i == ' ') i++;
+      for (int j=0; j<3; i++,j++)
+        version[j] = *i;
+      version[3] = '\0';
+      return atoi(version);
     }
     ++i;
   }
+  return -1;
 }
 
-void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
+// replace ftransform with "rgl_ftform" in order to avoid conflict with possibly deprecated ftransform
+static void replace_ftransform(GLchar *str)
 {
-  if( string[0][0] == '#' && string[0][1] == 'v' ) {
-    ctx->dispatcher.emulation.glShaderSource( shader, count, string, length );
+  if (!str)
+    return;
+
+  GLchar *i = str;
+  const GLchar *replacement = "rgl_ftform";
+  while ((i = strstr(i,"ftransform()")))
+  {
+    memcpy( i, replacement, 10 );
+    i+=10;
+  }
+}
+
+static bool uses_string( const char * str, int count, const GLchar **srcstr, const GLint *length ) {
+    for( int i = 0; i < count; i++ ) {
+       const size_t len = (length && length[i] >= 0) ? length[i] : strlen(srcstr[i]);
+       std::string seg(srcstr[i],len);
+       if( seg.find( str ) != std::string::npos ) {
+           return true;
+       }
+    }
+    return false;
+}
+
+void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar **srcstr, const GLint *length)
+{
+  bool uses_ftransform = false;
+  for( int i = 0; i < count && uses_ftransform == false; i++ ) {
+    std::string seg;
+    if( length != NULL ) {
+      seg = std::string( srcstr[i], length[i] );
+    } else {
+      seg = std::string( srcstr[i] );
+    }
+    if( seg.find( "ftransform()" ) != std::string::npos ) {
+      uses_ftransform = true;
+    }
+  }
+  //uses_ftransform = false; // hack
+  if( srcstr[0][0] == '#' && srcstr[0][1] == 'v' ) {
+    ctx->dispatcher.emulation.glShaderSource( shader, count, srcstr, length );
     return;
   }
 
-  std::vector< const GLchar * > s;
-  s.resize( count + 1 );
-  std::vector< GLint > l;
-  l.resize( count + 1 );
-  for( size_t i = 1; i < s.size(); i++ )
+  // Make room for Regal preamble
+
+  std::vector<GLchar *> s(count + 1);
+  std::vector<GLint   > l(count + 1);
+
+  // Copy the input shader code so we can change it in-place
+  int version = -1;
+  for (GLsizei i=0; i<count; ++i)
   {
-    if (string) {
-      s[i] = string[i - 1];
-    }
-    l[i] = length ? length[i - 1] : static_cast<GLint>( strlen( string[ i - 1 ] ));
+    l[i+1] = length ? length[i] : static_cast<GLint>(strlen(static_cast<const char *>(srcstr[i])));
+    if (srcstr)
+      s[i+1] = strndup(srcstr[i],l[i+1]);
+    if (version<0)
+      version = remove_version(s[i+1]);
+    if (uses_ftransform && gles )
+      replace_ftransform(s[i+1]);
   }
+
+  // Preamble
+
   string_list ss;
-  if( gles ) {
-    ss << "#version 100\n";
-  } else if ( legacy ) {
-    ss << "#version 120\n";
-  } else {
-    ss << "#version 140\n";
+  if (gles)
+  {
+    // hack around #version 100 on x86 failing compilation
+    if( ctx->info->gl_version_major >= 3 ) {
+      ss << "#version 120\n";
+    } else {
+      ss << "#version 100\n";
+    }
   }
-  if( gles || legacy ) {
-    if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+  else if (legacy)
+  {
+    ss << "#version 120\n";
+  }
+  else
+  {
+    if (version > 0) {
+      // We should honor the version in the original shader if we can, but leave out for now.
+      //ss << "#version " << version << "\n";
+      if (shaderTypeMap[ shader ] == GL_VERTEX_SHADER)
+      {
+        ss << "#define in attribute\n";
+        ss << "#define out varying\n";
+      }
+      else
+      {
+        ss << "#define in varying\n";
+      }
+    } else {
+      ss << "#version 140\n";
+    }
+  }
+  if (gles || legacy)
+  {
+    if (shaderTypeMap[ shader ] == GL_VERTEX_SHADER)
+    {
       ss << "#define in attribute\n";
       ss << "#define out varying\n";
-    } else {
+    }
+    else
+    {
       ss << "#define in varying\n";
     }
   } else {
     if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
 
     } else {
-      ss << "#define gl_FragColor rglFragColor\n";
-      ss << "#define texture1D texture\n";
-      ss << "#define texture2D texture\n";
-      ss << "#define textureCube texture\n";
-      ss << "out vec4 rglFragColor;\n";
+      if (gles) {
+        ss << "#define gl_FragColor           rglFragColor\n";
+        ss << "out vec4 rglFragColor;\n";
+      }
+      if (gles) {
+        ss << "#define texture1D texture\n";
+        ss << "#define texture2D texture\n";
+        ss << "#define textureCube texture\n";
+      }
     }
   }
   if( gles ) {
     ss << "precision highp float;\n";
+  }
+
+  ss << "#define centroid                              \n";
+  ss << "#define gl_FogFragCoord        rglFogFragCoord\n";
+  if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+    ss << "#define gl_Color               rglColor\n";
+  } else {
+    ss << "#define gl_Color               rglFrontColor\n";
+  }
+  ss << "#define gl_FrontColor          rglFrontColor\n";
+  if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+    ss << "#define gl_SecondaryColor               rglSecondaryColor\n";
+  } else {
+    ss << "#define gl_SecondaryColor               rglFrontSecondaryColor\n";
+  }
+
+  ss << "#define gl_FrontSecondaryColor rglFrontSecondaryColor\n";
+  ss << "#define gl_ClipVertex          rglClipVertex\n";
+  ss << "#define gl_FragDepth           rglFragDepth\n";
+if( gles ) {
+  ss << "#define texture3d              texture2d\n";
+  ss << "#define texture3D(a,b)         texture2D(a,b.xy)\n";
+  ss << "#define sampler3D              sampler2D\n";
+}
+
+if( uses_string( "gl_FogFragCoord", count, srcstr, length ) ) {
+	ss << "out float rglFogFragCoord;\n";
+}
+
+// NOTE: ES 2.0 does not support gl_FragDepth, so we just discard it, for now
+// See: http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
+
+if( uses_string( "gl_FragDepth", count, srcstr, length ) ) {
+	ss << (shaderTypeMap[shader]==GL_VERTEX_SHADER ? "out" : " ") <<  " float rglFragDepth;\n";
+}
+
+
+if( uses_string( "gl_Color", count, srcstr, length ) ) {
+  if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+    ss << "in vec4 rglColor;\n";
+  } else {
+    ss << "in vec4 rglFrontColor;\n";
+  }
+}
+if( uses_string( "gl_FrontColor", count, srcstr, length ) ) {
+	ss << "out vec4 rglFrontColor;\n";
+}
+
+// NOTE: gl_SecondaryColor can be a vertex shader output, or a fragment shader input.
+// See: http://www.opengl.org/registry/doc/GLSLangSpec.4.30.7.pdf
+
+if( uses_string( "gl_SecondaryColor", count, srcstr, length ) ) {
+  if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+    ss << "in vec4 rglSecondaryColor;\n";
+  } else {
+    ss << "in vec4 rglFrontSecondaryColor;\n";
+  }
+}
+
+if( uses_string( "gl_FrontSecondaryColor", count, srcstr, length ) ) {
+	ss << "out vec4 rglFrontSecondaryColor;\n";
+}
+if( uses_string( "gl_ClipVertex", count, srcstr, length ) ) {
+  // should be "out", but temporarily disabled due to register pressure concerns
+  // ss << "out vec4 rglClipVertex;\n";
+	ss << "vec4 rglClipVertex;\n";
+}
+
+  if ( uses_ftransform  && gles ) {
+    ss << "uniform mat4 rglModelview;\n";
+    ss << "uniform mat4 rglProjection;\n";
+    // should be "in", but temporarily disabled due to register pressure concerns
+    // ss << "in vec4 rglVertex;\n";
+    ss << "vec4 rglVertex;\n";
   }
 
   ss << "#define gl_Modelview rglModelview\n";
@@ -2244,15 +2420,32 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
   ss << "#define gl_TextureMatrix0 rglTextureMatrix0\n";
   ss << "#define gl_Sampler0 rglSampler0\n\n";
 
+  if ( uses_ftransform && gles ) {
+    ss << "vec4 rgl_ftform() { return gl_Projection * gl_Modelview * rglVertex; }\n\n";
+  }
   //Logging::Output( "foo:\n%s", ss.str().c_str() );
-  std::string preamble = ss.str();
-  s[0] = preamble.c_str();
-  l[0] = static_cast<GLint>( strlen( s[0] ) );
-  ctx->dispatcher.emulation.glShaderSource( shader, count + 1, &s[0], &l[0] );
+
+  string preamble = ss.str();
+  s[0] = const_cast<char *>(preamble.c_str());
+  l[0] = (int)preamble.length();
+  ctx->dispatcher.emulation.glShaderSource( shader, count + 1, const_cast<const GLchar**>(&s[0]), &l[0] );
 }
 
 void Iff::LinkProgram( RegalContext *ctx, GLuint program ) {
+  // need to bind attribs just before link for Regal-generated attribs
+  if ( program != 0 ) {
+    if( shprogmap.count( program ) == 0 ) {
+      ffstate.Process( this );
+      Program & p = shprogmap[ program ];
+      p.pg = program;
+      p.UserShaderModeAttribs(ctx);
+    }
+  }
   ctx->dispatcher.emulation.glLinkProgram( program );
+  Program & p = shprogmap[ program ];
+  DispatchTable & tbl = ctx->dispatcher.emulation;
+  p.Samplers( ctx, tbl );
+  p.Uniforms( ctx, tbl );
 }
 
 }; // namespace Emu

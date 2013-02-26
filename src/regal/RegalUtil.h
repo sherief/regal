@@ -414,6 +414,44 @@ template <bool Norm> inline float ToFloat(const unsigned long int v ) {
   return Norm ? float(v)/float(std::numeric_limits<unsigned long int>::max()) : float(v);
 }
 
+// ToDouble for integer -> double
+
+template <bool Norm, typename T> inline double ToDouble(const T v ) {
+  return double(v);
+}
+
+template <bool Norm> inline double ToDouble(const signed char v ) {
+  return Norm ? double(v)/double(std::numeric_limits<signed char>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const unsigned char v ) {
+  return Norm ? double(v)/double(std::numeric_limits<unsigned char>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const signed short v ) {
+  return Norm ? double(v)/double(std::numeric_limits<signed short>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const unsigned short v ) {
+  return Norm ? double(v)/double(std::numeric_limits<unsigned short>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const signed int v ) {
+  return Norm ? double(v)/double(std::numeric_limits<signed int>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const unsigned int v ) {
+  return Norm ? double(v)/double(std::numeric_limits<unsigned int>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const signed long int v ) {
+  return Norm ? double(v)/double(std::numeric_limits<signed long int>::max()) : double(v);
+}
+
+template <bool Norm> inline double ToDouble(const unsigned long int v ) {
+  return Norm ? double(v)/double(std::numeric_limits<unsigned long int>::max()) : double(v);
+}
+
 REGAL_NAMESPACE_END
 
 #endif
