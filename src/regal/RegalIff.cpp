@@ -2326,15 +2326,11 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
     if( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
 
     } else {
-      if (gles) {
-        ss << "#define gl_FragColor           rglFragColor\n";
-        ss << "out vec4 rglFragColor;\n";
-      }
-      if (gles) {
-        ss << "#define texture1D texture\n";
-        ss << "#define texture2D texture\n";
-        ss << "#define textureCube texture\n";
-      }
+      ss << "#define gl_FragColor           rglFragColor\n";
+      ss << "out vec4 rglFragColor;\n";
+      ss << "#define texture1D texture\n";
+      ss << "#define texture2D texture\n";
+      ss << "#define textureCube texture\n";
     }
   }
   if( gles ) {
