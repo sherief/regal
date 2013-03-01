@@ -29,7 +29,8 @@
 #     }
 #  }
 
-
+from ApiCodeGen import typeCode
+from ApiUtil import typeIsVoid
 import re
 from string import Template
 from string import join
@@ -153,11 +154,16 @@ def emuFindEntry(func, emuFormulae, member):
   if len(m):
     match   = m[0][0]
     formula = m[0][2]
-    emue = { 'name' : name, 'member' : member }
+    rType  = typeCode(func.ret.type)
+    dummyRetVal = ''
+    if not typeIsVoid(rType):
+      dummyRetVal = '(( %s )0)' % rType
+    emue = { 'name' : name, 'member' : member, 'dummyretval' : dummyRetVal }
     subs = deepcopy(arg)
     for l in range( len(match.groups()) + 1):
       subs['m%d' % l] = match.group( l )
     subs['name'] = name
+    subs['dummyretval'] = dummyRetVal
     addSubstitution( name, formula, subs )
     substitute( emue, formula, 'impl', subs )
     substitute( emue, formula, 'init', subs )

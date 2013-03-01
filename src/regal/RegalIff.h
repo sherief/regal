@@ -2221,8 +2221,8 @@ struct Iff
 
   void RasterPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z ) {
     r3::Vec3f pos( x, y, z );
-    r3::Vec3f s( 0.5f * viewport.w, 0.5f * viewport.h, 0.5f * ( viewport.zf - viewport.zn ) );
-    r3::Vec3f b( viewport.x, viewport.y, 0.5f + viewport.zn );
+    r3::Vec3f s( 0.5f * GLfloat(viewport.w), 0.5f * GLfloat(viewport.h), 0.5f * GLfloat( viewport.zf - viewport.zn ) );
+    r3::Vec3f b( GLfloat(viewport.x), GLfloat(viewport.y), 0.5f + GLfloat(viewport.zn) );
     r3::Matrix4f sb;
     sb.SetScale( s );
     sb.SetTranslate( s + b );

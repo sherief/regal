@@ -76,6 +76,7 @@ namespace Emu { struct Iff; };
 namespace Emu { struct So; };
 namespace Emu { struct Vao; };
 namespace Emu { struct TexC; };
+namespace Emu { struct Filt; };
 #endif
 
 struct RegalContext
@@ -116,6 +117,7 @@ struct RegalContext
   Emu::So            *so;
   Emu::Vao           *vao;
   Emu::TexC          *texc;
+  Emu::Filt          *filt;
 #endif
 
   #if REGAL_SYS_PPAPI

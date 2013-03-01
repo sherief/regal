@@ -61,6 +61,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalSo.h"
 #include "RegalVao.h"
 #include "RegalTexC.h"
+#include "RegalFilt.h"
 #endif
 
 REGAL_GLOBAL_END
@@ -87,6 +88,7 @@ RegalContext::RegalContext()
   so(NULL),
   vao(NULL),
   texc(NULL),
+  filt(NULL),
 #endif
 #if REGAL_SYS_PPAPI
   ppapiES2(NULL),
@@ -153,11 +155,19 @@ RegalContext::Init()
     RegalAssert(info);
     // emu
     emuLevel = 10;
+    #if REGAL_EMU_FILTER
+    if (Config::enableEmuFilter)
+    {
+      filt = new Emu::Filt;
+      emuLevel = 0;
+      filt->Init(*this);
+    }
+    #endif /* REGAL_EMU_FILTER */
     #if REGAL_EMU_TEXC
     if (Config::enableEmuTexC)
     {
       texc = new Emu::TexC;
-      emuLevel = 0;
+      emuLevel = 1;
       texc->Init(*this);
     }
     #endif /* REGAL_EMU_TEXC */
@@ -278,6 +288,9 @@ RegalContext::~RegalContext()
   #if REGAL_EMU_TEXC
   delete texc;
   #endif /* REGAL_EMU_TEXC */
+  #if REGAL_EMU_FILTER
+  delete filt;
+  #endif /* REGAL_EMU_FILTER */
 #endif
 }
 

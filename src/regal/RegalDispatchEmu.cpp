@@ -56,6 +56,7 @@ using namespace std;
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 
+#include "RegalBreak.h"
 #include "RegalBin.h"
 #include "RegalEmu.h"
 #include "RegalPpa.h"
@@ -67,6 +68,7 @@ using namespace std;
 #include "RegalSo.h"
 #include "RegalTexC.h"
 #include "RegalVao.h"
+#include "RegalFilt.h"
 
 REGAL_GLOBAL_END
 
@@ -76,6 +78,69 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
 // GL_VERSION_1_0
+
+static void REGAL_CALL emu_glAccum(GLenum op, GLfloat value)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glAccum for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glAccum)(op, value);
+      break;
+    }
+
+  }
+
+}
 
 static void REGAL_CALL emu_glAlphaFunc(GLenum func, GLclampf ref)
 {
@@ -184,6 +249,195 @@ static void REGAL_CALL emu_glBegin(GLenum mode)
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glBegin)(mode);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glBitmap for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glBitmap)(width, height, xorig, yorig, xmove, ymove, bitmap);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glCallList(GLuint list)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glCallList for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glCallList)(list);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glClearAccum for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glClearAccum)(red, green, blue, alpha);
       break;
     }
 
@@ -2060,6 +2314,69 @@ static void REGAL_CALL emu_glColorMaterial(GLenum face, GLenum mode)
 
 }
 
+static void REGAL_CALL emu_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glCopyPixels for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glCopyPixels)(x, y, width, height, type);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glCullFace(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -2086,6 +2403,69 @@ static void REGAL_CALL emu_glCullFace(GLenum mode)
   DispatchTable *_next = _context->dispatcher.emulation._next;
   RegalAssert(_next);
   _next->call(& _next->glCullFace)(mode);
+}
+
+static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glDeleteLists for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDeleteLists)(list, range);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glDepthFunc(GLenum func)
@@ -2163,7 +2543,7 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 4;
-        _context->iff->DepthRange( zNear, zFar );
+        _context->iff->DepthRange( GLfloat(zNear), GLfloat(zFar) );
       }
       #endif
     case 1 :
@@ -2297,7 +2677,17 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
       #if REGAL_EMU_PPA
       if (_context->ppa) break;
       #endif
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -2325,7 +2715,12 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -2333,13 +2728,139 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
           if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
             return _next->call(&_next->glDrawBuffer)(mode);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glDrawBuffer)(mode);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glDrawPixels for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glDrawPixels)(width, height, format, type, pixels);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEdgeFlag(GLboolean flag)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEdgeFlag for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEdgeFlag)(flag);
       break;
     }
 
@@ -2498,6 +3019,825 @@ static void REGAL_CALL emu_glEnd(void)
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glEnd)();
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEndList(void)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEndList for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEndList)();
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord1d(GLdouble u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord1d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord1d)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord1dv(const GLdouble *u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord1dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord1dv)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord1f(GLfloat u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord1f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord1f)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord1fv(const GLfloat *u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord1fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord1fv)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord2d(GLdouble u, GLdouble v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord2d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord2d)(u, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord2dv(const GLdouble *u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord2dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord2dv)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord2f(GLfloat u, GLfloat v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord2f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord2f)(u, v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalCoord2fv(const GLfloat *u)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalCoord2fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalCoord2fv)(u);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalMesh1 for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalMesh1)(mode, i1, i2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalMesh2 for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalMesh2)(mode, i1, i2, j1, j2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalPoint1(GLint i)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalPoint1 for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalPoint1)(i);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glEvalPoint2(GLint i, GLint j)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glEvalPoint2 for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glEvalPoint2)(i, j);
       break;
     }
 
@@ -2798,6 +4138,68 @@ static void REGAL_CALL emu_glFrustum(GLdouble left, GLdouble right, GLdouble bot
 
 }
 
+static GLuint REGAL_CALL emu_glGenLists(GLsizei range)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glGenLists for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return (( GLuint  )0);
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glGenLists)(range);
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -2831,7 +4233,11 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
       #if REGAL_EMU_VAO
       if (_context->vao) break;
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -2880,7 +4286,21 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
         return;
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->Get(*_context, pname, params);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -2926,7 +4346,11 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
       #if REGAL_EMU_VAO
       if (_context->vao) break;
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -2976,7 +4400,21 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
         return;
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->Get(*_context, pname, params);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -3025,7 +4463,11 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
       #if REGAL_EMU_VAO
       if (_context->vao) break;
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -3086,7 +4528,21 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
         return;
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->Get(*_context, pname, params);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -3135,7 +4591,11 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
       #if REGAL_EMU_VAO
       if (_context->vao) break;
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -3196,7 +4656,21 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
         return;
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->Get(*_context, pname, params);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -3615,7 +5089,19 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -3632,19 +5118,151 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glGetTexImage for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glGetTexImage)(target, level, format, type, pixels);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glGetTexLevelParameterfv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetTexLevelParameterfv)(target, level, pname, params);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glGetTexLevelParameteriv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glGetTexLevelParameteriv)(target, level, pname, params);
       break;
     }
 
@@ -3803,7 +5421,13 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -3811,7 +5435,29 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
   // impl
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glHint for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
@@ -4343,6 +5989,132 @@ static void REGAL_CALL emu_glLightiv(GLenum light, GLenum pname, const GLint *pa
 
 }
 
+static void REGAL_CALL emu_glLineStipple(GLint factor, GLushort pattern)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glLineStipple for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glLineStipple)(factor, pattern);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glLineWidth(GLfloat width)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isCore())
+        {
+           Warning("Regal does not support glLineWidth for core profile - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glLineWidth)(width);
+      break;
+    }
+
+  }
+
+}
+
 static void REGAL_CALL emu_glLoadIdentity(void)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -4519,6 +6291,510 @@ static void REGAL_CALL emu_glLoadMatrixf(const GLfloat *m)
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glLoadMatrixf)(m);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMap1d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMap1d)(target, u1, u2, stride, order, points);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMap1f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMap1f)(target, u1, u2, stride, order, points);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMap2d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMap2d)(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMap2f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMap2f)(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMapGrid1d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMapGrid1d)(un, u1, u2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMapGrid1f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMapGrid1f)(un, u1, u2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMapGrid2d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMapGrid2d)(un, u1, u2, vn, v1, v2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glMapGrid2f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glMapGrid2f)(un, u1, u2, vn, v1, v2);
       break;
     }
 
@@ -4930,6 +7206,69 @@ static void REGAL_CALL emu_glMultMatrixf(const GLfloat *m)
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glMultMatrixf)(m);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glNewList(GLuint list, GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glNewList for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glNewList)(list, mode);
       break;
     }
 
@@ -5539,14 +7878,56 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
         _context->ppca->ShadowPixelStore( pname, param );
       }
       #endif
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glPixelStoref)(pname, param);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glPixelStoref for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glPixelStoref)(pname, param);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
@@ -5574,9 +7955,85 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+      #if REGAL_EMU_TEXC
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowPixelStore( pname, param );
+        _context->dispatcher.emulation.glPixelStorei( pname, param );
+        return;
+      }
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glPixelStorei for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glPixelStorei)(pname, param);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glPixelTransferf(GLenum pname, GLfloat param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
       #endif
     default:
       break;
@@ -5595,21 +8052,150 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        _context->texc->ShadowPixelStore( pname, param );
-        _context->dispatcher.emulation.glPixelStorei( pname, param );
-        return;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glPixelTransferf for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
       }
       #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
-      _next->call(&_next->glPixelStorei)(pname, param);
+      _next->call(&_next->glPixelTransferf)(pname, param);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glPixelTransferi(GLenum pname, GLint param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glPixelTransferi for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glPixelTransferi)(pname, param);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glPixelZoom for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glPixelZoom)(xfactor, yfactor);
       break;
     }
 
@@ -5635,7 +8221,17 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
         _context->ppa->glPolygonMode( face, mode );
       }
       #endif
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -5652,14 +8248,20 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
     case 4 :
     case 3 :
     case 2 :
-      #if REGAL_EMU_FILTER
-        if (_context->isES2())
-        {
-          Warning("Regal does not support glPolygonMode for ES 2.0 - skipping.");
-          return;
-        }
-      #endif
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->PolygonMode(*_context, face, mode);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -5901,7 +8503,13 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -5924,12 +8532,91 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos2d)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2dv(const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2dv)(v);
       break;
     }
 
@@ -5954,7 +8641,13 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -5977,12 +8670,91 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos2f)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2fv(const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2fv)(v);
       break;
     }
 
@@ -6007,7 +8779,13 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6030,12 +8808,91 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2i for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos2i)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2iv(const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2iv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2iv)(v);
       break;
     }
 
@@ -6060,7 +8917,13 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6083,12 +8946,91 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2s for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos2s)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos2sv(const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos2sv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos2sv)(v);
       break;
     }
 
@@ -6113,7 +9055,13 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6136,12 +9084,91 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos3d)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3dv(const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3dv)(v);
       break;
     }
 
@@ -6166,7 +9193,13 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6189,12 +9222,91 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos3f)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3fv(const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3fv)(v);
       break;
     }
 
@@ -6219,7 +9331,13 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6242,12 +9360,91 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3i for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glRasterPos3i)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos3iv(const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3iv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3iv)(v);
       break;
     }
 
@@ -6272,7 +9469,13 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6295,7 +9498,23 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3s for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -6308,7 +9527,7 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
 
 }
 
-static void REGAL_CALL emu_glReadBuffer(GLenum mode)
+static void REGAL_CALL emu_glRasterPos3sv(const GLshort *v)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
@@ -6316,7 +9535,19 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6333,7 +9564,579 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos3sv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos3sv)(v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4d)(x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4dv(const GLdouble *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4dv)(v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4f)(x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4fv(const GLfloat *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4fv)(v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4i for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4i)(x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4iv(const GLint *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4iv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4iv)(v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4s for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4s)(x, y, z, w);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRasterPos4sv(const GLshort *v)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRasterPos4sv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRasterPos4sv)(v);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glReadBuffer(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -6341,14 +10144,328 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
           if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
             return _next->call(&_next->glReadBuffer)(mode);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glReadBuffer)(mode);
       break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRectd for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRectd)(x1, y1, x2, y2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRectf for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRectf)(x1, y1, x2, y2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRecti for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRecti)(x1, y1, x2, y2);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glRects for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glRects)(x1, y1, x2, y2);
+      break;
+    }
+
+  }
+
+}
+
+static GLint REGAL_CALL emu_glRenderMode(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->RenderMode(*_context, mode);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return (( GLint  )0);
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glRenderMode)(mode);
     }
 
   }
@@ -6616,7 +10733,13 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -6642,7 +10765,23 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glShadeModel for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -9055,14 +13194,53 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
         _context->iff->ShadowTexInfo( target, internalformat );
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
 
-  DispatchTable *_next = _context->dispatcher.emulation._next;
-  RegalAssert(_next);
-  _next->call(& _next->glTexImage1D)(target, level, internalformat, width, border, format, type, pixels);
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2())
+        {
+          Warning("Regal does not support glTexImage1D for ES 2.0 - skipping.");
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glTexImage1D)(target, level, internalformat, width, border, format, type, pixels);
+      break;
+    }
+
+  }
+
 }
 
 static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -9090,10 +13268,10 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -9110,17 +13288,17 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowTexImage2D( target, level, format, type );
         _context->dispatcher.emulation.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -9160,7 +13338,12 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
       #if REGAL_EMU_SO
       if (_context->so) break;
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -9187,7 +13370,22 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
         return;
       }
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->TexParameter(*_context, target, pname, param);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -9294,7 +13492,12 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
       #if REGAL_EMU_SO
       if (_context->so) break;
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -9321,7 +13524,22 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
         return;
       }
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->TexParameter(*_context, target, pname, param);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -10860,9 +15078,12 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
       #endif
     default:
       break;
@@ -10903,15 +15124,28 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowBindTexture( target, texture );
         _context->dispatcher.emulation.glBindTexture( target, texture );
         return;
+      }
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->BindTexture(*_context, target, texture);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
       }
       #endif
     default:
@@ -11081,10 +15315,10 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -11101,17 +15335,17 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowDeleteTextures( n, textures );
         _context->dispatcher.emulation.glDeleteTextures( n, textures );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -11495,9 +15729,12 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
       #endif
     default:
       break;
@@ -11525,15 +15762,28 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->dispatcher.emulation.glGenTextures( n, textures );
         _context->texc->ShadowGenTextures( n, textures );
         return;
+      }
+      #endif
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glGenTextures for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
       }
       #endif
     default:
@@ -11955,10 +16205,10 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -11975,12 +16225,11 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         GLenum targetFormat;
         GLenum targetType;
         _context->texc->GetFormatAndType( target, level, &targetFormat, &targetType );
@@ -12000,6 +16249,7 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
         return;
       }
       #endif
+    case 1 :
     default:
     {
        #if !REGAL_FORCE_ES2_PROFILE
@@ -12143,7 +16393,12 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
         _context->so->PreDraw( *_context );
       }
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -12160,15 +16415,20 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
           return _next->call(&_next->glDrawElements)(mode, count, type, indices);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -12203,7 +16463,13 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
         _context->iff->ShadowTexInfo( target, internalformat );
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -12220,14 +16486,20 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glTexImage3D for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -12268,10 +16540,10 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -12322,17 +16594,17 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
       #endif
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowActiveTexture( texture );
         _context->dispatcher.emulation.glActiveTexture( texture );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -12388,7 +16660,11 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
         _context->vao->ClientActiveTexture( _context, texture );
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -12416,14 +16692,20 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -15523,7 +19805,13 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15546,12 +19834,91 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos2d)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2dv(const GLdouble *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2dv)(p);
       break;
     }
 
@@ -15576,7 +19943,13 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15599,12 +19972,91 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos2f)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2fv(const GLfloat *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2fv)(p);
       break;
     }
 
@@ -15629,7 +20081,13 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15652,12 +20110,91 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2i for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos2i)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2iv(const GLint *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2iv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2iv)(p);
       break;
     }
 
@@ -15682,7 +20219,13 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15705,12 +20248,91 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2s for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos2s)(x, y);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos2sv(const GLshort *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos2sv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos2sv)(p);
       break;
     }
 
@@ -15735,7 +20357,13 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15758,12 +20386,91 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3d for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos3d)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3dv(const GLdouble *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3dv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3dv)(p);
       break;
     }
 
@@ -15788,7 +20495,13 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15811,12 +20524,91 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3f for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos3f)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3fv(const GLfloat *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3fv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3fv)(p);
       break;
     }
 
@@ -15841,7 +20633,13 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15864,12 +20662,91 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3i for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos3i)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3iv(const GLint *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3iv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3iv)(p);
       break;
     }
 
@@ -15894,7 +20771,13 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -15917,12 +20800,91 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
         return;
       }
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3s for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
       RegalAssert(_next);
       _next->call(&_next->glWindowPos3s)(x, y, z);
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glWindowPos3sv(const GLshort *p)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if (_context->isES2() || _context->isCore())
+        {
+           Warning("Regal does not support glWindowPos3sv for core or ES2 profiles - skipping.");
+           Break::Filter();
+           return ;
+        }
+      }
+      #endif
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      _next->call(&_next->glWindowPos3sv)(p);
       break;
     }
 
@@ -20798,7 +25760,19 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -20815,14 +25789,20 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glBlitFramebufferANGLE for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -21402,7 +26382,12 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
         _context->so->PreDraw( *_context );
       }
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -21419,7 +26404,12 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)
         {
           if (basevertex==0)
@@ -21434,8 +26424,8 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
             return;
           }
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -21767,7 +26757,14 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
       #if REGAL_EMU_DSA
       if (_context->dsa) break;
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -21795,14 +26792,19 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
-          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+          if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -21823,7 +26825,19 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -21840,16 +26854,21 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
-          if ( _context->info->gl_nv_framebuffer_blit ) return _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-          if ( _context->info->gl_ext_framebuffer_blit ) return _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_nv_framebuffer_blit)  return _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_ext_framebuffer_blit) return _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -22043,10 +27062,10 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -22063,17 +27082,17 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowGenerateMipmap( target );
         _context->dispatcher.emulation.glGenerateMipmap( target );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -22994,10 +28013,10 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -23025,17 +28044,17 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowActiveTexture( texture );
         _context->dispatcher.emulation.glActiveTexture( texture );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -24918,7 +29937,12 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
       #if REGAL_EMU_SO
       if (_context->so) break;
       #endif
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -24944,14 +29968,20 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
       #endif
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glGenSamplers for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25613,7 +30643,19 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25630,7 +30672,12 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25638,8 +30685,8 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
           _next->call(&_next->glAttachShader)(containerObj, obj);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25660,7 +30707,19 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25677,7 +30736,12 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25685,8 +30749,8 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
           _next->call(&_next->glCompileShader)(shaderObj);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25707,7 +30771,19 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25724,15 +30800,20 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
           return _next->call(&_next->glCreateProgram)();
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25803,7 +30884,19 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25820,7 +30913,12 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25831,8 +30929,8 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
             _next->call(&_next->glGetShaderInfoLog)(obj, maxLength, length, infoLog);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25853,7 +30951,19 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25870,7 +30980,12 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25881,8 +30996,8 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
             _next->call(&_next->glGetShaderiv)(obj, pname, params);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -25903,7 +31018,19 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -25920,15 +31047,20 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
           return _next->call(&_next->glGetUniformLocation)(programObj, name);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -26054,7 +31186,19 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -26071,7 +31215,12 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -26079,8 +31228,8 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
           _next->call(&_next->glUniform1i)(location, v0);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -26123,7 +31272,11 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
       #if REGAL_EMU_VAO
       if (_context->vao) break;
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -26161,7 +31314,21 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
         return;
       }
       #endif
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        _context->filt->Get(*_context, pname, params);
+        if (_context->filt->Filtered())
+        {
+          Break::Filter();
+          return ;
+        }
+      }
+      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27080,7 +32247,19 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -27097,7 +32276,12 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27105,8 +32289,8 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
           _next->call(&_next->glBufferData)(target, size, data, usage);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27267,7 +32451,14 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
         _context->dsa->RestoreBuffer( _context );
       }
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -27284,15 +32475,20 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
           RegalAssert(_next);
           return _next->call(&_next->glMapBufferOES)(target, access);
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27353,7 +32549,14 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
       #if REGAL_EMU_DSA
       if (_context->dsa) break;
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -27381,14 +32584,19 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glBindProgramARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27539,7 +32747,19 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -27556,14 +32776,19 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glGenProgramsARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -27708,7 +32933,19 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -27725,14 +32962,19 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glGetProgramivARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -28261,7 +33503,19 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -28278,14 +33532,19 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glProgramStringARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -30174,7 +35433,19 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -30191,7 +35462,12 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
           DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -30199,8 +35475,8 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
           _next->call(&_next->glBindAttribLocation)(programObj, index, name);
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42341,7 +47617,19 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42358,7 +47646,12 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!buf)  {
@@ -42368,8 +47661,8 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
           }
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42402,7 +47695,13 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42438,7 +47737,12 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
         {
           if (!index)  {
@@ -42448,8 +47752,8 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
           }
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42482,7 +47786,13 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
       #if REGAL_EMU_IFF
       if (_context->iff) break;
       #endif
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42518,7 +47828,12 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
         {
           if (!index)  {
@@ -42528,8 +47843,8 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
           }
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42550,7 +47865,19 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42567,7 +47894,12 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
@@ -42577,8 +47909,8 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
           }
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42599,7 +47931,19 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42616,7 +47960,12 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
@@ -42626,8 +47975,8 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
           }
           return;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42656,7 +48005,14 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
       #if REGAL_EMU_DSA
       if (_context->dsa) break;
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42683,7 +48039,12 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
@@ -42693,8 +48054,8 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
           }
           return GL_FALSE;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -42953,7 +48314,19 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -42970,14 +48343,20 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           Warning("Regal does not support glBlitFramebufferEXT for ES 2.0 - skipping.");
-          return;
+          Break::Filter();
+          return ;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -43041,7 +48420,14 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
       #if REGAL_EMU_DSA
       if (_context->dsa) break;
       #endif
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -43069,14 +48455,19 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
-          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+          if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -43239,10 +48630,10 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -43259,17 +48650,17 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowGenerateMipmap( target );
         _context->dispatcher.emulation.glGenerateMipmap( target );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -44741,10 +50132,10 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -44772,17 +50163,17 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowBindTexture( target, texture );
         _context->dispatcher.emulation.glBindTexture( target, texture );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -44812,10 +50203,10 @@ static void REGAL_CALL emu_glDeleteTexturesEXT(GLsizei n, const GLuint *textures
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -44832,17 +50223,17 @@ static void REGAL_CALL emu_glDeleteTexturesEXT(GLsizei n, const GLuint *textures
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->texc->ShadowDeleteTextures( n, textures );
         _context->dispatcher.emulation.glDeleteTextures( n, textures );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -44872,10 +50263,10 @@ static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc) break;
       #endif
+    case 1 :
     default:
       break;
   }
@@ -44892,17 +50283,17 @@ static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
     case 4 :
     case 3 :
     case 2 :
-    case 1 :
       #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
+        _context->emuLevel = 1;
         _context->dispatcher.emulation.glGenTextures( n, textures );
         _context->texc->ShadowGenTextures( n, textures );
         return;
       }
       #endif
+    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -46062,7 +51453,19 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
   // prefix
   switch( _context->emuLevel )
   {
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
     case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
     default:
       break;
   }
@@ -46079,14 +51482,19 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
     case 4 :
     case 3 :
     case 2 :
+    case 1 :
       #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
         if (_context->isES2())
         {
           const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
-          if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;
+          if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;
         }
+      }
       #endif
-    case 1 :
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;
@@ -46450,8 +51858,12 @@ void InitDispatchTableEmu(DispatchTable &tbl)
 
 // GL_VERSION_1_0
 
+   tbl.glAccum = emu_glAccum;
    tbl.glAlphaFunc = emu_glAlphaFunc;
    tbl.glBegin = emu_glBegin;
+   tbl.glBitmap = emu_glBitmap;
+   tbl.glCallList = emu_glCallList;
+   tbl.glClearAccum = emu_glClearAccum;
    tbl.glClearDepth = emu_glClearDepth;
    tbl.glClearStencil = emu_glClearStencil;
    tbl.glClipPlane = emu_glClipPlane;
@@ -46488,20 +51900,38 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glColor4us = emu_glColor4us;
    tbl.glColor4usv = emu_glColor4usv;
    tbl.glColorMaterial = emu_glColorMaterial;
+   tbl.glCopyPixels = emu_glCopyPixels;
    tbl.glCullFace = emu_glCullFace;
+   tbl.glDeleteLists = emu_glDeleteLists;
    tbl.glDepthFunc = emu_glDepthFunc;
    tbl.glDepthMask = emu_glDepthMask;
    tbl.glDepthRange = emu_glDepthRange;
    tbl.glDisable = emu_glDisable;
    tbl.glDrawBuffer = emu_glDrawBuffer;
+   tbl.glDrawPixels = emu_glDrawPixels;
+   tbl.glEdgeFlag = emu_glEdgeFlag;
    tbl.glEnable = emu_glEnable;
    tbl.glEnd = emu_glEnd;
+   tbl.glEndList = emu_glEndList;
+   tbl.glEvalCoord1d = emu_glEvalCoord1d;
+   tbl.glEvalCoord1dv = emu_glEvalCoord1dv;
+   tbl.glEvalCoord1f = emu_glEvalCoord1f;
+   tbl.glEvalCoord1fv = emu_glEvalCoord1fv;
+   tbl.glEvalCoord2d = emu_glEvalCoord2d;
+   tbl.glEvalCoord2dv = emu_glEvalCoord2dv;
+   tbl.glEvalCoord2f = emu_glEvalCoord2f;
+   tbl.glEvalCoord2fv = emu_glEvalCoord2fv;
+   tbl.glEvalMesh1 = emu_glEvalMesh1;
+   tbl.glEvalMesh2 = emu_glEvalMesh2;
+   tbl.glEvalPoint1 = emu_glEvalPoint1;
+   tbl.glEvalPoint2 = emu_glEvalPoint2;
    tbl.glFogf = emu_glFogf;
    tbl.glFogfv = emu_glFogfv;
    tbl.glFogi = emu_glFogi;
    tbl.glFogiv = emu_glFogiv;
    tbl.glFrontFace = emu_glFrontFace;
    tbl.glFrustum = emu_glFrustum;
+   tbl.glGenLists = emu_glGenLists;
    tbl.glGetBooleanv = emu_glGetBooleanv;
    tbl.glGetDoublev = emu_glGetDoublev;
    tbl.glGetFloatv = emu_glGetFloatv;
@@ -46514,6 +51944,8 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glGetTexGenfv = emu_glGetTexGenfv;
    tbl.glGetTexGeniv = emu_glGetTexGeniv;
    tbl.glGetTexImage = emu_glGetTexImage;
+   tbl.glGetTexLevelParameterfv = emu_glGetTexLevelParameterfv;
+   tbl.glGetTexLevelParameteriv = emu_glGetTexLevelParameteriv;
    tbl.glGetTexParameterfv = emu_glGetTexParameterfv;
    tbl.glGetTexParameteriv = emu_glGetTexParameteriv;
    tbl.glHint = emu_glHint;
@@ -46526,9 +51958,19 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glLightfv = emu_glLightfv;
    tbl.glLighti = emu_glLighti;
    tbl.glLightiv = emu_glLightiv;
+   tbl.glLineStipple = emu_glLineStipple;
+   tbl.glLineWidth = emu_glLineWidth;
    tbl.glLoadIdentity = emu_glLoadIdentity;
    tbl.glLoadMatrixd = emu_glLoadMatrixd;
    tbl.glLoadMatrixf = emu_glLoadMatrixf;
+   tbl.glMap1d = emu_glMap1d;
+   tbl.glMap1f = emu_glMap1f;
+   tbl.glMap2d = emu_glMap2d;
+   tbl.glMap2f = emu_glMap2f;
+   tbl.glMapGrid1d = emu_glMapGrid1d;
+   tbl.glMapGrid1f = emu_glMapGrid1f;
+   tbl.glMapGrid2d = emu_glMapGrid2d;
+   tbl.glMapGrid2f = emu_glMapGrid2f;
    tbl.glMaterialf = emu_glMaterialf;
    tbl.glMaterialfv = emu_glMaterialfv;
    tbl.glMateriali = emu_glMateriali;
@@ -46536,6 +51978,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glMatrixMode = emu_glMatrixMode;
    tbl.glMultMatrixd = emu_glMultMatrixd;
    tbl.glMultMatrixf = emu_glMultMatrixf;
+   tbl.glNewList = emu_glNewList;
    tbl.glNormal3b = emu_glNormal3b;
    tbl.glNormal3bv = emu_glNormal3bv;
    tbl.glNormal3d = emu_glNormal3d;
@@ -46549,20 +51992,44 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glOrtho = emu_glOrtho;
    tbl.glPixelStoref = emu_glPixelStoref;
    tbl.glPixelStorei = emu_glPixelStorei;
+   tbl.glPixelTransferf = emu_glPixelTransferf;
+   tbl.glPixelTransferi = emu_glPixelTransferi;
+   tbl.glPixelZoom = emu_glPixelZoom;
    tbl.glPolygonMode = emu_glPolygonMode;
    tbl.glPopAttrib = emu_glPopAttrib;
    tbl.glPopMatrix = emu_glPopMatrix;
    tbl.glPushAttrib = emu_glPushAttrib;
    tbl.glPushMatrix = emu_glPushMatrix;
    tbl.glRasterPos2d = emu_glRasterPos2d;
+   tbl.glRasterPos2dv = emu_glRasterPos2dv;
    tbl.glRasterPos2f = emu_glRasterPos2f;
+   tbl.glRasterPos2fv = emu_glRasterPos2fv;
    tbl.glRasterPos2i = emu_glRasterPos2i;
+   tbl.glRasterPos2iv = emu_glRasterPos2iv;
    tbl.glRasterPos2s = emu_glRasterPos2s;
+   tbl.glRasterPos2sv = emu_glRasterPos2sv;
    tbl.glRasterPos3d = emu_glRasterPos3d;
+   tbl.glRasterPos3dv = emu_glRasterPos3dv;
    tbl.glRasterPos3f = emu_glRasterPos3f;
+   tbl.glRasterPos3fv = emu_glRasterPos3fv;
    tbl.glRasterPos3i = emu_glRasterPos3i;
+   tbl.glRasterPos3iv = emu_glRasterPos3iv;
    tbl.glRasterPos3s = emu_glRasterPos3s;
+   tbl.glRasterPos3sv = emu_glRasterPos3sv;
+   tbl.glRasterPos4d = emu_glRasterPos4d;
+   tbl.glRasterPos4dv = emu_glRasterPos4dv;
+   tbl.glRasterPos4f = emu_glRasterPos4f;
+   tbl.glRasterPos4fv = emu_glRasterPos4fv;
+   tbl.glRasterPos4i = emu_glRasterPos4i;
+   tbl.glRasterPos4iv = emu_glRasterPos4iv;
+   tbl.glRasterPos4s = emu_glRasterPos4s;
+   tbl.glRasterPos4sv = emu_glRasterPos4sv;
    tbl.glReadBuffer = emu_glReadBuffer;
+   tbl.glRectd = emu_glRectd;
+   tbl.glRectf = emu_glRectf;
+   tbl.glRecti = emu_glRecti;
+   tbl.glRects = emu_glRects;
+   tbl.glRenderMode = emu_glRenderMode;
    tbl.glRotated = emu_glRotated;
    tbl.glRotatef = emu_glRotatef;
    tbl.glScaled = emu_glScaled;
@@ -46738,13 +52205,21 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glSecondaryColor3usv = emu_glSecondaryColor3usv;
    tbl.glSecondaryColorPointer = emu_glSecondaryColorPointer;
    tbl.glWindowPos2d = emu_glWindowPos2d;
+   tbl.glWindowPos2dv = emu_glWindowPos2dv;
    tbl.glWindowPos2f = emu_glWindowPos2f;
+   tbl.glWindowPos2fv = emu_glWindowPos2fv;
    tbl.glWindowPos2i = emu_glWindowPos2i;
+   tbl.glWindowPos2iv = emu_glWindowPos2iv;
    tbl.glWindowPos2s = emu_glWindowPos2s;
+   tbl.glWindowPos2sv = emu_glWindowPos2sv;
    tbl.glWindowPos3d = emu_glWindowPos3d;
+   tbl.glWindowPos3dv = emu_glWindowPos3dv;
    tbl.glWindowPos3f = emu_glWindowPos3f;
+   tbl.glWindowPos3fv = emu_glWindowPos3fv;
    tbl.glWindowPos3i = emu_glWindowPos3i;
+   tbl.glWindowPos3iv = emu_glWindowPos3iv;
    tbl.glWindowPos3s = emu_glWindowPos3s;
+   tbl.glWindowPos3sv = emu_glWindowPos3sv;
 
 // GL_VERSION_1_5
 

@@ -164,7 +164,7 @@ def apiEmuFuncDefineCode(apis, args):
                       for j in e['impl'] :
                           code += '        %s\n' % j
                       if l['member'] :
-                          if typeIsVoid(rType):
+                          if l['member'] != "filt" and typeIsVoid(rType):
                               code += '        return;\n'
                           code += '      }\n'
                   if l['ifdef']:
@@ -423,6 +423,7 @@ def generateEmuSource(apis, args):
 
   emuLocalInclude = '''
 
+#include "RegalBreak.h"
 #include "RegalBin.h"
 #include "RegalEmu.h"
 #include "RegalPpa.h"
@@ -433,7 +434,8 @@ def generateEmuSource(apis, args):
 #include "RegalDsa.h"
 #include "RegalSo.h"
 #include "RegalTexC.h"
-#include "RegalVao.h"'''
+#include "RegalVao.h"
+#include "RegalFilt.h"'''
 
   # Output
 

@@ -68,8 +68,8 @@ emu = [
     { 'type' : 'Emu::Iff',    'include' : 'RegalIff.h',  'member' : 'iff',    'conditional' : 'Config::enableEmuIff',                            'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
     { 'type' : 'Emu::So',     'include' : 'RegalSo.h',   'member' : 'so',     'conditional' : 'Config::enableEmuSo',                             'ifdef' : 'REGAL_EMU_SO',     'formulae' : soFormulae     },
     { 'type' : 'Emu::Vao',    'include' : 'RegalVao.h',  'member' : 'vao',    'conditional' : 'Config::enableEmuVao && Config::enableEmuIff',    'ifdef' : 'REGAL_EMU_VAO',    'formulae' : vaoFormulae    },
-    { 'type' : None,          'include' : None,          'member' : None,     'conditional' : 'Config::enableEmuFilter',                         'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
     { 'type' : 'Emu::TexC',   'include' : 'RegalTexC.h', 'member' : 'texc',   'conditional' : 'Config::enableEmuTexC',                           'ifdef' : 'REGAL_EMU_TEXC',   'formulae' : texCFormulae   },
+    { 'type' : 'Emu::Filt',   'include' : 'RegalFilt.h', 'member' : 'filt',   'conditional' : 'Config::enableEmuFilter',                         'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
     { 'type' : 'void',        'include' : None,          'member' : None,     'conditional' : None,                                              'ifdef' : None,               'formulae' : None           }
 ]
 

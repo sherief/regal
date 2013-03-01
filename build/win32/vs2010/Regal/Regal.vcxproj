@@ -234,6 +234,8 @@
     <ClCompile Include="..\..\..\..\src\Regal\RegalSo.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\Regal.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalBin.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalBreak.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalBreak.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalConfig.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalConfig.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalContext.cpp" />
@@ -263,6 +265,8 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalEnum.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalFavicon.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalFavicon.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalFilt.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalFilt.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalFrame.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalFrame.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalHelper.cpp" />

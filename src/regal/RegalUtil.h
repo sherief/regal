@@ -1,9 +1,9 @@
 /*
-  Copyright (c) 2011-2012 NVIDIA Corporation
-  Copyright (c) 2011-2012 Cass Everitt
-  Copyright (c) 2012 Scott Nations
-  Copyright (c) 2012 Mathias Schott
-  Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2011-2013 NVIDIA Corporation
+  Copyright (c) 2011-2013 Cass Everitt
+  Copyright (c) 2012-2013 Scott Nations
+  Copyright (c) 2012-2013 Mathias Schott
+  Copyright (c) 2012-2013 Nigel Stewart
   Copyright (c) 2012 Google Inc.
   All rights reserved.
 
@@ -66,6 +66,7 @@
 // VC10      - C4512:
 // VC9, VC10 - C4996: 'vsprintf': This function or variable may be unsafe
 // VC10      - C4127: conditional expression is constant
+// VC10      - C4706: assignment within conditional expression
 
 #ifdef _MSC_VER
 # define REGAL_GLOBAL_BEGIN         \
@@ -74,7 +75,8 @@
   __pragma(warning(push))           \
   __pragma(warning(disable : 4127)) \
   __pragma(warning(disable : 4512)) \
-  __pragma(warning(disable : 4996))
+  __pragma(warning(disable : 4996)) \
+  __pragma(warning(disable : 4706))
 # define REGAL_GLOBAL_END           \
   __pragma(warning(pop))            \
   __pragma(pack(pop))
@@ -92,6 +94,7 @@
   __pragma(warning(push))              \
   __pragma(warning(disable : 4996))    \
   __pragma(warning(disable : 4127))    \
+  __pragma(warning(disable : 4706))    \
   namespace REGAL_NAMESPACE_INTERNAL   \
   {
 # define REGAL_NAMESPACE_END           \

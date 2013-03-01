@@ -107,7 +107,7 @@ iffFormulae = {
     },
     'FfnShadeModel' : {
         'entries' : [ 'glShadeModel' ],
-        'impl' : [ 
+        'impl' : [
           '_context->iff->ShadeModel( ${arg0plus} );',
           'if( !_context->isCore() && !_context->isES2() ) {',
           '  _context->dispatcher.emulation.glShadeModel(${arg0plus});',
@@ -231,7 +231,7 @@ iffFormulae = {
     },
     'DepthRange' : {
         'entries' : [ 'glDepthRange', ],
-        'prefix' : [ '_context->iff->DepthRange( ${arg0plus} );', ],
+        'prefix' : [ '_context->iff->DepthRange( GLfloat(${arg0}), GLfloat(${arg1}) );', ],
     },
     'RasterPosition' : {
         'entries' : [ 'gl(Raster|Window)Pos(2|3)(i|s|f|d)', ],

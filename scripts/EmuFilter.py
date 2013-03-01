@@ -24,22 +24,94 @@
 
 formulae = {
 
-  # Skip calls that ES 2.0 does not support
+  # Skip calls that ES 2.0 and/or core do not support
   # Issues: This list is not complete
 
-  'filterOut' : {
+  'filterOutES2' : {
     'entries' : [
-      'glClientActiveTexture', 'glPolygonMode',
+      'glClientActiveTexture',
       'glGenSamplers',                                   # Sampler object emulation
       'glGetTexImage',
-      'glTexImage3D',
+      'glTexImage(1|3)D',
       'glBlitFramebufferEXT', 'glBlitFramebufferANGLE'   # Emulate glBlitFramebuffer?
     ],
     'impl' : [
        'if (_context->isES2())',
        '{',
        '  Warning("Regal does not support ${name} for ES 2.0 - skipping.");',
-       '  return;',
+       '  Break::Filter();',
+       '  return ${dummyretval};',
+       '}'
+     ]
+  },
+
+  'filterOutCore' : {
+    'entries' : [ 'glLineWidth', ],
+    'impl' : [
+       'if (_context->isCore())',
+       '{',
+       '   Warning("Regal does not support ${name} for core profile - skipping.");',
+       '   Break::Filter();',
+       '   return ${dummyretval};',
+       '}'
+     ]
+  },
+
+  'filterOutES2AndCore' : {
+    'entries' : [
+      'glAccum',
+      'glBitmap',
+      'glCallList',
+      'glClearAccum',
+      'glCopyPixels',
+      'glDeleteLists',
+      'glDrawPixels',
+      'glEdgeFlag',
+      'glEndList',
+      'glEvalCoord(1|2)(d|f)(v|)',
+      'glEvalMesh(1|2)',
+      'glEvalPoint(1|2)',
+      'glGenLists',
+      'glGenTextures',
+      'glGetTexLevelParameter(f|i)v',
+      'glHint',
+      'glLineStipple',
+      'glMap(1|2)(d|f)',
+      'glMapGrid(1|2)(d|f)',
+      'glNewList',
+      'glPixelStore(f|i)',
+      'glPixelTransfer(f|i)',
+      'glPixelZoom',
+      'glRasterPos(2|3|4)(d|f|i|s)(v|)',
+      'glRect(d|f|i|s)',
+      'glShadeModel',
+      'glWindowPos(2|3)(d|f|i|s)(v|)',
+      ],
+    'impl' : [
+       'if (_context->isES2() || _context->isCore())',
+       '{',
+       '   Warning("Regal does not support ${name} for core or ES2 profiles - skipping.");',
+       '   Break::Filter();',
+       '   return ${dummyretval};',
+       '}'
+     ]
+  },
+
+
+  'filterArgs' : {
+    'entries' : [
+      'gl(BindTexture)',
+      'gl(Get)(Boolean|Double|Float|Integer|Integer64)v',
+      'gl(PolygonMode)',
+      'gl(RenderMode)',
+      'gl(TexParameter)(i|f)',
+      ],
+    'impl' : [
+       '_context->filt->${m1}(*_context, ${arg0plus});',
+       'if (_context->filt->Filtered())',
+       '{',
+       '  Break::Filter();',
+       '  return ${dummyretval};',
        '}'
      ]
   },
@@ -54,8 +126,8 @@ formulae = {
        '{',
        '  DispatchTable *_next = _context->dispatcher.emulation._next;',
        '  RegalAssert(_next);',
-       '  if ( _context->info->gl_nv_framebuffer_blit ) return _next->call(&_next->${m0}NV)(${arg0plus});',
-       '  if ( _context->info->gl_ext_framebuffer_blit ) return _next->call(&_next->${m0}EXT)(${arg0plus});',
+       '  if (_context->info->gl_nv_framebuffer_blit)  return _next->call(&_next->${m0}NV)(${arg0plus});',
+       '  if (_context->info->gl_ext_framebuffer_blit) return _next->call(&_next->${m0}EXT)(${arg0plus});',
        '}'
      ]
   },
@@ -308,7 +380,7 @@ formulae = {
        'if (_context->isES2())',
        '{',
        '  const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;',
-       '  if ( !hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER) ) target = GL_FRAMEBUFFER;',
+       '  if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;',
        '}'
      ]
   },

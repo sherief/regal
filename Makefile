@@ -181,6 +181,7 @@ LIB.SRCS           += src/regal/RegalToken.cpp
 LIB.SRCS           += src/regal/RegalLog.cpp
 LIB.SRCS           += src/regal/RegalInit.cpp
 LIB.SRCS           += src/regal/RegalUtil.cpp
+LIB.SRCS           += src/regal/RegalBreak.cpp
 LIB.SRCS           += src/regal/RegalConfig.cpp
 LIB.SRCS           += src/regal/RegalLookup.cpp
 LIB.SRCS           += src/regal/RegalFrame.cpp
@@ -206,6 +207,7 @@ LIB.SRCS           += src/regal/RegalHttp.cpp
 LIB.SRCS           += src/regal/RegalFavicon.cpp
 LIB.SRCS           += src/regal/RegalMac.cpp
 LIB.SRCS           += src/regal/RegalSo.cpp
+LIB.SRCS           += src/regal/RegalFilt.cpp
 
 # Disable mongoose and Regal HTTP for NaCL build
 
