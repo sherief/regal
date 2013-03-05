@@ -39,7 +39,11 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_BREAK
+
 REGAL_GLOBAL_BEGIN
+
+#include "RegalBreak.h"
 
 REGAL_GLOBAL_END
 
@@ -49,6 +53,11 @@ namespace Break {
 
   // debug breakpoint functions
 
+  extern void ErrorCB(GLenum e)
+  {
+    UNUSED_PARAMETER(e);
+  }
+
   extern void Filter()
   {
     ;
@@ -57,3 +66,5 @@ namespace Break {
 }
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_BREAK

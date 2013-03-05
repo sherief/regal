@@ -953,7 +953,7 @@ static void REGAL_CALL log_glGetFloatv(GLenum pname, GLfloat *params)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetFloatv)(pname, params);
-    Driver("glGetFloatv","(", toString(pname), ", ", params, ")");
+    Driver("glGetFloatv","(", toString(pname), ", ", boost::print::array(params,helper::size::get(pname)), ")");
 }
 
 static void REGAL_CALL log_glGetIntegerv(GLenum pname, GLint *params)
@@ -963,7 +963,7 @@ static void REGAL_CALL log_glGetIntegerv(GLenum pname, GLint *params)
     DispatchTable *_next = _context->dispatcher.logging._next;
     RegalAssert(_next);
     _next->call(&_next->glGetIntegerv)(pname, params);
-    Driver("glGetIntegerv","(", toString(pname), ", ", boost::print::optional(params,Logging::pointers), ")");
+    Driver("glGetIntegerv","(", toString(pname), ", ", boost::print::array(params,helper::size::get(pname)), ")");
 }
 
 static void REGAL_CALL log_glGetLightfv(GLenum light, GLenum pname, GLfloat *params)

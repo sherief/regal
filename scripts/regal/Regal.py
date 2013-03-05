@@ -583,6 +583,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
+#include "RegalMac.h"
 #include "RegalInit.h"
 #include "RegalIff.h"
 #include "RegalPush.h"
@@ -593,7 +594,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 #include "RegalShaderCache.h"
-
+#include "RegalScopedPtr.h"
 #include "RegalFrame.h"
 #include "RegalMarker.h"
 

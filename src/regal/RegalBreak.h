@@ -40,7 +40,11 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_BREAK
+
 REGAL_GLOBAL_BEGIN
+
+#include <GL/Regal.h>
 
 REGAL_GLOBAL_END
 
@@ -50,10 +54,13 @@ namespace Break {
 
   // debug breakpoint functions
 
-  extern void Filter();
+  extern void ErrorCB(GLenum e);    // Error dispatch
+  extern void Filter();             // Filter emulation layer
 
 }
 
 REGAL_NAMESPACE_END
+
+#endif // REGAL_BREAK
 
 #endif

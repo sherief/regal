@@ -1,17 +1,18 @@
 /*
-Copyright (c) 2011 NVIDIA Corporation
-Copyright (c) 2011-2012 Cass Everitt
-Copyright (c) 2012 Scott Nations
-Copyright (c) 2012 Mathias Schott
-Copyright (c) 2012 Nigel Stewart
-All rights reserved.
+  Copyright (c) 2011-2013 NVIDIA Corporation
+  Copyright (c) 2011-2013 Cass Everitt
+  Copyright (c) 2012-2013 Scott Nations
+  Copyright (c) 2012-2013 Mathias Schott
+  Copyright (c) 2012-2013 Nigel Stewart
+  All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
+  Redistribution and use in source and binary forms, with or without modification,
+  are permitted provided that the following conditions are met:
 
-  Redistributions of source code must retain the above copyright notice, this
+    Redistributions of source code must retain the above copyright notice, this
     list of conditions and the following disclaimer.
-  Redistributions in binary form must reproduce the above copyright notice,
+
+    Redistributions in binary form must reproduce the above copyright notice,
     this list of conditions and the following disclaimer in the documentation
     and/or other materials provided with the distribution.
 
@@ -27,10 +28,19 @@ are permitted provided that the following conditions are met:
   OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef __REGAL_DISPATCH_ERROR_H__
-#define __REGAL_DISPATCH_ERROR_H__
+/*
+
+ Regal Mac OS X support
+ Cass Everitt, Nigel Stewart
+
+*/
+
+#ifndef REGAL_MAC_H
+#define REGAL_MAC_H
 
 #include "RegalUtil.h"
+
+#if REGAL_SYS_OSX
 
 REGAL_GLOBAL_BEGIN
 
@@ -40,25 +50,14 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct RegalContext;
+namespace Mac {
 
-struct DispatchErrorState
-{
-public:
-  DispatchErrorState()
-  : callback(NULL),
-    inBeginEnd(false)
-  {
-  }
+  CGLPixelFormatAttribute *forceCoreAttribs(const CGLPixelFormatAttribute *attribs);
 
-  ~DispatchErrorState()
-  {
-  }
-
-  ::RegalErrorCallback callback;
-  bool inBeginEnd;
-};
+}
 
 REGAL_NAMESPACE_END
 
-#endif // __REGAL_DISPATCH_ERROR_H__
+#endif // REGAL_SYS_OSX
+
+#endif

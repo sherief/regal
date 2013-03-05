@@ -40,7 +40,7 @@ ppaFormulae = {
   'TrackDrawBuffer' : {
     'entries'    : [ 'glDrawBuffer(s|)(ARB|)' ],
     'impl'    : [
-      'if( ! _context->info->core && !_context->info->es2 ) {',
+      'if( !_context->info->es2 ) {',
       '  _context->dispatcher.emulation.glDrawBuffer${m1}( ${arg0plus} );',
       '}',
     ],

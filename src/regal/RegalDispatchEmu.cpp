@@ -50,6 +50,7 @@ REGAL_GLOBAL_BEGIN
 using namespace std;
 
 #include "RegalLog.h"
+#include "RegalBreak.h"
 #include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
@@ -125,7 +126,9 @@ static void REGAL_CALL emu_glAccum(GLenum op, GLfloat value)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glAccum for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -302,7 +305,9 @@ static void REGAL_CALL emu_glBitmap(GLsizei width, GLsizei height, GLfloat xorig
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glBitmap for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -365,7 +370,9 @@ static void REGAL_CALL emu_glCallList(GLuint list)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glCallList for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -428,7 +435,9 @@ static void REGAL_CALL emu_glClearAccum(GLfloat red, GLfloat green, GLfloat blue
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glClearAccum for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -2360,7 +2369,9 @@ static void REGAL_CALL emu_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glCopyPixels for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -2451,7 +2462,9 @@ static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glDeleteLists for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -2702,7 +2715,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->es2 ) {
+        if( !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffer( mode );
         }
         return;
@@ -2788,7 +2801,9 @@ static void REGAL_CALL emu_glDrawPixels(GLsizei width, GLsizei height, GLenum fo
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glDrawPixels for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -2851,7 +2866,9 @@ static void REGAL_CALL emu_glEdgeFlag(GLboolean flag)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEdgeFlag for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3072,7 +3089,9 @@ static void REGAL_CALL emu_glEndList(void)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEndList for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3135,7 +3154,9 @@ static void REGAL_CALL emu_glEvalCoord1d(GLdouble u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord1d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3198,7 +3219,9 @@ static void REGAL_CALL emu_glEvalCoord1dv(const GLdouble *u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord1dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3261,7 +3284,9 @@ static void REGAL_CALL emu_glEvalCoord1f(GLfloat u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord1f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3324,7 +3349,9 @@ static void REGAL_CALL emu_glEvalCoord1fv(const GLfloat *u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord1fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3387,7 +3414,9 @@ static void REGAL_CALL emu_glEvalCoord2d(GLdouble u, GLdouble v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord2d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3450,7 +3479,9 @@ static void REGAL_CALL emu_glEvalCoord2dv(const GLdouble *u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord2dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3513,7 +3544,9 @@ static void REGAL_CALL emu_glEvalCoord2f(GLfloat u, GLfloat v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord2f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3576,7 +3609,9 @@ static void REGAL_CALL emu_glEvalCoord2fv(const GLfloat *u)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalCoord2fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3639,7 +3674,9 @@ static void REGAL_CALL emu_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalMesh1 for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3702,7 +3739,9 @@ static void REGAL_CALL emu_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalMesh2 for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3765,7 +3804,9 @@ static void REGAL_CALL emu_glEvalPoint1(GLint i)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalPoint1 for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -3828,7 +3869,9 @@ static void REGAL_CALL emu_glEvalPoint2(GLint i, GLint j)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glEvalPoint2 for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -4184,7 +4227,9 @@ static GLuint REGAL_CALL emu_glGenLists(GLsizei range)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glGenLists for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return (( GLuint  )0);
         }
       }
@@ -4296,7 +4341,9 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
         _context->filt->Get(*_context, pname, params);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -4410,7 +4457,9 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
         _context->filt->Get(*_context, pname, params);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -4538,7 +4587,9 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
         _context->filt->Get(*_context, pname, params);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -4666,7 +4717,9 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
         _context->filt->Get(*_context, pname, params);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -5127,7 +5180,9 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
         if (_context->isES2())
         {
           Warning("Regal does not support glGetTexImage for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -5190,7 +5245,9 @@ static void REGAL_CALL emu_glGetTexLevelParameterfv(GLenum target, GLint level, 
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glGetTexLevelParameterfv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -5253,7 +5310,9 @@ static void REGAL_CALL emu_glGetTexLevelParameteriv(GLenum target, GLint level, 
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glGetTexLevelParameteriv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -5453,7 +5512,9 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glHint for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6035,7 +6096,9 @@ static void REGAL_CALL emu_glLineStipple(GLint factor, GLushort pattern)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glLineStipple for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6098,7 +6161,9 @@ static void REGAL_CALL emu_glLineWidth(GLfloat width)
         if (_context->isCore())
         {
            Warning("Regal does not support glLineWidth for core profile - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6344,7 +6409,9 @@ static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLin
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMap1d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6407,7 +6474,9 @@ static void REGAL_CALL emu_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint 
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMap1f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6470,7 +6539,9 @@ static void REGAL_CALL emu_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLin
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMap2d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6533,7 +6604,9 @@ static void REGAL_CALL emu_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint 
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMap2f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6596,7 +6669,9 @@ static void REGAL_CALL emu_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMapGrid1d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6659,7 +6734,9 @@ static void REGAL_CALL emu_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMapGrid1f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6722,7 +6799,9 @@ static void REGAL_CALL emu_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMapGrid2d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -6785,7 +6864,9 @@ static void REGAL_CALL emu_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint v
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glMapGrid2f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -7259,7 +7340,9 @@ static void REGAL_CALL emu_glNewList(GLuint list, GLenum mode)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glNewList for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -7913,7 +7996,9 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glPixelStoref for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -7997,7 +8082,9 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glPixelStorei for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8060,7 +8147,9 @@ static void REGAL_CALL emu_glPixelTransferf(GLenum pname, GLfloat param)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glPixelTransferf for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8123,7 +8212,9 @@ static void REGAL_CALL emu_glPixelTransferi(GLenum pname, GLint param)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glPixelTransferi for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8186,7 +8277,9 @@ static void REGAL_CALL emu_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glPixelZoom for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8257,7 +8350,9 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
         _context->filt->PolygonMode(*_context, face, mode);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -8544,7 +8639,9 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8607,7 +8704,9 @@ static void REGAL_CALL emu_glRasterPos2dv(const GLdouble *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8682,7 +8781,9 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8745,7 +8846,9 @@ static void REGAL_CALL emu_glRasterPos2fv(const GLfloat *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8820,7 +8923,9 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2i for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8883,7 +8988,9 @@ static void REGAL_CALL emu_glRasterPos2iv(const GLint *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2iv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -8958,7 +9065,9 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2s for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9021,7 +9130,9 @@ static void REGAL_CALL emu_glRasterPos2sv(const GLshort *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos2sv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9096,7 +9207,9 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9159,7 +9272,9 @@ static void REGAL_CALL emu_glRasterPos3dv(const GLdouble *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9234,7 +9349,9 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9297,7 +9414,9 @@ static void REGAL_CALL emu_glRasterPos3fv(const GLfloat *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9372,7 +9491,9 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3i for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9435,7 +9556,9 @@ static void REGAL_CALL emu_glRasterPos3iv(const GLint *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3iv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9510,7 +9633,9 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3s for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9573,7 +9698,9 @@ static void REGAL_CALL emu_glRasterPos3sv(const GLshort *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos3sv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9636,7 +9763,9 @@ static void REGAL_CALL emu_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLd
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9699,7 +9828,9 @@ static void REGAL_CALL emu_glRasterPos4dv(const GLdouble *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9762,7 +9893,9 @@ static void REGAL_CALL emu_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloa
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9825,7 +9958,9 @@ static void REGAL_CALL emu_glRasterPos4fv(const GLfloat *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9888,7 +10023,9 @@ static void REGAL_CALL emu_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4i for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -9951,7 +10088,9 @@ static void REGAL_CALL emu_glRasterPos4iv(const GLint *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4iv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10014,7 +10153,9 @@ static void REGAL_CALL emu_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshor
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4s for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10077,7 +10218,9 @@ static void REGAL_CALL emu_glRasterPos4sv(const GLshort *v)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRasterPos4sv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10204,7 +10347,9 @@ static void REGAL_CALL emu_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdoub
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRectd for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10267,7 +10412,9 @@ static void REGAL_CALL emu_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRectf for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10330,7 +10477,9 @@ static void REGAL_CALL emu_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRecti for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10393,7 +10542,9 @@ static void REGAL_CALL emu_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glRects for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -10456,7 +10607,9 @@ static GLint REGAL_CALL emu_glRenderMode(GLenum mode)
         _context->filt->RenderMode(*_context, mode);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return (( GLint  )0);
         }
       }
@@ -10777,7 +10930,9 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glShadeModel for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -13226,7 +13381,9 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
         if (_context->isES2())
         {
           Warning("Regal does not support glTexImage1D for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -13381,7 +13538,9 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
         _context->filt->TexParameter(*_context, target, pname, param);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -13535,7 +13694,9 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
         _context->filt->TexParameter(*_context, target, pname, param);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -15056,6 +15217,9 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj) break;
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15093,6 +15257,15 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 9;
+        _context->obj->BindTexture( _context, target, texture );
+        return;
+      }
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15143,7 +15316,9 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
         _context->filt->BindTexture(*_context, target, texture);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -15298,6 +15473,9 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj) break;
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15327,6 +15505,15 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 9;
+        _context->obj->DeleteTextures( _context, n, textures );
+        return;
+      }
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15718,6 +15905,9 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj) break;
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15744,6 +15934,15 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
   switch( _context->emuLevel )
   {
     case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 9;
+        _context->obj->GenTextures( _context, n, textures );
+        return;
+      }
+      #endif
     case 9 :
     case 8 :
     case 7 :
@@ -15781,7 +15980,9 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glGenTextures for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -15886,6 +16087,47 @@ static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, co
       RegalAssert(_next);
       _next->call(&_next->glInterleavedArrays)(format, stride, pointer);
       break;
+    }
+
+  }
+
+}
+
+static GLboolean REGAL_CALL emu_glIsTexture(GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj) break;
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 10 :
+      #if REGAL_EMU_OBJ
+      if (_context->obj)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 9;
+        return _context->obj->IsTexture( _context, texture );
+      }
+      #endif
+    case 1 :
+    default:
+    {
+      DispatchTable *_next = _context->dispatcher.emulation._next;
+      RegalAssert(_next);
+      return _next->call(&_next->glIsTexture)(texture);
     }
 
   }
@@ -16495,7 +16737,9 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
         if (_context->isES2())
         {
           Warning("Regal does not support glTexImage3D for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -16701,7 +16945,9 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
         if (_context->isES2())
         {
           Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -19846,7 +20092,9 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -19909,7 +20157,9 @@ static void REGAL_CALL emu_glWindowPos2dv(const GLdouble *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -19984,7 +20234,9 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20047,7 +20299,9 @@ static void REGAL_CALL emu_glWindowPos2fv(const GLfloat *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20122,7 +20376,9 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2i for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20185,7 +20441,9 @@ static void REGAL_CALL emu_glWindowPos2iv(const GLint *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2iv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20260,7 +20518,9 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2s for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20323,7 +20583,9 @@ static void REGAL_CALL emu_glWindowPos2sv(const GLshort *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos2sv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20398,7 +20660,9 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3d for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20461,7 +20725,9 @@ static void REGAL_CALL emu_glWindowPos3dv(const GLdouble *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3dv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20536,7 +20802,9 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3f for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20599,7 +20867,9 @@ static void REGAL_CALL emu_glWindowPos3fv(const GLfloat *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3fv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20674,7 +20944,9 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3i for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20737,7 +21009,9 @@ static void REGAL_CALL emu_glWindowPos3iv(const GLint *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3iv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20812,7 +21086,9 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3s for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -20875,7 +21151,9 @@ static void REGAL_CALL emu_glWindowPos3sv(const GLshort *p)
         if (_context->isES2() || _context->isCore())
         {
            Warning("Regal does not support glWindowPos3sv for core or ES2 profiles - skipping.");
+           #if REGAL_BREAK
            Break::Filter();
+           #endif
            return ;
         }
       }
@@ -21494,7 +21772,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->es2 ) {
+        if( !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffers( n, bufs );
         }
         return;
@@ -25798,7 +26076,9 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
         if (_context->isES2())
         {
           Warning("Regal does not support glBlitFramebufferANGLE for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -26209,7 +26489,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 8;
-        if( ! _context->info->core && !_context->info->es2 ) {
+        if( !_context->info->es2 ) {
           _context->dispatcher.emulation.glDrawBuffers( n, bufs );
         }
         return;
@@ -29977,7 +30257,9 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
         if (_context->isES2())
         {
           Warning("Regal does not support glGenSamplers for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -31324,7 +31606,9 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
         _context->filt->Get(*_context, pname, params);
         if (_context->filt->Filtered())
         {
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -48352,7 +48636,9 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
         if (_context->isES2())
         {
           Warning("Regal does not support glBlitFramebufferEXT for ES 2.0 - skipping.");
+          #if REGAL_BREAK
           Break::Filter();
+          #endif
           return ;
         }
       }
@@ -52128,6 +52414,7 @@ void InitDispatchTableEmu(DispatchTable &tbl)
    tbl.glGenTextures = emu_glGenTextures;
    tbl.glIndexPointer = emu_glIndexPointer;
    tbl.glInterleavedArrays = emu_glInterleavedArrays;
+   tbl.glIsTexture = emu_glIsTexture;
    tbl.glNormalPointer = emu_glNormalPointer;
    tbl.glPolygonOffset = emu_glPolygonOffset;
    tbl.glPopClientAttrib = emu_glPopClientAttrib;

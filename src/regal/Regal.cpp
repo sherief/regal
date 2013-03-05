@@ -45,6 +45,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
+#include "RegalMac.h"
 #include "RegalInit.h"
 #include "RegalIff.h"
 #include "RegalPush.h"
@@ -55,7 +56,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 #include "RegalShaderCache.h"
-
+#include "RegalScopedPtr.h"
 #include "RegalFrame.h"
 #include "RegalMarker.h"
 
@@ -33188,14 +33189,9 @@ extern "C" {
         dispatchTableGlobal.CGLChoosePixelFormat = NULL;
     }
     CGLError  ret = (CGLError )0;
-    static const CGLPixelFormatAttribute nattribs[] =
-    {
-      kCGLPFAOpenGLProfile,
-      (CGLPixelFormatAttribute)0x3200,
-      (CGLPixelFormatAttribute)0
-    };
+    scoped_array<CGLPixelFormatAttribute> nattribs;
     if (Config::forceCoreProfile)
-      attribs = nattribs;
+      attribs = nattribs = Mac::forceCoreAttribs(attribs);
     if (dispatchTableGlobal.CGLChoosePixelFormat)
     {
       Driver("CGLChoosePixelFormat","(", attribs, ")");

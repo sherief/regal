@@ -17,6 +17,7 @@ from ApiCodeGen   import *
 #
 
 helperMap = {
+  'helperGLGetSize'               : 'helper::size::get',
   'helperGLCallListsSize'         : 'helper::size::callLists',
   'helperGLFogvSize'              : 'helper::size::fogv',
   'helperGLLightvSize'            : 'helper::size::lightv',

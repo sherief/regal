@@ -230,8 +230,6 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\Regal\RegalMac.cpp" />
-    <ClCompile Include="..\..\..\..\src\Regal\RegalSo.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\Regal.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalBin.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalBreak.cpp" />
@@ -281,6 +279,8 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalLog.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalLookup.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalLookup.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalMac.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalMac.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalMarker.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalMarker.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalObj.h" />
@@ -293,11 +293,13 @@
     <ClInclude Include="..\..\..\..\src\regal\RegalPrecompile.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPrivate.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalPush.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalScopedPtr.h" />
     <ClCompile Include="..\..\..\..\src\regal\RegalShaderCache.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalShaderCache.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedList.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedMap.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedPtr.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalSo.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSo.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalState.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSystem.h" />

@@ -202,7 +202,15 @@
 #define REGAL_EMU_FILTER 1
 #endif
 
-//
+// RegalBreak callbacks enabled by default, except in release mode
+
+#ifndef REGAL_BREAK
+# if defined(NDEBUG)
+#  define REGAL_BREAK 0
+# else
+#  define REGAL_BREAK 1
+# endif
+#endif
 
 // Caching enabled by default
 // ... except for release-mode and embedded platforms

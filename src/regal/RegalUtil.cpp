@@ -170,7 +170,7 @@ const char *libraryLocation(const Library &library)
         "/usr/lib/nvidia-current-updates/libGL.so.1",   // Ubuntu 12.04 32-bit NVIDIA
         "/usr/lib32/nvidia-current/libGL.so.1",         // Ubuntu NVIDIA
         "/usr/lib32/libGL.so.1",                        // Ubuntu
-	"/usr/lib/fglrx/libGL.so.1",                    // Ubuntu 12.04 32-bit ATI Radeon HD 5450
+        "/usr/lib/fglrx/libGL.so.1",                    // Ubuntu 12.04 32-bit ATI Radeon HD 5450
         "/usr/lib/libGL.so.1",                          // RedHat & Solaris
         NULL
       };

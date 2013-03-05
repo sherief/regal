@@ -206,12 +206,29 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
         case GL_ACCUM_GREEN_BITS:
         case GL_ACCUM_BLUE_BITS:
         case GL_ACCUM_ALPHA_BITS:
-        case GL_ALPHA_BITS:
-        case GL_AUX_BUFFERS:
-        case GL_BLUE_BITS:
-        case GL_DEPTH_BITS:
+          if (params) {
+            params[0] = 32;
+          }
+          break;
+
+        case GL_RED_BITS:
         case GL_GREEN_BITS:
+        case GL_BLUE_BITS:
+        case GL_ALPHA_BITS:
         case GL_INDEX_BITS:
+        case GL_STENCIL_BITS:
+          if (params) {
+            params[0] = 8;
+          }
+          break;
+
+        case GL_DEPTH_BITS:
+          if (params) {
+            params[0] = 24;
+          }
+          break;
+
+        case GL_AUX_BUFFERS:
         case GL_LINE_STIPPLE:
         case GL_MAX_PIXEL_MAP_TABLE:
         case GL_MAX_NAME_STACK_DEPTH:
@@ -219,8 +236,6 @@ struct Ppa : public RegalEmu, State::Stencil, State::Depth, State::Polygon, Stat
         case GL_MAX_EVAL_ORDER:
         case GL_MAX_ATTRIB_STACK_DEPTH:
         case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
-        case GL_RED_BITS:
-        case GL_STENCIL_BITS:
           if (params)
             params[0] = 0;
           break;

@@ -39,7 +39,9 @@ formulae = {
        'if (_context->isES2())',
        '{',
        '  Warning("Regal does not support ${name} for ES 2.0 - skipping.");',
+       '  #if REGAL_BREAK',
        '  Break::Filter();',
+       '  #endif',
        '  return ${dummyretval};',
        '}'
      ]
@@ -51,7 +53,9 @@ formulae = {
        'if (_context->isCore())',
        '{',
        '   Warning("Regal does not support ${name} for core profile - skipping.");',
+       '   #if REGAL_BREAK',
        '   Break::Filter();',
+       '   #endif',
        '   return ${dummyretval};',
        '}'
      ]
@@ -91,7 +95,9 @@ formulae = {
        'if (_context->isES2() || _context->isCore())',
        '{',
        '   Warning("Regal does not support ${name} for core or ES2 profiles - skipping.");',
+       '   #if REGAL_BREAK',
        '   Break::Filter();',
+       '   #endif',
        '   return ${dummyretval};',
        '}'
      ]
@@ -110,7 +116,9 @@ formulae = {
        '_context->filt->${m1}(*_context, ${arg0plus});',
        'if (_context->filt->Filtered())',
        '{',
+       '  #if REGAL_BREAK',
        '  Break::Filter();',
+       '  #endif',
        '  return ${dummyretval};',
        '}'
      ]

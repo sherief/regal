@@ -300,7 +300,7 @@ struct Vao : public RegalEmu {
             case GL_UNSIGNED_SHORT:
             case GL_INT:
             case GL_UNSIGNED_INT:
-			case GL_HALF_FLOAT:
+            case GL_HALF_FLOAT:
             case GL_FLOAT:
             case GL_DOUBLE:
                 break;
@@ -310,8 +310,8 @@ struct Vao : public RegalEmu {
                     return;
                 break;
             default:
-				RegalAssert( "Unknown <type> in for attrib." );
-                return;
+              RegalAssert( "Unknown <type> in for attrib." );
+              return;
         }
 
         if (size == GL_BGRA && normalized == GL_FALSE) {

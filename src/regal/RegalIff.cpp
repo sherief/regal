@@ -2361,14 +2361,14 @@ if( gles ) {
 }
 
 if( uses_string( "gl_FogFragCoord", count, srcstr, length ) ) {
-	ss << "out float rglFogFragCoord;\n";
+  ss << "out float rglFogFragCoord;\n";
 }
 
 // NOTE: ES 2.0 does not support gl_FragDepth, so we just discard it, for now
 // See: http://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf
 
 if( uses_string( "gl_FragDepth", count, srcstr, length ) ) {
-	ss << (shaderTypeMap[shader]==GL_VERTEX_SHADER ? "out" : " ") <<  " float rglFragDepth;\n";
+  ss << (shaderTypeMap[shader]==GL_VERTEX_SHADER ? "out" : " ") <<  " float rglFragDepth;\n";
 }
 
 
@@ -2380,7 +2380,7 @@ if( uses_string( "gl_Color", count, srcstr, length ) ) {
   }
 }
 if( uses_string( "gl_FrontColor", count, srcstr, length ) ) {
-	ss << "out vec4 rglFrontColor;\n";
+  ss << "out vec4 rglFrontColor;\n";
 }
 
 // NOTE: gl_SecondaryColor can be a vertex shader output, or a fragment shader input.
@@ -2395,12 +2395,12 @@ if( uses_string( "gl_SecondaryColor", count, srcstr, length ) ) {
 }
 
 if( uses_string( "gl_FrontSecondaryColor", count, srcstr, length ) ) {
-	ss << "out vec4 rglFrontSecondaryColor;\n";
+  ss << "out vec4 rglFrontSecondaryColor;\n";
 }
 if( uses_string( "gl_ClipVertex", count, srcstr, length ) ) {
   // should be "out", but temporarily disabled due to register pressure concerns
   // ss << "out vec4 rglClipVertex;\n";
-	ss << "vec4 rglClipVertex;\n";
+  ss << "vec4 rglClipVertex;\n";
 }
 
   if ( uses_ftransform  && gles ) {

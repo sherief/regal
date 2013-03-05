@@ -1533,7 +1533,7 @@ static void REGAL_CALL code_glGetFloatv(GLenum pname, GLfloat *params)
     string_list< ::std::string > _code;
     _code << indent << "glGetFloatv(";
                    _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << "/* params = ?? */";
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
@@ -1549,7 +1549,7 @@ static void REGAL_CALL code_glGetIntegerv(GLenum pname, GLint *params)
     string_list< ::std::string > _code;
     _code << indent << "glGetIntegerv(";
                    _code << toString(pname);
-    _code << ", "; _code << params;
+    _code << ", "; _code << "/* params = ?? */";
     _code << ");\n";
     printf("%s",_code.str().c_str());
 }
