@@ -357,6 +357,21 @@ def pointerLookupByNameCode(values, names, valueType = 'void *', valueCast = 're
 #
 # CodeGen for:
 #
+#   'a  b     c\td' -> 'a b c d'
+#
+
+def stripAll(exp):
+  tmp = exp.strip()
+  while True:
+    tmp = tmp.replace('  ',' ')
+    tmp = tmp.replace('\t\t',' ')
+    if tmp==exp:
+      return tmp
+    exp = tmp
+
+#
+# CodeGen for:
+#
 #   #if FOO
 #   a
 #   #else /* FOO */
@@ -405,7 +420,7 @@ def wrapIf(exp, a, b = None):
 #
 
 def wrapCIf(exp, a, b = None):
-# print exp, a, b
+  exp = stripAll(exp)
   if isinstance(a,list):
     tmp = []
     if exp:

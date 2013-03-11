@@ -117,7 +117,7 @@
 #define REGAL_FORCE_EMULATION 0
 #endif
 
-// Debug dispatch disabled by default in
+// Debug dispatch unsupported by default in
 // release mode
 
 #ifndef REGAL_DEBUG
@@ -128,7 +128,7 @@
 #endif
 #endif
 
-// Error dispatch disabled by default in
+// Error dispatch unsupported by default in
 // release mode
 
 #ifndef REGAL_ERROR
@@ -139,7 +139,7 @@
 #endif
 #endif
 
-// Code logging disabled by default in
+// Code logging unsupported by default in
 // release mode, or embedded
 
 #ifndef REGAL_CODE
@@ -150,13 +150,13 @@
 # endif
 #endif
 
-// Emulation dispatch enabled by default
+// Emulation dispatch supported by default
 
 #ifndef REGAL_EMULATION
 #define REGAL_EMULATION 1
 #endif
 
-// Driver dispatch enabled by default
+// Driver dispatch supported by default
 
 #ifndef REGAL_DRIVER
 #define REGAL_DRIVER 1
@@ -165,6 +165,8 @@
 #ifndef REGAL_LOG
 #define REGAL_LOG 1
 #endif
+
+// Emulation layers supported by default
 
 #ifndef REGAL_EMU_PPA
 #define REGAL_EMU_PPA 1
@@ -180,6 +182,10 @@
 
 #ifndef REGAL_EMU_BIN
 #define REGAL_EMU_BIN 1
+#endif
+
+#ifndef REGAL_EMU_XFER
+#define REGAL_EMU_XFER 1
 #endif
 
 #ifndef REGAL_EMU_DSA
@@ -202,7 +208,61 @@
 #define REGAL_EMU_FILTER 1
 #endif
 
-// RegalBreak callbacks enabled by default, except in release mode
+#ifndef REGAL_EMU_TEXC
+#if REGAL_SYS_PPAPI
+#define REGAL_EMU_TEXC 1
+#else
+#define REGAL_EMU_TEXC 0
+#endif
+#endif
+
+// Emulation layer forcing disabled by default
+
+#ifndef REGAL_FORCE_EMU_PPA
+#define REGAL_FORCE_EMU_PPA 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_PPCA
+#define REGAL_FORCE_EMU_PPCA 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_OBJ
+#define REGAL_FORCE_EMU_OBJ 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_BIN
+#define REGAL_FORCE_EMU_BIN 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_XFER
+#define REGAL_FORCE_EMU_XFER 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_DSA
+#define REGAL_FORCE_EMU_DSA 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_IFF
+#define REGAL_FORCE_EMU_IFF 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_SO
+#define REGAL_FORCE_EMU_SO 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_VAO
+#define REGAL_FORCE_EMU_VAO 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_FILTER
+#define REGAL_FORCE_EMU_FILTER 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_TEXC
+#define REGAL_FORCE_EMU_TEXC 0
+#endif
+
+// RegalBreak callbacks supported by default, except in release mode
 
 #ifndef REGAL_BREAK
 # if defined(NDEBUG)
@@ -212,7 +272,7 @@
 # endif
 #endif
 
-// Caching enabled by default
+// Caching supported by default
 // ... except for release-mode and embedded platforms
 
 #ifndef REGAL_CACHE
@@ -223,8 +283,7 @@
 # endif
 #endif
 
-
-// Shader caching support by default
+// Shader caching supported by default
 
 #ifndef REGAL_CACHE_SHADER
 #define REGAL_CACHE_SHADER REGAL_CACHE
@@ -270,12 +329,26 @@
 #define REGAL_STATIC_EGL 0
 #endif
 
-#ifndef REGAL_EMU_TEXC
-#if REGAL_SYS_PPAPI
-#define REGAL_EMU_TEXC 1
-#else
-#define REGAL_EMU_TEXC 0
+// Defaults for REGAL_NO_...
+
+#ifndef REGAL_NO_ASSERT
+#  if defined(NDEBUG)
+#    define REGAL_NO_ASSERT 1
+#  else
+#    define REGAL_NO_ASSERT 0
+#  endif
 #endif
+
+#ifndef REGAL_NO_PNG
+#  define REGAL_NO_PNG 0
+#endif
+
+#ifndef REGAL_NO_SQUISH
+#  define REGAL_NO_SQUISH 1
+#endif
+
+#ifndef REGAL_NO_TLS
+#  define REGAL_NO_TLS 0
 #endif
 
 // AssertFunction depends on Error log, but
@@ -319,17 +392,13 @@ inline const char * GetEnv(const char * const varname)
 // RegalAssert
 //
 
-#if defined(NDEBUG) && !defined(REGAL_NO_ASSERT)
-#  define REGAL_NO_ASSERT
-#endif
-
-#ifdef REGAL_NO_ASSERT
+#if REGAL_NO_ASSERT
 #  define RegalAssert( foo )
 #else
 #  define RegalAssert( foo ) if (!(foo)) ::REGAL_NAMESPACE_INTERNAL::AssertFunction( __FILE__ , __LINE__ , #foo);
 #endif
 
-#ifndef REGAL_NO_ASSERT
+#if !REGAL_NO_ASSERT
 void AssertFunction(const char *file, const std::size_t line, const char *expr);
 #endif
 

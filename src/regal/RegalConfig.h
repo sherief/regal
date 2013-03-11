@@ -81,12 +81,27 @@ namespace Config
   extern bool enableEmuPpca;
   extern bool enableEmuObj;
   extern bool enableEmuBin;
+  extern bool enableEmuXfer;
   extern bool enableEmuDsa;
   extern bool enableEmuIff;
   extern bool enableEmuSo;
   extern bool enableEmuVao;
   extern bool enableEmuFilter;
   extern bool enableEmuTexC;
+
+  // Force emulation layer enable/disable
+
+  extern bool forceEmuPpa;
+  extern bool forceEmuPpca;
+  extern bool forceEmuObj;
+  extern bool forceEmuBin;
+  extern bool forceEmuXfer;
+  extern bool forceEmuDsa;
+  extern bool forceEmuIff;
+  extern bool forceEmuSo;
+  extern bool forceEmuVao;
+  extern bool forceEmuFilter;
+  extern bool forceEmuTexC;
 
   // Initial context configuration
 

@@ -10,6 +10,8 @@ else
 $(error "Platform '$(SYSTEM)' not supported")
 endif
 
+include build/regal.inc
+
 REGAL_DEST ?= /usr
 BINDIR     ?= $(REGAL_DEST)/bin
 LIBDIR     ?= $(REGAL_DEST)/lib
@@ -171,43 +173,7 @@ endif
 LIB.LDFLAGS        := -lstdc++ -lpthread -ldl -lm
 LIB.LIBS           := 
 
-LIB.SRCS           :=
-LIB.SRCS           += src/regal/RegalPixelConversions.cpp
-LIB.SRCS           += src/regal/RegalTexC.cpp
-LIB.SRCS           += src/regal/RegalPpca.cpp
-LIB.SRCS           += src/regal/RegalIff.cpp
-LIB.SRCS           += src/regal/Regal.cpp
-LIB.SRCS           += src/regal/RegalToken.cpp
-LIB.SRCS           += src/regal/RegalLog.cpp
-LIB.SRCS           += src/regal/RegalInit.cpp
-LIB.SRCS           += src/regal/RegalUtil.cpp
-LIB.SRCS           += src/regal/RegalBreak.cpp
-LIB.SRCS           += src/regal/RegalConfig.cpp
-LIB.SRCS           += src/regal/RegalLookup.cpp
-LIB.SRCS           += src/regal/RegalFrame.cpp
-LIB.SRCS           += src/regal/RegalHelper.cpp
-LIB.SRCS           += src/regal/RegalMarker.cpp
-LIB.SRCS           += src/regal/RegalContext.cpp
-LIB.SRCS           += src/regal/RegalContextInfo.cpp
-LIB.SRCS           += src/regal/RegalDispatchGlobal.cpp
-LIB.SRCS           += src/regal/RegalDispatcher.cpp
-LIB.SRCS           += src/regal/RegalDispatchEmu.cpp
-LIB.SRCS           += src/regal/RegalDispatchLog.cpp
-LIB.SRCS           += src/regal/RegalDispatchCode.cpp
-LIB.SRCS           += src/regal/RegalDispatchDebug.cpp
-LIB.SRCS           += src/regal/RegalDispatchError.cpp
-LIB.SRCS           += src/regal/RegalDispatchCache.cpp
-LIB.SRCS           += src/regal/RegalDispatchLoader.cpp
-LIB.SRCS           += src/regal/RegalDispatchPpapi.cpp
-LIB.SRCS           += src/regal/RegalDispatchStaticES2.cpp
-LIB.SRCS           += src/regal/RegalDispatchStaticEGL.cpp
-LIB.SRCS           += src/regal/RegalDispatchMissing.cpp
-LIB.SRCS           += src/regal/RegalShaderCache.cpp
-LIB.SRCS           += src/regal/RegalHttp.cpp
-LIB.SRCS           += src/regal/RegalFavicon.cpp
-LIB.SRCS           += src/regal/RegalMac.cpp
-LIB.SRCS           += src/regal/RegalSo.cpp
-LIB.SRCS           += src/regal/RegalFilt.cpp
+LIB.SRCS           := $(REGAL.CXX)
 
 # Disable mongoose and Regal HTTP for NaCL build
 

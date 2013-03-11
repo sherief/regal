@@ -547,7 +547,7 @@ void GenerateVertexShaderSource( const Iff * rff, const Iff::State & state, stri
 
 void AddTexEnv( int i, Iff::TexenvMode env, GLenum fmt,  string_list & s )
 {
-  Internal("Regal::Rff::AddTexEnv","");
+  Internal("Regal::Rff::AddTexEnv","()");
 
   switch( env ) {
     case Iff::TEM_Replace:
@@ -650,7 +650,7 @@ void AddTexEnv( int i, Iff::TexenvMode env, GLenum fmt,  string_list & s )
 
 void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
 {
-  Internal("Regal::Rff::AddTexEnvCombine","");
+  Internal("Regal::Rff::AddTexEnvCombine","()");
 
   bool skipAlpha = env.rgb.mode == Iff::TEC_Dot3Rgba;
   int rgbSources = 0;
@@ -1376,7 +1376,7 @@ void State::SetClip( Iff * ffn, GLenum plane, const GLfloat * equation )
 
 void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSrc, const GLchar *fsSrc )
 {
-  Internal("Regal::Program::Init","");
+  Internal("Regal::Program::Init","()");
 
   ver = 0;
   progcount = 0;
@@ -1406,7 +1406,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSr
 
 void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src )
 {
-  Internal("Regal::Program::Shader","");
+  Internal("Regal::Program::Shader","()");
 
   UNUSED_PARAMETER(ctx);
 
@@ -1430,7 +1430,7 @@ void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLui
 
 void Program::Attribs( RegalContext * ctx )
 {
-  Internal("Regal::Program::Attribs","");
+  Internal("Regal::Program::Attribs","()");
 
   DispatchTable & tbl = ctx->dispatcher.emulation;
 
@@ -1464,7 +1464,7 @@ void Program::Attribs( RegalContext * ctx )
 // seth: for user program mode just do all the bind attribs, aliasing is OK in GL
 void Program::UserShaderModeAttribs( RegalContext * ctx )
 {
-  Internal("Regal::Program::UserShaderModeAttribs","");
+  Internal("Regal::Program::UserShaderModeAttribs","()");
 
   DispatchTable & tbl = ctx->dispatcher.emulation;
 
@@ -1487,7 +1487,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
 
 void Program::Samplers( RegalContext * ctx, DispatchTable & tbl )
 {
-  Internal("Regal::Program::Samplers","");
+  Internal("Regal::Program::Samplers","()");
 
   UNUSED_PARAMETER(ctx);
 
@@ -1505,7 +1505,7 @@ void Program::Samplers( RegalContext * ctx, DispatchTable & tbl )
 
 void Program::Uniforms( RegalContext * ctx, DispatchTable & tbl )
 {
-  Internal("Regal::Program::Uniforms","");
+  Internal("Regal::Program::Uniforms","()");
 
   UNUSED_PARAMETER(ctx);
 
@@ -1519,7 +1519,7 @@ void Program::Uniforms( RegalContext * ctx, DispatchTable & tbl )
 
 void Iff::InitFixedFunction( RegalContext * ctx )
 {
-  Internal("Regal::Rff::InitFixedFunction","");
+  Internal("Regal::Rff::InitFixedFunction","()");
 
   RegalAssert(ctx);
   RegalAssert(ctx->info);
@@ -1838,7 +1838,7 @@ inline size_t compute_hash(const Store &val)
 
 void Iff::State::Process( Iff * ffn )
 {
-  Internal("Regal::State::Process","");
+  Internal("Regal::State::Process","()");
 
   const Store & r = raw;
   Store & p = processed;

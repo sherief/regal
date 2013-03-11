@@ -36,7 +36,7 @@ REGAL_GLOBAL_BEGIN
 
 #include "md5.h"
 
-#ifndef REGAL_NO_PNG
+#if !REGAL_NO_PNG
 #include <zlib.h>
 #include <png.h>
 #include <string>
@@ -105,7 +105,7 @@ void Frame::capture(RegalContext &context)
         // Do once we have the pixels, could we do the rest in another
         // thread?
 
-#ifndef REGAL_NO_PNG
+#if !REGAL_NO_PNG
         if (Config::frameSaveColor)
         {
           static png_color_8 pngSBIT = {8, 8, 8, 0, 8};

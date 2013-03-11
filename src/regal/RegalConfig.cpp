@@ -71,12 +71,25 @@ namespace Config {
   bool enableEmuPpca    = REGAL_EMU_PPCA;
   bool enableEmuObj     = REGAL_EMU_OBJ;
   bool enableEmuBin     = REGAL_EMU_BIN;
+  bool enableEmuXfer    = REGAL_EMU_XFER;
   bool enableEmuDsa     = REGAL_EMU_DSA;
   bool enableEmuIff     = REGAL_EMU_IFF;
   bool enableEmuSo      = REGAL_EMU_SO;
   bool enableEmuVao     = REGAL_EMU_VAO;
   bool enableEmuFilter  = REGAL_EMU_FILTER;
   bool enableEmuTexC    = REGAL_EMU_TEXC;
+
+  bool forceEmuPpa     = REGAL_FORCE_EMU_PPA;
+  bool forceEmuPpca    = REGAL_FORCE_EMU_PPCA;
+  bool forceEmuObj     = REGAL_FORCE_EMU_OBJ;
+  bool forceEmuBin     = REGAL_FORCE_EMU_BIN;
+  bool forceEmuXfer    = REGAL_FORCE_EMU_XFER;
+  bool forceEmuDsa     = REGAL_FORCE_EMU_DSA;
+  bool forceEmuIff     = REGAL_FORCE_EMU_IFF;
+  bool forceEmuSo      = REGAL_FORCE_EMU_SO;
+  bool forceEmuVao     = REGAL_FORCE_EMU_VAO;
+  bool forceEmuFilter  = REGAL_FORCE_EMU_FILTER;
+  bool forceEmuTexC    = REGAL_FORCE_EMU_TEXC;
 
   int  frameLimit       = 0;  // Unlimited
 
@@ -213,6 +226,11 @@ namespace Config {
     if (tmp) enableEmuBin = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMU_XFER
+    tmp = GetEnv( "REGAL_EMU_XFER" );
+    if (tmp) enableEmuXfer = atoi(tmp)!=0;
+#endif
+
 #if REGAL_EMU_DSA
     tmp = GetEnv( "REGAL_EMU_DSA" );
     if (tmp) enableEmuDsa = atoi(tmp)!=0;
@@ -238,8 +256,67 @@ namespace Config {
     if (tmp) enableEmuTexC = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMU_FILTER
     tmp = GetEnv( "REGAL_EMU_FILTER" );
     if (tmp) enableEmuFilter = atoi(tmp)!=0;
+#endif
+
+    //
+
+#if REGAL_EMU_PPA
+    tmp = GetEnv( "REGAL_FORCE_EMU_PPA" );
+    if (tmp) forceEmuPpa = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_PPCA
+    tmp = GetEnv( "REGAL_FORCE_EMU_PPCA" );
+    if (tmp) forceEmuPpca = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_OBJ
+    tmp = GetEnv( "REGAL_FORCE_EMU_OBJ" );
+    if (tmp) forceEmuObj = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_BIN
+    tmp = GetEnv( "REGAL_FORCE_EMU_BIN" );
+    if (tmp) forceEmuBin = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_XFER
+    tmp = GetEnv( "REGAL_FORCE_EMU_XFER" );
+    if (tmp) forceEmuXfer = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_DSA
+    tmp = GetEnv( "REGAL_FORCE_EMU_DSA" );
+    if (tmp) forceEmuDsa = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_IFF
+    tmp = GetEnv( "REGAL_FORCE_EMU_IFF" );
+    if (tmp) forceEmuIff = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_SO
+    tmp = GetEnv( "REGAL_FORCE_EMU_SO" );
+    if (tmp) forceEmuSo = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_VAO
+    tmp = GetEnv( "REGAL_FORCE_EMU_VAO" );
+    if (tmp) forceEmuVao = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_TEXC
+    tmp = GetEnv( "REGAL_FORCE_EMU_TEXC" );
+    if (tmp) forceEmuTexC = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_FILTER
+    tmp = GetEnv( "REGAL_FORCE_EMU_FILTER" );
+    if (tmp) forceEmuFilter = atoi(tmp)!=0;
+#endif
 
     //
 
@@ -352,12 +429,25 @@ namespace Config {
     Info("REGAL_EMU_PPCA           ", enableEmuPpca    ? "enabled" : "disabled");
     Info("REGAL_EMU_OBJ            ", enableEmuObj     ? "enabled" : "disabled");
     Info("REGAL_EMU_BIN            ", enableEmuBin     ? "enabled" : "disabled");
+    Info("REGAL_EMU_XFER           ", enableEmuXfer    ? "enabled" : "disabled");
     Info("REGAL_EMU_DSA            ", enableEmuDsa     ? "enabled" : "disabled");
     Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
     Info("REGAL_EMU_SO             ", enableEmuSo      ? "enabled" : "disabled");
     Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
     Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
     Info("REGAL_EMU_TEXC           ", enableEmuTexC    ? "enabled" : "disabled");
+
+    Info("REGAL_FORCE_EMU_PPA      ", forceEmuPpa      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_PPCA     ", forceEmuPpca     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_OBJ      ", forceEmuObj      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_BIN      ", forceEmuBin      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_XFER     ", forceEmuXfer     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_DSA      ", forceEmuDsa      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_IFF      ", forceEmuIff      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_SO       ", forceEmuSo       ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_VAO      ", forceEmuVao      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_FILTER   ", forceEmuFilter   ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_TEXC     ", forceEmuTexC     ? "enabled" : "disabled");
 
     Info("REGAL_FRAME_LIMIT        ", frameLimit                               );
 
@@ -398,7 +488,7 @@ namespace Config {
     jo.member("driver", enableDriver);
     jo.end();
 
-    jo.object("emulation");
+    jo.object("enableEmulationLayer");
     jo.member("ppa",    enableEmuPpa);
     jo.member("obj",    enableEmuObj);
     jo.member("bin",    enableEmuBin);
@@ -408,6 +498,18 @@ namespace Config {
     jo.member("vao",    enableEmuVao);
     jo.member("texc",   enableEmuTexC);
     jo.member("filter", enableEmuFilter);
+    jo.end();
+
+    jo.object("forceEmulationLayer");
+    jo.member("ppa",    forceEmuPpa);
+    jo.member("obj",    forceEmuObj);
+    jo.member("bin",    forceEmuBin);
+    jo.member("dsa",    forceEmuDsa);
+    jo.member("iff",    forceEmuIff);
+    jo.member("so",     forceEmuSo);
+    jo.member("vao",    forceEmuVao);
+    jo.member("texc",   forceEmuTexC);
+    jo.member("filter", forceEmuFilter);
     jo.end();
 
     jo.object("frame");

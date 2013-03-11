@@ -72,7 +72,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-#ifndef REGAL_NO_ASSERT
+#if !REGAL_NO_ASSERT
 void
 AssertFunction(const char *file, const size_t line, const char *expr)
 {

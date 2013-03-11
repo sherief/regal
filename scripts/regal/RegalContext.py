@@ -35,6 +35,8 @@ from EmuObj    import objFormulae
 from EmuFilter import formulae as filterFormulae
 from EmuTexC   import texCFormulae
 
+from EmuPixelTransfer import xferFormulae
+
 # Regal.cpp emulation
 
 emuRegal = [
@@ -59,18 +61,19 @@ emuRegal = [
 # RegalDispathEmu.cpp fixed-function emulation
 
 emu = [
-    { 'type' : 'Emu::Obj',    'include' : 'RegalObj.h',  'member' : 'obj',    'conditional' : 'Config::enableEmuObj',                            'ifdef' : 'REGAL_EMU_OBJ',    'formulae' : objFormulae    },
-    #{ 'type' : 'RegalPpc',   'include' : 'RegalPpc.h',  'member' : 'ppc',    'conditional' : None,                                              'ifdef' : '',                 'formulae' : ppcFormulae    },
-    { 'type' : 'Emu::Ppa',    'include' : 'RegalPpa.h',  'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa',                            'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
-    { 'type' : 'Emu::Ppca',   'include' : 'RegalPpca.h', 'member' : 'ppca',   'conditional' : 'Config::enableEmuPpca',                           'ifdef' : 'REGAL_EMU_PPCA',   'formulae' : ppcaFormulae   },
-    { 'type' : 'Emu::Bin',    'include' : 'RegalBin.h',  'member' : 'bin',    'conditional' : 'Config::enableEmuBin',                            'ifdef' : 'REGAL_EMU_BIN',    'formulae' : binFormulae    },
-    { 'type' : 'Emu::Dsa',    'include' : 'RegalDsa.h',  'member' : 'dsa',    'conditional' : 'Config::enableEmuDsa',                            'ifdef' : 'REGAL_EMU_DSA',    'formulae' : dsaFormulae    },
-    { 'type' : 'Emu::Iff',    'include' : 'RegalIff.h',  'member' : 'iff',    'conditional' : 'Config::enableEmuIff',                            'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
-    { 'type' : 'Emu::So',     'include' : 'RegalSo.h',   'member' : 'so',     'conditional' : 'Config::enableEmuSo',                             'ifdef' : 'REGAL_EMU_SO',     'formulae' : soFormulae     },
-    { 'type' : 'Emu::Vao',    'include' : 'RegalVao.h',  'member' : 'vao',    'conditional' : 'Config::enableEmuVao && Config::enableEmuIff',    'ifdef' : 'REGAL_EMU_VAO',    'formulae' : vaoFormulae    },
-    { 'type' : 'Emu::TexC',   'include' : 'RegalTexC.h', 'member' : 'texc',   'conditional' : 'Config::enableEmuTexC',                           'ifdef' : 'REGAL_EMU_TEXC',   'formulae' : texCFormulae   },
-    { 'type' : 'Emu::Filt',   'include' : 'RegalFilt.h', 'member' : 'filt',   'conditional' : 'Config::enableEmuFilter',                         'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
-    { 'type' : 'void',        'include' : None,          'member' : None,     'conditional' : None,                                              'ifdef' : None,               'formulae' : None           }
+    { 'type' : 'Emu::Obj',    'include' : 'RegalObj.h',  'member' : 'obj',    'conditional' : 'Config::enableEmuObj               || Config::forceEmuObj    || REGAL_FORCE_EMU_OBJ',  'ifdef' : 'REGAL_EMU_OBJ',    'formulae' : objFormulae    },
+    #{ 'type' : 'RegalPpc',   'include' : 'RegalPpc.h',  'member' : 'ppc',    'conditional' : None,                                                                      'ifdef' : '',                 'formulae' : ppcFormulae    },
+    { 'type' : 'Emu::Ppa',    'include' : 'RegalPpa.h',  'member' : 'ppa',    'conditional' : 'Config::enableEmuPpa               || Config::forceEmuPpa    || REGAL_FORCE_EMU_PPA',  'ifdef' : 'REGAL_EMU_PPA',    'formulae' : ppaFormulae    },
+    { 'type' : 'Emu::Ppca',   'include' : 'RegalPpca.h', 'member' : 'ppca',   'conditional' : 'Config::enableEmuPpca              || Config::forceEmuPpca   || REGAL_FORCE_EMU_PPCA', 'ifdef' : 'REGAL_EMU_PPCA',   'formulae' : ppcaFormulae   },
+    { 'type' : 'Emu::Bin',    'include' : 'RegalBin.h',  'member' : 'bin',    'conditional' : 'Config::enableEmuBin               || Config::forceEmuBin    || REGAL_FORCE_EMU_BIN',  'ifdef' : 'REGAL_EMU_BIN',    'formulae' : binFormulae    },
+    { 'type' : 'Emu::Xfer',   'include' : 'RegalXfer.h', 'member' : 'xfer',   'conditional' : '(isES2() && Config::enableEmuXfer) || Config::forceEmuXfer   || REGAL_FORCE_EMU_XFER', 'ifdef' : 'REGAL_EMU_XFER',   'formulae' : xferFormulae   },
+    { 'type' : 'Emu::Dsa',    'include' : 'RegalDsa.h',  'member' : 'dsa',    'conditional' : 'Config::enableEmuDsa               || Config::forceEmuDsa    || REGAL_FORCE_EMU_DSA',  'ifdef' : 'REGAL_EMU_DSA',    'formulae' : dsaFormulae    },
+    { 'type' : 'Emu::Iff',    'include' : 'RegalIff.h',  'member' : 'iff',    'conditional' : 'Config::enableEmuIff               || Config::forceEmuIff    || REGAL_FORCE_EMU_IFF',  'ifdef' : 'REGAL_EMU_IFF',    'formulae' : iffFormulae    },
+    { 'type' : 'Emu::So',     'include' : 'RegalSo.h',   'member' : 'so',     'conditional' : 'Config::enableEmuSo                || Config::forceEmuSo     || REGAL_FORCE_EMU_SO',   'ifdef' : 'REGAL_EMU_SO',     'formulae' : soFormulae     },
+    { 'type' : 'Emu::Vao',    'include' : 'RegalVao.h',  'member' : 'vao',    'conditional' : '(Config::enableEmuVao              || Config::enableEmuVao   || REGAL_FORCE_EMU_VAO) && (Config::enableEmuIff || Config::forceEmuIff || REGAL_FORCE_EMU_IFF)', 'ifdef' : 'REGAL_EMU_VAO', 'formulae' : vaoFormulae },
+    { 'type' : 'Emu::TexC',   'include' : 'RegalTexC.h', 'member' : 'texc',   'conditional' : '(isES2() && Config::enableEmuTexC)   || Config::forceEmuTexC   || REGAL_FORCE_EMU_TEXC',   'ifdef' : 'REGAL_EMU_TEXC',   'formulae' : texCFormulae   },
+    { 'type' : 'Emu::Filt',   'include' : 'RegalFilt.h', 'member' : 'filt',   'conditional' : 'Config::enableEmuFilter            || Config::forceEmuFilter || REGAL_FORCE_EMU_FILTER', 'ifdef' : 'REGAL_EMU_FILTER', 'formulae' : filterFormulae },
+    { 'type' : 'void',        'include' : None,          'member' : None,     'conditional' : None,                                                                         'ifdef' : None,               'formulae' : None           }
 ]
 
 contextHeaderTemplate = Template( '''${AUTOGENERATED}

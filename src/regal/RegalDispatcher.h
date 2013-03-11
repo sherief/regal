@@ -78,7 +78,9 @@ public:
   Dispatcher();
   ~Dispatcher();
 
-  void push_back(DispatchTable &table, bool enable);
+  void push_back(DispatchTable &table, bool enable);           // Push to the back of the stack
+  bool erase    (DispatchTable &table);                        // Remove from dispatch stack
+  bool insert   (DispatchTable &other, DispatchTable &table);  // Insert before the other
 
   inline void
   enable(DispatchTable &table)

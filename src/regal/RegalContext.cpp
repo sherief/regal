@@ -56,6 +56,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPpa.h"
 #include "RegalPpca.h"
 #include "RegalBin.h"
+#include "RegalXfer.h"
 #include "RegalDsa.h"
 #include "RegalIff.h"
 #include "RegalSo.h"
@@ -83,6 +84,7 @@ RegalContext::RegalContext()
   ppa(NULL),
   ppca(NULL),
   bin(NULL),
+  xfer(NULL),
   dsa(NULL),
   iff(NULL),
   so(NULL),
@@ -154,9 +156,9 @@ RegalContext::Init()
   {
     RegalAssert(info);
     // emu
-    emuLevel = 10;
+    emuLevel = 11;
     #if REGAL_EMU_FILTER
-    if (Config::enableEmuFilter)
+    if (Config::enableEmuFilter || Config::forceEmuFilter || REGAL_FORCE_EMU_FILTER)
     {
       filt = new Emu::Filt;
       emuLevel = 0;
@@ -164,7 +166,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_FILTER */
     #if REGAL_EMU_TEXC
-    if (Config::enableEmuTexC)
+    if ((isES2() && Config::enableEmuTexC) || Config::forceEmuTexC || REGAL_FORCE_EMU_TEXC)
     {
       texc = new Emu::TexC;
       emuLevel = 1;
@@ -172,7 +174,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_TEXC */
     #if REGAL_EMU_VAO
-    if (Config::enableEmuVao && Config::enableEmuIff)
+    if ((Config::enableEmuVao || Config::enableEmuVao || REGAL_FORCE_EMU_VAO) && (Config::enableEmuIff || Config::forceEmuIff || REGAL_FORCE_EMU_IFF))
     {
       vao = new Emu::Vao;
       emuLevel = 2;
@@ -180,7 +182,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_VAO */
     #if REGAL_EMU_SO
-    if (Config::enableEmuSo)
+    if (Config::enableEmuSo || Config::forceEmuSo || REGAL_FORCE_EMU_SO)
     {
       so = new Emu::So;
       emuLevel = 3;
@@ -188,7 +190,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_SO */
     #if REGAL_EMU_IFF
-    if (Config::enableEmuIff)
+    if (Config::enableEmuIff || Config::forceEmuIff || REGAL_FORCE_EMU_IFF)
     {
       iff = new Emu::Iff;
       emuLevel = 4;
@@ -196,7 +198,7 @@ RegalContext::Init()
     }
     #endif /* REGAL_EMU_IFF */
     #if REGAL_EMU_DSA
-    if (Config::enableEmuDsa)
+    if (Config::enableEmuDsa || Config::forceEmuDsa || REGAL_FORCE_EMU_DSA)
     {
       Internal("RegalContext::Init ","GL_EXT_direct_state_access");
       info->regal_ext_direct_state_access = true;
@@ -207,39 +209,47 @@ RegalContext::Init()
       dsa->Init(*this);
     }
     #endif /* REGAL_EMU_DSA */
+    #if REGAL_EMU_XFER
+    if ((isES2() && Config::enableEmuXfer) || Config::forceEmuXfer || REGAL_FORCE_EMU_XFER)
+    {
+      xfer = new Emu::Xfer;
+      emuLevel = 6;
+      xfer->Init(*this);
+    }
+    #endif /* REGAL_EMU_XFER */
     #if REGAL_EMU_BIN
-    if (Config::enableEmuBin)
+    if (Config::enableEmuBin || Config::forceEmuBin || REGAL_FORCE_EMU_BIN)
     {
       bin = new Emu::Bin;
-      emuLevel = 6;
+      emuLevel = 7;
       bin->Init(*this);
     }
     #endif /* REGAL_EMU_BIN */
     #if REGAL_EMU_PPCA
-    if (Config::enableEmuPpca)
+    if (Config::enableEmuPpca || Config::forceEmuPpca || REGAL_FORCE_EMU_PPCA)
     {
       ppca = new Emu::Ppca;
-      emuLevel = 7;
+      emuLevel = 8;
       ppca->Init(*this);
     }
     #endif /* REGAL_EMU_PPCA */
     #if REGAL_EMU_PPA
-    if (Config::enableEmuPpa)
+    if (Config::enableEmuPpa || Config::forceEmuPpa || REGAL_FORCE_EMU_PPA)
     {
       ppa = new Emu::Ppa;
-      emuLevel = 8;
+      emuLevel = 9;
       ppa->Init(*this);
     }
     #endif /* REGAL_EMU_PPA */
     #if REGAL_EMU_OBJ
-    if (Config::enableEmuObj)
+    if (Config::enableEmuObj || Config::forceEmuObj || REGAL_FORCE_EMU_OBJ)
     {
       obj = new Emu::Obj;
-      emuLevel = 9;
+      emuLevel = 10;
       obj->Init(*this);
     }
     #endif /* REGAL_EMU_OBJ */
-    emuLevel = 10;
+    emuLevel = 11;
 
   }
 #endif
@@ -273,6 +283,9 @@ RegalContext::~RegalContext()
   #if REGAL_EMU_BIN
   delete bin;
   #endif /* REGAL_EMU_BIN */
+  #if REGAL_EMU_XFER
+  delete xfer;
+  #endif /* REGAL_EMU_XFER */
   #if REGAL_EMU_DSA
   delete dsa;
   #endif /* REGAL_EMU_DSA */
