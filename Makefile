@@ -21,7 +21,9 @@
 include config/version
 
 SHELL = /bin/sh
-SYSTEM ?= $(shell config/config.guess | cut -d - -f 3 | sed -e 's/[0-9\.]//g;')
+ifndef SYSTEM
+SYSTEM := $(shell config/config.guess | cut -d - -f 3 | sed -e 's/[0-9\.]//g;')
+endif
 SYSTEM.SUPPORTED = $(shell test -f config/Makefile.$(SYSTEM) && echo 1)
 
 ifeq ($(SYSTEM.SUPPORTED), 1)
