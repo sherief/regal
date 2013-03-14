@@ -102,8 +102,11 @@ ZLIB.SRCS       := $(ZLIB.C)
 ZLIB.SRCS.NAMES := $(notdir $(ZLIB.SRCS))
 ZLIB.OBJS       := $(addprefix tmp/$(SYSTEM)/zlib/static/,$(ZLIB.SRCS.NAMES))
 ZLIB.OBJS       := $(ZLIB.OBJS:.c=.o)
+ZLIB.DEPS       := $(ZLIB.OBJS:.o=.d)
 ZLIB.CFLAGS     := -Isrc/zlib/include
 ZLIB.STATIC     := libz.a
+
+-include $(ZLIB.DEPS)
 
 ifneq ($(filter linux%,$(SYSTEM)),)
 ZLIB.CFLAGS     += -DHAVE_UNISTD_H
@@ -138,8 +141,11 @@ LIBPNG.SRCS       := $(LIBPNG.C)
 LIBPNG.SRCS.NAMES := $(notdir $(LIBPNG.SRCS))
 LIBPNG.OBJS       := $(addprefix tmp/$(SYSTEM)/libpng/static/,$(LIBPNG.SRCS.NAMES))
 LIBPNG.OBJS       := $(LIBPNG.OBJS:.c=.o)
+LIBPNG.DEPS       := $(LIBPNG.DEPS:.o=.d)
 LIBPNG.CFLAGS     := -Isrc/zlib/include -Isrc/libpng/include
 LIBPNG.STATIC     := libpng.a
+
+-include $(LIBPNG.DEPS)
 
 ifneq ($(filter linux%,$(SYSTEM)),)
 LIBPNG.CFLAGS     += -DHAVE_UNISTD_H
@@ -241,16 +247,20 @@ LIB.INCLUDE        += -Isrc/boost
 
 LIB.SRCS.NAMES     := $(notdir $(LIB.SRCS))
 
-LIB.DEPS           :=
-LIB.DEPS           += include/GL/Regal.h
-LIB.DEPS           += src/regal/RegalPrivate.h
+LIB.HEADERS        :=
+LIB.HEADERS        += include/GL/Regal.h
+LIB.HEADERS        += src/regal/RegalPrivate.h
 
 LIB.OBJS           := $(addprefix tmp/$(SYSTEM)/regal/static/,$(LIB.SRCS.NAMES))
 LIB.OBJS           := $(LIB.OBJS:.c=.o)
 LIB.OBJS           := $(LIB.OBJS:.cpp=.o)
+LIB.DEPS           := $(LIB.OBJS:.o=.d)
 LIB.SOBJS          := $(addprefix tmp/$(SYSTEM)/regal/shared/,$(LIB.SRCS.NAMES))
 LIB.SOBJS          := $(LIB.SOBJS:.c=.o)
 LIB.SOBJS          := $(LIB.SOBJS:.cpp=.o)
+LIB.SDEPS          := $(LIBS.SOBJS:.o=.d)
+
+-include $(LIB.DEPS) $(LIB.SDEPS)
 
 LIB.LIBS           += -Llib/$(SYSTEM) -lpng -lz
 
@@ -286,35 +296,35 @@ ifneq ($(STRIP),)
 endif
 endif
 
-tmp/$(SYSTEM)/regal/static/%.o: src/regal/%.cpp $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/static/%.o: src/regal/%.cpp $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CXX)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/shared/%.o: src/regal/%.cpp $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/shared/%.o: src/regal/%.cpp $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CXX)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/shared/%.o: src/mongoose/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/shared/%.o: src/mongoose/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/static/%.o: src/jsonsl/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/static/%.o: src/jsonsl/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
-tmp/$(SYSTEM)/regal/shared/%.o: src/jsonsl/%.c $(LIB.DEPS)
+tmp/$(SYSTEM)/regal/shared/%.o: src/jsonsl/%.c $(LIB.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
@@ -326,10 +336,13 @@ GLEW.SRCS        += src/glew/src/glew.c
 GLEW.SRCS.NAMES := $(notdir $(GLEW.SRCS))
 GLEW.OBJS       := $(addprefix tmp/$(SYSTEM)/glew/shared/,$(GLEW.SRCS.NAMES))
 GLEW.OBJS       := $(GLEW.OBJS:.c=.o)
+GLEW.DEPS       := $(GLEW.OBJS:.o=.d)
 GLEW.CFLAGS     := -Isrc/glew/include -Isrc/glu/include -DGLEW_EXPORTS -DGLEW_BUILD -DGLEW_REGAL
 GLEW.LIBS       := -Llib/$(SYSTEM) -lRegal
 GLEW.SHARED     := libRegalGLEW.$(EXT.DYNAMIC)
 GLEW.STATIC     := libRegalGLEW.a
+
+-include $(GLEW.DEPS)
 
 glew.lib: lib/$(SYSTEM)/$(GLEW.STATIC)
 
@@ -361,12 +374,15 @@ GLU.SRCS.NAMES := $(notdir $(GLU.SRCS))
 GLU.OBJS       := $(addprefix tmp/$(SYSTEM)/glu/shared/,$(GLU.SRCS.NAMES))
 GLU.OBJS       := $(GLU.OBJS:.c=.o) $(GLU.OBJS:.cc=.o)
 GLU.OBJS       := $(filter %.o,$(GLU.OBJS))
+GLU.DEPS       := $(GLU.OBJS:.o=.d)
 GLU.CFLAGS     := -Isrc/glu/include -Isrc/glu/libnurbs/interface -Isrc/glu/libnurbs/internals -Isrc/glu/libnurbs/nurbtess
 GLU.CFLAGS     += -DLIBRARYBUILD
 GLU.LIBS       := -Llib/$(SYSTEM) -lRegal
 GLU.LIBS       += -pthread -lm
 GLU.SHARED     := libRegalGLU.$(EXT.DYNAMIC)
 GLU.STATIC     := libRegalGLU.a
+
+-include $(GLU.DEPS)
 
 glu.lib: lib/$(SYSTEM)/$(GLU.STATIC)
 
@@ -415,6 +431,7 @@ GLUT.SRCS       := $(GLUT.C)
 GLUT.SRCS.NAMES := $(notdir $(GLUT.SRCS))
 GLUT.OBJS       := $(addprefix tmp/$(SYSTEM)/glut/shared/,$(GLUT.SRCS.NAMES))
 GLUT.OBJS       := $(GLUT.OBJS:.c=.o)
+GLUT.DEPS       := $(GLUT.OBJS:.o=.d)
 GLUT.CFLAGS     := -Isrc/glut/include -Isrc/glu/include -DBUILD_GLUT32 -DGLUT_BUILDING_LIB -DGLUT_STATIC
 #GLUT.CFLAGS     += -DCDECL=
 GLUT.LIBS       := -Llib/$(SYSTEM) -lRegal -lRegalGLU
@@ -422,6 +439,8 @@ GLUT.LIBS       += -lX11 -lXmu -lXi
 GLUT.LIBS       += -pthread -lm
 GLUT.SHARED     := libRegalGLUT.$(EXT.DYNAMIC)
 GLUT.STATIC     := libRegalGLUT.a
+
+-include $(GLUT.DEPS)
 
 ifdef ENABLE_SHARED
 glut.lib: lib/$(SYSTEM)/$(GLUT.SHARED)
@@ -445,8 +464,11 @@ GLEWINFO.SRCS       += src/glew/src/glewinfo.c
 GLEWINFO.SRCS.NAMES := $(notdir $(GLEWINFO.SRCS))
 GLEWINFO.OBJS       := $(addprefix tmp/$(SYSTEM)/glewinfo/static/,$(GLEWINFO.SRCS.NAMES))
 GLEWINFO.OBJS       := $(GLEWINFO.OBJS:.c=.o)
+GLEWINFO.DEPS       := $(GLEWINFO.OBJS:.o=.d)
 GLEWINFO.CFLAGS     := -Iinclude -Isrc/glew/include -DGLEW_REGAL -DGLEW_NO_GLU
 GLEWINFO.LIBS       += -Llib/$(SYSTEM) -lRegal $(LDFLAGS.X11) -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) $(LDFLAGS.AGL)
+
+-include $(GLEWINFO.DEPS)
 
 ifneq ($(filter linux%,$(SYSTEM)),)
 GLEWINFO.LIBS       += -lX11
@@ -488,9 +510,12 @@ DREAMTORUS.SRCS       += examples/dreamtorus/glut/code/main.cpp
 DREAMTORUS.SRCS.NAMES := $(notdir $(DREAMTORUS.SRCS))
 DREAMTORUS.OBJS       := $(addprefix tmp/$(SYSTEM)/dreamtorus/static/,$(DREAMTORUS.SRCS.NAMES))
 DREAMTORUS.OBJS       := $(DREAMTORUS.OBJS:.cpp=.o)
+DREAMTORUS.DEPS       := $(DREAMTORUS.DEPS:.o=.d)
 DREAMTORUS.CFLAGS     := -Iinclude -Iexamples/dreamtorus/src
 DREAMTORUS.LIBS       += -Llib/$(SYSTEM) $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal $(LDFLAGS.X11)
 DREAMTORUS.LIBS       += -lm -pthread
+
+-include $(DREAMTORUS.DEPS)
 
 tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/src/%.cpp
 	@mkdir -p $(dir $@)
@@ -554,9 +579,12 @@ TIGER.SRCS       += examples/tiger/xform.c
 TIGER.SRCS.NAMES := $(notdir $(TIGER.SRCS))
 TIGER.OBJS       := $(addprefix tmp/$(SYSTEM)/tiger/static/,$(TIGER.SRCS.NAMES))
 TIGER.OBJS       := $(TIGER.OBJS:.c=.o)
+TIGER.DEPS       := $(TIGER.DEPS:.o=.d)
 TIGER.CFLAGS     := -Iinclude -DGLEW_NO_GLU
 TIGER.LIBS       += -Llib/$(SYSTEM) -lRegalGLEW $(LDFLAGS.GLUT) $(LDFLAGS.GLU) -lRegal $(LDFLAGS.X11)
 TIGER.LIBS       += -lm -pthread
+
+-include $(TIGER.DEPS)
 
 tmp/$(SYSTEM)/tiger/static/%.o: examples/tiger/%.c
 	@mkdir -p $(dir $@)
@@ -587,8 +615,11 @@ GTEST.SRCS       += src/googlemock/src/gmock-all.cc
 GTEST.SRCS.NAMES := $(notdir $(GTEST.SRCS))
 GTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/gtest/static/,$(GTEST.SRCS.NAMES))
 GTEST.OBJS       := $(GTEST.OBJS:.cc=.o)
+GTEST.DEPS       := $(GTEST.OBJS:.o=.d)
 GTEST.CFLAGS     := -Isrc/googletest/include -Isrc/googletest -Isrc/googlemock/include -Isrc/googlemock
 GTEST.STATIC     := libgtest.a
+
+-include $(GTEST.DEPS)
 
 tmp/$(SYSTEM)/gtest/static/gtest-all.o: src/googletest/src/gtest-all.cc
 	@mkdir -p $(dir $@)
@@ -620,12 +651,15 @@ REGALTEST.SRCS       += tests/testStringList.cpp
 REGALTEST.SRCS.NAMES := $(notdir $(REGALTEST.SRCS))
 REGALTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTEST.SRCS.NAMES))
 REGALTEST.OBJS       := $(REGALTEST.OBJS:.cpp=.o)
+REGALTEST.DEPS       := $(REGALTEST.DEPS:.o=.d)
 REGALTEST.CFLAGS     := -Isrc/googletest/include -Isrc/googlemock/include -Isrc/regal -Isrc/boost
 REGALTEST.LIBS       := -Llib/$(SYSTEM) -lgtest lib/$(SYSTEM)/$(LIB.STATIC) $(LDFLAGS.X11) -lm
 
 ifdef ENABLE_SHARED
 REGALTEST.LIBS += -ldl
 endif
+
+-include $(REGALTEST.DEPS)
 
 tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)

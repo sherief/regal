@@ -11,6 +11,7 @@ else
 LDFLAGS.EXTRA = -L/usr/X11R6/lib
 LIBDIR = $(REGAL_DEST)/lib
 endif
+CFLAGS.EXTRA  += -MMD
 CFLAGS.EXTRA  += -m64
 LDFLAGS.EXTRA += -m64
 LDFLAGS.X11 = -lXmu -lXi -lXext -lX11
