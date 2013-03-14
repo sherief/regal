@@ -2185,51 +2185,51 @@ void Iff::UseShaderProgram( RegalContext * ctx )
   UpdateUniforms( ctx );
 }
 
-  static int remove_version(GLchar *str)
-  {
-    GLchar version[4];
-    
-    if (!str)
-      return -1;
-    
-    GLchar *i = str;
-    while ((i = strstr(i,"#version ")))
-    {
-      if (i==str || i[-1]=='\n')
-      {
-        i[0] = '/';
-        i[1] = '/';
-        
-        // return version number
-        i+=9;
-        while (*i == ' ') i++;
-        for (int j=0; j<3; i++,j++)
-          version[j] = *i;
-        version[3] = '\0';
-        return atoi(version);
-      }
-      ++i;
-    }
+static int remove_version(GLchar *str)
+{
+  GLchar version[4];
+
+  if (!str)
     return -1;
-  }
-  
-  static void remove_precision(GLchar *str)
+
+  GLchar *i = str;
+  while ((i = strstr(i,"#version ")))
   {
-    if (!str)
-      return;
-    
-    GLchar *i = str;
-    while ((i = strstr(i,"precision ")))
+    if (i==str || i[-1]=='\n')
     {
-      if (i==str || i[-1]=='\n')
-      {
-        i[0] = '/';
-        i[1] = '/';
-      }
+      i[0] = '/';
+      i[1] = '/';
+
+      // return version number
       i+=9;
+      while (*i == ' ') i++;
+      for (int j=0; j<3; i++,j++)
+        version[j] = *i;
+      version[3] = '\0';
+      return atoi(version);
     }
+    ++i;
   }
-  
+  return -1;
+}
+
+static void remove_precision(GLchar *str)
+{
+  if (!str)
+    return;
+
+  GLchar *i = str;
+  while ((i = strstr(i,"precision ")))
+  {
+    if (i==str || i[-1]=='\n')
+    {
+      i[0] = '/';
+      i[1] = '/';
+    }
+    i+=9;
+  }
+}
+
 // replace ftransform with "rgl_ftform" in order to avoid conflict with possibly deprecated ftransform
 static void replace_ftransform(GLchar *str)
 {

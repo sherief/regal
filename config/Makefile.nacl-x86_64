@@ -1,20 +1,25 @@
-NAME  = $(REGAL_NAME)
-CC    = arm-linux-gnueabihf-gcc-4.6
-LD    = arm-linux-gnueabihf-gcc-4.6
-AR    = arm-linux-gnueabihf-ar
-STRIP = arm-linux-gnueabihf-strip
-EXT.DYNAMIC = so
+include config/Makefile.nacl
+
+NACL_ARCH := x86_64
+CC  := x86_64-nacl-gcc
+CXX := x86_64-nacl-g++
+LD  := x86_64-nacl-g++
+STRIP  := x86_64-nacl-strip
+
 PICFLAG = -fPIC
-LDFLAGS.X11 = -lXmu -lXi -lXext -lX11
-LDFLAGS.GL = -lGL
+BIN_EXTENSION = _64.nexe
+EXT.DYNAMIC = so
+LDFLAGS.EXTRA =
+LIBDIR =
+LDFLAGS.EXTRA +=
+LDFLAGS.GL =
 LDFLAGS.GLU = -lRegalGLU
 LDFLAGS.GLUT = -lRegalGLUT
 LDFLAGS.STATIC =
 LDFLAGS.DYNAMIC = -shared
 WARN = -Wall -W -Wno-unused-parameter
-CFLAGS.DEBUG   = -g -O0
-CFLAGS.RELEASE = -O1
-LIB.CFLAGS    += -DREGAL_SYS_GLX=1 -DREGAL_SYS_EGL=1
+CFLAGS.DEBUG = -g
+CFLAGS.RELEASE = -O2
 BIN.SUFFIX =
 LIB.SONAME = lib$(NAME).so.$(SO_MAJOR)
 LIB.DEVLNK = lib$(NAME).so
