@@ -6,7 +6,7 @@ CXX := arm-nacl-g++
 LD  := arm-nacl-g++
 STRIP  := arm-nacl-strip
 
-WARN += -Wno-unused-but-set-variable -Wno-maybe-uninitialized
+#WARN += -Wno-unused-but-set-variable -Wno-maybe-uninitialized
 BIN_EXTENSION = _arm.nexe
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =
