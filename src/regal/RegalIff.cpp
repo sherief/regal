@@ -2185,34 +2185,51 @@ void Iff::UseShaderProgram( RegalContext * ctx )
   UpdateUniforms( ctx );
 }
 
-static int remove_version(GLchar *str)
-{
-  GLchar version[4];
-
-  if (!str)
-    return -1;
-
-  GLchar *i = str;
-  while ((i = strstr(i,"#version ")))
+  static int remove_version(GLchar *str)
   {
-    if (i==str || i[-1]=='\n')
+    GLchar version[4];
+    
+    if (!str)
+      return -1;
+    
+    GLchar *i = str;
+    while ((i = strstr(i,"#version ")))
     {
-      i[0] = '/';
-      i[1] = '/';
-
-      // return version number
-      i+=9;
-      while (*i == ' ') i++;
-      for (int j=0; j<3; i++,j++)
-        version[j] = *i;
-      version[3] = '\0';
-      return atoi(version);
+      if (i==str || i[-1]=='\n')
+      {
+        i[0] = '/';
+        i[1] = '/';
+        
+        // return version number
+        i+=9;
+        while (*i == ' ') i++;
+        for (int j=0; j<3; i++,j++)
+          version[j] = *i;
+        version[3] = '\0';
+        return atoi(version);
+      }
+      ++i;
     }
-    ++i;
+    return -1;
   }
-  return -1;
-}
-
+  
+  static void remove_precision(GLchar *str)
+  {
+    if (!str)
+      return;
+    
+    GLchar *i = str;
+    while ((i = strstr(i,"precision ")))
+    {
+      if (i==str || i[-1]=='\n')
+      {
+        i[0] = '/';
+        i[1] = '/';
+      }
+      i+=9;
+    }
+  }
+  
 // replace ftransform with "rgl_ftform" in order to avoid conflict with possibly deprecated ftransform
 static void replace_ftransform(GLchar *str)
 {
@@ -2275,7 +2292,10 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
       version = remove_version(s[i+1]);
     if (uses_ftransform && gles )
       replace_ftransform(s[i+1]);
+    if( legacy )
+      remove_precision(s[i+1]);
   }
+
 
   // Preamble
 
@@ -2285,6 +2305,7 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
     // hack around #version 100 on x86 failing compilation
     if( ctx->info->gl_version_major >= 3 ) {
       ss << "#version 120\n";
+      ss << "#define precision\n";
     } else {
       ss << "#version 100\n";
     }
@@ -2292,6 +2313,7 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
   else if (legacy)
   {
     ss << "#version 120\n";
+    ss << "#define precision\n";
   }
   else
   {

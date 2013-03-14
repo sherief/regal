@@ -16454,9 +16454,6 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
       if (_context->texc) break;
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
-      if (_context->filt) break;
-      #endif
     default:
       break;
   }
@@ -16504,21 +16501,6 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
-      if (_context->filt)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 0;
-        if (_context->isES2() || _context->isCore())
-        {
-           Warning("Regal does not support glGenTextures for core or ES2 profiles - skipping.");
-           #if REGAL_BREAK
-           Break::Filter();
-           #endif
-           return ;
-        }
-      }
-      #endif
     default:
     {
       DispatchTable *_next = _context->dispatcher.emulation._next;

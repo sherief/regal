@@ -76,7 +76,6 @@ formulae = {
       'glEvalMesh(1|2)',
       'glEvalPoint(1|2)',
       'glGenLists',
-      'glGenTextures',
       'glGetTexLevelParameter(f|i)v',
       'glHint',
       'glLineStipple',
