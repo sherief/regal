@@ -289,16 +289,30 @@
 #define REGAL_CACHE_SHADER REGAL_CACHE
 #endif
 
-// Cache writing supported by default
-
 #ifndef REGAL_CACHE_SHADER_WRITE
 #define REGAL_CACHE_SHADER_WRITE REGAL_CACHE_SHADER
 #endif
 
-// Cache reading supported by default
-
 #ifndef REGAL_CACHE_SHADER_READ
 #define REGAL_CACHE_SHADER_READ REGAL_CACHE_SHADER
+#endif
+
+// Texture caching supported by default
+
+#ifndef REGAL_CACHE_TEXTURE
+#define REGAL_CACHE_TEXTURE REGAL_CACHE
+#endif
+
+// Cache writing supported by default
+
+#ifndef REGAL_CACHE_TEXTURE_WRITE
+#define REGAL_CACHE_TEXTURE_WRITE REGAL_CACHE_TEXTURE
+#endif
+
+// Cache reading supported by default
+
+#ifndef REGAL_CACHE_TEXTURE_READ
+#define REGAL_CACHE_TEXTURE_READ REGAL_CACHE_TEXTURE
 #endif
 
 //

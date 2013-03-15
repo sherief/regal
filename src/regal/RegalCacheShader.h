@@ -35,8 +35,8 @@
 
  */
 
-#ifndef __REGAL_SHADER_CACHE_H__
-#define __REGAL_SHADER_CACHE_H__
+#ifndef __REGAL_CACHE_SHADER_H__
+#define __REGAL_CACHE_SHADER_H__
 
 #include "RegalUtil.h"
 
@@ -48,7 +48,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace ShaderCache {
+namespace Cache {
 
   void shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar **string, const GLint *length);
 

@@ -21,8 +21,10 @@
 include config/version
 
 SHELL = /bin/sh
-SYSTEM ?= $(shell config/config.guess | cut -d - -f 3 | sed -e 's/[0-9\.]//g;')
-SYSTEM.SUPPORTED = $(shell test -f config/Makefile.$(SYSTEM) && echo 1)
+ifndef SYSTEM
+SYSTEM := $(shell config/config.guess | cut -d - -f 3 | sed -e 's/[0-9\.]//g;')
+endif
+SYSTEM.SUPPORTED := $(shell test -f config/Makefile.$(SYSTEM) && echo 1)
 
 ifeq ($(SYSTEM.SUPPORTED), 1)
 include config/Makefile.$(SYSTEM)
@@ -62,9 +64,10 @@ OPT = $(CFLAGS.RELEASE)
 endif
 
 ifndef V
-LOG_CC = @echo " [CC] $@";
-LOG_LD = @echo " [LD] $@";
-LOG_AR = @echo " [AR] $@";
+LOG_CXX   = @echo " [CXX] $@";
+LOG_CC    = @echo " [CC] $@";
+LOG_LD    = @echo " [LD] $@";
+LOG_AR    = @echo " [AR] $@";
 LOG_STRIP = @echo " [STRIP] $@";
 endif
 
@@ -72,7 +75,13 @@ INCLUDE = -Iinclude
 
 override CFLAGS := $(OPT) $(CFLAGS) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
 
-# Build GLU and GLUT except for NaCL and Mac
+#
+# Default target: all
+#
+
+all: regal.lib glew.lib regal.bin
+
+# GLU and GLUT for platforms other than NaCL and Mac
 
 ifneq ($(filter nacl%,$(SYSTEM)),)
 ifneq ($(filter darwin%,$(SYSTEM)),)
@@ -80,9 +89,9 @@ all: glu.lib glut.lib
 endif
 endif
 
-all: regal.lib glew.lib regal.bin
-
-# REGAL shared and static libraries
+#
+# Regenerate Regal sources
+#
 
 export:
 	scripts/Export.py --api gl 4.2 --api wgl 4.0 --api glx 4.0 --api cgl 1.4 --api egl 1.0 --outdir .
@@ -251,15 +260,15 @@ ifneq ($(filter darwin%,$(SYSTEM)),)
 LIB.LDFLAGS        += -Wl,-reexport-lGLU -L/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
 endif
 
-regal.lib: zlib.lib libpng.lib lib/$(SYSTEM)/$(LIB.STATIC)
+regal.lib: lib/$(SYSTEM)/$(LIB.STATIC)
 
 ifeq ($(filter nacl%,$(SYSTEM)),)
 regal.lib: lib/$(SYSTEM)/$(LIB.SHARED)
 endif
 
-lib/$(SYSTEM)/$(LIB.STATIC): $(LIB.OBJS)
+lib/$(SYSTEM)/$(LIB.STATIC): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(LIB.OBJS)
 	@mkdir -p $(dir $@)
-	$(LOG_AR)$(CCACHE) $(AR) cr $@ $^
+	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(LIB.OBJS)
 ifneq ($(STRIP),)
 	$(LOG_STRIP)$(STRIP) -x $@
 endif
@@ -279,11 +288,11 @@ endif
 
 tmp/$(SYSTEM)/regal/static/%.o: src/regal/%.cpp $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/regal/%.cpp $(LIB.DEPS)
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(LIB.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(LIB.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(LIB.DEPS)
 	@mkdir -p $(dir $@)
@@ -375,15 +384,15 @@ tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libutil/%.c
 
 tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libnurbs/interface/%.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libnurbs/internals/%.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 tmp/$(SYSTEM)/glu/shared/%.o: src/glu/libnurbs/nurbtess/%.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(PICFLAG) $(GLU.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 lib/$(SYSTEM)/$(GLU.SHARED): $(GLU.OBJS) lib/$(SYSTEM)/$(LIB.SHARED)
 	@mkdir -p $(dir $@)
@@ -484,11 +493,11 @@ DREAMTORUS.LIBS       += -lm -pthread
 
 tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/src/%.cpp
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(DREAMTORUS.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(DREAMTORUS.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 tmp/$(SYSTEM)/dreamtorus/static/%.o: examples/dreamtorus/glut/code/%.cpp
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(DREAMTORUS.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(DREAMTORUS.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/$(SYSTEM)/dreamtorus: $(DREAMTORUS.OBJS) lib/$(SYSTEM)/$(LIB.SHARED)
 	@mkdir -p $(dir $@)
@@ -581,11 +590,11 @@ GTEST.STATIC     := libgtest.a
 
 tmp/$(SYSTEM)/gtest/static/gtest-all.o: src/googletest/src/gtest-all.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(GTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(GTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 tmp/$(SYSTEM)/gtest/static/gmock-all.o: src/googlemock/src/gmock-all.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(GTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(GTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 lib/$(SYSTEM)/$(GTEST.STATIC): $(GTEST.OBJS)
 	@mkdir -p $(dir $@)
@@ -618,7 +627,7 @@ endif
 
 tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(LIB.CFLAGS) $(REGALTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CC) $(LIB.CFLAGS) $(REGALTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
 bin/$(SYSTEM)/regaltest$(BIN_EXTENSION): $(REGALTEST.OBJS) lib/$(SYSTEM)/$(GTEST.STATIC) lib/$(SYSTEM)/$(LIB.STATIC) lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC)
 	@mkdir -p $(dir $@)

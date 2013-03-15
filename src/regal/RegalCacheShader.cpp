@@ -35,7 +35,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalConfig.h"
-#include "RegalShaderCache.h"
+#include "RegalCacheShader.h"
 
 #include <lookup3.h>
 
@@ -50,7 +50,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace ShaderCache {
+namespace Cache {
 
 void
 shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar **string, const GLint *length)

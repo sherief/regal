@@ -1,9 +1,9 @@
 /*
-  Copyright (c) 2011 NVIDIA Corporation
-  Copyright (c) 2011-2012 Cass Everitt
-  Copyright (c) 2012 Scott Nations
-  Copyright (c) 2012 Mathias Schott
-  Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2011-2013 NVIDIA Corporation
+  Copyright (c) 2011-2013 Cass Everitt
+  Copyright (c) 2012-2013 Scott Nations
+  Copyright (c) 2012-2013 Mathias Schott
+  Copyright (c) 2012-2013 Nigel Stewart
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -29,46 +29,33 @@
 */
 
 /*
-  Intended formatting conventions:
-  $ astyle --style=allman --indent=spaces=2 --indent-switches
-*/
 
-#include "pch.h" /* For MS precompiled header support */
+ Disk-based .png texture caching
+ Nigel Stewart
+
+ */
+
+#ifndef __REGAL_CACHE_TEXTURE_H__
+#define __REGAL_CACHE_TEXTURE_H__
 
 #include "RegalUtil.h"
 
-#if REGAL_CACHE && REGAL_CACHE_SHADER
-
 REGAL_GLOBAL_BEGIN
 
-#include "RegalConfig.h"
-#include "RegalThread.h"
-#include "RegalContext.h"
-#include "RegalDispatcher.h"
-#include "RegalCacheShader.h"
+#include <GL/Regal.h>
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL cache_glShaderSource(GLuint shader, GLsizei count, const GLchar **string, const GLint *length)
-{
-  RegalContext *_context = REGAL_GET_CONTEXT();
-  RegalAssert(_context);
-  DispatchTable *_next = _context->dispatcher.cache._next;
-  RegalAssert(_next);
-  if (Config::cache && Config::cacheShader)
-    Cache::shaderSource(_next->call(&_next->glShaderSource), shader, count, string, length);
-  else
-    _next->call(&_next->glShaderSource)(shader, count, string, length);
-}
+namespace Cache {
 
-void InitDispatchTableCache(DispatchTable &tbl)
-{
-  tbl.glShaderSource = cache_glShaderSource;
-}
+  // glBindTexture handler
+
+  void bindTexture(PFNGLBINDTEXTUREPROC bindTextureProc, PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXIMAGEPROC getTexImageProc, GLenum target, GLuint texture);
+
+};
 
 REGAL_NAMESPACE_END
 
 #endif
-

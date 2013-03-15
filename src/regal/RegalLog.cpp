@@ -545,12 +545,7 @@ namespace Logging {
 #if REGAL_LOG
       if (log && logOutput)
       {
-#if REGAL_SYS_WGL
-        OutputDebugStringA(m.c_str());
-        fprintf(logOutput, "%s", m.c_str());
-        fflush(logOutput);
-#elif REGAL_SYS_ANDROID
-
+#if REGAL_SYS_ANDROID
 #else
         fprintf(logOutput, "%s", m.c_str());
         fflush(logOutput);
