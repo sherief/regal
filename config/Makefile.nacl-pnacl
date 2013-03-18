@@ -1,17 +1,19 @@
 include config/Makefile.nacl
 
 NACL_ARCH := pnacl
-CC  := pnacl-clang
-CXX := pnacl-clang++
-LD  := pnacl-clang++
-STRIP =
+
+CC     := pnacl-clang
+CXX    := pnacl-clang++
+LD     := pnacl-clang++
+RANLIB :=
+STRIP  ?=
 
 DISABLE_SHARED=1
 BIN_EXTENSION = .pexe
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =
 LIBDIR =
-CFLAGS.EXTRA += -fPIC
+CFLAGS.EXTRA +=
 LDFLAGS.EXTRA +=
 LDFLAGS.GL =
 LDFLAGS.GLU = -lRegalGLU

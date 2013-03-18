@@ -1,12 +1,16 @@
 include config/Makefile.nacl
 
 NACL_ARCH := arm
-CC  := arm-nacl-gcc
-CXX := arm-nacl-g++
-LD  := arm-nacl-g++
-STRIP  := arm-nacl-strip
+
+CC     := arm-nacl-gcc
+CXX    := arm-nacl-g++
+LD     := arm-nacl-g++
+AR     := arm-nacl-ar
+RANLIB :=
+STRIP  ?=
 
 #WARN += -Wno-unused-but-set-variable -Wno-maybe-uninitialized
+#WARN += -Wno-conversion-null
 BIN_EXTENSION = _arm.nexe
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =

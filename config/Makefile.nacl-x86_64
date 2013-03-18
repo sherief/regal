@@ -1,13 +1,16 @@
 include config/Makefile.nacl
 
 NACL_ARCH := x86_64
-CC  := x86_64-nacl-gcc
-CXX := x86_64-nacl-g++
-LD  := x86_64-nacl-g++
-STRIP  := x86_64-nacl-strip
 
-WARN += -Wno-uninitialized
-PICFLAG = -fPIC
+CC     := x86_64-nacl-gcc
+CXX    := x86_64-nacl-g++
+LD     := x86_64-nacl-g++
+AR     := x86_64-nacl-ar
+RANLIB :=
+STRIP  ?=
+
+WARN += -Wno-uninitialized -Wno-conversion-null
+PICFLAG =
 BIN_EXTENSION = _64.nexe
 EXT.DYNAMIC = so
 LDFLAGS.EXTRA =
