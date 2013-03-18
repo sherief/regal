@@ -105,10 +105,13 @@ namespace Config {
   bool frameSaveStencil = false;
   bool frameSaveDepth   = false;
 
-  bool        cache            = REGAL_CACHE;
-  bool        cacheShader      = false;
-  bool        cacheShaderRead  = false;
-  bool        cacheShaderWrite = false;
+  bool        cache             = REGAL_CACHE;
+  bool        cacheShader       = false;
+  bool        cacheShaderRead   = false;
+  bool        cacheShaderWrite  = false;
+  bool        cacheTexture      = false;
+  bool        cacheTextureRead  = false;
+  bool        cacheTextureWrite = false;
   std::string cacheDirectory("./");
 
   void Init()
@@ -360,6 +363,8 @@ namespace Config {
     tmp = GetEnv( "REGAL_CACHE" );
     if (tmp) cache = atoi(tmp)!=0;
 
+    // GLSL shader caching
+
 #if REGAL_CACHE_SHADER
     tmp = GetEnv( "REGAL_CACHE_SHADER" );
     if (tmp) cacheShader = atoi(tmp)!=0;
@@ -375,6 +380,23 @@ namespace Config {
     if (tmp) cacheShaderRead = atoi(tmp)!=0;
 #endif
 
+    // Teture caching
+
+#if REGAL_CACHE_TEXTURE
+    tmp = GetEnv( "REGAL_CACHE_TEXTURE" );
+    if (tmp) cacheTexture = atoi(tmp)!=0;
+#endif
+
+#if REGAL_CACHE_TEXTURE_WRITE
+    tmp = GetEnv( "REGAL_CACHE_TEXTURE_WRITE" );
+    if (tmp) cacheTextureWrite = atoi(tmp)!=0;
+#endif
+
+#if REGAL_CACHE_TEXTURE_READ
+    tmp = GetEnv( "REGAL_CACHE_TEXTURE_READ" );
+    if (tmp) cacheTextureRead = atoi(tmp)!=0;
+#endif
+
     tmp = GetEnv( "REGAL_CACHE_DIRECTORY" );
     if (tmp) cacheDirectory = tmp;
 #endif
@@ -388,76 +410,83 @@ namespace Config {
 #endif
 
 #if REGAL_SYS_ES1
-    Info("REGAL_FORCE_ES1_PROFILE  ", forceES1Profile  ? "enabled" : "disabled");
+    Info("REGAL_FORCE_ES1_PROFILE   ", forceES1Profile  ? "enabled" : "disabled");
 #endif
 
 #if REGAL_SYS_ES2
-    Info("REGAL_FORCE_ES2_PROFILE  ", forceES2Profile  ? "enabled" : "disabled");
+    Info("REGAL_FORCE_ES2_PROFILE   ", forceES2Profile  ? "enabled" : "disabled");
 #endif
 
-    Info("REGAL_FORCE_CORE_PROFILE ", forceCoreProfile ? "enabled" : "disabled");
+    Info("REGAL_FORCE_CORE_PROFILE  ", forceCoreProfile ? "enabled" : "disabled");
 
 #if REGAL_SYS_ES1
-    Info("REGAL_SYS_ES1            ", sysES1           ? "enabled" : "disabled");
+    Info("REGAL_SYS_ES1             ", sysES1           ? "enabled" : "disabled");
 #endif
 
 #if REGAL_SYS_ES2
-    Info("REGAL_SYS_ES2            ", sysES2           ? "enabled" : "disabled");
+    Info("REGAL_SYS_ES2             ", sysES2           ? "enabled" : "disabled");
 #endif
 
 #if REGAL_SYS_GL
-    Info("REGAL_SYS_GL             ", sysGL            ? "enabled" : "disabled");
+    Info("REGAL_SYS_GL              ", sysGL            ? "enabled" : "disabled");
 #endif
 
 #if REGAL_SYS_GLX
-    Info("REGAL_SYS_GLX            ", sysGLX           ? "enabled" : "disabled");
+    Info("REGAL_SYS_GLX             ", sysGLX           ? "enabled" : "disabled");
 #endif
 
 #if REGAL_SYS_EGL
-    Info("REGAL_SYS_EGL            ", sysEGL           ? "enabled" : "disabled");
+    Info("REGAL_SYS_EGL             ", sysEGL           ? "enabled" : "disabled");
 #endif
 
-    Info("REGAL_FORCE_EMULATION    ", forceEmulation   ? "enabled" : "disabled");
-    Info("REGAL_DEBUG              ", enableDebug      ? "enabled" : "disabled");
-    Info("REGAL_ERROR              ", enableError      ? "enabled" : "disabled");
-    Info("REGAL_CODE               ", enableCode       ? "enabled" : "disabled");
-    Info("REGAL_EMULATION          ", enableEmulation  ? "enabled" : "disabled");
-    Info("REGAL_LOG                ", enableLog        ? "enabled" : "disabled");
-    Info("REGAL_DRIVER             ", enableDriver     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMULATION     ", forceEmulation   ? "enabled" : "disabled");
+    Info("REGAL_DEBUG               ", enableDebug      ? "enabled" : "disabled");
+    Info("REGAL_ERROR               ", enableError      ? "enabled" : "disabled");
+    Info("REGAL_CODE                ", enableCode       ? "enabled" : "disabled");
+    Info("REGAL_EMULATION           ", enableEmulation  ? "enabled" : "disabled");
+    Info("REGAL_LOG                 ", enableLog        ? "enabled" : "disabled");
+    Info("REGAL_DRIVER              ", enableDriver     ? "enabled" : "disabled");
 
-    Info("REGAL_EMU_PPA            ", enableEmuPpa     ? "enabled" : "disabled");
-    Info("REGAL_EMU_PPCA           ", enableEmuPpca    ? "enabled" : "disabled");
-    Info("REGAL_EMU_OBJ            ", enableEmuObj     ? "enabled" : "disabled");
-    Info("REGAL_EMU_BIN            ", enableEmuBin     ? "enabled" : "disabled");
-    Info("REGAL_EMU_XFER           ", enableEmuXfer    ? "enabled" : "disabled");
-    Info("REGAL_EMU_DSA            ", enableEmuDsa     ? "enabled" : "disabled");
-    Info("REGAL_EMU_IFF            ", enableEmuIff     ? "enabled" : "disabled");
-    Info("REGAL_EMU_SO             ", enableEmuSo      ? "enabled" : "disabled");
-    Info("REGAL_EMU_VAO            ", enableEmuVao     ? "enabled" : "disabled");
-    Info("REGAL_EMU_FILTER         ", enableEmuFilter  ? "enabled" : "disabled");
-    Info("REGAL_EMU_TEXC           ", enableEmuTexC    ? "enabled" : "disabled");
+    Info("REGAL_EMU_PPA             ", enableEmuPpa     ? "enabled" : "disabled");
+    Info("REGAL_EMU_PPCA            ", enableEmuPpca    ? "enabled" : "disabled");
+    Info("REGAL_EMU_OBJ             ", enableEmuObj     ? "enabled" : "disabled");
+    Info("REGAL_EMU_BIN             ", enableEmuBin     ? "enabled" : "disabled");
+    Info("REGAL_EMU_XFER            ", enableEmuXfer    ? "enabled" : "disabled");
+    Info("REGAL_EMU_DSA             ", enableEmuDsa     ? "enabled" : "disabled");
+    Info("REGAL_EMU_IFF             ", enableEmuIff     ? "enabled" : "disabled");
+    Info("REGAL_EMU_SO              ", enableEmuSo      ? "enabled" : "disabled");
+    Info("REGAL_EMU_VAO             ", enableEmuVao     ? "enabled" : "disabled");
+    Info("REGAL_EMU_FILTER          ", enableEmuFilter  ? "enabled" : "disabled");
+    Info("REGAL_EMU_TEXC            ", enableEmuTexC    ? "enabled" : "disabled");
 
-    Info("REGAL_FORCE_EMU_PPA      ", forceEmuPpa      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_PPCA     ", forceEmuPpca     ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_OBJ      ", forceEmuObj      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_BIN      ", forceEmuBin      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_XFER     ", forceEmuXfer     ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_DSA      ", forceEmuDsa      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_IFF      ", forceEmuIff      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_SO       ", forceEmuSo       ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_VAO      ", forceEmuVao      ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_FILTER   ", forceEmuFilter   ? "enabled" : "disabled");
-    Info("REGAL_FORCE_EMU_TEXC     ", forceEmuTexC     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_PPA       ", forceEmuPpa      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_PPCA      ", forceEmuPpca     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_OBJ       ", forceEmuObj      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_BIN       ", forceEmuBin      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_XFER      ", forceEmuXfer     ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_DSA       ", forceEmuDsa      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_IFF       ", forceEmuIff      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_SO        ", forceEmuSo       ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_VAO       ", forceEmuVao      ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_FILTER    ", forceEmuFilter   ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_TEXC      ", forceEmuTexC     ? "enabled" : "disabled");
 
-    Info("REGAL_FRAME_LIMIT        ", frameLimit                               );
+    Info("REGAL_FRAME_LIMIT         ", frameLimit                               );
 
-    Info("REGAL_MD5_COLOR          ", frameMd5Color    ? "enabled" : "disabled");
-    Info("REGAL_MD5_STENCIL        ", frameMd5Stencil  ? "enabled" : "disabled");
-    Info("REGAL_MD5_DEPTH          ", frameMd5Depth    ? "enabled" : "disabled");
+    Info("REGAL_MD5_COLOR           ", frameMd5Color    ? "enabled" : "disabled");
+    Info("REGAL_MD5_STENCIL         ", frameMd5Stencil  ? "enabled" : "disabled");
+    Info("REGAL_MD5_DEPTH           ", frameMd5Depth    ? "enabled" : "disabled");
 
-    Info("REGAL_SAVE_COLOR         ", frameSaveColor   ? "enabled" : "disabled");
-    Info("REGAL_SAVE_STENCIL       ", frameSaveStencil ? "enabled" : "disabled");
-    Info("REGAL_SAVE_DEPTH         ", frameSaveDepth   ? "enabled" : "disabled");
+    Info("REGAL_SAVE_COLOR          ", frameSaveColor   ? "enabled" : "disabled");
+    Info("REGAL_SAVE_STENCIL        ", frameSaveStencil ? "enabled" : "disabled");
+    Info("REGAL_SAVE_DEPTH          ", frameSaveDepth   ? "enabled" : "disabled");
+
+#if REGAL_CACHE
+    Info("REGAL_CACHE               ", cache             ? "enabled" : "disabled");
+    Info("REGAL_CACHE_TEXTURE       ", cacheTexture      ? "enabled" : "disabled");
+    Info("REGAL_CACHE_TEXTURE_WRITE ", cacheTextureWrite ? "enabled" : "disabled");
+#endif
+
   }
 
   void
@@ -523,11 +552,14 @@ namespace Config {
     jo.end();
 
     jo.object("cache");
-    jo.member("enable",      cache);
-    jo.member("shader",      cacheShader);
-    jo.member("shaderWrite", cacheShaderWrite);
-    jo.member("shaderRead",  cacheShaderRead);
-    jo.member("directory",   cacheDirectory);
+    jo.member("enable",       cache);
+    jo.member("shader",       cacheShader);
+    jo.member("shaderWrite",  cacheShaderWrite);
+    jo.member("shaderRead",   cacheShaderRead);
+    jo.member("texture",      cacheShader);
+    jo.member("textureWrite", cacheShaderWrite);
+    jo.member("textureRead",  cacheShaderRead);
+    jo.member("directory",    cacheDirectory);
     jo.end();
 
     jo.end();

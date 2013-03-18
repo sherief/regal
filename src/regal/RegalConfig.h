@@ -125,6 +125,9 @@ namespace Config
   extern bool        cacheShader;
   extern bool        cacheShaderRead;
   extern bool        cacheShaderWrite;
+  extern bool        cacheTexture;
+  extern bool        cacheTextureRead;
+  extern bool        cacheTextureWrite;
   extern std::string cacheDirectory;
 };
 

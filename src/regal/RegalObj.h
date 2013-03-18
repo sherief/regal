@@ -133,10 +133,12 @@ struct Obj : public RegalEmu
     RegalContext *sharingWith = ctx.groupInitializedContext();
     if (sharingWith)
     {
-      bufferNames.app2drv = sharingWith->obj->bufferNames.app2drv;
-      bufferNames.drv2app = sharingWith->obj->bufferNames.drv2app;
-      vaoNames.app2drv    = sharingWith->obj->vaoNames.app2drv;
-      vaoNames.drv2app    = sharingWith->obj->vaoNames.drv2app;
+      bufferNames.app2drv  = sharingWith->obj->bufferNames.app2drv;
+      bufferNames.drv2app  = sharingWith->obj->bufferNames.drv2app;
+      vaoNames.app2drv     = sharingWith->obj->vaoNames.app2drv;
+      vaoNames.drv2app     = sharingWith->obj->vaoNames.drv2app;
+      textureNames.app2drv = sharingWith->obj->textureNames.app2drv;
+      textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
     }
 
     bufferNames.gen = ctx.dispatcher.emulation.glGenBuffers;

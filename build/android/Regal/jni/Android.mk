@@ -15,16 +15,19 @@ endif
 
 regal_cflags := -DANDROID=1 -DREGAL_NO_PNG=1 -Werror
 
-regal_path   := $(LOCAL_PATH)/../../..
+regal_path   := $(LOCAL_PATH)/../../../..
+
+include $(regal_path)/build/regal.inc
 
 # src_files should not include LOCAL_PATH
-regal_src_files := $(wildcard $(regal_path)/src/regal/*.cpp) $(regal_path)/src/mongoose/mongoose.c $(regal_path)/src/md5/src/md5.c
+regal_src_files := $(patsubst %,$(regal_path)/%,$(REGAL.CXX))
+regal_src_files += $(regal_path)/src/mongoose/mongoose.c $(regal_path)/src/md5/src/md5.c
 regal_src_files := $(patsubst $(LOCAL_PATH)/%,%,$(regal_src_files))
 
 regal_c_includes := $(regal_path)/include $(regal_path)/src/regal $(regal_path)/src/boost $(regal_path)/src/mongoose $(regal_path)/src/md5/include $(regal_path)/src/lookup3
+regal_c_includes := $(patsubst $(LOCAL_PATH)/../%,%,$(regal_c_includes))
 
 regal_export_c_includes := $(regal_path)/include
-
 
 ifneq ($(REGAL_FORCE_REBUILD),true)
 
@@ -37,7 +40,7 @@ LOCAL_EXPORT_C_INCLUDES := $(regal_export_c_includes)
 include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := Regal_shared
+LOCAL_MODULE := Regal
 LOCAL_SRC_FILES := libs/$(TARGET_ARCH_ABI)/lib$(LOCAL_MODULE).so
 LOCAL_EXPORT_C_INCLUDES := $(regal_export_c_includes)
 include $(PREBUILT_SHARED_LIBRARY)
@@ -57,7 +60,7 @@ LOCAL_ARM_MODE  := arm
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := Regal_shared
+LOCAL_MODULE := Regal
 LOCAL_SRC_FILES := $(regal_src_files)
 LOCAL_CFLAGS := $(regal_cflags)
 LOCAL_C_INCLUDES := $(regal_c_includes)
